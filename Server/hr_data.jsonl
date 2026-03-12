@@ -1,0 +1,2 @@
+{"deviceId": "string", "timestampMs": 0, "heartRate": 0, "ibiMsList": [0], "receivedAt": "2026-02-10T05:54:20.649416Z"}
+{"deviceId": "Galaxy Watch", "timestampMs": 2026, "heartRate": 180, "ibiMsList": [101, 200, 300], "receivedAt": "2026-02-10T05:55:28.824499Z"}
