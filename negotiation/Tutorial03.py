@@ -1,1 +1,0 @@
-# 新しいnegotiatorを開発する
