@@ -19,7 +19,7 @@
 """
 完全情報二者間交渉の単一ステップ
 """
-from negmas.mechanisms import Mechanism
+from negmas.mechanisms import Mechanism, MechanismStepResult
 
 from negmas import (
     make_issue,
@@ -67,12 +67,23 @@ class NashBargainingGame(Mechanism):
         if added:
             self.ufuns.append(self.negotiators[-1].ufun)
     
+    """
+    交渉解の実現可能性のテスト
+    全交渉者に割り当てられた効用の合計が1以下である，デフォルトの実装のテスト
+    """
     def is_feasible(self, outcome: Tuple[float]):
-        """
-        Tests feasibility of outcomes.
-        The default implementation tests that the of all utilities assigned to all negotiators is less than 1.0.
-        """
         return sum(u(outcome) for u in self.ufuns) <= (1.0 + 1e-3)
     
-    def __call__(self, state, action = None):
-        return super().__call__(state, action)
+
+    def __call__(self, state, action = None) -> MechanismStepResult:
+
+        if len(self.negotiators) != 2:
+            state.has_error = True
+            state.error_details = f"Got {len(self.negotiators)} negotiators!!"
+            state.broken = True
+        outcome = tuple(
+            n.propose_for_self(self.ufuns, i) for i, n in enumerate(self.negotiators)
+        )
+        if self.is_feasible(outcome):
+            state.agreement = outcome
+        return MechanismStepResult(state=state)
