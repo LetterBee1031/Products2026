@@ -28,11 +28,12 @@ from negmas import ResponseType
 from negmas.sao import SAOMechanism, SAONegotiator, SAOState
 from negmas.outcomes import make_issue, Outcome
 
-
 # ----------------------------
 # 1) 交渉論点（I_e）を離散値で定義
 # ----------------------------
 
+# ここ　論点を作るために単なる文字列として選択肢を用意している
+# それぞれの論点によって選択肢と負荷の関係性とかが変わってくるから，一様に数値で定義するとよくないよなと
 TEMPO_VALUES = ["slow", "normal", "fast"]
 LEVEL3_VALUES = ["low", "medium", "high"]
 BREAK_VALUES = ["rare", "on_demand", "frequent"]  # 値が大きいほど休憩を入れやすい
@@ -42,23 +43,25 @@ FEEDBACK_VALUES = ["summary", "brief_immediate", "detailed_immediate"]
 TASTE_VALUES = ["polite", "concise", "encouraging", "neutral"]
 
 # 順序あり論点は 0〜1 に写像して距離で扱う
+# 体験者の効用関数的には，高すぎるとダメとかではなく，選択した値から離れてるとダメ　みたいな感じで行く
+# システム側の効用関数的には，適した範囲内においては負荷が高いほうがいい　という計算をしたい
+# ただ，休憩頻度の部分に関しては多いほうが負荷下がりそうなのでそのあたりは反転させたい
 ORDINAL_MAPS: Dict[str, Dict[str, float]] = {
     "tempo": {"slow": 0.0, "normal": 0.5, "fast": 1.0}, # 体験のテンポ
     "guidance": {"low": 0.0, "medium": 0.5, "high": 1.0}, # ガイダンスの量
     "complexity": {"low": 0.0, "medium": 0.5, "high": 1.0}, # 体験中に必要な判断の複雑さ
     "stimulus": {"low": 0.0, "medium": 0.5, "high": 1.0}, # 体験刺激の強度（演出など）
     "break_policy": {"rare": 0.0, "on_demand": 0.5, "frequent": 1.0}, # 休憩・クールダウンの方針
-    "feedback": {"summary": 0.0, "brief_immediate": 0.5, "detailed_immediate": 1.0},
+    "feedback": {"summary": 0.0, "brief_immediate": 0.5, "detailed_immediate": 1.0}, # 体験のフィードバック量とか
 }
 
-# テイストの類似度行列 K（必要ならオフ対角を 0 にして「完全一致のみ」にしても良い）
+# 文章・体験テイストの類似度行列 K（必要ならオフ対角を 0 にして「完全一致のみ」にしても良い）
 TASTE_SIMILARITY: Dict[str, Dict[str, float]] = {
-    "polite": {"polite": 1.0, "concise": 0.4, "encouraging": 0.7, "neutral": 0.6},
-    "concise": {"polite": 0.4, "concise": 1.0, "encouraging": 0.3, "neutral": 0.6},
-    "encouraging": {"polite": 0.7, "concise": 0.3, "encouraging": 1.0, "neutral": 0.6},
-    "neutral": {"polite": 0.6, "concise": 0.6, "encouraging": 0.6, "neutral": 1.0},
+    "polite": {"polite": 1.0, "concise": 0.4, "encouraging": 0.7, "neutral": 0.6}, # polite (丁寧・安心感重視)
+    "concise": {"polite": 0.4, "concise": 1.0, "encouraging": 0.3, "neutral": 0.6}, # concise (簡潔・短文・要点のみ)
+    "encouraging": {"polite": 0.7, "concise": 0.3, "encouraging": 1.0, "neutral": 0.6}, # encouraging (励まし・不安低減)
+    "neutral": {"polite": 0.6, "concise": 0.6, "encouraging": 0.6, "neutral": 1.0}, # neutral (ニュートラル・事実提示)
 }
-
 
 # ----------------------------------------
 # 2) 観測/予測 閾値の分離（安全マージン込み）
@@ -67,10 +70,13 @@ TASTE_SIMILARITY: Dict[str, Dict[str, float]] = {
 @dataclass
 class Thresholds:
     """CLE（観測）閾値と、AA ルール予測で使う安全側の予測閾値を管理する。"""
+    # Load observe 観測した認知負荷の条件
     L_obs_low: float
     L_obs_high: float
     margin: float = 0.10  # 予測誤差を見込んだ安全マージン
 
+    # Load predict 体験調整後に予想される認知負荷に関する条件
+    # ここの式はこのままでは使えない，というか設計しなおす必要がある
     @property
     def L_pred_low(self) -> float:
         return self.L_obs_low + self.margin
@@ -207,7 +213,6 @@ def outcome_to_dict(outcome: Outcome, issue_names: Sequence[str]) -> Dict[str, s
     if isinstance(outcome, dict):
         return outcome
     return {name: outcome[i] for i, name in enumerate(issue_names)}
-
 
 def dict_to_outcome(d: Dict[str, str], issue_names: Sequence[str]) -> Tuple[Any, ...]:
     """論点名→値のdictを、NegMASのOutcome（tuple）へ変換。"""
