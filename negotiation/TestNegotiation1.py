@@ -95,7 +95,7 @@ class RuleBasedLoadModel:
     """
     介入（調整案）による負荷の増減を線形和で見積もる簡易モデル。
 
-    L_hat = clip( L_current + Σ a_i * (z_i(offer) - z_i(current)), 0, 1 )
+    L_hat = clip( L_current + Σ a_i * (z_i(offer) - z_i(current)), 0, 1)
 
     coeffs の符号：
       +：値を上げると負荷が上がる（例：tempo, complexity, stimulus）
@@ -172,6 +172,7 @@ def d_in(L_hat: float, low: float, high: float) -> float:
 
 def change_cost(current_setting: Dict[str, str], offer: Dict[str, str], rho: Dict[str, float]) -> float:
     """変更コスト：順序あり論点の変化量の重み付き和"""
+    # current_settingは現在の設定，offerは提案内容，rhoは各論点の重みに関する辞書 ρってことらしい
     c = 0.0
     for issue, r in rho.items():
         z_offer = ORDINAL_MAPS[issue][offer[issue]]
@@ -181,20 +182,20 @@ def change_cost(current_setting: Dict[str, str], offer: Dict[str, str], rho: Dic
 
 
 def U_AA(
-    offer: Dict[str, str],
-    L_current: float,
-    current_setting: Dict[str, str],
-    load_model: RuleBasedLoadModel,
-    thresholds: Thresholds,
-    rho: Dict[str, float],
-    params: AAParams,
+    offer: Dict[str, str], # 提案
+    L_current: float, # 現在の認知負荷
+    current_setting: Dict[str, str], # 現在の設定
+    load_model: RuleBasedLoadModel, # 調整によってどのように負荷が変化するか
+    thresholds: Thresholds, # 閾値
+    rho: Dict[str, float], # 各論点に対する重み
+    params: AAParams, # 調整エージェントの効用の重みパラメータ　アルファ，ベータ，ガンマのやつ
 ) -> Tuple[float, float]:
     """
     AA効用：
       U_AA = exp(-α d_out) * exp(-β d_in) * exp(-γ c)
     戻り値： (U_AA, L_hat)
     """
-    L_hat = load_model.predict(L_current, current_setting, offer)
+    L_hat = load_model.predict(L_current, current_setting, offer) # 提案内容で調整した際に予測される負荷
 
     out = d_out(L_hat, thresholds.L_pred_low, thresholds.L_pred_high)
     inn = d_in(L_hat, thresholds.L_pred_low, thresholds.L_pred_high)
@@ -202,7 +203,6 @@ def U_AA(
 
     u = exp(-params.alpha * out) * exp(-params.beta * inn) * exp(-params.gamma * c)
     return u, L_hat
-
 
 # ------------------------------------
 # 5) NegMAS 用のユーティリティ（Outcome ↔ dict 変換）
@@ -228,6 +228,7 @@ class PAConstraints:
     """
     CPA(k) = { z_i(x) ∈ Ω_i(k) } の簡易実装。
     実装上は「各論点で許容するカテゴリ値の集合」を持つ。
+    許容集合に入ってるかを確認してるだけやなここ
     """
     allowed_values: Dict[str, set]
 
@@ -272,6 +273,8 @@ class PlayerAgentPA(SAONegotiator):
         self.L_current = float(L_current)
 
         # 初期は制約なし（全許容）
+        # 提案に対して制約をつけるかどうかという話なので別に効用を無視するという話ではなく
+        # 交渉のなかでどんどん狭めていくイメージかなぁ
         self.constraints = PAConstraints(
             allowed_values={
                 "tempo": set(TEMPO_VALUES),
@@ -353,11 +356,12 @@ class PlayerAgentPA(SAONegotiator):
                 allowed = {pref}
                 if "neutral" in TASTE_VALUES:
                     allowed.add("neutral")
+                # intersection()は積集合を返すらしい（両方の要素に入ってるもの）
                 self.constraints.allowed_values["taste"] = self.constraints.allowed_values["taste"].intersection(allowed)
                 continue
 
             p = self.profile.p[issue]
-            vals = sorted(list(self.constraints.allowed_values[issue]), key=lambda v: abs(ORDINAL_MAPS[issue][v] - p))
+            vals = sorted(list(self.constraints.allowed_values[issue]), key=lambda v: (abs(ORDINAL_MAPS[issue][v] - p), v))
             self.constraints.allowed_values[issue] = set(vals[:2]) if len(vals) >= 2 else set(vals)
 
         # 万一空集合になった論点は全許容へ戻す（保険）
