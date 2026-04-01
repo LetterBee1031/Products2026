@@ -406,7 +406,7 @@ class AdjustmentAgentAA(SAONegotiator):
         initial_setting: Dict[str, str],
         L_current: float,
         get_pa_constraints: Callable[[], PAConstraints],
-        max_candidates: int = 2000,
+        max_candidates: int = 2000, # candidatesは提案候補っぽい
     ):
         super().__init__(name=name)
         self.issue_names = list(issue_names)
@@ -426,7 +426,9 @@ class AdjustmentAgentAA(SAONegotiator):
     def on_negotiation_start(self, state: SAOState) -> None:
         super().on_negotiation_start(state)
         # 離散空間が小さい場合は列挙が簡単（大きい場合はサンプルに落ちる）
+        # 提案候補をキャッシュしておく処理
         os = self.nmi.outcome_space
+        # 候補を出来るだけ列挙．無理ならサンプリングになる
         self._cached_candidates = list(os.enumerate_or_sample(max_cardinality=self.max_candidates))
 
     def propose(self, state: SAOState) -> Outcome:
