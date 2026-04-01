@@ -12,14 +12,39 @@ from pydantic import BaseModel, Field
 
 from hr_data_analysis import analyze_Nback_hr, save_analysis_with_summary_to_csv
 from read_jsonl_from_last import read_last_n_jsonl_as_dataframe
+from Server.shared_state import ISSUE_OPTIONS, userData, user_status
 
+from negotiation.TestNegotiation1 import run_example
 app = FastAPI()
 
 DATA_DIR = Path("data")
 DATA_DIR.mkdir(exist_ok=True)
 
+# 記録用ファイルパス
 HR_JSONL_PATH = DATA_DIR / "hr_ibi.jsonl"
 STATUS_JSONL_PATH = DATA_DIR / "status_events.jsonl"
+
+# 調整可能なパラメータ　交渉の論点
+ISSUE_OPTIONS: Dict[str, List[str]] = {
+    "tempo": ["slow", "normal", "fast"],
+    "guidance": ["low", "medium", "high"],
+    "complexity": ["low", "medium", "high"],
+    "stimulus": ["low", "medium", "high"],
+    "break_policy": ["rare", "on_demand", "frequent"],
+    "feedback": ["summary", "brief_immediate", "detailed_immediate"],
+    "taste": ["polite", "concise", "encouraging", "neutral"],
+}
+
+# 調整可能パラメータのデフォルト設定
+DEFAULT_ISSUE_SETTINGS: Dict[str, str] = {
+    "tempo": "normal",
+    "guidance": "medium",
+    "complexity": "medium",
+    "stimulus": "medium",
+    "break_policy": "on_demand",
+    "feedback": "brief_immediate",
+    "taste": "polite",
+}
 
 # 計測データクラス
 class TrackedData(BaseModel):
@@ -35,6 +60,9 @@ class userData(BaseModel):
     cl_condition: str = "None"
     low_threshold: float = 0
     high_threshold: float = 1000
+    issue_settings: Dict[str, str] = Field(
+        default_factory=lambda: DEFAULT_ISSUE_SETTINGS.copy()
+    )
 
 # 体験段階のポストのためのクラス
 class StatusPost(BaseModel):
@@ -54,6 +82,12 @@ user_status: Dict[str, userData] = {
     }
 
 # 心拍・心拍変動を受け取り，保存のパス
+from Server.shared_state import ISSUE_OPTIONS as SHARED_ISSUE_OPTIONS, user_status as SHARED_USER_STATUS, userData as SharedUserData
+
+ISSUE_OPTIONS = SHARED_ISSUE_OPTIONS
+user_status = SHARED_USER_STATUS
+userData = SharedUserData
+
 @app.post("/api/hr")
 async def receive_batch(payload: List[TrackedData], request: Request):
     client_host = request.client.host if request.client else "unknown"
@@ -125,22 +159,40 @@ async def analyze_hr_save_csv(id:str = "01"):
 async def read_status_post(id:str = "01"):
     if id not in user_status:
         raise HTTPException(status_code=404, detail="unknown id")
-    return {"ok": True, "id": id, "status": user_status[id].ex_status}   
+    return {"ok": True, "id": id, "status": user_status[id].ex_status}
 
 # 体験者の認知負荷状態の取得のパス
 @app.get("/api/cl_condition_get")
 async def read_status_post(id:str = "01"):
     if id not in user_status:
         raise HTTPException(status_code=404, detail="unknown id")
-    
+
     latest_hr_df = read_last_n_jsonl_as_dataframe(HR_JSONL_PATH,3)
     latest_hr = latest_hr_df["hr"].mean()
 
     if latest_hr > user_status[id].high_threshold:
         user_status[id].cl_condition = "High"
+        run_example(L_current=0.75)
+
     elif latest_hr < user_status[id].low_threshold:
         user_status[id].cl_condition = "Low"
+        run_example(L_current=0.25)
+
     else:
         user_status[id].cl_condition = "Optimal"
     
-    return {"ok": True, "id": id, "cl_condition": user_status[id].cl_condition}
+    #return {"ok": True, "id": id, "cl_condition": user_status[id].cl_condition}
+    return {"ok": True, "id": id, "issue_setting": user_status[id].issue_settings}
+
+# 現在の現在の体験設定を確認するやつ
+@app.get("/api/issue_settings_get")
+async def read_issue_settings(id: str = "01"):
+    if id not in user_status:
+        raise HTTPException(status_code=404, detail="unknown id")
+
+    return {
+        "ok": True,
+        "id": id,
+        # "issue_options": ISSUE_OPTIONS,
+        "issue_settings": user_status[id].issue_settings,
+    }

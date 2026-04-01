@@ -22,11 +22,19 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from math import exp
+from pathlib import Path
+import sys
 from typing import Dict, List, Optional, Sequence, Tuple, Callable, Any
 
 from negmas import ResponseType
 from negmas.sao import SAOMechanism, SAONegotiator, SAOState
 from negmas.outcomes import make_issue, Outcome
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.append(str(PROJECT_ROOT))
+
+from Server.shared_state import user_status  # noqa: E402
 
 # ----------------------------
 # 1) 交渉論点（I_e）を離散値で定義
@@ -62,6 +70,20 @@ TASTE_SIMILARITY: Dict[str, Dict[str, float]] = {
     "encouraging": {"polite": 0.7, "concise": 0.3, "encouraging": 1.0, "neutral": 0.6}, # encouraging (励まし・不安低減)
     "neutral": {"polite": 0.6, "concise": 0.6, "encouraging": 0.6, "neutral": 1.0}, # neutral (ニュートラル・事実提示)
 }
+
+
+def get_current_setting(user_id: str = "01") -> Dict[str, str]:
+    user = user_status.get(user_id)
+    if user is None:
+        raise KeyError(f"unknown user id: {user_id}")
+    return dict(user.issue_settings)
+
+
+def update_current_setting(user_id: str, issue_settings: Dict[str, str]) -> None:
+    user = user_status.get(user_id)
+    if user is None:
+        raise KeyError(f"unknown user id: {user_id}")
+    user.issue_settings = dict(issue_settings)
 
 # ----------------------------------------
 # 2) 観測/予測 閾値の分離（安全マージン込み）
@@ -517,7 +539,7 @@ class AdjustmentAgentAA(SAONegotiator):
 # 9) 実行例（交渉を1回回す）
 # -----------------------------
 
-def run_example():
+def run_example(L_current: float, user_id: str = "01"):
     # 交渉論点（issues）を作成
     issues = [
         make_issue(name="tempo", values=TEMPO_VALUES),
@@ -537,18 +559,10 @@ def run_example():
     thresholds = Thresholds(L_obs_low=0.35, L_obs_high=0.65, margin=0.10)
 
     # 現在負荷（高負荷で交渉開始した想定）
-    L_current = 0.78
+    # L_current = 0.78
 
     # 現在の体験設定
-    current_setting = {
-        "tempo": "fast",
-        "guidance": "low",
-        "complexity": "high",
-        "stimulus": "high",
-        "break_policy": "rare",
-        "feedback": "detailed_immediate",
-        "taste": "concise",
-    }
+    current_setting = get_current_setting(user_id)
 
     # ルールベース負荷予測の係数（例）
     load_model = RuleBasedLoadModel(
@@ -632,12 +646,28 @@ def run_example():
     print("合意:", agreement)
     if agreement is not None:
         ag = outcome_to_dict(agreement, issue_names)
+        update_current_setting(user_id, ag)
         L_hat = load_model.predict(L_current, current_setting, ag)
         print("合意（dict）:", ag)
         print("予測負荷:", round(L_hat, 3))
         print("予測帯:", (thresholds.L_pred_low, thresholds.L_pred_high))
         print("PA効用:", round(U_PA(ag, pa_profile), 3))
+        return {
+            "ok": True,
+            "user_id": user_id,
+            "agreement": ag,
+            "updated_issue_settings": get_current_setting(user_id),
+            "predicted_load": L_hat,
+            "predicted_band": (thresholds.L_pred_low, thresholds.L_pred_high),
+            "pa_utility": U_PA(ag, pa_profile),
+        }
 
+    return {
+        "ok": False,
+        "user_id": user_id,
+        "agreement": None,
+        "updated_issue_settings": get_current_setting(user_id),
+    }
 
 if __name__ == "__main__":
-    run_example()
+    run_example(0.75)
