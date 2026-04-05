@@ -34,7 +34,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
-from Server.shared_state import user_status  # noqa: E402
+# サーバ本体ではなく共有状態だけを読むことで、重い依存や循環 import を避ける。
+from Server.shared_state import get_user_issue_settings, update_user_issue_settings  # noqa: E402
 
 # ----------------------------
 # 1) 交渉論点（I_e）を離散値で定義
@@ -73,17 +74,11 @@ TASTE_SIMILARITY: Dict[str, Dict[str, float]] = {
 
 
 def get_current_setting(user_id: str = "01") -> Dict[str, str]:
-    user = user_status.get(user_id)
-    if user is None:
-        raise KeyError(f"unknown user id: {user_id}")
-    return dict(user.issue_settings)
+    return get_user_issue_settings(user_id)
 
 
 def update_current_setting(user_id: str, issue_settings: Dict[str, str]) -> None:
-    user = user_status.get(user_id)
-    if user is None:
-        raise KeyError(f"unknown user id: {user_id}")
-    user.issue_settings = dict(issue_settings)
+    update_user_issue_settings(user_id, issue_settings)
 
 # ----------------------------------------
 # 2) 観測/予測 閾値の分離（安全マージン込み）
@@ -670,4 +665,4 @@ def run_example(L_current: float, user_id: str = "01"):
     }
 
 if __name__ == "__main__":
-    run_example(0.75)
+    run_example()
