@@ -68,7 +68,7 @@ async def receive_batch(payload: List[TrackedData], request: Request):
 
     return {"ok": True, "count": len(payload)}
 
-# 体験段階の取得・変更に関するパス
+# 体験段階の変更に関するパス
 @app.post("/api/status_post")
 async def change_status(payload: StatusPost, request: Request):
     client_host = request.client.host if request.client else "unknown"
