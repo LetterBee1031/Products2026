@@ -83,7 +83,7 @@ class TrackingRepositoryImpl
     private var validHrData = ArrayList<TrackedData>()
     private val pendingHrData = ArrayList<TrackedData>()
 
-    private val pcBaseUrl = "http://192.168.186.127:8080" // PCのIP
+    private val pcBaseUrl = "http://192.168.176.127:8080" // PCのIP
     private val sendIntervalMs = 5_000L                // 5秒間隔
     private val maxBatchSize = 200                      // 1回に送る最大件数
 

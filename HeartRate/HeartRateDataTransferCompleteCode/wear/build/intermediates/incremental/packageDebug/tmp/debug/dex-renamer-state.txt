@@ -1,4 +1,4 @@
-#Tue Mar 10 11:59:46 GMT+09:00 2026
+#Wed Apr 08 16:44:51 GMT+09:00 2026
 base.0=C\:\\Users\\Koara\\Documents\\Products2026\\HeartRate\\HeartRateDataTransferCompleteCode\\wear\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\Koara\\Documents\\Products2026\\HeartRate\\HeartRateDataTransferCompleteCode\\wear\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\1\\classes.dex
 base.10=C\:\\Users\\Koara\\Documents\\Products2026\\HeartRate\\HeartRateDataTransferCompleteCode\\wear\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
