@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 実験用のローカルサーバへHTTPで送信するため、LAN内IPへの平文通信を許可する。 -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.111.57.127</domain>
+    </domain-config>
+</network-security-config>

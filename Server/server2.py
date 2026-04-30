@@ -4,7 +4,7 @@ from datetime import datetime
 import json
 from pathlib import Path
 import sys
-from typing import List
+from typing import List, Optional
 from zoneinfo import ZoneInfo
 
 from fastapi import FastAPI, HTTPException, Request
@@ -39,8 +39,17 @@ STATUS_JSONL_PATH = DATA_DIR / "status_events.jsonl"
 # 心拍データクラス
 class TrackedData(BaseModel):
     hr: int = Field(ge=0)
-    ibi: List[int] = []
+    ibi: List[int] = Field(default_factory=list)
     sentAt: str
+
+# Galaxy Watchから送られるHR/IBI/EDAをまとめて受け取るためのデータ形式
+class BiodataPost(BaseModel):
+    hr: int = Field(ge=0)
+    ibi: List[int] = Field(default_factory=list)
+    eda: Optional[float] = None
+    sentAt: str
+    timestamp: Optional[int] = None
+    deviceIp: Optional[str] = None
 
 # 体験段階のポストのためのクラス
 class StatusPost(BaseModel):
@@ -63,6 +72,30 @@ async def receive_batch(payload: List[TrackedData], request: Request):
                 "client_host": client_host,
                 "hr": item.hr,
                 "ibi": item.ibi,
+            }
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+    return {"ok": True, "count": len(payload)}
+
+# /api/hr の保存形式を拡張し、EDA・端末時刻・端末IPも同じjsonlに記録する
+@app.post("/api/Biodata")
+async def receive_biodata(payload: List[BiodataPost], request: Request):
+    client_host = request.client.host if request.client else "unknown"
+    received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
+
+    with HR_JSONL_PATH.open("a", encoding="utf-8") as f:
+        for item in payload:
+            # client_hostはHTTP接続元、device_ipは時計側が自己申告したIPとして両方残す
+            record = {
+                "ex_status": user_status["01"].ex_status,
+                "sent_at": item.sentAt,
+                "received_at": received_at,
+                "client_host": client_host,
+                "device_ip": item.deviceIp,
+                "timestamp": item.timestamp,
+                "hr": item.hr,
+                "ibi": item.ibi,
+                "eda": item.eda,
             }
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
