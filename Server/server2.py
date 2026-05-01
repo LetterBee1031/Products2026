@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 import json
 from pathlib import Path
+import re
 import sys
 from typing import List, Optional
 from zoneinfo import ZoneInfo
@@ -17,11 +18,15 @@ if str(PROJECT_ROOT) not in sys.path:
 
 # `uvicorn Server.server2:app` と `python server2.py` のどちらでも import できるようにする。
 try:
+    from Server.hr_data_analysis import classify_latest_cl_condition_with_random_forest
     from Server.hr_data_analysis import save_analysis_with_summary_to_csv
+    from Server.hr_data_analysis import train_random_forest_cl_classifier
     from Server.read_jsonl_from_last import read_last_n_jsonl_as_dataframe
     from Server.shared_state import ISSUE_OPTIONS, user_status
 except ModuleNotFoundError:
+    from hr_data_analysis import classify_latest_cl_condition_with_random_forest
     from hr_data_analysis import save_analysis_with_summary_to_csv
+    from hr_data_analysis import train_random_forest_cl_classifier
     from read_jsonl_from_last import read_last_n_jsonl_as_dataframe
     from shared_state import ISSUE_OPTIONS, user_status
 
@@ -31,6 +36,7 @@ app = FastAPI()
 
 DATA_DIR = Path("data")
 DATA_DIR.mkdir(exist_ok=True)
+MAX_IBI_PER_RECORD = 4
 
 # 記録用ファイルパス
 HR_JSONL_PATH = DATA_DIR / "hr_ibi.jsonl"
@@ -38,12 +44,14 @@ STATUS_JSONL_PATH = DATA_DIR / "status_events.jsonl"
 
 # 心拍データクラス
 class TrackedData(BaseModel):
+    userId: str = "01"
     hr: int = Field(ge=0)
     ibi: List[int] = Field(default_factory=list)
     sentAt: str
 
 # Galaxy Watchから送られるHR/IBI/EDAをまとめて受け取るためのデータ形式
 class BiodataPost(BaseModel):
+    userId: str = "01"
     hr: int = Field(ge=0)
     ibi: List[int] = Field(default_factory=list)
     eda: Optional[float] = None
@@ -57,23 +65,44 @@ class StatusPost(BaseModel):
     status_flag: str
     sent_at: str
 
+def normalize_user_id(user_id: str) -> str:
+    safe_id = re.sub(r"[^0-9A-Za-z_-]", "_", user_id.strip())
+    return safe_id or "01"
+
+def hr_jsonl_path_for_user(user_id: str) -> Path:
+    return DATA_DIR / f"hr_ibi_{normalize_user_id(user_id)}.jsonl"
+
+def append_records_by_user(records: List[dict]) -> None:
+    files = {}
+    try:
+        for record in records:
+            user_id = normalize_user_id(str(record.get("id", "01")))
+            if user_id not in files:
+                files[user_id] = hr_jsonl_path_for_user(user_id).open("a", encoding="utf-8")
+            files[user_id].write(json.dumps(record, ensure_ascii=False) + "\n")
+    finally:
+        for f in files.values():
+            f.close()
+
 # 心拍・心拍変動を受け取り，保存するパス
 @app.post("/api/hr")
 async def receive_batch(payload: List[TrackedData], request: Request):
     client_host = request.client.host if request.client else "unknown"
     received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
 
-    with HR_JSONL_PATH.open("a", encoding="utf-8") as f:
-        for item in payload:
-            record = {
-                "ex_status": user_status["01"].ex_status,
-                "sent_at": item.sentAt,
-                "received_at": received_at,
-                "client_host": client_host,
-                "hr": item.hr,
-                "ibi": item.ibi,
-            }
-            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    records = []
+    for item in payload:
+        user_id = normalize_user_id(item.userId)
+        records.append({
+            "id": user_id,
+            "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
+            "sent_at": item.sentAt,
+            "received_at": received_at,
+            "client_host": client_host,
+            "hr": item.hr,
+            "ibi": item.ibi[:MAX_IBI_PER_RECORD],
+        })
+    append_records_by_user(records)
 
     return {"ok": True, "count": len(payload)}
 
@@ -83,21 +112,24 @@ async def receive_biodata(payload: List[BiodataPost], request: Request):
     client_host = request.client.host if request.client else "unknown"
     received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
 
-    with HR_JSONL_PATH.open("a", encoding="utf-8") as f:
-        for item in payload:
-            # client_hostはHTTP接続元、device_ipは時計側が自己申告したIPとして両方残す
-            record = {
-                "ex_status": user_status["01"].ex_status,
-                "sent_at": item.sentAt,
-                "received_at": received_at,
-                "client_host": client_host,
-                "device_ip": item.deviceIp,
-                "timestamp": item.timestamp,
-                "hr": item.hr,
-                "ibi": item.ibi,
-                "eda": item.eda,
-            }
-            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    records = []
+    for item in payload:
+        user_id = normalize_user_id(item.userId)
+        # client_hostはHTTP接続元、device_ipは時計側が自己申告したIPとして両方残す
+        records.append({
+            "id": user_id,
+            "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
+            "sent_at": item.sentAt,
+            "received_at": received_at,
+            "client_host": client_host,
+            "device_ip": item.deviceIp,
+            "timestamp": item.timestamp,
+            "hr": item.hr,
+            # IBIは仕様上0〜4個なので、過剰な値が来ても保存時に丸める
+            "ibi": item.ibi[:MAX_IBI_PER_RECORD],
+            "eda": item.eda,
+        })
+    append_records_by_user(records)
 
     return {"ok": True, "count": len(payload)}
 
@@ -131,18 +163,15 @@ async def analyze_hr_save_csv(id: str = "01"):
         raise HTTPException(status_code=404, detail="unknown id")
 
     try:
-        # hr_data_analysis.pyから呼び出し
-        result_one_back_df, mean_one_back = save_analysis_with_summary_to_csv(1)
-        result_three_back_df, mean_three_back = save_analysis_with_summary_to_csv(3)
-
-        user_status[id].low_threshold = mean_one_back
-        user_status[id].high_threshold = mean_three_back
-
-        rows = len(result_one_back_df) + len(result_three_back_df)
+        # 機械学習版では、このAPIでユーザIDごとのランダムフォレストを学習できるか確認する。
+        model, training_df = train_random_forest_cl_classifier(id, DATA_DIR)
         return {
             "ok": True,
-            "message": "thresholds updated",
-            "rows": rows,
+            "message": "random forest trained",
+            "id": id,
+            "rows": int(len(training_df)),
+            "classes": [str(label) for label in model.classes_],
+            "features": ["hr", "eda"],
         }
     except Exception as e:
         return {"ok": False, "error": str(e)}
@@ -160,22 +189,23 @@ async def read_cl_condition(id: str = "01"):
     if id not in user_status:
         raise HTTPException(status_code=404, detail="unknown id")
 
-    latest_hr_df = read_last_n_jsonl_as_dataframe(HR_JSONL_PATH, 3)
-    latest_hr = latest_hr_df["hr"].mean()
+    try:
+        result = classify_latest_cl_condition_with_random_forest(id, DATA_DIR)
+    except Exception as e:
+        return {"ok": False, "id": id, "error": str(e)}
 
-    if latest_hr > user_status[id].high_threshold:
-        user_status[id].cl_condition = "High"
-        run_example(L_current=80, user_id=id)
-    elif latest_hr < user_status[id].low_threshold:
-        user_status[id].cl_condition = "Low"
-        run_example(L_current=20, user_id=id)
-    else:
-        user_status[id].cl_condition = "Optimal"
+    user_status[id].cl_condition = result["label"]
+    
+    # if user_status[id].cl_condition == "High":
+    #     run_example(L_current=80, user_id=id)
+    # elif user_status[id].cl_condition == "Low":
+    #     run_example(L_current=20, user_id=id)
 
     return {
         "ok": True,
         "id": id,
         "cl_condition": user_status[id].cl_condition,
+        "ml_result": result,
         "issue_settings": user_status[id].issue_settings,
     }
 

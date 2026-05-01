@@ -1,7 +1,8 @@
 package com.example.biodata_from_watch.sensor
 
-// サーバへ1秒ごとに送る生体データ。server2.py の BiodataPost と同じ項目名に合わせる。
+// サーバへ約2秒ごとに送る生体データ。IBIは仕様に合わせて0〜4個のリストにする。
 data class BiodataSample(
+    val userId: String,
     val hr: Int,
     val ibi: List<Int>,
     val eda: Double?,
@@ -10,7 +11,7 @@ data class BiodataSample(
     val deviceIp: String,
 )
 
-// センサーイベントから得た最新値。送信ループがこの値を読み取り、1秒窓の代表値として扱う。
+// センサーイベントから得た最新値。送信ループがこの値を読み取り、送信後にIBIだけクリアする。
 data class SensorSnapshot(
     val hr: Int = 0,
     val ibi: List<Int> = emptyList(),

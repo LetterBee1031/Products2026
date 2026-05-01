@@ -11,6 +11,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.IBinder
+import android.os.PowerManager
 import android.os.SystemClock
 import androidx.core.app.NotificationCompat
 import com.example.biodata_from_watch.R
@@ -29,16 +30,22 @@ class BiodataUploadService : Service(), SensorEventListener {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private var uploadJob: Job? = null
     private lateinit var sensorManager: SensorManager
+    private var wakeLock: PowerManager.WakeLock? = null
     private var edaReader: SamsungEdaReader? = null
     private val snapshotLock = Any()
-    // 最新のセンサー値を保持し、1秒ごとの送信タイミングでスナップショットとして読む。
+    // 最新のセンサー値を保持し、送信タイミングでスナップショットとして読む。
     private var snapshot = SensorSnapshot()
     private var lastBeatElapsed: Long? = null
     private var endpointUrl: String = DEFAULT_ENDPOINT
+    private var userId: String = DEFAULT_USER_ID
 
     override fun onCreate() {
         super.onCreate()
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        wakeLock = (getSystemService(POWER_SERVICE) as PowerManager).newWakeLock(
+            PowerManager.PARTIAL_WAKE_LOCK,
+            "$packageName:BiodataUpload",
+        )
         edaReader = SamsungEdaReader(
             context = this,
             onEdaChanged = { eda ->
@@ -62,6 +69,8 @@ class BiodataUploadService : Service(), SensorEventListener {
         }
 
         endpointUrl = intent?.getStringExtra(EXTRA_ENDPOINT_URL) ?: DEFAULT_ENDPOINT
+        userId = intent?.getStringExtra(EXTRA_USER_ID)?.ifBlank { DEFAULT_USER_ID } ?: DEFAULT_USER_ID
+        acquireWakeLock()
         registerSensors()
         edaReader?.start()
         startUploading()
@@ -72,6 +81,7 @@ class BiodataUploadService : Service(), SensorEventListener {
         // Service終了時はセンサー監視と送信ループを止め、端末側のリソースを解放する。
         sensorManager.unregisterListener(this)
         edaReader?.stop()
+        releaseWakeLock()
         uploadJob?.cancel()
         scope.cancel()
         super.onDestroy()
@@ -92,7 +102,10 @@ class BiodataUploadService : Service(), SensorEventListener {
                 val previous = lastBeatElapsed
                 lastBeatElapsed = now
                 if (previous != null) {
-                    updateSnapshot { current -> current.copy(ibi = listOf((now - previous).toInt())) }
+                    val ibi = (now - previous).toInt()
+                    updateSnapshot { current ->
+                        current.copy(ibi = (current.ibi + ibi).takeLast(MAX_IBI_PER_SAMPLE))
+                    }
                 }
             }
         }
@@ -118,26 +131,47 @@ class BiodataUploadService : Service(), SensorEventListener {
         val poster = BiodataPoster(endpointUrl)
         uploadJob = scope.launch {
             while (true) {
-                // 1秒窓の代表値として、直近のHR/IBI/EDAを1件のJSON配列で送信する。
-                val current = readSnapshot()
-                val sample = BiodataSample(
-                    hr = current.hr,
-                    ibi = current.ibi,
-                    eda = current.eda,
-                    sentAt = Instant.now().toString(),
-                    timestamp = System.currentTimeMillis(),
-                    deviceIp = DeviceNetwork.localIpAddress(),
-                )
-                val result = poster.post(listOf(sample))
-                // 送信結果を通知に出して、時計単体でも状態を確認できるようにする。
-                val message = result.fold(
-                    onSuccess = { "Sent HR ${sample.hr}" },
-                    onFailure = { "Upload failed: ${it.message}" },
-                )
-                (getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-                    .notify(NOTIFICATION_ID, notification(message))
-                delay(1_000)
+                runCatching {
+                    // 2秒程度の窓で、IBIは0〜4個までまとめて送信する。
+                    val current = consumeSnapshot()
+                    val sample = BiodataSample(
+                        userId = userId,
+                        hr = current.hr,
+                        ibi = current.ibi.take(MAX_IBI_PER_SAMPLE),
+                        eda = current.eda,
+                        sentAt = Instant.now().toString(),
+                        timestamp = System.currentTimeMillis(),
+                        deviceIp = DeviceNetwork.localIpAddress(),
+                    )
+                    val result = poster.post(listOf(sample))
+                    // 送信結果を通知に出して、時計単体でも状態を確認できるようにする。
+                    val message = result.fold(
+                        onSuccess = { "Sent HR ${sample.hr}" },
+                        onFailure = { "Upload failed: ${it.message}" },
+                    )
+                    (getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
+                        .notify(NOTIFICATION_ID, notification(message))
+                }.onFailure { error ->
+                    (getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
+                        .notify(NOTIFICATION_ID, notification("Upload loop error: ${error.message}"))
+                }
+                delay(2_000)
             }
+        }
+    }
+
+    private fun acquireWakeLock() {
+        // 画面消灯後も2秒ごとの送信ループが止まらないよう、計測中だけCPUを維持する。
+        val lock = wakeLock ?: return
+        if (!lock.isHeld) {
+            lock.acquire()
+        }
+    }
+
+    private fun releaseWakeLock() {
+        val lock = wakeLock ?: return
+        if (lock.isHeld) {
+            lock.release()
         }
     }
 
@@ -147,9 +181,11 @@ class BiodataUploadService : Service(), SensorEventListener {
         }
     }
 
-    private fun readSnapshot(): SensorSnapshot {
+    private fun consumeSnapshot(): SensorSnapshot {
         return synchronized(snapshotLock) {
-            snapshot
+            val current = snapshot
+            snapshot = snapshot.copy(ibi = emptyList())
+            current
         }
     }
 
@@ -178,13 +214,17 @@ class BiodataUploadService : Service(), SensorEventListener {
         // ActivityとServiceの間で使うIntentキーと、初期状態の送信先URL。
         const val ACTION_STOP = "com.example.biodata_from_watch.sensor.STOP"
         const val EXTRA_ENDPOINT_URL = "endpoint_url"
+        const val EXTRA_USER_ID = "user_id"
         const val DEFAULT_ENDPOINT = "http://10.111.57.127:8080/api/Biodata"
+        const val DEFAULT_USER_ID = "01"
         private const val CHANNEL_ID = "biodata_upload"
         private const val NOTIFICATION_ID = 1001
+        private const val MAX_IBI_PER_SAMPLE = 4
 
-        fun startIntent(context: Context, endpointUrl: String): Intent {
+        fun startIntent(context: Context, endpointUrl: String, userId: String): Intent {
             return Intent(context, BiodataUploadService::class.java)
                 .putExtra(EXTRA_ENDPOINT_URL, endpointUrl)
+                .putExtra(EXTRA_USER_ID, userId)
         }
 
         fun stopIntent(context: Context): Intent {

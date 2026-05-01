@@ -41,7 +41,19 @@ public class RequestSender : MonoBehaviour
         public bool ok;
         public string id;
         public string cl_condition;
+        public string error;
+        public MLResult ml_result;
         public Dictionary<string, string> issue_settings = new Dictionary<string, string>();
+    }
+
+    [Serializable]
+    public class MLResult
+    {
+        public string label;
+        public int training_rows;
+        public List<string> classes;
+        public Dictionary<string, float> features;
+        public Dictionary<string, float> probabilities;
     }
 
     bool isGetCLCondition = false;
@@ -303,11 +315,30 @@ public class RequestSender : MonoBehaviour
             }
 
             var resp = JsonConvert.DeserializeObject<CL_ConditionGetResponse>(req.downloadHandler.text);
+            if (resp == null)
+            {
+                Debug.LogWarning($"CL_CONDITION_GET parse failed: body={req.downloadHandler.text}");
+                isCLRequestRunning = false;
+                yield break;
+            }
+
+            if (!resp.ok)
+            {
+                Debug.LogWarning($"CL_CONDITION_GET server returned ok=false: id={resp.id}, error={resp.error}, body={req.downloadHandler.text}");
+                resp_cl_temp = resp;
+                isCLRequestRunning = false;
+                yield break;
+            }
+
             string issueSettingsJson = JsonConvert.SerializeObject(resp.issue_settings);
-            Debug.Log($"CL_CONDITION_GET ok: id={resp.id}, cl_condition={resp.cl_condition}, issue_settings={issueSettingsJson}");
+            string mlResultJson = JsonConvert.SerializeObject(resp.ml_result);
+            Debug.Log($"CL_CONDITION_GET ok: id={resp.id}, cl_condition={resp.cl_condition}, ml_result={mlResultJson}, issue_settings={issueSettingsJson}");
             resp_cl_temp = resp;
             DisplayCLCondition(resp.cl_condition);
-            DisplayIssueCondition(resp.issue_settings);
+            if (resp.issue_settings != null)
+            {
+                DisplayIssueCondition(resp.issue_settings);
+            }
             
 
         }

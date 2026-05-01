@@ -108,7 +108,7 @@ public class N_back : MonoBehaviour
     {
         if (isWorking)
         {
-            
+
             // int i = 0;
             int resultNum = 0;
             //Random random = new Random();
@@ -132,7 +132,7 @@ public class N_back : MonoBehaviour
 
                     // ランダムな文字を表示
                     //outTextNum = Random.Range(0, TextAlphabet.Length);
-                    outTextNum = Random.Range(0, 5);
+                    outTextNum = Random.Range(0, 10);
                     TextAlphabet[outTextNum].enabled = true;
                     textQuestionNum.text = outTextCount.ToString();
 
@@ -148,19 +148,40 @@ public class N_back : MonoBehaviour
                     {
                         if (!isJudgeAdded)
                         {
-                            // ボタン押下が合ってたら
-                            if ((outTextNum == listOutTextNum[outTextCount - n_back_num]) && (isButtonSamePressed == true))
+                            // n back(1以上)
+                            if (0 < n_back_num)
                             {
-                                listJudge[outTextCount] = true;
-                                isJudgeAdded = true;
-                                Debug.Log("ButtonPush: true, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
+                                // ボタン押下が合ってたら
+                                if ((outTextNum == listOutTextNum[outTextCount - n_back_num]) && (isButtonSamePressed == true))
+                                {
+                                    listJudge[outTextCount] = true;
+                                    isJudgeAdded = true;
+                                    Debug.Log("ButtonPush: true, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
+                                }
+                                // ボタン押下が合ってなかったら
+                                else if ((outTextNum != listOutTextNum[outTextCount - n_back_num]) && (isButtonSamePressed == true))
+                                {
+                                    listJudge[outTextCount] = false;
+                                    isJudgeAdded = true;
+                                    Debug.Log("ButtonPush: false, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
+                                }
                             }
-                            // ボタン押下が合ってなかったら
-                            else if ((outTextNum != listOutTextNum[outTextCount - n_back_num]) && (isButtonSamePressed == true))
+                            // 0 back(固定文字Aとのfit)
+                            else
                             {
-                                listJudge[outTextCount] = false;
-                                isJudgeAdded = true;
-                                Debug.Log("ButtonPush: false, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
+                                if ((outTextNum == 0) && (isButtonSamePressed == true))
+                                {
+                                    listJudge[outTextCount] = true;
+                                    isJudgeAdded = true;
+                                    Debug.Log("ButtonPush: true");
+                                }
+                                // ボタン押下が合ってなかったら
+                                else if ((outTextNum != 0) && (isButtonSamePressed == true))
+                                {
+                                    listJudge[outTextCount] = false;
+                                    isJudgeAdded = true;
+                                    Debug.Log("ButtonPush: false");
+                                }
                             }
                         }
                     }
@@ -170,17 +191,36 @@ public class N_back : MonoBehaviour
                     // 1文字ごとの時間内にボタンが押されなかったら
                     if ((outTextCount >= n_back_num) && (isJudgeAdded == false))
                     {
-                        if (outTextNum == listOutTextNum[outTextCount - n_back_num])
+                        // n back(1以上)
+                        if (0 < n_back_num)
                         {
-                            listJudge[outTextCount] = false;
-                            isJudgeAdded = true;
-                            Debug.Log("NoButtonPush: false, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
+                            if (outTextNum == listOutTextNum[outTextCount - n_back_num])
+                            {
+                                listJudge[outTextCount] = false;
+                                isJudgeAdded = true;
+                                Debug.Log("NoButtonPush: false, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
+                            }
+                            else
+                            {
+                                listJudge[outTextCount] = true;
+                                isJudgeAdded = true;
+                                Debug.Log("NoButtonPush: true, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
+                            }
                         }
                         else
                         {
-                            listJudge[outTextCount] = true;
-                            isJudgeAdded = true;
-                            Debug.Log("NoButtonPush: true, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
+                            if (outTextNum == 0)
+                            {
+                                listJudge[outTextCount] = false;
+                                isJudgeAdded = true;
+                                Debug.Log("NoButtonPush: false");
+                            }
+                            else
+                            {
+                                listJudge[outTextCount] = true;
+                                isJudgeAdded = true;
+                                Debug.Log("NoButtonPush: true");
+                            }
                         }
                     }
 
@@ -199,6 +239,8 @@ public class N_back : MonoBehaviour
                 isWorking = false;
 
                 if ((outTextCount >= n_back_num) && (isJudgeAdded == false))
+                {
+                    if (0 < n_back_num)
                     {
                         if (outTextNum == listOutTextNum[outTextCount - n_back_num])
                         {
@@ -213,11 +255,28 @@ public class N_back : MonoBehaviour
                             Debug.Log("NoButtonPush: true");
                         }
                     }
+                    else
+                    {
+                        if (outTextNum == 0)
+                        {
+                            listJudge[outTextCount] = false;
+                            isJudgeAdded = true;
+                            Debug.Log("NoButtonPush: false");
+                        }
+                        else
+                        {
+                            listJudge[outTextCount] = true;
+                            isJudgeAdded = true;
+                            Debug.Log("NoButtonPush: true");
+                        }
+                    }
 
-                    isJudgeAdded = false;
-                    isButtonSamePressed = false;
-                    isTextDisplayed = false;
-                    timeOneTask = 0f;
+                }
+
+                isJudgeAdded = false;
+                isButtonSamePressed = false;
+                isTextDisplayed = false;
+                timeOneTask = 0f;
 
                 for (int i = 0; i < TextAlphabet.Length; i++)
                 {
@@ -232,12 +291,11 @@ public class N_back : MonoBehaviour
                     }
                 }
 
-                
 
-                textResult.text = resultNum.ToString() + "/" + (outTextCount+1-n_back_num).ToString();
+                textResult.text = resultNum.ToString() + "/" + (outTextCount + 1 - n_back_num).ToString();
                 textResult.enabled = true;
 
-                for(int i = 0;i <= outTextCount; i++)
+                for (int i = 0; i <= outTextCount; i++)
                 {
                     Debug.Log(i + "番目：" + listOutTextNum[i]);
                 }

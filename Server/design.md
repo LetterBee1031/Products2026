@@ -92,3 +92,33 @@
 - 使用する心拍データの指定
   - status_flagが1_back_startのデータのみ使用
   - status_events.jsonlにおける「status_flag」が「1_back_start」のpost要求が送られた時刻以降のデータのみを使用
+
+# 生体情報の解析について（機械学習バージョン）
+## 概要
+- ランダムフォレストで認知負荷状態を分類する
+- 心拍（HR）と皮膚電位（EDA）を入力，体験状態を正解ラベルとして学習
+- 出力は"Low", "Optimal", "High"の3状態とする
+
+## 使用ファイルについて
+- hr_data_analysis.pyに新規関数を追加する形で実装
+- hr_ibi_{ユーザID}.jsonlからデータを読み込む
+- server2.pyから関数を呼び出す
+
+## 機械学習について
+- 使用モデル
+  - ランダムフォレスト
+
+- 入力データ（生体データ）
+  - "hr"
+  - "eda"
+
+- 正解ラベルは"ex_status"を使用し，以下の状態のみ利用
+  - "0_back_start"
+  - "1_back_start"
+  - "2_back_start"
+  - "3_back_start"
+
+- 正解ラベルは以下のような形で負荷状態と対応
+  - "Low"："0_back_start"
+  - "Optimal"："1_back_start", "2_back_start"
+  - "High"："3_back_start"

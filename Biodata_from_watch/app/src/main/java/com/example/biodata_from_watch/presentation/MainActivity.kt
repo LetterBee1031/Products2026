@@ -74,6 +74,12 @@ fun BiodataApp() {
                 ?: BiodataUploadService.DEFAULT_ENDPOINT
         )
     }
+    var userId by remember {
+        mutableStateOf(
+            prefs.getString("user_id", BiodataUploadService.DEFAULT_USER_ID)
+                ?: BiodataUploadService.DEFAULT_USER_ID
+        )
+    }
     var running by remember { mutableStateOf(false) }
     var status by remember { mutableStateOf("Ready") }
     var permissionDenied by remember { mutableStateOf(false) }
@@ -83,7 +89,7 @@ fun BiodataApp() {
     ) { grants ->
         if (requiredSensorPermissions().all { permission -> grants[permission] == true }) {
             permissionDenied = false
-            startUpload(context, endpoint)
+            startUpload(context, endpoint, userId)
             running = true
             status = "Sending"
         } else {
@@ -118,14 +124,17 @@ fun BiodataApp() {
                     ),
                     onClick = {
                         // Start時点の送信先を保存し、foreground serviceの開始/停止を切り替える。
-                        prefs.edit().putString("endpoint", endpoint).apply()
+                        prefs.edit()
+                            .putString("endpoint", endpoint)
+                            .putString("user_id", userId)
+                            .apply()
                         if (running) {
                             context.startService(BiodataUploadService.stopIntent(context))
                             running = false
                             status = "Stopped"
                         } else if (hasBodySensorPermission(context)) {
                             permissionDenied = false
-                            startUpload(context, endpoint)
+                            startUpload(context, endpoint, userId)
                             running = true
                             status = "Sending"
                         } else {
@@ -153,6 +162,17 @@ fun BiodataApp() {
                         Text("Settings", fontSize = 10.sp)
                     }
                 }
+                BasicTextField(
+                    value = userId,
+                    onValueChange = { userId = it.trim().take(16) },
+                    textStyle = TextStyle(color = Color.White, fontSize = 10.sp, textAlign = TextAlign.Center),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(26.dp)
+                        .border(1.dp, Color.White)
+                        .padding(5.dp),
+                    singleLine = true,
+                )
                 BasicTextField(
                     value = endpoint,
                     onValueChange = { endpoint = it.trim() },
@@ -203,9 +223,9 @@ private const val READ_HEALTH_DATA_IN_BACKGROUND_PERMISSION =
 private const val READ_ADDITIONAL_HEALTH_DATA_PERMISSION =
     "com.samsung.android.hardware.sensormanager.permission.READ_ADDITIONAL_HEALTH_DATA"
 
-private fun startUpload(context: Context, endpoint: String) {
+private fun startUpload(context: Context, endpoint: String, userId: String) {
     // バックグラウンドでも送信を継続できるよう foreground service として起動する。
-    val intent = BiodataUploadService.startIntent(context, endpoint)
+    val intent = BiodataUploadService.startIntent(context, endpoint, userId)
     ContextCompat.startForegroundService(context, intent)
 }
 

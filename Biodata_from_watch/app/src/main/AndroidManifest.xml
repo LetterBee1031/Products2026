@@ -30,7 +30,8 @@
         <service
             android:name=".sensor.BiodataUploadService"
             android:exported="false"
-            android:foregroundServiceType="health" />
+            android:foregroundServiceType="health"
+            android:stopWithTask="false" />
         <service
             android:name=".complication.MainComplicationService"
             android:exported="true"
