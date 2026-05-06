@@ -1,0 +1,135 @@
+{
+    "version": 1,
+    "name": "ButtonInputActions",
+    "maps": [
+        {
+            "name": "XRControllerInput",
+            "id": "6c6bb44f-7517-4a7f-823e-d737f885fcf8",
+            "actions": [
+                {
+                    "name": "Button_A",
+                    "type": "Button",
+                    "id": "75c0a682-1c4a-4143-b120-4efa6d31fc00",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_B",
+                    "type": "Button",
+                    "id": "96535f22-5760-48f1-ba48-fc476b4afb4d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_X",
+                    "type": "Button",
+                    "id": "a3ea2dd4-c39e-496c-9099-8efa664a1e5e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Y",
+                    "type": "Button",
+                    "id": "c3311d98-d11c-4310-82db-03ca33a79c1f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Stick_Right",
+                    "type": "Value",
+                    "id": "392181c2-d0a4-4568-b5a3-93591d44a1b8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Stick_Left",
+                    "type": "Value",
+                    "id": "4cbc2422-f105-4ec8-a0f0-05d01d0d41c2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ef3d0fbc-0bb6-4b21-a821-c77d768ec5c3",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_A",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42557bc1-facf-4ae2-90f4-96ce83518390",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e58e3357-c837-432e-9a29-7b02d4907b9d",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "574717de-8fd9-4f95-9368-7a05a0159394",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60ee5459-d0f7-4b03-8ee6-f9b776bb8753",
+                    "path": "<XRController>{RightHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stick_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b3e13a1-e099-4670-b3e2-0db5ac4e720d",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stick_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

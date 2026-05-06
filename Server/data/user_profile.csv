@@ -1,0 +1,4 @@
+user_id,p_tempo,p_guidance,p_complexity,p_stimulus,p_break_policy,p_feedback,p_taste,w_tempo,w_guidance,w_complexity,w_stimulus,w_break_policy,w_feedback,w_taste
+01,0.50,1.00,0.50,0.50,0.50,0.00,polite,0.15,0.20,0.20,0.20,0.10,0.15,0.10
+02,0.00,0.50,0.00,0.00,1.00,0.50,neutral,0.20,0.15,0.20,0.15,0.20,0.10,0.10
+03,1.00,0.00,1.00,0.50,0.00,1.00,encouraging,0.10,0.15,0.25,0.15,0.10,0.25,0.10

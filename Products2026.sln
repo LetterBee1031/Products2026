@@ -1,0 +1,64 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "N_back_test", "N_back_test", "{615C63D4-402C-9CCB-D36C-EA8E340E9615}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "N_back_test\Assembly-CSharp.csproj", "{DB306AEE-6B2D-C6E4-CC9F-B7966520E7E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Hands.Samples.VisualizerSample", "N_back_test\Unity.XR.Hands.Samples.VisualizerSample.csproj", "{6F6DCE7C-C923-C706-A12F-A96B3644E462}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.Hands", "N_back_test\Unity.XR.Interaction.Toolkit.Samples.Hands.csproj", "{605D68A0-6897-1E42-91F8-BEB9A7DD1C1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.Hands.Editor", "N_back_test\Unity.XR.Interaction.Toolkit.Samples.Hands.Editor.csproj", "{393330C5-776A-FE83-A71B-20C411B0CF66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.StarterAssets", "N_back_test\Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj", "{CA3265B6-1B48-AE34-A836-F3DACF427FA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor", "N_back_test\Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj", "{AF79BB5E-7489-7F71-22CE-775A8BB096AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB306AEE-6B2D-C6E4-CC9F-B7966520E7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB306AEE-6B2D-C6E4-CC9F-B7966520E7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB306AEE-6B2D-C6E4-CC9F-B7966520E7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB306AEE-6B2D-C6E4-CC9F-B7966520E7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F6DCE7C-C923-C706-A12F-A96B3644E462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F6DCE7C-C923-C706-A12F-A96B3644E462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F6DCE7C-C923-C706-A12F-A96B3644E462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F6DCE7C-C923-C706-A12F-A96B3644E462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{605D68A0-6897-1E42-91F8-BEB9A7DD1C1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{605D68A0-6897-1E42-91F8-BEB9A7DD1C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{605D68A0-6897-1E42-91F8-BEB9A7DD1C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{605D68A0-6897-1E42-91F8-BEB9A7DD1C1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{393330C5-776A-FE83-A71B-20C411B0CF66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{393330C5-776A-FE83-A71B-20C411B0CF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{393330C5-776A-FE83-A71B-20C411B0CF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{393330C5-776A-FE83-A71B-20C411B0CF66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA3265B6-1B48-AE34-A836-F3DACF427FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA3265B6-1B48-AE34-A836-F3DACF427FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA3265B6-1B48-AE34-A836-F3DACF427FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA3265B6-1B48-AE34-A836-F3DACF427FA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF79BB5E-7489-7F71-22CE-775A8BB096AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF79BB5E-7489-7F71-22CE-775A8BB096AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF79BB5E-7489-7F71-22CE-775A8BB096AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF79BB5E-7489-7F71-22CE-775A8BB096AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DB306AEE-6B2D-C6E4-CC9F-B7966520E7E7} = {615C63D4-402C-9CCB-D36C-EA8E340E9615}
+		{6F6DCE7C-C923-C706-A12F-A96B3644E462} = {615C63D4-402C-9CCB-D36C-EA8E340E9615}
+		{605D68A0-6897-1E42-91F8-BEB9A7DD1C1A} = {615C63D4-402C-9CCB-D36C-EA8E340E9615}
+		{393330C5-776A-FE83-A71B-20C411B0CF66} = {615C63D4-402C-9CCB-D36C-EA8E340E9615}
+		{CA3265B6-1B48-AE34-A836-F3DACF427FA7} = {615C63D4-402C-9CCB-D36C-EA8E340E9615}
+		{AF79BB5E-7489-7F71-22CE-775A8BB096AC} = {615C63D4-402C-9CCB-D36C-EA8E340E9615}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {115F9385-630A-447F-A661-0C629B4BCEF9}
+	EndGlobalSection
+EndGlobal

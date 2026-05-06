@@ -18,15 +18,15 @@ if str(PROJECT_ROOT) not in sys.path:
 
 # `uvicorn Server.server2:app` と `python server2.py` のどちらでも import できるようにする。
 try:
-    from Server.hr_data_analysis import classify_latest_cl_condition_with_random_forest
-    from Server.hr_data_analysis import save_analysis_with_summary_to_csv
-    from Server.hr_data_analysis import train_random_forest_cl_classifier
+    from Server.bio_data_analysis import classify_latest_cl_condition_with_random_forest
+    from Server.bio_data_analysis import save_analysis_with_summary_to_csv
+    from Server.bio_data_analysis import train_random_forest_cl_classifier
     from Server.read_jsonl_from_last import read_last_n_jsonl_as_dataframe
-    from Server.shared_state import ISSUE_OPTIONS, user_status
+    from Server.shared_state import ISSUE_OPTIONS, user_status, load_user_profiles
 except ModuleNotFoundError:
-    from hr_data_analysis import classify_latest_cl_condition_with_random_forest
-    from hr_data_analysis import save_analysis_with_summary_to_csv
-    from hr_data_analysis import train_random_forest_cl_classifier
+    from Server.bio_data_analysis import classify_latest_cl_condition_with_random_forest
+    from Server.bio_data_analysis import save_analysis_with_summary_to_csv
+    from Server.bio_data_analysis import train_random_forest_cl_classifier
     from read_jsonl_from_last import read_last_n_jsonl_as_dataframe
     from shared_state import ISSUE_OPTIONS, user_status
 
@@ -41,6 +41,7 @@ MAX_IBI_PER_RECORD = 4
 # 記録用ファイルパス
 HR_JSONL_PATH = DATA_DIR / "hr_ibi.jsonl"
 STATUS_JSONL_PATH = DATA_DIR / "status_events.jsonl"
+USER_PROFILE_PATH = DATA_DIR / "user_profile.csv"
 
 # 心拍データクラス
 class TrackedData(BaseModel):
@@ -133,6 +134,19 @@ async def receive_biodata(payload: List[BiodataPost], request: Request):
 
     return {"ok": True, "count": len(payload)}
 
+
+# ユーザデータの読み込み
+@app.get("/api/set_profiles")
+async def set_user_profiles_from_CSV():
+    load_user_profiles(USER_PROFILE_PATH)
+    try:
+        return {
+            "ok": True,
+            "message": "user data are read correctly",
+        }
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
 # 体験段階の変更に関するパス
 @app.post("/api/status_post")
 async def change_status(payload: StatusPost, request: Request):
@@ -183,7 +197,7 @@ async def read_ex_status(id: str = "01"):
         raise HTTPException(status_code=404, detail="unknown id")
     return {"ok": True, "id": id, "status": user_status[id].ex_status}
 
-# 体験者の認知負荷状態の取得のパス
+# 体験者の認知負荷状態の取得と交渉のパス
 @app.get("/api/cl_condition_get")
 async def read_cl_condition(id: str = "01"):
     if id not in user_status:
@@ -196,10 +210,26 @@ async def read_cl_condition(id: str = "01"):
 
     user_status[id].cl_condition = result["label"]
     
-    # if user_status[id].cl_condition == "High":
-    #     run_example(L_current=80, user_id=id)
-    # elif user_status[id].cl_condition == "Low":
-    #     run_example(L_current=20, user_id=id)
+    if user_status[id].cl_condition == "High":
+        changedIssueSetting = run_example(
+            L_current=0.75,
+            current_setting=user_status[id].issue_settings,
+            pa_preference=user_status[id].p,
+            pa_weight=user_status[id].w,
+            pa_taste_preference=user_status[id].p_taste,
+            pa_taste_weight=user_status[id].w_taste
+            )
+        user_status[id].issue_settings = changedIssueSetting
+    elif user_status[id].cl_condition == "Low":
+        changedIssueSetting = run_example(
+            L_current=0.25,
+            current_setting=user_status[id].issue_settings,
+            pa_preference=user_status[id].p,
+            pa_weight=user_status[id].w,
+            pa_taste_preference=user_status[id].p_taste,
+            pa_taste_weight=user_status[id].w_taste
+        )
+        user_status[id].issue_settings = changedIssueSetting
 
     return {
         "ok": True,

@@ -1,195 +1,131 @@
 """
-NegMAS を用いた PA/AA 2者・多論点・交互提案（SAO）による自動交渉の最小実装ひな形。
+NegMAS を用いた PA/AA 2者・多論点・交互提案（SAO）自動交渉のコード（改訂版）
 
-実装している設計要素（このチャットで決めた内容）：
-- 交互提案（Alternating Offers）：SAOMechanism + SAONegotiator
-- 多論点（I_cl + I_e）：I_e は 6論点 +（順序なし）文章テイスト
-- 認知負荷はルールベース予測：
-    L_hat = clip(L_current + Δ_rule(offer), 0, 1)
-- 観測閾値（CLE）と予測閾値（AA ルール予測）は分離し、安全マージンを導入：
-    L_pred_high = L_obs_high - margin
-    L_pred_low  = L_obs_low  + margin
-- PA 効用：順序あり論点は s_i(x)=1-|z_i(x)-p_i|、テイストは順序なしカテゴリとして類似度で評価
-- PA 受諾：負荷が予測帯に戻ること（ハード）＋ 好み効用が閾値以上（ソフト）
-- PA 反対提案：論点ごとの許容集合 Ω_i(k)（CPA(k)）として制約を返す（実装では allowed_values を更新）
-- AA 案生成：候補を列挙/サンプルし、argmax (U_AA + λ U_PA) を選ぶ（帯内ゲート付き）
+この版で反映した点（前の最終形に対応）：
+- PA効用を「好み + 負荷適正」の混合に変更
+    U_PA(x) = (1-λ_L) U_PA^pref(x) + λ_L U_PA^load(x)
+    U_PA^load(x) = exp(-η d_out(x))  （帯外れを罰する）
+- AAの提案選択は、(U_AA + λ U_PA) を最大化（U_PA は上記の新定義）
+- PAの受諾条件：
+    (1) 予測負荷が予測帯に入る（ハード）
+    (2) U_PA が閾値以上（ソフト）
+- 予測負荷はルールベース（デルタ）：
+    L_pred(x)=clip(L_obs + Σ a_i (z_i(offer)-z_i(current)), 0,1)
+- 観測閾値と予測閾値は分離（安全マージンΔm）：
+    L_pred_low = L_obs_low + margin
+    L_pred_high= L_obs_high - margin
 
 注意：
-- これは研究用プロトタイプです。要素リストが巨大な場合、候補生成は列挙ではなくヒューリスティック/サンプリングに置換してください。
+- ここでは離散空間（3段階×複数論点）を想定し、AAは候補列挙/サンプルで最良案を提案します。
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from math import exp
-from pathlib import Path
-import sys
 from typing import Dict, List, Optional, Sequence, Tuple, Callable, Any
 
 from negmas import ResponseType
 from negmas.sao import SAOMechanism, SAONegotiator, SAOState
 from negmas.outcomes import make_issue, Outcome
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.append(str(PROJECT_ROOT))
-
-# サーバ本体ではなく共有状態だけを読むことで、重い依存や循環 import を避ける。
-from Server.shared_state import get_user_issue_settings, update_user_issue_settings  # noqa: E402
 
 # ----------------------------
-# 1) 交渉論点（I_e）を離散値で定義
+# 1) 交渉論点（離散カテゴリ）
 # ----------------------------
 
-# ここ　論点を作るために単なる文字列として選択肢を用意している
-# それぞれの論点によって選択肢と負荷の関係性とかが変わってくるから，一様に数値で定義するとよくないよなと
 TEMPO_VALUES = ["slow", "normal", "fast"]
 LEVEL3_VALUES = ["low", "medium", "high"]
-BREAK_VALUES = ["rare", "on_demand", "frequent"]  # 値が大きいほど休憩を入れやすい
+BREAK_VALUES = ["rare", "on_demand", "frequent"]
 FEEDBACK_VALUES = ["summary", "brief_immediate", "detailed_immediate"]
 
-# 文章テイスト（順序なしカテゴリ）
+# 順序なしカテゴリ（文章テイスト）
 TASTE_VALUES = ["polite", "concise", "encouraging", "neutral"]
 
-# 順序あり論点は 0〜1 に写像して距離で扱う
-# 体験者の効用関数的には，高すぎるとダメとかではなく，選択した値から離れてるとダメ　みたいな感じで行く
-# システム側の効用関数的には，適した範囲内においては負荷が高いほうがいい　という計算をしたい
-# ただ，休憩頻度の部分に関しては多いほうが負荷下がりそうなのでそのあたりは反転させたい
+# 順序あり論点を 0〜1 に写像（距離や差分計算のため）
 ORDINAL_MAPS: Dict[str, Dict[str, float]] = {
-    "tempo": {"slow": 0.0, "normal": 0.5, "fast": 1.0}, # 体験のテンポ
-    "guidance": {"low": 0.0, "medium": 0.5, "high": 1.0}, # ガイダンスの量
-    "complexity": {"low": 0.0, "medium": 0.5, "high": 1.0}, # 体験中に必要な判断の複雑さ
-    "stimulus": {"low": 0.0, "medium": 0.5, "high": 1.0}, # 体験刺激の強度（演出など）
-    "break_policy": {"rare": 0.0, "on_demand": 0.5, "frequent": 1.0}, # 休憩・クールダウンの方針
-    "feedback": {"summary": 0.0, "brief_immediate": 0.5, "detailed_immediate": 1.0}, # 体験のフィードバック量とか
+    "tempo": {"slow": 0.0, "normal": 0.5, "fast": 1.0},
+    "guidance": {"low": 0.0, "medium": 0.5, "high": 1.0},
+    "complexity": {"low": 0.0, "medium": 0.5, "high": 1.0},
+    "stimulus": {"low": 0.0, "medium": 0.5, "high": 1.0},
+    "break_policy": {"rare": 0.0, "on_demand": 0.5, "frequent": 1.0},
+    "feedback": {"summary": 0.0, "brief_immediate": 0.5, "detailed_immediate": 1.0},
 }
 
-# 文章・体験テイストの類似度行列 K（必要ならオフ対角を 0 にして「完全一致のみ」にしても良い）
+# テイスト類似度行列 K（例。研究設計/予備実験で再設定推奨）
 TASTE_SIMILARITY: Dict[str, Dict[str, float]] = {
-    "polite": {"polite": 1.0, "concise": 0.4, "encouraging": 0.7, "neutral": 0.6}, # polite (丁寧・安心感重視)
-    "concise": {"polite": 0.4, "concise": 1.0, "encouraging": 0.3, "neutral": 0.6}, # concise (簡潔・短文・要点のみ)
-    "encouraging": {"polite": 0.7, "concise": 0.3, "encouraging": 1.0, "neutral": 0.6}, # encouraging (励まし・不安低減)
-    "neutral": {"polite": 0.6, "concise": 0.6, "encouraging": 0.6, "neutral": 1.0}, # neutral (ニュートラル・事実提示)
+    "polite": {"polite": 1.0, "concise": 0.4, "encouraging": 0.7, "neutral": 0.6},
+    "concise": {"polite": 0.4, "concise": 1.0, "encouraging": 0.3, "neutral": 0.6},
+    "encouraging": {"polite": 0.7, "concise": 0.3, "encouraging": 1.0, "neutral": 0.6},
+    "neutral": {"polite": 0.6, "concise": 0.6, "encouraging": 0.6, "neutral": 1.0},
 }
 
-
-def get_current_setting(user_id: str = "01") -> Dict[str, str]:
-    return get_user_issue_settings(user_id)
-
-
-def update_current_setting(user_id: str, issue_settings: Dict[str, str]) -> None:
-    update_user_issue_settings(user_id, issue_settings)
 
 # ----------------------------------------
-# 2) 観測/予測 閾値の分離（安全マージン込み）
+# 2) 観測/予測 閾値（安全マージン込み）
 # ----------------------------------------
 
 @dataclass
 class Thresholds:
-    """CLE（観測）閾値と、AA ルール予測で使う安全側の予測閾値を管理する。"""
-    # Load observe 観測した認知負荷の条件
+    """CLE（観測）閾値と、AAルール予測で使う予測帯（マージン込み）を管理する。"""
     L_obs_low: float
     L_obs_high: float
-    margin: float = 0.10  # 予測誤差を見込んだ安全マージン
+    margin: float = 0.10 # 仮置きのマージン　調整後の負荷がしっかり最適帯に入るようにということで
 
-    # Load predict 体験調整後に予想される認知負荷に関する条件
-    # ここの式はこのままでは使えない，というか設計しなおす必要がある
+    # Low + margin で低負荷帯を高めに設定
     @property
     def L_pred_low(self) -> float:
         return self.L_obs_low + self.margin
 
+    # High - margin で高負荷帯を低めに設定
     @property
     def L_pred_high(self) -> float:
         return self.L_obs_high - self.margin
 
 
 # ----------------------------------------
-# 3) ルールベース負荷予測（Δモデル）
+# 3) ルールベース予測（Δモデル）
 # ----------------------------------------
 
 @dataclass
 class RuleBasedLoadModel:
     """
-    介入（調整案）による負荷の増減を線形和で見積もる簡易モデル。
+    予測負荷：
+      L_pred(x) = clip(L_current + Σ a_i (z_i(offer)-z_i(current)), 0, 1)
 
-    L_hat = clip( L_current + Σ a_i * (z_i(offer) - z_i(current)), 0, 1)
-
-    coeffs の符号：
-      +：値を上げると負荷が上がる（例：tempo, complexity, stimulus）
-      -：値を上げると負荷が下がる（例：guidance, break_policy）
+    a_coeffs の符号：
+      +：値を上げると負荷が上がる（tempo, complexity, stimulus 等）
+      -：値を上げると負荷が下がる（guidance, break_policy 等）
     """
-    coeffs: Dict[str, float]  # a_i
+    a_coeffs: Dict[str, float] # 各論点の体験への影響係数a_iを格納する辞書
 
+    # 予測負荷帯の計算
     def predict(self, L_current: float, current_setting: Dict[str, str], offer: Dict[str, str]) -> float:
         delta = 0.0
-        for issue, a in self.coeffs.items():
-            z_offer = ORDINAL_MAPS[issue][offer[issue]]
-            z_curr = ORDINAL_MAPS[issue][current_setting[issue]]
-            delta += a * (z_offer - z_curr)
+        for issue, a in self.a_coeffs.items():
+            z_offer = ORDINAL_MAPS[issue][offer[issue]] # 提案の体験設定
+            z_curr = ORDINAL_MAPS[issue][current_setting[issue]] # 現在の体験設定
+            delta += a * (z_offer - z_curr) # 影響係数 × 変更後の差分
 
-        # テイストは順序なしカテゴリなので、デフォルトでは負荷予測に入れない
-        L_hat = max(0.0, min(1.0, L_current + delta))
-        return L_hat
-
+        # テイストは順序なしなので、デフォルトでは負荷予測に入れない
+        return max(0.0, min(1.0, L_current + delta))
 
 # -------------------------
-# 4) PA/AA の効用関数
+# 4) 便利関数（帯外れ・中心距離・変更コスト）
 # -------------------------
 
-@dataclass
-class PAProfile:
-    """PA（体験者側）の好みプロファイル。"""
-    p: Dict[str, float]               # 順序あり論点の理想値 p_i（0〜1）
-    w: Dict[str, float]               # 順序あり論点の重み w_i（合計<=1）
-    preferred_taste: str              # 好みのテイスト（カテゴリ）
-    w_taste: float = 0.15             # テイスト重み
-    tau_accept: float = 0.60          # 好み効用がこれ以上なら受諾（負荷が帯内であることが前提）
-
-
-def s_ordinal(z: float, p: float) -> float:
-    """順序あり論点の一致度：s_i(x)=1-|z_i(x)-p_i|"""
-    return 1.0 - abs(z - p)
-
-
-def s_taste(taste: str, preferred: str, similarity: Dict[str, Dict[str, float]]) -> float:
-    """順序なしカテゴリ（テイスト）の一致度：類似度行列 K による評価"""
-    return similarity[taste][preferred]
-
-
-def U_PA(offer: Dict[str, str], profile: PAProfile) -> float:
-    """PA 効用：順序ありは距離、テイストは類似度で重み付き合成（0〜1にクリップ）。"""
-    u = 0.0
-    for issue, w in profile.w.items():
-        z = ORDINAL_MAPS[issue][offer[issue]]
-        u += w * s_ordinal(z, profile.p[issue])
-
-    u += profile.w_taste * s_taste(offer["taste"], profile.preferred_taste, TASTE_SIMILARITY)
-    return max(0.0, min(1.0, u))
-
-
-@dataclass
-class AAParams:
-    """AA（調整側）の効用パラメータ。"""
-    alpha: float = 8.0   # 帯外れの罰（大きいほど帯外を強く避ける）
-    beta: float = 2.0    # 帯内中心への寄せ
-    gamma: float = 1.0   # 変更コスト（急変抑制）
-    lam: float = 0.25    # λ：AAがPA効用をどれだけ尊重するか
-
-
-def d_out(L_hat: float, low: float, high: float) -> float:
+def d_out(L_pred: float, low: float, high: float) -> float:
     """帯外れ量（ヒンジ）：帯内なら0"""
-    return max(0.0, low - L_hat) + max(0.0, L_hat - high)
+    return max(0.0, low - L_pred) + max(0.0, L_pred - high)
 
-
-def d_in(L_hat: float, low: float, high: float) -> float:
-    """帯内中心への距離（任意）：中心からの絶対距離"""
+def d_in(L_pred: float, low: float, high: float) -> float:
+    """帯内中心距離：中心からの距離（任意）"""
     L_star = (low + high) / 2.0
-    return abs(L_hat - L_star)
+    return abs(L_pred - L_star)
 
-
+# ローは変更コストらしいで
 def change_cost(current_setting: Dict[str, str], offer: Dict[str, str], rho: Dict[str, float]) -> float:
-    """変更コスト：順序あり論点の変化量の重み付き和"""
-    # current_settingは現在の設定，offerは提案内容，rhoは各論点の重みに関する辞書 ρってことらしい
+    """急変抑制：順序あり論点の変化量の重み付き和"""
     c = 0.0
     for issue, r in rho.items():
         z_offer = ORDINAL_MAPS[issue][offer[issue]]
@@ -198,86 +134,166 @@ def change_cost(current_setting: Dict[str, str], offer: Dict[str, str], rho: Dic
     return c
 
 
+# -------------------------
+# 5) PA効用（改訂：好み + 負荷適正）
+# -------------------------
+
+@dataclass
+class PAProfile:
+    """
+    lambda_Lとetaの違いについて
+    lambda_Lは効用内においてどれだけ負荷適正を重視するか（全体への影響）
+    etaはU_PA^loadをどれだけ厳しくするか（単体での厳しさ）
+    みたいな
+    """
+
+    p: Dict[str, float] # 順序あり論点の理想値（0〜1）
+    w: Dict[str, float] # 順序あり論点の重み（合計 <= 1 推奨）
+    preferred_taste: str # 好みテイスト（カテゴリ）
+    w_taste: float = 0.10 # テイスト重み
+    tau_accept: float = 0.60 # PA受諾の下限（新しい U_PA に対して適用）
+
+    tau_min: float = 0.30 # 締め切り時のPA受諾下限（tau_acceptからここまで下がる）
+
+    lambda_L: float = 0.30 # PA効用に占める「負荷適正」重み（0〜1）
+    eta: float = 6.0 # U_PA^load = exp(-eta * d_out) の強さ
+
+def s_ordinal(z: float, p: float) -> float:
+    """s_i(x)=1-|z_i(x)-p_i|"""
+    return 1.0 - abs(z - p)
+
+def s_taste(taste: str, preferred: str) -> float:
+    """順序なしカテゴリは類似度行列で評価"""
+    return TASTE_SIMILARITY[taste][preferred]
+
+def U_PA_pref(offer: Dict[str, str], profile: PAProfile) -> float:
+    """好み効用（順序あり+テイスト）"""
+    u = 0.0
+    for issue, w in profile.w.items():
+        z = ORDINAL_MAPS[issue][offer[issue]] # 各論点の提案内容
+        u += w * s_ordinal(z, profile.p[issue]) # 重み × |(提案内容-好みの内容)|
+
+    u += profile.w_taste * s_taste(offer["taste"], profile.preferred_taste) # 文章テイストのやつ足してる
+    return max(0.0, min(1.0, u))
+
+def U_PA_load(L_pred: float, thresholds: Thresholds, profile: PAProfile) -> float:
+    """負荷適正効用：帯外れを指数で罰する"""
+    out = d_out(L_pred, thresholds.L_pred_low, thresholds.L_pred_high)
+    return exp(-profile.eta * out)
+
+def U_PA(
+    offer: Dict[str, str],
+    *,
+    L_current: float,
+    current_setting: Dict[str, str],
+    load_model: RuleBasedLoadModel,
+    thresholds: Thresholds,
+    profile: PAProfile,
+) -> Tuple[float, float]:
+    """
+    新しい PA 効用：
+      U_PA = (1-λ_L) U_pref + λ_L U_load
+    戻り値： (U_PA, L_pred)
+    """
+    L_pred = load_model.predict(L_current, current_setting, offer) # 予測負荷
+    u_pref = U_PA_pref(offer, profile) # 好み効用計算
+    u_load = U_PA_load(L_pred, thresholds, profile) # 負荷効用計算
+    lamL = max(0.0, min(1.0, profile.lambda_L)) # 負荷に関する重みを丸めてるだけ
+    u = (1.0 - lamL) * u_pref + lamL * u_load # 効用の計算
+    return max(0.0, min(1.0, u)), L_pred
+
+
+# -------------------------
+# 6) AA効用
+# -------------------------
+
+@dataclass
+class AAParams:
+    alpha: float = 10.0  # 帯外れ罰
+    beta: float = 2.0    # 中心志向
+    gamma: float = 1.0   # 変更抑制
+    lam: float = 0.25    # AAがPA効用をどれだけ尊重するか（交渉提案選択用）
+
+
 def U_AA(
-    offer: Dict[str, str], # 提案
-    L_current: float, # 現在の認知負荷
-    current_setting: Dict[str, str], # 現在の設定
-    load_model: RuleBasedLoadModel, # 調整によってどのように負荷が変化するか
-    thresholds: Thresholds, # 閾値
-    rho: Dict[str, float], # 各論点に対する重み
-    params: AAParams, # 調整エージェントの効用の重みパラメータ　アルファ，ベータ，ガンマのやつ
+    offer: Dict[str, str],
+    *,
+    L_current: float,
+    current_setting: Dict[str, str],
+    load_model: RuleBasedLoadModel,
+    thresholds: Thresholds,
+    rho: Dict[str, float],
+    params: AAParams,
 ) -> Tuple[float, float]:
     """
     AA効用：
       U_AA = exp(-α d_out) * exp(-β d_in) * exp(-γ c)
-    戻り値： (U_AA, L_hat)
+    戻り値： (U_AA, L_pred)
     """
-    L_hat = load_model.predict(L_current, current_setting, offer) # 提案内容で調整した際に予測される負荷
+    L_pred = load_model.predict(L_current, current_setting, offer) # 負荷予測
+    out = d_out(L_pred, thresholds.L_pred_low, thresholds.L_pred_high) # 帯外れ値計算
+    inn = d_in(L_pred, thresholds.L_pred_low, thresholds.L_pred_high) # 中心志向計算
+    c = change_cost(current_setting, offer, rho) # 変更コスト計算
+    u = exp(-params.alpha * out) * exp(-params.beta * inn) * exp(-params.gamma * c) # 効用計算
+    return u, L_pred
 
-    out = d_out(L_hat, thresholds.L_pred_low, thresholds.L_pred_high)
-    inn = d_in(L_hat, thresholds.L_pred_low, thresholds.L_pred_high)
-    c = change_cost(current_setting, offer, rho)
-
-    u = exp(-params.alpha * out) * exp(-params.beta * inn) * exp(-params.gamma * c)
-    return u, L_hat
 
 # ------------------------------------
-# 5) NegMAS 用のユーティリティ（Outcome ↔ dict 変換）
+# 7) Outcome ↔ dict 変換
 # ------------------------------------
 
+# negmasの交渉結果を扱いやすくしたい
+# Outcome（交渉結果）がタプルだったり辞書だったりするから，全部辞書にしちまおうという魂胆
 def outcome_to_dict(outcome: Outcome, issue_names: Sequence[str]) -> Dict[str, str]:
-    """NegMASのOutcome（tupleなど）を、論点名→値のdictへ変換。"""
-    if isinstance(outcome, dict):
+    if isinstance(outcome, dict): # dictionaryになってるかどうか
         return outcome
     return {name: outcome[i] for i, name in enumerate(issue_names)}
 
 def dict_to_outcome(d: Dict[str, str], issue_names: Sequence[str]) -> Tuple[Any, ...]:
-    """論点名→値のdictを、NegMASのOutcome（tuple）へ変換。"""
     return tuple(d[name] for name in issue_names)
 
 
 # ------------------------------------
-# 6) CPA(k) の実装：PAが返す「許容集合 Ω_i(k)」
+# 8) CPA(k)（PAが返す許容集合 Ω_i(k)）
 # ------------------------------------
 
 @dataclass
 class PAConstraints:
-    """
-    CPA(k) = { z_i(x) ∈ Ω_i(k) } の簡易実装。
-    実装上は「各論点で許容するカテゴリ値の集合」を持つ。
-    許容集合に入ってるかを確認してるだけやなここ
-    """
+    # PAが許容する提案集合
+    # set型は同じ要素が入らず，順番が関係ない集合の変数らしい
     allowed_values: Dict[str, set]
 
+    # 提案がallowedに入ってなかったらFalse
     def allows(self, offer: Dict[str, str]) -> bool:
         for issue, allowed in self.allowed_values.items():
             if offer[issue] not in allowed:
                 return False
         return True
 
-
 # ------------------------------------
-# 7) PA（Player Agent）: 受諾/拒否/制約更新
+# 9) PA（受諾/拒否/制約更新）
 # ------------------------------------
 
+# PAの交渉者
 class PlayerAgentPA(SAONegotiator):
     """
-    PAの方針：
-    - 受諾条件（ハード）：予測負荷 L_hat が予測帯 [L_pred_low, L_pred_high] に入る
-    - 受諾条件（ソフト）：好み効用 U_PA が tau_accept 以上
-    - 拒否したら：重要論点だけ制約（Ω）を好みに寄せて絞る（交渉を詰ませないため）
+    PAの受諾条件（最終形）：
+      (1) L_pred(x) が予測帯に入る（ハード）
+      (2) U_PA(x) >= tau_accept（ソフト、U_PA は「好み+負荷適正」）
+
+    拒否したら：重要論点のみ許容集合 Ω を絞る（CPA(k)更新）
     """
 
     def __init__(
         self,
         *,
-        name: str,
-        issue_names: Sequence[str],
-        profile: PAProfile,
-        thresholds: Thresholds,
-        load_model: RuleBasedLoadModel,
-        initial_setting: Dict[str, str],
-        L_current: float,
+        name: str, # 交渉者ID
+        issue_names: Sequence[str], # 論点名
+        profile: PAProfile, # ユーザプロファイル
+        thresholds: Thresholds, # 閾値情報
+        load_model: RuleBasedLoadModel, # 負荷予測モデル(計算)
+        initial_setting: Dict[str, str], # 体験設定の初期設定
+        L_current: float, # 現在の体験状態
     ):
         super().__init__(name=name)
         self.issue_names = list(issue_names)
@@ -285,13 +301,18 @@ class PlayerAgentPA(SAONegotiator):
         self.thresholds = thresholds
         self.load_model = load_model
 
-        # 現在の設定・負荷（交渉が成立すると更新）
         self.current_setting = dict(initial_setting)
         self.L_current = float(L_current)
 
-        # 初期は制約なし（全許容）
-        # 提案に対して制約をつけるかどうかという話なので別に効用を無視するという話ではなく
-        # 交渉のなかでどんどん狭めていくイメージかなぁ
+        # AAインスタンス参照（run_exampleでセットする）
+        self.aa_ref: Optional["AdjustmentAgentAA"] = None
+
+        # 緩和レベル（方針1：候補ゼロのときだけ緩める）
+        self.relax_level: int = 0
+        self.max_relax_level: int = 2
+
+        # 体験制約の設定
+        # ※方針1に合わせて「最初は好みを守る」ため、重要論点は厳しめ（理想に近い値）から開始する
         self.constraints = PAConstraints(
             allowed_values={
                 "tempo": set(TEMPO_VALUES),
@@ -301,16 +322,16 @@ class PlayerAgentPA(SAONegotiator):
                 "break_policy": set(BREAK_VALUES),
                 "feedback": set(FEEDBACK_VALUES),
                 "taste": set(TASTE_VALUES),
-            }
+}
         )
 
+    # 提案
     def propose(self, state: SAOState) -> Outcome:
         """
-        SAOでは自分の番で提案が必要になるため、PAも提案関数を持つ。
-        本設計ではPAは「具体案生成」より「要求（Ω）」が主なので、
-        ここでは現在の制約内で理想点に最も近い案を返す。
+        SAOでは自分の番で提案が必要になるため、
+        制約内で理想点に最も近い案を（簡易に）返す。
         """
-        offer_dict = {
+        offer = {
             "tempo": self._closest_allowed("tempo", self.profile.p["tempo"]),
             "guidance": self._closest_allowed("guidance", self.profile.p["guidance"]),
             "complexity": self._closest_allowed("complexity", self.profile.p["complexity"]),
@@ -319,69 +340,136 @@ class PlayerAgentPA(SAONegotiator):
             "feedback": self._closest_allowed("feedback", self.profile.p["feedback"]),
             "taste": self.profile.preferred_taste
             if self.profile.preferred_taste in self.constraints.allowed_values["taste"]
-            else next(iter(self.constraints.allowed_values["taste"])),
+            else next(iter(self.constraints.allowed_values["taste"])), # iter: イテレータを作る関数．許容集合内に好みのテイストがなかった時のリスクヘッジで追加
         }
-        return dict_to_outcome(offer_dict, self.issue_names)
+        return dict_to_outcome(offer, self.issue_names)
 
+    # 提案に対する応答
     def respond(self, state: SAOState, source: str | None = None) -> ResponseType:
+        # 提案がなかったら却下
         offer = state.current_offer
         if offer is None:
             return ResponseType.REJECT_OFFER
-
+        # ディクショナリに変換
         offer_dict = outcome_to_dict(offer, self.issue_names)
 
-        # ① CPA(k) 制約チェック
+        # ① PA制約（Ω）チェック
         if not self.constraints.allows(offer_dict):
-            self._tighten_constraints()
+            # ※方針1では「候補ゼロのときだけ緩める」ので、ここでは単に拒否する
             return ResponseType.REJECT_OFFER
 
-        # ② 負荷（ルール予測）チェック：帯内（ハード条件）
-        L_hat = self.load_model.predict(self.L_current, self.current_setting, offer_dict)
-        load_ok = (self.thresholds.L_pred_low <= L_hat <= self.thresholds.L_pred_high)
+        # ② U_PA(x) を計算（ここで L_pred も同時に得る）
+        u_pa, L_pred = U_PA(
+            offer_dict,
+            L_current=self.L_current,
+            current_setting=self.current_setting,
+            load_model=self.load_model,
+            thresholds=self.thresholds,
+            profile=self.profile,
+        )
 
-        # ③ 好み効用（ソフト条件）
-        u_pa = U_PA(offer_dict, self.profile)
+        # ③ ハード条件：予測帯に入ること
+        load_ok = (self.thresholds.L_pred_low <= L_pred <= self.thresholds.L_pred_high)
 
-        if load_ok and (u_pa >= self.profile.tau_accept):
-            # 合意：内部状態を更新
+        # ④ ソフト条件：U_PA >= tau_accept（締め切りが近づくほど tau_accept を下げる）
+        tau_now = self._tau_accept_now(state)
+        if load_ok and (u_pa >= tau_now):
+            # 合意：内部状態更新（次回の予測基準が変わる）
             self.current_setting = dict(offer_dict)
-            self.L_current = L_hat
+            self.L_current = L_pred
             return ResponseType.ACCEPT_OFFER
 
-        # 拒否：制約（Ω）を少し絞る（重要論点のみ）
-        self._tighten_constraints()
+        # 拒否：CPA(k)更新（Ωを絞る）
+        # ※方針1では「帯内候補ゼロ」のときにのみ緩めるので、ここでは拒否のみ
         return ResponseType.REJECT_OFFER
 
-    def _closest_allowed(self, issue: str, p: float) -> str:
-        """順序あり論点：許容値の中から理想値に最も近いものを選ぶ。"""
-        candidates = list(self.constraints.allowed_values[issue])
-        best = min(candidates, key=lambda v: abs(ORDINAL_MAPS[issue][v] - p))
-        return best
 
+    def _tau_accept_now(self, state: SAOState) -> float:
+        """交渉ステップのみから進行度を計算し、tau_accept を線形に下げる（TimeBasedConceding系の簡易版）。
+
+        - progress = step / (n_steps-1)
+        - progress=0 で tau_accept、progress=1 で tau_min
+        """
+        tau0 = float(self.profile.tau_accept)
+        tau_min = float(getattr(self.profile, "tau_min", tau0))
+
+        # step と n_steps のみを使って progress ∈ [0,1] を計算
+        step = None
+        for attr in ("step", "current_step", "k", "round"):
+            if hasattr(state, attr):
+                try:
+                    step = int(getattr(state, attr))
+                    break
+                except Exception:
+                    pass
+
+        n_steps_calc = None
+        for attr in ("n_steps", "max_steps"):
+            if hasattr(state, attr):
+                try:
+                    n_steps_calc = int(getattr(state, attr))
+                    break
+                except Exception:
+                    pass
+
+        if n_steps_calc is None:
+            # mechanism側にあることも多い
+            for attr in ("n_steps", "max_steps"):
+                if hasattr(self.nmi, attr):
+                    try:
+                        n_steps_calc = int(getattr(self.nmi, attr))
+                        break
+                    except Exception:
+                        pass
+
+        if step is None or n_steps_calc is None or n_steps_calc <= 0:
+            progress = 0.0
+        else:
+            denom = (n_steps_calc - 1) if n_steps_calc > 1 else 1
+            progress = max(0.0, min(1.0, step / denom))
+
+        # 線形に譲歩：progress=0でtau0、progress=1でtau_min
+        tau_now = (1.0 - progress) * tau0 + progress * tau_min
+        return float(max(0.0, min(1.0, tau_now)))
+
+    # 許容された提案候補の中から，理想に近いものをとる関数．提案生成に使用
+    def _closest_allowed(self, issue: str, p: float) -> str:
+        candidates = list(self.constraints.allowed_values[issue])
+        return min(candidates, key=lambda v: abs(ORDINAL_MAPS[issue][v] - p))
+
+    # 全提案候補の中から，理想に近いものをとる関数．
+    def _closest_allowed_from_set(self, issue: str, candidates: set, p: float) -> str:
+        cand = list(candidates)
+        return min(cand, key=lambda v: abs(ORDINAL_MAPS[issue][v] - p))
+
+    # 論点を絞る関数
     def _tighten_constraints(self) -> None:
         """
-        CPA(k) の更新例：
-        - 交渉が詰まらないよう、全論点ではなく「重要論点」だけを絞る
-        - 各論点は理想値に近い上位2候補を残す（3段階→2段階へ）
-        - テイストは {preferred, neutral} のように許容集合を作る
+        CPA(k) 更新例：
+        - 交渉が詰まらないよう、重要論点だけを絞る
+        - 各論点は理想値に近い上位2候補を残す
+        - テイストは {preferred, neutral} に絞る
         """
         important = ["tempo", "guidance", "complexity", "stimulus", "taste"]
 
         for issue in important:
+            # テイスト部分に関して
             if issue == "taste":
                 pref = self.profile.preferred_taste
                 allowed = {pref}
                 if "neutral" in TASTE_VALUES:
                     allowed.add("neutral")
-                # intersection()は積集合を返すらしい（両方の要素に入ってるもの）
-                self.constraints.allowed_values["taste"] = self.constraints.allowed_values["taste"].intersection(allowed)
+                self.constraints.allowed_values["taste"] = self.constraints.allowed_values["taste"].intersection(allowed) # intersectionは積集合を返す関数らしい
                 continue
-
+            # その他の論点について
             p = self.profile.p[issue]
-            vals = sorted(list(self.constraints.allowed_values[issue]), key=lambda v: (abs(ORDINAL_MAPS[issue][v] - p), v))
+            vals = sorted(
+                list(self.constraints.allowed_values[issue]),
+                key=lambda v: abs(ORDINAL_MAPS[issue][v] - p),
+            )
             self.constraints.allowed_values[issue] = set(vals[:2]) if len(vals) >= 2 else set(vals)
 
-        # 万一空集合になった論点は全許容へ戻す（保険）
+        # 空集合になったら保険で全許容へ戻す
         for issue, allowed in self.constraints.allowed_values.items():
             if allowed:
                 continue
@@ -396,34 +484,67 @@ class PlayerAgentPA(SAONegotiator):
             else:
                 self.constraints.allowed_values[issue] = set(LEVEL3_VALUES)
 
+    # 方針1：候補が存在しないときにだけ、許容集合Ωを緩める
+    def _relax_constraints_once(self) -> None:
+        """候補が存在しないときにだけ、許容集合Ωを1段階だけ広げる。"""
+        if self.relax_level >= self.max_relax_level:
+            return
+
+        self.relax_level += 1
+
+        # 緩和対象（重要論点だけ）
+        important = ["tempo", "guidance", "complexity", "stimulus", "taste"]
+
+        for issue in important:
+            # テイスト部分に関して
+            if issue == "taste":
+                pref = self.profile.preferred_taste
+                if self.relax_level == 1:
+                    allowed = {pref}
+                    if "neutral" in TASTE_VALUES:
+                        allowed.add("neutral")
+                    self.constraints.allowed_values["taste"] = self.constraints.allowed_values["taste"].union(allowed)
+                else:
+                    self.constraints.allowed_values["taste"] = set(TASTE_VALUES)
+                continue
+
+            # 順序あり：理想値に近い順に全候補を並べ、上位Nを許可
+            p = self.profile.p[issue]
+            all_vals = sorted(list(ORDINAL_MAPS[issue].keys()), key=lambda v: abs(ORDINAL_MAPS[issue][v] - p))
+
+            if self.relax_level == 1:
+                self.constraints.allowed_values[issue] = set(all_vals[:2])  # 2候補に拡張
+            else:
+                self.constraints.allowed_values[issue] = set(all_vals)      # 全許容
+
 
 # ------------------------------------
-# 8) AA（Adjustment Agent）: 候補探索→最良提案
+# 10) AA（候補探索→最良提案）
 # ------------------------------------
 
 class AdjustmentAgentAA(SAONegotiator):
     """
-    AAの方針：
-    - 候補（Outcome）を列挙/サンプルし、PA制約（Ω）を満たすものだけ評価
-    - 帯内ゲート（負荷が予測帯に戻る案のみ）を通した上で
-        score = U_AA + λ U_PA
-      が最大の案を提案する
+    AAの提案選択（最終形）：
+      x^(k) = argmax_x ( U_AA(x) + λ U_PA(x) )
+      s.t. x は PA制約（Ω）を満たす
+
+    実装では安定化のため、予測帯に入る候補のみ評価（ハードゲート）する。
     """
 
     def __init__(
         self,
         *,
-        name: str,
-        issue_names: Sequence[str],
-        thresholds: Thresholds,
-        load_model: RuleBasedLoadModel,
-        pa_profile: PAProfile,
-        aa_params: AAParams,
-        rho_change: Dict[str, float],
-        initial_setting: Dict[str, str],
-        L_current: float,
-        get_pa_constraints: Callable[[], PAConstraints],
-        max_candidates: int = 2000, # candidatesは提案候補っぽい
+        name: str, # 交渉者AAのID
+        issue_names: Sequence[str], # 論点集．シーケンス型にしてるのは対応力上げるため？
+        thresholds: Thresholds, # 閾値
+        load_model: RuleBasedLoadModel, # 負荷推定モデル
+        pa_profile: PAProfile, # PAのプロファイル　提案時にPAの選好も考慮するため
+        aa_params: AAParams, # 3つの関数の影響の大きさ（重みではない）
+        rho_change: Dict[str, float], # 論点に対する重み（ユーザ定義）
+        initial_setting: Dict[str, str], # 初期設定
+        L_current: float, # 現在の負荷
+        get_pa_constraints: Callable[[], PAConstraints], # PAの制約．引数を取らずに呼び出せて、戻り値として PAConstraints を返す関数（または関数のように呼べるもの） Callableに関しては後で調べたい
+        max_candidates: int = 3000, # 評価する最大交渉案数
     ):
         super().__init__(name=name)
         self.issue_names = list(issue_names)
@@ -438,18 +559,22 @@ class AdjustmentAgentAA(SAONegotiator):
 
         self.get_pa_constraints = get_pa_constraints
         self.max_candidates = max_candidates
-        self._cached_candidates: Optional[List[Outcome]] = None
+        self._cached_candidates: Optional[List[Outcome]] = None # 提案候補のリストをキャッシュしておく変数
+
+        # 方針1：帯内候補が存在しなかったかをPAに通知するためのフラグ
+        self.no_feasible: bool = False
 
     def on_negotiation_start(self, state: SAOState) -> None:
         super().on_negotiation_start(state)
-        # 離散空間が小さい場合は列挙が簡単（大きい場合はサンプルに落ちる）
-        # 提案候補をキャッシュしておく処理
         os = self.nmi.outcome_space
-        # 候補を出来るだけ列挙．無理ならサンプリングになる
-        self._cached_candidates = list(os.enumerate_or_sample(max_cardinality=self.max_candidates))
+        self._cached_candidates = list(os.enumerate_or_sample(max_cardinality=self.max_candidates)) # 提案候補の列挙
 
+    # 提案
     def propose(self, state: SAOState) -> Outcome:
         assert self._cached_candidates is not None, "候補が初期化されていません"
+
+        # proposeのたびにリセット（このラウンドの探索結果を表す）
+        self.no_feasible = False
 
         constraints = self.get_pa_constraints()
         best_offer: Optional[Outcome] = None
@@ -458,12 +583,12 @@ class AdjustmentAgentAA(SAONegotiator):
         for outcome in self._cached_candidates:
             offer_dict = outcome_to_dict(outcome, self.issue_names)
 
-            # ① PA制約（Ω）を満たすか
+            # ① PA制約（Ω）
             if not constraints.allows(offer_dict):
                 continue
 
             # ② AA効用と予測負荷
-            u_aa, L_hat = U_AA(
+            u_aa, L_pred = U_AA(
                 offer_dict,
                 L_current=self.L_current,
                 current_setting=self.current_setting,
@@ -473,69 +598,172 @@ class AdjustmentAgentAA(SAONegotiator):
                 params=self.aa_params,
             )
 
-            # ③ ハードゲート：予測帯に戻る案だけ残す
-            if not (self.thresholds.L_pred_low <= L_hat <= self.thresholds.L_pred_high):
+            # ③ ハードゲート：予測帯に戻る案のみ
+            if not (self.thresholds.L_pred_low <= L_pred <= self.thresholds.L_pred_high):
                 continue
 
-            # ④ 好みも少し尊重（λ）
-            u_pa = U_PA(offer_dict, self.pa_profile)
+            # ④ 新しい U_PA（好み+負荷）を計算
+            u_pa, _ = U_PA(
+                offer_dict,
+                L_current=self.L_current,
+                current_setting=self.current_setting,
+                load_model=self.load_model,
+                thresholds=self.thresholds,
+                profile=self.pa_profile,
+            )
+
             score = u_aa + self.aa_params.lam * u_pa
 
             if score > best_score:
                 best_score = score
                 best_offer = outcome
 
-        # フォールバック：帯内案が見つからない場合（保守的調整を提案）
+        # フォールバック：帯内案が見つからない場合（負荷状態に応じて分岐）
         if best_offer is None:
+            self.no_feasible = True
             fb = dict(self.current_setting)
-            fb["break_policy"] = "frequent"
-            fb["guidance"] = "high"
-            fb["stimulus"] = "low"
-            fb["complexity"] = "low"
+
+            # 現在の負荷が「低負荷」か「高負荷」かで、フォールバック方向を変える
+            if self.L_current < self.thresholds.L_pred_low:
+                # 低負荷 → 負荷を上げる方向（例：休憩減、刺激/複雑さ↑、ガイダンス↓、テンポ↑）
+                fb["break_policy"] = "rare"
+                fb["guidance"] = "low"
+                fb["stimulus"] = "high"
+                fb["complexity"] = "high"
+                fb["tempo"] = "fast"
+                fb["feedback"] = "detailed_immediate"
+            else:
+                # 高負荷（または不明）→ 負荷を下げる方向（従来どおり）
+                fb["break_policy"] = "frequent"
+                fb["guidance"] = "high"
+                fb["stimulus"] = "low"
+                fb["complexity"] = "low"
+                fb["tempo"] = "slow"
+                fb["feedback"] = "summary"
+
             best_offer = dict_to_outcome(fb, self.issue_names)
 
         return best_offer
 
     def respond(self, state: SAOState, source: str | None = None) -> ResponseType:
         """
-        AAは基本的に提案者だが、相手提案が「自分の次提案より良い」なら受諾する。
+        AAは相手案が「自分が次に出す案以上」なら受諾する簡易方針。
+        ただし、予測帯（L_pred_low〜L_pred_high）を満たさない案は絶対に受諾しない（ハード条件）。
         """
         offer = state.current_offer
         if offer is None:
             return ResponseType.REJECT_OFFER
 
         offer_dict = outcome_to_dict(offer, self.issue_names)
-        my_next_dict = outcome_to_dict(self.propose(state), self.issue_names)
 
+        # --- ハード条件：帯外は即REJECT（ここが重要） ---
+        L_offer_pred = self.load_model.predict(self.L_current, self.current_setting, offer_dict)
+        if not (self.thresholds.L_pred_low <= L_offer_pred <= self.thresholds.L_pred_high):
+            return ResponseType.REJECT_OFFER
+
+        # 自分の次案（proposeは帯内ゲート付き）
+        my_next = outcome_to_dict(self.propose(state), self.issue_names)
+
+        # offer のスコア
         u_aa_offer, _ = U_AA(
-            offer_dict, self.L_current, self.current_setting, self.load_model,
-            self.thresholds, self.rho_change, self.aa_params
+            offer_dict,
+            L_current=self.L_current,
+            current_setting=self.current_setting,
+            load_model=self.load_model,
+            thresholds=self.thresholds,
+            rho=self.rho_change,
+            params=self.aa_params,
         )
-        u_pa_offer = U_PA(offer_dict, self.pa_profile)
+        u_pa_offer, _ = U_PA(
+            offer_dict,
+            L_current=self.L_current,
+            current_setting=self.current_setting,
+            load_model=self.load_model,
+            thresholds=self.thresholds,
+            profile=self.pa_profile,
+        )
         score_offer = u_aa_offer + self.aa_params.lam * u_pa_offer
 
+        # next のスコア（proposeで帯内のみ返す前提）
         u_aa_next, _ = U_AA(
-            my_next_dict, self.L_current, self.current_setting, self.load_model,
-            self.thresholds, self.rho_change, self.aa_params
+            my_next,
+            L_current=self.L_current,
+            current_setting=self.current_setting,
+            load_model=self.load_model,
+            thresholds=self.thresholds,
+            rho=self.rho_change,
+            params=self.aa_params,
         )
-        u_pa_next = U_PA(my_next_dict, self.pa_profile)
+        u_pa_next, _ = U_PA(
+            my_next,
+            L_current=self.L_current,
+            current_setting=self.current_setting,
+            load_model=self.load_model,
+            thresholds=self.thresholds,
+            profile=self.pa_profile,
+        )
         score_next = u_aa_next + self.aa_params.lam * u_pa_next
 
         if score_offer >= score_next:
-            # 受諾：内部状態更新
+            # 受諾：内部状態更新（L_currentも予測値で更新）
             self.current_setting = dict(offer_dict)
-            self.L_current = self.load_model.predict(self.L_current, self.current_setting, offer_dict)
+            self.L_current = L_offer_pred
             return ResponseType.ACCEPT_OFFER
 
         return ResponseType.REJECT_OFFER
 
 
+
+
 # -----------------------------
-# 9) 実行例（交渉を1回回す）
+# 11) 実行例
 # -----------------------------
 
-def run_example(L_current: float, user_id: str = "01"):
-    # 交渉論点（issues）を作成
+def run_example(
+    L_current: float,
+    current_setting: Dict[str, str],
+    pa_preference: Dict[str, float],
+    pa_weight: Dict[str, float],
+    pa_taste_preference:str,
+    pa_taste_weight:float,
+    n_steps: int = 20,
+    max_candidates: int = 3000,
+)-> Optional[Dict[str, str]]:
+
+    thresholds = Thresholds(L_obs_low=0.3, L_obs_high=0.7, margin=0.10)
+
+    a_coeffs = {
+        "tempo": +0.10,
+        "guidance": -0.12,
+        "complexity": +0.14,
+        "stimulus": +0.16,
+        "break_policy": -0.20,
+        "feedback": +0.05,
+    }
+
+    rho_change = {
+        "tempo": 0.5,
+        "guidance": 0.3,
+        "complexity": 0.6,
+        "stimulus": 0.6,
+        "break_policy": 0.4,
+        "feedback": 0.2,
+    }
+
+    aa_params = AAParams(alpha=10.0, beta=2.0, gamma=1.0, lam=0.25)
+
+
+    pa_profile = PAProfile(
+        p=pa_preference,
+        w=pa_weight,
+        preferred_taste=pa_taste_preference,
+        w_taste=pa_taste_weight,
+        tau_accept=0.70,
+        tau_min=0.1,
+        lambda_L=0.50,
+        eta=6.0,
+    )
+
     issues = [
         make_issue(name="tempo", values=TEMPO_VALUES),
         make_issue(name="guidance", values=LEVEL3_VALUES),
@@ -547,65 +775,12 @@ def run_example(L_current: float, user_id: str = "01"):
     ]
     issue_names = [i.name for i in issues]
 
-    # 交渉機構（SAO：交互提案）
-    session = SAOMechanism(issues=issues, n_steps=8)
+    # 交渉ステップ数を引数化
+    session = SAOMechanism(issues=issues, n_steps=n_steps)
 
-    # CLE（観測）閾値の例
-    thresholds = Thresholds(L_obs_low=0.35, L_obs_high=0.65, margin=0.10)
+    # ルールベース予測係数 a_i を引数で受け取る
+    load_model = RuleBasedLoadModel(a_coeffs=a_coeffs)
 
-    # 現在負荷（高負荷で交渉開始した想定）
-    # L_current = 0.78
-
-    # 現在の体験設定
-    current_setting = get_current_setting(user_id)
-
-    # ルールベース負荷予測の係数（例）
-    load_model = RuleBasedLoadModel(
-        coeffs={
-            "tempo": +0.10,
-            "guidance": -0.12,
-            "complexity": +0.14,
-            "stimulus": +0.16,
-            "break_policy": -0.20,
-            "feedback": +0.05,
-        }
-    )
-
-    # PA 好み（例）
-    pa_profile = PAProfile(
-        p={
-            "tempo": 0.5,        # normal
-            "guidance": 1.0,     # high
-            "complexity": 0.5,   # medium
-            "stimulus": 0.5,     # medium
-            "break_policy": 0.5, # on_demand
-            "feedback": 0.0,     # summary
-        },
-        w={
-            "tempo": 0.15,
-            "guidance": 0.20,
-            "complexity": 0.20,
-            "stimulus": 0.20,
-            "break_policy": 0.10,
-            "feedback": 0.15,
-        },
-        preferred_taste="polite",
-        w_taste=0.10,
-        tau_accept=0.60,
-    )
-
-    # AA パラメータと変更コスト重み（例）
-    aa_params = AAParams(alpha=10.0, beta=2.0, gamma=1.0, lam=0.25)
-    rho_change = {
-        "tempo": 0.5,
-        "guidance": 0.3,
-        "complexity": 0.6,
-        "stimulus": 0.6,
-        "break_policy": 0.4,
-        "feedback": 0.2,
-    }
-
-    # PA を先に作り、AA が制約（Ω）を参照できるようにする
     pa = PlayerAgentPA(
         name="PA",
         issue_names=issue_names,
@@ -622,47 +797,211 @@ def run_example(L_current: float, user_id: str = "01"):
         thresholds=thresholds,
         load_model=load_model,
         pa_profile=pa_profile,
-        aa_params=aa_params,
-        rho_change=rho_change,
+        aa_params=aa_params,           # 引数化
+        rho_change=rho_change,         # 引数化
         initial_setting=current_setting,
         L_current=L_current,
         get_pa_constraints=lambda: pa.constraints,
-        max_candidates=2500,  # 離散空間が小さいのでほぼ全列挙できる
+        max_candidates=max_candidates, # 引数化
     )
 
-    # 交渉へ参加
+    # 方針1：PAがAAの「候補ゼロ」情報を参照できるようにする
+    pa.aa_ref = aa
+
     session.add(pa)
     session.add(aa)
 
-    # 実行
     final_state = session.run()
     agreement = final_state.agreement
 
     print("合意:", agreement)
     if agreement is not None:
         ag = outcome_to_dict(agreement, issue_names)
-        update_current_setting(user_id, ag)
-        L_hat = load_model.predict(L_current, current_setting, ag)
+
+        # 変更前/変更後負荷（予測）と差分
+        L_before = L_current
+        L_after = load_model.predict(L_current, current_setting, ag)
+        delta_L = L_after - L_before
+
+        # 効用類
+        u_pa, _ = U_PA(
+            ag,
+            L_current=L_current,
+            current_setting=current_setting,
+            load_model=load_model,
+            thresholds=thresholds,
+            profile=pa_profile,
+        )
+        u_pref = U_PA_pref(ag, pa_profile)
+        u_load = U_PA_load(L_after, thresholds, pa_profile)
+
         print("合意（dict）:", ag)
-        print("予測負荷:", round(L_hat, 3))
+        print("観測帯:", (thresholds.L_obs_low, thresholds.L_obs_high), " margin=", thresholds.margin)
         print("予測帯:", (thresholds.L_pred_low, thresholds.L_pred_high))
-        print("PA効用:", round(U_PA(ag, pa_profile), 3))
-        return {
-            "ok": True,
-            "user_id": user_id,
-            "agreement": ag,
-            "updated_issue_settings": get_current_setting(user_id),
-            "predicted_load": L_hat,
-            "predicted_band": (thresholds.L_pred_low, thresholds.L_pred_high),
-            "pa_utility": U_PA(ag, pa_profile),
-        }
+        print("負荷（変更前）:", round(L_before, 3))
+        print("負荷（変更後）:", round(L_after, 3))
+        print("負荷差分 ΔL:", round(delta_L, 3))
+        print("U_PA（総合）:", round(u_pa, 3))
+        print("  U_PA^pref:", round(u_pref, 3))
+        print("  U_PA^load:", round(u_load, 3))
 
-    return {
-        "ok": False,
-        "user_id": user_id,
-        "agreement": None,
-        "updated_issue_settings": get_current_setting(user_id),
-    }
+        # 合意案（Outcome）→ dict（issue_settings）へ変換して返す
+        return outcome_to_dict(agreement, issue_names)
+    else:
+         return dict(current_setting)
 
-if __name__ == "__main__":
-    run_example()
+# def run_example(
+#     L_current: float,
+#     current_setting: Dict[str, str],
+#     pa_profile: PAProfile,
+#     thresholds: Thresholds,
+#     a_coeffs: Dict[str, float],
+#     rho_change: Dict[str, float],
+#     aa_params: AAParams,
+#     n_steps: int = 8,
+#     max_candidates: int = 3000,
+# )-> Optional[Dict[str, str]]:
+
+#     issues = [
+#         make_issue(name="tempo", values=TEMPO_VALUES),
+#         make_issue(name="guidance", values=LEVEL3_VALUES),
+#         make_issue(name="complexity", values=LEVEL3_VALUES),
+#         make_issue(name="stimulus", values=LEVEL3_VALUES),
+#         make_issue(name="break_policy", values=BREAK_VALUES),
+#         make_issue(name="feedback", values=FEEDBACK_VALUES),
+#         make_issue(name="taste", values=TASTE_VALUES),
+#     ]
+#     issue_names = [i.name for i in issues]
+
+#     # 交渉ステップ数を引数化
+#     session = SAOMechanism(issues=issues, n_steps=n_steps)
+
+#     # ルールベース予測係数 a_i を引数で受け取る
+#     load_model = RuleBasedLoadModel(a_coeffs=a_coeffs)
+
+#     pa = PlayerAgentPA(
+#         name="PA",
+#         issue_names=issue_names,
+#         profile=pa_profile,
+#         thresholds=thresholds,
+#         load_model=load_model,
+#         initial_setting=current_setting,
+#         L_current=L_current,
+#     )
+
+#     aa = AdjustmentAgentAA(
+#         name="AA",
+#         issue_names=issue_names,
+#         thresholds=thresholds,
+#         load_model=load_model,
+#         pa_profile=pa_profile,
+#         aa_params=aa_params,           # 引数化
+#         rho_change=rho_change,         # 引数化
+#         initial_setting=current_setting,
+#         L_current=L_current,
+#         get_pa_constraints=lambda: pa.constraints,
+#         max_candidates=max_candidates, # 引数化
+#     )
+
+#     # 方針1：PAがAAの「候補ゼロ」情報を参照できるようにする
+#     pa.aa_ref = aa
+
+#     session.add(pa)
+#     session.add(aa)
+
+#     final_state = session.run()
+#     agreement = final_state.agreement
+
+#     print("合意:", agreement)
+#     if agreement is not None:
+#         ag = outcome_to_dict(agreement, issue_names)
+
+#         # 変更前/変更後負荷（予測）と差分
+#         L_before = L_current
+#         L_after = load_model.predict(L_current, current_setting, ag)
+#         delta_L = L_after - L_before
+
+#         # 効用類
+#         u_pa, _ = U_PA(
+#             ag,
+#             L_current=L_current,
+#             current_setting=current_setting,
+#             load_model=load_model,
+#             thresholds=thresholds,
+#             profile=pa_profile,
+#         )
+#         u_pref = U_PA_pref(ag, pa_profile)
+#         u_load = U_PA_load(L_after, thresholds, pa_profile)
+
+#         print("合意（dict）:", ag)
+#         print("観測帯:", (thresholds.L_obs_low, thresholds.L_obs_high), " margin=", thresholds.margin)
+#         print("予測帯:", (thresholds.L_pred_low, thresholds.L_pred_high))
+#         print("負荷（変更前）:", round(L_before, 3))
+#         print("負荷（変更後）:", round(L_after, 3))
+#         print("負荷差分 ΔL:", round(delta_L, 3))
+#         print("U_PA（総合）:", round(u_pa, 3))
+#         print("  U_PA^pref:", round(u_pref, 3))
+#         print("  U_PA^load:", round(u_load, 3))
+
+#         # 合意案（Outcome）→ dict（issue_settings）へ変換して返す
+#         return outcome_to_dict(agreement, issue_names)
+#     else:
+#          return None
+
+
+
+# if __name__ == "__main__":
+#     thresholds = Thresholds(L_obs_low=0.35, L_obs_high=0.65, margin=0.10)
+
+#     a_coeffs = {
+#         "tempo": +0.10,
+#         "guidance": -0.12,
+#         "complexity": +0.14,
+#         "stimulus": +0.16,
+#         "break_policy": -0.20,
+#         "feedback": +0.05,
+#     }
+
+#     rho_change = {
+#         "tempo": 0.5,
+#         "guidance": 0.3,
+#         "complexity": 0.6,
+#         "stimulus": 0.6,
+#         "break_policy": 0.4,
+#         "feedback": 0.2,
+#     }
+
+#     aa_params = AAParams(alpha=10.0, beta=2.0, gamma=1.0, lam=0.25)
+
+#     L_current = 0.78
+#     current_setting = {
+#         "tempo": "fast",
+#         "guidance": "low",
+#         "complexity": "high",
+#         "stimulus": "high",
+#         "break_policy": "rare",
+#         "feedback": "detailed_immediate",
+#         "taste": "concise",
+#     }
+
+#     pa_profile = PAProfile(
+#         p={"tempo": 0.5, "guidance": 1.0, "complexity": 0.5, "stimulus": 0.5, "break_policy": 0.5, "feedback": 0.0},
+#         w={"tempo": 0.15, "guidance": 0.20, "complexity": 0.20, "stimulus": 0.20, "break_policy": 0.10, "feedback": 0.15},
+#         preferred_taste="polite",
+#         w_taste=0.10,
+#         tau_accept=0.60,
+#         lambda_L=0.30,
+#         eta=6.0,
+#     )
+
+#     run_example(
+#         L_current=L_current,
+#         current_setting=current_setting,
+#         pa_profile=pa_profile,
+#         thresholds=thresholds,
+#         a_coeffs=a_coeffs,
+#         rho_change=rho_change,
+#         aa_params=aa_params,
+#         n_steps=8,
+#         max_candidates=3000,
+#     )
