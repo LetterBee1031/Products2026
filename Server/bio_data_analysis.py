@@ -3,6 +3,8 @@ from pathlib import Path
 import re
 from typing import Dict, List
 
+import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
 from sklearn.ensemble import RandomForestClassifier
 
 HR_FILE = "data/hr_ibi.jsonl"
@@ -19,7 +21,6 @@ ML_STATUS_LABELS: Dict[str, str] = {
 
 # ランダムフォレストに入力する生体特徴量。現状は心拍と皮膚電位だけを使う。
 ML_FEATURE_COLUMNS: List[str] = ["hr", "eda"]
-
 
 def normalize_user_id(user_id: str) -> str:
     # ユーザIDはファイル名に使うため、安全な文字以外を "_" に置き換える。
@@ -46,7 +47,7 @@ def analyze_Nback_hr(n_back_num: int):
     status_df = status_df.sort_values("received_at").reset_index(drop=True)
 
     # N_back_start / N_back_end だけ抽出
-    one_back_events = status_df[
+    n_back_events = status_df[
         status_df["status_flag"].isin([f"{n_back_num}_back_start", f"{n_back_num}_back_end"])
     ].reset_index(drop=True)
 
@@ -54,7 +55,7 @@ def analyze_Nback_hr(n_back_num: int):
     current_start = None
 
     # start/end を対応付けてセッションを作る
-    for _, row in one_back_events.iterrows():
+    for _, row in n_back_events.iterrows():
         flag = row["status_flag"]
         time = row["received_at"]
 
@@ -177,7 +178,6 @@ def load_ml_training_dataframe(user_id: str, data_dir: str | Path = "data") -> p
     df = df[df["hr"] > 0]
     return df
 
-
 def load_latest_prediction_dataframe(user_id: str, data_dir: str | Path = "data") -> pd.DataFrame:
     # 現在のhr_ibi_{user_id}.jsonl全体から、推論に使える最新のHR/EDA行だけを取り出す。
     file_path = hr_ibi_path_for_user(user_id, data_dir)
@@ -220,6 +220,49 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
         class_weight="balanced",
     )
     model.fit(x, y)
+
+
+
+    # 画像出力
+    tree_index = 0
+    tree = model.estimators_[tree_index]
+
+    importance_df = pd.DataFrame({
+        "feature": ML_FEATURE_COLUMNS,
+        "importance": model.feature_importances_
+    }).sort_values("importance", ascending=True)
+
+    fig, axes = plt.subplots(
+        1, 2,
+        figsize=(28, 12),
+        gridspec_kw={"width_ratios": [2.2, 1]}
+    )
+
+    # 左：代表的な決定木
+    plot_tree(
+        tree,
+        feature_names=ML_FEATURE_COLUMNS,
+        class_names = [str(c) for c in model.classes_],
+        filled=True,
+        rounded=True,
+        max_depth=5,
+        fontsize=8,
+        ax=axes[0]
+    )
+    axes[0].set_title(f"Representative Decision Tree in Random Forest\nTree index: {tree_index}")
+
+    # 右：特徴量重要度
+    axes[1].barh(
+        importance_df["feature"],
+        importance_df["importance"]
+    )
+    axes[1].set_title("Feature Importances")
+    axes[1].set_xlabel("Importance")
+
+    plt.tight_layout()
+    plt.savefig("random_forest_summary.png", dpi=300, bbox_inches="tight")
+    plt.show()
+
     return model, df
 
 
