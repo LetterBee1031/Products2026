@@ -224,6 +224,7 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
 
 
     # 画像出力
+    
     tree_index = 0
     tree = model.estimators_[tree_index]
 
