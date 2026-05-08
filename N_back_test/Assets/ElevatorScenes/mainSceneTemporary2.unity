@@ -14142,7 +14142,7 @@ MonoBehaviour:
   textTitle: {fileID: 1687700854}
   n_back_num: 3
   timeWaitOneTask: 2
-  timeLimit: 30
+  timeLimit: 120
 --- !u!114 &686141612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14157,7 +14157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RequestSender
   baseUrl: http://10.111.57.127:8080
   userId: 01
-  CLIntervalSec: 1
+  CLIntervalSec: 5
   resp_cl_temp:
     ok: 0
     id: 
