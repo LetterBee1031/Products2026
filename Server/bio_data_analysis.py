@@ -4,12 +4,14 @@ import re
 from typing import Dict, List
 
 import matplotlib.pyplot as plt
+import joblib
 from sklearn.tree import plot_tree
 from sklearn.ensemble import RandomForestClassifier
 
 HR_FILE = "data/hr_ibi.jsonl"
 STATUS_FILE = "data/status_events.jsonl"
 RESULT_FILE = Path("data/analysis_result.csv")
+MODEL_DIR = Path("models")
 
 # N-backの体験状態を、機械学習で扱う認知負荷ラベルに変換する対応表。
 ML_STATUS_LABELS: Dict[str, str] = {
@@ -20,7 +22,10 @@ ML_STATUS_LABELS: Dict[str, str] = {
 }
 
 # ランダムフォレストに入力する生体特徴量。現状は心拍と皮膚電位だけを使う。
-ML_FEATURE_COLUMNS: List[str] = ["hr", "eda"]
+# ML_FEATURE_COLUMNS: List[str] = ["hr", "eda"]
+ML_FEATURE_COLUMNS: List[str] = ["hr"]
+RANDOM_FOREST_MODEL_CACHE: Dict[str, dict] = {}
+
 
 def normalize_user_id(user_id: str) -> str:
     # ユーザIDはファイル名に使うため、安全な文字以外を "_" に置き換える。
@@ -31,6 +36,45 @@ def normalize_user_id(user_id: str) -> str:
 def hr_ibi_path_for_user(user_id: str, data_dir: str | Path = "data") -> Path:
     # ユーザごとの生体データ保存先を組み立てる。
     return Path(data_dir) / f"hr_ibi_{normalize_user_id(user_id)}.jsonl"
+
+
+def random_forest_model_path_for_user(
+    user_id: str,
+    model_dir: str | Path = MODEL_DIR,
+) -> Path:
+    return Path(model_dir) / f"random_forest_{normalize_user_id(user_id)}.joblib"
+
+
+def cache_random_forest_model(user_id: str, model, training_rows: int) -> None:
+    RANDOM_FOREST_MODEL_CACHE[normalize_user_id(user_id)] = {
+        "model": model,
+        "training_rows": int(training_rows),
+    }
+
+
+def load_cached_or_saved_random_forest_model(
+    user_id: str,
+    model_dir: str | Path = MODEL_DIR,
+):
+    safe_user_id = normalize_user_id(user_id)
+    cached = RANDOM_FOREST_MODEL_CACHE.get(safe_user_id)
+    if cached is not None:
+        return cached["model"], int(cached.get("training_rows", 0))
+
+    model_path = random_forest_model_path_for_user(safe_user_id, model_dir)
+    if not model_path.exists():
+        return None, 0
+
+    saved = joblib.load(model_path)
+    if isinstance(saved, dict) and "model" in saved:
+        model = saved["model"]
+        training_rows = int(saved.get("training_rows", 0))
+    else:
+        model = saved
+        training_rows = 0
+
+    cache_random_forest_model(safe_user_id, model, training_rows)
+    return model, training_rows
 
 
 def analyze_Nback_hr(n_back_num: int):
@@ -221,6 +265,21 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
     )
     model.fit(x, y)
 
+    training_rows = int(len(df))
+    cache_random_forest_model(user_id, model, training_rows)
+
+    model_path = random_forest_model_path_for_user(user_id)
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+    joblib.dump(
+        {
+            "model": model,
+            "training_rows": training_rows,
+            "features": ML_FEATURE_COLUMNS,
+            "classes": [str(label) for label in model.classes_],
+        },
+        model_path,
+    )
+
 
 
     # 画像出力
@@ -262,7 +321,7 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
 
     plt.tight_layout()
     plt.savefig("random_forest_summary.png", dpi=300, bbox_inches="tight")
-    plt.show()
+    plt.close(fig)
 
     return model, df
 
@@ -272,7 +331,10 @@ def classify_latest_cl_condition_with_random_forest(
     data_dir: str | Path = "data",
 ) -> dict:
     # 最新の有効データを、同じユーザの過去データで学習したモデルに入力して分類する。
-    model, training_df = train_random_forest_cl_classifier(user_id, data_dir)
+    model, training_rows = load_cached_or_saved_random_forest_model(user_id)
+    if model is None:
+        model, training_df = train_random_forest_cl_classifier(user_id, data_dir)
+        training_rows = int(len(training_df))
 
     # 学習用に絞った行ではなく、現在のhr_ibi_{user_id}.jsonlから最新の有効行を読む。
     latest_df = load_latest_prediction_dataframe(user_id, data_dir)
@@ -292,7 +354,7 @@ def classify_latest_cl_condition_with_random_forest(
     # server2.pyからそのままJSONとして返せるよう、基本型だけのdictに整形する。
     return {
         "label": predicted_label,
-        "training_rows": int(len(training_df)),
+        "training_rows": int(training_rows),
         "classes": [str(label) for label in model.classes_],
         "features": {
             "hr": float(latest_record["hr"]),

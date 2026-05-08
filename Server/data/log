@@ -1,0 +1,901 @@
+(venv) C:\product2026\Server>python -m uvicorn server2:app --host 10.111.57.127 --port 8080
+INFO:     Started server process [43312]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://10.111.57.127:8080 (Press CTRL+C to quit)
+INFO:     10.111.57.127:58432 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54950 - "GET /api/analyze_hr/set_threshold?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.127:58432 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:58432 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54952 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54952 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54955 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54957 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54961 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54961 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54967 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54967 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54969 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54970 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54970 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54970 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54970 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54970 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54970 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54970 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54970 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54993 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54993 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54993 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54993 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54993 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54993 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:54993 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:55000 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:55000 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:55000 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:55000 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'medium', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'medium', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.967
+  U_PA^pref: 0.933
+  U_PA^load: 1.0
+INFO:     10.111.57.127:64380 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'high', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'high', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.4
+負荷差分 ΔL: 0.15
+U_PA（総合）: 0.883
+  U_PA^pref: 0.767
+  U_PA^load: 1.0
+INFO:     10.111.57.127:64380 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'high', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'high', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 0.967
+  U_PA^pref: 0.933
+  U_PA^load: 1.0
+INFO:     10.111.57.127:64380 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'high', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'high', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.883
+  U_PA^pref: 0.767
+  U_PA^load: 1.0
+INFO:     10.111.57.127:64380 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:60908 - "POST /api/status_post HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/analyze_hr/set_threshold?id=01 HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'high', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'high', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 0.967
+  U_PA^pref: 0.933
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62295 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'high', 'high', 'frequent', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'high', 'stimulus': 'high', 'break_policy': 'frequent', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 0.883
+  U_PA^pref: 0.767
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "POST /api/status_post HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'medium', 'frequent', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'medium', 'break_policy': 'frequent', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.6
+負荷差分 ΔL: -0.15
+U_PA（総合）: 0.967
+  U_PA^pref: 0.933
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'medium', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'medium', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.45
+負荷差分 ΔL: 0.2
+U_PA（総合）: 0.967
+  U_PA^pref: 0.933
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'medium', 'frequent', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'medium', 'break_policy': 'frequent', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.55
+負荷差分 ΔL: -0.2
+U_PA（総合）: 0.967
+  U_PA^pref: 0.933
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'medium', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'medium', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.45
+負荷差分 ΔL: 0.2
+U_PA（総合）: 0.967
+  U_PA^pref: 0.933
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'medium', 'frequent', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'medium', 'break_policy': 'frequent', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.55
+負荷差分 ΔL: -0.2
+U_PA（総合）: 0.967
+  U_PA^pref: 0.933
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'medium', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'medium', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.45
+負荷差分 ΔL: 0.2
+U_PA（総合）: 0.967
+  U_PA^pref: 0.933
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.45
+負荷差分 ΔL: 0.2
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.127:61335 - "POST /api/status_post HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "POST /api/status_post HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "POST /api/status_post HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'high', 'frequent', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'frequent', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "POST /api/status_post HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'high', 'frequent', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'frequent', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'high', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "POST /api/status_post HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'high', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'high', 'frequent', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'high', 'break_policy': 'frequent', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'low', 'frequent', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'low', 'break_policy': 'frequent', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "POST /api/status_post HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'low', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'low', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'low', 'medium', 'low', 'rare', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'low', 'complexity': 'medium', 'stimulus': 'low', 'break_policy': 'rare', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.25
+負荷（変更後）: 0.41
+負荷差分 ΔL: 0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'medium', 'medium', 'low', 'on_demand', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'medium', 'complexity': 'medium', 'stimulus': 'low', 'break_policy': 'on_demand', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 1.0
+  U_PA^pref: 1.0
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: ('normal', 'high', 'medium', 'low', 'frequent', 'brief_immediate', 'polite')
+合意（dict）: {'tempo': 'normal', 'guidance': 'high', 'complexity': 'medium', 'stimulus': 'low', 'break_policy': 'frequent', 'feedback': 'brief_immediate', 'taste': 'polite'}
+観測帯: (0.3, 0.7)  margin= 0.1
+予測帯: (0.4, 0.6)
+負荷（変更前）: 0.75
+負荷（変更後）: 0.59
+負荷差分 ΔL: -0.16
+U_PA（総合）: 0.925
+  U_PA^pref: 0.85
+  U_PA^load: 1.0
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "POST /api/status_post HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK
+INFO:     10.111.57.108:51818 - "POST /api/Biodata HTTP/1.1" 200 OK
+合意: None
+INFO:     10.111.57.127:62294 - "GET /api/cl_condition_get?id=01 HTTP/1.1" 200 OK

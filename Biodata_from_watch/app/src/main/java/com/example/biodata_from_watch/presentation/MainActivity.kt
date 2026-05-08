@@ -1,13 +1,16 @@
 package com.example.biodata_from_watch.presentation
 
 import android.Manifest
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
@@ -17,13 +20,16 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -52,6 +58,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         setTheme(android.R.style.Theme_DeviceDefault)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         setContent {
             BiodataApp()
@@ -82,7 +89,28 @@ fun BiodataApp() {
     }
     var running by remember { mutableStateOf(false) }
     var status by remember { mutableStateOf("Ready") }
+    var sentHr by remember { mutableStateOf<Int?>(null) }
     var permissionDenied by remember { mutableStateOf(false) }
+    DisposableEffect(context) {
+        val receiver = object : BroadcastReceiver() {
+            override fun onReceive(receiverContext: Context?, intent: Intent?) {
+                if (intent?.action != BiodataUploadService.ACTION_UPLOAD_STATUS) return
+                sentHr = intent.getIntExtra(BiodataUploadService.EXTRA_SENT_HR, 0)
+                intent.getStringExtra(BiodataUploadService.EXTRA_UPLOAD_MESSAGE)?.let { message ->
+                    status = message
+                }
+            }
+        }
+        val filter = IntentFilter(BiodataUploadService.ACTION_UPLOAD_STATUS)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            context.registerReceiver(receiver, filter, Context.RECEIVER_NOT_EXPORTED)
+        } else {
+            context.registerReceiver(receiver, filter)
+        }
+        onDispose {
+            context.unregisterReceiver(receiver)
+        }
+    }
     // BODY_SENSORS 権限がない場合は、Startボタン押下時にユーザーへ許可を求める。
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -103,51 +131,81 @@ fun BiodataApp() {
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.Black)
-                .padding(horizontal = 14.dp, vertical = 18.dp),
+                .padding(horizontal = 14.dp, vertical = 12.dp),
         ) {
             Column(
                 modifier = Modifier.align(Alignment.Center),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(7.dp),
+                verticalArrangement = Arrangement.spacedBy(5.dp),
             ) {
                 Text(
                     text = "Biodata",
                     color = Color.White,
-                    fontSize = 16.sp,
+                    fontSize = 14.sp,
                     textAlign = TextAlign.Center,
                 )
-                Button(
-                    modifier = Modifier.size(64.dp),
-                    colors = ButtonDefaults.primaryButtonColors(
-                        backgroundColor = accentColor,
-                        contentColor = Color.Black,
-                    ),
-                    onClick = {
-                        // Start時点の送信先を保存し、foreground serviceの開始/停止を切り替える。
-                        prefs.edit()
-                            .putString("endpoint", endpoint)
-                            .putString("user_id", userId)
-                            .apply()
-                        if (running) {
-                            context.startService(BiodataUploadService.stopIntent(context))
-                            running = false
-                            status = "Stopped"
-                        } else if (hasBodySensorPermission(context)) {
-                            permissionDenied = false
-                            startUpload(context, endpoint, userId)
-                            running = true
-                            status = "Sending"
-                        } else {
-                            permissionLauncher.launch(requiredSensorPermissions())
-                        }
-                    },
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    Text(if (running) "Stop" else "Start", fontSize = 12.sp)
+                    Button(
+                        modifier = Modifier.size(56.dp),
+                        colors = ButtonDefaults.primaryButtonColors(
+                            backgroundColor = accentColor,
+                            contentColor = Color.Black,
+                        ),
+                        onClick = {
+                            // Start時点の送信先を保存し、foreground serviceの開始/停止を切り替える。
+                            prefs.edit()
+                                .putString("endpoint", endpoint)
+                                .putString("user_id", userId)
+                                .apply()
+                            if (running) {
+                                context.startService(BiodataUploadService.stopIntent(context))
+                                running = false
+                                status = "Stopped"
+                                sentHr = null
+                            } else if (hasBodySensorPermission(context)) {
+                                permissionDenied = false
+                                startUpload(context, endpoint, userId)
+                                running = true
+                                status = "Sending"
+                            } else {
+                                permissionLauncher.launch(requiredSensorPermissions())
+                            }
+                        },
+                    ) {
+                        Text(if (running) "Stop" else "Start", fontSize = 11.sp)
+                    }
+                    Column(
+                        modifier = Modifier.width(62.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center,
+                    ) {
+                        Text(
+                            text = "HR",
+                            color = statusColor,
+                            fontSize = 10.sp,
+                            textAlign = TextAlign.Center,
+                        )
+                        Text(
+                            text = sentHr?.toString() ?: "--",
+                            color = Color.White,
+                            fontSize = 18.sp,
+                            textAlign = TextAlign.Center,
+                        )
+                        Text(
+                            text = "bpm",
+                            color = statusColor,
+                            fontSize = 9.sp,
+                            textAlign = TextAlign.Center,
+                        )
+                    }
                 }
                 Text(
                     text = status,
                     color = statusColor,
-                    fontSize = 11.sp,
+                    fontSize = 10.sp,
                     textAlign = TextAlign.Center,
                 )
                 if (permissionDenied) {
@@ -168,9 +226,9 @@ fun BiodataApp() {
                     textStyle = TextStyle(color = Color.White, fontSize = 10.sp, textAlign = TextAlign.Center),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(26.dp)
+                        .height(24.dp)
                         .border(1.dp, Color.White)
-                        .padding(5.dp),
+                        .padding(4.dp),
                     singleLine = true,
                 )
                 BasicTextField(
@@ -179,9 +237,9 @@ fun BiodataApp() {
                     textStyle = TextStyle(color = Color.White, fontSize = 8.sp, textAlign = TextAlign.Center),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(28.dp)
+                        .height(26.dp)
                         .border(1.dp, accentColor)
-                        .padding(6.dp),
+                        .padding(5.dp),
                     singleLine = true,
                 )
             }

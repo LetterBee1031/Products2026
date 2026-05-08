@@ -149,6 +149,12 @@ class BiodataUploadService : Service(), SensorEventListener {
                         onSuccess = { "Sent HR ${sample.hr}" },
                         onFailure = { "Upload failed: ${it.message}" },
                     )
+                    sendBroadcast(
+                        Intent(ACTION_UPLOAD_STATUS)
+                            .setPackage(packageName)
+                            .putExtra(EXTRA_SENT_HR, sample.hr)
+                            .putExtra(EXTRA_UPLOAD_MESSAGE, message),
+                    )
                     (getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
                         .notify(NOTIFICATION_ID, notification(message))
                 }.onFailure { error ->
@@ -213,8 +219,11 @@ class BiodataUploadService : Service(), SensorEventListener {
     companion object {
         // ActivityとServiceの間で使うIntentキーと、初期状態の送信先URL。
         const val ACTION_STOP = "com.example.biodata_from_watch.sensor.STOP"
+        const val ACTION_UPLOAD_STATUS = "com.example.biodata_from_watch.sensor.UPLOAD_STATUS"
         const val EXTRA_ENDPOINT_URL = "endpoint_url"
         const val EXTRA_USER_ID = "user_id"
+        const val EXTRA_SENT_HR = "sent_hr"
+        const val EXTRA_UPLOAD_MESSAGE = "upload_message"
         const val DEFAULT_ENDPOINT = "http://10.111.57.127:8080/api/Biodata"
         const val DEFAULT_USER_ID = "01"
         private const val CHANNEL_ID = "biodata_upload"
