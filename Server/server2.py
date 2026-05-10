@@ -28,7 +28,7 @@ except ModuleNotFoundError:
     from Server.bio_data_analysis import save_analysis_with_summary_to_csv
     from Server.bio_data_analysis import train_random_forest_cl_classifier
     from read_jsonl_from_last import read_last_n_jsonl_as_dataframe
-    from shared_state import ISSUE_OPTIONS, user_status
+    from shared_state import ISSUE_OPTIONS, user_status, load_user_profiles
 
 from negotiation.TestNegotiation1 import run_example
 

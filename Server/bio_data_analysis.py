@@ -8,6 +8,10 @@ import joblib
 from sklearn.tree import plot_tree
 from sklearn.ensemble import RandomForestClassifier
 
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
+from sklearn.metrics import confusion_matrix
+
 HR_FILE = "data/hr_ibi.jsonl"
 STATUS_FILE = "data/status_events.jsonl"
 RESULT_FILE = Path("data/analysis_result.csv")
@@ -77,6 +81,349 @@ def load_cached_or_saved_random_forest_model(
     return model, training_rows
 
 
+def load_ml_training_dataframe(user_id: str, data_dir: str | Path = "data") -> pd.DataFrame:
+    # ユーザIDに対応するjsonlから、学習に使える行だけをDataFrameとして読み込む。
+    file_path = hr_ibi_path_for_user(user_id, data_dir)
+    if not file_path.exists():
+        raise FileNotFoundError(f"生体データファイルが見つかりません: {file_path}")
+
+    df = pd.read_json(file_path, lines=True)
+    # HR/EDA/ex_statusが揃っていないと教師あり学習ができないため、先に列を検査する。
+    required_columns = {"hr", "eda", "ex_status"}
+    missing_columns = required_columns - set(df.columns)
+    if missing_columns:
+        raise ValueError(f"必要な列がありません: {sorted(missing_columns)}")
+
+    # design.mdで指定されたN-back開始状態だけを教師データとして使う。
+    df = df[df["ex_status"].isin(ML_STATUS_LABELS.keys())].copy()
+    df["cl_label"] = df["ex_status"].map(ML_STATUS_LABELS)
+
+    # センサー値に文字列やnullが混ざっても扱えるよう、数値化できないものは欠損にする。
+    for column in ML_FEATURE_COLUMNS:
+        df[column] = pd.to_numeric(df[column], errors="coerce")
+
+    # HR/EDA/ラベルが欠けている行と、心拍0のような無効値は学習から除外する。
+    df = df.dropna(subset=ML_FEATURE_COLUMNS + ["cl_label"])
+    df = df[df["hr"] > 0]
+    return df
+
+def load_latest_prediction_dataframe(user_id: str, data_dir: str | Path = "data") -> pd.DataFrame:
+    # 現在のhr_ibi_{user_id}.jsonl全体から、推論に使える最新のHR/EDA行だけを取り出す。
+    file_path = hr_ibi_path_for_user(user_id, data_dir)
+    if not file_path.exists():
+        raise FileNotFoundError(f"生体データファイルが見つかりません: {file_path}")
+
+    df = pd.read_json(file_path, lines=True)
+    missing_columns = set(ML_FEATURE_COLUMNS) - set(df.columns)
+    if missing_columns:
+        raise ValueError(f"推論に必要な列がありません: {sorted(missing_columns)}")
+
+    for column in ML_FEATURE_COLUMNS:
+        df[column] = pd.to_numeric(df[column], errors="coerce")
+
+    # 推論ではex_statusで絞り込まず、現在ファイルにある最新の有効な生体データを使う。
+    df = df.dropna(subset=ML_FEATURE_COLUMNS)
+    df = df[df["hr"] > 0]
+    if df.empty:
+        raise ValueError("推論に使える最新HR/EDAデータがありません。")
+
+    if "received_at" in df:
+        return df.sort_values("received_at").tail(1)
+    return df.tail(1)
+
+
+def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data"):
+    # ユーザごとのデータでランダムフォレストを学習する。
+    df = load_ml_training_dataframe(user_id, data_dir)
+    if df.empty:
+        raise ValueError("学習に使えるHR/EDA/ex_statusデータがありません。")
+
+    # 入力Xは生体特徴量、教師yはLow/Optimal/Highの認知負荷ラベル。
+    x = df[ML_FEATURE_COLUMNS]
+    y = df["cl_label"]
+
+    # 変更点: データを訓練70%、一時データ30%に分割
+    x_train, x_temp, y_train, y_temp = train_test_split(
+        x,
+        y,
+        test_size=0.30,
+        random_state=42,
+        stratify=y
+    )
+
+    # 変更点: 一時データ30%を検証15%、テスト15%に分割
+    x_valid, x_test, y_valid, y_test = train_test_split(
+        x_temp,
+        y_temp,
+        test_size=0.50,
+        random_state=42,
+        stratify=y_temp
+    )
+
+    # class_weight="balanced"で、状態ごとのデータ数の偏りを少し補正する。
+    model = RandomForestClassifier(
+        n_estimators=100,
+        random_state=42,
+        class_weight="balanced",
+    )
+
+    # 変更点: 全データではなく訓練データだけで学習
+    model.fit(x_train, y_train)
+
+    # 変更点: 検証データとテストデータで予測
+    y_valid_pred = model.predict(x_valid)
+    y_test_pred = model.predict(x_test)
+
+    # 変更点: 評価指標を計算する内部関数を追加
+    def make_metrics_text(name, y_true, y_pred):
+        accuracy = accuracy_score(y_true, y_pred)
+        precision = precision_score(y_true, y_pred, average="weighted", zero_division=0)
+        recall = recall_score(y_true, y_pred, average="weighted", zero_division=0)
+        f_value = f1_score(y_true, y_pred, average="weighted", zero_division=0)
+
+        # 変更点: ラベル順を固定
+        labels = ["Low", "Optimal", "High"]
+
+        # 変更点: 混同行列を作成
+        cm = confusion_matrix(y_true, y_pred, labels=labels)
+        cm_df = pd.DataFrame(
+            cm,
+            index=[f"True_{label}" for label in labels],
+            columns=[f"Pred_{label}" for label in labels]
+        )
+
+        text = []
+        text.append(f"===== {name} =====")
+        text.append(f"Accuracy : {accuracy:.4f}")
+        text.append(f"Precision: {precision:.4f}")
+        text.append(f"Recall   : {recall:.4f}")
+        text.append(f"F-value  : {f_value:.4f}")
+        text.append("")
+        text.append("Confusion Matrix:")
+        text.append(cm_df.to_string())
+        text.append("")
+        text.append("Classification Report:")
+        text.append(classification_report(y_true, y_pred, labels=labels, zero_division=0))
+        text.append("")
+
+        return "\n".join(text)
+
+    # 変更点: 結果をテキストとして作成
+    result_text = []
+    result_text.append("Random Forest Cognitive Load Classification Result")
+    result_text.append("")
+    result_text.append(f"Feature columns: {ML_FEATURE_COLUMNS}")
+    result_text.append(f"Total rows     : {len(df)}")
+    result_text.append(f"Train rows     : {len(x_train)}")
+    result_text.append(f"Validation rows: {len(x_valid)}")
+    result_text.append(f"Test rows      : {len(x_test)}")
+    result_text.append("")
+    result_text.append(make_metrics_text("Validation Result", y_valid, y_valid_pred))
+    result_text.append(make_metrics_text("Test Result", y_test, y_test_pred))
+
+    result_text = "\n".join(result_text)
+
+    # 変更点: 結果をコンソールにテキスト出力
+    print(result_text)
+
+    # 変更点: 結果をテキストファイルにも保存
+    RESULT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    result_txt_path = RESULT_FILE.with_suffix(".txt")
+    result_txt_path.write_text(result_text, encoding="utf-8")
+
+    training_rows = int(len(x_train))
+    cache_random_forest_model(user_id, model, training_rows)
+
+    model_path = random_forest_model_path_for_user(user_id)
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+    joblib.dump(
+        {
+            "model": model,
+            "training_rows": training_rows,
+            "features": ML_FEATURE_COLUMNS,
+            "classes": [str(label) for label in model.classes_],
+            # 変更点: 評価結果もモデル保存情報に含める
+            "validation_rows": int(len(x_valid)),
+            "test_rows": int(len(x_test)),
+            "evaluation_text": result_text,
+        },
+        model_path,
+    )
+
+    # 画像出力
+    tree_index = 0
+    tree = model.estimators_[tree_index]
+
+    importance_df = pd.DataFrame({
+        "feature": ML_FEATURE_COLUMNS,
+        "importance": model.feature_importances_
+    }).sort_values("importance", ascending=True)
+
+    fig, axes = plt.subplots(
+        1, 2,
+        figsize=(28, 12),
+        gridspec_kw={"width_ratios": [2.2, 1]}
+    )
+
+    plot_tree(
+        tree,
+        feature_names=ML_FEATURE_COLUMNS,
+        class_names=[str(c) for c in model.classes_],
+        filled=True,
+        rounded=True,
+        max_depth=5,
+        fontsize=8,
+        ax=axes[0]
+    )
+    axes[0].set_title(
+        f"Representative Decision Tree in Random Forest\nTree index: {tree_index}"
+    )
+
+    axes[1].barh(
+        importance_df["feature"],
+        importance_df["importance"]
+    )
+    axes[1].set_title("Feature Importances")
+    axes[1].set_xlabel("Importance")
+
+    plt.tight_layout()
+    plt.savefig("random_forest_summary.png", dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+    # 変更点: 評価済みモデルと学習元dfを返す
+    return model, df
+
+# def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data"):
+#     # ユーザごとのデータでランダムフォレストを学習する。
+#     df = load_ml_training_dataframe(user_id, data_dir)
+#     if df.empty:
+#         raise ValueError("学習に使えるHR/EDA/ex_statusデータがありません。")
+
+#     # 入力Xは生体特徴量、教師yはLow/Optimal/Highの認知負荷ラベル。
+#     x = df[ML_FEATURE_COLUMNS]
+#     y = df["cl_label"]
+
+#     # class_weight="balanced"で、状態ごとのデータ数の偏りを少し補正する。
+#     model = RandomForestClassifier(
+#         n_estimators=100,
+#         random_state=42,
+#         class_weight="balanced",
+#     )
+#     model.fit(x, y)
+
+#     training_rows = int(len(df))
+#     cache_random_forest_model(user_id, model, training_rows)
+
+#     model_path = random_forest_model_path_for_user(user_id)
+#     model_path.parent.mkdir(parents=True, exist_ok=True)
+#     joblib.dump(
+#         {
+#             "model": model,
+#             "training_rows": training_rows,
+#             "features": ML_FEATURE_COLUMNS,
+#             "classes": [str(label) for label in model.classes_],
+#         },
+#         model_path,
+#     )
+
+
+
+#     # 画像出力
+    
+#     tree_index = 0
+#     tree = model.estimators_[tree_index]
+
+#     importance_df = pd.DataFrame({
+#         "feature": ML_FEATURE_COLUMNS,
+#         "importance": model.feature_importances_
+#     }).sort_values("importance", ascending=True)
+
+#     fig, axes = plt.subplots(
+#         1, 2,
+#         figsize=(28, 12),
+#         gridspec_kw={"width_ratios": [2.2, 1]}
+#     )
+
+#     # 左：代表的な決定木
+#     plot_tree(
+#         tree,
+#         feature_names=ML_FEATURE_COLUMNS,
+#         class_names = [str(c) for c in model.classes_],
+#         filled=True,
+#         rounded=True,
+#         max_depth=5,
+#         fontsize=8,
+#         ax=axes[0]
+#     )
+#     axes[0].set_title(f"Representative Decision Tree in Random Forest\nTree index: {tree_index}")
+
+#     # 右：特徴量重要度
+#     axes[1].barh(
+#         importance_df["feature"],
+#         importance_df["importance"]
+#     )
+#     axes[1].set_title("Feature Importances")
+#     axes[1].set_xlabel("Importance")
+
+#     plt.tight_layout()
+#     plt.savefig("random_forest_summary.png", dpi=300, bbox_inches="tight")
+#     plt.close(fig)
+
+#     return model, df
+
+
+def classify_latest_cl_condition_with_random_forest(
+    user_id: str,
+    data_dir: str | Path = "data",
+) -> dict:
+    # 最新の有効データを、同じユーザの過去データで学習したモデルに入力して分類する。
+    model, training_rows = load_cached_or_saved_random_forest_model(user_id)
+    if model is None:
+        model, training_df = train_random_forest_cl_classifier(user_id, data_dir)
+        training_rows = int(len(training_df))
+
+    # 学習用に絞った行ではなく、現在のhr_ibi_{user_id}.jsonlから最新の有効行を読む。
+    latest_df = load_latest_prediction_dataframe(user_id, data_dir)
+    latest_features = latest_df[ML_FEATURE_COLUMNS]
+    predicted_label = str(model.predict(latest_features)[0])
+
+    # 可能なら各クラスの予測確率も返し、サーバレスポンスから判定の強さを見られるようにする。
+    probabilities = {}
+    if hasattr(model, "predict_proba"):
+        proba = model.predict_proba(latest_features)[0]
+        probabilities = {
+            str(label): float(prob)
+            for label, prob in zip(model.classes_, proba)
+        }
+
+    latest_record = latest_df.iloc[0]
+    # server2.pyからそのままJSONとして返せるよう、基本型だけのdictに整形する。
+    return {
+        "label": predicted_label,
+        "training_rows": int(training_rows),
+        "classes": [str(label) for label in model.classes_],
+        "features": {
+            "hr": float(latest_record["hr"]),
+            "eda": float(latest_record["eda"]),
+        },
+        "probabilities": probabilities,
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 使ってないけど一応残してるだけのもの　後で消す
 def analyze_Nback_hr(n_back_num: int):
     # JSONLを読み込む
     hr_df = pd.read_json(HR_FILE, lines=True)
@@ -194,171 +541,3 @@ def save_analysis_with_summary_to_csv(n_back_num: int, file_path="data/analysis_
     )
 
     return output_df, overall_mean_hr
-
-
-def load_ml_training_dataframe(user_id: str, data_dir: str | Path = "data") -> pd.DataFrame:
-    # ユーザIDに対応するjsonlから、学習に使える行だけをDataFrameとして読み込む。
-    file_path = hr_ibi_path_for_user(user_id, data_dir)
-    if not file_path.exists():
-        raise FileNotFoundError(f"生体データファイルが見つかりません: {file_path}")
-
-    df = pd.read_json(file_path, lines=True)
-    # HR/EDA/ex_statusが揃っていないと教師あり学習ができないため、先に列を検査する。
-    required_columns = {"hr", "eda", "ex_status"}
-    missing_columns = required_columns - set(df.columns)
-    if missing_columns:
-        raise ValueError(f"必要な列がありません: {sorted(missing_columns)}")
-
-    # design.mdで指定されたN-back開始状態だけを教師データとして使う。
-    df = df[df["ex_status"].isin(ML_STATUS_LABELS.keys())].copy()
-    df["cl_label"] = df["ex_status"].map(ML_STATUS_LABELS)
-
-    # センサー値に文字列やnullが混ざっても扱えるよう、数値化できないものは欠損にする。
-    for column in ML_FEATURE_COLUMNS:
-        df[column] = pd.to_numeric(df[column], errors="coerce")
-
-    # HR/EDA/ラベルが欠けている行と、心拍0のような無効値は学習から除外する。
-    df = df.dropna(subset=ML_FEATURE_COLUMNS + ["cl_label"])
-    df = df[df["hr"] > 0]
-    return df
-
-def load_latest_prediction_dataframe(user_id: str, data_dir: str | Path = "data") -> pd.DataFrame:
-    # 現在のhr_ibi_{user_id}.jsonl全体から、推論に使える最新のHR/EDA行だけを取り出す。
-    file_path = hr_ibi_path_for_user(user_id, data_dir)
-    if not file_path.exists():
-        raise FileNotFoundError(f"生体データファイルが見つかりません: {file_path}")
-
-    df = pd.read_json(file_path, lines=True)
-    missing_columns = set(ML_FEATURE_COLUMNS) - set(df.columns)
-    if missing_columns:
-        raise ValueError(f"推論に必要な列がありません: {sorted(missing_columns)}")
-
-    for column in ML_FEATURE_COLUMNS:
-        df[column] = pd.to_numeric(df[column], errors="coerce")
-
-    # 推論ではex_statusで絞り込まず、現在ファイルにある最新の有効な生体データを使う。
-    df = df.dropna(subset=ML_FEATURE_COLUMNS)
-    df = df[df["hr"] > 0]
-    if df.empty:
-        raise ValueError("推論に使える最新HR/EDAデータがありません。")
-
-    if "received_at" in df:
-        return df.sort_values("received_at").tail(1)
-    return df.tail(1)
-
-
-def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data"):
-    # ユーザごとのデータでランダムフォレストを学習する。
-    df = load_ml_training_dataframe(user_id, data_dir)
-    if df.empty:
-        raise ValueError("学習に使えるHR/EDA/ex_statusデータがありません。")
-
-    # 入力Xは生体特徴量、教師yはLow/Optimal/Highの認知負荷ラベル。
-    x = df[ML_FEATURE_COLUMNS]
-    y = df["cl_label"]
-
-    # class_weight="balanced"で、状態ごとのデータ数の偏りを少し補正する。
-    model = RandomForestClassifier(
-        n_estimators=100,
-        random_state=42,
-        class_weight="balanced",
-    )
-    model.fit(x, y)
-
-    training_rows = int(len(df))
-    cache_random_forest_model(user_id, model, training_rows)
-
-    model_path = random_forest_model_path_for_user(user_id)
-    model_path.parent.mkdir(parents=True, exist_ok=True)
-    joblib.dump(
-        {
-            "model": model,
-            "training_rows": training_rows,
-            "features": ML_FEATURE_COLUMNS,
-            "classes": [str(label) for label in model.classes_],
-        },
-        model_path,
-    )
-
-
-
-    # 画像出力
-    
-    tree_index = 0
-    tree = model.estimators_[tree_index]
-
-    importance_df = pd.DataFrame({
-        "feature": ML_FEATURE_COLUMNS,
-        "importance": model.feature_importances_
-    }).sort_values("importance", ascending=True)
-
-    fig, axes = plt.subplots(
-        1, 2,
-        figsize=(28, 12),
-        gridspec_kw={"width_ratios": [2.2, 1]}
-    )
-
-    # 左：代表的な決定木
-    plot_tree(
-        tree,
-        feature_names=ML_FEATURE_COLUMNS,
-        class_names = [str(c) for c in model.classes_],
-        filled=True,
-        rounded=True,
-        max_depth=5,
-        fontsize=8,
-        ax=axes[0]
-    )
-    axes[0].set_title(f"Representative Decision Tree in Random Forest\nTree index: {tree_index}")
-
-    # 右：特徴量重要度
-    axes[1].barh(
-        importance_df["feature"],
-        importance_df["importance"]
-    )
-    axes[1].set_title("Feature Importances")
-    axes[1].set_xlabel("Importance")
-
-    plt.tight_layout()
-    plt.savefig("random_forest_summary.png", dpi=300, bbox_inches="tight")
-    plt.close(fig)
-
-    return model, df
-
-
-def classify_latest_cl_condition_with_random_forest(
-    user_id: str,
-    data_dir: str | Path = "data",
-) -> dict:
-    # 最新の有効データを、同じユーザの過去データで学習したモデルに入力して分類する。
-    model, training_rows = load_cached_or_saved_random_forest_model(user_id)
-    if model is None:
-        model, training_df = train_random_forest_cl_classifier(user_id, data_dir)
-        training_rows = int(len(training_df))
-
-    # 学習用に絞った行ではなく、現在のhr_ibi_{user_id}.jsonlから最新の有効行を読む。
-    latest_df = load_latest_prediction_dataframe(user_id, data_dir)
-    latest_features = latest_df[ML_FEATURE_COLUMNS]
-    predicted_label = str(model.predict(latest_features)[0])
-
-    # 可能なら各クラスの予測確率も返し、サーバレスポンスから判定の強さを見られるようにする。
-    probabilities = {}
-    if hasattr(model, "predict_proba"):
-        proba = model.predict_proba(latest_features)[0]
-        probabilities = {
-            str(label): float(prob)
-            for label, prob in zip(model.classes_, proba)
-        }
-
-    latest_record = latest_df.iloc[0]
-    # server2.pyからそのままJSONとして返せるよう、基本型だけのdictに整形する。
-    return {
-        "label": predicted_label,
-        "training_rows": int(training_rows),
-        "classes": [str(label) for label in model.classes_],
-        "features": {
-            "hr": float(latest_record["hr"]),
-            "eda": float(latest_record["eda"]),
-        },
-        "probabilities": probabilities,
-    }

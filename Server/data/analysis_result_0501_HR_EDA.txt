@@ -1,0 +1,55 @@
+Random Forest Cognitive Load Classification Result
+
+Feature columns: ['hr', 'eda']
+Total rows     : 182
+Train rows     : 127
+Validation rows: 27
+Test rows      : 28
+
+===== Validation Result =====
+Accuracy : 0.4444
+Precision: 0.4807
+Recall   : 0.4444
+F-value  : 0.4398
+
+Confusion Matrix:
+              Pred_Low  Pred_Optimal  Pred_High
+True_Low             3             4          0
+True_Optimal         5             7          1
+True_High            0             5          2
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         Low       0.38      0.43      0.40         7
+     Optimal       0.44      0.54      0.48        13
+        High       0.67      0.29      0.40         7
+
+    accuracy                           0.44        27
+   macro avg       0.49      0.42      0.43        27
+weighted avg       0.48      0.44      0.44        27
+
+
+===== Test Result =====
+Accuracy : 0.5714
+Precision: 0.5662
+Recall   : 0.5714
+F-value  : 0.5516
+
+Confusion Matrix:
+              Pred_Low  Pred_Optimal  Pred_High
+True_Low             7             0          0
+True_Optimal         4             6          4
+True_High            0             4          3
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         Low       0.64      1.00      0.78         7
+     Optimal       0.60      0.43      0.50        14
+        High       0.43      0.43      0.43         7
+
+    accuracy                           0.57        28
+   macro avg       0.55      0.62      0.57        28
+weighted avg       0.57      0.57      0.55        28
+
