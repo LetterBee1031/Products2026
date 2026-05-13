@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
-using UnityEditor.Compilation;
+// using UnityEditor.Compilation;
 using TMPro;
 
 public class RequestSender : MonoBehaviour
