@@ -60,6 +60,14 @@ class BiodataPost(BaseModel):
     timestamp: Optional[int] = None
     deviceIp: Optional[str] = None
 
+class EyedataPost(BaseModel):
+    userID: str = "01"
+    pupilDiaLeft: float
+    pupilDiaRight: float
+    sentAt: str
+    timestamp: int
+    deviceIp: str
+
 # 体験段階のポストのためのクラス
 class StatusPost(BaseModel):
     id: str = "01"
@@ -73,6 +81,9 @@ def normalize_user_id(user_id: str) -> str:
 def hr_jsonl_path_for_user(user_id: str) -> Path:
     return DATA_DIR / f"hr_ibi_{normalize_user_id(user_id)}.jsonl"
 
+def eye_jsonl_path_for_user(user_id: str) -> Path:
+    return DATA_DIR / f"eye_data{normalize_user_id(user_id)}.jsonl"
+
 def append_records_by_user(records: List[dict]) -> None:
     files = {}
     try:
@@ -80,6 +91,18 @@ def append_records_by_user(records: List[dict]) -> None:
             user_id = normalize_user_id(str(record.get("id", "01")))
             if user_id not in files:
                 files[user_id] = hr_jsonl_path_for_user(user_id).open("a", encoding="utf-8")
+            files[user_id].write(json.dumps(record, ensure_ascii=False) + "\n")
+    finally:
+        for f in files.values():
+            f.close()
+
+def append_eye_records_by_user(records: List[dict]) -> None:
+    files = {}
+    try:
+        for record in records:
+            user_id = normalize_user_id(str(record.get("userID", "01")))
+            if user_id not in files:
+                files[user_id] = eye_jsonl_path_for_user(user_id).open("a", encoding="utf-8")
             files[user_id].write(json.dumps(record, ensure_ascii=False) + "\n")
     finally:
         for f in files.values():
@@ -134,6 +157,29 @@ async def receive_biodata(payload: List[BiodataPost], request: Request):
 
     return {"ok": True, "count": len(payload)}
 
+
+@app.post("/api/EyeData")
+async def receive_eyedata(payload: List[EyedataPost], request: Request):
+    client_host = request.client.host if request.client else "unknown"
+    received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
+
+    records = []
+    for item in payload:
+        user_id = normalize_user_id(item.userID)
+        records.append({
+            "userID": user_id,
+            "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
+            "sent_at": item.sentAt,
+            "received_at": received_at,
+            "client_host": client_host,
+            "device_ip": item.deviceIp,
+            "timestamp": item.timestamp,
+            "pupilDiaLeft": item.pupilDiaLeft,
+            "pupilDiaRight": item.pupilDiaRight,
+        })
+    append_eye_records_by_user(records)
+
+    return {"ok": True, "count": len(payload)}
 
 # ユーザデータの読み込み
 @app.get("/api/set_profiles")

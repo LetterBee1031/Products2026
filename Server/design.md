@@ -122,3 +122,32 @@
   - "Low"："0_back_start"
   - "Optimal"："1_back_start", "2_back_start"
   - "High"："3_back_start"
+
+
+# 視線情報の送信
+- unity側から視線情報を送信して，サーバで記録できるようにしたい
+
+## サーバ側（server2.py）
+### クラス EyedataPost(BaseModel)
+- 以下の要素を持つクラス EyedataPost(BaseModel) を追加
+  - 文字列型 userID: ユーザID
+  - 実数型 pupilDiaLeft: 左目の瞳孔径
+  - 実数型 pupilDiaRight: 右目の瞳孔径
+  - 文字列型 sentAt: 送信時刻
+  - 整数型 timestamp: タイムスタンプ
+  - 文字列型 deviceIp: 送信端末のIPアドレス
+
+### パスオペレーション @app.post("/api/EyeData")
+- 以下の関数を持つ@app.post("/api/EyeData") を追加
+  - 関数 receive_eyedata(payload: List[EyedataPost], request: Request)
+    - unityから送信されてきた左右の瞳孔径を記録．
+    - 記録するファイルは，eye_data{userID}.jsonl
+      - ユーザIDに応じたファイルを作る
+    - receive_biodataを参考に
+
+## unity側（RequestSender.cs）
+### PostEyeData(float pupilDiaLeft, float pupilDiaRight)
+- 瞳孔径を送信する関数
+- server2.pyの@app.post("/api/EyeData")に対して瞳孔径データ送信を行う
+- postリクエストを行う
+- この関数は，EyeDataTracking.csで呼び出される想定

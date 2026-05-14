@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -13,8 +15,16 @@ public class RequestSender : MonoBehaviour
     [Header("FastAPI server base URL")]
     public string baseUrl = "http://127.0.0.1:8080"; // 送信先URL publicになっててunity側で固定され沼った．注意
 
+    [Header("Server URL input UI")]
+    public TMP_InputField baseUrlInputField;
+    public bool loadSavedBaseUrl = true;
+    public bool saveBaseUrlOnChange = true;
+    public bool sendStartFlagOnStart = true;
+
     [Header("Fixed user id")]
     public string userId = "01";
+
+    private const string BaseUrlPrefsKey = "RequestSender.BaseUrl";
 
     [Serializable]
 
@@ -25,6 +35,17 @@ public class RequestSender : MonoBehaviour
         public string status_flag;
         //public long timestamp_ms;   // ★統一
         public string sent_at;
+    }
+
+    [Serializable]
+    public class EyeDataPost
+    {
+        public string userID;
+        public float pupilDiaLeft;
+        public float pupilDiaRight;
+        public string sentAt;
+        public long timestamp;
+        public string deviceIp;
     }
 
     [Serializable]
@@ -71,7 +92,22 @@ public class RequestSender : MonoBehaviour
 
     void Start()
     {
-        SendStartFlag();
+        if (loadSavedBaseUrl && PlayerPrefs.HasKey(BaseUrlPrefsKey))
+        {
+            baseUrl = NormalizeBaseUrl(PlayerPrefs.GetString(BaseUrlPrefsKey));
+        }
+
+        if (baseUrlInputField != null)
+        {
+            baseUrlInputField.SetTextWithoutNotify(baseUrl);
+            baseUrlInputField.onEndEdit.AddListener(SetBaseUrl);
+        }
+
+        if (sendStartFlagOnStart)
+        {
+            SendStartFlag();
+        }
+
         cl_coroutine = StartCoroutine(RequestLoop());
         resp_cl_temp = new CL_ConditionGetResponse();
 
@@ -118,6 +154,46 @@ public class RequestSender : MonoBehaviour
         {
             StartCoroutine(GetCLCondition());
         }
+    }
+
+    public void SetBaseUrl(string inputUrl)
+    {
+        if (string.IsNullOrWhiteSpace(inputUrl))
+        {
+            Debug.LogWarning("BASE_URL input is empty.");
+            return;
+        }
+
+        baseUrl = NormalizeBaseUrl(inputUrl);
+
+        if (baseUrlInputField != null)
+        {
+            baseUrlInputField.SetTextWithoutNotify(baseUrl);
+        }
+
+        if (saveBaseUrlOnChange)
+        {
+            PlayerPrefs.SetString(BaseUrlPrefsKey, baseUrl);
+            PlayerPrefs.Save();
+        }
+
+        Debug.Log($"BASE_URL updated: {baseUrl}");
+    }
+
+    public void SetBaseUrlFromInputField()
+    {
+        if (baseUrlInputField == null)
+        {
+            Debug.LogWarning("BASE_URL input field is not assigned.");
+            return;
+        }
+
+        SetBaseUrl(baseUrlInputField.text);
+    }
+
+    public void PostEyeData(float pupilDiaLeft, float pupilDiaRight)
+    {
+        StartCoroutine(PostEyeDataCoroutine(pupilDiaLeft, pupilDiaRight));
     }
 
     public void StartAlnalyzeCLCondition(bool flag)
@@ -171,10 +247,29 @@ public class RequestSender : MonoBehaviour
         return resp_cl_temp;
     }
 
+    private string NormalizeBaseUrl(string inputUrl)
+    {
+        string normalized = inputUrl.Trim().Trim('"').TrimEnd('/');
+
+        if (!normalized.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+            !normalized.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        {
+            normalized = "http://" + normalized;
+        }
+
+        return normalized;
+    }
+
+    private string GetSafeBaseUrl()
+    {
+        baseUrl = NormalizeBaseUrl(baseUrl);
+        return baseUrl;
+    }
+
     // ---- status送信 ----
     public IEnumerator PostStatusFlag(string statusFlag)
     {
-        string safeBase = baseUrl.Trim().Trim('"').TrimEnd('/');
+        string safeBase = GetSafeBaseUrl();
         string url = safeBase + "/api/status_post";
 
         var payload = new StatusPost
@@ -212,10 +307,75 @@ public class RequestSender : MonoBehaviour
     }
 
 
+    // ---- eye data送信 ----
+    public IEnumerator PostEyeDataCoroutine(float pupilDiaLeft, float pupilDiaRight)
+    {
+        string safeBase = GetSafeBaseUrl();
+        string url = safeBase + "/api/EyeData";
+
+        var payload = new List<EyeDataPost>
+        {
+            new EyeDataPost
+            {
+                userID = userId,
+                pupilDiaLeft = pupilDiaLeft,
+                pupilDiaRight = pupilDiaRight,
+                sentAt = DateTime.Now.ToString(),
+                timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                deviceIp = GetDeviceIpAddress()
+            }
+        };
+
+        string json = JsonConvert.SerializeObject(payload);
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        using (var req = new UnityWebRequest(url, "POST"))
+        {
+            req.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            req.downloadHandler = new DownloadHandlerBuffer();
+            req.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
+
+            Debug.Log($"EYEDATA_POST url=[{url}] payload={json}");
+
+            yield return req.SendWebRequest();
+
+#if UNITY_2020_2_OR_NEWER
+            bool ok = (req.result == UnityWebRequest.Result.Success);
+#else
+            bool ok = !(req.isNetworkError || req.isHttpError);
+#endif
+
+            if (!ok)
+                Debug.LogWarning($"EYEDATA_POST failed: code={req.responseCode}, err={req.error}, body={req.downloadHandler.text}");
+            else
+                Debug.Log($"EYEDATA_POST ok: {req.downloadHandler.text}");
+        }
+    }
+
+    private string GetDeviceIpAddress()
+    {
+        try
+        {
+            foreach (var address in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+            {
+                if (address.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return address.ToString();
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning($"GetDeviceIpAddress failed: {e.Message}");
+        }
+
+        return "unknown";
+    }
+
     // ---- status取得（GET）----
     public IEnumerator GetExpStatus()
     {
-        string safeBase = baseUrl.Trim().Trim('"').TrimEnd('/');
+        string safeBase = GetSafeBaseUrl();
         string url = safeBase + "/api/status_get?id=" + UnityWebRequest.EscapeURL(userId);
 
         using (var req = UnityWebRequest.Get(url))
@@ -244,7 +404,7 @@ public class RequestSender : MonoBehaviour
     // 心拍の解析・閾値設定指示　unityから
     public IEnumerator GetAnalyzeHrSave()
     {
-        string safeBase = baseUrl.Trim().Trim('"').TrimEnd('/');
+        string safeBase = GetSafeBaseUrl();
         string url = safeBase + "/api/analyze_hr/set_threshold?id=" + UnityWebRequest.EscapeURL(userId);
 
         using (var req = UnityWebRequest.Get(url))
@@ -292,7 +452,7 @@ public class RequestSender : MonoBehaviour
     public IEnumerator GetCLCondition()
     {
         isCLRequestRunning = true;
-        string safeBase = baseUrl.Trim().Trim('"').TrimEnd('/');
+        string safeBase = GetSafeBaseUrl();
         string url = safeBase + "/api/cl_condition_get?id=" + UnityWebRequest.EscapeURL(userId);
 
         using (var req = UnityWebRequest.Get(url))
@@ -349,6 +509,11 @@ public class RequestSender : MonoBehaviour
 
     void OnDisable()
     {
+        if (baseUrlInputField != null)
+        {
+            baseUrlInputField.onEndEdit.RemoveListener(SetBaseUrl);
+        }
+
         if (cl_coroutine != null)
         {
             StopCoroutine(cl_coroutine);

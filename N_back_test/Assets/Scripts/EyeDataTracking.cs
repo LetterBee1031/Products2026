@@ -6,6 +6,7 @@ using VIVE.OpenXR.EyeTracker;
 
 public class EyeDataTracking : MonoBehaviour
 {
+    public RequestSender requestSender;
     // 左右の視線情報を表示するText
     // 0: Left, 1: Right
     public TextMeshProUGUI[] text_gazeData = new TextMeshProUGUI[2];
@@ -60,6 +61,34 @@ public class EyeDataTracking : MonoBehaviour
             this.time = time;
             this.diameter = diameter;
         }
+    }
+
+    // 瞳孔径の送信
+    public void SendPupilDiameterData(float leftPupilDiameter, float rightPupilDiameter)
+    {
+        if (requestSender == null)
+        {
+            requestSender = GetComponent<RequestSender>();
+        }
+
+        if (requestSender == null)
+        {
+            Debug.LogWarning("EyeDataTracking: RequestSender is not assigned.");
+            return;
+        }
+
+        if (!hasLatestData ||
+            !latestLeftPupil.isDiameterValid ||
+            !latestRightPupil.isDiameterValid)
+        {
+            Debug.LogWarning("EyeDataTracking: pupil diameter data is not valid.");
+            return;
+        }
+
+        requestSender.PostEyeData(
+            leftPupilDiameter,
+            rightPupilDiameter
+        );
     }
 
     void Update()
@@ -121,14 +150,19 @@ public class EyeDataTracking : MonoBehaviour
             return;
         }
 
-        // 左目の情報をUIに表示する
-        PrintEyeData(0, "Left", latestLeftGaze, latestLeftPupil, leftPupilSamples);
+        // // 左目の情報をUIに表示する
+        // PrintEyeData(0, "Left", latestLeftGaze, latestLeftPupil, leftPupilSamples);
 
-        // 右目の情報をUIに表示する
-        PrintEyeData(1, "Right", latestRightGaze, latestRightPupil, rightPupilSamples);
+        // // 右目の情報をUIに表示する
+        // PrintEyeData(1, "Right", latestRightGaze, latestRightPupil, rightPupilSamples);
+
+        SendPupilDiameterData(
+            PrintEyeData(0, "Left", latestLeftGaze, latestLeftPupil, leftPupilSamples),
+            PrintEyeData(1, "Right", latestRightGaze, latestRightPupil, rightPupilSamples)
+        );
     }
 
-    void PrintEyeData(
+    float PrintEyeData(
         int eyeIndex,                         // UI配列の番号。0: 左目, 1: 右目
         string eyeName,                       // 表示用の目の名前
         XrSingleEyeGazeDataHTC gaze,          // 最新の視線データ
@@ -139,6 +173,7 @@ public class EyeDataTracking : MonoBehaviour
         string gazeText;
         string pupilDiameterText;
         string pupilPositionText;
+        float smoothedPupilDiameter = -1.0f;
 
         // 視線情報が有効な場合
         if (gaze.isValid)
@@ -170,7 +205,7 @@ public class EyeDataTracking : MonoBehaviour
             float rawPupilDiameter = pupil.pupilDiameter;
 
             // Queueに保存されている直近1秒分の瞳孔径平均
-            float smoothedPupilDiameter = GetSmoothedPupilDiameter(pupilSamples);
+            smoothedPupilDiameter = GetSmoothedPupilDiameter(pupilSamples);
 
             pupilDiameterText =
                 $"{eyeName} Eye Pupil Diameter" +
@@ -220,6 +255,7 @@ public class EyeDataTracking : MonoBehaviour
         {
             text_pupilData[eyeIndex].text = pupilText;
         }
+        return smoothedPupilDiameter;
     }
 
     // 毎フレーム取得した瞳孔径をQueueに追加する関数

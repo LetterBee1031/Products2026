@@ -155,3 +155,4 @@
 {"received_at": "2026-05-08T20:09:53.045930+09:00", "client_host": "10.111.57.127", "id": "01", "status_flag": "3_back_end", "sent_at": "2026/05/08 20:09:53"}
 {"received_at": "2026-05-08T20:10:09.835719+09:00", "client_host": "10.111.57.127", "id": "01", "status_flag": "3_back_start", "sent_at": "2026/05/08 20:10:09"}
 {"received_at": "2026-05-08T20:11:09.848883+09:00", "client_host": "10.111.57.127", "id": "01", "status_flag": "3_back_end", "sent_at": "2026/05/08 20:11:09"}
+{"received_at": "2026-05-14T20:44:25.263672+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/14 20:44:24"}
