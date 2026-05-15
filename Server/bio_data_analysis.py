@@ -20,14 +20,14 @@ MODEL_DIR = Path("models")
 # N-backの体験状態を、機械学習で扱う認知負荷ラベルに変換する対応表。
 ML_STATUS_LABELS: Dict[str, str] = {
     "0_back_start": "Low",
-    "1_back_start": "Optimal",
+    "1_back_start": "Low",
     "2_back_start": "Optimal",
     "3_back_start": "High",
 }
 
-# ランダムフォレストに入力する生体特徴量。現状は心拍と皮膚電位だけを使う。
-# ML_FEATURE_COLUMNS: List[str] = ["hr", "eda"]
-ML_FEATURE_COLUMNS: List[str] = ["hr"]
+# ランダムフォレストに入力する特徴量。hr_ibi側のHR/EDAと、eye_data側の左右瞳孔径を使う。
+#ML_FEATURE_COLUMNS: List[str] = ["hr", "eda", "pupilDiaLeft", "pupilDiaRight"]
+ML_FEATURE_COLUMNS: List[str] = ["hr", "pupilDiaLeft", "pupilDiaRight"]
 RANDOM_FOREST_MODEL_CACHE: Dict[str, dict] = {}
 
 
@@ -40,6 +40,62 @@ def normalize_user_id(user_id: str) -> str:
 def hr_ibi_path_for_user(user_id: str, data_dir: str | Path = "data") -> Path:
     # ユーザごとの生体データ保存先を組み立てる。
     return Path(data_dir) / f"hr_ibi_{normalize_user_id(user_id)}.jsonl"
+
+
+def eye_data_path_for_user(user_id: str, data_dir: str | Path = "data") -> Path:
+    # 視線データは eye_data{user_id}.jsonl という名前で保存されている。
+    return Path(data_dir) / f"eye_data{normalize_user_id(user_id)}.jsonl"
+
+
+def normalize_sent_at_to_jst_second(value) -> pd.Timestamp:
+    # eye_dataは "YYYY/MM/DD HH:MM:SS"、hr_ibiはISO形式のことがあるため、
+    # どちらもJSTの秒単位に丸めて同期用キーとして使う。
+    timestamp = pd.to_datetime(value, errors="coerce")
+    if pd.isna(timestamp):
+        return pd.NaT
+    if timestamp.tzinfo is None:
+        timestamp = timestamp.tz_localize("Asia/Tokyo")
+    else:
+        timestamp = timestamp.tz_convert("Asia/Tokyo")
+    return timestamp.floor("s")
+
+
+def merge_eye_data_by_sent_at(
+    hr_df: pd.DataFrame,
+    user_id: str,
+    data_dir: str | Path = "data",
+) -> pd.DataFrame:
+    # HR/EDAの各行に、同じsent_atを持つ左右瞳孔径を結合する。
+    # 一致しない行は瞳孔径がNaNになり、後段のdropnaで学習/推論から除外される。
+    eye_path = eye_data_path_for_user(user_id, data_dir)
+    if not eye_path.exists():
+        raise FileNotFoundError(f"視線データファイルが見つかりません: {eye_path}")
+
+    if "sent_at" not in hr_df.columns:
+        raise ValueError("生体データに sent_at 列がありません。")
+
+    eye_df = pd.read_json(eye_path, lines=True)
+    required_eye_columns = {"sent_at", "pupilDiaLeft", "pupilDiaRight"}
+    missing_eye_columns = required_eye_columns - set(eye_df.columns)
+    if missing_eye_columns:
+        raise ValueError(f"視線データに必要な列がありません: {sorted(missing_eye_columns)}")
+
+    # 元のsent_at文字列は残したまま、比較専用の正規化キーを一時列として作る。
+    hr_with_key = hr_df.copy()
+    eye_with_key = eye_df[["sent_at", "pupilDiaLeft", "pupilDiaRight"]].copy()
+    hr_with_key["_sent_at_key"] = hr_with_key["sent_at"].map(normalize_sent_at_to_jst_second)
+    eye_with_key["_sent_at_key"] = eye_with_key["sent_at"].map(normalize_sent_at_to_jst_second)
+
+    # 同じ秒に複数のeye_dataがある場合は、最後に記録された値を代表値として使う。
+    eye_with_key = eye_with_key.dropna(subset=["_sent_at_key"])
+    eye_with_key = eye_with_key.drop_duplicates(subset=["_sent_at_key"], keep="last")
+
+    merged = hr_with_key.merge(
+        eye_with_key[["_sent_at_key", "pupilDiaLeft", "pupilDiaRight"]],
+        on="_sent_at_key",
+        how="left",
+    )
+    return merged.drop(columns=["_sent_at_key"])
 
 
 def random_forest_model_path_for_user(
@@ -71,6 +127,10 @@ def load_cached_or_saved_random_forest_model(
 
     saved = joblib.load(model_path)
     if isinstance(saved, dict) and "model" in saved:
+        saved_features = saved.get("features")
+        # 特徴量構成が変わった保存済みモデルは使わず、現在の特徴量で再学習する。
+        if saved_features is not None and list(saved_features) != ML_FEATURE_COLUMNS:
+            return None, 0
         model = saved["model"]
         training_rows = int(saved.get("training_rows", 0))
     else:
@@ -88,8 +148,9 @@ def load_ml_training_dataframe(user_id: str, data_dir: str | Path = "data") -> p
         raise FileNotFoundError(f"生体データファイルが見つかりません: {file_path}")
 
     df = pd.read_json(file_path, lines=True)
-    # HR/EDA/ex_statusが揃っていないと教師あり学習ができないため、先に列を検査する。
-    required_columns = {"hr", "eda", "ex_status"}
+    df = merge_eye_data_by_sent_at(df, user_id, data_dir)
+    # HR/EDA/ex_statusと、同じsent_atを持つ瞳孔径が揃っていないと教師あり学習ができない。
+    required_columns = {"hr", "eda", "ex_status", "sent_at", "pupilDiaLeft", "pupilDiaRight"}
     missing_columns = required_columns - set(df.columns)
     if missing_columns:
         raise ValueError(f"必要な列がありません: {sorted(missing_columns)}")
@@ -114,6 +175,7 @@ def load_latest_prediction_dataframe(user_id: str, data_dir: str | Path = "data"
         raise FileNotFoundError(f"生体データファイルが見つかりません: {file_path}")
 
     df = pd.read_json(file_path, lines=True)
+    df = merge_eye_data_by_sent_at(df, user_id, data_dir)
     missing_columns = set(ML_FEATURE_COLUMNS) - set(df.columns)
     if missing_columns:
         raise ValueError(f"推論に必要な列がありません: {sorted(missing_columns)}")
@@ -403,8 +465,8 @@ def classify_latest_cl_condition_with_random_forest(
         "training_rows": int(training_rows),
         "classes": [str(label) for label in model.classes_],
         "features": {
-            "hr": float(latest_record["hr"]),
-            "eda": float(latest_record["eda"]),
+            column: float(latest_record[column])
+            for column in ML_FEATURE_COLUMNS
         },
         "probabilities": probabilities,
     }

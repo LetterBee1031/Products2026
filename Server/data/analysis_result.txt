@@ -1,55 +1,55 @@
 Random Forest Cognitive Load Classification Result
 
-Feature columns: ['hr']
-Total rows     : 223
-Train rows     : 156
-Validation rows: 33
-Test rows      : 34
+Feature columns: ['hr', 'pupilDiaLeft', 'pupilDiaRight']
+Total rows     : 471
+Train rows     : 329
+Validation rows: 71
+Test rows      : 71
 
 ===== Validation Result =====
-Accuracy : 0.4848
-Precision: 0.4991
-Recall   : 0.4848
-F-value  : 0.4877
+Accuracy : 0.6901
+Precision: 0.6892
+Recall   : 0.6901
+F-value  : 0.6824
 
 Confusion Matrix:
               Pred_Low  Pred_Optimal  Pred_High
-True_Low             4             3          1
-True_Optimal         4             8          5
-True_High            1             3          4
+True_Low            28             6          1
+True_Optimal         2            13          3
+True_High            8             2          8
 
 Classification Report:
               precision    recall  f1-score   support
 
-         Low       0.44      0.50      0.47         8
-     Optimal       0.57      0.47      0.52        17
-        High       0.40      0.50      0.44         8
+         Low       0.74      0.80      0.77        35
+     Optimal       0.62      0.72      0.67        18
+        High       0.67      0.44      0.53        18
 
-    accuracy                           0.48        33
-   macro avg       0.47      0.49      0.48        33
-weighted avg       0.50      0.48      0.49        33
+    accuracy                           0.69        71
+   macro avg       0.67      0.66      0.66        71
+weighted avg       0.69      0.69      0.68        71
 
 
 ===== Test Result =====
-Accuracy : 0.5294
-Precision: 0.5598
-Recall   : 0.5294
-F-value  : 0.5317
+Accuracy : 0.7606
+Precision: 0.7596
+Recall   : 0.7606
+F-value  : 0.7598
 
 Confusion Matrix:
               Pred_Low  Pred_Optimal  Pred_High
-True_Low             4             2          2
-True_Optimal         5             8          4
-True_High            1             2          6
+True_Low            28             3          4
+True_Optimal         3            14          1
+True_High            5             1         12
 
 Classification Report:
               precision    recall  f1-score   support
 
-         Low       0.40      0.50      0.44         8
-     Optimal       0.67      0.47      0.55        17
-        High       0.50      0.67      0.57         9
+         Low       0.78      0.80      0.79        35
+     Optimal       0.78      0.78      0.78        18
+        High       0.71      0.67      0.69        18
 
-    accuracy                           0.53        34
-   macro avg       0.52      0.55      0.52        34
-weighted avg       0.56      0.53      0.53        34
+    accuracy                           0.76        71
+   macro avg       0.75      0.75      0.75        71
+weighted avg       0.76      0.76      0.76        71
 

@@ -22,7 +22,9 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.time.Instant
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
 
 class BiodataUploadService : Service(), SensorEventListener {
@@ -130,16 +132,23 @@ class BiodataUploadService : Service(), SensorEventListener {
 
         val poster = BiodataPoster(endpointUrl)
         uploadJob = scope.launch {
+            var nextUploadElapsed = SystemClock.elapsedRealtime()
             while (true) {
+                val waitMillis = nextUploadElapsed - SystemClock.elapsedRealtime()
+                if (waitMillis > 0) {
+                    delay(waitMillis)
+                }
+
                 runCatching {
-                    // 2秒程度の窓で、IBIは0〜4個までまとめて送信する。
+                    // 1秒程度の窓で、IBIは0〜4個までまとめて送信する。
                     val current = consumeSnapshot()
                     val sample = BiodataSample(
                         userId = userId,
                         hr = current.hr,
                         ibi = current.ibi.take(MAX_IBI_PER_SAMPLE),
                         eda = current.eda,
-                        sentAt = Instant.now().toString(),
+                        sentAt = ZonedDateTime.now(JST_ZONE)
+                            .format(DateTimeFormatter.ISO_OFFSET_DATE_TIME),
                         timestamp = System.currentTimeMillis(),
                         deviceIp = DeviceNetwork.localIpAddress(),
                     )
@@ -161,7 +170,11 @@ class BiodataUploadService : Service(), SensorEventListener {
                     (getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
                         .notify(NOTIFICATION_ID, notification("Upload loop error: ${error.message}"))
                 }
-                delay(2_000)
+                nextUploadElapsed += UPLOAD_INTERVAL_MS
+                val now = SystemClock.elapsedRealtime()
+                while (nextUploadElapsed <= now) {
+                    nextUploadElapsed += UPLOAD_INTERVAL_MS
+                }
             }
         }
     }
@@ -224,11 +237,13 @@ class BiodataUploadService : Service(), SensorEventListener {
         const val EXTRA_USER_ID = "user_id"
         const val EXTRA_SENT_HR = "sent_hr"
         const val EXTRA_UPLOAD_MESSAGE = "upload_message"
-        const val DEFAULT_ENDPOINT = "http://10.111.57.127:8080/api/Biodata"
+        const val DEFAULT_ENDPOINT = "http://192.168.150.127:8080/api/Biodata"
         const val DEFAULT_USER_ID = "01"
         private const val CHANNEL_ID = "biodata_upload"
         private const val NOTIFICATION_ID = 1001
         private const val MAX_IBI_PER_SAMPLE = 4
+        private const val UPLOAD_INTERVAL_MS = 1_000L
+        private val JST_ZONE: ZoneId = ZoneId.of("Asia/Tokyo")
 
         fun startIntent(context: Context, endpointUrl: String, userId: String): Intent {
             return Intent(context, BiodataUploadService::class.java)

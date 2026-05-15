@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <!-- 実験用のローカルサーバへHTTPで送信するため、LAN内IPへの平文通信を許可する。 -->
+    <!-- 実験用のローカルサーバへHTTPで送信するため、開発中は平文通信を許可する。 -->
+    <base-config cleartextTrafficPermitted="true" />
+
+    <!-- 既定の送信先IP。エンドポイントを変えてもbase-config側でHTTPは許可される。 -->
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">10.111.57.127</domain>
     </domain-config>
