@@ -32,6 +32,12 @@ except ModuleNotFoundError:
 
 from negotiation.TestNegotiation1 import run_example
 
+# PLR補正モデルの学習・推論処理
+try:
+    from Server.plr_model import fit_plr_model, predict_pupil_diameter
+except ModuleNotFoundError:
+    from plr_model import fit_plr_model, predict_pupil_diameter
+
 app = FastAPI()
 
 DATA_DIR = Path("data")
@@ -60,13 +66,51 @@ class BiodataPost(BaseModel):
     timestamp: Optional[int] = None
     deviceIp: Optional[str] = None
 
+# Unit環境から視線データを送るためのやつ
 class EyedataPost(BaseModel):
     userID: str = "01"
-    pupilDiaLeft: float
-    pupilDiaRight: float
+    pupilDiaMeanRaw: float
+    pupilDiaMeanSmoothed: float
+
+    predictedPupilMm: float
+    tepr: float
+    luminanceY: float
+
     sentAt: str
     timestamp: int
     deviceIp: str
+
+
+# PLRキャリブレーションデータ1サンプル
+class PLRCalibrationSample(BaseModel):
+    luminanceY: float
+    pupilMm: float
+
+# Unityから送られるPLRキャリブレーションデータ
+class PLRFitRequest(BaseModel):
+    userID: str = "01"
+    sentAt: Optional[str] = None
+    timestamp: Optional[int] = None
+    deviceIp: Optional[str] = None
+    samples: List[PLRCalibrationSample]
+
+# Unityへ返すPLRモデル推定結果
+class PLRFitResponse(BaseModel):
+    ok: bool
+    userID: str
+    a: float
+    b: float
+    c: float
+    mse: float
+    sampleCount: int
+    error: Optional[str] = None
+
+# 任意の輝度値から予測瞳孔径を返す確認用API
+class PLRPredictRequest(BaseModel):
+    luminanceY: List[float]
+    a: float
+    b: float
+    c: float
 
 # 体験段階のポストのためのクラス
 class StatusPost(BaseModel):
@@ -174,12 +218,85 @@ async def receive_eyedata(payload: List[EyedataPost], request: Request):
             "client_host": client_host,
             "device_ip": item.deviceIp,
             "timestamp": item.timestamp,
-            "pupilDiaLeft": item.pupilDiaLeft,
-            "pupilDiaRight": item.pupilDiaRight,
+            # "pupilDiaLeft": item.pupilDiaLeft,
+            # "pupilDiaRight": item.pupilDiaRight,
+            "pupilDiaMeanRaw": item.pupilDiaMeanRaw,
+            "pupilDiaMeanSmoothed": item.pupilDiaMeanSmoothed,
+            "predictedPupilMm": item.predictedPupilMm,
+            "tepr": item.tepr,
+            "luminanceY": item.luminanceY
         })
     append_eye_records_by_user(records)
 
     return {"ok": True, "count": len(payload)}
+
+
+# PLR補正用モデルの学習API
+# UnityのRequestSender.csからキャリブレーションデータを受け取り、a,b,cを返す。
+@app.post("/api/plr/fit", response_model=PLRFitResponse)
+async def fit_plr(payload: PLRFitRequest, request: Request):
+    client_host = request.client.host if request.client else "unknown"
+    received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
+    user_id = normalize_user_id(payload.userID)
+
+    # Pydanticモデルを通常のdictに変換する。
+    samples = [sample.model_dump() for sample in payload.samples]
+
+    # 後から確認できるよう、生データもjsonlに保存しておく。
+    raw_record = {
+        "userID": user_id,
+        "sent_at": payload.sentAt,
+        "received_at": received_at,
+        "client_host": client_host,
+        "device_ip": payload.deviceIp,
+        "timestamp": payload.timestamp,
+        "samples": samples,
+    }
+    with (DATA_DIR / f"plr_calibration_{user_id}.jsonl").open("a", encoding="utf-8") as f:
+        f.write(json.dumps(raw_record, ensure_ascii=False) + "\n")
+
+    try:
+        result = fit_plr_model(samples)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    # 推定結果も別ファイルに保存する。
+    result_record = {
+        "userID": user_id,
+        "received_at": received_at,
+        **result,
+    }
+    with (DATA_DIR / f"plr_params_{user_id}.jsonl").open("a", encoding="utf-8") as f:
+        f.write(json.dumps(result_record, ensure_ascii=False) + "\n")
+
+    return {
+        "ok": True,
+        "userID": user_id,
+        "a": result["a"],
+        "b": result["b"],
+        "c": result["c"],
+        "mse": result["mse"],
+        "sampleCount": result["sampleCount"],
+        "error": None,
+    }
+
+# PLRモデルの推論確認用API
+# Unity側では基本的に a,b,c を受け取った後ローカル計算すればよい。
+@app.post("/api/plr/predict")
+async def predict_plr(payload: PLRPredictRequest):
+    try:
+        predicted = predict_pupil_diameter(
+            payload.luminanceY,
+            payload.a,
+            payload.b,
+            payload.c,
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    return {"ok": True, "predictedPupilMm": predicted}
 
 # ユーザデータの読み込み
 @app.get("/api/set_profiles")

@@ -41,11 +41,53 @@ public class RequestSender : MonoBehaviour
     public class EyeDataPost
     {
         public string userID;
-        public float pupilDiaLeft;
-        public float pupilDiaRight;
+
+        public float pupilDiaMeanRaw;
+        public float pupilDiaMeanSmoothed;
+
+        public float predictedPupilMm;
+        public float tepr;
+        public float luminanceY;
+
         public string sentAt;
         public long timestamp;
         public string deviceIp;
+    }
+
+
+
+    // ---- PLRキャリブレーション送信用 ----
+    // Unity側で集めた「輝度Y」と「瞳孔径mm」の1サンプル
+    [Serializable]
+    public class PLRCalibrationSample
+    {
+        public float luminanceY;
+        public float pupilMm;
+    }
+
+    // /api/plr/fit に送るJSON全体
+    [Serializable]
+    public class PLRCalibrationRequest
+    {
+        public string userID;
+        public string sentAt;
+        public long timestamp;
+        public string deviceIp;
+        public List<PLRCalibrationSample> samples = new List<PLRCalibrationSample>();
+    }
+
+    // /api/plr/fit から返ってくる推定結果
+    [Serializable]
+    public class PLRFitResponse
+    {
+        public bool ok;
+        public string userID;
+        public float a;
+        public float b;
+        public float c;
+        public float mse;
+        public int sampleCount;
+        public string error;
     }
 
     [Serializable]
@@ -191,9 +233,21 @@ public class RequestSender : MonoBehaviour
         SetBaseUrl(baseUrlInputField.text);
     }
 
-    public void PostEyeData(float pupilDiaLeft, float pupilDiaRight)
+    public void PostEyeData(
+    float pupilDiaMeanRaw,
+    float pupilDiaMeanSmoothed,
+    float predictedPupilMm,
+    float tepr,
+    float luminanceY
+)
     {
-        StartCoroutine(PostEyeDataCoroutine(pupilDiaLeft, pupilDiaRight));
+        StartCoroutine(PostEyeDataCoroutine(
+            pupilDiaMeanRaw,
+            pupilDiaMeanSmoothed,
+            predictedPupilMm,
+            tepr,
+            luminanceY
+        ));
     }
 
     public void StartAlnalyzeCLCondition(bool flag)
@@ -308,22 +362,89 @@ public class RequestSender : MonoBehaviour
 
 
     // ---- eye data送信 ----
-    public IEnumerator PostEyeDataCoroutine(float pupilDiaLeft, float pupilDiaRight)
+    public IEnumerator PostEyeDataCoroutine(
+        float pupilDiaMeanRaw,
+        float pupilDiaMeanSmoothed,
+        float predictedPupilMm,
+        float tepr,
+        float luminanceY
+    )
     {
         string safeBase = GetSafeBaseUrl();
         string url = safeBase + "/api/EyeData";
 
         var payload = new List<EyeDataPost>
+    {
+        new EyeDataPost
         {
-            new EyeDataPost
+            userID = userId,
+            pupilDiaMeanRaw = pupilDiaMeanRaw,
+            pupilDiaMeanSmoothed = pupilDiaMeanSmoothed,
+            predictedPupilMm = predictedPupilMm,
+            tepr = tepr,
+            luminanceY = luminanceY,
+            sentAt = DateTime.Now.ToString(),
+            timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+            deviceIp = GetDeviceIpAddress()
+        }
+    };
+
+        string json = JsonConvert.SerializeObject(payload);
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        using (var req = new UnityWebRequest(url, "POST"))
+        {
+            req.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            req.downloadHandler = new DownloadHandlerBuffer();
+            req.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
+
+            yield return req.SendWebRequest();
+
+            if (req.result != UnityWebRequest.Result.Success)
             {
-                userID = userId,
-                pupilDiaLeft = pupilDiaLeft,
-                pupilDiaRight = pupilDiaRight,
-                sentAt = DateTime.Now.ToString(),
-                timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
-                deviceIp = GetDeviceIpAddress()
+                Debug.LogWarning($"EYEDATA_POST failed: {req.error}, body={req.downloadHandler.text}");
             }
+            else
+            {
+                Debug.Log($"EYEDATA_POST ok: {req.downloadHandler.text}");
+            }
+        }
+    }
+
+
+
+    // ---- PLRモデル推定リクエスト送信 ----
+    // calibrationSamplesには、キャリブレーション中に取得した輝度Yと瞳孔径mmのペアを入れる
+    // onSuccessには、FastAPIからa,b,cが返ってきた後に実行したい処理を渡す
+    public void PostPLRFitRequest(
+        List<PLRCalibrationSample> calibrationSamples,
+        Action<PLRFitResponse> onSuccess = null
+    )
+    {
+        StartCoroutine(PostPLRFitRequestCoroutine(calibrationSamples, onSuccess));
+    }
+
+    public IEnumerator PostPLRFitRequestCoroutine(
+        List<PLRCalibrationSample> calibrationSamples,
+        Action<PLRFitResponse> onSuccess = null
+    )
+    {
+        if (calibrationSamples == null || calibrationSamples.Count == 0)
+        {
+            Debug.LogWarning("PLR_FIT_POST skipped: calibrationSamples is empty.");
+            yield break;
+        }
+
+        string safeBase = GetSafeBaseUrl();
+        string url = safeBase + "/api/plr/fit";
+
+        var payload = new PLRCalibrationRequest
+        {
+            userID = userId,
+            sentAt = DateTime.Now.ToString(),
+            timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+            deviceIp = GetDeviceIpAddress(),
+            samples = calibrationSamples
         };
 
         string json = JsonConvert.SerializeObject(payload);
@@ -335,7 +456,7 @@ public class RequestSender : MonoBehaviour
             req.downloadHandler = new DownloadHandlerBuffer();
             req.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
 
-            Debug.Log($"EYEDATA_POST url=[{url}] payload={json}");
+            Debug.Log($"PLR_FIT_POST url=[{url}] sampleCount={calibrationSamples.Count}");
 
             yield return req.SendWebRequest();
 
@@ -346,9 +467,26 @@ public class RequestSender : MonoBehaviour
 #endif
 
             if (!ok)
-                Debug.LogWarning($"EYEDATA_POST failed: code={req.responseCode}, err={req.error}, body={req.downloadHandler.text}");
-            else
-                Debug.Log($"EYEDATA_POST ok: {req.downloadHandler.text}");
+            {
+                Debug.LogWarning($"PLR_FIT_POST failed: code={req.responseCode}, err={req.error}, body={req.downloadHandler.text}");
+                yield break;
+            }
+
+            var resp = JsonConvert.DeserializeObject<PLRFitResponse>(req.downloadHandler.text);
+            if (resp == null)
+            {
+                Debug.LogWarning($"PLR_FIT_POST parse failed: body={req.downloadHandler.text}");
+                yield break;
+            }
+
+            if (!resp.ok)
+            {
+                Debug.LogWarning($"PLR_FIT_POST server returned ok=false: error={resp.error}, body={req.downloadHandler.text}");
+                yield break;
+            }
+
+            Debug.Log($"PLR_FIT_POST ok: userID={resp.userID}, a={resp.a}, b={resp.b}, c={resp.c}, mse={resp.mse}, n={resp.sampleCount}");
+            onSuccess?.Invoke(resp);
         }
     }
 
@@ -499,7 +637,7 @@ public class RequestSender : MonoBehaviour
             {
                 DisplayIssueCondition(resp.issue_settings);
             }
-            
+
 
         }
         isCLRequestRunning = false;

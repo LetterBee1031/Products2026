@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 import joblib
 from sklearn.tree import plot_tree
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
@@ -28,6 +30,7 @@ ML_STATUS_LABELS: Dict[str, str] = {
 # ランダムフォレストに入力する特徴量。hr_ibi側のHR/EDAと、eye_data側の左右瞳孔径を使う。
 #ML_FEATURE_COLUMNS: List[str] = ["hr", "eda", "pupilDiaLeft", "pupilDiaRight"]
 ML_FEATURE_COLUMNS: List[str] = ["hr", "pupilDiaLeft", "pupilDiaRight"]
+ML_PREPROCESSING_NAME = "standard_scaler_zscore"
 RANDOM_FOREST_MODEL_CACHE: Dict[str, dict] = {}
 
 
@@ -109,6 +112,7 @@ def cache_random_forest_model(user_id: str, model, training_rows: int) -> None:
     RANDOM_FOREST_MODEL_CACHE[normalize_user_id(user_id)] = {
         "model": model,
         "training_rows": int(training_rows),
+        "preprocessing": ML_PREPROCESSING_NAME,
     }
 
 
@@ -119,6 +123,8 @@ def load_cached_or_saved_random_forest_model(
     safe_user_id = normalize_user_id(user_id)
     cached = RANDOM_FOREST_MODEL_CACHE.get(safe_user_id)
     if cached is not None:
+        if cached.get("preprocessing") != ML_PREPROCESSING_NAME:
+            return None, 0
         return cached["model"], int(cached.get("training_rows", 0))
 
     model_path = random_forest_model_path_for_user(safe_user_id, model_dir)
@@ -131,11 +137,12 @@ def load_cached_or_saved_random_forest_model(
         # 特徴量構成が変わった保存済みモデルは使わず、現在の特徴量で再学習する。
         if saved_features is not None and list(saved_features) != ML_FEATURE_COLUMNS:
             return None, 0
+        if saved.get("preprocessing") != ML_PREPROCESSING_NAME:
+            return None, 0
         model = saved["model"]
         training_rows = int(saved.get("training_rows", 0))
     else:
-        model = saved
-        training_rows = 0
+        return None, 0
 
     cache_random_forest_model(safe_user_id, model, training_rows)
     return model, training_rows
@@ -222,11 +229,19 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
         stratify=y_temp
     )
 
-    # class_weight="balanced"で、状態ごとのデータ数の偏りを少し補正する。
-    model = RandomForestClassifier(
-        n_estimators=100,
-        random_state=42,
-        class_weight="balanced",
+    # zスコア化は訓練データだけで平均・標準偏差をfitし、検証/テスト/推論にも同じ変換を使う。
+    model = Pipeline(
+        steps=[
+            ("scaler", StandardScaler()),
+            (
+                "classifier",
+                RandomForestClassifier(
+                    n_estimators=100,
+                    random_state=42,
+                    class_weight="balanced",
+                ),
+            ),
+        ]
     )
 
     # 変更点: 全データではなく訓練データだけで学習
@@ -275,6 +290,7 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
     result_text.append("Random Forest Cognitive Load Classification Result")
     result_text.append("")
     result_text.append(f"Feature columns: {ML_FEATURE_COLUMNS}")
+    result_text.append(f"Preprocessing  : {ML_PREPROCESSING_NAME}")
     result_text.append(f"Total rows     : {len(df)}")
     result_text.append(f"Train rows     : {len(x_train)}")
     result_text.append(f"Validation rows: {len(x_valid)}")
@@ -304,6 +320,7 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
             "training_rows": training_rows,
             "features": ML_FEATURE_COLUMNS,
             "classes": [str(label) for label in model.classes_],
+            "preprocessing": ML_PREPROCESSING_NAME,
             # 変更点: 評価結果もモデル保存情報に含める
             "validation_rows": int(len(x_valid)),
             "test_rows": int(len(x_test)),
@@ -313,12 +330,13 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
     )
 
     # 画像出力
+    classifier = model.named_steps["classifier"]
     tree_index = 0
-    tree = model.estimators_[tree_index]
+    tree = classifier.estimators_[tree_index]
 
     importance_df = pd.DataFrame({
         "feature": ML_FEATURE_COLUMNS,
-        "importance": model.feature_importances_
+        "importance": classifier.feature_importances_
     }).sort_values("importance", ascending=True)
 
     fig, axes = plt.subplots(

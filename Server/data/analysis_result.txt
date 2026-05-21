@@ -1,6 +1,7 @@
 Random Forest Cognitive Load Classification Result
 
 Feature columns: ['hr', 'pupilDiaLeft', 'pupilDiaRight']
+Preprocessing  : standard_scaler_zscore
 Total rows     : 471
 Train rows     : 329
 Validation rows: 71
@@ -31,25 +32,25 @@ weighted avg       0.69      0.69      0.68        71
 
 
 ===== Test Result =====
-Accuracy : 0.7606
-Precision: 0.7596
-Recall   : 0.7606
-F-value  : 0.7598
+Accuracy : 0.7465
+Precision: 0.7459
+Recall   : 0.7465
+F-value  : 0.7456
 
 Confusion Matrix:
               Pred_Low  Pred_Optimal  Pred_High
 True_Low            28             3          4
-True_Optimal         3            14          1
+True_Optimal         4            13          1
 True_High            5             1         12
 
 Classification Report:
               precision    recall  f1-score   support
 
-         Low       0.78      0.80      0.79        35
-     Optimal       0.78      0.78      0.78        18
+         Low       0.76      0.80      0.78        35
+     Optimal       0.76      0.72      0.74        18
         High       0.71      0.67      0.69        18
 
-    accuracy                           0.76        71
-   macro avg       0.75      0.75      0.75        71
-weighted avg       0.76      0.76      0.76        71
+    accuracy                           0.75        71
+   macro avg       0.74      0.73      0.74        71
+weighted avg       0.75      0.75      0.75        71
 

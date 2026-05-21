@@ -180,3 +180,23 @@
 {"received_at": "2026-05-15T18:29:45.496947+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "2_back_end", "sent_at": "2026/05/15 18:29:45"}
 {"received_at": "2026-05-15T18:30:48.809256+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "3_back_start", "sent_at": "2026/05/15 18:30:48"}
 {"received_at": "2026-05-15T18:32:48.825164+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "3_back_end", "sent_at": "2026/05/15 18:32:48"}
+{"received_at": "2026-05-21T18:30:11.360813+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 18:30:10"}
+{"received_at": "2026-05-21T18:31:56.811087+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 18:31:56"}
+{"received_at": "2026-05-21T18:34:42.122304+09:00", "client_host": "192.168.150.127", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 18:34:42"}
+{"received_at": "2026-05-21T18:36:12.276821+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 18:36:11"}
+{"received_at": "2026-05-21T18:38:32.955111+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 18:38:32"}
+{"received_at": "2026-05-21T18:43:23.032061+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 18:43:22"}
+{"received_at": "2026-05-21T18:56:07.669452+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 18:56:07"}
+{"received_at": "2026-05-21T19:05:30.080161+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 19:05:29"}
+{"received_at": "2026-05-21T19:21:32.249260+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 19:21:31"}
+{"received_at": "2026-05-21T19:21:32.285700+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLCorrection.csより愛をこめて", "sent_at": "2026/05/21 19:21:32"}
+{"received_at": "2026-05-21T19:36:51.834067+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 19:36:51"}
+{"received_at": "2026-05-21T19:36:51.850747+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLCorrection.csより愛をこめて", "sent_at": "2026/05/21 19:36:51"}
+{"received_at": "2026-05-21T19:36:59.265286+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLR Calibration Start", "sent_at": "2026/05/21 19:36:59"}
+{"received_at": "2026-05-21T19:43:23.774930+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 19:43:23"}
+{"received_at": "2026-05-21T19:43:23.793908+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLCorrection.csより愛をこめて", "sent_at": "2026/05/21 19:43:23"}
+{"received_at": "2026-05-21T19:43:55.981907+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLR Calibration Start", "sent_at": "2026/05/21 19:43:56"}
+{"received_at": "2026-05-21T19:49:32.718292+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLR Calibration Start", "sent_at": "2026/05/21 19:49:32"}
+{"received_at": "2026-05-21T19:52:57.319841+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/05/21 19:52:57"}
+{"received_at": "2026-05-21T19:52:57.338244+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLCorrection.csより愛をこめて", "sent_at": "2026/05/21 19:52:57"}
+{"received_at": "2026-05-21T19:53:09.864428+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLR Calibration Start", "sent_at": "2026/05/21 19:53:10"}
