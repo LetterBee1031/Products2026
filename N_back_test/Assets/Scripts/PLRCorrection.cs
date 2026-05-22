@@ -79,6 +79,8 @@ public class PLRCorrectionSample : MonoBehaviour
     private float pupilTimer = 0.0f;
     // 2Hz視線取得タイマー
     private float gazeTimer = 0.0f;
+    // 1Hz送信用タイマー
+    private float sendTimer = 0.0f;
     // 最後にserver2.pyへ送信した時刻
     private float lastEyeDataSendTime = 0.0f;
 
@@ -97,6 +99,20 @@ public class PLRCorrectionSample : MonoBehaviour
     private bool isReadbackRunning = false;
 
     // ============================================================
+    // 最新値保持
+    // ============================================================
+    // 生瞳孔径
+    private float latestPupilRaw = 0.0f;
+    // 平滑化瞳孔径
+    private float latestPupilSmoothed = 0.0f;
+    // PLR予測瞳孔径
+    private float latestPredictedPupil = 0.0f;
+    // 平滑化TEPR
+    private float latestTEPRSmoothed = 0.0f;
+    // 使用輝度
+    private float latestDelayedY = 0.0f;
+
+    // ============================================================
     // GPU Resources
     // ============================================================
     // 画面キャプチャ用RenderTexture
@@ -111,6 +127,11 @@ public class PLRCorrectionSample : MonoBehaviour
     private Vector3 latestWorldGazePoint;
     // 最新のスクリーン空間視線点
     private Vector2 latestScreenGazePoint;
+
+    [Header("Luminance Camera")]
+    public Camera luminanceCamera;
+    public int luminanceTextureWidth = 512;
+    public int luminanceTextureHeight = 512;
 
     // ============================================================
     // Queues
@@ -181,71 +202,78 @@ public class PLRCorrectionSample : MonoBehaviour
     // Start
     // ============================================================
     void Start()
-{
-    // Inspectorで未設定なら、シーン内からRequestSenderを探す
-    if (requestSender == null)
     {
-        requestSender = FindFirstObjectByType<RequestSender>();
-        calibrationSamples = new List<RequestSender.PLRCalibrationSample>();
+        // Inspectorで未設定なら、シーン内からRequestSenderを探す
+        if (requestSender == null)
+        {
+            requestSender = FindFirstObjectByType<RequestSender>();
+            calibrationSamples = new List<RequestSender.PLRCalibrationSample>();
+        }
+
+        // それでも見つからない場合はエラーを出して終了する
+        if (requestSender == null)
+        {
+            Debug.LogError("RequestSender が見つかりません。Inspectorで割り当てるか、シーン上に配置してください。");
+            return;
+        }
+
+        // PostStatusFlagはIEnumeratorなのでStartCoroutineで実行する
+        StartCoroutine(requestSender.PostStatusFlag("PLCorrection.csより愛をこめて"));
+
+        // Camera未設定ならMainCameraを使う
+        if (xrCamera == null)
+        {
+            xrCamera = Camera.main;
+        }
+
+        // GPU Readback用RenderTexture作成
+        screenRT = new RenderTexture(
+            luminanceTextureWidth,
+            luminanceTextureHeight,
+            24,
+            RenderTextureFormat.ARGB32
+        );
+
+        if (luminanceCamera != null)
+        {
+            luminanceCamera.targetTexture = screenRT;
+        }
+
+        // キャリブレーションパネルを非表示にする
+        if (calibrationPanel != null)
+        {
+            calibrationPanel.gameObject.SetActive(false);
+        }
     }
-
-    // それでも見つからない場合はエラーを出して終了する
-    if (requestSender == null)
-    {
-        Debug.LogError("RequestSender が見つかりません。Inspectorで割り当てるか、シーン上に配置してください。");
-        return;
-    }
-
-    // PostStatusFlagはIEnumeratorなのでStartCoroutineで実行する
-    StartCoroutine(requestSender.PostStatusFlag("PLCorrection.csより愛をこめて"));
-
-    // Camera未設定ならMainCameraを使う
-    if (xrCamera == null)
-    {
-        xrCamera = Camera.main;
-    }
-
-    // GPU Readback用RenderTexture作成
-    screenRT = new RenderTexture(
-        Screen.width,
-        Screen.height,
-        24,
-        RenderTextureFormat.ARGB32
-    );
-
-    // キャリブレーションパネルを非表示にする
-    if (calibrationPanel != null)
-    {
-        calibrationPanel.gameObject.SetActive(false);
-    }
-}
 
     // ============================================================
     // Update
     // ============================================================
     void Update()
     {
-        // タイマー更新
         pupilTimer += Time.deltaTime;
         gazeTimer += Time.deltaTime;
+        sendTimer += Time.deltaTime;
 
-        // ========================================================
-        // 10Hz瞳孔径取得
-        // ========================================================
-
+        // 10Hz瞳孔処理
         if (pupilTimer >= 1.0f / pupilSampleHz)
         {
             pupilTimer = 0.0f;
             SamplePupil10Hz();
         }
 
-        // ========================================================
-        // 2Hz視線・輝度取得
-        // ========================================================
+        // 2Hz視線・輝度処理
         if (gazeTimer >= 1.0f / gazeSampleHz)
         {
             gazeTimer = 0.0f;
             SampleGazeAndLuminance2Hz();
+        }
+
+        // 1Hz server送信
+        if (sendTimer >= EyeDataSendIntervalSeconds)
+        {
+            sendTimer = 0.0f;
+            SendEyeTrackingData();
         }
     }
 
@@ -271,7 +299,7 @@ public class PLRCorrectionSample : MonoBehaviour
         {
             statusText.text = "PLR Calibration Start";
             StartCoroutine(requestSender.PostStatusFlag(statusText.text));
-        }        
+        }
 
         // 疑似ランダム順で8段階表示
         foreach (int index in pseudoRandomOrder)
@@ -301,11 +329,13 @@ public class PLRCorrectionSample : MonoBehaviour
                     float y = CalculateLuminance(gray, gray, gray);
 
                     calibrationSamples.Add(new RequestSender.PLRCalibrationSample
-                        {
-                            luminanceY = y,
-                            pupilMm = pupil.Value
-                        }
+                    {
+                        luminanceY = y,
+                        pupilMm = pupil.Value
+                    }
                     );
+
+                    Debug.Log("calibrationSamples Added: Y=" + y + "pupilMm=" + pupil.Value);
                 }
 
                 yield return new WaitForSeconds(1.0f / pupilSampleHz);
@@ -321,9 +351,7 @@ public class PLRCorrectionSample : MonoBehaviour
         // RequestSender未設定なら終了
         if (requestSender == null)
         {
-            Debug.LogError(
-                "RequestSender is not assigned."
-            );
+            Debug.LogError("RequestSender is not assigned.");
             yield break;
         }
         bool received = false;
@@ -368,17 +396,20 @@ public class PLRCorrectionSample : MonoBehaviour
     {
         // 左右平均瞳孔径取得
         float? pupil = GetFilteredMeanPupilDiameter();
+
         // 無効データなら終了
         if (!pupil.HasValue)
         {
             return;
         }
-        // 生瞳孔径
-        float pupilRaw = pupil.Value;
 
         // ========================================================
-        // 生瞳孔径履歴へ追加
+        // 生瞳孔径
         // ========================================================
+
+        float pupilRaw = pupil.Value;
+
+        // 生瞳孔径履歴へ追加
         AddValueSample(pupilMeanSamples, pupilRaw);
 
         // キャリブレーション中は終了
@@ -390,12 +421,14 @@ public class PLRCorrectionSample : MonoBehaviour
         // ========================================================
         // 平滑化瞳孔径
         // ========================================================
+
         float pupilSmoothed = GetSmoothedValue(pupilMeanSamples);
 
         // ========================================================
         // TEPR計算
         // ========================================================
-        // 0.5秒前の輝度
+
+        // 0.5秒前輝度
         float delayedY = GetDelayedLuminance(Time.time - TEPRDelay);
 
         // PLR予測瞳孔径
@@ -405,43 +438,35 @@ public class PLRCorrectionSample : MonoBehaviour
         float teprRaw = pupilSmoothed - predictedPupil;
 
         // ========================================================
-        // TEPR履歴へ追加
+        // TEPR平滑化
         // ========================================================
+
         AddValueSample(teprSamples, teprRaw);
-        // 平滑化TEPR
+
         float teprSmoothed = GetSmoothedValue(teprSamples);
 
         // ========================================================
-        // server2.pyへ送信
+        // 最新値保存
         // ========================================================
-        if (Time.time - lastEyeDataSendTime >= EyeDataSendIntervalSeconds)
-        {
-            lastEyeDataSendTime = Time.time;
 
-            if (requestSender != null)
-            {
-                requestSender.PostEyeData(
-                    pupilRaw,
-                    pupilSmoothed,
-                    predictedPupil,
-                    teprSmoothed,
-                    delayedY
-                );
-            }
-        }
+        latestPupilRaw = pupilRaw;
+        latestPupilSmoothed = pupilSmoothed;
+        latestPredictedPupil = predictedPupil;
+        latestTEPRSmoothed = teprSmoothed;
+        latestDelayedY = delayedY;
 
         // ========================================================
         // UI表示
         // ========================================================
+
         if (statusText != null)
         {
             statusText.text =
-                $"Pupil raw: " + $"{pupilRaw:F3} mm\n" +
-                $"Pupil smoothed: " + $"{pupilSmoothed:F3} mm\n" +
-                $"Predicted pupil: " + $"{predictedPupil:F3} mm\n" +
-                $"TEPR raw: " + $"{teprRaw:F3} mm\n" +
-                $"TEPR smoothed: " + $"{teprSmoothed:F3} mm\n" +
-                $"Luminance: " + $"{delayedY:F3}";
+                $"Pupil raw: {latestPupilRaw:F3} mm\n" +
+                $"Pupil smoothed: {latestPupilSmoothed:F3} mm\n" +
+                $"Predicted pupil: {latestPredictedPupil:F3} mm\n" +
+                $"TEPR smoothed: {latestTEPRSmoothed:F3} mm\n" +
+                $"Luminance: {latestDelayedY:F3}";
         }
     }
 
@@ -455,6 +480,7 @@ public class PLRCorrectionSample : MonoBehaviour
 
         if (pupilData == null)
         {
+            // Debug.Log("GetFilteredMeanPupilDiameter: pupilData is empty");
             return null;
         }
 
@@ -463,8 +489,19 @@ public class PLRCorrectionSample : MonoBehaviour
         int right = (int)XrEyePositionHTC.XR_EYE_POSITION_RIGHT_HTC;
 
         // 左右どちらか無効なら除外
-        if (!pupilData[left].isDiameterValid || !pupilData[right].isDiameterValid)
+        // if (!pupilData[left].isDiameterValid || !pupilData[right].isDiameterValid)
+        // {
+        //     return null;
+        // }
+
+        if (!pupilData[left].isDiameterValid)
         {
+            // Debug.Log("GetFilteredMeanPupilDiameter: Left Pupil Data in invalid");
+            return null;
+        }
+        else if (!pupilData[right].isDiameterValid)
+        {
+            // Debug.Log("GetFilteredMeanPupilDiameter: Right Pupil Data in invalid");
             return null;
         }
 
@@ -474,10 +511,15 @@ public class PLRCorrectionSample : MonoBehaviour
         // 前回との差が大きすぎる場合除外
         if (previousValidPupil.HasValue && Mathf.Abs(meanPupil - previousValidPupil.Value) > BlinkThresholdMm)
         {
+            // Debug.Log("GetFilteredMeanPupilDiameter: Pupil Change is too large");
+            // Debug.Log("previous:" + previousValidPupil + " now:" + meanPupil);
+            previousValidPupil = meanPupil;
             return null;
         }
+
         // 今回値保存
         previousValidPupil = meanPupil;
+        // Debug.Log("GetFilteredMeanPupilDiameter: Pupil Data is saved correctly");
         return meanPupil;
     }
 
@@ -487,9 +529,11 @@ public class PLRCorrectionSample : MonoBehaviour
     void SampleGazeAndLuminance2Hz()
     {
         XR_HTC_eye_tracker.Interop.GetEyeGazeData(out XrSingleEyeGazeDataHTC[] gazeData);
+        // Debug.Log("SampleGazeAndLuminance2Hz: Start");
 
         if (gazeData == null)
         {
+            // Debug.Log("SampleGazeAndLuminance2Hz: GazeData is empty");
             return;
         }
 
@@ -520,7 +564,7 @@ public class PLRCorrectionSample : MonoBehaviour
         // 両眼平均視線
         // ========================================================
         Vector3 origin = (leftOrigin + rightOrigin) / 2.0f;
-        Vector3 direction = ((leftDir + rightDir ) / 2.0f).normalized;
+        Vector3 direction = ((leftDir + rightDir) / 2.0f).normalized;
         Ray gazeRay = new Ray(origin, direction);
 
         // ========================================================
@@ -544,49 +588,133 @@ public class PLRCorrectionSample : MonoBehaviour
         // ========================================================
         // 輝度取得
         // ========================================================
+        // Debug.Log("SampleGazeAndLuminance2Hz: CaptureLuminanceFromScreen");
         CaptureLuminanceFromScreen(latestScreenGazePoint);
+    }
+
+    void SendEyeTrackingData()
+    {
+        // RequestSender未設定なら終了
+        if (requestSender == null)
+        {
+            return;
+        }
+
+        // キャリブレーション中・モデル未準備なら送信しない
+        if (isCalibrationRunning || !isModelReady)
+        {
+            return;
+        }
+
+        // server2.pyへ送信
+        requestSender.PostEyeData(
+            latestPupilRaw,
+            latestPupilSmoothed,
+            latestPredictedPupil,
+            latestTEPRSmoothed,
+            latestDelayedY
+        );
     }
 
     // ============================================================
     // GPU Readback
     // ============================================================
+    // void CaptureLuminanceFromScreen(Vector2 fixationScreenPoint)
+    // {
+    //     Debug.Log("CaptureLuminanceFromScreen:fixationScreenPoint x=" + fixationScreenPoint.x + " y=" + fixationScreenPoint.y);
+    //     // Debug.Log("CaptureScreenshotIntoRenderTexture: start");
+    //     // 多重実行防止
+    //     if (isReadbackRunning)
+    //     {
+    //         return;
+    //     }
+    //     isReadbackRunning = true;
+    //     // Debug.Log("CaptureScreenshotIntoRenderTexture: Try copying current display to RenderTexture.");
+    //     // 現在画面をRenderTextureへコピー
+    //     ScreenCapture.CaptureScreenshotIntoRenderTexture(screenRT);
+
+    //     // GPU→CPU 非同期コピー
+    //     AsyncGPUReadback.Request(
+    //         screenRT,
+    //         0,
+    //         TextureFormat.RGBA32,
+    //         request =>
+    //         {
+    //             isReadbackRunning = false;
+
+    //             if (request.hasError)
+    //             {
+    //                 Debug.Log("CaptureScreenshotIntoRenderTexture: GPU to CPU request error");
+    //                 return;
+    //             }
+
+    //             NativeArray<Color32> pixels = request.GetData<Color32>();
+    //             CalculateFixationAndBackgroundY(
+    //                 pixels,
+    //                 Screen.width,
+    //                 Screen.height,
+    //                 fixationScreenPoint
+    //             );
+    //         }
+    //     );
+    // }
+
     void CaptureLuminanceFromScreen(Vector2 fixationScreenPoint)
     {
-        // 多重実行防止
+        // GPU Readback多重実行防止
         if (isReadbackRunning)
         {
             return;
         }
+
+        // 輝度計算用Cameraが未設定なら終了
+        if (luminanceCamera == null)
+        {
+            Debug.LogError("luminanceCamera is not assigned.");
+            return;
+        }
+
+        // RenderTextureが未生成なら終了
+        if (screenRT == null)
+        {
+            Debug.LogError("screenRT is null.");
+            return;
+        }
+
         isReadbackRunning = true;
 
-        // 現在画面をRenderTextureへコピー
-        ScreenCapture.CaptureScreenshotIntoRenderTexture(screenRT);
+        // 輝度計算用CameraでRenderTextureへ描画
+        luminanceCamera.Render();
 
-        // GPU→CPU 非同期コピー
-        AsyncGPUReadback.Request(
-            screenRT,
-            0,
-            TextureFormat.RGBA32,
-            request =>
+        // GPU上のRenderTextureをCPUへ非同期読み出し
+        AsyncGPUReadback.Request(screenRT, 0, TextureFormat.RGBA32, request =>
+        {
+            isReadbackRunning = false;
+
+            if (request.hasError)
             {
-                isReadbackRunning = false;
-
-                if (request.hasError)
-                {
-                    return;
-                }
-
-                NativeArray<Color32> pixels = request.GetData<Color32>();
-                CalculateFixationAndBackgroundY(
-                    pixels,
-                    Screen.width,
-                    Screen.height,
-                    fixationScreenPoint
-                );
+                Debug.LogError("AsyncGPUReadback failed.");
+                return;
             }
-        );
-    }
 
+            NativeArray<Color32> pixels = request.GetData<Color32>();
+
+            // 元のScreen座標を低解像度RenderTexture座標へ変換
+            Vector2 rtFixationPoint = new Vector2(
+                fixationScreenPoint.x / Screen.width * luminanceTextureWidth,
+                fixationScreenPoint.y / Screen.height * luminanceTextureHeight
+            );
+
+            CalculateFixationAndBackgroundY(
+                pixels,
+                luminanceTextureWidth,
+                luminanceTextureHeight,
+                rtFixationPoint
+            );
+
+            Debug.Log($"LuminanceCamera Y={latestCombinedY:F3}");
+        });
+    }
 
     // ============================================================
     // 輝度計算
@@ -612,10 +740,18 @@ public class PLRCorrectionSample : MonoBehaviour
         int fy = Mathf.RoundToInt(fixationPoint.y);
         int r2 = radius * radius;
 
+
+        float out_r = 0f;
+        float out_g = 0f;
+        float out_b = 0f;
+
+        Debug.Log("CalculateFixationAndBackgroundY: width=" + width + " height=" + height);
+        Debug.Log("CalculateFixationAndBackgroundY: fx=" + fx + " fy=" + fy + " r2= " + r2);
+
         // 4px間引き
-        for (int y = 0; y < height; y += 4)
+        for (int y = 0; y < height; y += 1)
         {
-            for (int x = 0; x < width; x += 4)
+            for (int x = 0; x < width; x += 1)
             {
                 int index = y * width + x;
 
@@ -633,6 +769,7 @@ public class PLRCorrectionSample : MonoBehaviour
 
                 // RGB→輝度Y
                 float luminance = CalculateLuminance(r, g, b);
+                // Debug.Log("CalculateFixationAndBackgroundY: luminance=" + luminance);
                 int dx = x - fx;
                 int dy = y - fy;
                 // 注視領域 or 背景
@@ -648,13 +785,18 @@ public class PLRCorrectionSample : MonoBehaviour
                 }
             }
         }
+        Debug.Log("CalculateFixationAndBackgroundY: r=" + out_r + " g=" + out_g + " b=" + out_b);
 
         // 注視領域平均
-        float yFixation = fixationCount > 0 ? fixationSum /fixationCount : 0.0f;
+        float yFixation = fixationCount > 0 ? fixationSum / fixationCount : 0.0f;
         // 背景平均
         float yBackground = backgroundCount > 0 ? backgroundSum / backgroundCount : 0.0f;
         // 重み付き平均
         latestCombinedY = wFixation * yFixation + wBackground * yBackground;
+
+        Debug.Log("CalculateFixationAndBackgroundY: yFixation fixationCount=" + fixationCount + " fixationSum=" + fixationSum);
+        Debug.Log("CalculateFixationAndBackgroundY: yBackground backgroundCount=" + backgroundCount + " backgroundSum=" + backgroundSum);
+        Debug.Log("CalculateFixationAndBackgroundY: yFixation=" + yFixation + " yBackground=" + yBackground + " latestCombinedY=" + latestCombinedY);
         // 履歴保存
         luminanceHistory.Enqueue(new LuminanceSample(
                 Time.time,
