@@ -61,7 +61,9 @@ public class RequestSender : MonoBehaviour
     [Serializable]
     public class PLRCalibrationSample
     {
-        public float luminanceY;
+        public float luminanceY_panel;
+        public float luminanceY_cam;
+        public float luminanceGap;
         public float pupilMm;
     }
 
@@ -186,6 +188,12 @@ public class RequestSender : MonoBehaviour
     {
         StartCoroutine(PostStatusFlag(n + "_back_end"));
     }
+    
+    public void SendSeeingColorFlag(string color)
+    {
+        StartCoroutine(PostStatusFlag(color));
+    }
+
     public void FetchStatus()
     {
         StartCoroutine(GetExpStatus());

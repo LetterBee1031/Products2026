@@ -19,7 +19,13 @@ public class PLRCorrectionSample : MonoBehaviour
     // FastAPIサーバとの通信を行うクラス
     public RequestSender requestSender;
     // キャリブレーション時に表示するグレーパネル
-    public Image calibrationPanel;
+    // public Image calibrationPanel;
+
+    // キャリブレーション時に表示するグレーパネル
+    public Renderer[] quads_eye_calibration = new Renderer[7];
+    public GameObject canvas_N_back;
+    public GameObject directionalLight;
+    
     // 状態表示用UI
     public TextMeshProUGUI statusText;
     // XR用カメラ
@@ -130,8 +136,8 @@ public class PLRCorrectionSample : MonoBehaviour
 
     [Header("Luminance Camera")]
     public Camera luminanceCamera;
-    public int luminanceTextureWidth = 512;
-    public int luminanceTextureHeight = 512;
+    public int luminanceTextureWidth = 1024;
+    public int luminanceTextureHeight = 1024;
 
     // ============================================================
     // Queues
@@ -240,9 +246,9 @@ public class PLRCorrectionSample : MonoBehaviour
         }
 
         // キャリブレーションパネルを非表示にする
-        if (calibrationPanel != null)
+        if (quads_eye_calibration != null)
         {
-            calibrationPanel.gameObject.SetActive(false);
+            quads_eye_calibration[0].gameObject.SetActive(false);
         }
     }
 
@@ -283,7 +289,9 @@ public class PLRCorrectionSample : MonoBehaviour
 
     public void StartPupilCalibration()
     {
-        calibrationPanel.gameObject.SetActive(true);
+        canvas_N_back.SetActive(false);
+        directionalLight.SetActive(false);
+        quads_eye_calibration[0].gameObject.SetActive(true);
         StartCoroutine(CalibrationRoutine());
     }
 
@@ -307,11 +315,16 @@ public class PLRCorrectionSample : MonoBehaviour
             float gray = calibrationLevels[index];
 
             // 画面全体グレー表示
-            if (calibrationPanel != null)
+            if (quads_eye_calibration[0] != null)
             {
-                calibrationPanel.gameObject.SetActive(true);
+                quads_eye_calibration[0].gameObject.SetActive(true);
 
-                calibrationPanel.color = new Color(gray, gray, gray, 1.0f);
+                for(int i=1; i<7; i++)
+                {
+                    quads_eye_calibration[i].material.color = new Color(gray, gray, gray, 1.0f);
+                }
+
+                
             }
 
             float startTime = Time.time;
@@ -327,10 +340,13 @@ public class PLRCorrectionSample : MonoBehaviour
                 {
                     // グレーなのでR=G=B
                     float y = CalculateLuminance(gray, gray, gray);
+                    float y_cam = GetDelayedLuminance(Time.time - TEPRDelay);
 
                     calibrationSamples.Add(new RequestSender.PLRCalibrationSample
                     {
-                        luminanceY = y,
+                        luminanceY_panel = y,
+                        luminanceY_cam = y_cam,
+                        luminanceGap = y_cam-y,
                         pupilMm = pupil.Value
                     }
                     );
@@ -343,10 +359,13 @@ public class PLRCorrectionSample : MonoBehaviour
         }
 
         // パネル非表示
-        if (calibrationPanel != null)
+        if (quads_eye_calibration[0] != null)
         {
-            calibrationPanel.gameObject.SetActive(false);
+            quads_eye_calibration[0].gameObject.SetActive(false);
         }
+
+        canvas_N_back.SetActive(true);
+        directionalLight.SetActive(true);
 
         // RequestSender未設定なら終了
         if (requestSender == null)
@@ -422,7 +441,7 @@ public class PLRCorrectionSample : MonoBehaviour
         // 平滑化瞳孔径
         // ========================================================
 
-        float pupilSmoothed = GetSmoothedValue(pupilMeanSamples);
+        // float pupilSmoothed = GetSmoothedValue(pupilMeanSamples);
 
         // ========================================================
         // TEPR計算
@@ -435,7 +454,7 @@ public class PLRCorrectionSample : MonoBehaviour
         float predictedPupil = PredictPupilDiameter(delayedY);
 
         // TEPR
-        float teprRaw = pupilSmoothed - predictedPupil;
+        float teprRaw = pupilRaw - predictedPupil;
 
         // ========================================================
         // TEPR平滑化
@@ -443,16 +462,16 @@ public class PLRCorrectionSample : MonoBehaviour
 
         AddValueSample(teprSamples, teprRaw);
 
-        float teprSmoothed = GetSmoothedValue(teprSamples);
+        // float teprSmoothed = GetSmoothedValue(teprSamples);
 
         // ========================================================
         // 最新値保存
         // ========================================================
 
         latestPupilRaw = pupilRaw;
-        latestPupilSmoothed = pupilSmoothed;
+        // latestPupilSmoothed = pupilSmoothed;
         latestPredictedPupil = predictedPupil;
-        latestTEPRSmoothed = teprSmoothed;
+        // latestTEPRSmoothed = teprSmoothed;
         latestDelayedY = delayedY;
 
         // ========================================================
@@ -480,7 +499,6 @@ public class PLRCorrectionSample : MonoBehaviour
 
         if (pupilData == null)
         {
-            // Debug.Log("GetFilteredMeanPupilDiameter: pupilData is empty");
             return null;
         }
 
@@ -496,12 +514,10 @@ public class PLRCorrectionSample : MonoBehaviour
 
         if (!pupilData[left].isDiameterValid)
         {
-            // Debug.Log("GetFilteredMeanPupilDiameter: Left Pupil Data in invalid");
             return null;
         }
         else if (!pupilData[right].isDiameterValid)
         {
-            // Debug.Log("GetFilteredMeanPupilDiameter: Right Pupil Data in invalid");
             return null;
         }
 
@@ -606,6 +622,8 @@ public class PLRCorrectionSample : MonoBehaviour
             return;
         }
 
+        latestPupilSmoothed = GetSmoothedValue(pupilMeanSamples);
+        latestTEPRSmoothed = GetSmoothedValue(teprSamples);
         // server2.pyへ送信
         requestSender.PostEyeData(
             latestPupilRaw,
@@ -712,7 +730,7 @@ public class PLRCorrectionSample : MonoBehaviour
                 rtFixationPoint
             );
 
-            Debug.Log($"LuminanceCamera Y={latestCombinedY:F3}");
+            //Debug.Log($"LuminanceCamera Y={latestCombinedY:F3}");
         });
     }
 
@@ -741,12 +759,10 @@ public class PLRCorrectionSample : MonoBehaviour
         int r2 = radius * radius;
 
 
-        float out_r = 0f;
-        float out_g = 0f;
-        float out_b = 0f;
+        // float out_r = 0f;
+        // float out_g = 0f;
+        // float out_b = 0f;
 
-        Debug.Log("CalculateFixationAndBackgroundY: width=" + width + " height=" + height);
-        Debug.Log("CalculateFixationAndBackgroundY: fx=" + fx + " fy=" + fy + " r2= " + r2);
 
         // 4px間引き
         for (int y = 0; y < height; y += 1)
@@ -785,7 +801,7 @@ public class PLRCorrectionSample : MonoBehaviour
                 }
             }
         }
-        Debug.Log("CalculateFixationAndBackgroundY: r=" + out_r + " g=" + out_g + " b=" + out_b);
+        //Debug.Log("CalculateFixationAndBackgroundY: r=" + out_r + " g=" + out_g + " b=" + out_b);
 
         // 注視領域平均
         float yFixation = fixationCount > 0 ? fixationSum / fixationCount : 0.0f;
@@ -794,9 +810,12 @@ public class PLRCorrectionSample : MonoBehaviour
         // 重み付き平均
         latestCombinedY = wFixation * yFixation + wBackground * yBackground;
 
-        Debug.Log("CalculateFixationAndBackgroundY: yFixation fixationCount=" + fixationCount + " fixationSum=" + fixationSum);
-        Debug.Log("CalculateFixationAndBackgroundY: yBackground backgroundCount=" + backgroundCount + " backgroundSum=" + backgroundSum);
-        Debug.Log("CalculateFixationAndBackgroundY: yFixation=" + yFixation + " yBackground=" + yBackground + " latestCombinedY=" + latestCombinedY);
+        Debug.Log(
+            $"YFix={yFixation:F3}, YBack={yBackground:F3}, YCombined={latestCombinedY:F3}, " +
+            $"FixCount={fixationCount}, BackCount={backgroundCount}, " +
+            $"FixPoint=({fx},{fy}), Radius={radius}"
+        );
+
         // 履歴保存
         luminanceHistory.Enqueue(new LuminanceSample(
                 Time.time,

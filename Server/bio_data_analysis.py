@@ -21,15 +21,17 @@ MODEL_DIR = Path("models")
 
 # N-backの体験状態を、機械学習で扱う認知負荷ラベルに変換する対応表。
 ML_STATUS_LABELS: Dict[str, str] = {
-    "0_back_start": "Low",
+    # "0_back_start": "Low",
     "1_back_start": "Low",
     "2_back_start": "Optimal",
     "3_back_start": "High",
+    "4_back_start": "High",
 }
 
 # ランダムフォレストに入力する特徴量。hr_ibi側のHR/EDAと、eye_data側の左右瞳孔径を使う。
 #ML_FEATURE_COLUMNS: List[str] = ["hr", "eda", "pupilDiaLeft", "pupilDiaRight"]
-ML_FEATURE_COLUMNS: List[str] = ["hr", "pupilDiaLeft", "pupilDiaRight"]
+#ML_FEATURE_COLUMNS: List[str] = ["hr", "pupilDiaLeft", "pupilDiaRight"]
+ML_FEATURE_COLUMNS: List[str] = ["hr", "tepr"]
 ML_PREPROCESSING_NAME = "standard_scaler_zscore"
 RANDOM_FOREST_MODEL_CACHE: Dict[str, dict] = {}
 
@@ -78,14 +80,16 @@ def merge_eye_data_by_sent_at(
         raise ValueError("生体データに sent_at 列がありません。")
 
     eye_df = pd.read_json(eye_path, lines=True)
-    required_eye_columns = {"sent_at", "pupilDiaLeft", "pupilDiaRight"}
+    #required_eye_columns = {"sent_at", "pupilDiaLeft", "pupilDiaRight"}
+    required_eye_columns = {"sent_at", "tepr"}
     missing_eye_columns = required_eye_columns - set(eye_df.columns)
     if missing_eye_columns:
         raise ValueError(f"視線データに必要な列がありません: {sorted(missing_eye_columns)}")
 
     # 元のsent_at文字列は残したまま、比較専用の正規化キーを一時列として作る。
     hr_with_key = hr_df.copy()
-    eye_with_key = eye_df[["sent_at", "pupilDiaLeft", "pupilDiaRight"]].copy()
+    #eye_with_key = eye_df[["sent_at", "pupilDiaLeft", "pupilDiaRight"]].copy()
+    eye_with_key = eye_df[["sent_at", "tepr"]].copy()
     hr_with_key["_sent_at_key"] = hr_with_key["sent_at"].map(normalize_sent_at_to_jst_second)
     eye_with_key["_sent_at_key"] = eye_with_key["sent_at"].map(normalize_sent_at_to_jst_second)
 
@@ -94,7 +98,8 @@ def merge_eye_data_by_sent_at(
     eye_with_key = eye_with_key.drop_duplicates(subset=["_sent_at_key"], keep="last")
 
     merged = hr_with_key.merge(
-        eye_with_key[["_sent_at_key", "pupilDiaLeft", "pupilDiaRight"]],
+        #eye_with_key[["_sent_at_key", "pupilDiaLeft", "pupilDiaRight"]],
+        eye_with_key[["_sent_at_key", "tepr"]],
         on="_sent_at_key",
         how="left",
     )
@@ -157,7 +162,8 @@ def load_ml_training_dataframe(user_id: str, data_dir: str | Path = "data") -> p
     df = pd.read_json(file_path, lines=True)
     df = merge_eye_data_by_sent_at(df, user_id, data_dir)
     # HR/EDA/ex_statusと、同じsent_atを持つ瞳孔径が揃っていないと教師あり学習ができない。
-    required_columns = {"hr", "eda", "ex_status", "sent_at", "pupilDiaLeft", "pupilDiaRight"}
+    #required_columns = {"hr", "eda", "ex_status", "sent_at", "pupilDiaLeft", "pupilDiaRight"}
+    required_columns = {"hr", "eda", "ex_status", "sent_at", "tepr"}
     missing_columns = required_columns - set(df.columns)
     if missing_columns:
         raise ValueError(f"必要な列がありません: {sorted(missing_columns)}")
@@ -201,6 +207,26 @@ def load_latest_prediction_dataframe(user_id: str, data_dir: str | Path = "data"
     return df.tail(1)
 
 
+def make_label_feature_stats_text(df: pd.DataFrame) -> str:
+    labels = ["Low", "Optimal", "High"]
+    stats_df = (
+        df.groupby("cl_label")[ML_FEATURE_COLUMNS]
+        .agg(["count", "mean", "median", lambda values: values.var(ddof=0)])
+        .reindex(labels)
+    )
+    stats_df.columns = [
+        f"{feature}_{stat_name if stat_name != '<lambda_0>' else 'variance'}"
+        for feature, stat_name in stats_df.columns
+    ]
+
+    text = []
+    text.append("Label Feature Statistics:")
+    text.append("(variance: population variance, ddof=0)")
+    text.append(stats_df.to_string(float_format=lambda value: f"{value:.4f}"))
+    text.append("")
+    return "\n".join(text)
+
+
 def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data"):
     # ユーザごとのデータでランダムフォレストを学習する。
     df = load_ml_training_dataframe(user_id, data_dir)
@@ -211,23 +237,23 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
     x = df[ML_FEATURE_COLUMNS]
     y = df["cl_label"]
 
-    # 変更点: データを訓練70%、一時データ30%に分割
-    x_train, x_temp, y_train, y_temp = train_test_split(
+    # 変更点: データを訓練80%、一時データ20%に分割
+    x_train, x_test, y_train, y_test = train_test_split(
         x,
         y,
-        test_size=0.30,
+        test_size=0.20,
         random_state=42,
         stratify=y
     )
 
     # 変更点: 一時データ30%を検証15%、テスト15%に分割
-    x_valid, x_test, y_valid, y_test = train_test_split(
-        x_temp,
-        y_temp,
-        test_size=0.50,
-        random_state=42,
-        stratify=y_temp
-    )
+    # x_valid, x_test, y_valid, y_test = train_test_split(
+    #     x_temp,
+    #     y_temp,
+    #     test_size=0.50,
+    #     random_state=42,
+    #     stratify=y_temp
+    # )
 
     # zスコア化は訓練データだけで平均・標準偏差をfitし、検証/テスト/推論にも同じ変換を使う。
     model = Pipeline(
@@ -247,8 +273,8 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
     # 変更点: 全データではなく訓練データだけで学習
     model.fit(x_train, y_train)
 
-    # 変更点: 検証データとテストデータで予測
-    y_valid_pred = model.predict(x_valid)
+    # 変更点: テストデータで予測
+    # y_valid_pred = model.predict(x_valid)
     y_test_pred = model.predict(x_test)
 
     # 変更点: 評価指標を計算する内部関数を追加
@@ -293,10 +319,11 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
     result_text.append(f"Preprocessing  : {ML_PREPROCESSING_NAME}")
     result_text.append(f"Total rows     : {len(df)}")
     result_text.append(f"Train rows     : {len(x_train)}")
-    result_text.append(f"Validation rows: {len(x_valid)}")
+    # result_text.append(f"Validation rows: {len(x_valid)}")
     result_text.append(f"Test rows      : {len(x_test)}")
     result_text.append("")
-    result_text.append(make_metrics_text("Validation Result", y_valid, y_valid_pred))
+    result_text.append(make_label_feature_stats_text(df))
+    # result_text.append(make_metrics_text("Validation Result", y_valid, y_valid_pred))
     result_text.append(make_metrics_text("Test Result", y_test, y_test_pred))
 
     result_text = "\n".join(result_text)
@@ -322,7 +349,7 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
             "classes": [str(label) for label in model.classes_],
             "preprocessing": ML_PREPROCESSING_NAME,
             # 変更点: 評価結果もモデル保存情報に含める
-            "validation_rows": int(len(x_valid)),
+            # "validation_rows": int(len(x_valid)),
             "test_rows": int(len(x_test)),
             "evaluation_text": result_text,
         },

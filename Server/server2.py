@@ -34,9 +34,9 @@ from negotiation.TestNegotiation1 import run_example
 
 # PLR補正モデルの学習・推論処理
 try:
-    from Server.plr_model import fit_plr_model, predict_pupil_diameter
+    from Server.plr_model import calculate_luminance_correlation, fit_plr_model, predict_pupil_diameter
 except ModuleNotFoundError:
-    from plr_model import fit_plr_model, predict_pupil_diameter
+    from plr_model import calculate_luminance_correlation, fit_plr_model, predict_pupil_diameter
 
 app = FastAPI()
 
@@ -83,7 +83,9 @@ class EyedataPost(BaseModel):
 
 # PLRキャリブレーションデータ1サンプル
 class PLRCalibrationSample(BaseModel):
-    luminanceY: float
+    luminanceY_panel: float
+    luminanceY_cam: float
+    luminanceGap: float
     pupilMm: float
 
 # Unityから送られるPLRキャリブレーションデータ
@@ -224,7 +226,7 @@ async def receive_eyedata(payload: List[EyedataPost], request: Request):
             "pupilDiaMeanSmoothed": item.pupilDiaMeanSmoothed,
             "predictedPupilMm": item.predictedPupilMm,
             "tepr": item.tepr,
-            "luminanceY": item.luminanceY
+            "luminanceY_cam": item.luminanceY
         })
     append_eye_records_by_user(records)
 
@@ -257,6 +259,7 @@ async def fit_plr(payload: PLRFitRequest, request: Request):
 
     try:
         result = fit_plr_model(samples)
+        luminance_correlation = calculate_luminance_correlation(samples)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
@@ -267,6 +270,8 @@ async def fit_plr(payload: PLRFitRequest, request: Request):
         "userID": user_id,
         "received_at": received_at,
         **result,
+        "luminanceCorrelation": luminance_correlation["correlation"],
+        "luminanceCorrelationSampleCount": luminance_correlation["sampleCount"],
     }
     with (DATA_DIR / f"plr_params_{user_id}.jsonl").open("a", encoding="utf-8") as f:
         f.write(json.dumps(result_record, ensure_ascii=False) + "\n")
@@ -348,7 +353,7 @@ async def analyze_hr_save_csv(id: str = "01"):
             "id": id,
             "rows": int(len(training_df)),
             "classes": [str(label) for label in model.classes_],
-            "features": ["hr", "eda"],
+            "features": ["hr", "tepr"],
         }
     except Exception as e:
         return {"ok": False, "error": str(e)}

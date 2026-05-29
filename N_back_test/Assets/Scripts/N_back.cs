@@ -258,7 +258,7 @@ public class N_back : MonoBehaviour
 
                     // ランダムな文字を表示
                     //outTextNum = Random.Range(0, TextAlphabet.Length);
-                    outTextNum = Random.Range(0, 10);
+                    outTextNum = Random.Range(0, 4);
                     TextAlphabet[outTextNum].enabled = true;
                     textQuestionNum.text = outTextCount.ToString();
 

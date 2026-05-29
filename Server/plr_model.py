@@ -39,7 +39,7 @@ def fit_plr_model(samples: Sequence[dict], cv: int = 3, step: float = 0.1) -> di
     Parameters
     ----------
     samples:
-        [{"luminanceY": 0.5, "pupilMm": 3.2}, ...]
+        [{"luminanceY_cam": 0.5, "pupilMm": 3.2}, ...]
     cv:
         GridSearchCV の交差検証分割数。
         サンプル数が少ない場合は内部で自動的に下げる。
@@ -55,7 +55,7 @@ def fit_plr_model(samples: Sequence[dict], cv: int = 3, step: float = 0.1) -> di
     if len(samples) < 10:
         raise ValueError("Calibration samples are too few.")
 
-    X = np.array([[s["luminanceY"]] for s in samples], dtype=float)
+    X = np.array([[s["luminanceY_cam"]] for s in samples], dtype=float)
     y = np.array([s["pupilMm"] for s in samples], dtype=float)
 
     # NaN / infを除外する
@@ -97,6 +97,46 @@ def fit_plr_model(samples: Sequence[dict], cv: int = 3, step: float = 0.1) -> di
         "c": float(model.c),
         "mse": float(mse),
         "sampleCount": int(len(y)),
+    }
+
+
+def calculate_luminance_correlation(samples: Sequence[dict]) -> dict:
+    """
+    PLRキャリブレーションサンプル内の luminanceY と luminanceY_cam の
+    Pearson相関係数を計算する。
+
+    Parameters
+    ----------
+    samples:
+        [{"luminanceY": 0.5, "luminanceY_cam": 0.48, ...}, ...]
+
+    Returns
+    -------
+    dict:
+        {"correlation": ..., "sampleCount": ...}
+    """
+
+    if len(samples) < 2:
+        raise ValueError("輝度サンプル数が少なすぎます。")
+
+    luminance_y = np.array([s["luminanceY_panel"] for s in samples], dtype=float)
+    luminance_y_cam = np.array([s["luminanceY_cam"] for s in samples], dtype=float)
+
+    valid_mask = np.isfinite(luminance_y) & np.isfinite(luminance_y_cam)
+    luminance_y = luminance_y[valid_mask]
+    luminance_y_cam = luminance_y_cam[valid_mask]
+
+    if len(luminance_y) < 2:
+        raise ValueError("有効な輝度サンプル数が少なすぎます。")
+
+    if np.std(luminance_y) == 0 or np.std(luminance_y_cam) == 0:
+        raise ValueError("輝度値が一定のため、相関係数を計算できません。")
+
+    correlation = np.corrcoef(luminance_y, luminance_y_cam)[0, 1]
+
+    return {
+        "correlation": float(correlation),
+        "sampleCount": int(len(luminance_y)),
     }
 
 
