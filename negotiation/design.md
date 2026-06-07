@@ -96,11 +96,9 @@ L_pred(x) = clip( L_current + Σ a_i * ( z_i(offer) - z_i(current) ), 0, 1 )
 
 d_out(L, low, high) = max(0, low - L) + max(0, L - high)
 
-
 **帯内中心距離（任意）**
 
 d_in(L, low, high) = | L - (low+high)/2 |
-
 
 **変更コスト（急変抑制）**
 
@@ -179,9 +177,7 @@ s.t. x は PA制約（Ω）を満たす
 - ハード：`L_pred(x)` が予測帯に入る
 - ソフト：`U_PA(x) >= tau_accept`
 
-
 ACCEPT ⇔ (L_pred_low <= L_pred <= L_pred_high) AND (U_PA >= tau_accept)
-
 
 ---
 

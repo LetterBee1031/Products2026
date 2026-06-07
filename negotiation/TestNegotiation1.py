@@ -11,7 +11,7 @@ from negmas.sao import SAOMechanism, SAONegotiator, SAOState
 try:
     from Server import shared_state
 except ModuleNotFoundError:
-    import  shared_state
+    from Server import shared_state
 
 
 # このファイルでは論点値をすべて 0.0-1.0 の数値として扱う。
