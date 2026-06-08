@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class StroopManager : MonoBehaviour
 {
     /// 将来RequestSenderへ渡す1試行分のログデータ。
@@ -49,6 +51,11 @@ public class StroopManager : MonoBehaviour
     [Header("Participant")]
     [SerializeField] private string userId = "test_user";
 
+    // Stroopの試行ログをサーバへ送信するためのRequestSender。
+    // Inspectorで未設定の場合は、Awakeでシーン内から自動取得する。
+    [Header("Server")]
+    [SerializeField] private RequestSender requestSender;
+
     // ここシーン上からいじれるように 
     [Header("Timing (seconds)")]
     [SerializeField] public float fixationDuration = 1.0f;
@@ -56,15 +63,22 @@ public class StroopManager : MonoBehaviour
     [SerializeField] public float responseDuration = 1.1f;
     [SerializeField] public int trialNumOneBlock = 30;
 
-    // [Header("Block start keys")]
-    // ここシーン上のボタンに変更
-    // [SerializeField] private KeyCode practiceKey = KeyCode.P;
-    // [SerializeField] private KeyCode congruentBlockKey = KeyCode.Alpha1;
-    // [SerializeField] private KeyCode neutralBlockKey = KeyCode.Alpha2;
-    // [SerializeField] private KeyCode incongruentBlockKey = KeyCode.Alpha3;
+    // ヒエラルキー上に配置したInputFieldからStroopの時間設定を変更する。
+    [Header("Stroop setting input UI")]
+    [SerializeField] private TMP_InputField fixationDurationInputField;
+    [SerializeField] private TMP_InputField stimulusDurationInputField;
+    [SerializeField] private TMP_InputField responseDurationInputField;
+    [SerializeField] private TMP_InputField trialNumOneBlockInputField;
+    [SerializeField] private XRNumericKeyboardInputBinder numericKeyboardInputBinder;
+    [SerializeField] private bool applySettingsOnEndEdit = true;
+    [SerializeField] private float minFixationDuration = 0.0f;
+    [SerializeField] private float minStimulusDuration = 0.0f;
+    [SerializeField] private float minResponseDuration = 0.0f;
+    [SerializeField] private int minTrialNumOneBlock = 1;
 
     // StroopColorの列挙順と各配列の順序を一致させる。
     private static readonly string[] ColorWords = { "あか", "あお", "みどり", "きいろ" };
+
     private static readonly Color[] DisplayColors =
     {
         new Color32(255, 0, 0, 255),
@@ -74,11 +88,11 @@ public class StroopManager : MonoBehaviour
     };
 
     private readonly List<StroopTrial> trials = new List<StroopTrial>();
+
     private TrialState state = TrialState.Idle;
     private StroopColor? pendingResponse;
     private int correctCount;
     private string currentBlockName;
-
 
     [SerializeField] private InputActionAsset inputActions;
 
@@ -89,9 +103,32 @@ public class StroopManager : MonoBehaviour
 
     private void Awake()
     {
+        // Inspectorで参照が設定されていない場合にも送信できるようにする。
+        // RequestSenderは既存シーンではEventSystemに付いているため、GameObject名から取得する。
+        if (requestSender == null)
+        {
+            GameObject eventSystem = GameObject.Find("EventSystem");
+            if (eventSystem != null)
+            {
+                requestSender = eventSystem.GetComponent<RequestSender>();
+            }
+        }
+
+        // RequestSenderと同じ被験者IDをログに使用する。
+        if (requestSender != null && !string.IsNullOrWhiteSpace(requestSender.userId))
+        {
+            userId = requestSender.userId;
+        }
+
+        stimulusText.richText = false;
+        instructionText.richText = false;
+        statusText.richText = false;
+        resultText.richText = false;
+
         // 回答キーの対応は全条件で共通。
-        instructionText.text = "A: 赤 / B: 青 / X: 緑 / Y: 黄";
+        instructionText.text = "Z: 赤 / X: 青 / C: 緑 / V: 黄";
         ShowIdle();
+        SetupSettingInputFields();
 
         var map = inputActions.FindActionMap("XRControllerInput");
 
@@ -103,18 +140,18 @@ public class StroopManager : MonoBehaviour
 
     private void OnEnable()
     {
-        buttonA.Enable();
-        buttonB.Enable();
-        buttonX.Enable();
-        buttonY.Enable();
+        buttonA?.Enable();
+        buttonB?.Enable();
+        buttonX?.Enable();
+        buttonY?.Enable();
     }
 
     private void OnDisable()
     {
-        buttonA.Disable();
-        buttonB.Disable();
-        buttonX.Disable();
-        buttonY.Disable();
+        buttonA?.Disable();
+        buttonB?.Disable();
+        buttonX?.Disable();
+        buttonY?.Disable();
     }
 
     private void Update()
@@ -134,25 +171,6 @@ public class StroopManager : MonoBehaviour
         {
             return;
         }
-
-
-        // // JoystickButton 4～7は一般的なゲームパッドの肩・メニューボタン。
-        // if (Input.GetKeyDown(practiceKey) || Input.GetKeyDown(KeyCode.JoystickButton4))
-        // {
-        //     StartPractice();
-        // }
-        // else if (Input.GetKeyDown(congruentBlockKey) || Input.GetKeyDown(KeyCode.JoystickButton5))
-        // {
-        //     StartBlock(StroopCondition.Congruent, 1);
-        // }
-        // else if (Input.GetKeyDown(neutralBlockKey) || Input.GetKeyDown(KeyCode.JoystickButton6))
-        // {
-        //     StartBlock(StroopCondition.Neutral, 2);
-        // }
-        // else if (Input.GetKeyDown(incongruentBlockKey) || Input.GetKeyDown(KeyCode.JoystickButton7))
-        // {
-        //     StartBlock(StroopCondition.Incongruent, 3);
-        // }
     }
 
     // 事前練習パートの開始
@@ -168,6 +186,7 @@ public class StroopManager : MonoBehaviour
         AddTrials(StroopCondition.Congruent, 10, true);
         AddTrials(StroopCondition.Neutral, 10, true);
         AddTrials(StroopCondition.Incongruent, 10, true);
+
         currentBlockName = "Practice";
         StartCoroutine(RunTrials());
     }
@@ -194,9 +213,10 @@ public class StroopManager : MonoBehaviour
     public void ShowRest()
     {
         StopAllCoroutines();
+
         state = TrialState.Rest;
-        stimulusText.text = string.Empty;
-        resultText.text = string.Empty;
+        stimulusText.text = " ";
+        resultText.text = " ";
         statusText.text = "Rest中\n開始キーまたはUIボタンで次のブロックを開始";
     }
 
@@ -212,6 +232,7 @@ public class StroopManager : MonoBehaviour
         // 本試行は1ブロックにつき同一条件を30(trialNumOneBlock)試行実施する。
         trials.Clear();
         AddTrials(condition, trialNumOneBlock, false);
+
         currentBlockName = "Block " + blockNumber;
         StartCoroutine(RunTrials());
     }
@@ -235,7 +256,7 @@ public class StroopManager : MonoBehaviour
     private IEnumerator RunTrials()
     {
         correctCount = 0;
-        resultText.text = string.Empty;
+        resultText.text = " ";
 
         // ブロック内の試行を順番に実行する。
         for (int i = 0; i < trials.Count; i++)
@@ -245,7 +266,7 @@ public class StroopManager : MonoBehaviour
 
         // 結果の表示
         state = TrialState.Results;
-        stimulusText.text = string.Empty;
+        stimulusText.text = " ";
         statusText.text = currentBlockName + " 完了";
         resultText.text = string.Format("出題数: {0}\n正答数: {1}", trials.Count, correctCount);
     }
@@ -255,6 +276,7 @@ public class StroopManager : MonoBehaviour
     {
         // 試行開始時に条件に合う刺激を1つ生成する。
         Stimulus stimulus = CreateStimulus(trial.condition);
+
         statusText.text = string.Format(
             "{0} / {1}\nTrial {2} / {3}",
             currentBlockName,
@@ -264,40 +286,72 @@ public class StroopManager : MonoBehaviour
 
         // 1. 注視点を1000 ms表示。
         state = TrialState.Fixation;
+        pendingResponse = null;
         stimulusText.color = Color.black;
         stimulusText.text = "+";
         yield return new WaitForSecondsRealtime(fixationDuration);
 
         // 2. Stroop刺激を400 ms表示し、反応時間の計測を開始。
+        //    変更点：刺激表示中も回答を受け付ける。
         state = TrialState.Stimulus;
         pendingResponse = null;
+
         stimulusText.color = DisplayColors[(int)stimulus.color];
         stimulusText.text = stimulus.text;
+
         string onsetTime = DateTime.UtcNow.ToString("o");
         float onsetRealtime = Time.realtimeSinceStartup;
-        yield return new WaitForSecondsRealtime(stimulusDuration);
 
-        // 3. 刺激を消した状態で最大1100 ms回答を受け付ける。
-        state = TrialState.Response;
-        stimulusText.text = string.Empty;
-        // pendingResponse = null;
-
-        float responseWindowStart = Time.realtimeSinceStartup;
         while (!pendingResponse.HasValue &&
-               Time.realtimeSinceStartup - responseWindowStart < responseDuration)
+               Time.realtimeSinceStartup - onsetRealtime < stimulusDuration)
         {
+            StroopColor response;
+
+            if (TryGetColorResponse(out response))
+            {
+                pendingResponse = response;
+                break;
+            }
+
             yield return null;
         }
 
-        // 4. 回答の有無と表示色との一致から結果を判定する。
+        // 3. 400 ms経過後に刺激を消す。
+        stimulusText.text = " ";
+
+        // 4. 刺激表示中に回答されていない場合のみ，刺激を消した状態で最大1100 ms回答を受け付ける。
+        if (!pendingResponse.HasValue)
+        {
+            state = TrialState.Response;
+
+            float responseWindowStart = Time.realtimeSinceStartup;
+
+            while (!pendingResponse.HasValue &&
+                   Time.realtimeSinceStartup - responseWindowStart < responseDuration)
+            {
+                StroopColor response;
+
+                if (TryGetColorResponse(out response))
+                {
+                    pendingResponse = response;
+                    break;
+                }
+
+                yield return null;
+            }
+        }
+
+        // 5. 回答の有無と表示色との一致から結果を判定する。
         bool answered = pendingResponse.HasValue; // 回答したか
         bool isCorrect = answered && pendingResponse.Value == stimulus.color; // 回答して，かつ正解したか
+
         float reactionTimeMs = answered
             ? (Time.realtimeSinceStartup - onsetRealtime) * 1000.0f  // 回答してたら，回答時間を記録
-            : (stimulusDuration + responseDuration) * 1000.0f;  // 回答できてなかったら，刺激提示と受付時間を足した時間を入れる
-        string responseTime = answered ? DateTime.UtcNow.ToString("o") : string.Empty; // 回答時刻
+            : (stimulusDuration + responseDuration) * 1000.0f;       // 回答できてなかったら，刺激提示と受付時間を足した時間を入れる
+
+        string responseTime = answered ? DateTime.UtcNow.ToString("o") : " "; // 回答時刻
         string result = !answered ? "Timeout" : isCorrect ? "Correct" : "Wrong"; // 回答できてなかったら，Timeout，回答してたら，Correct（正解）またはWrong（不正解）
-        
+
         // 正解してたらカウントアップ
         if (isCorrect)
         {
@@ -305,6 +359,36 @@ public class StroopManager : MonoBehaviour
         }
 
         // ログ送信は保留中。上で算出した値をRequestSender連携時に使用する。
+        Debug.Log(string.Format(
+            "user_id={0}, condition={1}, trial_index={2}, is_practice={3}, is_correct={4}, reaction_time_ms={5}, stimulus_onset_time={6}, response_time={7}, result={8}",
+            userId,
+            trial.condition,
+            trial.trialIndex,
+            trial.isPractice,
+            isCorrect,
+            reactionTimeMs,
+            onsetTime,
+            responseTime,
+            result));
+
+        // 1試行終了ごとに、設計書で指定されたログ項目をサーバへ送信する。
+        if (requestSender != null)
+        {
+            requestSender.SendStroopLog(
+                userId,
+                trial.condition.ToString(),
+                trial.trialIndex,
+                trial.isPractice,
+                isCorrect,
+                reactionTimeMs,
+                onsetTime,
+                responseTime,
+                result);
+        }
+        else
+        {
+            Debug.LogWarning("Stroop log was not sent because RequestSender was not found.");
+        }
     }
 
     // 刺激
@@ -320,9 +404,11 @@ public class StroopManager : MonoBehaviour
                 // Neutralでは色名を提示せず、文字列をXXXXに固定する。
                 text = "XXXX";
                 break;
+
             case StroopCondition.Incongruent:
                 // 表示色と異なる色名だけを候補にして、その中から選ぶ。
                 List<int> incongruentWordIndexes = new List<int>();
+
                 for (int i = 0; i < ColorWords.Length; i++)
                 {
                     if (i != (int)displayColor)
@@ -333,37 +419,52 @@ public class StroopManager : MonoBehaviour
 
                 int wordIndex = incongruentWordIndexes[
                     UnityEngine.Random.Range(0, incongruentWordIndexes.Count)];
+
                 text = ColorWords[wordIndex];
                 break;
+
             default:
                 // Congruentでは表示色と同じ色名を提示する。
                 text = ColorWords[(int)displayColor];
                 break;
         }
 
-        return new Stimulus { text = text, color = displayColor };
+        return new Stimulus
+        {
+            text = text,
+            color = displayColor
+        };
     }
 
     //ここ変更した　かつて無駄に時間をかけて定義したボタン割り当ての遺産をつかう
     private bool TryGetColorResponse(out StroopColor response)
     {
-        // キーボードのA/B/X/Yとゲームパッドの同名ボタンを同じ色へ割り当てる。
-        if (Input.GetKeyDown(KeyCode.Z) || buttonA.WasPressedThisFrame())
+        Keyboard keyboard = Keyboard.current;
+
+        // キーボードのZ/X/C/VとXRコントローラのA/B/X/Yを同じ色へ割り当てる。
+        if ((keyboard != null && keyboard.zKey.wasPressedThisFrame) ||
+            (buttonA != null && buttonA.WasPressedThisFrame()))
         {
             response = StroopColor.Red;
             return true;
         }
-        if (Input.GetKeyDown(KeyCode.X) || buttonB.WasPressedThisFrame())
+
+        if ((keyboard != null && keyboard.xKey.wasPressedThisFrame) ||
+            (buttonB != null && buttonB.WasPressedThisFrame()))
         {
             response = StroopColor.Blue;
             return true;
         }
-        if (Input.GetKeyDown(KeyCode.C) || buttonX.WasPressedThisFrame())
+
+        if ((keyboard != null && keyboard.cKey.wasPressedThisFrame) ||
+            (buttonX != null && buttonX.WasPressedThisFrame()))
         {
             response = StroopColor.Green;
             return true;
         }
-        if (Input.GetKeyDown(KeyCode.V) || buttonY.WasPressedThisFrame())
+
+        if ((keyboard != null && keyboard.vKey.wasPressedThisFrame) ||
+            (buttonY != null && buttonY.WasPressedThisFrame()))
         {
             response = StroopColor.Yellow;
             return true;
@@ -373,11 +474,139 @@ public class StroopManager : MonoBehaviour
         return false;
     }
 
+    public void SetFixationDuration(string inputText)
+    {
+        if (!TryParseFloat(inputText, out float seconds))
+        {
+            Debug.LogWarning($"Fixation duration input is invalid: {inputText}");
+            SyncSettingInputFields();
+            return;
+        }
+
+        fixationDuration = Mathf.Max(minFixationDuration, seconds);
+        fixationDurationInputField?.SetTextWithoutNotify(FormatFloat(fixationDuration));
+    }
+
+    public void SetStimulusDuration(string inputText)
+    {
+        if (!TryParseFloat(inputText, out float seconds))
+        {
+            Debug.LogWarning($"Stimulus duration input is invalid: {inputText}");
+            SyncSettingInputFields();
+            return;
+        }
+
+        stimulusDuration = Mathf.Max(minStimulusDuration, seconds);
+        stimulusDurationInputField?.SetTextWithoutNotify(FormatFloat(stimulusDuration));
+    }
+
+    public void SetResponseDuration(string inputText)
+    {
+        if (!TryParseFloat(inputText, out float seconds))
+        {
+            Debug.LogWarning($"Response duration input is invalid: {inputText}");
+            SyncSettingInputFields();
+            return;
+        }
+
+        responseDuration = Mathf.Max(minResponseDuration, seconds);
+        responseDurationInputField?.SetTextWithoutNotify(FormatFloat(responseDuration));
+    }
+
+    public void SetTrialNumOneBlock(string inputText)
+    {
+        if (!int.TryParse(inputText, out int trialCount))
+        {
+            Debug.LogWarning($"Trial count input is invalid: {inputText}");
+            SyncSettingInputFields();
+            return;
+        }
+
+        trialNumOneBlock = Mathf.Max(minTrialNumOneBlock, trialCount);
+        trialNumOneBlockInputField?.SetTextWithoutNotify(trialNumOneBlock.ToString());
+    }
+
+    private void SetupSettingInputFields()
+    {
+        // Inspector値も入力欄と同じ制約に合わせてから表示する。
+        fixationDuration = Mathf.Max(minFixationDuration, fixationDuration);
+        stimulusDuration = Mathf.Max(minStimulusDuration, stimulusDuration);
+        responseDuration = Mathf.Max(minResponseDuration, responseDuration);
+        trialNumOneBlock = Mathf.Max(minTrialNumOneBlock, trialNumOneBlock);
+        SyncSettingInputFields();
+
+        if (numericKeyboardInputBinder == null)
+        {
+            numericKeyboardInputBinder = GetComponent<XRNumericKeyboardInputBinder>();
+        }
+
+        if (numericKeyboardInputBinder == null)
+        {
+            numericKeyboardInputBinder = gameObject.AddComponent<XRNumericKeyboardInputBinder>();
+        }
+
+        // 時間は小数、1ブロックの試行数は整数として共通キーボードへ登録する。
+        numericKeyboardInputBinder.BindDecimal(fixationDurationInputField, SetFixationDuration);
+        numericKeyboardInputBinder.BindDecimal(stimulusDurationInputField, SetStimulusDuration);
+        numericKeyboardInputBinder.BindDecimal(responseDurationInputField, SetResponseDuration);
+        numericKeyboardInputBinder.BindInteger(trialNumOneBlockInputField, SetTrialNumOneBlock);
+
+        if (!applySettingsOnEndEdit)
+        {
+            return;
+        }
+
+        fixationDurationInputField?.onEndEdit.AddListener(SetFixationDuration);
+        stimulusDurationInputField?.onEndEdit.AddListener(SetStimulusDuration);
+        responseDurationInputField?.onEndEdit.AddListener(SetResponseDuration);
+        trialNumOneBlockInputField?.onEndEdit.AddListener(SetTrialNumOneBlock);
+    }
+
+    private void SyncSettingInputFields()
+    {
+        fixationDurationInputField?.SetTextWithoutNotify(FormatFloat(fixationDuration));
+        stimulusDurationInputField?.SetTextWithoutNotify(FormatFloat(stimulusDuration));
+        responseDurationInputField?.SetTextWithoutNotify(FormatFloat(responseDuration));
+        trialNumOneBlockInputField?.SetTextWithoutNotify(trialNumOneBlock.ToString());
+    }
+
+    private bool TryParseFloat(string inputText, out float value)
+    {
+        if (float.TryParse(inputText, NumberStyles.Float, CultureInfo.CurrentCulture, out value))
+        {
+            return true;
+        }
+
+        return float.TryParse(inputText, NumberStyles.Float, CultureInfo.InvariantCulture, out value);
+    }
+
+    private string FormatFloat(float value)
+    {
+        return value.ToString("0.###", CultureInfo.InvariantCulture);
+    }
+
+    private void OnDestroy()
+    {
+        fixationDurationInputField?.onEndEdit.RemoveListener(SetFixationDuration);
+        stimulusDurationInputField?.onEndEdit.RemoveListener(SetStimulusDuration);
+        responseDurationInputField?.onEndEdit.RemoveListener(SetResponseDuration);
+        trialNumOneBlockInputField?.onEndEdit.RemoveListener(SetTrialNumOneBlock);
+
+        if (numericKeyboardInputBinder != null)
+        {
+            numericKeyboardInputBinder.Unbind(fixationDurationInputField);
+            numericKeyboardInputBinder.Unbind(stimulusDurationInputField);
+            numericKeyboardInputBinder.Unbind(responseDurationInputField);
+            numericKeyboardInputBinder.Unbind(trialNumOneBlockInputField);
+        }
+    }
+
     private void ShowIdle()
     {
         state = TrialState.Idle;
-        stimulusText.text = string.Empty;
-        resultText.text = string.Empty;
+        stimulusText.text = " ";
+        resultText.text = " ";
+
         statusText.text =
             "P / LB: Practice\n" +
             "1 / RB: Block 1 (Congruent)\n" +

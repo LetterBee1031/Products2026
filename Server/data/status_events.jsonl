@@ -328,3 +328,13 @@
 {"received_at": "2026-05-27T15:23:03.606517+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "3_back_end", "sent_at": "2026/05/27 15:23:04"}
 {"received_at": "2026-05-27T15:23:14.147526+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "0_back_start", "sent_at": "2026/05/27 15:23:14"}
 {"received_at": "2026-05-27T15:24:14.155096+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "0_back_end", "sent_at": "2026/05/27 15:24:14"}
+{"received_at": "2026-06-01T13:35:36.565919+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/06/01 13:35:36"}
+{"received_at": "2026-06-01T13:35:36.579611+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLCorrection.csより愛をこめて", "sent_at": "2026/06/01 13:35:36"}
+{"received_at": "2026-06-01T13:37:25.882318+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLR Calibration Start", "sent_at": "2026/06/01 13:37:25"}
+{"received_at": "2026-06-08T19:23:34.832863+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/06/08 19:23:34"}
+{"received_at": "2026-06-08T19:23:34.839406+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLCorrection.csより愛をこめて", "sent_at": "2026/06/08 19:23:35"}
+{"received_at": "2026-06-08T19:27:45.564691+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/06/08 19:27:45"}
+{"received_at": "2026-06-08T19:27:45.587334+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLCorrection.csより愛をこめて", "sent_at": "2026/06/08 19:27:45"}
+{"received_at": "2026-06-08T19:31:53.268465+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "experience_start", "sent_at": "2026/06/08 19:31:53"}
+{"received_at": "2026-06-08T19:31:53.280995+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLCorrection.csより愛をこめて", "sent_at": "2026/06/08 19:31:53"}
+{"received_at": "2026-06-08T19:32:32.405354+09:00", "client_host": "192.168.150.79", "id": "01", "status_flag": "PLR Calibration Start", "sent_at": "2026/06/08 19:32:32"}

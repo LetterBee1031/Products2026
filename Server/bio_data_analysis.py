@@ -21,7 +21,7 @@ MODEL_DIR = Path("models")
 
 # N-backの体験状態を、機械学習で扱う認知負荷ラベルに変換する対応表。
 ML_STATUS_LABELS: Dict[str, str] = {
-    # "0_back_start": "Low",
+    "0_back_start": "Low",
     "1_back_start": "Low",
     "2_back_start": "Optimal",
     "3_back_start": "High",

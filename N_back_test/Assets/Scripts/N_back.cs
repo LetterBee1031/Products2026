@@ -27,7 +27,7 @@ public class N_back : MonoBehaviour
     public TMP_InputField nBackNumInputField; // n_back_num入力欄
     public TMP_InputField timeWaitOneTaskInputField; // timeWaitOneTask入力欄
     public TMP_InputField timeLimitInputField; // timeLimit入力欄
-    public XRNumericKeyboard xrNumericKeyboard; // XR空間で使う数値キーボード
+    public XRNumericKeyboardInputBinder numericKeyboardInputBinder; // 入力欄と共通数値キーボードを接続する
     public bool applySettingsOnEndEdit = true; // 入力終了時に自動で値を反映する
     public int minNBackNum = 0; // 0-backを許可するため最小値は0
     public int maxNBackNum = 99; // LIST_MAX_LENGTHを超えない範囲で使う
@@ -462,7 +462,7 @@ public class N_back : MonoBehaviour
     {
         // 起動時に現在の設定値を入力欄へ表示する
         SyncSettingInputFields();
-        SetupXRNumericKeyboard();
+        SetupNumericKeyboardInputBinder();
 
         if (!applySettingsOnEndEdit)
         {
@@ -488,47 +488,22 @@ public class N_back : MonoBehaviour
         }
     }
 
-    private void SetupXRNumericKeyboard()
+    private void SetupNumericKeyboardInputBinder()
     {
-        if (xrNumericKeyboard == null)
+        // キーボードの生成・表示と入力欄の選択イベント管理は共通スクリプトへ任せる。
+        if (numericKeyboardInputBinder == null)
         {
-            xrNumericKeyboard = GetComponent<XRNumericKeyboard>();
+            numericKeyboardInputBinder = GetComponent<XRNumericKeyboardInputBinder>();
         }
 
-        if (xrNumericKeyboard == null)
+        if (numericKeyboardInputBinder == null)
         {
-            xrNumericKeyboard = gameObject.AddComponent<XRNumericKeyboard>();
+            numericKeyboardInputBinder = gameObject.AddComponent<XRNumericKeyboardInputBinder>();
         }
 
-        if (nBackNumInputField != null)
-        {
-            nBackNumInputField.onSelect.AddListener(OpenNBackNumKeyboard);
-        }
-
-        if (timeWaitOneTaskInputField != null)
-        {
-            timeWaitOneTaskInputField.onSelect.AddListener(OpenTimeWaitOneTaskKeyboard);
-        }
-
-        if (timeLimitInputField != null)
-        {
-            timeLimitInputField.onSelect.AddListener(OpenTimeLimitKeyboard);
-        }
-    }
-
-    private void OpenNBackNumKeyboard(string _)
-    {
-        xrNumericKeyboard.OpenForInteger(nBackNumInputField, SetNbackNum);
-    }
-
-    private void OpenTimeWaitOneTaskKeyboard(string _)
-    {
-        xrNumericKeyboard.OpenForDecimal(timeWaitOneTaskInputField, SetTimeWaitOneTask);
-    }
-
-    private void OpenTimeLimitKeyboard(string _)
-    {
-        xrNumericKeyboard.OpenForDecimal(timeLimitInputField, SetTimeLimit);
+        numericKeyboardInputBinder.BindInteger(nBackNumInputField, SetNbackNum);
+        numericKeyboardInputBinder.BindDecimal(timeWaitOneTaskInputField, SetTimeWaitOneTask);
+        numericKeyboardInputBinder.BindDecimal(timeLimitInputField, SetTimeLimit);
     }
 
     private void SyncSettingInputFields()
@@ -578,19 +553,24 @@ public class N_back : MonoBehaviour
         if (nBackNumInputField != null)
         {
             nBackNumInputField.onEndEdit.RemoveListener(SetNbackNum);
-            nBackNumInputField.onSelect.RemoveListener(OpenNBackNumKeyboard);
         }
 
         if (timeWaitOneTaskInputField != null)
         {
             timeWaitOneTaskInputField.onEndEdit.RemoveListener(SetTimeWaitOneTask);
-            timeWaitOneTaskInputField.onSelect.RemoveListener(OpenTimeWaitOneTaskKeyboard);
         }
 
         if (timeLimitInputField != null)
         {
             timeLimitInputField.onEndEdit.RemoveListener(SetTimeLimit);
-            timeLimitInputField.onSelect.RemoveListener(OpenTimeLimitKeyboard);
+        }
+
+        // N-backで登録した入力欄だけを共通バインダーから解除する。
+        if (numericKeyboardInputBinder != null)
+        {
+            numericKeyboardInputBinder.Unbind(nBackNumInputField);
+            numericKeyboardInputBinder.Unbind(timeWaitOneTaskInputField);
+            numericKeyboardInputBinder.Unbind(timeLimitInputField);
         }
     }
 }

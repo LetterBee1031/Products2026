@@ -2,38 +2,38 @@ Random Forest Cognitive Load Classification Result
 
 Feature columns: ['hr', 'tepr']
 Preprocessing  : standard_scaler_zscore
-Total rows     : 359
-Train rows     : 287
-Test rows      : 72
+Total rows     : 477
+Train rows     : 381
+Test rows      : 96
 
 Label Feature Statistics:
 (variance: population variance, ddof=0)
           hr_count  hr_mean  hr_median  hr_variance  tepr_count  tepr_mean  tepr_median  tepr_variance
 cl_label                                                                                              
-Low            120  88.1667    88.0000       4.7389         120    -0.0838      -0.0992         0.0853
+Low            238  87.2437    87.0000       6.3356         238    -0.0434      -0.0369         0.0755
 Optimal        119  89.8235    90.0000      16.6663         119     0.0782       0.0974         0.0654
 High           120  83.9583    84.0000       5.5899         120     0.2314       0.1942         0.0750
 
 ===== Test Result =====
-Accuracy : 0.6389
-Precision: 0.6412
-Recall   : 0.6389
-F-value  : 0.6387
+Accuracy : 0.6562
+Precision: 0.6666
+Recall   : 0.6562
+F-value  : 0.6556
 
 Confusion Matrix:
               Pred_Low  Pred_Optimal  Pred_High
-True_Low            15             6          3
-True_Optimal         5            14          5
-True_High            6             1         17
+True_Low            35            10          3
+True_Optimal         8            15          1
+True_High            9             2         13
 
 Classification Report:
               precision    recall  f1-score   support
 
-         Low       0.58      0.62      0.60        24
-     Optimal       0.67      0.58      0.62        24
-        High       0.68      0.71      0.69        24
+         Low       0.67      0.73      0.70        48
+     Optimal       0.56      0.62      0.59        24
+        High       0.76      0.54      0.63        24
 
-    accuracy                           0.64        72
-   macro avg       0.64      0.64      0.64        72
-weighted avg       0.64      0.64      0.64        72
+    accuracy                           0.66        96
+   macro avg       0.66      0.63      0.64        96
+weighted avg       0.67      0.66      0.66        96
 

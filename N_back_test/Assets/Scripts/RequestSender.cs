@@ -54,6 +54,24 @@ public class RequestSender : MonoBehaviour
         public string deviceIp;
     }
 
+    [Serializable]
+    // Stroop課題の1試行分のログをサーバへ送るためのJSON形式。
+    public class StroopLogPost
+    {
+        public string user_id;
+        public string condition;
+        public int trial_index;
+        public bool is_practice;
+        public bool is_correct;
+        public float reaction_time_ms;
+        public string stimulus_onset_time;
+        public string response_time;
+        public string result;
+        public string sent_at;
+        public long timestamp;
+        public string deviceIp;
+    }
+
 
 
     // ---- PLRキャリブレーション送信用 ----
@@ -258,6 +276,33 @@ public class RequestSender : MonoBehaviour
         ));
     }
 
+    public void SendStroopLog(
+        string logUserId,
+        string condition,
+        int trialIndex,
+        bool isPractice,
+        bool isCorrect,
+        float reactionTimeMs,
+        string stimulusOnsetTime,
+        string responseTime,
+        string result
+    )
+    {
+        // StroopManager側のuserIdが空の場合はRequestSenderの固定IDを使う。
+        string safeUserId = string.IsNullOrWhiteSpace(logUserId) ? userId : logUserId;
+        StartCoroutine(PostStroopLogCoroutine(
+            safeUserId,
+            condition,
+            trialIndex,
+            isPractice,
+            isCorrect,
+            reactionTimeMs,
+            stimulusOnsetTime,
+            responseTime,
+            result
+        ));
+    }
+
     public void StartAlnalyzeCLCondition(bool flag)
     {
         if (flag)
@@ -419,6 +464,72 @@ public class RequestSender : MonoBehaviour
         }
     }
 
+
+
+
+    // ---- stroop log送信 ----
+    // StroopManagerから受け取った1試行分の結果を/api/stroop_logへ送る。
+    // サーバ側ではuser_idごとにJSON Lines形式で追記保存する。
+    public IEnumerator PostStroopLogCoroutine(
+        string logUserId,
+        string condition,
+        int trialIndex,
+        bool isPractice,
+        bool isCorrect,
+        float reactionTimeMs,
+        string stimulusOnsetTime,
+        string responseTime,
+        string result
+    )
+    {
+        string safeBase = GetSafeBaseUrl();
+        string url = safeBase + "/api/stroop_log";
+
+        var payload = new StroopLogPost
+        {
+            user_id = string.IsNullOrWhiteSpace(logUserId) ? userId : logUserId,
+            condition = condition,
+            trial_index = trialIndex,
+            is_practice = isPractice,
+            is_correct = isCorrect,
+            reaction_time_ms = reactionTimeMs,
+            stimulus_onset_time = stimulusOnsetTime,
+            response_time = responseTime,
+            result = result,
+            sent_at = DateTime.Now.ToString(),
+            timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+            deviceIp = GetDeviceIpAddress()
+        };
+
+        string json = JsonConvert.SerializeObject(payload);
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        using (var req = new UnityWebRequest(url, "POST"))
+        {
+            req.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            req.downloadHandler = new DownloadHandlerBuffer();
+            req.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
+
+            Debug.Log($"STROOP_LOG_POST url=[{url}] payload={json}");
+
+            yield return req.SendWebRequest();
+
+#if UNITY_2020_2_OR_NEWER
+            bool ok = (req.result == UnityWebRequest.Result.Success);
+#else
+            bool ok = !(req.isNetworkError || req.isHttpError);
+#endif
+
+            if (!ok)
+            {
+                Debug.LogWarning($"STROOP_LOG_POST failed: code={req.responseCode}, err={req.error}, body={req.downloadHandler.text}");
+            }
+            else
+            {
+                Debug.Log($"STROOP_LOG_POST ok: {req.downloadHandler.text}");
+            }
+        }
+    }
 
 
     // ---- PLRモデル推定リクエスト送信 ----

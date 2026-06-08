@@ -120,6 +120,21 @@ class StatusPost(BaseModel):
     status_flag: str
     sent_at: str
 
+# UnityのStroopManagerから送られる1試行分のログ。
+class StroopLogPost(BaseModel):
+    user_id: str = "01"
+    condition: str
+    trial_index: int
+    is_practice: bool
+    is_correct: bool
+    reaction_time_ms: float
+    stimulus_onset_time: str
+    response_time: Optional[str] = None
+    result: str
+    sent_at: Optional[str] = None
+    timestamp: Optional[int] = None
+    deviceIp: Optional[str] = None
+
 def normalize_user_id(user_id: str) -> str:
     safe_id = re.sub(r"[^0-9A-Za-z_-]", "_", user_id.strip())
     return safe_id or "01"
@@ -129,6 +144,9 @@ def hr_jsonl_path_for_user(user_id: str) -> Path:
 
 def eye_jsonl_path_for_user(user_id: str) -> Path:
     return DATA_DIR / f"eye_data{normalize_user_id(user_id)}.jsonl"
+
+def stroop_jsonl_path_for_user(user_id: str) -> Path:
+    return DATA_DIR / f"stroop_log_{normalize_user_id(user_id)}.jsonl"
 
 def append_records_by_user(records: List[dict]) -> None:
     files = {}
@@ -153,6 +171,11 @@ def append_eye_records_by_user(records: List[dict]) -> None:
     finally:
         for f in files.values():
             f.close()
+
+def append_stroop_record_by_user(record: dict) -> None:
+    user_id = normalize_user_id(str(record.get("user_id", "01")))
+    with stroop_jsonl_path_for_user(user_id).open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 # 心拍・心拍変動を受け取り，保存するパス
 @app.post("/api/hr")
@@ -235,6 +258,38 @@ async def receive_eyedata(payload: List[EyedataPost], request: Request):
 
 # PLR補正用モデルの学習API
 # UnityのRequestSender.csからキャリブレーションデータを受け取り、a,b,cを返す。
+# Stroop課題のログを1試行ごとに受信し、被験者ID別のJSONLへ保存する。
+@app.post("/api/stroop_log")
+async def receive_stroop_log(payload: StroopLogPost, request: Request):
+    client_host = request.client.host if request.client else "unknown"
+    received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
+    user_id = normalize_user_id(payload.user_id)
+
+    record = {
+        "user_id": user_id,
+        "condition": payload.condition,
+        "trial_index": payload.trial_index,
+        "is_practice": payload.is_practice,
+        "is_correct": payload.is_correct,
+        "reaction_time_ms": payload.reaction_time_ms,
+        "stimulus_onset_time": payload.stimulus_onset_time,
+        "response_time": payload.response_time,
+        "result": payload.result,
+        # Unity側の送信時刻とサーバ側の受信時刻を両方保存する。
+        "sent_at": payload.sent_at,
+        "received_at": received_at,
+        "timestamp": payload.timestamp,
+        "client_host": client_host,
+        "device_ip": payload.deviceIp,
+    }
+    append_stroop_record_by_user(record)
+
+    return {
+        "ok": True,
+        "user_id": user_id,
+        "trial_index": payload.trial_index,
+    }
+
 @app.post("/api/plr/fit", response_model=PLRFitResponse)
 async def fit_plr(payload: PLRFitRequest, request: Request):
     client_host = request.client.host if request.client else "unknown"
