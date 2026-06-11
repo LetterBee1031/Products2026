@@ -77,6 +77,7 @@ public class MentalArithmeticManager : MonoBehaviour
     private const int DefaultDurationSeconds = 120; 
     private const int MinDurationSeconds = 30;
     private const int MaxDurationSeconds = 600;
+    private const int MaxAnswerDigits = 3;
 
     // 難易度ごとに、条件を満たすすべての問題を保持する。
     private readonly Dictionary<Difficulty, List<Problem>> problemPools =
@@ -173,6 +174,35 @@ public class MentalArithmeticManager : MonoBehaviour
             blockRunToken));
     }
 
+    public void InputAnswerDigit(int digit)
+    {
+        if (state != TaskState.Running ||
+            answerInputField == null ||
+            digit < 0 ||
+            digit > 9)
+        {
+            return;
+        }
+
+        string currentInput = answerInputField.text;
+        if (currentInput.Length >= MaxAnswerDigits)
+        {
+            return;
+        }
+
+        string digitText = digit.ToString(CultureInfo.InvariantCulture);
+        string nextInput = currentInput == "0" ? digitText : currentInput + digitText;
+        answerInputField.SetTextWithoutNotify(nextInput);
+    }
+
+    public void ClearAnswerInput()
+    {
+        if (state == TaskState.Running)
+        {
+            answerInputField?.SetTextWithoutNotify(string.Empty);
+        }
+    }
+
     public void SkipProblem()
     {
         // スキップは不正解として記録し、user_answerは空欄にする。
@@ -251,13 +281,6 @@ public class MentalArithmeticManager : MonoBehaviour
         feedbackText.text = string.Empty;
         SetControlsInteractable(true);
 
-
-        /* 
-        このあたりまでは
-        読みました
-        */
-
-
         ShowNextProblem();
 
         // 1問ごとの制限時間は設けず、ブロック全体の経過時間だけを監視する。
@@ -334,10 +357,11 @@ public class MentalArithmeticManager : MonoBehaviour
 
         // 前問の回答を残さず、新しい問題にすぐ入力できる状態へ戻す。
         answerInputField?.SetTextWithoutNotify(string.Empty);
-        answerInputField?.ActivateInputField();
-        problemText.text = $"{currentProblem.a} \u00D7 {currentProblem.b}";
+        problemText.text = $"{currentProblem.a} \u00D7 {currentProblem.b} = ";
         SetControlsInteractable(true);
     }
+
+    ///
 
     private void RecordTrial(string userAnswer, bool isCorrect, bool isSkipped)
     {
@@ -424,9 +448,9 @@ public class MentalArithmeticManager : MonoBehaviour
 
         if (answerInputField != null)
         {
-            // PCではEnter、XRでは数値キーボードの確定操作から回答できる。
+            // 回答欄は暗算課題専用の数字ボタンからのみ更新する。
             answerInputField.contentType = TMP_InputField.ContentType.IntegerNumber;
-            answerInputField.onSubmit.AddListener(HandleAnswerSubmitted);
+            answerInputField.readOnly = true;
         }
 
         if (durationInputField != null)
@@ -447,7 +471,6 @@ public class MentalArithmeticManager : MonoBehaviour
             numericKeyboardInputBinder = gameObject.AddComponent<XRNumericKeyboardInputBinder>();
         }
 
-        numericKeyboardInputBinder.BindInteger(answerInputField, _ => SubmitAnswer());
         numericKeyboardInputBinder.BindInteger(durationInputField, SetBlockDuration);
     }
 
@@ -561,22 +584,15 @@ public class MentalArithmeticManager : MonoBehaviour
         }
     }
 
-    private void HandleAnswerSubmitted(string _)
-    {
-        SubmitAnswer();
-    }
-
     private void OnDestroy()
     {
         // シーン破棄時にリスナーを解除し、再生成時の重複登録を防ぐ。
         submitButton?.onClick.RemoveListener(SubmitAnswer);
         skipButton?.onClick.RemoveListener(SkipProblem);
-        answerInputField?.onSubmit.RemoveListener(HandleAnswerSubmitted);
         durationInputField?.onEndEdit.RemoveListener(SetBlockDuration);
 
         if (numericKeyboardInputBinder != null)
         {
-            numericKeyboardInputBinder.Unbind(answerInputField);
             numericKeyboardInputBinder.Unbind(durationInputField);
         }
     }
