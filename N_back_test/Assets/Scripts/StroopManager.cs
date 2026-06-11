@@ -5,6 +5,7 @@ using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class StroopManager : MonoBehaviour
 {
@@ -61,20 +62,23 @@ public class StroopManager : MonoBehaviour
     [SerializeField] public float fixationDuration = 1.0f;
     [SerializeField] public float stimulusDuration = 0.4f;
     [SerializeField] public float responseDuration = 1.1f;
-    [SerializeField] public int trialNumOneBlock = 30;
+    [FormerlySerializedAs("trialNumOneBlock")]
+    [SerializeField] public float blockDurationSeconds = 120.0f;
 
     // ヒエラルキー上に配置したInputFieldからStroopの時間設定を変更する。
     [Header("Stroop setting input UI")]
     [SerializeField] private TMP_InputField fixationDurationInputField;
     [SerializeField] private TMP_InputField stimulusDurationInputField;
     [SerializeField] private TMP_InputField responseDurationInputField;
-    [SerializeField] private TMP_InputField trialNumOneBlockInputField;
+    [FormerlySerializedAs("trialNumOneBlockInputField")]
+    [SerializeField] private TMP_InputField blockDurationInputField;
     [SerializeField] private XRNumericKeyboardInputBinder numericKeyboardInputBinder;
     [SerializeField] private bool applySettingsOnEndEdit = true;
     [SerializeField] private float minFixationDuration = 0.0f;
     [SerializeField] private float minStimulusDuration = 0.0f;
     [SerializeField] private float minResponseDuration = 0.0f;
-    [SerializeField] private int minTrialNumOneBlock = 1;
+    [FormerlySerializedAs("minTrialNumOneBlock")]
+    [SerializeField] private float minBlockDurationSeconds = 1.0f;
 
     // StroopColorの列挙順と各配列の順序を一致させる。
     private static readonly string[] ColorWords = { "あか", "あお", "みどり", "きいろ" };
@@ -229,12 +233,11 @@ public class StroopManager : MonoBehaviour
             return;
         }
 
-        // 本試行は1ブロックにつき同一条件を30(trialNumOneBlock)試行実施する。
+        // 本試行は同一条件を、設定した制限時間が経過するまで繰り返す。
         trials.Clear();
-        AddTrials(condition, trialNumOneBlock, false);
 
         currentBlockName = "Block " + blockNumber;
-        StartCoroutine(RunTrials());
+        StartCoroutine(RunTimedBlock(condition));
     }
 
     // Idle(待機), Rest(休憩), Result(結果表示)のどれかならTrue
@@ -271,18 +274,58 @@ public class StroopManager : MonoBehaviour
         resultText.text = string.Format("出題数: {0}\n正答数: {1}", trials.Count, correctCount);
     }
 
+    // 本試行用。制限時間内は同じ条件の試行を繰り返す。
+    // 制限時間中に開始した試行は最後まで実行し、その終了後にブロックを終了する。
+    private IEnumerator RunTimedBlock(StroopCondition condition)
+    {
+        correctCount = 0;
+        resultText.text = " ";
+
+        float blockStartTime = Time.realtimeSinceStartup;
+        int completedTrialCount = 0;
+
+        while (Time.realtimeSinceStartup - blockStartTime < blockDurationSeconds)
+        {
+            int trialIndex = completedTrialCount + 1;
+            StroopTrial trial = new StroopTrial(condition, trialIndex, false);
+            trials.Add(trial);
+
+            yield return RunTrial(trial, trialIndex, false);
+            completedTrialCount++;
+        }
+
+        state = TrialState.Results;
+        stimulusText.text = " ";
+        statusText.text = currentBlockName + " 完了";
+        resultText.text = string.Format(
+            "経過時間: {0:0.0} 秒\n出題数: {1}\n正答数: {2}",
+            Time.realtimeSinceStartup - blockStartTime,
+            completedTrialCount,
+            correctCount);
+    }
+
     // 1トライアルの実行
-    private IEnumerator RunTrial(StroopTrial trial, int blockTrialIndex)
+    private IEnumerator RunTrial(
+        StroopTrial trial,
+        int blockTrialIndex,
+        bool showTotalTrialCount = true)
     {
         // 試行開始時に条件に合う刺激を1つ生成する。
         Stimulus stimulus = CreateStimulus(trial.condition);
 
-        statusText.text = string.Format(
-            "{0} / {1}\nTrial {2} / {3}",
-            currentBlockName,
-            trial.condition,
-            blockTrialIndex,
-            trials.Count);
+        statusText.text = showTotalTrialCount
+            ? string.Format(
+                "{0} / {1}\nTrial {2} / {3}",
+                currentBlockName,
+                trial.condition,
+                blockTrialIndex,
+                trials.Count)
+            : string.Format(
+                "{0} / {1}\nTrial {2}\nTime limit: {3:0.###} sec",
+                currentBlockName,
+                trial.condition,
+                blockTrialIndex,
+                blockDurationSeconds);
 
         // 1. 注視点を1000 ms表示。
         state = TrialState.Fixation;
@@ -513,17 +556,17 @@ public class StroopManager : MonoBehaviour
         responseDurationInputField?.SetTextWithoutNotify(FormatFloat(responseDuration));
     }
 
-    public void SetTrialNumOneBlock(string inputText)
+    public void SetBlockDuration(string inputText)
     {
-        if (!int.TryParse(inputText, out int trialCount))
+        if (!TryParseFloat(inputText, out float seconds))
         {
-            Debug.LogWarning($"Trial count input is invalid: {inputText}");
+            Debug.LogWarning($"Block duration input is invalid: {inputText}");
             SyncSettingInputFields();
             return;
         }
 
-        trialNumOneBlock = Mathf.Max(minTrialNumOneBlock, trialCount);
-        trialNumOneBlockInputField?.SetTextWithoutNotify(trialNumOneBlock.ToString());
+        blockDurationSeconds = Mathf.Max(minBlockDurationSeconds, seconds);
+        blockDurationInputField?.SetTextWithoutNotify(FormatFloat(blockDurationSeconds));
     }
 
     private void SetupSettingInputFields()
@@ -532,7 +575,7 @@ public class StroopManager : MonoBehaviour
         fixationDuration = Mathf.Max(minFixationDuration, fixationDuration);
         stimulusDuration = Mathf.Max(minStimulusDuration, stimulusDuration);
         responseDuration = Mathf.Max(minResponseDuration, responseDuration);
-        trialNumOneBlock = Mathf.Max(minTrialNumOneBlock, trialNumOneBlock);
+        blockDurationSeconds = Mathf.Max(minBlockDurationSeconds, blockDurationSeconds);
         SyncSettingInputFields();
 
         if (numericKeyboardInputBinder == null)
@@ -545,11 +588,11 @@ public class StroopManager : MonoBehaviour
             numericKeyboardInputBinder = gameObject.AddComponent<XRNumericKeyboardInputBinder>();
         }
 
-        // 時間は小数、1ブロックの試行数は整数として共通キーボードへ登録する。
+        // すべて秒数として小数入力可能な共通キーボードへ登録する。
         numericKeyboardInputBinder.BindDecimal(fixationDurationInputField, SetFixationDuration);
         numericKeyboardInputBinder.BindDecimal(stimulusDurationInputField, SetStimulusDuration);
         numericKeyboardInputBinder.BindDecimal(responseDurationInputField, SetResponseDuration);
-        numericKeyboardInputBinder.BindInteger(trialNumOneBlockInputField, SetTrialNumOneBlock);
+        numericKeyboardInputBinder.BindDecimal(blockDurationInputField, SetBlockDuration);
 
         if (!applySettingsOnEndEdit)
         {
@@ -559,7 +602,7 @@ public class StroopManager : MonoBehaviour
         fixationDurationInputField?.onEndEdit.AddListener(SetFixationDuration);
         stimulusDurationInputField?.onEndEdit.AddListener(SetStimulusDuration);
         responseDurationInputField?.onEndEdit.AddListener(SetResponseDuration);
-        trialNumOneBlockInputField?.onEndEdit.AddListener(SetTrialNumOneBlock);
+        blockDurationInputField?.onEndEdit.AddListener(SetBlockDuration);
     }
 
     private void SyncSettingInputFields()
@@ -567,7 +610,7 @@ public class StroopManager : MonoBehaviour
         fixationDurationInputField?.SetTextWithoutNotify(FormatFloat(fixationDuration));
         stimulusDurationInputField?.SetTextWithoutNotify(FormatFloat(stimulusDuration));
         responseDurationInputField?.SetTextWithoutNotify(FormatFloat(responseDuration));
-        trialNumOneBlockInputField?.SetTextWithoutNotify(trialNumOneBlock.ToString());
+        blockDurationInputField?.SetTextWithoutNotify(FormatFloat(blockDurationSeconds));
     }
 
     private bool TryParseFloat(string inputText, out float value)
@@ -590,14 +633,14 @@ public class StroopManager : MonoBehaviour
         fixationDurationInputField?.onEndEdit.RemoveListener(SetFixationDuration);
         stimulusDurationInputField?.onEndEdit.RemoveListener(SetStimulusDuration);
         responseDurationInputField?.onEndEdit.RemoveListener(SetResponseDuration);
-        trialNumOneBlockInputField?.onEndEdit.RemoveListener(SetTrialNumOneBlock);
+        blockDurationInputField?.onEndEdit.RemoveListener(SetBlockDuration);
 
         if (numericKeyboardInputBinder != null)
         {
             numericKeyboardInputBinder.Unbind(fixationDurationInputField);
             numericKeyboardInputBinder.Unbind(stimulusDurationInputField);
             numericKeyboardInputBinder.Unbind(responseDurationInputField);
-            numericKeyboardInputBinder.Unbind(trialNumOneBlockInputField);
+            numericKeyboardInputBinder.Unbind(blockDurationInputField);
         }
     }
 

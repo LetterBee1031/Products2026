@@ -18323,6 +18323,7 @@ GameObject:
   - component: {fileID: 686141621}
   - component: {fileID: 686141622}
   - component: {fileID: 686141623}
+  - component: {fileID: 686141624}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -18516,7 +18517,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686141610}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 446590df1e7e1e347b949bfcdd51def9, type: 3}
   m_Name: 
@@ -18549,7 +18550,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686141610}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5356397585c4dc94f8abf59821f00069, type: 3}
   m_Name: 
@@ -18577,17 +18578,17 @@ MonoBehaviour:
   fixationDuration: 1
   stimulusDuration: 0.4
   responseDuration: 1.1
-  trialNumOneBlock: 30
+  blockDurationSeconds: 60
   fixationDurationInputField: {fileID: 193477686}
   stimulusDurationInputField: {fileID: 673984739}
   responseDurationInputField: {fileID: 1916813004}
-  trialNumOneBlockInputField: {fileID: 1464931174}
+  blockDurationInputField: {fileID: 1464931174}
   numericKeyboardInputBinder: {fileID: 686141623}
   applySettingsOnEndEdit: 1
   minFixationDuration: 0
   minStimulusDuration: 0
   minResponseDuration: 0
-  minTrialNumOneBlock: 1
+  minBlockDurationSeconds: 1
   inputActions: {fileID: -944628639613478452, guid: e5d8c6f018ede8646947078d3da7c6e1, type: 3}
 --- !u!114 &686141623
 MonoBehaviour:
@@ -18602,6 +18603,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XRNumericKeyboardInputBinder
   numericKeyboard: {fileID: 686141619}
+--- !u!114 &686141624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686141610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d694056c67ab5334eb1a2c279e3b3564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MentalArithmeticManager
+  problemText: {fileID: 0}
+  answerInputField: {fileID: 0}
+  submitButton: {fileID: 0}
+  skipButton: {fileID: 0}
+  timerText: {fileID: 0}
+  difficultyText: {fileID: 0}
+  feedbackText: {fileID: 0}
+  durationInputField: {fileID: 0}
+  blockDurationSeconds: 120
+  feedbackDurationSeconds: 0.5
+  participantId: test_user
+  numericKeyboardInputBinder: {fileID: 0}
 --- !u!1 &689447433
 GameObject:
   m_ObjectHideFlags: 0
@@ -39359,7 +39384,7 @@ GameObject:
   - component: {fileID: 1464931175}
   - component: {fileID: 1464931174}
   m_Layer: 5
-  m_Name: SetTrialNumOneBlock
+  m_Name: SetBlockDurationSeconds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39471,7 +39496,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 30
+  m_Text: 120
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -39723,7 +39748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Trial Num:'
+  m_text: 'Trial Time:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8141f4f9a3a607409cb6edc4beab281, type: 2}
   m_sharedMaterial: {fileID: -3131679673145224684, guid: e8141f4f9a3a607409cb6edc4beab281, type: 2}
@@ -42536,7 +42561,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "30\u200B"
+  m_text: "120\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
