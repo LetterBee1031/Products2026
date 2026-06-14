@@ -30,7 +30,7 @@ except ModuleNotFoundError:
     from read_jsonl_from_last import read_last_n_jsonl_as_dataframe
     from shared_state import ISSUE_OPTIONS, user_status, load_user_profiles
 
-from negotiation.TestNegotiation1 import run_example
+from negotiation import run_negotiation
 
 # PLR補正モデルの学習・推論処理
 try:
@@ -40,7 +40,8 @@ except ModuleNotFoundError:
 
 app = FastAPI()
 
-DATA_DIR = Path("data")
+SERVER_DIR = Path(__file__).resolve().parent
+DATA_DIR = SERVER_DIR / "data"
 DATA_DIR.mkdir(exist_ok=True)
 MAX_IBI_PER_RECORD = 4
 
@@ -48,6 +49,10 @@ MAX_IBI_PER_RECORD = 4
 HR_JSONL_PATH = DATA_DIR / "hr_ibi.jsonl"
 STATUS_JSONL_PATH = DATA_DIR / "status_events.jsonl"
 USER_PROFILE_PATH = DATA_DIR / "user_profile.csv"
+
+# load_user_profiles() 内部で issue_option.csv が先に読み込まれる。
+# サーバ起動時に初期化し、どのAPIから交渉を始めてもCSVの設定を利用できるようにする。
+load_user_profiles(USER_PROFILE_PATH)
 
 # 心拍データクラス
 class TrackedData(BaseModel):
@@ -433,26 +438,15 @@ async def read_cl_condition(id: str = "01"):
 
     user_status[id].cl_condition = result["label"]
     
-    if user_status[id].cl_condition == "High":
-        changedIssueSetting = run_example(
-            L_current=0.75,
-            current_setting=user_status[id].issue_settings,
-            pa_preference=user_status[id].p,
-            pa_weight=user_status[id].w,
-            pa_taste_preference=user_status[id].p_taste,
-            pa_taste_weight=user_status[id].w_taste
-            )
-        user_status[id].issue_settings = changedIssueSetting
-    elif user_status[id].cl_condition == "Low":
-        changedIssueSetting = run_example(
-            L_current=0.25,
-            current_setting=user_status[id].issue_settings,
-            pa_preference=user_status[id].p,
-            pa_weight=user_status[id].w,
-            pa_taste_preference=user_status[id].p_taste,
-            pa_taste_weight=user_status[id].w_taste
+    negotiation_result = None
+    if user_status[id].cl_condition in {"High", "Low"}:
+        # 分類ラベルを負荷代表値へ変換し、AAとPAの交渉を開始する。
+        # 合意した場合のshared_state更新はNegotiationManager側で行う。
+        current_load = 0.75 if user_status[id].cl_condition == "High" else 0.25
+        negotiation_result = run_negotiation(
+            user_id=id,
+            current_load=current_load,
         )
-        user_status[id].issue_settings = changedIssueSetting
 
     return {
         "ok": True,
@@ -460,6 +454,9 @@ async def read_cl_condition(id: str = "01"):
         "cl_condition": user_status[id].cl_condition,
         "ml_result": result,
         "issue_settings": user_status[id].issue_settings,
+        "negotiation": (
+            negotiation_result.to_dict() if negotiation_result is not None else None
+        ),
     }
 
 # 現在の現在の体験設定を確認するパス
