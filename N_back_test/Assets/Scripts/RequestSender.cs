@@ -72,6 +72,29 @@ public class RequestSender : MonoBehaviour
         public string deviceIp;
     }
 
+    [Serializable]
+    // 暗算課題の1試行分のログをサーバへ送るためのJSON形式。
+    public class MentalArithmeticLogPost
+    {
+        public string participant_id;
+        public int block_id;
+        public string difficulty;
+        public int block_duration_sec;
+        public int trial_index;
+        public int a;
+        public int b;
+        public int correct_answer;
+        public string user_answer;
+        public bool is_correct;
+        public bool is_skipped;
+        public float reaction_time_ms;
+        public float block_elapsed_time_ms;
+        public string trial_timestamp;
+        public string sent_at;
+        public long timestamp;
+        public string deviceIp;
+    }
+
 
 
     // ---- PLRキャリブレーション送信用 ----
@@ -303,6 +326,44 @@ public class RequestSender : MonoBehaviour
         ));
     }
 
+    public void SendMentalArithmeticLog(
+        string participantId,
+        int blockId,
+        string difficulty,
+        int blockDurationSec,
+        int trialIndex,
+        int a,
+        int b,
+        int correctAnswer,
+        string userAnswer,
+        bool isCorrect,
+        bool isSkipped,
+        float reactionTimeMs,
+        float blockElapsedTimeMs,
+        string trialTimestamp
+    )
+    {
+        string safeParticipantId =
+            string.IsNullOrWhiteSpace(participantId) ? userId : participantId;
+
+        StartCoroutine(PostMentalArithmeticLogCoroutine(
+            safeParticipantId,
+            blockId,
+            difficulty,
+            blockDurationSec,
+            trialIndex,
+            a,
+            b,
+            correctAnswer,
+            userAnswer,
+            isCorrect,
+            isSkipped,
+            reactionTimeMs,
+            blockElapsedTimeMs,
+            trialTimestamp
+        ));
+    }
+
     public void StartAlnalyzeCLCondition(bool flag)
     {
         if (flag)
@@ -527,6 +588,81 @@ public class RequestSender : MonoBehaviour
             else
             {
                 Debug.Log($"STROOP_LOG_POST ok: {req.downloadHandler.text}");
+            }
+        }
+    }
+
+    // ---- mental arithmetic log送信 ----
+    // MentalArithmeticManagerから受け取った1試行分をサーバへ送信する。
+    public IEnumerator PostMentalArithmeticLogCoroutine(
+        string participantId,
+        int blockId,
+        string difficulty,
+        int blockDurationSec,
+        int trialIndex,
+        int a,
+        int b,
+        int correctAnswer,
+        string userAnswer,
+        bool isCorrect,
+        bool isSkipped,
+        float reactionTimeMs,
+        float blockElapsedTimeMs,
+        string trialTimestamp
+    )
+    {
+        string safeBase = GetSafeBaseUrl();
+        string url = safeBase + "/api/mental_arithmetic_log";
+
+        var payload = new MentalArithmeticLogPost
+        {
+            participant_id = string.IsNullOrWhiteSpace(participantId) ? userId : participantId,
+            block_id = blockId,
+            difficulty = difficulty,
+            block_duration_sec = blockDurationSec,
+            trial_index = trialIndex,
+            a = a,
+            b = b,
+            correct_answer = correctAnswer,
+            user_answer = userAnswer,
+            is_correct = isCorrect,
+            is_skipped = isSkipped,
+            reaction_time_ms = reactionTimeMs,
+            block_elapsed_time_ms = blockElapsedTimeMs,
+            trial_timestamp = trialTimestamp,
+            sent_at = DateTime.Now.ToString(),
+            timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+            deviceIp = GetDeviceIpAddress()
+        };
+
+        string json = JsonConvert.SerializeObject(payload);
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        using (var req = new UnityWebRequest(url, "POST"))
+        {
+            req.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            req.downloadHandler = new DownloadHandlerBuffer();
+            req.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
+
+            Debug.Log($"MENTAL_ARITHMETIC_LOG_POST url=[{url}] payload={json}");
+
+            yield return req.SendWebRequest();
+
+#if UNITY_2020_2_OR_NEWER
+            bool ok = (req.result == UnityWebRequest.Result.Success);
+#else
+            bool ok = !(req.isNetworkError || req.isHttpError);
+#endif
+
+            if (!ok)
+            {
+                Debug.LogWarning(
+                    $"MENTAL_ARITHMETIC_LOG_POST failed: code={req.responseCode}, " +
+                    $"err={req.error}, body={req.downloadHandler.text}");
+            }
+            else
+            {
+                Debug.Log($"MENTAL_ARITHMETIC_LOG_POST ok: {req.downloadHandler.text}");
             }
         }
     }

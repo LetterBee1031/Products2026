@@ -135,14 +135,14 @@ class NegmasPlayerAgent(SAONegotiator):
 
         # NegMASのOutcomeを設計書の効用関数が扱えるdictへ戻す。
         offer = outcome_to_setting(state.current_offer, self.channel.issues)
+        
+        # koko
         # PAも提案の快適性を評価するため、AAと同じ負荷予測結果を利用する。
         predicted_load = self.load_predictor.predict_load(offer)
         aa_utility = self.load_predictor.utility(offer)
         pa_utility = self.strategy.utility(offer, predicted_load)
         # AAとPAは異なるbetaを持つため、同じラウンドでも閾値が異なる。
-        aa_threshold = self.load_predictor.threshold(
-            state.step, self.channel.max_steps
-        )
+        aa_threshold = self.load_predictor.threshold(state.step, self.channel.max_steps)
         pa_threshold = self.strategy.threshold(state.step, self.channel.max_steps)
         # 設計書どおり、PA効用が現在のPA閾値以上なら合意とする。
         accepted = pa_utility >= pa_threshold
@@ -205,10 +205,10 @@ class NegmasNegotiationManager:
         *,
         load_low: float = 0.3,
         load_high: float = 0.7,
-        max_steps: int = 20,
-        comfort_weight: float = 0.1,
+        max_steps: int = 100,
+        comfort_weight: float = 0.0,
         random_seed: int | None = None,
-        persist_agreement: bool = True,
+        persist_agreement: bool = True, # 実際にshared_stateを更新する場合はTrue, 交渉だけのテスト実行の場合はFalse
     ) -> None:
         if max_steps < 1:
             raise ValueError("max_steps must be at least 1")
@@ -233,6 +233,7 @@ class NegmasNegotiationManager:
             max_steps=self.max_steps,
             pending_load=clip(current_load),
         )
+
 
         # 数式や候補探索は直接実装したstrategyへ委譲し、
         # NegMAS拡張クラスはSAOとの接続と役割制御を担当する。
@@ -347,7 +348,7 @@ def run_negotiation(
     *,
     load_low: float = 0.3,
     load_high: float = 0.7,
-    max_steps: int = 20,
+    max_steps: int = 100,
     comfort_weight: float = 0.1,
     random_seed: int | None = None,
     persist_agreement: bool = True,

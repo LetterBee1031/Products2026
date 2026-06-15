@@ -74,6 +74,9 @@ public class MentalArithmeticManager : MonoBehaviour
     [SerializeField] private string participantId = "test_user";
     [SerializeField] private XRNumericKeyboardInputBinder numericKeyboardInputBinder;
 
+    [Header("Server")]
+    [SerializeField] private RequestSender requestSender;
+
     private const int DefaultDurationSeconds = 120; 
     private const int MinDurationSeconds = 30;
     private const int MaxDurationSeconds = 600;
@@ -93,6 +96,8 @@ public class MentalArithmeticManager : MonoBehaviour
     private int currentBlockId; // 今のブロックのID 数値だから何ブロック目かとかそういう感じかと
     private int currentTrialIndex; // ブロック内で何問目かを出力する
     private int currentProblemIndex; // 問題リストから問題を取り出す位置の指定の変数
+    private int blockCompletedTrialCount; // 現在のブロックで回答またはスキップした試行数
+    private int blockCorrectCount; // 現在のブロックの正答数
     private float blockStartRealtime; // ブロックの開始時刻の記録
     private float problemStartRealtime; // その問題の開始時刻の記録
     private string csvFilePath;
@@ -102,6 +107,22 @@ public class MentalArithmeticManager : MonoBehaviour
 
     private void Awake()
     {
+        // Inspectorで未設定の場合は、既存シーンと同じEventSystemから取得する。
+        if (requestSender == null)
+        {
+            GameObject eventSystem = GameObject.Find("EventSystem");
+            if (eventSystem != null)
+            {
+                requestSender = eventSystem.GetComponent<RequestSender>();
+            }
+        }
+
+        // RequestSenderに設定された被験者IDを暗算ログでも共通利用する。
+        if (requestSender != null && !string.IsNullOrWhiteSpace(requestSender.userId))
+        {
+            participantId = requestSender.userId;
+        }
+
         // 起動時に問題候補を作成し、UIイベントとXR数値キーボードを接続する。
         BuildProblemPools(); // 問題候補集合を作成
         SetupInputFields(); // 入力フィールドに関する設定
@@ -111,7 +132,7 @@ public class MentalArithmeticManager : MonoBehaviour
 
         // 初期化とか
         SetControlsInteractable(false); 
-        problemText.text = "Press a start button.";
+        // problemText.text = "Press a start button.";
         timerText.text = string.Empty;
         difficultyText.text = string.Empty;
         feedbackText.text = string.Empty;
@@ -270,6 +291,8 @@ public class MentalArithmeticManager : MonoBehaviour
         currentBlockId = blockId;
         currentTrialIndex = 0;
         currentProblemIndex = 0;
+        blockCompletedTrialCount = 0;
+        blockCorrectCount = 0;
         blockRunToken++;
         blockActive = true;
 
@@ -295,7 +318,10 @@ public class MentalArithmeticManager : MonoBehaviour
         blockActive = false;
         SetControlsInteractable(false);
         SaveLogsToCsv();
-        problemText.text = $"Block {blockId} complete";
+        // problemText.text =
+        //     $"Block {blockId} complete\n" +
+        //     $"Correct: {blockCorrectCount} / {blockCompletedTrialCount}";
+        problemText.text =$"{blockCorrectCount} / {blockCompletedTrialCount}";
         timerText.text = "Remaining: 0 sec";
         feedbackText.text = string.Empty;
     }
@@ -367,9 +393,15 @@ public class MentalArithmeticManager : MonoBehaviour
     {
         float now = Time.realtimeSinceStartup;
 
+        blockCompletedTrialCount++;
+        if (isCorrect)
+        {
+            blockCorrectCount++;
+        }
+
         // 時間値は設計書に合わせてミリ秒へ変換する。
         // timestampは環境に依存しにくいUTCのISO 8601形式で記録する。
-        trialLogs.Add(new TrialLog
+        TrialLog log = new TrialLog
         {
             participantId = participantId,
             blockId = currentBlockId,
@@ -385,7 +417,37 @@ public class MentalArithmeticManager : MonoBehaviour
             reactionTimeMs = (now - problemStartRealtime) * 1000.0f,
             blockElapsedTimeMs = (now - blockStartRealtime) * 1000.0f,
             timestamp = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture)
-        });
+        };
+
+        trialLogs.Add(log);
+        SendLogToServer(log);
+    }
+
+    // ローカルCSV保存とは別に、1試行が完了するたびサーバへ送信する。
+    private void SendLogToServer(TrialLog log)
+    {
+        if (requestSender == null)
+        {
+            Debug.LogWarning(
+                "Mental arithmetic log was not sent because RequestSender was not found.");
+            return;
+        }
+
+        requestSender.SendMentalArithmeticLog(
+            log.participantId,
+            log.blockId,
+            log.difficulty,
+            log.blockDurationSec,
+            log.trialIndex,
+            log.a,
+            log.b,
+            log.correctAnswer,
+            log.userAnswer,
+            log.isCorrect,
+            log.isSkipped,
+            log.reactionTimeMs,
+            log.blockElapsedTimeMs,
+            log.timestamp);
     }
 
     private void CompleteTask()
@@ -395,7 +457,7 @@ public class MentalArithmeticManager : MonoBehaviour
         state = TaskState.Complete;
         taskCoroutine = null;
         SetControlsInteractable(false);
-        problemText.text = "Mental arithmetic task complete";
+        // problemText.text = "Mental arithmetic task complete";
         timerText.text = string.Empty;
         difficultyText.text = string.Empty;
         feedbackText.text = string.Empty;

@@ -114,7 +114,7 @@ class AdjustmentAgent:
         load_high: float,
         threshold_initial: float = 0.95,
         threshold_minimum: float = 0.0,
-        beta: float = 0.8,
+        beta: float = 1.0,
         rng: random.Random | None = None,
     ) -> None:
         if load_low >= load_high:
@@ -197,6 +197,7 @@ class AdjustmentAgent:
                 continue
             eligible.append((candidate, predicted_load, utility))
 
+        # koko
         # 安全条件と現在のAA閾値を両立する候補がない場合は交渉を終了する。
         if not eligible:
             return None
@@ -232,10 +233,10 @@ class PlayerAgent:
         weights: Mapping[str, float],
         load_low: float,
         load_high: float,
-        comfort_weight: float = 0.1,
+        comfort_weight: float = 0.0,
         threshold_initial: float = 0.95,
-        threshold_minimum: float = 0.5,
-        beta: float = 0.4,
+        threshold_minimum: float = 0.0,
+        beta: float = 0.5,
         critique_count: int = 2,
     ) -> None:
         self.preference = {key: float(value) for key, value in preference.items()}
@@ -289,9 +290,11 @@ class PlayerAgent:
             (
                 Critique(
                     issue=issue,
-                    direction="increase"
-                    if float(offer[issue]) < self.preference[issue]
-                    else "decrease",
+                    direction=(
+                        "increase" # 増加方向
+                        if float(offer[issue]) < self.preference[issue]
+                        else "decrease" # 減少方向
+                    ), 
                     dissatisfaction=abs(float(offer[issue]) - self.preference[issue]),
                 )
                 for issue in self.preference
@@ -311,7 +314,7 @@ class NegotiationManager:
         *,
         load_low: float = 0.3,
         load_high: float = 0.7,
-        max_steps: int = 20,
+        max_steps: int = 100,
         comfort_weight: float = 0.1,
         random_seed: int | None = None,
     ) -> None:
@@ -430,7 +433,7 @@ def run_negotiation(
     *,
     load_low: float = 0.3,
     load_high: float = 0.7,
-    max_steps: int = 20,
+    max_steps: int = 100,
     comfort_weight: float = 0.1,
     random_seed: int | None = None,
 ) -> NegotiationResult:

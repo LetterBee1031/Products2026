@@ -140,6 +140,26 @@ class StroopLogPost(BaseModel):
     timestamp: Optional[int] = None
     deviceIp: Optional[str] = None
 
+# UnityのMentalArithmeticManagerから送られる1試行分のログ。
+class MentalArithmeticLogPost(BaseModel):
+    participant_id: str = "01"
+    block_id: int
+    difficulty: str
+    block_duration_sec: int
+    trial_index: int
+    a: int
+    b: int
+    correct_answer: int
+    user_answer: str = ""
+    is_correct: bool
+    is_skipped: bool
+    reaction_time_ms: float
+    block_elapsed_time_ms: float
+    trial_timestamp: str
+    sent_at: Optional[str] = None
+    timestamp: Optional[int] = None
+    deviceIp: Optional[str] = None
+
 def normalize_user_id(user_id: str) -> str:
     safe_id = re.sub(r"[^0-9A-Za-z_-]", "_", user_id.strip())
     return safe_id or "01"
@@ -152,6 +172,9 @@ def eye_jsonl_path_for_user(user_id: str) -> Path:
 
 def stroop_jsonl_path_for_user(user_id: str) -> Path:
     return DATA_DIR / f"stroop_log_{normalize_user_id(user_id)}.jsonl"
+
+def mental_arithmetic_jsonl_path_for_user(user_id: str) -> Path:
+    return DATA_DIR / f"mental_arithmetic_log_{normalize_user_id(user_id)}.jsonl"
 
 def append_records_by_user(records: List[dict]) -> None:
     files = {}
@@ -180,6 +203,11 @@ def append_eye_records_by_user(records: List[dict]) -> None:
 def append_stroop_record_by_user(record: dict) -> None:
     user_id = normalize_user_id(str(record.get("user_id", "01")))
     with stroop_jsonl_path_for_user(user_id).open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+def append_mental_arithmetic_record_by_user(record: dict) -> None:
+    user_id = normalize_user_id(str(record.get("participant_id", "01")))
+    with mental_arithmetic_jsonl_path_for_user(user_id).open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 # 心拍・心拍変動を受け取り，保存するパス
@@ -292,6 +320,46 @@ async def receive_stroop_log(payload: StroopLogPost, request: Request):
     return {
         "ok": True,
         "user_id": user_id,
+        "trial_index": payload.trial_index,
+    }
+
+# 暗算課題のログを1試行ごとに受信し、被験者ID別のJSONLへ保存する。
+@app.post("/api/mental_arithmetic_log")
+async def receive_mental_arithmetic_log(
+    payload: MentalArithmeticLogPost,
+    request: Request,
+):
+    client_host = request.client.host if request.client else "unknown"
+    received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
+    participant_id = normalize_user_id(payload.participant_id)
+
+    record = {
+        "participant_id": participant_id,
+        "block_id": payload.block_id,
+        "difficulty": payload.difficulty,
+        "block_duration_sec": payload.block_duration_sec,
+        "trial_index": payload.trial_index,
+        "a": payload.a,
+        "b": payload.b,
+        "correct_answer": payload.correct_answer,
+        "user_answer": payload.user_answer,
+        "is_correct": payload.is_correct,
+        "is_skipped": payload.is_skipped,
+        "reaction_time_ms": payload.reaction_time_ms,
+        "block_elapsed_time_ms": payload.block_elapsed_time_ms,
+        "trial_timestamp": payload.trial_timestamp,
+        "sent_at": payload.sent_at,
+        "received_at": received_at,
+        "timestamp": payload.timestamp,
+        "client_host": client_host,
+        "device_ip": payload.deviceIp,
+    }
+    append_mental_arithmetic_record_by_user(record)
+
+    return {
+        "ok": True,
+        "participant_id": participant_id,
+        "block_id": payload.block_id,
         "trial_index": payload.trial_index,
     }
 
