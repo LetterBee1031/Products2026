@@ -205,7 +205,7 @@ class NegmasNegotiationManager:
         *,
         load_low: float = 0.3,
         load_high: float = 0.7,
-        max_steps: int = 100,
+        max_steps: int = 30,
         comfort_weight: float = 0.0,
         random_seed: int | None = None,
         persist_agreement: bool = True, # 実際にshared_stateを更新する場合はTrue, 交渉だけのテスト実行の場合はFalse
@@ -348,7 +348,7 @@ def run_negotiation(
     *,
     load_low: float = 0.3,
     load_high: float = 0.7,
-    max_steps: int = 100,
+    max_steps: int = 30,
     comfort_weight: float = 0.1,
     random_seed: int | None = None,
     persist_agreement: bool = True,

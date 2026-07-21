@@ -155,7 +155,7 @@ def run_repeated_negotiations_and_plot(
     output_plot: Path,
     trials_per_user: int = 100,
     current_load: float = 0.75,
-    max_steps: int = 100,
+    max_steps: int = 30,
     comfort_weight: float = 0.1,
     base_random_seed: int = 7,
 ) -> list[dict]:
@@ -174,6 +174,7 @@ def run_repeated_negotiations_and_plot(
         settings_before = shared_state.get_user_issue_settings(user_id)
         aa_utilities: list[float] = []
         pa_utilities: list[float] = []
+        predicted_loads: list[float] = []
         accepted_count = 0
         step_counts: list[int] = []
 
@@ -193,6 +194,7 @@ def run_repeated_negotiations_and_plot(
                 random_seed=random_seed,
                 persist_agreement=False,
             )
+            predicted_loads.append(result.predicted_load)
 
             # 長時間の反復テストでも進行状況を確認できるよう、
             # 交渉が1回終わるたびにユーザIDと完了回数を表示する。
@@ -232,6 +234,8 @@ def run_repeated_negotiations_and_plot(
                 "std_U_AA": pstdev(aa_utilities),
                 "mean_U_PA": fmean(pa_utilities),
                 "std_U_PA": pstdev(pa_utilities),
+                "mean_predicted_load": fmean(predicted_loads),
+                "std_predicted_load": pstdev(predicted_loads),
                 "mean_steps": fmean(step_counts),
                 "state_unchanged": True,
                 "L_current": current_load,

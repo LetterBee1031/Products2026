@@ -314,7 +314,7 @@ class NegotiationManager:
         *,
         load_low: float = 0.3,
         load_high: float = 0.7,
-        max_steps: int = 100,
+        max_steps: int = 30,
         comfort_weight: float = 0.1,
         random_seed: int | None = None,
     ) -> None:
@@ -433,7 +433,7 @@ def run_negotiation(
     *,
     load_low: float = 0.3,
     load_high: float = 0.7,
-    max_steps: int = 100,
+    max_steps: int = 30,
     comfort_weight: float = 0.1,
     random_seed: int | None = None,
 ) -> NegotiationResult:

@@ -59,7 +59,7 @@ class NegotiationProtocolTests(unittest.TestCase):
         self.assertIn(Critique("guidance", "decrease", 1.0), critiques)
 
     def test_agreement_updates_shared_state(self) -> None:
-        result = run_negotiation("01", 0.75, max_steps=20, random_seed=7)
+        result = run_negotiation("01", 0.75, max_steps=30, random_seed=7)
         self.assertTrue(result.accepted)
         self.assertEqual(result.engine, "negmas")
         self.assertEqual(
@@ -74,7 +74,7 @@ class NegotiationProtocolTests(unittest.TestCase):
         self.assertTrue(issubclass(NegmasPlayerAgent, SAONegotiator))
 
     def test_only_aa_proposes_in_negmas_session(self) -> None:
-        result = run_negotiation("01", 0.75, max_steps=20, random_seed=7)
+        result = run_negotiation("01", 0.75, max_steps=30, random_seed=7)
         self.assertGreater(len(result.steps), 0)
         self.assertTrue(all(step.offer for step in result.steps))
 
@@ -83,7 +83,7 @@ class NegotiationProtocolTests(unittest.TestCase):
         result = run_negotiation(
             "01",
             0.75,
-            max_steps=20,
+            max_steps=30,
             random_seed=7,
             persist_agreement=False,
         )
