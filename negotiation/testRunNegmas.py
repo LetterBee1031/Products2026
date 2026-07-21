@@ -156,7 +156,7 @@ def run_repeated_negotiations_and_plot(
     trials_per_user: int = 100,
     current_load: float = 0.75,
     max_steps: int = 30,
-    comfort_weight: float = 0.1,
+    comfort_weight: float = 0.0,
     base_random_seed: int = 7,
 ) -> list[dict]:
     """各ユーザと複数回交渉し、平均効用をCSVと棒グラフへ出力する。"""

@@ -170,6 +170,7 @@ class AdjustmentAgent:
         )
 
     def threshold(self, step: int, max_steps: int) -> float:
+        # 閾値τを返す関数
         return concession_threshold(
             step, max_steps, self.threshold_initial, self.threshold_minimum, self.beta
         )
@@ -216,8 +217,11 @@ class AdjustmentAgent:
 
         # 設計書どおり候補はランダム選択する。ただしrhoが大きい変更は
         # 選ばれにくくし、安全条件やCritiqueの優先順位は上書きしない。
-        weights = [math.exp(-self.change_cost(candidate)) for candidate, _, _ in eligible]
-        candidate, predicted_load, utility = self.rng.choices(eligible, weights=weights, k=1)[0]
+        
+        # 2026/07/22 変更コストの考慮はなし
+        # weights = [math.exp(-self.change_cost(candidate)) for candidate, _, _ in eligible]
+        
+        candidate, predicted_load, utility = self.rng.choices(eligible, k=1)[0]
         # 同一提案の繰り返しを防ぎ、別候補を探索できるようにする。
         self._offered.add(tuple(candidate[issue] for issue in self.issues))
         return dict(candidate), predicted_load, utility
@@ -300,6 +304,7 @@ class PlayerAgent:
                 for issue in self.preference
                 if float(offer[issue]) != self.preference[issue]
             ),
+            # 不満度でソート
             key=lambda critique: critique.dissatisfaction,
             reverse=True,
         )
@@ -315,7 +320,7 @@ class NegotiationManager:
         load_low: float = 0.3,
         load_high: float = 0.7,
         max_steps: int = 30,
-        comfort_weight: float = 0.1,
+        comfort_weight: float = 0.0,
         random_seed: int | None = None,
     ) -> None:
         if max_steps < 1:
@@ -434,7 +439,7 @@ def run_negotiation(
     load_low: float = 0.3,
     load_high: float = 0.7,
     max_steps: int = 30,
-    comfort_weight: float = 0.1,
+    comfort_weight: float = 0.0,
     random_seed: int | None = None,
 ) -> NegotiationResult:
     """FastAPIなど外部呼び出し用の交渉開始関数。"""
