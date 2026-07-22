@@ -44,6 +44,8 @@ class NegotiationChannel:
     # 各ステップの効用をこの共有オブジェクト経由で受け渡す。
     issues: list[str]
     max_steps: int
+    # Falseの場合、PAの拒否理由であるCritiqueをAAの次提案へ反映しない。
+    use_critiques: bool = True
     # PAが直前の提案を拒否した理由。次のAA提案で優先条件として使う。
     critiques: list[Critique] = field(default_factory=list)
     # Critiqueが「前回より上げる・下げる」を評価する基準となる提案。
@@ -77,11 +79,15 @@ class NegmasAdjustmentAgent(SAONegotiator):
         # PAの直前のCritiqueを使い、安全集合から次の提案を探索する。
         # state.stepはNegMASが管理する現在ラウンド番号であり、
         # AAのBoulware型閾値計算にも同じ値を利用する。
+        critiques = self.channel.critiques if self.channel.use_critiques else []
+        previous_offer = (
+            self.channel.previous_offer if self.channel.use_critiques else None
+        )
         proposal = self.strategy.propose(
             step=state.step,
             max_steps=self.channel.max_steps,
-            critiques=self.channel.critiques,
-            previous_offer=self.channel.previous_offer,
+            critiques=critiques,
+            previous_offer=previous_offer,
         )
         if proposal is None:
             # Noneを返すとSAOは交渉終了へ進む。原因を結果へ残すため
@@ -146,7 +152,11 @@ class NegmasPlayerAgent(SAONegotiator):
         pa_threshold = self.strategy.threshold(state.step, self.channel.max_steps)
         # 設計書どおり、PA効用が現在のPA閾値以上なら合意とする。
         accepted = pa_utility >= pa_threshold
-        critiques = [] if accepted else self.strategy.critiques(offer)
+        critiques = (
+            []
+            if accepted or not self.channel.use_critiques
+            else self.strategy.critiques(offer)
+        )
 
         # NegMAS自身も交渉履歴を保持するが、効用やCritiqueを含む
         # 実験向け履歴はNegotiationStepとして別途保存する。
@@ -179,8 +189,8 @@ class NegmasPlayerAgent(SAONegotiator):
 
         # NegMASのdata付き拒否を使い、具体的な再提案は行わずCritiqueだけ返す。
         # PAはcan_propose=Falseなので、Reject後の次提案者は再びAAになる。
-        self.channel.previous_offer = offer
-        self.channel.critiques = critiques
+        self.channel.previous_offer = offer if self.channel.use_critiques else None
+        self.channel.critiques = critiques if self.channel.use_critiques else []
         return ExtendedResponseType(
             ResponseType.REJECT_OFFER,
             data={
@@ -209,6 +219,7 @@ class NegmasNegotiationManager:
         comfort_weight: float = 0.0,
         random_seed: int | None = None,
         persist_agreement: bool = True, # 実際にshared_stateを更新する場合はTrue, 交渉だけのテスト実行の場合はFalse
+        use_critiques: bool = True,
     ) -> None:
         if max_steps < 1:
             raise ValueError("max_steps must be at least 1")
@@ -220,6 +231,7 @@ class NegmasNegotiationManager:
         self.random_seed = random_seed
         # FastAPIではTrue、結果確認だけのテスト実行ではFalseを指定する。
         self.persist_agreement = bool(persist_agreement)
+        self.use_critiques = bool(use_critiques)
 
     def negotiate(self, user_id: str, current_load: float) -> NegotiationResult:
         # shared_stateから現在設定、PA選好、AA係数を交渉開始時に取得する。
@@ -231,6 +243,7 @@ class NegmasNegotiationManager:
         channel = NegotiationChannel(
             issues=issues,
             max_steps=self.max_steps,
+            use_critiques=self.use_critiques,
             pending_load=clip(current_load),
         )
 
@@ -352,6 +365,7 @@ def run_negotiation(
     comfort_weight: float = 0.0,
     random_seed: int | None = None,
     persist_agreement: bool = True,
+    use_critiques: bool = True,
 ) -> NegotiationResult:
     """FastAPIから呼び出すNegMAS版交渉エントリーポイント。"""
     # 呼び出し側がNegMASのクラス構成を意識せず交渉を開始できるよう、
@@ -363,5 +377,6 @@ def run_negotiation(
         comfort_weight=comfort_weight,
         random_seed=random_seed,
         persist_agreement=persist_agreement,
+        use_critiques=use_critiques,
     )
     return manager.negotiate(user_id, current_load)

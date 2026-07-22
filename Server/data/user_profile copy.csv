@@ -1,0 +1,6 @@
+user_id,p_tempo,p_guidance,p_complexity,p_stimulus,p_break_policy,p_text,p_taste,w_tempo,w_guidance,w_complexity,w_stimulus,w_break_policy,w_text,w_taste
+PA01,0.00,1.00,0.00,0.00,1.00,0.00,polite,0.13,0.13,0.13,0.13,0.13,0.13,0.10
+PA02,1.00,0.00,1.00,1.00,0.00,1.00,neutral,0.13,0.13,0.13,0.13,0.13,0.13,0.10
+PA03,0.50,0.50,0.50,0.50,0.50,0.50,encouraging,0.13,0.13,0.13,0.13,0.13,0.13,0.10
+PA04,1.00,0.00,0.00,1.00,0.00,0.00,neutral,0.13,0.13,0.13,0.13,0.13,0.13,0.14
+PA05,0.00,0.00,1.00,1.00,1.00,1.00,neutral,0.13,0.13,0.13,0.13,0.13,0.13,0.14
