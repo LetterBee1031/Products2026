@@ -87,6 +87,14 @@ fun BiodataApp() {
                 ?: BiodataUploadService.DEFAULT_USER_ID
         )
     }
+    var heartRateWindow by remember {
+        mutableStateOf(
+            prefs.getFloat(
+                "heart_rate_window_seconds",
+                BiodataUploadService.DEFAULT_HEART_RATE_WINDOW_SECONDS,
+            ).toString()
+        )
+    }
     var running by remember { mutableStateOf(false) }
     var status by remember { mutableStateOf("Ready") }
     var sentHr by remember { mutableStateOf<Int?>(null) }
@@ -117,7 +125,7 @@ fun BiodataApp() {
     ) { grants ->
         if (requiredSensorPermissions().all { permission -> grants[permission] == true }) {
             permissionDenied = false
-            startUpload(context, endpoint, userId)
+            startUpload(context, endpoint, userId, heartRateWindow)
             running = true
             status = "Sending"
         } else {
@@ -159,6 +167,10 @@ fun BiodataApp() {
                             prefs.edit()
                                 .putString("endpoint", endpoint)
                                 .putString("user_id", userId)
+                                .putFloat(
+                                    "heart_rate_window_seconds",
+                                    parseHeartRateWindow(heartRateWindow),
+                                )
                                 .apply()
                             if (running) {
                                 context.startService(BiodataUploadService.stopIntent(context))
@@ -167,7 +179,7 @@ fun BiodataApp() {
                                 sentHr = null
                             } else if (hasBodySensorPermission(context)) {
                                 permissionDenied = false
-                                startUpload(context, endpoint, userId)
+                                startUpload(context, endpoint, userId, heartRateWindow)
                                 running = true
                                 status = "Sending"
                             } else {
@@ -242,6 +254,31 @@ fun BiodataApp() {
                         .padding(5.dp),
                     singleLine = true,
                 )
+                Text(
+                    text = "HR window (sec)",
+                    color = statusColor,
+                    fontSize = 8.sp,
+                    textAlign = TextAlign.Center,
+                )
+                BasicTextField(
+                    value = heartRateWindow,
+                    onValueChange = { value ->
+                        heartRateWindow = value.filter { it.isDigit() || it == '.' }.take(6)
+                    },
+                    textStyle = TextStyle(color = Color.White, fontSize = 9.sp, textAlign = TextAlign.Center),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(24.dp)
+                        .border(1.dp, Color.White)
+                        .padding(4.dp),
+                    singleLine = true,
+                    decorationBox = { innerTextField ->
+                        if (heartRateWindow.isEmpty()) {
+                            Text("HR window (sec)", color = statusColor, fontSize = 8.sp)
+                        }
+                        innerTextField()
+                    },
+                )
             }
         }
     }
@@ -281,9 +318,18 @@ private const val READ_HEALTH_DATA_IN_BACKGROUND_PERMISSION =
 private const val READ_ADDITIONAL_HEALTH_DATA_PERMISSION =
     "com.samsung.android.hardware.sensormanager.permission.READ_ADDITIONAL_HEALTH_DATA"
 
-private fun startUpload(context: Context, endpoint: String, userId: String) {
+private fun parseHeartRateWindow(value: String): Float =
+    value.toFloatOrNull()?.coerceAtLeast(0.01f)
+        ?: BiodataUploadService.DEFAULT_HEART_RATE_WINDOW_SECONDS
+
+private fun startUpload(context: Context, endpoint: String, userId: String, heartRateWindow: String) {
     // バックグラウンドでも送信を継続できるよう foreground service として起動する。
-    val intent = BiodataUploadService.startIntent(context, endpoint, userId)
+    val intent = BiodataUploadService.startIntent(
+        context,
+        endpoint,
+        userId,
+        parseHeartRateWindow(heartRateWindow),
+    )
     ContextCompat.startForegroundService(context, intent)
 }
 

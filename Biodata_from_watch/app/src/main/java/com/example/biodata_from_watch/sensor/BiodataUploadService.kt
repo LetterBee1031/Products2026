@@ -25,6 +25,7 @@ import kotlinx.coroutines.launch
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.util.ArrayDeque
 import kotlin.math.roundToInt
 
 class BiodataUploadService : Service(), SensorEventListener {
@@ -40,6 +41,8 @@ class BiodataUploadService : Service(), SensorEventListener {
     private var lastBeatElapsed: Long? = null
     private var endpointUrl: String = DEFAULT_ENDPOINT
     private var userId: String = DEFAULT_USER_ID
+    private var heartRateWindowMs: Long = DEFAULT_HEART_RATE_WINDOW_MS
+    private val heartRateSamples = ArrayDeque<HeartRateSample>()
 
     override fun onCreate() {
         super.onCreate()
@@ -72,6 +75,10 @@ class BiodataUploadService : Service(), SensorEventListener {
 
         endpointUrl = intent?.getStringExtra(EXTRA_ENDPOINT_URL) ?: DEFAULT_ENDPOINT
         userId = intent?.getStringExtra(EXTRA_USER_ID)?.ifBlank { DEFAULT_USER_ID } ?: DEFAULT_USER_ID
+        heartRateWindowMs = intent?.getLongExtra(
+            EXTRA_HEART_RATE_WINDOW_MS,
+            DEFAULT_HEART_RATE_WINDOW_MS,
+        )?.coerceAtLeast(MIN_HEART_RATE_WINDOW_MS) ?: DEFAULT_HEART_RATE_WINDOW_MS
         acquireWakeLock()
         registerSensors()
         edaReader?.start()
@@ -96,7 +103,14 @@ class BiodataUploadService : Service(), SensorEventListener {
             Sensor.TYPE_HEART_RATE -> {
                 // 心拍数は小数で来ることがあるため、サーバ形式に合わせて整数BPMに丸める。
                 val hr = event.values.firstOrNull()?.roundToInt()?.coerceAtLeast(0) ?: 0
-                updateSnapshot { current -> current.copy(hr = hr) }
+                if (hr > 0) {
+                    val now = SystemClock.elapsedRealtime()
+                    synchronized(snapshotLock) {
+                        heartRateSamples.addLast(HeartRateSample(now, hr))
+                        removeExpiredHeartRates(now)
+                        snapshot = snapshot.copy(hr = hr)
+                    }
+                }
             }
             Sensor.TYPE_HEART_BEAT -> {
                 // HEART_BEATイベント間の経過時間から簡易的にIBI(ms)を計算する。
@@ -202,11 +216,28 @@ class BiodataUploadService : Service(), SensorEventListener {
 
     private fun consumeSnapshot(): SensorSnapshot {
         return synchronized(snapshotLock) {
-            val current = snapshot
+            val now = SystemClock.elapsedRealtime()
+            removeExpiredHeartRates(now)
+            val smoothedHr = if (heartRateSamples.isEmpty()) {
+                snapshot.hr
+            } else {
+                (heartRateSamples.sumOf { it.value }.toDouble() / heartRateSamples.size).roundToInt()
+            }
+            val current = snapshot.copy(hr = smoothedHr)
             snapshot = snapshot.copy(ibi = emptyList())
             current
         }
     }
+
+    private fun removeExpiredHeartRates(now: Long) {
+        while (heartRateSamples.isNotEmpty() &&
+            now - heartRateSamples.first().elapsedRealtimeMs > heartRateWindowMs
+        ) {
+            heartRateSamples.removeFirst()
+        }
+    }
+
+    private data class HeartRateSample(val elapsedRealtimeMs: Long, val value: Int)
 
     private fun notification(text: String): Notification {
         // foreground service用の常駐通知。計測が動いていることをユーザーに示す。
@@ -235,20 +266,33 @@ class BiodataUploadService : Service(), SensorEventListener {
         const val ACTION_UPLOAD_STATUS = "com.example.biodata_from_watch.sensor.UPLOAD_STATUS"
         const val EXTRA_ENDPOINT_URL = "endpoint_url"
         const val EXTRA_USER_ID = "user_id"
+        const val EXTRA_HEART_RATE_WINDOW_MS = "heart_rate_window_ms"
         const val EXTRA_SENT_HR = "sent_hr"
         const val EXTRA_UPLOAD_MESSAGE = "upload_message"
         const val DEFAULT_ENDPOINT = "http://192.168.150.127:8080/api/Biodata"
         const val DEFAULT_USER_ID = "01"
+        const val DEFAULT_HEART_RATE_WINDOW_SECONDS = 1f
         private const val CHANNEL_ID = "biodata_upload"
         private const val NOTIFICATION_ID = 1001
         private const val MAX_IBI_PER_SAMPLE = 4
         private const val UPLOAD_INTERVAL_MS = 1_000L
+        private const val MIN_HEART_RATE_WINDOW_MS = 10L
+        private const val DEFAULT_HEART_RATE_WINDOW_MS = 1_000L
         private val JST_ZONE: ZoneId = ZoneId.of("Asia/Tokyo")
 
-        fun startIntent(context: Context, endpointUrl: String, userId: String): Intent {
+        fun startIntent(
+            context: Context,
+            endpointUrl: String,
+            userId: String,
+            heartRateWindowSeconds: Float,
+        ): Intent {
             return Intent(context, BiodataUploadService::class.java)
                 .putExtra(EXTRA_ENDPOINT_URL, endpointUrl)
                 .putExtra(EXTRA_USER_ID, userId)
+                .putExtra(
+                    EXTRA_HEART_RATE_WINDOW_MS,
+                    (heartRateWindowSeconds * 1_000f).toLong().coerceAtLeast(MIN_HEART_RATE_WINDOW_MS),
+                )
         }
 
         fun stopIntent(context: Context): Intent {

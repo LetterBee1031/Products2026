@@ -44,6 +44,11 @@ public class PLRCorrectionSample : MonoBehaviour
     // 2Hz = 0.5秒ごと
     public float gazeSampleHz = 2.0f;
 
+    [Header("Smoothing")]
+    [Min(0.01f)]
+    [Tooltip("Moving-average window used for pupil diameter and TEPR, in seconds.")]
+    public float pupilSmoothingWindowSeconds = 1.0f;
+
     // ============================================================
     // PLR Parameters
     // ============================================================
@@ -72,8 +77,7 @@ public class PLRCorrectionSample : MonoBehaviour
     private const float wFixation = 0.26f;
     private const float wBackground = 0.74f;
     // 平滑化窓サイズ
-    // 1秒窓 moving average
-    private const float SmoothWindowSeconds = 1.0f;
+    // Inspectorで変更可能な時間窓の moving average
     // サーバ送信周期
     private const float EyeDataSendIntervalSeconds = 1.0f;
 
@@ -840,8 +844,9 @@ public class PLRCorrectionSample : MonoBehaviour
         // 現在値追加
         samples.Enqueue(new ValueSample(now, value));
 
-        // 1秒より古いもの削除
-        while (samples.Count > 0 && now - samples.Peek().time > SmoothWindowSeconds)
+        // 設定した時間窓より古いものを削除
+        float windowSeconds = Mathf.Max(0.01f, pupilSmoothingWindowSeconds);
+        while (samples.Count > 0 && now - samples.Peek().time > windowSeconds)
         {
             samples.Dequeue();
         }
