@@ -160,6 +160,21 @@ class MentalArithmeticLogPost(BaseModel):
     timestamp: Optional[int] = None
     deviceIp: Optional[str] = None
 
+
+# NASA-TLX の受信データモデル
+class NASATLXPost(BaseModel):
+    userID: str = "01"
+    block_id: str
+    mental_demand: float
+    physical_demand: float
+    temporal_demand: float
+    performance: float
+    effort: float
+    frustration: float
+    sent_at: Optional[str] = None
+    timestamp: Optional[int] = None
+    deviceIp: Optional[str] = None
+
 def normalize_user_id(user_id: str) -> str:
     safe_id = re.sub(r"[^0-9A-Za-z_-]", "_", user_id.strip())
     return safe_id or "01"
@@ -208,6 +223,14 @@ def append_stroop_record_by_user(record: dict) -> None:
 def append_mental_arithmetic_record_by_user(record: dict) -> None:
     user_id = normalize_user_id(str(record.get("participant_id", "01")))
     with mental_arithmetic_jsonl_path_for_user(user_id).open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def append_nasa_tlx_record_by_user(record: dict) -> None:
+    user_id = normalize_user_id(str(record.get("userID", "01")))
+    path = DATA_DIR / f"NASA-TLX_data_{user_id}.jsonl"
+    # ファイルが無ければ open('a') で自動的に作成される
+    with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 # 心拍・心拍変動を受け取り，保存するパス
@@ -362,6 +385,56 @@ async def receive_mental_arithmetic_log(
         "block_id": payload.block_id,
         "trial_index": payload.trial_index,
     }
+
+
+@app.post("/api/nasa_tlx")
+async def receive_nasa_tlx(payload: NASATLXPost, request: Request, mode: str = "raw_tlx"):
+    client_host = request.client.host if request.client else "unknown"
+    received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
+    user_id = normalize_user_id(payload.userID)
+
+    # Raw TLX の計算モード
+    mode_lower = (mode or "").lower()
+    if mode_lower not in {"raw_tlx", "mental_only"}:
+        raise HTTPException(status_code=400, detail="invalid mode; use 'raw_tlx' or 'mental_only'")
+
+    try:
+        mental = float(payload.mental_demand)
+        physical = float(payload.physical_demand)
+        temporal = float(payload.temporal_demand)
+        performance = float(payload.performance)
+        effort = float(payload.effort)
+        frustration = float(payload.frustration)
+    except Exception:
+        raise HTTPException(status_code=400, detail="invalid TLX values")
+
+    if mode_lower == "mental_only":
+        raw_tlx = mental
+    else:
+        scales = [mental, physical, temporal, performance, effort, frustration]
+        raw_tlx = sum(scales) / len(scales)
+
+    record = {
+        "userID": user_id,
+        "block_id": payload.block_id,
+        "mental_demand": payload.mental_demand,
+        "physical_demand": payload.physical_demand,
+        "temporal_demand": payload.temporal_demand,
+        "performance": payload.performance,
+        "effort": payload.effort,
+        "frustration": payload.frustration,
+        "RawTLX": raw_tlx,
+        "subjective_mode": mode_lower,
+        "sent_at": payload.sent_at,
+        "received_at": received_at,
+        "timestamp": payload.timestamp,
+        "client_host": client_host,
+        "device_ip": payload.deviceIp,
+    }
+
+    append_nasa_tlx_record_by_user(record)
+
+    return {"ok": True, "userID": user_id, "block_id": payload.block_id, "RawTLX": raw_tlx}
 
 @app.post("/api/plr/fit", response_model=PLRFitResponse)
 async def fit_plr(payload: PLRFitRequest, request: Request):

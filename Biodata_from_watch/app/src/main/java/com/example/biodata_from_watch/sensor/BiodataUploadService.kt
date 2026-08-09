@@ -271,7 +271,7 @@ class BiodataUploadService : Service(), SensorEventListener {
         const val EXTRA_UPLOAD_MESSAGE = "upload_message"
         const val DEFAULT_ENDPOINT = "http://192.168.150.127:8080/api/Biodata"
         const val DEFAULT_USER_ID = "01"
-        const val DEFAULT_HEART_RATE_WINDOW_SECONDS = 1f
+        const val DEFAULT_HEART_RATE_WINDOW_SECONDS = 2f
         private const val CHANNEL_ID = "biodata_upload"
         private const val NOTIFICATION_ID = 1001
         private const val MAX_IBI_PER_SAMPLE = 4

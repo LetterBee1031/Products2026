@@ -15,7 +15,11 @@ public class N_back : MonoBehaviour
 
     }
 
-    RequestSender requestSender;
+    public RequestSender requestSender;
+    public NasaTlxManager nasaTlxManager;
+    public GameObject buttonStart;
+    public GameObject buttonSame;
+    public GameObject buttonForQuestion;
 
     public TextMeshProUGUI[] TextAlphabet = new TextMeshProUGUI[26];
     public TextMeshProUGUI textResult = new TextMeshProUGUI();
@@ -52,8 +56,11 @@ public class N_back : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        requestSender = GetComponent<RequestSender>();
+        //requestSender = GetComponent<RequestSender>();
         Debug.Log("System Start");
+        buttonStart.SetActive(true);
+        buttonSame.SetActive(false);
+        buttonForQuestion.SetActive(false);
         for (int i = 0; i < Define.LIST_MAX_LENGTH; i++)
         {
             listOutTextNum.Add(-1);
@@ -89,6 +96,9 @@ public class N_back : MonoBehaviour
         {
             //time = 0f;
             isWorking = true;
+            buttonStart.SetActive(false);
+            buttonSame.SetActive(true);
+            buttonForQuestion.SetActive(false);
             Debug.Log("SetNback");
             requestSender.SendNbackStartFlag(n_back_num);
             //N_Back_Working();
@@ -216,6 +226,16 @@ public class N_back : MonoBehaviour
     {
         isButtonSamePressed = true;
         Debug.Log("SamePressed");
+    }
+
+    public void moveForQuestion()
+    {
+        nasaTlxManager.StartQuestionnaire(n_back_num + "_back_start");
+        buttonStart.SetActive(true);
+        buttonSame.SetActive(false);
+        buttonForQuestion.SetActive(false);
+        textResult.text = "";
+        textQuestionNum.text = "";
     }
 
     // 時間計測の研究
@@ -441,6 +461,9 @@ public class N_back : MonoBehaviour
                 }
                 requestSender.SendNbackEndFlag(n_back_num);
                 Debug.Log("N_back End. Out Text Count:" + outTextCount);
+                buttonStart.SetActive(false);
+                buttonSame.SetActive(false);
+                buttonForQuestion.SetActive(true);
             }
         }
 

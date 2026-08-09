@@ -96,6 +96,30 @@ public class RequestSender : MonoBehaviour
     }
 
 
+    // ---- NASA-TLX 送信用 ----
+    // Server側の `NASATLXPost` Pydantic モデルに対応するシリアライズ可能なクラス。
+    // フィールド名はサーバの期待するJSONキーと一致させています。
+    [Serializable]
+    public class NASATLXPost
+    {
+        public string userID; // 参加者識別子（例: "01"）
+        public string block_id; // ブロック識別子（N-backのblock_idなど）
+        
+        // NASA-TLX の6尺度（0-20 を想定）
+        public float mental_demand;
+        public float physical_demand;
+        public float temporal_demand;
+        public float performance;
+        public float effort;
+        public float frustration;
+
+        // 送信時刻・デバイス情報（サーバ側でも保存されます）
+        public string sent_at;
+        public long timestamp;
+        public string deviceIp;
+    }
+
+
 
     // ---- PLRキャリブレーション送信用 ----
     // Unity側で集めた「輝度Y」と「瞳孔径mm」の1サンプル
@@ -667,6 +691,111 @@ public class RequestSender : MonoBehaviour
         }
     }
 
+
+    // ---- NASA-TLX 送信 ----
+    // Public wrapper: 簡単に呼べるユーティリティ。mode によってサーバ側での RawTLX 計算方法が変わる。
+    // - mode="raw_tlx": 6尺度の平均を RawTLX として扱う（デフォルト）
+    // - mode="mental_only": mental_demand の値を RawTLX として扱う
+    public void SendNASATLX(
+        string sendUserId,
+        string blockId,
+        float mentalDemand,
+        float physicalDemand,
+        float temporalDemand,
+        float performance,
+        float effort,
+        float frustration,
+        string mode = "raw_tlx",
+        Action<bool> onComplete = null
+    )
+    {
+        // userId が空の場合はインスタンスのデフォルト userId を使う
+        string safeUserId = string.IsNullOrWhiteSpace(sendUserId) ? userId : sendUserId;
+        StartCoroutine(PostNASATLXCoroutine(
+            safeUserId,
+            blockId,
+            mentalDemand,
+            physicalDemand,
+            temporalDemand,
+            performance,
+            effort,
+            frustration,
+            mode,
+            onComplete
+        ));
+    }
+
+    // 実際の送信処理を行うコルーチン
+    // - JSON を作成して POST 送信
+    // - レスポンスの成功/失敗をログに出力する
+    public IEnumerator PostNASATLXCoroutine(
+        string sendUserId,
+        string blockId,
+        float mentalDemand,
+        float physicalDemand,
+        float temporalDemand,
+        float performance,
+        float effort,
+        float frustration,
+        string mode = "raw_tlx",
+        Action<bool> onComplete = null
+    )
+    {
+        // クエリパラメータとして mode を付与する
+        string safeBase = GetSafeBaseUrl();
+        string url = safeBase + "/api/nasa_tlx?mode=" + UnityWebRequest.EscapeURL(mode);
+
+        // ペイロードを組み立てる。フィールド名はサーバ側の期待に合わせる。
+        var payload = new NASATLXPost
+        {
+            userID = string.IsNullOrWhiteSpace(sendUserId) ? userId : sendUserId,
+            block_id = blockId,
+            mental_demand = mentalDemand,
+            physical_demand = physicalDemand,
+            temporal_demand = temporalDemand,
+            performance = performance,
+            effort = effort,
+            frustration = frustration,
+            // sent_at は人間可読の時刻、timestamp はミリ秒Unix時刻を入れる
+            sent_at = DateTime.Now.ToString(),
+            timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+            deviceIp = GetDeviceIpAddress()
+        };
+
+        // JSON にシリアライズして送信する
+        string json = JsonConvert.SerializeObject(payload);
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        using (var req = new UnityWebRequest(url, "POST"))
+        {
+            req.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            req.downloadHandler = new DownloadHandlerBuffer();
+            req.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
+
+            Debug.Log($"NASA_TLX_POST url=[{url}] payload={json}");
+
+            // 送信を実行して結果を待つ
+            yield return req.SendWebRequest();
+
+#if UNITY_2020_2_OR_NEWER
+            bool ok = (req.result == UnityWebRequest.Result.Success);
+#else
+            bool ok = !(req.isNetworkError || req.isHttpError);
+#endif
+
+            // 成否をログに出す。必要ならここでレスポンスをパースしてコールバックを呼ぶ実装にできる。
+            if (!ok)
+            {
+                Debug.LogWarning($"NASA_TLX_POST failed: code={req.responseCode}, err={req.error}, body={req.downloadHandler.text}");
+            }
+            else
+            {
+                Debug.Log($"NASA_TLX_POST ok: {req.downloadHandler.text}");
+            }
+
+            onComplete?.Invoke(ok);
+        }
+    }
 
     // ---- PLRモデル推定リクエスト送信 ----
     // calibrationSamplesには、キャリブレーション中に取得した輝度Yと瞳孔径mmのペアを入れる
