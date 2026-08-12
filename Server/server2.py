@@ -9,7 +9,7 @@ from typing import List, Optional
 from zoneinfo import ZoneInfo
 
 from fastapi import FastAPI, HTTPException, Request
-from pydantic import BaseModel, Field
+from pydantic import AliasChoices, BaseModel, Field
 
 # 2段階上のフォルダ（Products2026）のパスをとってる
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -18,15 +18,15 @@ if str(PROJECT_ROOT) not in sys.path:
 
 # `uvicorn Server.server2:app` と `python server2.py` のどちらでも import できるようにする。
 try:
-    from Server.bio_data_analysis import classify_latest_cl_condition_with_random_forest
+    from Server.bio_data_analysis import predict_latest_cognitive_load
     from Server.bio_data_analysis import save_analysis_with_summary_to_csv
-    from Server.bio_data_analysis import train_random_forest_cl_classifier
+    from Server.bio_data_analysis import train_cognitive_load_regression
     from Server.read_jsonl_from_last import read_last_n_jsonl_as_dataframe
     from Server.shared_state import ISSUE_OPTIONS, user_status, load_user_profiles
 except ModuleNotFoundError:
-    from Server.bio_data_analysis import classify_latest_cl_condition_with_random_forest
+    from Server.bio_data_analysis import predict_latest_cognitive_load
     from Server.bio_data_analysis import save_analysis_with_summary_to_csv
-    from Server.bio_data_analysis import train_random_forest_cl_classifier
+    from Server.bio_data_analysis import train_cognitive_load_regression
     from read_jsonl_from_last import read_last_n_jsonl_as_dataframe
     from shared_state import ISSUE_OPTIONS, user_status, load_user_profiles
 
@@ -44,6 +44,8 @@ SERVER_DIR = Path(__file__).resolve().parent
 DATA_DIR = SERVER_DIR / "data"
 DATA_DIR.mkdir(exist_ok=True)
 MAX_IBI_PER_RECORD = 4
+NEGOTIATION_LOAD_LOW = 0.3
+NEGOTIATION_LOAD_HIGH = 0.7
 
 # 記録用ファイルパス
 HR_JSONL_PATH = DATA_DIR / "hr_ibi.jsonl"
@@ -54,16 +56,12 @@ USER_PROFILE_PATH = DATA_DIR / "user_profile.csv"
 # サーバ起動時に初期化し、どのAPIから交渉を始めてもCSVの設定を利用できるようにする。
 load_user_profiles(USER_PROFILE_PATH)
 
-# 心拍データクラス
-class TrackedData(BaseModel):
-    userId: str = "01"
-    hr: int = Field(ge=0)
-    ibi: List[int] = Field(default_factory=list)
-    sentAt: str
-
 # Galaxy Watchから送られるHR/IBI/EDAをまとめて受け取るためのデータ形式
 class BiodataPost(BaseModel):
-    userId: str = "01"
+    user_id: str = Field(
+        default="01",
+        validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
+    )
     hr: int = Field(ge=0)
     ibi: List[int] = Field(default_factory=list)
     eda: Optional[float] = None
@@ -73,7 +71,10 @@ class BiodataPost(BaseModel):
 
 # Unit環境から視線データを送るためのやつ
 class EyedataPost(BaseModel):
-    userID: str = "01"
+    user_id: str = Field(
+        default="01",
+        validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
+    )
     pupilDiaMeanRaw: float
     pupilDiaMeanSmoothed: float
 
@@ -95,7 +96,10 @@ class PLRCalibrationSample(BaseModel):
 
 # Unityから送られるPLRキャリブレーションデータ
 class PLRFitRequest(BaseModel):
-    userID: str = "01"
+    user_id: str = Field(
+        default="01",
+        validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
+    )
     sentAt: Optional[str] = None
     timestamp: Optional[int] = None
     deviceIp: Optional[str] = None
@@ -104,7 +108,7 @@ class PLRFitRequest(BaseModel):
 # Unityへ返すPLRモデル推定結果
 class PLRFitResponse(BaseModel):
     ok: bool
-    userID: str
+    user_id: str
     a: float
     b: float
     c: float
@@ -121,13 +125,19 @@ class PLRPredictRequest(BaseModel):
 
 # 体験段階のポストのためのクラス
 class StatusPost(BaseModel):
-    id: str = "01"
+    user_id: str = Field(
+        default="01",
+        validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
+    )
     status_flag: str
     sent_at: str
 
 # UnityのStroopManagerから送られる1試行分のログ。
 class StroopLogPost(BaseModel):
-    user_id: str = "01"
+    user_id: str = Field(
+        default="01",
+        validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
+    )
     condition: str
     trial_index: int
     is_practice: bool
@@ -142,7 +152,10 @@ class StroopLogPost(BaseModel):
 
 # UnityのMentalArithmeticManagerから送られる1試行分のログ。
 class MentalArithmeticLogPost(BaseModel):
-    participant_id: str = "01"
+    user_id: str = Field(
+        default="01",
+        validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
+    )
     block_id: int
     difficulty: str
     block_duration_sec: int
@@ -163,7 +176,10 @@ class MentalArithmeticLogPost(BaseModel):
 
 # NASA-TLX の受信データモデル
 class NASATLXPost(BaseModel):
-    userID: str = "01"
+    user_id: str = Field(
+        default="01",
+        validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
+    )
     block_id: str
     mental_demand: float
     physical_demand: float
@@ -178,6 +194,20 @@ class NASATLXPost(BaseModel):
 def normalize_user_id(user_id: str) -> str:
     safe_id = re.sub(r"[^0-9A-Za-z_-]", "_", user_id.strip())
     return safe_id or "01"
+
+
+def user_id_from_record(record: dict, default: str = "01") -> str:
+    """新旧いずれのユーザーIDキーからでも保存先IDを取得する。"""
+    for key in ("user_id", "userId", "userID", "id", "participant_id"):
+        value = record.get(key)
+        if value is not None and str(value).strip():
+            return normalize_user_id(str(value))
+    return normalize_user_id(default)
+
+
+def resolve_query_user_id(user_id: Optional[str], legacy_id: Optional[str]) -> str:
+    """新しいuser_idと移行期間用の旧idクエリをどちらも受け付ける。"""
+    return normalize_user_id(user_id if user_id is not None else legacy_id or "01")
 
 def hr_jsonl_path_for_user(user_id: str) -> Path:
     return DATA_DIR / f"hr_ibi_{normalize_user_id(user_id)}.jsonl"
@@ -195,7 +225,7 @@ def append_records_by_user(records: List[dict]) -> None:
     files = {}
     try:
         for record in records:
-            user_id = normalize_user_id(str(record.get("id", "01")))
+            user_id = user_id_from_record(record)
             if user_id not in files:
                 files[user_id] = hr_jsonl_path_for_user(user_id).open("a", encoding="utf-8")
             files[user_id].write(json.dumps(record, ensure_ascii=False) + "\n")
@@ -207,7 +237,7 @@ def append_eye_records_by_user(records: List[dict]) -> None:
     files = {}
     try:
         for record in records:
-            user_id = normalize_user_id(str(record.get("userID", "01")))
+            user_id = user_id_from_record(record)
             if user_id not in files:
                 files[user_id] = eye_jsonl_path_for_user(user_id).open("a", encoding="utf-8")
             files[user_id].write(json.dumps(record, ensure_ascii=False) + "\n")
@@ -216,44 +246,22 @@ def append_eye_records_by_user(records: List[dict]) -> None:
             f.close()
 
 def append_stroop_record_by_user(record: dict) -> None:
-    user_id = normalize_user_id(str(record.get("user_id", "01")))
+    user_id = user_id_from_record(record)
     with stroop_jsonl_path_for_user(user_id).open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 def append_mental_arithmetic_record_by_user(record: dict) -> None:
-    user_id = normalize_user_id(str(record.get("participant_id", "01")))
+    user_id = user_id_from_record(record)
     with mental_arithmetic_jsonl_path_for_user(user_id).open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
-
 def append_nasa_tlx_record_by_user(record: dict) -> None:
-    user_id = normalize_user_id(str(record.get("userID", "01")))
+    user_id = user_id_from_record(record)
     path = DATA_DIR / f"NASA-TLX_data_{user_id}.jsonl"
     # ファイルが無ければ open('a') で自動的に作成される
     with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
-# 心拍・心拍変動を受け取り，保存するパス
-@app.post("/api/hr")
-async def receive_batch(payload: List[TrackedData], request: Request):
-    client_host = request.client.host if request.client else "unknown"
-    received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
-
-    records = []
-    for item in payload:
-        user_id = normalize_user_id(item.userId)
-        records.append({
-            "id": user_id,
-            "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
-            "sent_at": item.sentAt,
-            "received_at": received_at,
-            "client_host": client_host,
-            "hr": item.hr,
-            "ibi": item.ibi[:MAX_IBI_PER_RECORD],
-        })
-    append_records_by_user(records)
-
-    return {"ok": True, "count": len(payload)}
 
 # /api/hr の保存形式を拡張し、EDA・端末時刻・端末IPも同じjsonlに記録する
 @app.post("/api/Biodata")
@@ -263,10 +271,10 @@ async def receive_biodata(payload: List[BiodataPost], request: Request):
 
     records = []
     for item in payload:
-        user_id = normalize_user_id(item.userId)
+        user_id = normalize_user_id(item.user_id)
         # client_hostはHTTP接続元、device_ipは時計側が自己申告したIPとして両方残す
         records.append({
-            "id": user_id,
+            "user_id": user_id,
             "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
             "sent_at": item.sentAt,
             "received_at": received_at,
@@ -290,9 +298,9 @@ async def receive_eyedata(payload: List[EyedataPost], request: Request):
 
     records = []
     for item in payload:
-        user_id = normalize_user_id(item.userID)
+        user_id = normalize_user_id(item.user_id)
         records.append({
-            "userID": user_id,
+            "user_id": user_id,
             "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
             "sent_at": item.sentAt,
             "received_at": received_at,
@@ -354,10 +362,10 @@ async def receive_mental_arithmetic_log(
 ):
     client_host = request.client.host if request.client else "unknown"
     received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
-    participant_id = normalize_user_id(payload.participant_id)
+    user_id = normalize_user_id(payload.user_id)
 
     record = {
-        "participant_id": participant_id,
+        "user_id": user_id,
         "block_id": payload.block_id,
         "difficulty": payload.difficulty,
         "block_duration_sec": payload.block_duration_sec,
@@ -381,17 +389,17 @@ async def receive_mental_arithmetic_log(
 
     return {
         "ok": True,
-        "participant_id": participant_id,
+        "user_id": user_id,
         "block_id": payload.block_id,
         "trial_index": payload.trial_index,
     }
 
-
+# NASA-TLX解答を受け取り保存
 @app.post("/api/nasa_tlx")
 async def receive_nasa_tlx(payload: NASATLXPost, request: Request, mode: str = "raw_tlx"):
     client_host = request.client.host if request.client else "unknown"
     received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
-    user_id = normalize_user_id(payload.userID)
+    user_id = normalize_user_id(payload.user_id)
 
     # Raw TLX の計算モード
     mode_lower = (mode or "").lower()
@@ -415,7 +423,7 @@ async def receive_nasa_tlx(payload: NASATLXPost, request: Request, mode: str = "
         raw_tlx = sum(scales) / len(scales)
 
     record = {
-        "userID": user_id,
+        "user_id": user_id,
         "block_id": payload.block_id,
         "mental_demand": payload.mental_demand,
         "physical_demand": payload.physical_demand,
@@ -434,20 +442,21 @@ async def receive_nasa_tlx(payload: NASATLXPost, request: Request, mode: str = "
 
     append_nasa_tlx_record_by_user(record)
 
-    return {"ok": True, "userID": user_id, "block_id": payload.block_id, "RawTLX": raw_tlx}
+    return {"ok": True, "user_id": user_id, "block_id": payload.block_id, "RawTLX": raw_tlx}
 
+# 輝度補正モデルフィット
 @app.post("/api/plr/fit", response_model=PLRFitResponse)
 async def fit_plr(payload: PLRFitRequest, request: Request):
     client_host = request.client.host if request.client else "unknown"
     received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
-    user_id = normalize_user_id(payload.userID)
+    user_id = normalize_user_id(payload.user_id)
 
     # Pydanticモデルを通常のdictに変換する。
     samples = [sample.model_dump() for sample in payload.samples]
 
     # 後から確認できるよう、生データもjsonlに保存しておく。
     raw_record = {
-        "userID": user_id,
+        "user_id": user_id,
         "sent_at": payload.sentAt,
         "received_at": received_at,
         "client_host": client_host,
@@ -468,7 +477,7 @@ async def fit_plr(payload: PLRFitRequest, request: Request):
 
     # 推定結果も別ファイルに保存する。
     result_record = {
-        "userID": user_id,
+        "user_id": user_id,
         "received_at": received_at,
         **result,
         "luminanceCorrelation": luminance_correlation["correlation"],
@@ -479,7 +488,7 @@ async def fit_plr(payload: PLRFitRequest, request: Request):
 
     return {
         "ok": True,
-        "userID": user_id,
+        "user_id": user_id,
         "a": result["a"],
         "b": result["b"],
         "c": result["c"],
@@ -522,79 +531,138 @@ async def change_status(payload: StatusPost, request: Request):
     client_host = request.client.host if request.client else "unknown"
     received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
 
-    if payload.id not in user_status:
+    user_id = normalize_user_id(payload.user_id)
+    if user_id not in user_status:
         raise HTTPException(status_code=404, detail="unknown id")
 
-    user_status[payload.id].ex_status = payload.status_flag
+    user_status[user_id].ex_status = payload.status_flag
 
     record = {
         "received_at": received_at,
         "client_host": client_host,
-        "id": payload.id,
+        "user_id": user_id,
         "status_flag": payload.status_flag,
         "sent_at": payload.sent_at,
     }
     with STATUS_JSONL_PATH.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
-    return {"ok": True, "id": payload.id, "status": user_status[payload.id].ex_status}
+    return {"ok": True, "user_id": user_id, "status": user_status[user_id].ex_status}
 
-# 心拍情報の解析・閾値設定のパス
+
+# 個人別の認知負荷線形回帰モデルを学習・評価・保存するパス
 @app.get("/api/analyze_hr/set_threshold")
-async def analyze_hr_save_csv(id: str = "01"):
-    if id not in user_status:
-        raise HTTPException(status_code=404, detail="unknown id")
+async def analyze_hr_save_csv(
+    user_id: Optional[str] = None,
+    id: Optional[str] = None,
+    subjective_measure: str = "raw_tlx",
+    w_obj: float = 0.5,
+    w_sub: float = 0.5,
+    folds: int = 5,
+    save_training_plot: bool = False,
+):
+    resolved_user_id = resolve_query_user_id(user_id, id)
+    if resolved_user_id not in user_status:
+        raise HTTPException(status_code=404, detail="unknown user_id")
 
     try:
-        # 機械学習版では、このAPIでユーザIDごとのランダムフォレストを学習できるか確認する。
-        model, training_df = train_random_forest_cl_classifier(id, DATA_DIR)
+        model, scaler, training_df, cv_metrics = train_cognitive_load_regression(
+            resolved_user_id,
+            data_dir=DATA_DIR,
+            model_dir=SERVER_DIR / "models",
+            subjective_measure=subjective_measure,
+            w_obj=w_obj,
+            w_sub=w_sub,
+            folds=folds,
+            save_training_plot=save_training_plot,
+        )
+        features = [str(feature) for feature in scaler.feature_names_in_]
+        output_dir = SERVER_DIR / "models" / resolved_user_id
         return {
             "ok": True,
-            "message": "random forest trained",
-            "id": id,
+            "message": "cognitive load linear regression trained",
+            "user_id": resolved_user_id,
             "rows": int(len(training_df)),
-            "classes": [str(label) for label in model.classes_],
-            "features": ["hr", "tepr"],
+            "blocks": sorted(
+                training_df["block_id"].astype(str).unique().tolist()
+            ),
+            "features": features,
+            "coefficients": {
+                feature: float(coefficient)
+                for feature, coefficient in zip(features, model.coef_)
+            },
+            "intercept": float(model.intercept_),
+            "cross_validation": cv_metrics,
+            "artifacts": {
+                "model": str(output_dir / "model.joblib"),
+                "scaler": str(output_dir / "x_scaler.joblib"),
+                "metadata": str(output_dir / "metadata.json"),
+                "cv_metrics": str(output_dir / "cv_metrics.json"),
+                "training_plot": (
+                    str(output_dir / "regression_training_fit.png")
+                    if save_training_plot
+                    else None
+                ),
+            },
         }
     except Exception as e:
-        return {"ok": False, "error": str(e)}
+        return {"ok": False, "user_id": resolved_user_id, "error": str(e)}
 
 # 体験段階の取得のパス
 @app.get("/api/ex_status_get")
-async def read_ex_status(id: str = "01"):
-    if id not in user_status:
+async def read_ex_status(user_id: Optional[str] = None, id: Optional[str] = None):
+    resolved_user_id = resolve_query_user_id(user_id, id)
+    if resolved_user_id not in user_status:
         raise HTTPException(status_code=404, detail="unknown id")
-    return {"ok": True, "id": id, "status": user_status[id].ex_status}
+    return {
+        "ok": True,
+        "user_id": resolved_user_id,
+        "status": user_status[resolved_user_id].ex_status,
+    }
 
-# 体験者の認知負荷状態の取得と交渉のパス
+# 体験者の認知負荷推定値の取得と交渉のパス
 @app.get("/api/cl_condition_get")
-async def read_cl_condition(id: str = "01"):
-    if id not in user_status:
+async def read_cl_condition(user_id: Optional[str] = None, id: Optional[str] = None):
+    resolved_user_id = resolve_query_user_id(user_id, id)
+    if resolved_user_id not in user_status:
         raise HTTPException(status_code=404, detail="unknown id")
 
     try:
-        result = classify_latest_cl_condition_with_random_forest(id, DATA_DIR)
+        result = predict_latest_cognitive_load(
+            resolved_user_id,
+            data_dir=DATA_DIR,
+            model_dir=SERVER_DIR / "models",
+        )
     except Exception as e:
-        return {"ok": False, "id": id, "error": str(e)}
+        return {"ok": False, "user_id": resolved_user_id, "error": str(e)}
 
-    user_status[id].cl_condition = result["label"]
-    
+    current_load = float(result["L_cur"])
+    # cl_conditionは既存クライアントが文字列として受信するため、連続値の文字列表現を保持する。
+    # 新規クライアントは数値型のL_curを使用する。
+    user_status[resolved_user_id].cl_condition = str(current_load)
+
     negotiation_result = None
-    if user_status[id].cl_condition in {"High", "Low"}:
-        # 分類ラベルを負荷代表値へ変換し、AAとPAの交渉を開始する。
+    negotiation_triggered = (
+        current_load < NEGOTIATION_LOAD_LOW
+        or current_load > NEGOTIATION_LOAD_HIGH
+    )
+    if negotiation_triggered:
+        # 回帰モデルの連続値をそのままAAとPAの交渉へ渡す。
         # 合意した場合のshared_state更新はNegotiationManager側で行う。
-        current_load = 0.75 if user_status[id].cl_condition == "High" else 0.25
         negotiation_result = run_negotiation(
-            user_id=id,
+            user_id=resolved_user_id,
             current_load=current_load,
         )
 
     return {
         "ok": True,
-        "id": id,
-        "cl_condition": user_status[id].cl_condition,
+        "user_id": resolved_user_id,
+        "cl_condition": user_status[resolved_user_id].cl_condition,
+        "L_cur": current_load,
+        "L_cur_raw": float(result["L_cur_raw"]),
         "ml_result": result,
-        "issue_settings": user_status[id].issue_settings,
+        "issue_settings": user_status[resolved_user_id].issue_settings,
+        "negotiation_triggered": negotiation_triggered,
         "negotiation": (
             negotiation_result.to_dict() if negotiation_result is not None else None
         ),
@@ -602,13 +670,53 @@ async def read_cl_condition(id: str = "01"):
 
 # 現在の現在の体験設定を確認するパス
 @app.get("/api/issue_settings_get")
-async def read_issue_settings(id: str = "01"):
-    if id not in user_status:
+async def read_issue_settings(user_id: Optional[str] = None, id: Optional[str] = None):
+    resolved_user_id = resolve_query_user_id(user_id, id)
+    if resolved_user_id not in user_status:
         raise HTTPException(status_code=404, detail="unknown id")
 
     return {
         "ok": True,
-        "id": id,
+        "user_id": resolved_user_id,
         #"issue_options": ISSUE_OPTIONS,
-        "issue_settings": user_status[id].issue_settings,
+        "issue_settings": user_status[resolved_user_id].issue_settings,
     }
+
+
+
+
+
+
+
+# 後で消すであろう部分まとめ
+# 心拍データクラス
+class TrackedData(BaseModel):
+    user_id: str = Field(
+        default="01",
+        validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
+    )
+    hr: int = Field(ge=0)
+    ibi: List[int] = Field(default_factory=list)
+    sentAt: str
+
+    # 心拍・心拍変動を受け取り，保存するパス
+@app.post("/api/hr")
+async def receive_batch(payload: List[TrackedData], request: Request):
+    client_host = request.client.host if request.client else "unknown"
+    received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
+
+    records = []
+    for item in payload:
+        user_id = normalize_user_id(item.user_id)
+        records.append({
+            "user_id": user_id,
+            "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
+            "sent_at": item.sentAt,
+            "received_at": received_at,
+            "client_host": client_host,
+            "hr": item.hr,
+            "ibi": item.ibi[:MAX_IBI_PER_RECORD],
+        })
+    append_records_by_user(records)
+
+    return {"ok": True, "count": len(payload)}

@@ -41,7 +41,7 @@ CSVの1行 = 1つの学習・推論サンプル
 個人ごとに線形回帰モデルを構築する。
 
 ```text
-L_pred
+L_cur_raw
 = β0
 + β1 × heart_rate_z
 + β2 × tepr_z
@@ -49,7 +49,7 @@ L_pred
 
 ここで、
 
-* `L_pred`：線形回帰モデルの出力
+* `L_cur_raw`：線形回帰モデルの出力
 * `heart_rate_z`：標準化済み心拍数
 * `tepr_z`：標準化済みTEPR
 * `β0`：切片
@@ -474,7 +474,7 @@ ValidationデータをNASA-TLX標準化や説明変数標準化のパラメー�
 線形回帰モデルから直接得られる値を、
 
 ```text
-L_pred
+L_cur_raw
 ```
 
 とする。
@@ -482,7 +482,7 @@ L_pred
 学習ラベル`L_label`自体が0〜1を基本とした尺度になっているため、以前想定していた、
 
 ```text
-L_pred / 4 + 0.5
+L_cur_raw / 4 + 0.5
 ```
 
 という再変換は行わない。
@@ -499,7 +499,7 @@ L_pred / 4 + 0.5
 L_cur
 =
 clip(
-  L_pred,
+  L_cur_raw,
   0.0,
   1.0
 )
@@ -510,17 +510,17 @@ clip(
 具体的には、
 
 ```text
-L_pred < 0
+L_cur_raw < 0
 → L_cur = 0
 ```
 
 ```text
-0 <= L_pred <= 1
-→ L_cur = L_pred
+0 <= L_cur_raw <= 1
+→ L_cur = L_cur_raw
 ```
 
 ```text
-L_pred > 1
+L_cur_raw > 1
 → L_cur = 1
 ```
 
@@ -556,7 +556,7 @@ heart_rate・tepr取得
 ↓
 LinearRegression
 ↓
-L_pred
+L_cur_raw
 ↓
 0～1へclip
 ↓
@@ -577,7 +577,7 @@ L_cur
   "sent_at": "2026-08-07T15:00:02.000",
   "heart_rate": 74.2,
   "tepr": 3.41,
-  "L_pred": 0.72,
+  "L_cur_raw": 0.72,
   "L_cur": 0.72
 }
 ```
@@ -590,12 +590,12 @@ L_cur
   "sent_at": "2026-08-07T15:00:04.000",
   "heart_rate": 91.4,
   "tepr": 4.15,
-  "L_pred": 1.08,
+  "L_cur_raw": 1.08,
   "L_cur": 1.0
 }
 ```
 
-`L_pred`は解析・デバッグ用に保存し、実際のXR体験調整には`L_cur`を使用する。
+`L_cur_raw`は解析・デバッグ用に保存し、実際のXR体験調整には`L_cur`を使用する。
 
 ---
 
@@ -612,7 +612,7 @@ L_cur
 
 ```text
 正解値：L_label
-予測値：L_pred
+予測値：L_cur_raw
 ```
 
 を比較する。
@@ -622,8 +622,8 @@ L_cur
 必要に応じて、
 
 * クリッピング発生率
-* `L_pred < 0`となった割合
-* `L_pred > 1`となった割合
+* `L_cur_raw < 0`となった割合
+* `L_cur_raw > 1`となった割合
 
 も記録する。
 
@@ -772,7 +772,7 @@ Z標準化HR ────┐
               ├─ LinearRegression
 Z標準化TEPR ──┘
               ↓
-            L_pred
+            L_cur_raw
               ↓
           clip(0,1)
               ↓

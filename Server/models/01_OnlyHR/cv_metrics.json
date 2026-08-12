@@ -1,0 +1,105 @@
+{
+  "enabled": true,
+  "method": "group_k_fold",
+  "block_count": 4,
+  "n_splits": 4,
+  "folds": [
+    {
+      "fold": 1,
+      "train_blocks": [
+        "0_back_start",
+        "1_back_start",
+        "2_back_start"
+      ],
+      "validation_blocks": [
+        "3_back_start"
+      ],
+      "train_samples": 360,
+      "validation_samples": 120,
+      "training_tlx_mean": 5.888888888888888,
+      "training_tlx_std": 3.266931206219813,
+      "mae": 0.549727217271739,
+      "rmse": 0.5526750939104532,
+      "r2": -6.195257134074387e+30,
+      "pearson_correlation": null,
+      "clipping_rate": 0.0,
+      "below_zero_rate": 0.0,
+      "above_one_rate": 0.0
+    },
+    {
+      "fold": 2,
+      "train_blocks": [
+        "0_back_start",
+        "1_back_start",
+        "3_back_start"
+      ],
+      "validation_blocks": [
+        "2_back_start"
+      ],
+      "train_samples": 360,
+      "validation_samples": 120,
+      "training_tlx_mean": 13.388888888888891,
+      "training_tlx_std": 13.868651923414888,
+      "mae": 0.19927392998947493,
+      "rmse": 0.25165735717975396,
+      "r2": -5.138055644825139e+30,
+      "pearson_correlation": null,
+      "clipping_rate": 0.025,
+      "below_zero_rate": 0.025,
+      "above_one_rate": 0.0
+    },
+    {
+      "fold": 3,
+      "train_blocks": [
+        "0_back_start",
+        "2_back_start",
+        "3_back_start"
+      ],
+      "validation_blocks": [
+        "1_back_start"
+      ],
+      "train_samples": 360,
+      "validation_samples": 120,
+      "training_tlx_mean": 15.611111111111109,
+      "training_tlx_std": 12.639102562296381,
+      "mae": 0.15778524668016505,
+      "rmse": 0.16216460711592923,
+      "r2": -2.1334952919191097e+30,
+      "pearson_correlation": null,
+      "clipping_rate": 0.0,
+      "below_zero_rate": 0.0,
+      "above_one_rate": 0.0
+    },
+    {
+      "fold": 4,
+      "train_blocks": [
+        "1_back_start",
+        "2_back_start",
+        "3_back_start"
+      ],
+      "validation_blocks": [
+        "0_back_start"
+      ],
+      "train_samples": 360,
+      "validation_samples": 120,
+      "training_tlx_mean": 15.777777777777779,
+      "training_tlx_std": 12.478376358453447,
+      "mae": 0.35113001500973856,
+      "rmse": 0.357605060211251,
+      "r2": -4.149988018170744e+31,
+      "pearson_correlation": null,
+      "clipping_rate": 0.0,
+      "below_zero_rate": 0.0,
+      "above_one_rate": 0.0
+    }
+  ],
+  "overall": {
+    "mae": 0.31447910223777936,
+    "rmse": 0.3615798403331492,
+    "r2": -0.9835033741984018,
+    "pearson_correlation": -0.5917439736229285,
+    "clipping_rate": 0.00625,
+    "below_zero_rate": 0.00625,
+    "above_one_rate": 0.0
+  }
+}

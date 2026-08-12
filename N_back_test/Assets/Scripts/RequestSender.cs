@@ -31,7 +31,7 @@ public class RequestSender : MonoBehaviour
     // status変更のポストの中身となるクラス
     public class StatusPost
     {
-        public string id;
+        public string user_id;
         public string status_flag;
         //public long timestamp_ms;   // ★統一
         public string sent_at;
@@ -40,7 +40,7 @@ public class RequestSender : MonoBehaviour
     [Serializable]
     public class EyeDataPost
     {
-        public string userID;
+        public string user_id;
 
         public float pupilDiaMeanRaw;
         public float pupilDiaMeanSmoothed;
@@ -76,7 +76,7 @@ public class RequestSender : MonoBehaviour
     // 暗算課題の1試行分のログをサーバへ送るためのJSON形式。
     public class MentalArithmeticLogPost
     {
-        public string participant_id;
+        public string user_id;
         public int block_id;
         public string difficulty;
         public int block_duration_sec;
@@ -102,7 +102,7 @@ public class RequestSender : MonoBehaviour
     [Serializable]
     public class NASATLXPost
     {
-        public string userID; // 参加者識別子（例: "01"）
+        public string user_id; // 参加者識別子（例: "01"）
         public string block_id; // ブロック識別子（N-backのblock_idなど）
         
         // NASA-TLX の6尺度（0-20 を想定）
@@ -136,7 +136,7 @@ public class RequestSender : MonoBehaviour
     [Serializable]
     public class PLRCalibrationRequest
     {
-        public string userID;
+        public string user_id;
         public string sentAt;
         public long timestamp;
         public string deviceIp;
@@ -148,7 +148,7 @@ public class RequestSender : MonoBehaviour
     public class PLRFitResponse
     {
         public bool ok;
-        public string userID;
+        public string user_id;
         public float a;
         public float b;
         public float c;
@@ -161,7 +161,7 @@ public class RequestSender : MonoBehaviour
     public class StatusGetResponse
     {
         public bool ok;
-        public string id;
+        public string user_id;
         public string status;
     }
 
@@ -169,7 +169,7 @@ public class RequestSender : MonoBehaviour
     public class CL_ConditionGetResponse
     {
         public bool ok;
-        public string id;
+        public string user_id;
         public string cl_condition;
         public string error;
         public MLResult ml_result;
@@ -407,12 +407,12 @@ public class RequestSender : MonoBehaviour
     public void DisplayIssueCondition(Dictionary<string, string> issue_settings)
     {
         text_issues[0].text = GetIssueSettingValue(issue_settings, "tempo");
-        text_issues[1].text = GetIssueSettingValue(issue_settings, "guidance");
-        text_issues[2].text = GetIssueSettingValue(issue_settings, "complexity");
-        text_issues[3].text = GetIssueSettingValue(issue_settings, "stimulus");
-        text_issues[4].text = GetIssueSettingValue(issue_settings, "break_policy");
-        text_issues[5].text = GetIssueSettingValue(issue_settings, "feedback");
-        text_issues[6].text = GetIssueSettingValue(issue_settings, "taste");
+        text_issues[1].text = GetIssueSettingValue(issue_settings, "complexity");
+        text_issues[2].text = GetIssueSettingValue(issue_settings, "stimulus");
+        text_issues[3].text = GetIssueSettingValue(issue_settings, "text");
+        text_issues[4].text = GetIssueSettingValue(issue_settings, "guidance");
+        text_issues[5].text = GetIssueSettingValue(issue_settings, "break_policy");
+        // text_issues[6].text = GetIssueSettingValue(issue_settings, "taste");
     }
 
 
@@ -466,7 +466,7 @@ public class RequestSender : MonoBehaviour
 
         var payload = new StatusPost
         {
-            id = userId,
+            user_id = userId,
             status_flag = statusFlag,
             //timestamp_ms = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
             sent_at = DateTime.Now.ToString()
@@ -515,7 +515,7 @@ public class RequestSender : MonoBehaviour
     {
         new EyeDataPost
         {
-            userID = userId,
+            user_id = userId,
             pupilDiaMeanRaw = pupilDiaMeanRaw,
             pupilDiaMeanSmoothed = pupilDiaMeanSmoothed,
             predictedPupilMm = predictedPupilMm,
@@ -640,7 +640,7 @@ public class RequestSender : MonoBehaviour
 
         var payload = new MentalArithmeticLogPost
         {
-            participant_id = string.IsNullOrWhiteSpace(participantId) ? userId : participantId,
+            user_id = string.IsNullOrWhiteSpace(participantId) ? userId : participantId,
             block_id = blockId,
             difficulty = difficulty,
             block_duration_sec = blockDurationSec,
@@ -748,7 +748,7 @@ public class RequestSender : MonoBehaviour
         // ペイロードを組み立てる。フィールド名はサーバ側の期待に合わせる。
         var payload = new NASATLXPost
         {
-            userID = string.IsNullOrWhiteSpace(sendUserId) ? userId : sendUserId,
+            user_id = string.IsNullOrWhiteSpace(sendUserId) ? userId : sendUserId,
             block_id = blockId,
             mental_demand = mentalDemand,
             physical_demand = physicalDemand,
@@ -824,7 +824,7 @@ public class RequestSender : MonoBehaviour
 
         var payload = new PLRCalibrationRequest
         {
-            userID = userId,
+            user_id = userId,
             sentAt = DateTime.Now.ToString(),
             timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
             deviceIp = GetDeviceIpAddress(),
@@ -869,7 +869,7 @@ public class RequestSender : MonoBehaviour
                 yield break;
             }
 
-            Debug.Log($"PLR_FIT_POST ok: userID={resp.userID}, a={resp.a}, b={resp.b}, c={resp.c}, mse={resp.mse}, n={resp.sampleCount}");
+            Debug.Log($"PLR_FIT_POST ok: user_id={resp.user_id}, a={resp.a}, b={resp.b}, c={resp.c}, mse={resp.mse}, n={resp.sampleCount}");
             onSuccess?.Invoke(resp);
         }
     }
@@ -898,7 +898,7 @@ public class RequestSender : MonoBehaviour
     public IEnumerator GetExpStatus()
     {
         string safeBase = GetSafeBaseUrl();
-        string url = safeBase + "/api/status_get?id=" + UnityWebRequest.EscapeURL(userId);
+        string url = safeBase + "/api/ex_status_get?user_id=" + UnityWebRequest.EscapeURL(userId);
 
         using (var req = UnityWebRequest.Get(url))
         {
@@ -919,7 +919,7 @@ public class RequestSender : MonoBehaviour
             }
 
             var resp = JsonConvert.DeserializeObject<StatusGetResponse>(req.downloadHandler.text);
-            Debug.Log($"STATUS_GET ok: id={resp.id}, status={resp.status}");
+            Debug.Log($"STATUS_GET ok: user_id={resp.user_id}, status={resp.status}");
         }
     }
 
@@ -927,7 +927,7 @@ public class RequestSender : MonoBehaviour
     public IEnumerator GetAnalyzeHrSave()
     {
         string safeBase = GetSafeBaseUrl();
-        string url = safeBase + "/api/analyze_hr/set_threshold?id=" + UnityWebRequest.EscapeURL(userId);
+        string url = safeBase + "/api/analyze_hr/set_threshold?user_id=" + UnityWebRequest.EscapeURL(userId);
 
         using (var req = UnityWebRequest.Get(url))
         {
@@ -975,7 +975,7 @@ public class RequestSender : MonoBehaviour
     {
         isCLRequestRunning = true;
         string safeBase = GetSafeBaseUrl();
-        string url = safeBase + "/api/cl_condition_get?id=" + UnityWebRequest.EscapeURL(userId);
+        string url = safeBase + "/api/cl_condition_get?user_id=" + UnityWebRequest.EscapeURL(userId);
 
         using (var req = UnityWebRequest.Get(url))
         {
@@ -1006,7 +1006,7 @@ public class RequestSender : MonoBehaviour
 
             if (!resp.ok)
             {
-                Debug.LogWarning($"CL_CONDITION_GET server returned ok=false: id={resp.id}, error={resp.error}, body={req.downloadHandler.text}");
+                Debug.LogWarning($"CL_CONDITION_GET server returned ok=false: user_id={resp.user_id}, error={resp.error}, body={req.downloadHandler.text}");
                 resp_cl_temp = resp;
                 isCLRequestRunning = false;
                 yield break;
@@ -1014,7 +1014,7 @@ public class RequestSender : MonoBehaviour
 
             string issueSettingsJson = JsonConvert.SerializeObject(resp.issue_settings);
             string mlResultJson = JsonConvert.SerializeObject(resp.ml_result);
-            Debug.Log($"CL_CONDITION_GET ok: id={resp.id}, cl_condition={resp.cl_condition}, ml_result={mlResultJson}, issue_settings={issueSettingsJson}");
+            Debug.Log($"CL_CONDITION_GET ok: user_id={resp.user_id}, cl_condition={resp.cl_condition}, ml_result={mlResultJson}, issue_settings={issueSettingsJson}");
             resp_cl_temp = resp;
             DisplayCLCondition(resp.cl_condition);
             if (resp.issue_settings != null)

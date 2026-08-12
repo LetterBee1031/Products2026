@@ -1,0 +1,42 @@
+{
+  "user_id": "01",
+  "subjective_measure": "raw_tlx",
+  "nasa_tlx_mean": 12.666666666666666,
+  "nasa_tlx_std": 12.075572220165984,
+  "w_obj": 0.5,
+  "w_sub": 0.5,
+  "objective_load_mapping": {
+    "0": 0.2,
+    "1": 0.4,
+    "2": 0.6,
+    "3": 0.8
+  },
+  "features": [
+    "heart_rate"
+  ],
+  "feature_source_columns": {
+    "heart_rate": "hr"
+  },
+  "standardization": {
+    "method": "standard_scaler_zscore",
+    "mean": {
+      "heart_rate": 87.06041666666667
+    },
+    "scale": {
+      "heart_rate": 3.6053339872641783
+    }
+  },
+  "blocks": [
+    "0_back_start",
+    "1_back_start",
+    "2_back_start",
+    "3_back_start"
+  ],
+  "training_samples": 480,
+  "coefficients": {
+    "heart_rate": -0.07075075489323063
+  },
+  "intercept": 0.49999999999999994,
+  "training_plot": "regression_training_fit.png",
+  "created_at": "2026-08-12T03:21:47.708445+00:00"
+}

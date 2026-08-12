@@ -48,7 +48,7 @@ class BiodataPoster(private val endpointUrl: String) {
                 ?: "null"
             """
             {
-              "userId": "${sample.userId.escapeJson()}",
+              "user_id": "${sample.userId.escapeJson()}",
               "hr": ${sample.hr},
               "ibi": ${sample.ibi.joinToString(prefix = "[", postfix = "]")},
               "eda": $edaJson,

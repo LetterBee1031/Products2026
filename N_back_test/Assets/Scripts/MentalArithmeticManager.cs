@@ -547,7 +547,7 @@ public class MentalArithmeticManager : MonoBehaviour
         // 毎回全ログを書き直すため、ブロック途中まで保存した後も重複行は生じない。
         StringBuilder csv = new StringBuilder();
         csv.AppendLine(
-            "participant_id,block_id,difficulty,block_duration_sec,trial_index,a,b," +
+            "user_id,block_id,difficulty,block_duration_sec,trial_index,a,b," +
             "correct_answer,user_answer,is_correct,is_skipped,reaction_time_ms," +
             "block_elapsed_time_ms,timestamp");
 
