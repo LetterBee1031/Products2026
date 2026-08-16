@@ -33,6 +33,8 @@ public class RequestSender : MonoBehaviour
     {
         public string user_id;
         public string status_flag;
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string ex_block_id; // N-backテストの通し番号（指定時のみ送信）
         //public long timestamp_ms;   // ★統一
         public string sent_at;
     }
@@ -240,18 +242,35 @@ public class RequestSender : MonoBehaviour
         StartCoroutine(PostStatusFlag("experience_start"));
     }
 
+    // public void SendStartFlag(string testId)
+    // {
+    //     StartCoroutine(PostStatusFlag("experience_start", testId));
+    // }
+
     public void SendEndFlag()
     {
         StartCoroutine(PostStatusFlag("experience_end"));
     }
-    public void SendNbackStartFlag(int n)
+    // public void SendEndFlag(string testId)
+    // {
+    //     StartCoroutine(PostStatusFlag("experience_end", testId));
+    // }
+    // public void SendNbackStartFlag(int n)
+    // {
+    //     StartCoroutine(PostStatusFlag(n + "_back_start"));
+    // }
+    public void SendNbackStartFlag(int n, string testId)
     {
-        StartCoroutine(PostStatusFlag(n + "_back_start"));
+        StartCoroutine(PostStatusFlag(n + "_back_start", testId));
     }
 
-    public void SendNbackEndFlag(int n)
+    // public void SendNbackEndFlag(int n)
+    // {
+    //     StartCoroutine(PostStatusFlag(n + "_back_end"));
+    // }
+    public void SendNbackEndFlag(int n, string testId)
     {
-        StartCoroutine(PostStatusFlag(n + "_back_end"));
+        StartCoroutine(PostStatusFlag(n + "_back_end", testId));
     }
     
     public void SendSeeingColorFlag(string color)
@@ -461,6 +480,12 @@ public class RequestSender : MonoBehaviour
     // ---- status送信 ----
     public IEnumerator PostStatusFlag(string statusFlag)
     {
+        return PostStatusFlag(statusFlag, null);
+    }
+
+    // testIdが指定された場合は、体験状態と併せてテストの通し番号を送信する
+    public IEnumerator PostStatusFlag(string statusFlag, string testId)
+    {
         string safeBase = GetSafeBaseUrl();
         string url = safeBase + "/api/status_post";
 
@@ -468,6 +493,7 @@ public class RequestSender : MonoBehaviour
         {
             user_id = userId,
             status_flag = statusFlag,
+            ex_block_id = string.IsNullOrWhiteSpace(testId) ? null : testId,
             //timestamp_ms = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
             sent_at = DateTime.Now.ToString()
         };

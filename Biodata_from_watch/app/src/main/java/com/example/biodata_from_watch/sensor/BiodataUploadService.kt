@@ -275,9 +275,9 @@ class BiodataUploadService : Service(), SensorEventListener {
         private const val CHANNEL_ID = "biodata_upload"
         private const val NOTIFICATION_ID = 1001
         private const val MAX_IBI_PER_SAMPLE = 4
-        private const val UPLOAD_INTERVAL_MS = 1_000L
+        private const val UPLOAD_INTERVAL_MS = 2_000L
         private const val MIN_HEART_RATE_WINDOW_MS = 10L
-        private const val DEFAULT_HEART_RATE_WINDOW_MS = 1_000L
+        private const val DEFAULT_HEART_RATE_WINDOW_MS = 2_000L
         private val JST_ZONE: ZoneId = ZoneId.of("Asia/Tokyo")
 
         fun startIntent(

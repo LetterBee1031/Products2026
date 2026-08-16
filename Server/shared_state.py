@@ -192,6 +192,7 @@ class userData(BaseModel):
     # 各ユーザが持つ状態。論点セットはCSV読込時に動的に差し替わる。
     name: str = "None"
     ex_status: str = "None"
+    block_id: str = "None"
     cl_condition: str = "None"
     p: Dict[str, float] = Field(default_factory=lambda: dict(DEFAULT_P))
     w: Dict[str, float] = Field(default_factory=lambda: dict(DEFAULT_W))

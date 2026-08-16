@@ -130,6 +130,7 @@ class StatusPost(BaseModel):
         validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
     )
     status_flag: str
+    ex_block_id: str = None
     sent_at: str
 
 # UnityのStroopManagerから送られる1試行分のログ。
@@ -180,10 +181,10 @@ class NASATLXPost(BaseModel):
         default="01",
         validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
     )
-    block_id: str
+    # block_id: str
     mental_demand: float
     physical_demand: float
-    temporal_demand: float
+    temporal_demand: float 
     performance: float
     effort: float
     frustration: float
@@ -276,6 +277,7 @@ async def receive_biodata(payload: List[BiodataPost], request: Request):
         records.append({
             "user_id": user_id,
             "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
+            "block_id": user_status.get(user_id, user_status["01"]).block_id,
             "sent_at": item.sentAt,
             "received_at": received_at,
             "client_host": client_host,
@@ -302,6 +304,7 @@ async def receive_eyedata(payload: List[EyedataPost], request: Request):
         records.append({
             "user_id": user_id,
             "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
+            "block_id": user_status.get(user_id, user_status["01"]).block_id,
             "sent_at": item.sentAt,
             "received_at": received_at,
             "client_host": client_host,
@@ -424,7 +427,9 @@ async def receive_nasa_tlx(payload: NASATLXPost, request: Request, mode: str = "
 
     record = {
         "user_id": user_id,
-        "block_id": payload.block_id,
+        #"block_id": payload.block_id,
+        "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
+        "block_id": user_status.get(user_id, user_status["01"]).block_id,
         "mental_demand": payload.mental_demand,
         "physical_demand": payload.physical_demand,
         "temporal_demand": payload.temporal_demand,
@@ -442,7 +447,7 @@ async def receive_nasa_tlx(payload: NASATLXPost, request: Request, mode: str = "
 
     append_nasa_tlx_record_by_user(record)
 
-    return {"ok": True, "user_id": user_id, "block_id": payload.block_id, "RawTLX": raw_tlx}
+    return {"ok": True, "user_id": user_id, "ex_status": user_status.get(user_id, user_status["01"]).ex_status, "block_id": user_status.get(user_id, user_status["01"]).block_id, "RawTLX": raw_tlx}
 
 # 輝度補正モデルフィット
 @app.post("/api/plr/fit", response_model=PLRFitResponse)
@@ -536,18 +541,20 @@ async def change_status(payload: StatusPost, request: Request):
         raise HTTPException(status_code=404, detail="unknown id")
 
     user_status[user_id].ex_status = payload.status_flag
+    user_status[user_id].block_id = payload.ex_block_id
 
     record = {
         "received_at": received_at,
         "client_host": client_host,
         "user_id": user_id,
         "status_flag": payload.status_flag,
+        "block_id": payload.ex_block_id,
         "sent_at": payload.sent_at,
     }
     with STATUS_JSONL_PATH.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
-    return {"ok": True, "user_id": user_id, "status": user_status[user_id].ex_status}
+    return {"ok": True, "user_id": user_id, "status": user_status[user_id].ex_status, "block_id": user_status[user_id].block_id}
 
 
 # 個人別の認知負荷線形回帰モデルを学習・評価・保存するパス

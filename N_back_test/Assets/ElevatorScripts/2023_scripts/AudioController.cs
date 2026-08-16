@@ -40,6 +40,7 @@ public class AudioController : MonoBehaviour
     public AudioClip[] enExplainWorkingSounds = new AudioClip[4]; // This is an ??? experience
     public AudioClip[] enExplainHappenSounds = new AudioClip[4]; // ??? has occured
 
+    public AudioClip[] n_backSounds = new AudioClip[2]; // N-back用　正解・不正解音
 
     public AudioListener mainCameraListener;
     public AudioSource systemSoundSpeaker;
@@ -173,6 +174,11 @@ public class AudioController : MonoBehaviour
         }else if(langMode == 1){
             explainSoundSpeaker.PlayOneShot(enExplainHappenSounds[type]);
         }
+    }
+
+    // 災害時のエレベータ音声再生
+    public void PlayN_backSound(int type){
+        systemSoundSpeaker.PlayOneShot(n_backSounds[type]);
     }
 
     //音が鳴り終わるまで待機する関数

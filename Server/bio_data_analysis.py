@@ -422,11 +422,13 @@ def load_regression_training_dataframe(
 
     # N-backの"N"数を取得する．fillnaはNaNの行を置き換える関数らしい．
     if "n_back" in bio_df:
-        parsed_n_back = bio_df["n_back"].map(_extract_n_back)
+        # parsed_n_back = bio_df["n_back"].map(_extract_n_back)
+        parsed_n_back = bio_df["ex_status"].map(_extract_n_back)
     else:
         parsed_n_back = pd.Series(np.nan, index=bio_df.index, dtype=float)
-    parsed_n_back = parsed_n_back.fillna(bio_df["ex_status"].map(_extract_n_back))
-    parsed_n_back = parsed_n_back.fillna(bio_df["block_id"].map(_extract_n_back))
+    parsed_n_back = parsed_n_back.fillna(bio_df["n_back"].map(_extract_n_back))
+    # parsed_n_back = parsed_n_back.fillna(bio_df["ex_status"].map(_extract_n_back))
+    # parsed_n_back = parsed_n_back.fillna(bio_df["block_id"].map(_extract_n_back))
     bio_df["n_back"] = parsed_n_back
 
     # NASA-TLX得点と生体情報の対応付け　block_idをキーに内部結合を実施
