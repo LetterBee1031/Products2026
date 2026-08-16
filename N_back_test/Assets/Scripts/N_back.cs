@@ -9,6 +9,15 @@ using System.IO;
 
 public class N_back : MonoBehaviour
 {
+    [System.Serializable]
+    private class NBackPatternFile
+    {
+        public string patternId;
+        public int nBack;
+        public string[] stimuli;
+        public bool[] isTarget;
+    }
+
     public static class Define
     {
         public static readonly int LIST_MAX_LENGTH = 100;
@@ -17,11 +26,12 @@ public class N_back : MonoBehaviour
 
     public RequestSender requestSender;
     public NasaTlxManager nasaTlxManager;
+    public AudioController audioController;
     public GameObject buttonStart;
     public GameObject buttonSame;
     public GameObject buttonForQuestion;
 
-    public TextMeshProUGUI[] TextAlphabet = new TextMeshProUGUI[26];
+    public TextMeshProUGUI TextAlphabet;
     public TextMeshProUGUI textResult = new TextMeshProUGUI();
     public TextMeshProUGUI textQuestionNum = new TextMeshProUGUI();
     public TextMeshProUGUI textTitle = new TextMeshProUGUI();
@@ -49,9 +59,9 @@ public class N_back : MonoBehaviour
     bool isTextDisplayed = false;
 
     int outTextCount = 0;
-    int outTextNum = 50;
+    private const string PatternRootRelativePath = "Scripts/GeneratedNBackPatterns";
+    private NBackPatternFile loadedPattern;
 
-    List<int> listOutTextNum = new List<int>(); // ランダムで出力された文字のリスト
     List<bool> listJudge = new List<bool>(); // 正解したかどうかのリスト
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -63,7 +73,6 @@ public class N_back : MonoBehaviour
         buttonForQuestion.SetActive(false);
         for (int i = 0; i < Define.LIST_MAX_LENGTH; i++)
         {
-            listOutTextNum.Add(-1);
             listJudge.Add(false);
         }
         // Inspectorで範囲外の値が入っていても、リスト参照が壊れない範囲に丸める
@@ -94,6 +103,11 @@ public class N_back : MonoBehaviour
         // Coroutine coroutine;
         if (flag)
         {
+            if (!LoadPattern())
+            {
+                return;
+            }
+
             //time = 0f;
             isWorking = true;
             buttonStart.SetActive(false);
@@ -109,6 +123,78 @@ public class N_back : MonoBehaviour
         //     isWorking = false;
         //     StopCoroutine(coroutine);
         // }
+    }
+
+    private bool LoadPattern()
+    {
+        string patternFolderPath = Path.Combine(
+            Application.dataPath,
+            PatternRootRelativePath,
+            $"{n_back_num}back");
+
+        if (!Directory.Exists(patternFolderPath))
+        {
+            Debug.LogError($"N-back pattern folder was not found: {patternFolderPath}");
+            return false;
+        }
+
+        string[] patternPaths = Directory.GetFiles(
+            patternFolderPath,
+            "*.json",
+            SearchOption.TopDirectoryOnly);
+
+        if (patternPaths.Length == 0)
+        {
+            Debug.LogError($"No N-back pattern files were found: {patternFolderPath}");
+            return false;
+        }
+
+        string patternPath = patternPaths[Random.Range(0, patternPaths.Length)];
+
+        try
+        {
+            loadedPattern = JsonUtility.FromJson<NBackPatternFile>(File.ReadAllText(patternPath));
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogError($"Failed to read N-back pattern: {patternPath}\n{exception}");
+            loadedPattern = null;
+            return false;
+        }
+
+        if (loadedPattern == null ||
+            loadedPattern.stimuli == null ||
+            loadedPattern.isTarget == null ||
+            loadedPattern.stimuli.Length == 0 ||
+            loadedPattern.stimuli.Length != loadedPattern.isTarget.Length)
+        {
+            Debug.LogError($"N-back pattern data is invalid: {patternPath}");
+            loadedPattern = null;
+            return false;
+        }
+
+        if (loadedPattern.stimuli.Length > Define.LIST_MAX_LENGTH)
+        {
+            Debug.LogError(
+                $"N-back pattern contains too many trials: {loadedPattern.stimuli.Length} " +
+                $"(maximum: {Define.LIST_MAX_LENGTH})");
+            loadedPattern = null;
+            return false;
+        }
+
+        if (loadedPattern.nBack != n_back_num)
+        {
+            Debug.LogError(
+                $"N-back pattern does not match the current setting: " +
+                $"expected={n_back_num}, actual={loadedPattern.nBack}, file={patternPath}");
+            loadedPattern = null;
+            return false;
+        }
+
+        Debug.Log(
+            $"Loaded N-back pattern: {loadedPattern.patternId} " +
+            $"({loadedPattern.stimuli.Length} trials, file: {Path.GetFileName(patternPath)})");
+        return true;
     }
 
     public void SetNbackNum(int n)
@@ -258,32 +344,35 @@ public class N_back : MonoBehaviour
             // int i = 0;
             int resultNum = 0;
             //Random random = new Random();
-            //int outTextNum = 50;
-
             //timeHoleTask = 0f;
             //timeOneTask = 0f;
             textResult.enabled = false;
 
             // N-backタスク全体の制限時間中
-            if (timeHoleTask < timeLimit)
+            if (timeHoleTask < timeLimit && outTextCount < loadedPattern.stimuli.Length)
             {
                 if (!isTextDisplayed)
                 {
                     //Debug.Log("N_back_Working. OutTextCount:" + outTextCount);
-                    // 全文字非表示
-                    for (int j = 0; j < TextAlphabet.Length; j++)
+                    string stimulus = loadedPattern.stimuli[outTextCount];
+                    if (string.IsNullOrEmpty(stimulus))
                     {
-                        TextAlphabet[j].enabled = false;
+                        Debug.LogError($"Stimulus is empty at trial {outTextCount}.");
+                        isWorking = false;
+                        return;
                     }
 
-                    // ランダムな文字を表示
-                    //outTextNum = Random.Range(0, TextAlphabet.Length);
-                    outTextNum = Random.Range(0, 4);
-                    TextAlphabet[outTextNum].enabled = true;
+                    if (TextAlphabet == null)
+                    {
+                        Debug.LogError("TextAlphabet is not assigned.");
+                        isWorking = false;
+                        return;
+                    }
+
+                    TextAlphabet.text = stimulus;
+                    TextAlphabet.enabled = true;
                     textQuestionNum.text = outTextCount.ToString();
 
-                    listOutTextNum[outTextCount] = outTextNum; //出力した文字列に追加
-                    //Debug.Log("OutTextCount：" + outTextCount + "outTextNum：" + outTextNum);
                     isTextDisplayed = true;
                 }
 
@@ -294,40 +383,21 @@ public class N_back : MonoBehaviour
                     {
                         if (!isJudgeAdded)
                         {
-                            // n back(1以上)
-                            if (0 < n_back_num)
+                            // ボタン押下が合ってたら
+                            if (loadedPattern.isTarget[outTextCount] && isButtonSamePressed)
                             {
-                                // ボタン押下が合ってたら
-                                if ((outTextNum == listOutTextNum[outTextCount - n_back_num]) && (isButtonSamePressed == true))
-                                {
-                                    listJudge[outTextCount] = true;
-                                    isJudgeAdded = true;
-                                    Debug.Log("ButtonPush: true, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
-                                }
-                                // ボタン押下が合ってなかったら
-                                else if ((outTextNum != listOutTextNum[outTextCount - n_back_num]) && (isButtonSamePressed == true))
-                                {
-                                    listJudge[outTextCount] = false;
-                                    isJudgeAdded = true;
-                                    Debug.Log("ButtonPush: false, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
-                                }
+                                listJudge[outTextCount] = true;
+                                isJudgeAdded = true;
+                                audioController.PlayN_backSound(0);
+                                Debug.Log("ButtonPush: true, isTarget: true");
                             }
-                            // 0 back(固定文字Aとのfit)
-                            else
+                            // ボタン押下が合ってなかったら
+                            else if (!loadedPattern.isTarget[outTextCount] && isButtonSamePressed)
                             {
-                                if ((outTextNum == 0) && (isButtonSamePressed == true))
-                                {
-                                    listJudge[outTextCount] = true;
-                                    isJudgeAdded = true;
-                                    Debug.Log("ButtonPush: true");
-                                }
-                                // ボタン押下が合ってなかったら
-                                else if ((outTextNum != 0) && (isButtonSamePressed == true))
-                                {
-                                    listJudge[outTextCount] = false;
-                                    isJudgeAdded = true;
-                                    Debug.Log("ButtonPush: false");
-                                }
+                                listJudge[outTextCount] = false;
+                                isJudgeAdded = true;
+                                audioController.PlayN_backSound(1);
+                                Debug.Log("ButtonPush: false, isTarget: false");
                             }
                         }
                     }
@@ -337,36 +407,19 @@ public class N_back : MonoBehaviour
                     // 1文字ごとの時間内にボタンが押されなかったら
                     if ((outTextCount >= n_back_num) && (isJudgeAdded == false))
                     {
-                        // n back(1以上)
-                        if (0 < n_back_num)
+                        if (loadedPattern.isTarget[outTextCount])
                         {
-                            if (outTextNum == listOutTextNum[outTextCount - n_back_num])
-                            {
-                                listJudge[outTextCount] = false;
-                                isJudgeAdded = true;
-                                Debug.Log("NoButtonPush: false, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
-                            }
-                            else
-                            {
-                                listJudge[outTextCount] = true;
-                                isJudgeAdded = true;
-                                Debug.Log("NoButtonPush: true, outTextNum: " + outTextNum + " n個前: " + listOutTextNum[outTextCount - n_back_num]);
-                            }
+                            listJudge[outTextCount] = false;
+                            isJudgeAdded = true;
+                            audioController.PlayN_backSound(1);
+                            Debug.Log("NoButtonPush: false, isTarget: true");
                         }
                         else
                         {
-                            if (outTextNum == 0)
-                            {
-                                listJudge[outTextCount] = false;
-                                isJudgeAdded = true;
-                                Debug.Log("NoButtonPush: false");
-                            }
-                            else
-                            {
-                                listJudge[outTextCount] = true;
-                                isJudgeAdded = true;
-                                Debug.Log("NoButtonPush: true");
-                            }
+                            listJudge[outTextCount] = true;
+                            isJudgeAdded = true;
+                            audioController.PlayN_backSound(0);
+                            Debug.Log("NoButtonPush: true, isTarget: false");
                         }
                     }
 
@@ -383,40 +436,28 @@ public class N_back : MonoBehaviour
             else
             {
                 isWorking = false;
+                int completedTrialCount = Mathf.Min(
+                    outTextCount + (isTextDisplayed ? 1 : 0),
+                    loadedPattern.stimuli.Length);
 
-                if ((outTextCount >= n_back_num) && (isJudgeAdded == false))
+                if (outTextCount < loadedPattern.isTarget.Length &&
+                    outTextCount >= n_back_num &&
+                    isJudgeAdded == false)
                 {
-                    if (0 < n_back_num)
+                    if (loadedPattern.isTarget[outTextCount])
                     {
-                        if (outTextNum == listOutTextNum[outTextCount - n_back_num])
-                        {
-                            listJudge[outTextCount] = false;
-                            isJudgeAdded = true;
-                            Debug.Log("NoButtonPush: false");
-                        }
-                        else
-                        {
-                            listJudge[outTextCount] = true;
-                            isJudgeAdded = true;
-                            Debug.Log("NoButtonPush: true");
-                        }
+                        listJudge[outTextCount] = false;
+                        isJudgeAdded = true;
+                        audioController.PlayN_backSound(1);
+                        Debug.Log("NoButtonPush: false");
                     }
                     else
                     {
-                        if (outTextNum == 0)
-                        {
-                            listJudge[outTextCount] = false;
-                            isJudgeAdded = true;
-                            Debug.Log("NoButtonPush: false");
-                        }
-                        else
-                        {
-                            listJudge[outTextCount] = true;
-                            isJudgeAdded = true;
-                            Debug.Log("NoButtonPush: true");
-                        }
+                        listJudge[outTextCount] = true;
+                        isJudgeAdded = true;
+                        audioController.PlayN_backSound(0);
+                        Debug.Log("NoButtonPush: true");
                     }
-
                 }
 
                 isJudgeAdded = false;
@@ -424,9 +465,9 @@ public class N_back : MonoBehaviour
                 isTextDisplayed = false;
                 timeOneTask = 0f;
 
-                for (int i = 0; i < TextAlphabet.Length; i++)
+                if (TextAlphabet != null)
                 {
-                    TextAlphabet[i].enabled = false;
+                    TextAlphabet.enabled = false;
                 }
 
                 foreach (var val in listJudge)
@@ -438,23 +479,15 @@ public class N_back : MonoBehaviour
                 }
 
 
-                textResult.text = resultNum.ToString() + "/" + (outTextCount + 1 - n_back_num).ToString();
+                textResult.text = resultNum.ToString() + "/" +
+                    Mathf.Max(0, completedTrialCount - n_back_num).ToString();
                 textResult.enabled = true;
-
-                for (int i = 0; i <= outTextCount; i++)
-                {
-                    Debug.Log(i + "番目：" + listOutTextNum[i]);
-                }
 
                 // 初期化
                 outTextCount = 0;
                 timeHoleTask = 0f;
                 timeOneTask = 0f;
 
-                for (int i = 0; i < Define.LIST_MAX_LENGTH; i++)
-                {
-                    listOutTextNum[i] = -1;
-                }
                 for (int i = 0; i < Define.LIST_MAX_LENGTH; i++)
                 {
                     listJudge[i] = false;
@@ -466,19 +499,6 @@ public class N_back : MonoBehaviour
                 buttonForQuestion.SetActive(true);
             }
         }
-
-
-
-        // for (int i = 0;i < TextAlphabet.Length; i++)
-        // {
-        //     for(int j = 0;j < TextAlphabet.Length; j++)
-        //     {
-        //         TextAlphabet[j].enabled = false;
-        //     }
-        //     TextAlphabet[i].enabled = true;
-        //     Debug.Log("Text" + i);
-        //     yield return new WaitForSeconds(2f);
-        // }
     }
 
     private void SetupSettingInputFields()

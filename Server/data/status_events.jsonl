@@ -386,3 +386,4 @@
 {"received_at": "2026-08-12T11:25:59.219235+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "nasa_tlx_complete", "sent_at": "2026/08/12 11:25:59"}
 {"received_at": "2026-08-12T12:55:56.311388+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "experience_start", "sent_at": "2026/08/12 12:55:56"}
 {"received_at": "2026-08-12T13:05:09.565070+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "experience_start", "sent_at": "2026/08/12 13:05:09"}
+{"received_at": "2026-08-12T14:36:05.053204+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "experience_start", "sent_at": "2026/08/12 14:36:04"}
