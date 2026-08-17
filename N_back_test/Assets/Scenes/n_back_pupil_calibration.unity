@@ -23155,7 +23155,10 @@ GameObject:
   - component: {fileID: 686141625}
   - component: {fileID: 686141626}
   - component: {fileID: 686141627}
+<<<<<<< HEAD
   - component: {fileID: 686141628}
+=======
+>>>>>>> fe5887b9a8bd9a503ebba96736d709f51c677b37
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -23195,7 +23198,10 @@ MonoBehaviour:
   minTimeWaitOneTask: 0.1
   minTimeLimit: 0
   n_back_num: 0
+<<<<<<< HEAD
   stimulusDisplayDuration: 0.5
+=======
+>>>>>>> fe5887b9a8bd9a503ebba96736d709f51c677b37
   timeWaitOneTask: 2
   timeLimit: 60
 --- !u!114 &686141612
@@ -23526,12 +23532,17 @@ MonoBehaviour:
   stimulusPool: BCDFGHJKLMNPQRSTVWYZ
   zeroBackTarget: X
   patternsPerCondition: 10
+<<<<<<< HEAD
   totalTrials: 48
+=======
+  totalTrials: 60
+>>>>>>> fe5887b9a8bd9a503ebba96736d709f51c677b37
   initializationTrials: 3
   maxNonTargetRun: 6
   maxFrequencyDifference: 2
   baseSeed: 20260814
   outputFolder: Scripts/GeneratedNBackPatterns
+<<<<<<< HEAD
 --- !u!114 &686141628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23552,6 +23563,8 @@ MonoBehaviour:
   sessionsPerParticipant: 3
   seed: 20260817
   outputFolder: Scripts/GeneratedNBackAssignments
+=======
+>>>>>>> fe5887b9a8bd9a503ebba96736d709f51c677b37
 --- !u!1 &689447433
 GameObject:
   m_ObjectHideFlags: 0
