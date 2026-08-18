@@ -9,6 +9,7 @@ using System.IO;
 
 public class N_back : MonoBehaviour
 {
+    // 刺激パターンJSONをJsonUtilityで読み込むためのデータ構造
     [System.Serializable]
     private class NBackPatternFile
     {
@@ -16,6 +17,36 @@ public class N_back : MonoBehaviour
         public int nBack;
         public string[] stimuli;
         public bool[] isTarget;
+    }
+
+    // ユーザー別割当JSONのルート要素
+    [System.Serializable]
+    private class NBackAssignmentFile
+    {
+        public NBackAssignmentParticipant participant;
+    }
+
+    // 割当JSON内の参加者情報
+    [System.Serializable]
+    private class NBackAssignmentParticipant
+    {
+        public string userId;
+        public NBackAssignmentSession[] sessions;
+    }
+
+    // 1セッション分の割当情報
+    [System.Serializable]
+    private class NBackAssignmentSession
+    {
+        public NBackAssignmentBlock[] blocks;
+    }
+
+    // 1回のN-back課題に必要な情報
+    [System.Serializable]
+    private class NBackAssignmentBlock
+    {
+        public int blockId; // 参加者内での通し番号
+        public int nBack;   // このブロックで実施するN-back条件（0～3）
     }
 
     public static class Define
@@ -61,8 +92,13 @@ public class N_back : MonoBehaviour
     bool isTextDisplayed = false;
 
     int outTextCount = 0;
-    private const string PatternRootRelativePath = "Scripts/GeneratedNBackPatterns";
-    private NBackPatternFile loadedPattern;
+    private const string PatternRootRelativePath = "Scripts/GeneratedNBackPatterns"; // 刺激パターン格納先
+    private const string AssignmentRootRelativePath = "Scripts/GeneratedNBackAssignments"; // ユーザー別割当格納先
+    private NBackPatternFile loadedPattern; // 現在実行中の刺激パターン
+    private readonly List<NBackAssignmentBlock> assignmentBlocks = new List<NBackAssignmentBlock>(); // blockId順に並べた全ブロック
+    private int currentAssignmentIndex; // 次に実行するassignmentBlocksの位置
+    private NBackAssignmentBlock currentAssignmentBlock; // 実行中またはアンケート待ちのブロック
+    private string loadedAssignmentUserId; // 現在読み込んでいる割当のuserId
 
     List<bool> listJudge = new List<bool>(); // 正解したかどうかのリスト
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -85,6 +121,9 @@ public class N_back : MonoBehaviour
 
         SetupSettingInputFields();
         UpdateTitleText();
+
+        // 起動時のRequestSender.userIdに対応する実施順を準備する
+        LoadAssignment();
     }
 
     // Update is called once per frame
@@ -100,36 +139,194 @@ public class N_back : MonoBehaviour
     }
 
     // n-back の開始
-    public void SetNback(bool flag, int n, string block_id)
+    public void SetNback(bool flag)
     {
-        // Coroutine coroutine;
-        if (flag)
+        // Unityの開始ボタンからfalseが渡された場合や、実行中の二重開始は無視する
+        if (!flag || isWorking)
         {
-            if (!LoadPattern())
+            return;
+        }
+
+        // userIdが起動後に変更された場合も、開始直前に正しい割当へ読み替える
+        if (!EnsureAssignmentForCurrentUser())
+        {
+            return;
+        }
+
+        if (currentAssignmentIndex >= assignmentBlocks.Count)
+        {
+            Debug.Log("All assigned N-back blocks have been completed.");
+            buttonStart.SetActive(false);
+            return;
+        }
+
+        // blockId順リストから今回の条件を取得し、手動設定よりも割当を優先する
+        currentAssignmentBlock = assignmentBlocks[currentAssignmentIndex];
+        SetNbackNum(currentAssignmentBlock.nBack);
+
+        // 割当で指定されたnBack条件の刺激パターンをランダムに1件読み込む
+        if (!LoadPattern())
+        {
+            currentAssignmentBlock = null;
+            return;
+        }
+
+        isWorking = true;
+        buttonStart.SetActive(false);
+        buttonSame.SetActive(true);
+        buttonForQuestion.SetActive(false);
+
+        // 開始通知には、割当JSONのblockIdをそのまま試験IDとして渡す
+        string blockId = currentAssignmentBlock.blockId.ToString(CultureInfo.InvariantCulture);
+        Debug.Log($"SetNback: blockId={blockId}, nBack={n_back_num}");
+        requestSender.SendNbackStartFlag(n_back_num, blockId);
+    }
+
+    // RequestSender.userIdと現在保持している割当が一致していることを保証する
+    private bool EnsureAssignmentForCurrentUser()
+    {
+        if (requestSender == null)
+        {
+            Debug.LogError("RequestSender is not assigned.");
+            return false;
+        }
+
+        string currentUserId = requestSender.userId == null
+            ? string.Empty
+            : requestSender.userId.Trim();
+
+        // 未読込またはuserId変更時だけファイルを読み直す
+        if (assignmentBlocks.Count == 0 || loadedAssignmentUserId != currentUserId)
+        {
+            return LoadAssignment();
+        }
+
+        return true;
+    }
+
+    // {RequestSender.userId}_nback_assignment.jsonを読み込み、blockId順の実行リストを作る
+    private bool LoadAssignment()
+    {
+        // 再読込時に以前のユーザーの進行状態を残さない
+        assignmentBlocks.Clear();
+        currentAssignmentIndex = 0;
+        currentAssignmentBlock = null;
+        loadedAssignmentUserId = null;
+
+        if (requestSender == null)
+        {
+            Debug.LogError("RequestSender is not assigned.");
+            return false;
+        }
+
+        string userId = requestSender.userId == null
+            ? string.Empty
+            : requestSender.userId.Trim();
+
+        if (string.IsNullOrEmpty(userId))
+        {
+            Debug.LogError("RequestSender.userId is empty.");
+            return false;
+        }
+
+        // 例: Assets/Scripts/GeneratedNBackAssignments/01_nback_assignment.json
+        string assignmentPath = Path.Combine(
+            Application.dataPath,
+            AssignmentRootRelativePath,
+            $"{userId}_nback_assignment.json");
+
+        if (!File.Exists(assignmentPath))
+        {
+            Debug.LogError($"N-back assignment file was not found: {assignmentPath}");
+            return false;
+        }
+
+        NBackAssignmentFile assignmentFile;
+        try
+        {
+            assignmentFile = JsonUtility.FromJson<NBackAssignmentFile>(File.ReadAllText(assignmentPath));
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogError($"Failed to read N-back assignment: {assignmentPath}\n{exception}");
+            return false;
+        }
+
+        if (assignmentFile == null ||
+            assignmentFile.participant == null ||
+            assignmentFile.participant.sessions == null)
+        {
+            Debug.LogError($"N-back assignment data is invalid: {assignmentPath}");
+            return false;
+        }
+
+        // ファイル名だけでなく、JSON内部のuserIdも一致することを確認する
+        if (assignmentFile.participant.userId != userId)
+        {
+            Debug.LogError(
+                $"N-back assignment userId does not match RequestSender.userId: " +
+                $"expected={userId}, actual={assignmentFile.participant.userId}");
+            return false;
+        }
+
+        // セッションごとに分かれたblockを、参加者全体の1つのリストへまとめる
+        foreach (NBackAssignmentSession session in assignmentFile.participant.sessions)
+        {
+            if (session == null || session.blocks == null)
             {
-                return;
+                continue;
             }
 
-            //time = 0f;
-            isWorking = true;
-            n_back_num = n;
-            buttonStart.SetActive(false);
-            buttonSame.SetActive(true);
-            buttonForQuestion.SetActive(false);
-            Debug.Log("SetNback");
-            requestSender.SendNbackStartFlag(n_back_num, block_id);
-            //N_Back_Working();
+            foreach (NBackAssignmentBlock block in session.blocks)
+            {
+                if (block != null)
+                {
+                    assignmentBlocks.Add(block);
+                }
+            }
         }
-        // else
-        // {
-        //     //time = 0f;
-        //     isWorking = false;
-        //     StopCoroutine(coroutine);
-        // }
+
+        // JSON内のセッション配列順に依存せず、通し番号順で必ず実施する
+        assignmentBlocks.Sort((left, right) => left.blockId.CompareTo(right.blockId));
+
+        if (assignmentBlocks.Count == 0)
+        {
+            Debug.LogError($"N-back assignment contains no blocks: {assignmentPath}");
+            return false;
+        }
+
+        // 実行不能な条件や、同じblockIdの重複を開始前に検出する
+        for (int i = 0; i < assignmentBlocks.Count; i++)
+        {
+            NBackAssignmentBlock block = assignmentBlocks[i];
+            if (block.blockId <= 0 || block.nBack < 0 || block.nBack > 3)
+            {
+                Debug.LogError(
+                    $"Invalid N-back assignment block: blockId={block.blockId}, nBack={block.nBack}");
+                assignmentBlocks.Clear();
+                return false;
+            }
+
+            if (i > 0 && assignmentBlocks[i - 1].blockId == block.blockId)
+            {
+                Debug.LogError($"Duplicate N-back blockId: {block.blockId}");
+                assignmentBlocks.Clear();
+                return false;
+            }
+        }
+
+        // 最初の開始ボタンを押す前から、UIにはblockId=最小の条件を表示しておく
+        loadedAssignmentUserId = userId;
+        SetNbackNum(assignmentBlocks[0].nBack);
+        Debug.Log(
+            $"Loaded N-back assignment: userId={userId}, blocks={assignmentBlocks.Count}, " +
+            $"firstBlockId={assignmentBlocks[0].blockId}");
+        return true;
     }
 
     private bool LoadPattern()
     {
+        // 現在の割当条件に対応するフォルダー（例: 2back）を選択する
         string patternFolderPath = Path.Combine(
             Application.dataPath,
             PatternRootRelativePath,
@@ -141,6 +338,7 @@ public class N_back : MonoBehaviour
             return false;
         }
 
+        // 条件フォルダー直下にある全パターンJSONを候補にする
         string[] patternPaths = Directory.GetFiles(
             patternFolderPath,
             "*.json",
@@ -152,6 +350,7 @@ public class N_back : MonoBehaviour
             return false;
         }
 
+        // 同じnBack条件でも提示系列が固定されないよう、実行ごとにランダム選択する
         string patternPath = patternPaths[Random.Range(0, patternPaths.Length)];
 
         try
@@ -185,6 +384,7 @@ public class N_back : MonoBehaviour
             return false;
         }
 
+        // 誤ったフォルダーやJSONが混入していても別条件として実行しない
         if (loadedPattern.nBack != n_back_num)
         {
             Debug.LogError(
@@ -319,8 +519,35 @@ public class N_back : MonoBehaviour
 
     public void moveForQuestion()
     {
-        nasaTlxManager.StartQuestionnaire(n_back_num + "_back_start");
-        buttonStart.SetActive(true);
+        // 課題完了前や二重押下によって、割当を飛ばさないようにする
+        if (currentAssignmentBlock == null)
+        {
+            Debug.LogWarning("There is no completed N-back assignment block.");
+            return;
+        }
+
+        // N-back課題とNASA-TLXを同じblockIdで関連付ける
+        string completedBlockId = currentAssignmentBlock.blockId.ToString(
+            CultureInfo.InvariantCulture);
+        nasaTlxManager.StartQuestionnaire(completedBlockId);
+
+        // アンケート画面へ遷移した時点で、次のblockIdへ進める
+        currentAssignmentIndex++;
+        currentAssignmentBlock = null;
+
+        bool hasNextBlock = currentAssignmentIndex < assignmentBlocks.Count;
+        if (hasNextBlock)
+        {
+            // 次回実施条件を開始前にタイトルと入力欄へ反映する
+            SetNbackNum(assignmentBlocks[currentAssignmentIndex].nBack);
+        }
+        else
+        {
+            textTitle.text = "N back test\nAll blocks completed";
+            Debug.Log("All assigned N-back blocks have been completed.");
+        }
+
+        buttonStart.SetActive(hasNextBlock);
         buttonSame.SetActive(false);
         buttonForQuestion.SetActive(false);
         textResult.text = "";
@@ -504,7 +731,17 @@ public class N_back : MonoBehaviour
                 {
                     listJudge[i] = false;
                 }
-                requestSender.SendNbackEndFlag(n_back_num);
+                // 開始通知と同じblockIdを付けて、このブロックの終了を送信する
+                if (currentAssignmentBlock != null)
+                {
+                    string blockId = currentAssignmentBlock.blockId.ToString(
+                        CultureInfo.InvariantCulture);
+                    requestSender.SendNbackEndFlag(n_back_num, blockId);
+                }
+                else
+                {
+                    Debug.LogError("The current N-back assignment block is missing.");
+                }
                 Debug.Log("N_back End. Out Text Count:" + outTextCount);
                 buttonStart.SetActive(false);
                 buttonSame.SetActive(false);
