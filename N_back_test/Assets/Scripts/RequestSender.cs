@@ -106,6 +106,7 @@ public class RequestSender : MonoBehaviour
     {
         public string user_id; // 参加者識別子（例: "01"）
         public string block_id; // ブロック識別子（N-backのblock_idなど）
+        public int n_back_correct_count; // N-back課題の正答数（ログ保存用）
         
         // NASA-TLX の6尺度（0-20 を想定）
         public float mental_demand;
@@ -165,6 +166,18 @@ public class RequestSender : MonoBehaviour
         public bool ok;
         public string user_id;
         public string status;
+    }
+
+    // /api/analyze_hr/set_threshold のレスポンスからUnity側で使用する項目
+    // 学習条件や閾値はサーバー側の既定値を使用するため、Unityからはuser_idだけを送る。
+    [Serializable]
+    public class AnalyzeHrSetThresholdResponse
+    {
+        public bool ok;
+        public string message;
+        public string user_id;
+        public int rows;
+        public string error;
     }
 
     [Serializable]
@@ -725,6 +738,7 @@ public class RequestSender : MonoBehaviour
     public void SendNASATLX(
         string sendUserId,
         string blockId,
+        int nBackCorrectCount,
         float mentalDemand,
         float physicalDemand,
         float temporalDemand,
@@ -740,6 +754,7 @@ public class RequestSender : MonoBehaviour
         StartCoroutine(PostNASATLXCoroutine(
             safeUserId,
             blockId,
+            nBackCorrectCount,
             mentalDemand,
             physicalDemand,
             temporalDemand,
@@ -757,6 +772,7 @@ public class RequestSender : MonoBehaviour
     public IEnumerator PostNASATLXCoroutine(
         string sendUserId,
         string blockId,
+        int nBackCorrectCount,
         float mentalDemand,
         float physicalDemand,
         float temporalDemand,
@@ -776,6 +792,7 @@ public class RequestSender : MonoBehaviour
         {
             user_id = string.IsNullOrWhiteSpace(sendUserId) ? userId : sendUserId,
             block_id = blockId,
+            n_back_correct_count = Mathf.Max(0, nBackCorrectCount),
             mental_demand = mentalDemand,
             physical_demand = physicalDemand,
             temporal_demand = temporalDemand,
@@ -949,15 +966,24 @@ public class RequestSender : MonoBehaviour
         }
     }
 
-    // 心拍の解析・閾値設定指示　unityから
+    // user_idを指定して、サーバー側で心拍解析モデルの学習・保存を実行する
     public IEnumerator GetAnalyzeHrSave()
     {
+        string safeUserId = string.IsNullOrWhiteSpace(userId) ? string.Empty : userId.Trim();
+        if (string.IsNullOrEmpty(safeUserId))
+        {
+            Debug.LogWarning("ANALYZE_HR_SET_THRESHOLD was not sent because userId is empty.");
+            yield break;
+        }
+
         string safeBase = GetSafeBaseUrl();
-        string url = safeBase + "/api/analyze_hr/set_threshold?user_id=" + UnityWebRequest.EscapeURL(userId);
+        // subjective_measureなどは送らず、server2.py側の既定値を使用する
+        string url = safeBase + "/api/analyze_hr/set_threshold?user_id=" +
+            UnityWebRequest.EscapeURL(safeUserId);
 
         using (var req = UnityWebRequest.Get(url))
         {
-            Debug.Log($"ANALYZE_HR_SAVE_GET url=[{url}]");
+            Debug.Log($"ANALYZE_HR_SET_THRESHOLD url=[{url}]");
 
             yield return req.SendWebRequest();
 
@@ -969,12 +995,45 @@ public class RequestSender : MonoBehaviour
 
             if (!ok)
             {
-                Debug.LogWarning($"ANALYZE_HR_SAVE_GET failed: code={req.responseCode}, err={req.error}, body={req.downloadHandler.text}");
+                Debug.LogWarning(
+                    $"ANALYZE_HR_SET_THRESHOLD failed: code={req.responseCode}, " +
+                    $"err={req.error}, body={req.downloadHandler.text}");
                 yield break;
             }
 
-            var resp = JsonConvert.DeserializeObject<StatusGetResponse>(req.downloadHandler.text);
-            Debug.Log($"ANALYZE_HR_SAVE_GET ok: code={req.responseCode}, body={req.downloadHandler.text}");
+            AnalyzeHrSetThresholdResponse resp;
+            try
+            {
+                resp = JsonConvert.DeserializeObject<AnalyzeHrSetThresholdResponse>(
+                    req.downloadHandler.text);
+            }
+            catch (JsonException exception)
+            {
+                Debug.LogWarning(
+                    $"ANALYZE_HR_SET_THRESHOLD response parse failed: " +
+                    $"error={exception.Message}, body={req.downloadHandler.text}");
+                yield break;
+            }
+
+            if (resp == null)
+            {
+                Debug.LogWarning(
+                    $"ANALYZE_HR_SET_THRESHOLD response was empty: body={req.downloadHandler.text}");
+                yield break;
+            }
+
+            // server2.pyは学習処理の例外時にもHTTP 200でok=falseを返す
+            if (!resp.ok)
+            {
+                Debug.LogWarning(
+                    $"ANALYZE_HR_SET_THRESHOLD server returned ok=false: " +
+                    $"user_id={resp.user_id}, error={resp.error}, body={req.downloadHandler.text}");
+                yield break;
+            }
+
+            Debug.Log(
+                $"ANALYZE_HR_SET_THRESHOLD ok: user_id={resp.user_id}, " +
+                $"rows={resp.rows}, message={resp.message}");
         }
     }
 

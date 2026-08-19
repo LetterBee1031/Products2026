@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor.Rendering;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Turning;
 
 
 public class N_back : MonoBehaviour
@@ -45,6 +47,7 @@ public class N_back : MonoBehaviour
     [System.Serializable]
     private class NBackAssignmentBlock
     {
+        public int sessionId; // このブロックが属するセッション番号
         public int blockId; // 参加者内での通し番号
         public int nBack;   // このブロックで実施するN-back条件（0～3）
     }
@@ -61,11 +64,14 @@ public class N_back : MonoBehaviour
     public GameObject buttonStart;
     public GameObject buttonSame;
     public GameObject buttonForQuestion;
+    public GameObject buttonPracticeEnd;
+    public GameObject parentNextNback;
 
-    public TextMeshProUGUI TextAlphabet;
+    public TextMeshProUGUI textAlphabet;
     public TextMeshProUGUI textResult = new TextMeshProUGUI();
     public TextMeshProUGUI textQuestionNum = new TextMeshProUGUI();
-    public TextMeshProUGUI textTitle = new TextMeshProUGUI();
+    public TextMeshProUGUI textBlockTitle = new TextMeshProUGUI();
+    public TextMeshProUGUI textNextNback = new TextMeshProUGUI();
 
     // 体験空間内の入力欄からN-back設定を変更するための参照
     [Header("N-back setting input UI")]
@@ -84,6 +90,8 @@ public class N_back : MonoBehaviour
     public float stimulusDisplayDuration = 0.5f; // 文字を表示する時間
     public float timeWaitOneTask = 2f; // 十字を表示する刺激間隔
     public float timeLimit = 120f; // 1タスク全体の時間
+    [Header("Session fixation")]
+    public float sessionFixationDuration = 120f; // 最初のセッション前とセッション間に「+」を表示する時間
     private float timeHoleTask = 0f; // 経過時間
     private float timeOneTask = 0f; // タスク中の時間
     bool isWorking = false; // n-back課題中か
@@ -99,6 +107,11 @@ public class N_back : MonoBehaviour
     private int currentAssignmentIndex; // 次に実行するassignmentBlocksの位置
     private NBackAssignmentBlock currentAssignmentBlock; // 実行中またはアンケート待ちのブロック
     private string loadedAssignmentUserId; // 現在読み込んでいる割当のuserId
+    private bool isSessionFixationWorking; // セッション前の「+」表示中か
+    private float sessionFixationElapsedTime; // 現在の「+」表示経過時間
+    private int fixationCompletedSessionId = -1; // 「+」表示を完了した直近のsessionId
+    private bool isPracticeMode; // 割当とは別の1-back練習を実施中か
+    private int lastNBackCorrectCount; // 直前に完了した本編N-back課題の正答数
 
     List<bool> listJudge = new List<bool>(); // 正解したかどうかのリスト
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -134,6 +147,13 @@ public class N_back : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // セッション前の注視ブロック中は、N-back本体のタイマーを進めない
+        if (isSessionFixationWorking)
+        {
+            UpdateSessionFixation();
+            return;
+        }
+
         Timer(isWorking);
         N_Back_Working();
     }
@@ -141,8 +161,8 @@ public class N_back : MonoBehaviour
     // n-back の開始
     public void SetNback(bool flag)
     {
-        // Unityの開始ボタンからfalseが渡された場合や、実行中の二重開始は無視する
-        if (!flag || isWorking)
+        // falseが渡された場合や、N-back・注視ブロック実行中の二重開始は無視する
+        if (!flag || isWorking || isSessionFixationWorking)
         {
             return;
         }
@@ -164,10 +184,103 @@ public class N_back : MonoBehaviour
         currentAssignmentBlock = assignmentBlocks[currentAssignmentIndex];
         SetNbackNum(currentAssignmentBlock.nBack);
 
+        // 各セッションの最初のN-back課題の前に、2分間の「+」注視ブロックを挟む
+        if (fixationCompletedSessionId != currentAssignmentBlock.sessionId)
+        {
+            StartSessionFixation();
+            return;
+        }
+
+        StartCurrentNBackBlock();
+    }
+
+    // 本編の割当を進めずに、1-back課題を練習として開始する
+    public void StartPracticeNBack()
+    {
+        if (isWorking || isSessionFixationWorking)
+        {
+            Debug.LogWarning("N-back or session fixation is already running.");
+            return;
+        }
+
+        // userIdが変更されていれば、その体験者の本編割当へ切り替えてから練習する
+        if (!EnsureAssignmentForCurrentUser())
+        {
+            return;
+        }
+
+        // 練習は常に1-backとし、割当のcurrentAssignmentIndexは変更しない
+        SetNbackNum(1);
+        if (!LoadPattern())
+        {
+            RestoreAssignedNBackDisplay();
+            return;
+        }
+
+        // 前回の表示や判定状態が残っていても、練習は先頭試行から開始する
+        outTextCount = 0;
+        timeHoleTask = 0f;
+        timeOneTask = 0f;
+        isButtonSamePressed = false;
+        isJudgeAdded = false;
+        isTextDisplayed = false;
+        buttonPracticeEnd.SetActive(false);
+        for (int i = 0; i < listJudge.Count; i++)
+        {
+            listJudge[i] = false;
+        }
+
+        isPracticeMode = true;
+        isWorking = true;
+
+        textBlockTitle.text = "N back practice. 1 back mode";
+        textResult.text = "";
+        textQuestionNum.text = "";
+        buttonStart.SetActive(false);
+        buttonSame.SetActive(true);
+        buttonForQuestion.SetActive(false);
+        parentNextNback.SetActive(false);
+
+        // 練習データを本編と混同しないため、RequestSenderへの通知は行わない
+        Debug.Log("1-back practice started.");
+    }
+
+    // 練習終了後に、本編で次に実施するN-back条件をUIへ戻す
+    public void RestoreAssignedNBackDisplay()
+    {
+        buttonStart.SetActive(true);
+        buttonSame.SetActive(false);
+        buttonForQuestion.SetActive(false);
+        parentNextNback.SetActive(true);
+        buttonPracticeEnd.SetActive(false);
+        textResult.enabled = false;
+        textQuestionNum.text = "";
+        
+        if (currentAssignmentBlock != null)
+        {
+            SetNbackNum(currentAssignmentBlock.nBack);
+        }
+        else if (currentAssignmentIndex >= 0 && currentAssignmentIndex < assignmentBlocks.Count)
+        {
+            SetNbackNum(assignmentBlocks[currentAssignmentIndex].nBack);
+        }
+    }
+
+    // 現在選択されている割当ブロックのN-back課題を開始する
+    private void StartCurrentNBackBlock()
+    {
+        if (currentAssignmentBlock == null)
+        {
+            Debug.LogError("The current N-back assignment block is missing.");
+            buttonStart.SetActive(true);
+            return;
+        }
+
         // 割当で指定されたnBack条件の刺激パターンをランダムに1件読み込む
         if (!LoadPattern())
         {
             currentAssignmentBlock = null;
+            buttonStart.SetActive(true);
             return;
         }
 
@@ -175,11 +288,81 @@ public class N_back : MonoBehaviour
         buttonStart.SetActive(false);
         buttonSame.SetActive(true);
         buttonForQuestion.SetActive(false);
+        parentNextNback.SetActive(false);
 
         // 開始通知には、割当JSONのblockIdをそのまま試験IDとして渡す
         string blockId = currentAssignmentBlock.blockId.ToString(CultureInfo.InvariantCulture);
         Debug.Log($"SetNback: blockId={blockId}, nBack={n_back_num}");
         requestSender.SendNbackStartFlag(n_back_num, blockId);
+    }
+
+    // セッション開始前に「+」だけを表示する注視ブロックを開始する
+    private void StartSessionFixation()
+    {
+        if (textAlphabet == null)
+        {
+            Debug.LogError("TextAlphabet is not assigned.");
+            currentAssignmentBlock = null;
+            return;
+        }
+
+        sessionFixationDuration = Mathf.Max(0f, sessionFixationDuration);
+        sessionFixationElapsedTime = 0f;
+        isSessionFixationWorking = true;
+
+        textAlphabet.text = "+";
+        textAlphabet.enabled = true;
+        textResult.text = "";
+        textQuestionNum.text = "";
+        textBlockTitle.text = $"Session {currentAssignmentBlock.sessionId} Fixation";
+
+        buttonStart.SetActive(false);
+        buttonSame.SetActive(false);
+        buttonForQuestion.SetActive(false);
+        parentNextNback.SetActive(false);
+
+        Debug.Log(
+            $"Session fixation started: sessionId={currentAssignmentBlock.sessionId}, " +
+            $"duration={sessionFixationDuration} seconds");
+    }
+
+    // 「+」を指定時間表示し終えたら、開始ボタンを表示して体験者の操作を待つ
+    private void UpdateSessionFixation()
+    {
+        sessionFixationElapsedTime += Time.deltaTime;
+        if (sessionFixationElapsedTime < sessionFixationDuration)
+        {
+            return;
+        }
+
+        isSessionFixationWorking = false;
+        sessionFixationElapsedTime = 0f;
+
+        if (currentAssignmentBlock == null)
+        {
+            Debug.LogError("The assignment block was lost during session fixation.");
+            buttonStart.SetActive(true);
+            return;
+        }
+
+        fixationCompletedSessionId = currentAssignmentBlock.sessionId;
+        Debug.Log($"Session fixation completed: sessionId={fixationCompletedSessionId}");
+
+        // 注視画面を閉じ、次に実施するN-back条件と開始ボタンを表示する
+        if (textAlphabet != null)
+        {
+            textAlphabet.enabled = false;
+        }
+
+        SetNbackNum(currentAssignmentBlock.nBack);
+        buttonStart.SetActive(true);
+        buttonSame.SetActive(false);
+        buttonForQuestion.SetActive(false);
+        parentNextNback.SetActive(true);
+
+        Debug.Log(
+            $"Waiting for participant to start N-back: " +
+            $"blockId={currentAssignmentBlock.blockId}, nBack={currentAssignmentBlock.nBack}");
     }
 
     // RequestSender.userIdと現在保持している割当が一致していることを保証する
@@ -212,6 +395,10 @@ public class N_back : MonoBehaviour
         currentAssignmentIndex = 0;
         currentAssignmentBlock = null;
         loadedAssignmentUserId = null;
+        isSessionFixationWorking = false;
+        sessionFixationElapsedTime = 0f;
+        fixationCompletedSessionId = -1;
+        isPracticeMode = false;
 
         if (requestSender == null)
         {
@@ -299,10 +486,14 @@ public class N_back : MonoBehaviour
         for (int i = 0; i < assignmentBlocks.Count; i++)
         {
             NBackAssignmentBlock block = assignmentBlocks[i];
-            if (block.blockId <= 0 || block.nBack < 0 || block.nBack > 3)
+            if (block.sessionId <= 0 ||
+                block.blockId <= 0 ||
+                block.nBack < 0 ||
+                block.nBack > 3)
             {
                 Debug.LogError(
-                    $"Invalid N-back assignment block: blockId={block.blockId}, nBack={block.nBack}");
+                    $"Invalid N-back assignment block: " +
+                    $"sessionId={block.sessionId}, blockId={block.blockId}, nBack={block.nBack}");
                 assignmentBlocks.Clear();
                 return false;
             }
@@ -529,7 +720,11 @@ public class N_back : MonoBehaviour
         // N-back課題とNASA-TLXを同じblockIdで関連付ける
         string completedBlockId = currentAssignmentBlock.blockId.ToString(
             CultureInfo.InvariantCulture);
-        nasaTlxManager.StartQuestionnaire(completedBlockId);
+        bool isFinalBlock = currentAssignmentIndex == assignmentBlocks.Count - 1;
+        nasaTlxManager.StartQuestionnaire(
+            completedBlockId,
+            lastNBackCorrectCount,
+            isFinalBlock);
 
         // アンケート画面へ遷移した時点で、次のblockIdへ進める
         currentAssignmentIndex++;
@@ -543,8 +738,9 @@ public class N_back : MonoBehaviour
         }
         else
         {
-            textTitle.text = "N back test\nAll blocks completed";
+            textBlockTitle.text = "All blocks completed";
             Debug.Log("All assigned N-back blocks have been completed.");
+            parentNextNback.SetActive(false);
         }
 
         buttonStart.SetActive(hasNextBlock);
@@ -552,6 +748,7 @@ public class N_back : MonoBehaviour
         buttonForQuestion.SetActive(false);
         textResult.text = "";
         textQuestionNum.text = "";
+        parentNextNback.SetActive(true);
     }
 
     // 時間計測の研究
@@ -592,15 +789,15 @@ public class N_back : MonoBehaviour
                         return;
                     }
 
-                    if (TextAlphabet == null)
+                    if (textAlphabet == null)
                     {
                         Debug.LogError("TextAlphabet is not assigned.");
                         isWorking = false;
                         return;
                     }
 
-                    TextAlphabet.text = stimulus;
-                    TextAlphabet.enabled = true;
+                    textAlphabet.text = stimulus;
+                    textAlphabet.enabled = true;
                     textQuestionNum.text = outTextCount.ToString();
 
                     isTextDisplayed = true;
@@ -608,9 +805,9 @@ public class N_back : MonoBehaviour
 
                 // 1文字ごとの制限時間中
                 // 文字を表示した後、刺激間隔として十字を表示する
-                if (timeOneTask >= stimulusDisplayDuration && TextAlphabet.text != "+")
+                if (timeOneTask >= stimulusDisplayDuration && textAlphabet.text != "+")
                 {
-                    TextAlphabet.text = "+";
+                    textAlphabet.text = "+";
                 }
 
                 float trialDuration = stimulusDisplayDuration + timeWaitOneTask;
@@ -704,9 +901,9 @@ public class N_back : MonoBehaviour
                 isTextDisplayed = false;
                 timeOneTask = 0f;
 
-                if (TextAlphabet != null)
+                if (textAlphabet != null)
                 {
-                    TextAlphabet.enabled = false;
+                    textAlphabet.enabled = false;
                 }
 
                 foreach (var val in listJudge)
@@ -731,21 +928,36 @@ public class N_back : MonoBehaviour
                 {
                     listJudge[i] = false;
                 }
-                // 開始通知と同じblockIdを付けて、このブロックの終了を送信する
-                if (currentAssignmentBlock != null)
+                if (isPracticeMode)
                 {
-                    string blockId = currentAssignmentBlock.blockId.ToString(
-                        CultureInfo.InvariantCulture);
-                    requestSender.SendNbackEndFlag(n_back_num, blockId);
+                    // 練習では割当を進めず、終了通知やNASA-TLXも発生させない
+                    isPracticeMode = false;
+                    buttonPracticeEnd.SetActive(true);
+                    //RestoreAssignedNBackDisplay();
+                    Debug.Log("1-back practice completed.");
                 }
                 else
                 {
-                    Debug.LogError("The current N-back assignment block is missing.");
+                    // NASA-TLX送信時に同じblockIdのログとして保存する
+                    lastNBackCorrectCount = resultNum;
+
+                    // 開始通知と同じblockIdを付けて、この本編ブロックの終了を送信する
+                    if (currentAssignmentBlock != null)
+                    {
+                        string blockId = currentAssignmentBlock.blockId.ToString(
+                            CultureInfo.InvariantCulture);
+                        requestSender.SendNbackEndFlag(n_back_num, blockId);
+                    }
+                    else
+                    {
+                        Debug.LogError("The current N-back assignment block is missing.");
+                    }
+
+                    buttonStart.SetActive(false);
+                    buttonSame.SetActive(false);
+                    buttonForQuestion.SetActive(true);
                 }
                 Debug.Log("N_back End. Out Text Count:" + outTextCount);
-                buttonStart.SetActive(false);
-                buttonSame.SetActive(false);
-                buttonForQuestion.SetActive(true);
             }
         }
     }
@@ -819,7 +1031,8 @@ public class N_back : MonoBehaviour
 
     private void UpdateTitleText()
     {
-        textTitle.text = "N back test\n" + n_back_num.ToString() + " back mode";
+        textBlockTitle.text = "block" + currentAssignmentIndex.ToString() +": " + n_back_num.ToString() + " back mode";
+        textNextNback.text = n_back_num.ToString();
     }
 
     private bool TryParseFloat(string inputText, out float value)

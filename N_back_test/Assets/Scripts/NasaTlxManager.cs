@@ -37,6 +37,8 @@ public class NasaTlxManager : MonoBehaviour
     private readonly Dictionary<string, int> answers = new Dictionary<string, int>(6); // 回答の一時保存
     private string currentBlockId = ""; // ブロックIDを保持
     private string currentUserId = ""; // StartQuestionnaire で受け取る userID
+    private int currentNBackCorrectCount; // 対象N-backブロックの正答数
+    private bool trainAfterSuccessfulSave; // 最終ブロックのNASA-TLX保存後に学習するか
 
     // デフォルトの質問ID  未入力の場合使用
     private static readonly string[] DefaultQuestionIds =
@@ -144,7 +146,16 @@ public class NasaTlxManager : MonoBehaviour
 
     // NASA-TLXアンケート開始用関数
     // 外部（N-backなど）から呼び出す前提
-    public void StartQuestionnaire(/*string userId, */string blockId)
+    public void StartQuestionnaire(string blockId)
+    {
+        StartQuestionnaire(blockId, 0, false);
+    }
+
+    // N-back本編から、正答数と最終ブロック判定を受け取って開始する
+    public void StartQuestionnaire(
+        string blockId,
+        int nBackCorrectCount,
+        bool shouldTrainAfterSave)
     {
         // NASA-TLXの送信中だったら，警告
         if (isSending)
@@ -170,6 +181,8 @@ public class NasaTlxManager : MonoBehaviour
 
         //currentUserId = string.IsNullOrWhiteSpace(userId) ? "" : userId;
         currentBlockId = string.IsNullOrWhiteSpace(blockId) ? "" : blockId;
+        currentNBackCorrectCount = Mathf.Max(0, nBackCorrectCount);
+        trainAfterSuccessfulSave = shouldTrainAfterSave;
         currentQuestionIndex = 0;
         hasAnswered = false;
         answers.Clear();
@@ -322,6 +335,7 @@ public class NasaTlxManager : MonoBehaviour
         requestSender.SendNASATLX(
             sendUserId,
             blockId,
+            currentNBackCorrectCount,
             answers["mental_demand"],
             answers["physical_demand"],
             answers["temporal_demand"],
@@ -346,11 +360,18 @@ public class NasaTlxManager : MonoBehaviour
             return;
         }
 
-        // 送信成功時はアンケート画面を閉じ、ステータス通知を送る
+        // 送信成功時点で、server2.pyによるNASA-TLXのファイル保存も完了している
         HidePanel();
         if (requestSender != null)
         {
             StartCoroutine(requestSender.PostStatusFlag("nasa_tlx_complete"));
+
+            // 最終ブロックだけ、NASA-TLX保存成功後に認知負荷モデルを学習する
+            if (trainAfterSuccessfulSave)
+            {
+                trainAfterSuccessfulSave = false;
+                StartCoroutine(requestSender.GetAnalyzeHrSave());
+            }
         }
     }
 

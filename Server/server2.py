@@ -181,7 +181,9 @@ class NASATLXPost(BaseModel):
         default="01",
         validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
     )
-    # block_id: str
+    block_id: str
+    # N-back正答数はログとして保存する。現在の回帰学習の特徴量・目的変数には使用しない。
+    n_back_correct_count: int
     mental_demand: float
     physical_demand: float
     temporal_demand: float 
@@ -427,9 +429,10 @@ async def receive_nasa_tlx(payload: NASATLXPost, request: Request, mode: str = "
 
     record = {
         "user_id": user_id,
-        #"block_id": payload.block_id,
         "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
-        "block_id": user_status.get(user_id, user_status["01"]).block_id,
+        # ステータス更新との非同期競合を避けるため、NASA-TLXペイロードのblock_idを使用する。
+        "block_id": payload.block_id,
+        "n_back_correct_count": payload.n_back_correct_count,
         "mental_demand": payload.mental_demand,
         "physical_demand": payload.physical_demand,
         "temporal_demand": payload.temporal_demand,
@@ -447,7 +450,14 @@ async def receive_nasa_tlx(payload: NASATLXPost, request: Request, mode: str = "
 
     append_nasa_tlx_record_by_user(record)
 
-    return {"ok": True, "user_id": user_id, "ex_status": user_status.get(user_id, user_status["01"]).ex_status, "block_id": user_status.get(user_id, user_status["01"]).block_id, "RawTLX": raw_tlx}
+    return {
+        "ok": True,
+        "user_id": user_id,
+        "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
+        "block_id": payload.block_id,
+        "n_back_correct_count": payload.n_back_correct_count,
+        "RawTLX": raw_tlx,
+    }
 
 # 輝度補正モデルフィット
 @app.post("/api/plr/fit", response_model=PLRFitResponse)
