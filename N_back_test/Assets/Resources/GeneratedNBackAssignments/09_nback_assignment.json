@@ -1,0 +1,147 @@
+{
+    "seed": 20260817,
+    "sessionsPerParticipant": 3,
+    "includedNBacks": [
+        0,
+        1,
+        2,
+        3
+    ],
+    "participant": {
+        "userId": "09",
+        "sessions": [
+            {
+                "sessionId": 1,
+                "orderId": "order_0_3_2_1",
+                "order": [
+                    0,
+                    3,
+                    2,
+                    1
+                ],
+                "blocks": [
+                    {
+                        "userId": "09",
+                        "sessionId": 1,
+                        "blockId": 1,
+                        "positionInSession": 1,
+                        "nBack": 0,
+                        "orderId": "order_0_3_2_1"
+                    },
+                    {
+                        "userId": "09",
+                        "sessionId": 1,
+                        "blockId": 2,
+                        "positionInSession": 2,
+                        "nBack": 3,
+                        "orderId": "order_0_3_2_1"
+                    },
+                    {
+                        "userId": "09",
+                        "sessionId": 1,
+                        "blockId": 3,
+                        "positionInSession": 3,
+                        "nBack": 2,
+                        "orderId": "order_0_3_2_1"
+                    },
+                    {
+                        "userId": "09",
+                        "sessionId": 1,
+                        "blockId": 4,
+                        "positionInSession": 4,
+                        "nBack": 1,
+                        "orderId": "order_0_3_2_1"
+                    }
+                ]
+            },
+            {
+                "sessionId": 2,
+                "orderId": "order_3_0_1_2",
+                "order": [
+                    3,
+                    0,
+                    1,
+                    2
+                ],
+                "blocks": [
+                    {
+                        "userId": "09",
+                        "sessionId": 2,
+                        "blockId": 5,
+                        "positionInSession": 1,
+                        "nBack": 3,
+                        "orderId": "order_3_0_1_2"
+                    },
+                    {
+                        "userId": "09",
+                        "sessionId": 2,
+                        "blockId": 6,
+                        "positionInSession": 2,
+                        "nBack": 0,
+                        "orderId": "order_3_0_1_2"
+                    },
+                    {
+                        "userId": "09",
+                        "sessionId": 2,
+                        "blockId": 7,
+                        "positionInSession": 3,
+                        "nBack": 1,
+                        "orderId": "order_3_0_1_2"
+                    },
+                    {
+                        "userId": "09",
+                        "sessionId": 2,
+                        "blockId": 8,
+                        "positionInSession": 4,
+                        "nBack": 2,
+                        "orderId": "order_3_0_1_2"
+                    }
+                ]
+            },
+            {
+                "sessionId": 3,
+                "orderId": "order_2_1_0_3",
+                "order": [
+                    2,
+                    1,
+                    0,
+                    3
+                ],
+                "blocks": [
+                    {
+                        "userId": "09",
+                        "sessionId": 3,
+                        "blockId": 9,
+                        "positionInSession": 1,
+                        "nBack": 2,
+                        "orderId": "order_2_1_0_3"
+                    },
+                    {
+                        "userId": "09",
+                        "sessionId": 3,
+                        "blockId": 10,
+                        "positionInSession": 2,
+                        "nBack": 1,
+                        "orderId": "order_2_1_0_3"
+                    },
+                    {
+                        "userId": "09",
+                        "sessionId": 3,
+                        "blockId": 11,
+                        "positionInSession": 3,
+                        "nBack": 0,
+                        "orderId": "order_2_1_0_3"
+                    },
+                    {
+                        "userId": "09",
+                        "sessionId": 3,
+                        "blockId": 12,
+                        "positionInSession": 4,
+                        "nBack": 3,
+                        "orderId": "order_2_1_0_3"
+                    }
+                ]
+            }
+        ]
+    }
+}

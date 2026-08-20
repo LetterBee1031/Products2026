@@ -37,7 +37,7 @@ public class NBackPatternBatchGenerator : MonoBehaviour
     [Header("Output")]
     [SerializeField]
     private string outputFolder =
-        "GeneratedNBackPatterns";
+        "Resources/GeneratedNBackPatterns";
 
     [ContextMenu("Generate N-Back Patterns")]
     public void GeneratePatterns()

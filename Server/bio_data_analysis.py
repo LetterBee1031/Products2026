@@ -46,6 +46,7 @@ ML_STATUS_LABELS: Dict[str, str] = {
 #ML_FEATURE_COLUMNS: List[str] = ["hr", "pupilDiaLeft", "pupilDiaRight"]
 ML_FEATURE_COLUMNS: List[str] = ["hr", "tepr"]
 ML_PREPROCESSING_NAME = "standard_scaler_zscore"
+HR_TEPR_SYNC_TOLERANCE_SECONDS = 2
 RANDOM_FOREST_MODEL_CACHE: Dict[str, dict] = {}
 
 # design_regression.md に基づく個人別の認知負荷回帰モデル設定。
@@ -55,6 +56,7 @@ REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate", "tepr"]
 REGRESSION_FEATURE_SOURCE_COLUMNS: Dict[str, str] = {
     "heart_rate": "hr",
     "tepr": "tepr",
+    "pupil_diameter_smoothed": "pupilDiaMeanSmoothed",
 }
 # OBJECTIVE_LOAD_MAPPING: Dict[int, float] = {
 #     0: 0.25,
@@ -63,12 +65,19 @@ REGRESSION_FEATURE_SOURCE_COLUMNS: Dict[str, str] = {
 #     3: 1.00,
 # }
 
+# OBJECTIVE_LOAD_MAPPING: Dict[int, float] = {
+#     0: 0.2,
+#     1: 0.4,
+#     2: 0.6,
+#     3: 0.8,
+# }
+
 OBJECTIVE_LOAD_MAPPING: Dict[int, float] = {
-    0: 0.2,
-    1: 0.4,
-    2: 0.6,
-    3: 0.8,
+    0: 0.25,
+    2: 0.50,
+    3: 0.75,
 }
+
 USER_ID_COLUMN_ALIASES: List[str] = [
     "user_id",
     "userId",
@@ -106,9 +115,9 @@ def _coalesce_user_id_column(df: pd.DataFrame) -> pd.Series:
     return user_ids
 
 
-def _configured_regression_features() -> List[str]:
+def _configured_regression_features(features: List[str] | None = None) -> List[str]:
     """設定された回帰特徴量を検証し、後続処理用のコピーを返す。"""
-    features = list(REGRESSION_FEATURE_COLUMNS)
+    features = list(REGRESSION_FEATURE_COLUMNS if features is None else features)
     if not features:
         raise ValueError("REGRESSION_FEATURE_COLUMNSには1つ以上の特徴量が必要です。")
     if len(features) != len(set(features)):
@@ -123,6 +132,20 @@ def _configured_regression_features() -> List[str]:
             f" 対応特徴量: {sorted(REGRESSION_FEATURE_SOURCE_COLUMNS)}"
         )
     return features
+
+
+def _regression_features_for_pupil_feature(pupil_feature: str) -> List[str]:
+    normalized = str(pupil_feature).strip().lower()
+    aliases = {
+        "tepr": "tepr",
+        "pupildiameansmoothed": "pupil_diameter_smoothed",
+        "pupil_diameter_smoothed": "pupil_diameter_smoothed",
+    }
+    if normalized not in aliases:
+        raise ValueError(
+            "pupil_featureは'tepr'または'pupilDiaMeanSmoothed'を指定してください。"
+        )
+    return _configured_regression_features(["heart_rate", aliases[normalized]])
 
 def hr_ibi_path_for_user(user_id: str, data_dir: str | Path = "data") -> Path:
     # ユーザごとの生体データ保存先を組み立てる。
@@ -139,9 +162,9 @@ def nasa_tlx_path_for_user(user_id: str, data_dir: str | Path = "data") -> Path:
     return Path(data_dir) / f"NASA-TLX_data_{normalize_user_id(user_id)}.jsonl"
 
 
-def normalize_sent_at_to_jst_second(value) -> pd.Timestamp:
+def normalize_sent_at_to_jst(value) -> pd.Timestamp:
     # eye_dataは "YYYY/MM/DD HH:MM:SS"、hr_ibiはISO形式のことがあるため、
-    # どちらもJSTの秒単位に丸めて同期用キーとして使う。
+    # どちらもJSTへ揃える。最近傍判定の精度を保つため小数秒は丸めない。
     timestamp = pd.to_datetime(value, errors="coerce")
     if pd.isna(timestamp):
         return pd.NaT
@@ -149,16 +172,17 @@ def normalize_sent_at_to_jst_second(value) -> pd.Timestamp:
         timestamp = timestamp.tz_localize("Asia/Tokyo")
     else:
         timestamp = timestamp.tz_convert("Asia/Tokyo")
-    return timestamp.floor("s")
+    return timestamp
 
 
 def merge_eye_data_by_sent_at(
     hr_df: pd.DataFrame,
     user_id: str,
     data_dir: str | Path = "data",
+    eye_feature_columns: List[str] | None = None,
 ) -> pd.DataFrame:
-    # HR/EDAの各行に、同じsent_atを持つ左右瞳孔径を結合する。
-    # 一致しない行は瞳孔径がNaNになり、後段のdropnaで学習/推論から除外される。
+    # HR/EDAの各行に、許容時間内で最も近いsent_atを持つTEPRを結合する。
+    # 許容時間内に候補がない行はTEPRがNaNになり、後段のdropnaで除外される。
     eye_path = eye_data_path_for_user(user_id, data_dir)
     if not eye_path.exists():
         raise FileNotFoundError(f"視線データファイルが見つかりません: {eye_path}")
@@ -168,7 +192,8 @@ def merge_eye_data_by_sent_at(
 
     eye_df = pd.read_json(eye_path, lines=True)
     #required_eye_columns = {"sent_at", "pupilDiaLeft", "pupilDiaRight"}
-    required_eye_columns = {"sent_at", "tepr"}
+    selected_eye_columns = list(eye_feature_columns or ["tepr"])
+    required_eye_columns = {"sent_at", *selected_eye_columns}
     missing_eye_columns = required_eye_columns - set(eye_df.columns)
     if missing_eye_columns:
         raise ValueError(f"視線データに必要な列がありません: {sorted(missing_eye_columns)}")
@@ -176,21 +201,32 @@ def merge_eye_data_by_sent_at(
     # 元のsent_at文字列は残したまま、比較専用の正規化キーを一時列として作る。
     hr_with_key = hr_df.copy()
     #eye_with_key = eye_df[["sent_at", "pupilDiaLeft", "pupilDiaRight"]].copy()
-    eye_with_key = eye_df[["sent_at", "tepr"]].copy()
-    hr_with_key["_sent_at_key"] = hr_with_key["sent_at"].map(normalize_sent_at_to_jst_second)
-    eye_with_key["_sent_at_key"] = eye_with_key["sent_at"].map(normalize_sent_at_to_jst_second)
+    eye_with_key = eye_df[["sent_at", *selected_eye_columns]].copy()
+    hr_with_key["_sent_at_key"] = hr_with_key["sent_at"].map(normalize_sent_at_to_jst)
+    eye_with_key["_sent_at_key"] = eye_with_key["sent_at"].map(normalize_sent_at_to_jst)
 
     # 同じ秒に複数のeye_dataがある場合は、最後に記録された値を代表値として使う。
     eye_with_key = eye_with_key.dropna(subset=["_sent_at_key"])
     eye_with_key = eye_with_key.drop_duplicates(subset=["_sent_at_key"], keep="last")
 
-    merged = hr_with_key.merge(
-        #eye_with_key[["_sent_at_key", "pupilDiaLeft", "pupilDiaRight"]],
-        eye_with_key[["_sent_at_key", "tepr"]],
+    # merge_asof用に時刻順へ並べ、結合後に元のHR行順へ戻す。
+    hr_with_key["_hr_row_order"] = np.arange(len(hr_with_key))
+    valid_hr = hr_with_key.dropna(subset=["_sent_at_key"]).sort_values("_sent_at_key")
+    invalid_hr = hr_with_key[hr_with_key["_sent_at_key"].isna()].copy()
+    for column in selected_eye_columns:
+        invalid_hr[column] = np.nan
+    eye_with_key = eye_with_key.sort_values("_sent_at_key")
+
+    matched_hr = pd.merge_asof(
+        valid_hr,
+        eye_with_key[["_sent_at_key", *selected_eye_columns]],
         on="_sent_at_key",
-        how="left",
+        direction="nearest",
+        tolerance=pd.Timedelta(seconds=HR_TEPR_SYNC_TOLERANCE_SECONDS),
     )
-    return merged.drop(columns=["_sent_at_key"])
+    merged = pd.concat([matched_hr, invalid_hr], ignore_index=True)
+    merged = merged.sort_values("_hr_row_order")
+    return merged.drop(columns=["_sent_at_key", "_hr_row_order"]).reset_index(drop=True)
 
 
 def random_forest_model_path_for_user(
@@ -252,8 +288,14 @@ def load_ml_training_dataframe(
         raise FileNotFoundError(f"生体データファイルが見つかりません: {file_path}")
 
     df = pd.read_json(file_path, lines=True)
-    if "tepr" in selected_columns:
-        df = merge_eye_data_by_sent_at(df, user_id, data_dir)
+    eye_feature_columns = [
+        column for column in selected_columns
+        if column in {"tepr", "pupilDiaMeanSmoothed"}
+    ]
+    if eye_feature_columns:
+        df = merge_eye_data_by_sent_at(
+            df, user_id, data_dir, eye_feature_columns=eye_feature_columns
+        )
     required_columns = {"ex_status", "sent_at", *selected_columns}
     missing_columns = required_columns - set(df.columns)
     if missing_columns:
@@ -285,8 +327,14 @@ def load_latest_prediction_dataframe(
         raise FileNotFoundError(f"生体データファイルが見つかりません: {file_path}")
 
     df = pd.read_json(file_path, lines=True)
-    if "tepr" in selected_columns:
-        df = merge_eye_data_by_sent_at(df, user_id, data_dir)
+    eye_feature_columns = [
+        column for column in selected_columns
+        if column in {"tepr", "pupilDiaMeanSmoothed"}
+    ]
+    if eye_feature_columns:
+        df = merge_eye_data_by_sent_at(
+            df, user_id, data_dir, eye_feature_columns=eye_feature_columns
+        )
     missing_columns = set(selected_columns) - set(df.columns)
     if missing_columns:
         raise ValueError(f"推論に必要な列がありません: {sorted(missing_columns)}")
@@ -393,9 +441,11 @@ def load_regression_training_dataframe(
     user_id: str,
     data_dir: str | Path = "data",
     subjective_measure: str = "raw_tlx",
+    aggregate_by_block: bool = False,
+    regression_features: List[str] | None = None,
 ) -> pd.DataFrame:
     """既存の心拍・瞳孔径読み込み処理にNASA-TLXをブロック単位で結合する。"""
-    regression_features = _configured_regression_features()
+    regression_features = _configured_regression_features(regression_features)
     source_columns = [
         REGRESSION_FEATURE_SOURCE_COLUMNS[feature]
         for feature in regression_features
@@ -422,13 +472,11 @@ def load_regression_training_dataframe(
 
     # N-backの"N"数を取得する．fillnaはNaNの行を置き換える関数らしい．
     if "n_back" in bio_df:
-        # parsed_n_back = bio_df["n_back"].map(_extract_n_back)
-        parsed_n_back = bio_df["ex_status"].map(_extract_n_back)
+        parsed_n_back = bio_df["n_back"].map(_extract_n_back)
     else:
         parsed_n_back = pd.Series(np.nan, index=bio_df.index, dtype=float)
-    parsed_n_back = parsed_n_back.fillna(bio_df["n_back"].map(_extract_n_back))
-    # parsed_n_back = parsed_n_back.fillna(bio_df["ex_status"].map(_extract_n_back))
-    # parsed_n_back = parsed_n_back.fillna(bio_df["block_id"].map(_extract_n_back))
+    parsed_n_back = parsed_n_back.fillna(bio_df["ex_status"].map(_extract_n_back))
+    parsed_n_back = parsed_n_back.fillna(bio_df["block_id"].map(_extract_n_back))
     bio_df["n_back"] = parsed_n_back
 
     # NASA-TLX得点と生体情報の対応付け　block_idをキーに内部結合を実施
@@ -448,6 +496,21 @@ def load_regression_training_dataframe(
         raise ValueError(
             "生体データとNASA-TLXデータで一致するblock_idがありません。"
             f" 生体データ: {bio_blocks}, NASA-TLX: {nasa_blocks}"
+        )
+    if aggregate_by_block:
+        # 1 block_idを1学習サンプルとし、生体特徴量はブロック内の平均値を使う。
+        # n_back、L_obj、raw_tlxは同一ブロック内で共通のラベル情報として扱う。
+        merged = (
+            merged.groupby(
+                ["block_id", "n_back", "L_obj", "raw_tlx"],
+                as_index=False,
+                dropna=False,
+            )
+            .agg(
+                **{feature: (feature, "mean") for feature in regression_features},
+                block_sample_count=("block_id", "size"),
+            )
+            .reset_index(drop=True)
         )
     return merged
 
@@ -520,10 +583,11 @@ def evaluate_cognitive_load_regression(
     w_obj: float = 0.5,
     w_sub: float = 0.5,
     folds: int = 5,
+    regression_features: List[str] | None = None,
 ) -> dict:
     """block_idをGroupとし、各fold内で標準化をfitして回帰性能を評価する。"""
     _validate_regression_weights(w_obj, w_sub)
-    regression_features = _configured_regression_features()
+    regression_features = _configured_regression_features(regression_features)
     groups = training_df["block_id"].astype(str)
     block_count = int(groups.nunique()) # 重複を除去してでブロック数を検証
     if block_count < 2: # ブロックが1個では交差検証が出来ない
@@ -603,9 +667,10 @@ def save_cognitive_load_regression_plot(
     model: LinearRegression,
     output_path: str | Path,
     user_id: str,
+    regression_features: List[str] | None = None,
 ) -> Path:
     """学習サンプル、回帰平面、特徴量ごとの部分回帰直線を画像へ保存する。"""
-    regression_features = _configured_regression_features()
+    regression_features = _configured_regression_features(regression_features)
     x = np.asarray(standardized_features, dtype=float)
     if x.ndim != 2 or x.shape[1] != len(regression_features):
         raise ValueError(
@@ -730,10 +795,12 @@ def train_cognitive_load_regression(
     folds: int = 5,
     save_training_plot: bool = False,
     training_plot_filename: str = "regression_training_fit.png",
+    aggregate_by_block: bool = False,
+    pupil_feature: str = "tepr",
 ):
     """参加者別モデルを学習し、必要に応じて学習データとの関係図も保存する。"""
     _validate_regression_weights(w_obj, w_sub) # 負荷ラベルの重みの確認
-    regression_features = _configured_regression_features()
+    regression_features = _regression_features_for_pupil_feature(pupil_feature)
     plot_filename_path = Path(training_plot_filename)
     if (
         not plot_filename_path.name
@@ -742,10 +809,18 @@ def train_cognitive_load_regression(
     ):
         raise ValueError("training_plot_filenameにはファイル名だけを指定してください。")
     training_df = load_regression_training_dataframe( #読み込み
-        user_id, data_dir, subjective_measure
+        user_id,
+        data_dir,
+        subjective_measure,
+        aggregate_by_block=aggregate_by_block,
+        regression_features=regression_features,
     )
     cv_metrics = evaluate_cognitive_load_regression( # 交差検証
-        training_df, w_obj=w_obj, w_sub=w_sub, folds=folds
+        training_df,
+        w_obj=w_obj,
+        w_sub=w_sub,
+        folds=folds,
+        regression_features=regression_features,
     )
 
     tlx_mean, tlx_std = _tlx_normalization_parameters(training_df)
@@ -770,11 +845,14 @@ def train_cognitive_load_regression(
             model=model,
             output_path=output_dir / plot_filename_path,
             user_id=user_id,
+            regression_features=regression_features,
         )
 
     metadata = {
         "user_id": str(user_id),                   # ユーザID
         "subjective_measure": subjective_measure,  # NASA-TLX全体か，mental_demandのみか
+        "training_data_granularity": "block_mean" if aggregate_by_block else "sample",
+        "pupil_feature": pupil_feature,
         "nasa_tlx_mean": tlx_mean,                 # NASA-TLXの平均値
         "nasa_tlx_std": tlx_std,                   # NASA-TLXの標準偏差
         "w_obj": float(w_obj),                     # 客観的負荷（N数）の重み
@@ -826,6 +904,7 @@ def predict_cognitive_load(
     user_id: str,
     heart_rate: float | None = None,
     tepr: float | None = None,
+    pupil_diameter_smoothed: float | None = None,
     sent_at=None,
     model_dir: str | Path = MODEL_DIR,
     feature_values: Dict[str, float] | None = None,
@@ -858,17 +937,12 @@ def predict_cognitive_load(
                 " 現在の設定でモデルを再学習してください。"
             )
         saved_feature_names = regression_features
-    saved_features = list(saved_feature_names)
-    if saved_features != regression_features:
-        raise ValueError(
-            "保存済みモデルの特徴量とREGRESSION_FEATURE_COLUMNSが一致しません。"
-            f" 保存済み: {saved_features}, 現在: {regression_features}。"
-            " 現在の設定でモデルを再学習してください。"
-        )
+    regression_features = _configured_regression_features(list(saved_feature_names))
 
     provided_values = {
         "heart_rate": heart_rate,
         "tepr": tepr,
+        "pupil_diameter_smoothed": pupil_diameter_smoothed,
     }
     if feature_values is not None:
         provided_values.update(feature_values)
@@ -919,10 +993,6 @@ def predict_latest_cognitive_load(
 ) -> dict:
     """既存の最新生体データ読み込み処理を使って認知負荷を推論する。"""
     regression_features = _configured_regression_features()
-    source_columns = [
-        REGRESSION_FEATURE_SOURCE_COLUMNS[feature]
-        for feature in regression_features
-    ]
     output_dir = regression_model_dir_for_user(user_id, model_dir)
     # 自動で学習するオプションがTrueでかつ，学習済みモデルが存在していなかったら
     model_files_exist = (
@@ -937,11 +1007,7 @@ def predict_latest_cognitive_load(
     elif model_files_exist:
         saved_scaler = joblib.load(output_dir / "x_scaler.joblib")
         saved_features = getattr(saved_scaler, "feature_names_in_", None)
-    feature_configuration_changed = (
-        saved_features is not None
-        and list(saved_features) != regression_features
-    )
-    if auto_train and (not model_files_exist or feature_configuration_changed):
+    if auto_train and not model_files_exist:
         train_cognitive_load_regression(
             user_id,
             data_dir=data_dir,
@@ -953,6 +1019,14 @@ def predict_latest_cognitive_load(
             save_training_plot=save_training_plot,
             training_plot_filename=training_plot_filename,
         )
+        saved_features = regression_features
+
+    if saved_features is not None:
+        regression_features = _configured_regression_features(list(saved_features))
+    source_columns = [
+        REGRESSION_FEATURE_SOURCE_COLUMNS[feature]
+        for feature in regression_features
+    ]
 
     # 最新値での予測実行
     latest_df = load_latest_prediction_dataframe(

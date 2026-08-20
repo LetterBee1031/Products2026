@@ -132,7 +132,7 @@ public class NBackExperimentAssignmentGenerator : MonoBehaviour
 
     // persistentDataPath以下に作成するフォルダ名。
     [SerializeField]
-    private string outputFolder = "GeneratedNBackAssignments";
+    private string outputFolder = "Resources/GeneratedNBackAssignments";
 
 
     // Unity空間上のUIなどから使用するN-back条件を変更する。

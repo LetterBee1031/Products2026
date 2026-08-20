@@ -4,8 +4,7 @@ using TMPro;
 using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using UnityEditor.Rendering;
+// using UnityEditor.Rendering;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Turning;
 
 
@@ -100,8 +99,8 @@ public class N_back : MonoBehaviour
     bool isTextDisplayed = false;
 
     int outTextCount = 0;
-    private const string PatternRootRelativePath = "Scripts/GeneratedNBackPatterns"; // 刺激パターン格納先
-    private const string AssignmentRootRelativePath = "Scripts/GeneratedNBackAssignments"; // ユーザー別割当格納先
+    private const string PatternRootResourcePath = "GeneratedNBackPatterns"; // Resources内の刺激パターン格納先
+    private const string AssignmentRootResourcePath = "GeneratedNBackAssignments"; // Resources内のユーザー別割当格納先
     private NBackPatternFile loadedPattern; // 現在実行中の刺激パターン
     private readonly List<NBackAssignmentBlock> assignmentBlocks = new List<NBackAssignmentBlock>(); // blockId順に並べた全ブロック
     private int currentAssignmentIndex; // 次に実行するassignmentBlocksの位置
@@ -416,26 +415,27 @@ public class N_back : MonoBehaviour
             return false;
         }
 
-        // 例: Assets/Scripts/GeneratedNBackAssignments/01_nback_assignment.json
-        string assignmentPath = Path.Combine(
-            Application.dataPath,
-            AssignmentRootRelativePath,
-            $"{userId}_nback_assignment.json");
+        // 例: Assets/Resources/GeneratedNBackAssignments/01_nback_assignment.json
+        string assignmentResourcePath =
+            $"{AssignmentRootResourcePath}/{userId}_nback_assignment";
+        TextAsset assignmentAsset = Resources.Load<TextAsset>(assignmentResourcePath);
 
-        if (!File.Exists(assignmentPath))
+        if (assignmentAsset == null)
         {
-            Debug.LogError($"N-back assignment file was not found: {assignmentPath}");
+            Debug.LogError(
+                $"N-back assignment resource was not found: {assignmentResourcePath}");
             return false;
         }
 
         NBackAssignmentFile assignmentFile;
         try
         {
-            assignmentFile = JsonUtility.FromJson<NBackAssignmentFile>(File.ReadAllText(assignmentPath));
+            assignmentFile = JsonUtility.FromJson<NBackAssignmentFile>(assignmentAsset.text);
         }
         catch (System.Exception exception)
         {
-            Debug.LogError($"Failed to read N-back assignment: {assignmentPath}\n{exception}");
+            Debug.LogError(
+                $"Failed to read N-back assignment: {assignmentResourcePath}\n{exception}");
             return false;
         }
 
@@ -443,7 +443,7 @@ public class N_back : MonoBehaviour
             assignmentFile.participant == null ||
             assignmentFile.participant.sessions == null)
         {
-            Debug.LogError($"N-back assignment data is invalid: {assignmentPath}");
+            Debug.LogError($"N-back assignment data is invalid: {assignmentResourcePath}");
             return false;
         }
 
@@ -478,7 +478,8 @@ public class N_back : MonoBehaviour
 
         if (assignmentBlocks.Count == 0)
         {
-            Debug.LogError($"N-back assignment contains no blocks: {assignmentPath}");
+            Debug.LogError(
+                $"N-back assignment contains no blocks: {assignmentResourcePath}");
             return false;
         }
 
@@ -518,39 +519,30 @@ public class N_back : MonoBehaviour
     private bool LoadPattern()
     {
         // 現在の割当条件に対応するフォルダー（例: 2back）を選択する
-        string patternFolderPath = Path.Combine(
-            Application.dataPath,
-            PatternRootRelativePath,
-            $"{n_back_num}back");
-
-        if (!Directory.Exists(patternFolderPath))
-        {
-            Debug.LogError($"N-back pattern folder was not found: {patternFolderPath}");
-            return false;
-        }
+        string patternResourcePath =
+            $"{PatternRootResourcePath}/{n_back_num}back";
 
         // 条件フォルダー直下にある全パターンJSONを候補にする
-        string[] patternPaths = Directory.GetFiles(
-            patternFolderPath,
-            "*.json",
-            SearchOption.TopDirectoryOnly);
+        TextAsset[] patternAssets = Resources.LoadAll<TextAsset>(patternResourcePath);
 
-        if (patternPaths.Length == 0)
+        if (patternAssets.Length == 0)
         {
-            Debug.LogError($"No N-back pattern files were found: {patternFolderPath}");
+            Debug.LogError(
+                $"No N-back pattern resources were found: {patternResourcePath}");
             return false;
         }
 
         // 同じnBack条件でも提示系列が固定されないよう、実行ごとにランダム選択する
-        string patternPath = patternPaths[Random.Range(0, patternPaths.Length)];
+        TextAsset patternAsset = patternAssets[Random.Range(0, patternAssets.Length)];
 
         try
         {
-            loadedPattern = JsonUtility.FromJson<NBackPatternFile>(File.ReadAllText(patternPath));
+            loadedPattern = JsonUtility.FromJson<NBackPatternFile>(patternAsset.text);
         }
         catch (System.Exception exception)
         {
-            Debug.LogError($"Failed to read N-back pattern: {patternPath}\n{exception}");
+            Debug.LogError(
+                $"Failed to read N-back pattern: {patternAsset.name}\n{exception}");
             loadedPattern = null;
             return false;
         }
@@ -561,7 +553,7 @@ public class N_back : MonoBehaviour
             loadedPattern.stimuli.Length == 0 ||
             loadedPattern.stimuli.Length != loadedPattern.isTarget.Length)
         {
-            Debug.LogError($"N-back pattern data is invalid: {patternPath}");
+            Debug.LogError($"N-back pattern data is invalid: {patternAsset.name}");
             loadedPattern = null;
             return false;
         }
@@ -580,14 +572,14 @@ public class N_back : MonoBehaviour
         {
             Debug.LogError(
                 $"N-back pattern does not match the current setting: " +
-                $"expected={n_back_num}, actual={loadedPattern.nBack}, file={patternPath}");
+                $"expected={n_back_num}, actual={loadedPattern.nBack}, file={patternAsset.name}");
             loadedPattern = null;
             return false;
         }
 
         Debug.Log(
             $"Loaded N-back pattern: {loadedPattern.patternId} " +
-            $"({loadedPattern.stimuli.Length} trials, file: {Path.GetFileName(patternPath)})");
+            $"({loadedPattern.stimuli.Length} trials, file: {patternAsset.name})");
         return true;
     }
 

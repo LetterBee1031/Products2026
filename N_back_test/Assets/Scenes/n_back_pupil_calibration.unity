@@ -23609,8 +23609,8 @@ MonoBehaviour:
   n_back_num: 0
   stimulusDisplayDuration: 0.5
   timeWaitOneTask: 2
-  timeLimit: 10
-  sessionFixationDuration: 10
+  timeLimit: 90
+  sessionFixationDuration: 90
 --- !u!114 &686141612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23743,7 +23743,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686141610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 446590df1e7e1e347b949bfcdd51def9, type: 3}
   m_Name: 
@@ -23777,7 +23777,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686141610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5356397585c4dc94f8abf59821f00069, type: 3}
   m_Name: 
@@ -23791,7 +23791,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686141610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b410c4db18b8f4459c3d575e7190bf1, type: 3}
   m_Name: 
@@ -23837,7 +23837,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686141610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d694056c67ab5334eb1a2c279e3b3564, type: 3}
   m_Name: 
@@ -23939,12 +23939,12 @@ MonoBehaviour:
   stimulusPool: BCDFGHJKLMNPQRSTVWYZ
   zeroBackTarget: X
   patternsPerCondition: 10
-  totalTrials: 48
+  totalTrials: 36
   initializationTrials: 3
   maxNonTargetRun: 6
   maxFrequencyDifference: 2
   baseSeed: 20260814
-  outputFolder: Scripts/GeneratedNBackPatterns
+  outputFolder: Resources/GeneratedNBackPatterns
 --- !u!114 &686141628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23964,7 +23964,7 @@ MonoBehaviour:
   participantNumberDigits: 2
   sessionsPerParticipant: 3
   seed: 20260817
-  outputFolder: Scripts/GeneratedNBackAssignments
+  outputFolder: Resources/GeneratedNBackAssignments
 --- !u!1 &689447433
 GameObject:
   m_ObjectHideFlags: 0
@@ -54158,7 +54158,7 @@ Transform:
   m_GameObject: {fileID: 1596093632}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 18.61}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
