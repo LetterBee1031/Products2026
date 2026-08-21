@@ -228,6 +228,7 @@ user_status: Dict[str, userData] = {
     "01": userData(),
     "02": userData(),
     "03": userData(),
+    "30": userData(),
 }
 
 

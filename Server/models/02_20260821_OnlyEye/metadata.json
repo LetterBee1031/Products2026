@@ -1,0 +1,47 @@
+{
+  "user_id": "02",
+  "subjective_measure": "raw_tlx",
+  "training_data_granularity": "sample",
+  "nasa_tlx_mean": 17.77777777777778,
+  "nasa_tlx_std": 15.564283265870193,
+  "w_obj": 0.5,
+  "w_sub": 0.5,
+  "objective_load_mapping": {
+    "0": 0.25,
+    "2": 0.5,
+    "3": 0.75
+  },
+  "features": [
+    "tepr"
+  ],
+  "feature_source_columns": {
+    "tepr": "tepr"
+  },
+  "standardization": {
+    "method": "standard_scaler_zscore",
+    "mean": {
+      "tepr": -0.4449178571166336
+    },
+    "scale": {
+      "tepr": 0.36336453258972656
+    }
+  },
+  "blocks": [
+    "1",
+    "10",
+    "11",
+    "12",
+    "2",
+    "4",
+    "5",
+    "7",
+    "8"
+  ],
+  "training_samples": 404,
+  "coefficients": {
+    "tepr": 0.05130161963022494
+  },
+  "intercept": 0.5006064899637388,
+  "training_plot": "regression_training_fit.png",
+  "created_at": "2026-08-21T05:11:23.881323+00:00"
+}

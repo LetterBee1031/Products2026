@@ -578,7 +578,7 @@ async def analyze_hr_save_csv(
     folds: int = 5,
     save_training_plot: bool = False,
     aggregate_by_block: bool = False,
-    pupil_feature: str = "tepr",
+    block_warmup_seconds: float = 0.0,
 ):
     resolved_user_id = resolve_query_user_id(user_id, id)
     if resolved_user_id not in user_status:
@@ -595,19 +595,20 @@ async def analyze_hr_save_csv(
             folds=folds,
             save_training_plot=save_training_plot,
             aggregate_by_block=aggregate_by_block,
-            pupil_feature=pupil_feature,
+            block_warmup_seconds=block_warmup_seconds,
         )
         features = [str(feature) for feature in scaler.feature_names_in_]
         output_dir = SERVER_DIR / "models" / resolved_user_id
         return {
             "ok": True,
-            "message": "cognitive load linear regression trained",
+            "message": "cognitive load ridge regression trained",
+            "estimator": {"name": "ridge", "alpha": float(model.alpha)},
             "user_id": resolved_user_id,
             "rows": int(len(training_df)),
             "training_data_granularity": (
                 "block_mean" if aggregate_by_block else "sample"
             ),
-            "pupil_feature": pupil_feature,
+            "block_warmup_seconds": float(block_warmup_seconds),
             "blocks": sorted(
                 training_df["block_id"].astype(str).unique().tolist()
             ),

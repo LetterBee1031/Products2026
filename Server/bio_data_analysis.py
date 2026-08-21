@@ -10,7 +10,7 @@ import joblib
 import numpy as np
 from sklearn.tree import plot_tree
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Ridge
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 
@@ -47,12 +47,15 @@ ML_STATUS_LABELS: Dict[str, str] = {
 ML_FEATURE_COLUMNS: List[str] = ["hr", "tepr"]
 ML_PREPROCESSING_NAME = "standard_scaler_zscore"
 HR_TEPR_SYNC_TOLERANCE_SECONDS = 2
+RIDGE_ALPHA = 1.0
 RANDOM_FOREST_MODEL_CACHE: Dict[str, dict] = {}
 
 # design_regression.md に基づく個人別の認知負荷回帰モデル設定。
-REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate", "tepr"]
-# REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate"]
+# REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate", "tepr"]
+REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate"]
 # REGRESSION_FEATURE_COLUMNS: List[str] = ["tepr"]
+# REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate", "pupil_diameter_smoothed"]
+# REGRESSION_FEATURE_COLUMNS: List[str] = ["pupil_diameter_smoothed"]
 REGRESSION_FEATURE_SOURCE_COLUMNS: Dict[str, str] = {
     "heart_rate": "hr",
     "tepr": "tepr",
@@ -133,19 +136,6 @@ def _configured_regression_features(features: List[str] | None = None) -> List[s
         )
     return features
 
-
-def _regression_features_for_pupil_feature(pupil_feature: str) -> List[str]:
-    normalized = str(pupil_feature).strip().lower()
-    aliases = {
-        "tepr": "tepr",
-        "pupildiameansmoothed": "pupil_diameter_smoothed",
-        "pupil_diameter_smoothed": "pupil_diameter_smoothed",
-    }
-    if normalized not in aliases:
-        raise ValueError(
-            "pupil_featureは'tepr'または'pupilDiaMeanSmoothed'を指定してください。"
-        )
-    return _configured_regression_features(["heart_rate", aliases[normalized]])
 
 def hr_ibi_path_for_user(user_id: str, data_dir: str | Path = "data") -> Path:
     # ユーザごとの生体データ保存先を組み立てる。
@@ -305,6 +295,14 @@ def load_ml_training_dataframe(
     df = df[df["ex_status"].isin(ML_STATUS_LABELS.keys())].copy()
     df["cl_label"] = df["ex_status"].map(ML_STATUS_LABELS)
 
+    # 特徴量の欠損行を落とす前の時刻から、各ブロックの実質的な開始時刻を保持する。
+    if "block_id" in df:
+        training_block_ids = df["block_id"].fillna(df["ex_status"])
+    else:
+        training_block_ids = df["ex_status"]
+    training_times = df["sent_at"].map(normalize_sent_at_to_jst)
+    df["_block_start_sent_at"] = training_times.groupby(training_block_ids).transform("min")
+
     # センサー値に文字列やnullが混ざっても扱えるよう、数値化できないものは欠損にする。
     for column in selected_columns:
         df[column] = pd.to_numeric(df[column], errors="coerce")
@@ -443,9 +441,12 @@ def load_regression_training_dataframe(
     subjective_measure: str = "raw_tlx",
     aggregate_by_block: bool = False,
     regression_features: List[str] | None = None,
+    block_warmup_seconds: float = 0.0,
 ) -> pd.DataFrame:
     """既存の心拍・瞳孔径読み込み処理にNASA-TLXをブロック単位で結合する。"""
     regression_features = _configured_regression_features(regression_features)
+    if not np.isfinite(block_warmup_seconds) or block_warmup_seconds < 0:
+        raise ValueError("block_warmup_secondsは0以上の有限値を指定してください。")
     source_columns = [
         REGRESSION_FEATURE_SOURCE_COLUMNS[feature]
         for feature in regression_features
@@ -497,6 +498,21 @@ def load_regression_training_dataframe(
             "生体データとNASA-TLXデータで一致するblock_idがありません。"
             f" 生体データ: {bio_blocks}, NASA-TLX: {nasa_blocks}"
         )
+    if block_warmup_seconds > 0:
+        # 特徴量の欠損除外前に求めた各block_idの開始時刻から、指定秒数未満を除外する。
+        sample_times = merged["sent_at"].map(normalize_sent_at_to_jst)
+        if "_block_start_sent_at" in merged:
+            block_start_times = merged["_block_start_sent_at"].map(normalize_sent_at_to_jst)
+        else:
+            block_start_times = sample_times.groupby(merged["block_id"]).transform("min")
+        elapsed_seconds = (sample_times - block_start_times).dt.total_seconds()
+        merged = merged[elapsed_seconds >= block_warmup_seconds].reset_index(drop=True)
+        if merged.empty:
+            raise ValueError(
+                "block_warmup_secondsの適用後に学習データが残りませんでした。"
+                f" 指定値: {block_warmup_seconds}秒"
+            )
+    merged = merged.drop(columns=["_block_start_sent_at"], errors="ignore")
     if aggregate_by_block:
         # 1 block_idを1学習サンプルとし、生体特徴量はブロック内の平均値を使う。
         # n_back、L_obj、raw_tlxは同一ブロック内で共通のラベル情報として扱う。
@@ -594,6 +610,7 @@ def evaluate_cognitive_load_regression(
         return {
             "enabled": False,
             "method": "group_k_fold",
+            "estimator": {"name": "ridge", "alpha": float(RIDGE_ALPHA)},
             "block_count": block_count,
             "reason": "交差検証には少なくとも2つのblock_idが必要です。",
             "folds": [],
@@ -626,7 +643,7 @@ def evaluate_cognitive_load_regression(
         scaler = StandardScaler() # z標準化器
         x_train = scaler.fit_transform(train_labeled[regression_features])
         x_validation = scaler.transform(validation_labeled[regression_features])
-        model = LinearRegression() # 線形回帰モデル
+        model = Ridge(alpha=RIDGE_ALPHA) # L2正則化付き線形回帰モデル
         model.fit(x_train, train_labeled["L_label"]) # foldでの学習
         prediction = model.predict(x_validation) # 予測
         truth = validation_labeled["L_label"].to_numpy() # 検証用負荷ラベル（真値として利用）
@@ -654,6 +671,7 @@ def evaluate_cognitive_load_regression(
     return {
         "enabled": True,
         "method": "group_k_fold",
+        "estimator": {"name": "ridge", "alpha": float(RIDGE_ALPHA)},
         "block_count": block_count,
         "n_splits": n_splits,
         "folds": fold_results,
@@ -664,7 +682,7 @@ def evaluate_cognitive_load_regression(
 def save_cognitive_load_regression_plot(
     labeled_df: pd.DataFrame,
     standardized_features,
-    model: LinearRegression,
+    model: Ridge,
     output_path: str | Path,
     user_id: str,
     regression_features: List[str] | None = None,
@@ -796,11 +814,11 @@ def train_cognitive_load_regression(
     save_training_plot: bool = False,
     training_plot_filename: str = "regression_training_fit.png",
     aggregate_by_block: bool = False,
-    pupil_feature: str = "tepr",
+    block_warmup_seconds: float = 0.0,
 ):
     """参加者別モデルを学習し、必要に応じて学習データとの関係図も保存する。"""
     _validate_regression_weights(w_obj, w_sub) # 負荷ラベルの重みの確認
-    regression_features = _regression_features_for_pupil_feature(pupil_feature)
+    regression_features = _configured_regression_features()
     plot_filename_path = Path(training_plot_filename)
     if (
         not plot_filename_path.name
@@ -814,6 +832,7 @@ def train_cognitive_load_regression(
         subjective_measure,
         aggregate_by_block=aggregate_by_block,
         regression_features=regression_features,
+        block_warmup_seconds=block_warmup_seconds,
     )
     cv_metrics = evaluate_cognitive_load_regression( # 交差検証
         training_df,
@@ -829,7 +848,7 @@ def train_cognitive_load_regression(
     )
     scaler = StandardScaler()
     x = scaler.fit_transform(labeled_df[regression_features]) # 標準化
-    model = LinearRegression()
+    model = Ridge(alpha=RIDGE_ALPHA)
     model.fit(x, labeled_df["L_label"]) #学習
 
     # モデルの保存
@@ -852,7 +871,8 @@ def train_cognitive_load_regression(
         "user_id": str(user_id),                   # ユーザID
         "subjective_measure": subjective_measure,  # NASA-TLX全体か，mental_demandのみか
         "training_data_granularity": "block_mean" if aggregate_by_block else "sample",
-        "pupil_feature": pupil_feature,
+        "block_warmup_seconds": float(block_warmup_seconds),
+        "estimator": {"name": "ridge", "alpha": float(RIDGE_ALPHA)},
         "nasa_tlx_mean": tlx_mean,                 # NASA-TLXの平均値
         "nasa_tlx_std": tlx_std,                   # NASA-TLXの標準偏差
         "w_obj": float(w_obj),                     # 客観的負荷（N数）の重み

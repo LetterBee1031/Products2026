@@ -21,8 +21,10 @@ public class RequestSender : MonoBehaviour
     public bool saveBaseUrlOnChange = true;
     public bool sendStartFlagOnStart = true;
 
-    [Header("Fixed user id")]
+    [Header("User id")]
     public string userId = "01";
+    public TMP_InputField userIdInputField;
+    public XRNumericKeyboardInputBinder numericKeyboardInputBinder;
 
     private const string BaseUrlPrefsKey = "RequestSender.BaseUrl";
 
@@ -227,6 +229,14 @@ public class RequestSender : MonoBehaviour
             baseUrlInputField.onEndEdit.AddListener(SetBaseUrl);
         }
 
+        if (userIdInputField != null)
+        {
+            userIdInputField.SetTextWithoutNotify(userId);
+            userIdInputField.onEndEdit.AddListener(SetUserId);
+        }
+
+        SetupNumericKeyboardInputBinder();
+
         if (sendStartFlagOnStart)
         {
             SendStartFlag();
@@ -336,6 +346,47 @@ public class RequestSender : MonoBehaviour
         }
 
         SetBaseUrl(baseUrlInputField.text);
+    }
+
+    public void SetUserId(string inputUserId)
+    {
+        if (string.IsNullOrWhiteSpace(inputUserId))
+        {
+            Debug.LogWarning("USER_ID input is empty.");
+            userIdInputField?.SetTextWithoutNotify(userId);
+            return;
+        }
+
+        userId = inputUserId.Trim();
+        userIdInputField?.SetTextWithoutNotify(userId);
+        Debug.Log($"USER_ID updated: {userId}");
+    }
+
+    public void SetUserIdFromInputField()
+    {
+        if (userIdInputField == null)
+        {
+            Debug.LogWarning("USER_ID input field is not assigned.");
+            return;
+        }
+
+        SetUserId(userIdInputField.text);
+    }
+
+    private void SetupNumericKeyboardInputBinder()
+    {
+        // N_back.csと同じ方式で、共通のXR数値キーボードへ入力欄を登録する。
+        if (numericKeyboardInputBinder == null)
+        {
+            numericKeyboardInputBinder = GetComponent<XRNumericKeyboardInputBinder>();
+        }
+
+        if (numericKeyboardInputBinder == null)
+        {
+            numericKeyboardInputBinder = gameObject.AddComponent<XRNumericKeyboardInputBinder>();
+        }
+
+        numericKeyboardInputBinder.BindInteger(userIdInputField, SetUserId);
     }
 
     public void PostEyeData(
@@ -1119,6 +1170,16 @@ public class RequestSender : MonoBehaviour
         if (baseUrlInputField != null)
         {
             baseUrlInputField.onEndEdit.RemoveListener(SetBaseUrl);
+        }
+
+        if (userIdInputField != null)
+        {
+            userIdInputField.onEndEdit.RemoveListener(SetUserId);
+        }
+
+        if (numericKeyboardInputBinder != null)
+        {
+            numericKeyboardInputBinder.Unbind(userIdInputField);
         }
 
         if (cl_coroutine != null)

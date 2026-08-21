@@ -1,0 +1,13 @@
+﻿scope,n_back_level,method,feature,correlation,sample_count
+overall,,pearson_ordinal,heart_rate,0.25146324792348856,413
+overall,,spearman_ordinal,heart_rate,0.23913001771045797,413
+level_vs_other,0,point_biserial,heart_rate,-0.22521725505767115,104
+level_vs_other,1,point_biserial,heart_rate,-0.13336738481279123,103
+level_vs_other,2,point_biserial,heart_rate,0.2941363182973308,103
+level_vs_other,3,point_biserial,heart_rate,0.06517366082636639,103
+overall,,pearson_ordinal,tepr,0.22356624766194833,413
+overall,,spearman_ordinal,tepr,0.21435405158206697,413
+level_vs_other,0,point_biserial,tepr,-0.06999384097721267,104
+level_vs_other,1,point_biserial,tepr,-0.1866013886781121,103
+level_vs_other,2,point_biserial,tepr,0.0055917632639080105,103
+level_vs_other,3,point_biserial,tepr,0.2512288899733376,103
