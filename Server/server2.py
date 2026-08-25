@@ -44,8 +44,12 @@ SERVER_DIR = Path(__file__).resolve().parent
 DATA_DIR = SERVER_DIR / "data"
 DATA_DIR.mkdir(exist_ok=True)
 MAX_IBI_PER_RECORD = 4
+# NEGOTIATION_LOAD_LOW = 0.3
+# NEGOTIATION_LOAD_HIGH = 0.7
+
 NEGOTIATION_LOAD_LOW = 0.3
 NEGOTIATION_LOAD_HIGH = 0.7
+
 
 # 記録用ファイルパス
 HR_JSONL_PATH = DATA_DIR / "hr_ibi.jsonl"
@@ -223,6 +227,14 @@ def stroop_jsonl_path_for_user(user_id: str) -> Path:
 
 def mental_arithmetic_jsonl_path_for_user(user_id: str) -> Path:
     return DATA_DIR / f"mental_arithmetic_log_{normalize_user_id(user_id)}.jsonl"
+
+def cognitive_load_jsonl_path_for_user(user_id: str) -> Path:
+    return DATA_DIR / f"cognitive_load_prediction_{normalize_user_id(user_id)}.jsonl"
+
+def append_cognitive_load_record_by_user(record: dict) -> None:
+    user_id = user_id_from_record(record)
+    with cognitive_load_jsonl_path_for_user(user_id).open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 def append_records_by_user(records: List[dict]) -> None:
     files = {}
@@ -672,6 +684,20 @@ async def read_cl_condition(user_id: Optional[str] = None, id: Optional[str] = N
         current_load < NEGOTIATION_LOAD_LOW
         or current_load > NEGOTIATION_LOAD_HIGH
     )
+
+    # APIを呼び出すたびに、推定値と推定に使った特徴量を被験者別JSONLへ残す。
+    prediction_record = {
+        "recorded_at": datetime.now(ZoneInfo("Asia/Tokyo")).isoformat(),
+        "user_id": resolved_user_id,
+        "ex_status": user_status[resolved_user_id].ex_status,
+        "block_id": user_status[resolved_user_id].block_id,
+        **result,
+        "L_cur": current_load,
+        "L_cur_raw": float(result["L_cur_raw"]),
+        "negotiation_triggered": negotiation_triggered,
+    }
+    append_cognitive_load_record_by_user(prediction_record)
+
     if negotiation_triggered:
         # 回帰モデルの連続値をそのままAAとPAの交渉へ渡す。
         # 合意した場合のshared_state更新はNegotiationManager側で行う。

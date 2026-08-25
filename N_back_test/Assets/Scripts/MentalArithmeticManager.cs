@@ -104,6 +104,9 @@ public class MentalArithmeticManager : MonoBehaviour
     // 古いフィードバック用コルーチンが次のブロックへ干渉するのを防ぐ識別子。
     private int blockRunToken;
     private bool blockActive;
+    private string activeMentalArithmeticStatusName;
+    private string activeMentalArithmeticBlockId;
+    private bool isMentalArithmeticStatusActive;
 
     private void Awake()
     {
@@ -295,6 +298,9 @@ public class MentalArithmeticManager : MonoBehaviour
         blockCorrectCount = 0;
         blockRunToken++;
         blockActive = true;
+        SendMentalArithmeticStartStatus(
+            difficulty.ToString(),
+            blockId.ToString(CultureInfo.InvariantCulture));
 
         // 同じ難易度でも毎回異なる順番になるよう、開始時にシャッフルする。
         Shuffle(problemPools[difficulty]);
@@ -454,6 +460,7 @@ public class MentalArithmeticManager : MonoBehaviour
     {
         // 最終ブロック終了時にも保存し、最後の状態を確実にファイルへ反映する。
         SaveLogsToCsv();
+        SendMentalArithmeticEndStatus();
         state = TaskState.Complete;
         taskCoroutine = null;
         SetControlsInteractable(false);
@@ -462,6 +469,41 @@ public class MentalArithmeticManager : MonoBehaviour
         difficultyText.text = string.Empty;
         feedbackText.text = string.Empty;
         Debug.Log($"Mental arithmetic log saved: {csvFilePath}");
+    }
+
+    // 暗算課題の開始フラグをサーバに送信する。
+    private void SendMentalArithmeticStartStatus(string statusName, string blockId)
+    {
+        activeMentalArithmeticStatusName = statusName;
+        activeMentalArithmeticBlockId = blockId;
+        isMentalArithmeticStatusActive = true;
+
+        if (requestSender != null)
+        {
+            requestSender.SendMentalArithmeticStartFlag(
+                activeMentalArithmeticStatusName,
+                activeMentalArithmeticBlockId);
+        }
+    }
+
+    // 暗算課題の終了フラグをサーバに送信する。
+    private void SendMentalArithmeticEndStatus()
+    {
+        if (!isMentalArithmeticStatusActive)
+        {
+            return;
+        }
+
+        if (requestSender != null)
+        {
+            requestSender.SendMentalArithmeticEndFlag(
+                activeMentalArithmeticStatusName,
+                activeMentalArithmeticBlockId);
+        }
+
+        isMentalArithmeticStatusActive = false;
+        activeMentalArithmeticStatusName = null;
+        activeMentalArithmeticBlockId = null;
     }
 
     private void BuildProblemPools()

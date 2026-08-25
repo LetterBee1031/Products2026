@@ -206,7 +206,7 @@ public class RequestSender : MonoBehaviour
     bool isGetCLCondition = false;
     bool isCLRequestRunning = false;
 
-    public float CLIntervalSec = 1.0f;
+    public float CLIntervalSec = 2.0f;
     private float CLLastRequestStartTime = -999f;
 
 
@@ -295,7 +295,35 @@ public class RequestSender : MonoBehaviour
     {
         StartCoroutine(PostStatusFlag(n + "_back_end", testId));
     }
-    
+
+    // Stroop課題の開始フラグを送信する。
+    // conditionNameにはpractice/congruent/neutral/incongruentなどを渡す。
+    public void SendStroopStartFlag(string conditionName, string blockId)
+    {
+        StartCoroutine(PostStatusFlag("stroop_" + NormalizeStatusPart(conditionName) + "_start", blockId));
+    }
+
+    // Stroop課題の終了フラグを送信する。
+    // conditionNameには開始時と同じ値を渡す。
+    public void SendStroopEndFlag(string conditionName, string blockId)
+    {
+        StartCoroutine(PostStatusFlag("stroop_" + NormalizeStatusPart(conditionName) + "_end", blockId));
+    }
+
+    // 暗算課題の開始フラグを送信する。
+    // difficultyNameにはlow/medium/highなどを渡す。
+    public void SendMentalArithmeticStartFlag(string difficultyName, string blockId)
+    {
+        StartCoroutine(PostStatusFlag("mental_arithmetic_" + NormalizeStatusPart(difficultyName) + "_start", blockId));
+    }
+
+    // 暗算課題の終了フラグを送信する。
+    // difficultyNameには開始時と同じ値を渡す。
+    public void SendMentalArithmeticEndFlag(string difficultyName, string blockId)
+    {
+        StartCoroutine(PostStatusFlag("mental_arithmetic_" + NormalizeStatusPart(difficultyName) + "_end", blockId));
+    }
+
     public void SendSeeingColorFlag(string color)
     {
         StartCoroutine(PostStatusFlag(color));
@@ -473,10 +501,10 @@ public class RequestSender : MonoBehaviour
 
     public void StartAlnalyzeCLCondition(bool flag)
     {
-        if (flag)
-        {
-            StartCoroutine(GetAnalyzeHrSave());
-        }
+        // if (flag)
+        // {
+        //     StartCoroutine(GetAnalyzeHrSave());
+        // }
         isGetCLCondition = flag;
     }
 
@@ -542,6 +570,17 @@ public class RequestSender : MonoBehaviour
     }
 
     // ---- status送信 ----
+    // status_flagに使う課題名を小文字にそろえる。
+    private string NormalizeStatusPart(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return "unknown";
+        }
+
+        return value.Trim().ToLowerInvariant();
+    }
+
     public IEnumerator PostStatusFlag(string statusFlag)
     {
         return PostStatusFlag(statusFlag, null);

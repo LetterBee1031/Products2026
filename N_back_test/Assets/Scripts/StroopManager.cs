@@ -97,6 +97,9 @@ public class StroopManager : MonoBehaviour
     private StroopColor? pendingResponse;
     private int correctCount;
     private string currentBlockName;
+    private string activeStroopStatusName;
+    private string activeStroopBlockId;
+    private bool isStroopStatusActive;
 
     [SerializeField] private InputActionAsset inputActions;
 
@@ -130,7 +133,7 @@ public class StroopManager : MonoBehaviour
         resultText.richText = false;
 
         // 回答キーの対応は全条件で共通。
-        instructionText.text = "Z: 赤 / X: 青 / C: 緑 / V: 黄";
+        instructionText.text = "A: あか / B: あお / X: みどり / Y: きいろ";
         ShowIdle();
         SetupSettingInputFields();
 
@@ -192,6 +195,7 @@ public class StroopManager : MonoBehaviour
         AddTrials(StroopCondition.Incongruent, 10, true);
 
         currentBlockName = "Practice";
+        SendStroopStartStatus("practice", "practice");
         StartCoroutine(RunTrials());
     }
 
@@ -216,6 +220,7 @@ public class StroopManager : MonoBehaviour
     // 休憩中画面
     public void ShowRest()
     {
+        SendStroopEndStatus();
         StopAllCoroutines();
 
         state = TrialState.Rest;
@@ -237,6 +242,7 @@ public class StroopManager : MonoBehaviour
         trials.Clear();
 
         currentBlockName = "Block " + blockNumber;
+        SendStroopStartStatus(condition.ToString(), blockNumber.ToString(CultureInfo.InvariantCulture));
         StartCoroutine(RunTimedBlock(condition));
     }
 
@@ -244,6 +250,37 @@ public class StroopManager : MonoBehaviour
     private bool CanStartBlock()
     {
         return state == TrialState.Idle || state == TrialState.Rest || state == TrialState.Results;
+    }
+
+    // Stroop課題の開始フラグをサーバに送信する。
+    private void SendStroopStartStatus(string statusName, string blockId)
+    {
+        activeStroopStatusName = statusName;
+        activeStroopBlockId = blockId;
+        isStroopStatusActive = true;
+
+        if (requestSender != null)
+        {
+            requestSender.SendStroopStartFlag(activeStroopStatusName, activeStroopBlockId);
+        }
+    }
+
+    // Stroop課題の終了フラグをサーバに送信する。
+    private void SendStroopEndStatus()
+    {
+        if (!isStroopStatusActive)
+        {
+            return;
+        }
+
+        if (requestSender != null)
+        {
+            requestSender.SendStroopEndFlag(activeStroopStatusName, activeStroopBlockId);
+        }
+
+        isStroopStatusActive = false;
+        activeStroopStatusName = null;
+        activeStroopBlockId = null;
     }
 
     // 試行の追加．
@@ -272,6 +309,7 @@ public class StroopManager : MonoBehaviour
         stimulusText.text = " ";
         statusText.text = currentBlockName + " 完了";
         resultText.text = string.Format("出題数: {0}\n正答数: {1}", trials.Count, correctCount);
+        SendStroopEndStatus();
     }
 
     // 本試行用。制限時間内は同じ条件の試行を繰り返す。
@@ -302,6 +340,7 @@ public class StroopManager : MonoBehaviour
             Time.realtimeSinceStartup - blockStartTime,
             completedTrialCount,
             correctCount);
+        SendStroopEndStatus();
     }
 
     // 1トライアルの実行

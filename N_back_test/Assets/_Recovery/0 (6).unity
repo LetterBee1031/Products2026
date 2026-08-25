@@ -23809,7 +23809,7 @@ MonoBehaviour:
   fixationDuration: 1
   stimulusDuration: 0.4
   responseDuration: 1.1
-  blockDurationSeconds: 90
+  blockDurationSeconds: 60
   fixationDurationInputField: {fileID: 193477686}
   stimulusDurationInputField: {fileID: 673984739}
   responseDurationInputField: {fileID: 1916813004}
@@ -23854,7 +23854,7 @@ MonoBehaviour:
   difficultyText: {fileID: 406925426}
   feedbackText: {fileID: 1116584574}
   durationInputField: {fileID: 636515440}
-  blockDurationSeconds: 90
+  blockDurationSeconds: 30
   feedbackDurationSeconds: 0.5
   participantId: test_user
   numericKeyboardInputBinder: {fileID: 0}
@@ -70043,9 +70043,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 686141624}
-        m_TargetAssemblyTypeName: MentalArithmeticManager, Assembly-CSharp
-        m_MethodName: StartHighBlock
+      - m_Target: {fileID: 686141622}
+        m_TargetAssemblyTypeName: StroopManager, Assembly-CSharp
+        m_MethodName: StartIncongruentBlock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
