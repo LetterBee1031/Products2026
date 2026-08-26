@@ -643,3 +643,7 @@
 {"received_at": "2026-08-25T18:53:47.794252+09:00", "client_host": "192.168.150.79", "user_id": "01", "status_flag": "stroop_neutral_end", "block_id": "2", "sent_at": "2026/08/25 18:53:47"}
 {"received_at": "2026-08-25T18:53:51.501675+09:00", "client_host": "192.168.150.79", "user_id": "01", "status_flag": "stroop_incongruent_start", "block_id": "3", "sent_at": "2026/08/25 18:53:51"}
 {"received_at": "2026-08-25T18:54:22.224530+09:00", "client_host": "192.168.150.79", "user_id": "01", "status_flag": "stroop_incongruent_end", "block_id": "3", "sent_at": "2026/08/25 18:54:22"}
+{"received_at": "2026-08-26T15:08:14.521973+09:00", "client_host": "192.168.150.79", "user_id": "01", "status_flag": "PLCorrection.csより愛をこめて", "block_id": null, "sent_at": "2026/08/26 15:06:04"}
+{"received_at": "2026-08-26T15:09:20.558284+09:00", "client_host": "192.168.150.79", "user_id": "01", "status_flag": "PLR Calibration Start", "block_id": null, "sent_at": "2026/08/26 15:09:20"}
+{"received_at": "2026-08-26T15:12:21.600271+09:00", "client_host": "192.168.150.79", "user_id": "01", "status_flag": "stroop_congruent_start", "block_id": "1", "sent_at": "2026/08/26 15:12:21"}
+{"received_at": "2026-08-26T15:13:51.737919+09:00", "client_host": "192.168.150.79", "user_id": "01", "status_flag": "stroop_congruent_end", "block_id": "1", "sent_at": "2026/08/26 15:13:51"}
