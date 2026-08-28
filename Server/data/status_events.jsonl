@@ -647,3 +647,13 @@
 {"received_at": "2026-08-26T15:09:20.558284+09:00", "client_host": "192.168.150.79", "user_id": "01", "status_flag": "PLR Calibration Start", "block_id": null, "sent_at": "2026/08/26 15:09:20"}
 {"received_at": "2026-08-26T15:12:21.600271+09:00", "client_host": "192.168.150.79", "user_id": "01", "status_flag": "stroop_congruent_start", "block_id": "1", "sent_at": "2026/08/26 15:12:21"}
 {"received_at": "2026-08-26T15:13:51.737919+09:00", "client_host": "192.168.150.79", "user_id": "01", "status_flag": "stroop_congruent_end", "block_id": "1", "sent_at": "2026/08/26 15:13:51"}
+{"received_at": "2026-08-28T14:47:32.538548+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "experience_start", "block_id": null, "sent_at": "2026/08/28 14:47:32"}
+{"received_at": "2026-08-28T15:31:42.330259+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "experience_start", "block_id": null, "sent_at": "2026/08/28 15:31:42"}
+{"received_at": "2026-08-28T15:32:00.758328+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "stroop_practice_start", "block_id": "practice", "sent_at": "2026/08/28 15:32:00"}
+{"received_at": "2026-08-28T15:32:18.398337+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "experience_start", "block_id": null, "sent_at": "2026/08/28 15:32:18"}
+{"received_at": "2026-08-28T15:34:13.347600+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "experience_start", "block_id": null, "sent_at": "2026/08/28 15:34:13"}
+{"received_at": "2026-08-28T15:35:00.352464+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "stroop_congruent_start", "block_id": "stroop_1", "sent_at": "2026/08/28 15:35:00"}
+{"received_at": "2026-08-28T15:35:10.525508+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "stroop_congruent_end", "block_id": "stroop_1", "sent_at": "2026/08/28 15:35:10"}
+{"received_at": "2026-08-28T15:35:40.536659+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "experience_start", "block_id": null, "sent_at": "2026/08/28 15:35:40"}
+{"received_at": "2026-08-28T15:35:55.425607+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "stroop_congruent_start", "block_id": "stroop_1", "sent_at": "2026/08/28 15:35:55"}
+{"received_at": "2026-08-28T15:36:05.474595+09:00", "client_host": "127.0.0.1", "user_id": "01", "status_flag": "stroop_congruent_end", "block_id": "stroop_1", "sent_at": "2026/08/28 15:36:05"}

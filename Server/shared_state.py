@@ -228,9 +228,10 @@ user_status: Dict[str, userData] = {
     "01": userData(),
     "02": userData(),
     "03": userData(),
-    "30": userData(),
+    "04": userData(),
+    "05": userData(),
+    "06": userData(),
 }
-
 
 def load_user_profiles(csv_path: str | Path, *, create_missing_users: bool = True) -> None:
     # 外部からは基本的にこの関数だけ呼べばよい。

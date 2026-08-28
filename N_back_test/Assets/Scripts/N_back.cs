@@ -89,6 +89,7 @@ public class N_back : MonoBehaviour
     public float stimulusDisplayDuration = 0.5f; // 文字を表示する時間
     public float timeWaitOneTask = 2f; // 十字を表示する刺激間隔
     public float timeLimit = 120f; // 1タスク全体の時間
+    public float practiceTimeLimit = 45f; // 練習ブロックの制限時間
     [Header("Session fixation")]
     public float sessionFixationDuration = 120f; // 最初のセッション前とセッション間に「+」を表示する時間
     private float timeHoleTask = 0f; // 経過時間
@@ -130,6 +131,7 @@ public class N_back : MonoBehaviour
         n_back_num = Mathf.Clamp(n_back_num, minNBackNum, maxNBackNum);
         timeWaitOneTask = Mathf.Max(minTimeWaitOneTask, timeWaitOneTask);
         timeLimit = Mathf.Max(minTimeLimit, timeLimit);
+        practiceTimeLimit = Mathf.Max(minTimeLimit, practiceTimeLimit);
 
         SetupSettingInputFields();
         UpdateTitleText();
@@ -193,7 +195,7 @@ public class N_back : MonoBehaviour
         StartCurrentNBackBlock();
     }
 
-    // 本編の割当を進めずに、1-back課題を練習として開始する
+    // 本編の割当を進めずに、2-back課題を練習として開始する
     public void StartPracticeNBack()
     {
         if (isWorking || isSessionFixationWorking)
@@ -208,8 +210,8 @@ public class N_back : MonoBehaviour
             return;
         }
 
-        // 練習は常に1-backとし、割当のcurrentAssignmentIndexは変更しない
-        SetNbackNum(1);
+        // 練習は常に2-backとし、割当のcurrentAssignmentIndexは変更しない
+        SetNbackNum(2);
         if (!LoadPattern())
         {
             RestoreAssignedNBackDisplay();
@@ -232,7 +234,7 @@ public class N_back : MonoBehaviour
         isPracticeMode = true;
         isWorking = true;
 
-        textBlockTitle.text = "N back practice. 1 back mode";
+        textBlockTitle.text = "N back practice. 2 back mode";
         textResult.text = "";
         textQuestionNum.text = "";
         buttonStart.SetActive(false);
@@ -241,7 +243,7 @@ public class N_back : MonoBehaviour
         parentNextNback.SetActive(false);
 
         // 練習データを本編と混同しないため、RequestSenderへの通知は行わない
-        Debug.Log("1-back practice started.");
+        Debug.Log("2-back practice started.");
     }
 
     // 練習終了後に、本編で次に実施するN-back条件をUIへ戻す
@@ -768,7 +770,8 @@ public class N_back : MonoBehaviour
             textResult.enabled = false;
 
             // N-backタスク全体の制限時間中
-            if (timeHoleTask < timeLimit && outTextCount < loadedPattern.stimuli.Length)
+            float activeTimeLimit = isPracticeMode ? practiceTimeLimit : timeLimit;
+            if (timeHoleTask < activeTimeLimit && outTextCount < loadedPattern.stimuli.Length)
             {
                 if (!isTextDisplayed)
                 {

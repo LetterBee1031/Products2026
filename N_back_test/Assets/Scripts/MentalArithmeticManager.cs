@@ -76,6 +76,7 @@ public class MentalArithmeticManager : MonoBehaviour
 
     [Header("Server")]
     [SerializeField] private RequestSender requestSender;
+    [SerializeField] private NasaTlxManager nasaTlxManager;
 
     private const int DefaultDurationSeconds = 120; 
     private const int MinDurationSeconds = 30;
@@ -107,6 +108,7 @@ public class MentalArithmeticManager : MonoBehaviour
     private string activeMentalArithmeticStatusName;
     private string activeMentalArithmeticBlockId;
     private bool isMentalArithmeticStatusActive;
+    private string pendingNasaTlxBlockId;
 
     private void Awake()
     {
@@ -117,7 +119,13 @@ public class MentalArithmeticManager : MonoBehaviour
             if (eventSystem != null)
             {
                 requestSender = eventSystem.GetComponent<RequestSender>();
+                nasaTlxManager = eventSystem.GetComponent<NasaTlxManager>();
             }
+        }
+
+        if (nasaTlxManager == null)
+        {
+            nasaTlxManager = FindFirstObjectByType<NasaTlxManager>();
         }
 
         // RequestSenderに設定された被験者IDを暗算ログでも共通利用する。
@@ -265,6 +273,7 @@ public class MentalArithmeticManager : MonoBehaviour
             return;
         }
 
+        pendingNasaTlxBlockId = null;
         StartTaskCoroutine(RunSelectedBlock(difficulty, blockId));
     }
 
@@ -300,7 +309,7 @@ public class MentalArithmeticManager : MonoBehaviour
         blockActive = true;
         SendMentalArithmeticStartStatus(
             difficulty.ToString(),
-            blockId.ToString(CultureInfo.InvariantCulture));
+            "mental_arithmetic_" + blockId.ToString(CultureInfo.InvariantCulture));
 
         // 同じ難易度でも毎回異なる順番になるよう、開始時にシャッフルする。
         Shuffle(problemPools[difficulty]);
@@ -460,6 +469,7 @@ public class MentalArithmeticManager : MonoBehaviour
     {
         // 最終ブロック終了時にも保存し、最後の状態を確実にファイルへ反映する。
         SaveLogsToCsv();
+        pendingNasaTlxBlockId = activeMentalArithmeticBlockId;
         SendMentalArithmeticEndStatus();
         state = TaskState.Complete;
         taskCoroutine = null;
@@ -469,6 +479,27 @@ public class MentalArithmeticManager : MonoBehaviour
         difficultyText.text = string.Empty;
         feedbackText.text = string.Empty;
         Debug.Log($"Mental arithmetic log saved: {csvFilePath}");
+    }
+
+    // 結果画面の遷移ボタンから呼び出し、完了した暗算ブロックのNASA-TLXを開始する
+    public void MoveToNasaTlxQuestionnaire()
+    {
+        if (state != TaskState.Complete || string.IsNullOrWhiteSpace(pendingNasaTlxBlockId))
+        {
+            Debug.LogWarning(
+                "MentalArithmeticManager: completed block for NASA-TLX is not available.");
+            return;
+        }
+
+        if (nasaTlxManager == null)
+        {
+            Debug.LogError("MentalArithmeticManager: NasaTlxManager is not assigned.");
+            return;
+        }
+
+        string blockId = pendingNasaTlxBlockId;
+        pendingNasaTlxBlockId = null;
+        nasaTlxManager.StartQuestionnaire(blockId);
     }
 
     // 暗算課題の開始フラグをサーバに送信する。

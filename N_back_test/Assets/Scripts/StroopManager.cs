@@ -56,6 +56,7 @@ public class StroopManager : MonoBehaviour
     // Inspectorで未設定の場合は、Awakeでシーン内から自動取得する。
     [Header("Server")]
     [SerializeField] private RequestSender requestSender;
+    [SerializeField] private NasaTlxManager nasaTlxManager;
 
     // ここシーン上からいじれるように 
     [Header("Timing (seconds)")]
@@ -100,6 +101,7 @@ public class StroopManager : MonoBehaviour
     private string activeStroopStatusName;
     private string activeStroopBlockId;
     private bool isStroopStatusActive;
+    private string pendingNasaTlxBlockId;
 
     [SerializeField] private InputActionAsset inputActions;
 
@@ -118,7 +120,13 @@ public class StroopManager : MonoBehaviour
             if (eventSystem != null)
             {
                 requestSender = eventSystem.GetComponent<RequestSender>();
+                nasaTlxManager = eventSystem.GetComponent<NasaTlxManager>();
             }
+        }
+
+        if (nasaTlxManager == null)
+        {
+            nasaTlxManager = FindFirstObjectByType<NasaTlxManager>();
         }
 
         // RequestSenderと同じ被験者IDをログに使用する。
@@ -189,6 +197,7 @@ public class StroopManager : MonoBehaviour
         }
 
         // Practiceは各条件10試行を条件ごとのまとまりとして実施する。
+        pendingNasaTlxBlockId = null;
         trials.Clear();
         AddTrials(StroopCondition.Congruent, 10, true);
         AddTrials(StroopCondition.Neutral, 10, true);
@@ -239,10 +248,12 @@ public class StroopManager : MonoBehaviour
         }
 
         // 本試行は同一条件を、設定した制限時間が経過するまで繰り返す。
+        pendingNasaTlxBlockId = null;
         trials.Clear();
 
         currentBlockName = "Block " + blockNumber;
-        SendStroopStartStatus(condition.ToString(), blockNumber.ToString(CultureInfo.InvariantCulture));
+        string blockId = "stroop_" + blockNumber.ToString(CultureInfo.InvariantCulture);
+        SendStroopStartStatus(condition.ToString(), blockId);
         StartCoroutine(RunTimedBlock(condition));
     }
 
@@ -340,7 +351,28 @@ public class StroopManager : MonoBehaviour
             Time.realtimeSinceStartup - blockStartTime,
             completedTrialCount,
             correctCount);
+        pendingNasaTlxBlockId = activeStroopBlockId;
         SendStroopEndStatus();
+    }
+
+    // 結果画面の遷移ボタンから呼び出し、完了したStroopブロックのNASA-TLXを開始する
+    public void MoveToNasaTlxQuestionnaire()
+    {
+        if (state != TrialState.Results || string.IsNullOrWhiteSpace(pendingNasaTlxBlockId))
+        {
+            Debug.LogWarning("StroopManager: completed block for NASA-TLX is not available.");
+            return;
+        }
+
+        if (nasaTlxManager == null)
+        {
+            Debug.LogError("StroopManager: NasaTlxManager is not assigned.");
+            return;
+        }
+
+        string blockId = pendingNasaTlxBlockId;
+        pendingNasaTlxBlockId = null;
+        nasaTlxManager.StartQuestionnaire(blockId);
     }
 
     // 1トライアルの実行
