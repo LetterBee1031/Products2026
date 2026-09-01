@@ -120,165 +120,6 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
-        // selectUI = GameObject.Find("SelectUI"); // 災害選択UIの取得
-        // beforeExprcExpUI = GameObject.Find("BeforeExperienceExplainUI");
-        // startUI = GameObject.Find("StartUI");
-        // expInsideUI = GameObject.Find("ExplainDisplayInsideUI");
-        // expOutsideUI = GameObject.Find("ExplainDisplayOutsideUI");
-        // endUI = GameObject.Find("EndUI");
-
-        // //制作・協力のテキストの取得
-        // //jpProductionSelectText = GameObject.Find("JpProductionSelect").GetComponent<TextMeshProUGUI>();
-        // jpProductionExplainText = GameObject.Find("JpProductionExplain").GetComponent<TextMeshProUGUI>();
-        // jpProductionEndText = GameObject.Find("JpProductionEnd").GetComponent<TextMeshProUGUI>();
-
-        // // 災害時動作説明UIに関する各オブジェクトの取得
-        // BeforeExprcExpImage = GameObject.Find("ExpPanel").GetComponent<Image>();
-        // jpBeforeExprcTitleTextTemp[0/*TitleFire*/] = GameObject.Find("JpTitleFire").GetComponent<TextMeshProUGUI>();
-        // jpBeforeExprcTitleTextTemp[1/*TitleRain*/] = GameObject.Find("JpTitleRain").GetComponent<TextMeshProUGUI>();
-        // jpBeforeExprcTitleTextTemp[2/*TitleEarth*/] = GameObject.Find("JpTitleEarth").GetComponent<TextMeshProUGUI>();
-        // jpBeforeExprcTitleTextTemp[3/*TitleElect*/] = GameObject.Find("JpTitleElectrocity").GetComponent<TextMeshProUGUI>();
-
-        // jpBeforeExprcExpTextTemp[0/*ExpFire1*/] = GameObject.Find("JpExpFire1").GetComponent<TextMeshProUGUI>();
-        // jpBeforeExprcExpTextTemp[1/*ExpFire2*/] = GameObject.Find("JpExpFire2").GetComponent<TextMeshProUGUI>();
-        // jpBeforeExprcExpTextTemp[2/*ExpRain1*/] = GameObject.Find("JpExpRain1").GetComponent<TextMeshProUGUI>();
-        // jpBeforeExprcExpTextTemp[3/*ExpRain2*/] = GameObject.Find("JpExpRain2").GetComponent<TextMeshProUGUI>();
-        // jpBeforeExprcExpTextTemp[4/*ExpEarth1*/] = GameObject.Find("JpExpEarth1").GetComponent<TextMeshProUGUI>();
-        // jpBeforeExprcExpTextTemp[5/*ExpEarth2*/] = GameObject.Find("JpExpEarth2").GetComponent<TextMeshProUGUI>();
-        // jpBeforeExprcExpTextTemp[6/*ExpElect1*/] = GameObject.Find("JpExpElectrocity1").GetComponent<TextMeshProUGUI>();
-        // jpBeforeExprcExpTextTemp[7/*ExpElect2*/] = GameObject.Find("JpExpElectrocity2").GetComponent<TextMeshProUGUI>();
-
-        // beforeExprcExpPngTemp[0/*PngAnnounceFire1*/] = GameObject.Find("PngAnnounceFire1").GetComponent<Image>();
-        // beforeExprcExpPngTemp[1/*PngAnnounceFire2*/] = GameObject.Find("PngAnnounceFire2").GetComponent<Image>();
-        // beforeExprcExpPngTemp[2/*PngAnnounceRain1*/] = GameObject.Find("PngAnnounceRain1").GetComponent<Image>();
-        // beforeExprcExpPngTemp[3/*PngAnnounceRain2*/] = GameObject.Find("PngAnnounceRain2").GetComponent<Image>();
-        // beforeExprcExpPngTemp[4/*PngAnnounceElectrocity1*/] = GameObject.Find("PngAnnounceEarth1").GetComponent<Image>();
-        // beforeExprcExpPngTemp[5/*PngAnnounceElectrocity2*/] = GameObject.Find("PngAnnounceEarth2").GetComponent<Image>();
-        // beforeExprcExpPngTemp[6/*PngAnnounceEarth1*/] = GameObject.Find("PngAnnounceElectrocity1").GetComponent<Image>();
-        // beforeExprcExpPngTemp[7/*PngAnnounceEarth2*/] = GameObject.Find("PngAnnounceElectrocity2").GetComponent<Image>();
-
-
-        // // jpBeforeExprcExpGifTemp[0/*AnnounceFire*/] = GameObject.Find("JpImageAnnounceFire").GetComponent<RawImage>();
-        // // jpBeforeExprcExpGifTemp[1/*EscapeFire*/] = GameObject.Find("JpImageEscapeFire").GetComponent<RawImage>();
-
-        // // jpBeforeExprcExpGifTemp[1] = GameObject.Find("JpImageAnnounceFire").GetComponent<RawImage>();
-        // // jpBeforeExprcExpGifTemp[2] = GameObject.Find("JpImageEscapeFire").GetComponent<RawImage>();
-
-        // explainEndButton = GameObject.Find("ButtonExplainEnd"); // 「体験へ」ボタンの取得
-        // explainProceedButton = GameObject.Find("ButtonExplainProceed"); // 「次へ」ボタンの取得
-        // startButton = GameObject.Find("ButtonStart"); // 「体験開始」ボタンの取得
-
-
-        // // エレベーター内ディスプレイの表示説明UIに関する各オブジェクトの取得
-        // expInsideDisplayImage = GameObject.Find("ExpInsideDisplayPanel").GetComponent<Image>();
-        // jpExpInsideDisplayTitle = GameObject.Find("JpExpInsideDisplayTitle").GetComponent<TextMeshProUGUI>();
-        // jpExpInsideDisplayText[0] = GameObject.Find("JpExpInsideDisplayFire").GetComponent<TextMeshProUGUI>();
-        // jpExpInsideDisplayText[1] = GameObject.Find("JpExpInsideDisplayRain").GetComponent<TextMeshProUGUI>();
-        // jpExpInsideDisplayText[2] = GameObject.Find("JpExpInsideDisplayEarth").GetComponent<TextMeshProUGUI>();
-        // jpExpInsideDisplayText[3] = GameObject.Find("JpExpInsideDisplayElectrocity").GetComponent<TextMeshProUGUI>();
-        // jpExpInsideDisplayCaption = GameObject.Find("JpExpInsideDisplayCaption").GetComponent<TextMeshProUGUI>();
-        // expInsideDisplayButton = GameObject.Find("ButtonInsideDisplay");
-
-        // expInsideDisplayPngTemp[0/*PngExpInsideDisplayFire1*/] = GameObject.Find("PngExpInsideDisplayFire1").GetComponent<Image>();
-        // expInsideDisplayPngTemp[1/*PngExpInsideDisplayFire2*/] = GameObject.Find("PngExpInsideDisplayFire2").GetComponent<Image>();
-        // expInsideDisplayPngTemp[2/*PngExpInsideDisplayRain1*/] = GameObject.Find("PngExpInsideDisplayRain1").GetComponent<Image>();
-        // expInsideDisplayPngTemp[3/*PngExpInsideDisplayRain2*/] = GameObject.Find("PngExpInsideDisplayRain2").GetComponent<Image>();
-        // expInsideDisplayPngTemp[4/*PngExpInsideDisplayEarth1*/] = GameObject.Find("PngExpInsideDisplayEarth1").GetComponent<Image>();
-        // expInsideDisplayPngTemp[5/*PngExpInsideDisplayEarth2*/] = GameObject.Find("PngExpInsideDisplayEarth2").GetComponent<Image>();
-        // expInsideDisplayPngTemp[6/*PngExpInsideDisplayElectrocity1*/] = GameObject.Find("PngExpInsideDisplayElectrocity1").GetComponent<Image>();
-        // expInsideDisplayPngTemp[7/*PngExpInsideDisplayElectrocity2*/] = GameObject.Find("PngExpInsideDisplayElectrocity2").GetComponent<Image>();
-
-
-        // // エレベーターの停止階の説明に関する各オブジェクトの取得
-        // jpExpStopFloorTitle = GameObject.Find("JpExpStopFloorTitle").GetComponent<TextMeshProUGUI>();
-        // jpExpStopFloorText[0] = GameObject.Find("JpExpStopFloorFire").GetComponent<TextMeshProUGUI>();
-        // jpExpStopFloorText[1] = GameObject.Find("JpExpStopFloorRain").GetComponent<TextMeshProUGUI>();
-        // jpExpStopFloorText[2] = GameObject.Find("JpExpStopFloorEarth").GetComponent<TextMeshProUGUI>();
-        // jpExpStopFloorText[3] = GameObject.Find("JpExpStopFloorElectrocity").GetComponent<TextMeshProUGUI>();
-        // expStopFloorButton = GameObject.Find("ButtonStopFloor");
-
-        // expStopFloorPngTemp[0/*JpPngExpStopFloorFire*/] = GameObject.Find("JpPngExpStopFloorFire").GetComponent<Image>();
-        // expStopFloorPngTemp[1/*JpPngExpStopFloorRain*/] = GameObject.Find("JpPngExpStopFloorRain").GetComponent<Image>();
-        // expStopFloorPngTemp[2/*JpPngExpStopFloorEarth*/] = GameObject.Find("JpPngExpStopFloorEarth").GetComponent<Image>();
-        // expStopFloorPngTemp[3/*JpPngExpStopFloorElectrocity*/] = GameObject.Find("JpPngExpStopFloorElectrocity").GetComponent<Image>();
-
-        // // エレベーター外ディスプレイの表示説明UIに関する各オブジェクトの取得
-        // expOutsideDisplayImage = GameObject.Find("ExpOutsideDisplayPanel").GetComponent<Image>();
-        // jpExpOutsideDisplayTitle = GameObject.Find("JpExpOutsideDisplayTitle").GetComponent<TextMeshProUGUI>();
-        // jpExpOutsideDisplayText[0] = GameObject.Find("JpExpOutsideDisplayFire").GetComponent<TextMeshProUGUI>();
-        // jpExpOutsideDisplayText[1] = GameObject.Find("JpExpOutsideDisplayRain").GetComponent<TextMeshProUGUI>();
-        // jpExpOutsideDisplayText[2] = GameObject.Find("JpExpOutsideDisplayEarth").GetComponent<TextMeshProUGUI>();
-        // jpExpOutsideDisplayText[3] = GameObject.Find("JpExpOutsideDisplayElectrocity").GetComponent<TextMeshProUGUI>();
-        // jpExpOutsideDisplayCaption = GameObject.Find("JpExpOutsideDisplayCaption").GetComponent<TextMeshProUGUI>();
-        // expOutsideDisplayButton = GameObject.Find("ButtonOutsideDisplay");
-
-        // expOutsideDisplayPngTemp[0/*PngOutsideDisplayFire1*/] = GameObject.Find("PngOutsideDisplayFire1").GetComponent<Image>();
-        // expOutsideDisplayPngTemp[1/*PngOutsideDisplayFire2*/] = GameObject.Find("PngOutsideDisplayFire2").GetComponent<Image>();
-        // expOutsideDisplayPngTemp[2/*PngOutsideDisplayRain1*/] = GameObject.Find("PngOutsideDisplayRain1").GetComponent<Image>();
-        // expOutsideDisplayPngTemp[3/*PngOutsideDisplayRain2*/] = GameObject.Find("PngOutsideDisplayRain2").GetComponent<Image>();
-        // expOutsideDisplayPngTemp[4/*PngOutsideDisplayEarth1*/] = GameObject.Find("PngOutsideDisplayEarth1").GetComponent<Image>();
-        // expOutsideDisplayPngTemp[5/*PngOutsideDisplayEarth2*/] = GameObject.Find("PngOutsideDisplayEarth2").GetComponent<Image>();
-        // expOutsideDisplayPngTemp[6/*PngOutsideDisplayElectrocity1*/] = GameObject.Find("PngOutsideDisplayElectrocity1").GetComponent<Image>();
-        // expOutsideDisplayPngTemp[7/*PngOutsideDisplayElectrocity2*/] = GameObject.Find("PngOutsideDisplayElectrocity2").GetComponent<Image>();
-
-        // // 体験終了UIに関する各オブジェクトの取得
-        // endImage = GameObject.Find("EndPanel").GetComponent<Image>();
-        // jpEndTitle = GameObject.Find("JpEndTitle").GetComponent<TextMeshProUGUI>();
-        // jpEndText = GameObject.Find("JpEndText").GetComponent<TextMeshProUGUI>();
-        // endButton = GameObject.Find("ButtonEnd");
-
-        // // 英語
-
-        // // 制作・協力のテキストの取得
-        // //jpProductionSelectText = GameObject.Find("JpProductionSelect").GetComponent<TextMeshProUGUI>();
-        // enProductionExplainText = GameObject.Find("EnProductionExplain").GetComponent<TextMeshProUGUI>();
-        // enProductionEndText = GameObject.Find("EnProductionEnd").GetComponent<TextMeshProUGUI>();
-
-        // // // 災害時動作説明UIに関する各オブジェクトの取得
-        // enBeforeExprcTitleTextTemp[0/*TitleFire*/] = GameObject.Find("EnTitleFire").GetComponent<TextMeshProUGUI>();
-        // enBeforeExprcTitleTextTemp[1/*TitleRain*/] = GameObject.Find("EnTitleRain").GetComponent<TextMeshProUGUI>();
-        // enBeforeExprcTitleTextTemp[2/*TitleEarth*/] = GameObject.Find("EnTitleEarth").GetComponent<TextMeshProUGUI>();
-        // enBeforeExprcTitleTextTemp[3/*TitleElect*/] = GameObject.Find("EnTitleElectrocity").GetComponent<TextMeshProUGUI>();
-
-        // enBeforeExprcExpTextTemp[0/*ExpFire1*/] = GameObject.Find("EnExpFire1").GetComponent<TextMeshProUGUI>();
-        // enBeforeExprcExpTextTemp[1/*ExpFire2*/] = GameObject.Find("EnExpFire2").GetComponent<TextMeshProUGUI>();
-        // enBeforeExprcExpTextTemp[2/*ExpRain1*/] = GameObject.Find("EnExpRain1").GetComponent<TextMeshProUGUI>();
-        // enBeforeExprcExpTextTemp[3/*ExpRain2*/] = GameObject.Find("EnExpRain2").GetComponent<TextMeshProUGUI>();
-        // enBeforeExprcExpTextTemp[4/*ExpEarth1*/] = GameObject.Find("EnExpEarth1").GetComponent<TextMeshProUGUI>();
-        // enBeforeExprcExpTextTemp[5/*ExpEarth2*/] = GameObject.Find("EnExpEarth2").GetComponent<TextMeshProUGUI>();
-        // enBeforeExprcExpTextTemp[6/*ExpElect1*/] = GameObject.Find("EnExpElectrocity1").GetComponent<TextMeshProUGUI>();
-        // enBeforeExprcExpTextTemp[7/*ExpElect2*/] = GameObject.Find("EnExpElectrocity2").GetComponent<TextMeshProUGUI>();
-
-        // // エレベーター内ディスプレイの表示説明UIに関する各オブジェクトの取得
-        // enExpInsideDisplayTitle = GameObject.Find("EnExpInsideDisplayTitle").GetComponent<TextMeshProUGUI>();
-        // enExpInsideDisplayText[0] = GameObject.Find("EnExpInsideDisplayFire").GetComponent<TextMeshProUGUI>();
-        // enExpInsideDisplayText[1] = GameObject.Find("EnExpInsideDisplayRain").GetComponent<TextMeshProUGUI>();
-        // enExpInsideDisplayText[2] = GameObject.Find("EnExpInsideDisplayEarth").GetComponent<TextMeshProUGUI>();
-        // enExpInsideDisplayText[3] = GameObject.Find("EnExpInsideDisplayElectrocity").GetComponent<TextMeshProUGUI>();
-        // enExpInsideDisplayCaption = GameObject.Find("EnExpInsideDisplayCaption").GetComponent<TextMeshProUGUI>();
-
-        // // エレベーターの停止階の説明に関する各オブジェクトの取得
-        // enExpStopFloorTitle = GameObject.Find("EnExpStopFloorTitle").GetComponent<TextMeshProUGUI>();
-        // enExpStopFloorText[0] = GameObject.Find("EnExpStopFloorFire").GetComponent<TextMeshProUGUI>();
-        // enExpStopFloorText[1] = GameObject.Find("EnExpStopFloorRain").GetComponent<TextMeshProUGUI>();
-        // enExpStopFloorText[2] = GameObject.Find("EnExpStopFloorEarth").GetComponent<TextMeshProUGUI>();
-        // enExpStopFloorText[3] = GameObject.Find("EnExpStopFloorElectrocity").GetComponent<TextMeshProUGUI>();
-
-        // // エレベーター外ディスプレイの表示説明UIに関する各オブジェクトの取得
-        // enExpOutsideDisplayTitle = GameObject.Find("EnExpOutsideDisplayTitle").GetComponent<TextMeshProUGUI>();
-        // enExpOutsideDisplayText[0] = GameObject.Find("EnExpOutsideDisplayFire").GetComponent<TextMeshProUGUI>();
-        // enExpOutsideDisplayText[1] = GameObject.Find("EnExpOutsideDisplayRain").GetComponent<TextMeshProUGUI>();
-        // enExpOutsideDisplayText[2] = GameObject.Find("EnExpOutsideDisplayEarth").GetComponent<TextMeshProUGUI>();
-        // enExpOutsideDisplayText[3] = GameObject.Find("EnExpOutsideDisplayElectrocity").GetComponent<TextMeshProUGUI>();
-        // enExpOutsideDisplayCaption = GameObject.Find("EnExpOutsideDisplayCaption").GetComponent<TextMeshProUGUI>();
-
-        // // 体験終了UIに関する各オブジェクトの取得
-        // enEndTitle = GameObject.Find("EnEndTitle").GetComponent<TextMeshProUGUI>();
-        // enEndText = GameObject.Find("EnEndText").GetComponent<TextMeshProUGUI>();
-
-        // jpTexts = GameObject.FindGameObjectsWithTag("JpText");
-        // enTexts = GameObject.FindGameObjectsWithTag("EnText");
-
         // 日本語体験前説明テキストのdictionaryへの登録
         jpBeforeExprcExpText["fire"] = new Dictionary<int, TextMeshProUGUI>();
         jpBeforeExprcExpText["rain"] = new Dictionary<int, TextMeshProUGUI>();
@@ -385,6 +226,8 @@ public class UIController : MonoBehaviour
     {
         Debug.Log("SetBeforeExprcExpUI Start");
         beforeExprcExpUI.SetActive(flag);
+
+        
         
         if (flag)
         {
@@ -530,6 +373,7 @@ public class UIController : MonoBehaviour
     }
     public void SetExpStopFloorUI(int disNum, bool flag)
     {
+        
         // UIの有効化・無効化
         expInsideUI.SetActive(flag);
         expStopFloorButton.SetActive(flag);
@@ -543,32 +387,32 @@ public class UIController : MonoBehaviour
             enExpStopFloorTitle.enabled = flag;
             enExpStopFloorText[disNum].enabled = flag;
 
-        // string disStr;
-        // switch (disNum)
-        // {
-        //     case 0:
-        //         disStr = "fire";
-        //         break;
-        //     case 1:
-        //         disStr = "rain";
-        //         break;
-        //     case 2:
-        //         disStr = "earth";
-        //         break;
-        //     case 3:
-        //         disStr = "elect";
-        //         break;
-        //     default:
-        //         disStr = "false";
-        //         break;
-        // }
+        string disStr;
+        switch (disNum)
+        {
+            case 0:
+                disStr = "fire";
+                break;
+            case 1:
+                disStr = "rain";
+                break;
+            case 2:
+                disStr = "earth";
+                break;
+            case 3:
+                disStr = "elect";
+                break;
+            default:
+                disStr = "false";
+                break;
+        }
 
         //     // 各画像の表示
-        //     if (expStopFloorPng.ContainsKey(disStr))
-        //     {
-        //         expStopFloorPng[disStr][1].enabled = true;
-        //         Debug.Log("expStopFloorPng displayed");
-        //     }
+            if (expStopFloorPng.ContainsKey(disStr))
+            {
+                expStopFloorPng[disStr][1].enabled = true;
+                Debug.Log("expStopFloorPng displayed");
+            }
         }
         else
         {
@@ -581,14 +425,14 @@ public class UIController : MonoBehaviour
                 enExpStopFloorText[i].enabled = false;
             }
 
-            // //画像の非表示
-            // foreach (var disaster in expStopFloorPng)
-            // {
-            //     foreach (var image in disaster.Value)
-            //     {
-            //         image.Value.enabled = false;
-            //     }
-            // }
+            //画像の非表示
+            foreach (var disaster in expStopFloorPng)
+            {
+                foreach (var image in disaster.Value)
+                {
+                    image.Value.enabled = false;
+                }
+            }
         }
     }
 

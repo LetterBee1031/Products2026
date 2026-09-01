@@ -66,6 +66,7 @@ public class MentalArithmeticManager : MonoBehaviour
     [SerializeField] private TMP_Text timerText; // 経過時間とか
     [SerializeField] private TMP_Text difficultyText; // 難易度のテキスト Low/Medium/High
     [SerializeField] private TMP_Text feedbackText; // 〇×
+    [SerializeField] private GameObject buttonMoveForQuestion; // 結果画面への遷移ボタン
 
     [Header("Settings")]
     [SerializeField] private TMP_InputField durationInputField; //制限時間のフィールド
@@ -112,6 +113,7 @@ public class MentalArithmeticManager : MonoBehaviour
 
     private void Awake()
     {
+        buttonMoveForQuestion.SetActive(false);
         // Inspectorで未設定の場合は、既存シーンと同じEventSystemから取得する。
         if (requestSender == null)
         {
@@ -121,6 +123,7 @@ public class MentalArithmeticManager : MonoBehaviour
                 requestSender = eventSystem.GetComponent<RequestSender>();
                 nasaTlxManager = eventSystem.GetComponent<NasaTlxManager>();
             }
+            
         }
 
         if (nasaTlxManager == null)
@@ -479,6 +482,7 @@ public class MentalArithmeticManager : MonoBehaviour
         difficultyText.text = string.Empty;
         feedbackText.text = string.Empty;
         Debug.Log($"Mental arithmetic log saved: {csvFilePath}");
+        buttonMoveForQuestion.SetActive(true);
     }
 
     // 結果画面の遷移ボタンから呼び出し、完了した暗算ブロックのNASA-TLXを開始する
@@ -500,6 +504,8 @@ public class MentalArithmeticManager : MonoBehaviour
         string blockId = pendingNasaTlxBlockId;
         pendingNasaTlxBlockId = null;
         nasaTlxManager.StartQuestionnaire(blockId);
+        problemText.text = " ";
+        buttonMoveForQuestion.SetActive(false);
     }
 
     // 暗算課題の開始フラグをサーバに送信する。

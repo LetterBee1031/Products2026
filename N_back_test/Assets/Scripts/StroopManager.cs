@@ -43,6 +43,8 @@ public class StroopManager : MonoBehaviour
         public StroopColor color;
     }
 
+    public GameObject ButtonMoveForQuestion;
+
     [Header("UI")]
     [SerializeField] private TMP_Text stimulusText;
     [SerializeField] private TMP_Text instructionText;
@@ -112,6 +114,7 @@ public class StroopManager : MonoBehaviour
 
     private void Awake()
     {
+        ButtonMoveForQuestion.SetActive(false);
         // Inspectorで参照が設定されていない場合にも送信できるようにする。
         // RequestSenderは既存シーンではEventSystemに付いているため、GameObject名から取得する。
         if (requestSender == null)
@@ -320,6 +323,7 @@ public class StroopManager : MonoBehaviour
         stimulusText.text = " ";
         statusText.text = currentBlockName + " 完了";
         resultText.text = string.Format("出題数: {0}\n正答数: {1}", trials.Count, correctCount);
+        ButtonMoveForQuestion.SetActive(true);
         SendStroopEndStatus();
     }
 
@@ -352,6 +356,7 @@ public class StroopManager : MonoBehaviour
             completedTrialCount,
             correctCount);
         pendingNasaTlxBlockId = activeStroopBlockId;
+        ButtonMoveForQuestion.SetActive(true);
         SendStroopEndStatus();
     }
 
@@ -369,7 +374,8 @@ public class StroopManager : MonoBehaviour
             Debug.LogError("StroopManager: NasaTlxManager is not assigned.");
             return;
         }
-
+        resultText.text = " ";
+        ButtonMoveForQuestion.SetActive(false);
         string blockId = pendingNasaTlxBlockId;
         pendingNasaTlxBlockId = null;
         nasaTlxManager.StartQuestionnaire(blockId);
