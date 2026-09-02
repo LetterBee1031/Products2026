@@ -32,6 +32,14 @@ public class UiTextSet
         this.stopFloor = stopFloor;
         this.OutsideDisplay = OutsideDisplay;
     }
+    public UiTextSet(UiTextSet uiTextSet)
+    {
+        this.beforeExp = uiTextSet.beforeExp;
+        this.InsideDisplay = uiTextSet.InsideDisplay;
+        this.stopFloor = uiTextSet.stopFloor;
+        this.OutsideDisplay = uiTextSet.OutsideDisplay;
+    }
+
 }
 
 public class DisasterTextSet 

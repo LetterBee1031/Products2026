@@ -9,6 +9,7 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
+    private readonly DisasterTextSet disasterTextSet = new DisasterTextSet();
     public GameObject selectUI;
     public GameObject beforeExprcExpUI;
     public GameObject startUI;
@@ -23,7 +24,7 @@ public class UIController : MonoBehaviour
 
     //災害説明テキストオブジェクト
     public Image BeforeExprcExpImage;
-    
+
     public TextMeshProUGUI[] jpBeforeExprcTitleTextTemp = new TextMeshProUGUI[4];
     public TextMeshProUGUI[] jpBeforeExprcExpTextTemp = new TextMeshProUGUI[8];
 
@@ -630,6 +631,81 @@ public class UIController : MonoBehaviour
             {
                 enTexts[i].SetActive(true);
             }
+        }
+    }
+
+    public void SetTextByCognitiveLevel(LoadType cogLev){
+        UiTextSet tempFireSet;
+        UiTextSet tempRainSet;
+        UiTextSet tempEarthSet;
+        UiTextSet tempElectSet;
+
+        if(cogLev == LoadType.High)
+        {
+            tempFireSet = new UiTextSet(disasterTextSet.fireTextSets[LoadType.High]);
+            tempRainSet = new UiTextSet(disasterTextSet.rainTextSets[LoadType.High]);
+            tempEarthSet = new UiTextSet(disasterTextSet.earthTextSets[LoadType.High]);
+            tempElectSet = new UiTextSet(disasterTextSet.electTextSets[LoadType.High]);
+        } else if(cogLev == LoadType.Medium)
+        {
+            tempFireSet = new UiTextSet(disasterTextSet.fireTextSets[LoadType.Medium]);
+            tempRainSet = new UiTextSet(disasterTextSet.rainTextSets[LoadType.Medium]);
+            tempEarthSet = new UiTextSet(disasterTextSet.earthTextSets[LoadType.Medium]);
+            tempElectSet = new UiTextSet(disasterTextSet.electTextSets[LoadType.Medium]);
+        } else if(cogLev == LoadType.Low)
+        {
+            tempFireSet = new UiTextSet(disasterTextSet.fireTextSets[LoadType.Low]);
+            tempRainSet = new UiTextSet(disasterTextSet.rainTextSets[LoadType.Low]);
+            tempEarthSet = new UiTextSet(disasterTextSet.earthTextSets[LoadType.Low]);
+            tempElectSet = new UiTextSet(disasterTextSet.electTextSets[LoadType.Low]);
+        } else
+        {
+            tempFireSet = new UiTextSet(disasterTextSet.fireTextSets[LoadType.None]);
+            tempRainSet = new UiTextSet(disasterTextSet.rainTextSets[LoadType.None]);
+            tempEarthSet = new UiTextSet(disasterTextSet.earthTextSets[LoadType.None]);
+            tempElectSet = new UiTextSet(disasterTextSet.electTextSets[LoadType.None]);
+        }
+
+
+        jpBeforeExprcExpText["fire"][1].text =  tempFireSet.beforeExp;
+        jpBeforeExprcExpText["rain"][1].text =  tempRainSet.beforeExp;
+        jpBeforeExprcExpText["earth"][1].text = tempEarthSet.beforeExp;
+        jpBeforeExprcExpText["elect"][1].text = tempElectSet.beforeExp;
+
+        jpExpInsideDisplayText[0].text = tempFireSet.InsideDisplay;
+        jpExpInsideDisplayText[1].text = tempRainSet.InsideDisplay;
+        jpExpInsideDisplayText[2].text = tempEarthSet.InsideDisplay;
+        jpExpInsideDisplayText[3].text = tempElectSet.InsideDisplay;
+
+        jpExpStopFloorText[0].text = tempFireSet.stopFloor;
+        jpExpStopFloorText[1].text = tempRainSet.stopFloor;
+        jpExpStopFloorText[2].text = tempEarthSet.stopFloor;
+        jpExpStopFloorText[3].text = tempElectSet.stopFloor;
+        
+        jpExpOutsideDisplayText[0].text = tempFireSet.OutsideDisplay;
+        jpExpOutsideDisplayText[1].text = tempRainSet.OutsideDisplay;
+        jpExpOutsideDisplayText[2].text = tempEarthSet.OutsideDisplay;
+        jpExpOutsideDisplayText[3].text = tempElectSet.OutsideDisplay;
+    }
+
+    int aaaa_count = 0;
+    public void TestFor_SetTextByCognitiveLevel()
+    {
+        aaaa_count++;
+        switch (aaaa_count)
+        {
+            case 0:
+                SetTextByCognitiveLevel(LoadType.High);
+                break;
+            case 1:
+                SetTextByCognitiveLevel(LoadType.Medium);
+                break;
+            case 2:
+                SetTextByCognitiveLevel(LoadType.Low);
+                break;
+            case 3:
+                SetTextByCognitiveLevel(LoadType.None);
+                break;
         }
     }
 }
