@@ -522,8 +522,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 0.8
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -20269,6 +20269,7 @@ GameObject:
   - component: {fileID: 1678320846}
   - component: {fileID: 1678320845}
   - component: {fileID: 1678320844}
+  - component: {fileID: 1678320847}
   m_Layer: 0
   m_Name: extinguisher
   m_TagString: ExtinguishingAgent
@@ -24123,15 +24124,16 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
-    colliderQueryMode: 0
+    colliderQueryMode: 2
     radiusScale: 1
-    primitives: []
+    primitives:
+    - {fileID: 2115725994}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -25094,6 +25096,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2120820211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -120}
+--- !u!114 &1678320847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678320843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fab1620d2829745bd20091d9bd0cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExtinguishingAgent
 --- !u!1 &1996895869
 GameObject:
   m_ObjectHideFlags: 0
@@ -30074,7 +30088,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireHitBox
   fireHealth: 1
-  extinguishPower: 0.5
+  extinguishPower: 0.005
+  gravityCoeff: -0.2
+  fireParticlesObjects:
+  - {fileID: 1996895869}
+  - {fileID: 1169708730}
+  - {fileID: 646529192}
+  - {fileID: 833923481}
 --- !u!4 &2120820211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7917674758240283209, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
