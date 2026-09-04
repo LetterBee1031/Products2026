@@ -20,6 +20,8 @@ public class CeilingFireController : MonoBehaviour
     [SerializeField] private float surfaceOffset = 0.02f;
     // 1回の衝突で生成するParticle数
     [SerializeField] private int particlesPerCollision = 1;
+    
+    
 
     // 上昇する炎側のParticleSystem
     private ParticleSystem sourceParticleSystem;

@@ -104,6 +104,7 @@ public class FireHitBox : MonoBehaviour
         {
             Extinguish();
         }
+        
     }
 
     private void Extinguish()
