@@ -79,8 +79,8 @@ public class PLRCorrectionSample : MonoBehaviour
     private const float wFixation = 0.26f;
     private const float wBackground = 0.74f;
     
-    // サーバ送信周期
-    private const float EyeDataSendIntervalSeconds = 2.0f;
+    // 10Hzで蓄積した瞳孔データをサーバへ一括送信する周期
+    private const float EyeDataBatchSendIntervalSeconds = 1.0f;
 
     // ============================================================
     // Timers
@@ -90,7 +90,7 @@ public class PLRCorrectionSample : MonoBehaviour
     private float pupilTimer = 0.0f;
     // 2Hz視線取得タイマー
     private float gazeTimer = 0.0f;
-    // 1Hz送信用タイマー
+    // 1Hz一括送信用タイマー
     private float sendTimer = 0.0f;
     // 最後にserver2.pyへ送信した時刻
     private float lastEyeDataSendTime = 0.0f;
@@ -280,11 +280,11 @@ public class PLRCorrectionSample : MonoBehaviour
             SampleGazeAndLuminance2Hz();
         }
 
-        // 1Hz server送信
-        if (sendTimer >= EyeDataSendIntervalSeconds)
+        // 10Hzサンプルを1秒ごとに一括送信
+        if (sendTimer >= EyeDataBatchSendIntervalSeconds)
         {
             sendTimer = 0.0f;
-            SendEyeTrackingData();
+            FlushEyeTrackingData();
         }
     }
 
@@ -446,7 +446,7 @@ public class PLRCorrectionSample : MonoBehaviour
         // 平滑化瞳孔径
         // ========================================================
 
-        // float pupilSmoothed = GetSmoothedValue(pupilMeanSamples);
+        float pupilSmoothed = GetSmoothedValue(pupilMeanSamples);
 
         // ========================================================
         // TEPR計算
@@ -467,17 +467,29 @@ public class PLRCorrectionSample : MonoBehaviour
 
         AddValueSample(teprSamples, teprRaw);
 
-        // float teprSmoothed = GetSmoothedValue(teprSamples);
+        float teprSmoothed = GetSmoothedValue(teprSamples);
 
         // ========================================================
         // 最新値保存
         // ========================================================
 
         latestPupilRaw = pupilRaw;
-        // latestPupilSmoothed = pupilSmoothed;
+        latestPupilSmoothed = pupilSmoothed;
         latestPredictedPupil = predictedPupil;
-        // latestTEPRSmoothed = teprSmoothed;
+        latestTEPRSmoothed = teprSmoothed;
         latestDelayedY = delayedY;
+
+        // 各サンプルの値と取得時刻をRequestSenderの送信待ちキューへ追加する。
+        if (requestSender != null)
+        {
+            requestSender.QueueEyeData(
+                latestPupilRaw,
+                latestPupilSmoothed,
+                latestPredictedPupil,
+                latestTEPRSmoothed,
+                latestDelayedY
+            );
+        }
 
         // ========================================================
         // UI表示
@@ -613,7 +625,7 @@ public class PLRCorrectionSample : MonoBehaviour
         CaptureLuminanceFromScreen(latestScreenGazePoint);
     }
 
-    void SendEyeTrackingData()
+    void FlushEyeTrackingData()
     {
         // RequestSender未設定なら終了
         if (requestSender == null)
@@ -627,16 +639,8 @@ public class PLRCorrectionSample : MonoBehaviour
             return;
         }
 
-        latestPupilSmoothed = GetSmoothedValue(pupilMeanSamples);
-        latestTEPRSmoothed = GetSmoothedValue(teprSamples);
-        // server2.pyへ送信
-        requestSender.PostEyeData(
-            latestPupilRaw,
-            latestPupilSmoothed,
-            latestPredictedPupil,
-            latestTEPRSmoothed,
-            latestDelayedY
-        );
+        // 直近1秒分の10Hzサンプルを1つのHTTPリクエストで送信する。
+        requestSender.FlushEyeDataQueue();
     }
 
     // ============================================================

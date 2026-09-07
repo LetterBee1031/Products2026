@@ -51,8 +51,8 @@ RIDGE_ALPHA = 1.0
 RANDOM_FOREST_MODEL_CACHE: Dict[str, dict] = {}
 
 # design_regression.md に基づく個人別の認知負荷回帰モデル設定。
-# REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate", "tepr"]
-REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate"]
+REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate", "tepr"]
+# REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate"]
 # REGRESSION_FEATURE_COLUMNS: List[str] = ["tepr"]
 # REGRESSION_FEATURE_COLUMNS: List[str] = ["heart_rate", "pupil_diameter_smoothed"]
 # REGRESSION_FEATURE_COLUMNS: List[str] = ["pupil_diameter_smoothed"]
@@ -76,7 +76,7 @@ REGRESSION_FEATURE_SOURCE_COLUMNS: Dict[str, str] = {
 # }
 
 OBJECTIVE_LOAD_MAPPING: Dict[int, float] = {
-    0: 0.25,
+    1: 0.25,
     2: 0.50,
     3: 0.75,
 }
