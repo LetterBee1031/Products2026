@@ -521,7 +521,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 0.8
       minScalar: 0.4
       maxCurve:
@@ -574,7 +574,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -627,7 +627,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -19846,6 +19846,10 @@ MonoBehaviour:
   spreadSpeed: 2
   surfaceOffset: 0.02
   particlesPerCollision: 1
+  minCollisionSpeed: 1
+  maxCollisionSpeed: 5
+  minCeilingSize: 0.3
+  maxCeilingSize: 1.2
 --- !u!1001 &1211325288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29962,6 +29966,10 @@ MonoBehaviour:
   spreadSpeed: 2
   surfaceOffset: 0.02
   particlesPerCollision: 1
+  minCollisionSpeed: 1
+  maxCollisionSpeed: 5
+  minCeilingSize: 0.3
+  maxCeilingSize: 1.2
 --- !u!1 &2115725993
 GameObject:
   m_ObjectHideFlags: 0
