@@ -146,7 +146,8 @@ class BiodataUploadService : Service(), SensorEventListener {
 
         val poster = BiodataPoster(endpointUrl)
         uploadJob = scope.launch {
-            var nextUploadElapsed = SystemClock.elapsedRealtime()
+            // Allow sensor samples to accumulate before the first upload.
+            var nextUploadElapsed = SystemClock.elapsedRealtime() + UPLOAD_INTERVAL_MS
             while (true) {
                 val waitMillis = nextUploadElapsed - SystemClock.elapsedRealtime()
                 if (waitMillis > 0) {
@@ -154,7 +155,7 @@ class BiodataUploadService : Service(), SensorEventListener {
                 }
 
                 runCatching {
-                    // 1秒程度の窓で、IBIは0〜4個までまとめて送信する。
+                    // HRは直近2秒窓の平均、IBIは前回送信後の値を最大4個まで送信する。
                     val current = consumeSnapshot()
                     val sample = BiodataSample(
                         userId = userId,
@@ -194,7 +195,7 @@ class BiodataUploadService : Service(), SensorEventListener {
     }
 
     private fun acquireWakeLock() {
-        // 画面消灯後も2秒ごとの送信ループが止まらないよう、計測中だけCPUを維持する。
+        // 画面消灯後も1秒ごとの送信ループが止まらないよう、計測中だけCPUを維持する。
         val lock = wakeLock ?: return
         if (!lock.isHeld) {
             lock.acquire()
@@ -275,7 +276,7 @@ class BiodataUploadService : Service(), SensorEventListener {
         private const val CHANNEL_ID = "biodata_upload"
         private const val NOTIFICATION_ID = 1001
         private const val MAX_IBI_PER_SAMPLE = 4
-        private const val UPLOAD_INTERVAL_MS = 2_000L
+        private const val UPLOAD_INTERVAL_MS = 1_000L
         private const val MIN_HEART_RATE_WINDOW_MS = 10L
         private const val DEFAULT_HEART_RATE_WINDOW_MS = 2_000L
         private val JST_ZONE: ZoneId = ZoneId.of("Asia/Tokyo")

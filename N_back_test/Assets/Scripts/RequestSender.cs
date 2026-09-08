@@ -28,6 +28,13 @@ public class RequestSender : MonoBehaviour
 
     private const string BaseUrlPrefsKey = "RequestSender.BaseUrl";
 
+    // Eye data is sampled more frequently than it is posted. Keep unsent
+    // samples until a batch has been accepted by the server.
+    private readonly List<EyeDataPost> pendingEyeData = new List<EyeDataPost>();
+    private bool isEyeDataPostRunning = false;
+    private Coroutine eyeDataPostCoroutine;
+    private string cachedDeviceIpAddress;
+
     [Serializable]
 
     // status変更のポストの中身となるクラス
@@ -417,13 +424,45 @@ public class RequestSender : MonoBehaviour
         numericKeyboardInputBinder.BindInteger(userIdInputField, SetUserId);
     }
 
+    public void QueueEyeData(
+        float pupilDiaMeanRaw,
+        float pupilDiaMeanSmoothed,
+        float predictedPupilMm,
+        float tepr,
+        float luminanceY
+    )
+    {
+        pendingEyeData.Add(CreateEyeDataPost(
+            pupilDiaMeanRaw,
+            pupilDiaMeanSmoothed,
+            predictedPupilMm,
+            tepr,
+            luminanceY
+        ));
+    }
+
+    public void FlushEyeDataQueue()
+    {
+        if (isEyeDataPostRunning || pendingEyeData.Count == 0)
+        {
+            return;
+        }
+
+        // Do not remove these records yet. If the request fails, the same
+        // records remain at the front of the queue and are retried next time.
+        var batch = new List<EyeDataPost>(pendingEyeData);
+        isEyeDataPostRunning = true;
+        eyeDataPostCoroutine = StartCoroutine(PostQueuedEyeDataBatchCoroutine(batch));
+    }
+
+    // Keep the previous immediate-send API for callers outside PLRCorrection.
     public void PostEyeData(
-    float pupilDiaMeanRaw,
-    float pupilDiaMeanSmoothed,
-    float predictedPupilMm,
-    float tepr,
-    float luminanceY
-)
+        float pupilDiaMeanRaw,
+        float pupilDiaMeanSmoothed,
+        float predictedPupilMm,
+        float tepr,
+        float luminanceY
+    )
     {
         StartCoroutine(PostEyeDataCoroutine(
             pupilDiaMeanRaw,
@@ -637,12 +676,29 @@ public class RequestSender : MonoBehaviour
         float luminanceY
     )
     {
-        string safeBase = GetSafeBaseUrl();
-        string url = safeBase + "/api/EyeData";
-
         var payload = new List<EyeDataPost>
+        {
+            CreateEyeDataPost(
+                pupilDiaMeanRaw,
+                pupilDiaMeanSmoothed,
+                predictedPupilMm,
+                tepr,
+                luminanceY
+            )
+        };
+
+        yield return PostEyeDataBatchCoroutine(payload, null);
+    }
+
+    private EyeDataPost CreateEyeDataPost(
+        float pupilDiaMeanRaw,
+        float pupilDiaMeanSmoothed,
+        float predictedPupilMm,
+        float tepr,
+        float luminanceY
+    )
     {
-        new EyeDataPost
+        return new EyeDataPost
         {
             user_id = userId,
             pupilDiaMeanRaw = pupilDiaMeanRaw,
@@ -652,9 +708,34 @@ public class RequestSender : MonoBehaviour
             luminanceY = luminanceY,
             sentAt = DateTime.Now.ToString(),
             timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
-            deviceIp = GetDeviceIpAddress()
+            deviceIp = GetCachedDeviceIpAddress()
+        };
+    }
+
+    private IEnumerator PostQueuedEyeDataBatchCoroutine(List<EyeDataPost> batch)
+    {
+        bool succeeded = false;
+        yield return PostEyeDataBatchCoroutine(batch, result => succeeded = result);
+
+        if (succeeded)
+        {
+            // New samples may have been appended during the request. Remove
+            // only the records contained in this completed batch.
+            int sentCount = Mathf.Min(batch.Count, pendingEyeData.Count);
+            pendingEyeData.RemoveRange(0, sentCount);
         }
-    };
+
+        isEyeDataPostRunning = false;
+        eyeDataPostCoroutine = null;
+    }
+
+    private IEnumerator PostEyeDataBatchCoroutine(
+        List<EyeDataPost> payload,
+        Action<bool> onComplete
+    )
+    {
+        string safeBase = GetSafeBaseUrl();
+        string url = safeBase + "/api/EyeData";
 
         string json = JsonConvert.SerializeObject(payload);
         byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
@@ -669,11 +750,16 @@ public class RequestSender : MonoBehaviour
 
             if (req.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogWarning($"EYEDATA_POST failed: {req.error}, body={req.downloadHandler.text}");
+                Debug.LogWarning(
+                    $"EYEDATA_BATCH_POST failed: count={payload.Count}, " +
+                    $"error={req.error}, body={req.downloadHandler.text}"
+                );
+                onComplete?.Invoke(false);
             }
             else
             {
-                Debug.Log($"EYEDATA_POST ok: {req.downloadHandler.text}");
+                Debug.Log($"EYEDATA_BATCH_POST ok: count={payload.Count}");
+                onComplete?.Invoke(true);
             }
         }
     }
@@ -1027,6 +1113,16 @@ public class RequestSender : MonoBehaviour
         return "unknown";
     }
 
+    private string GetCachedDeviceIpAddress()
+    {
+        if (string.IsNullOrEmpty(cachedDeviceIpAddress))
+        {
+            cachedDeviceIpAddress = GetDeviceIpAddress();
+        }
+
+        return cachedDeviceIpAddress;
+    }
+
     // ---- status取得（GET）----
     public IEnumerator GetExpStatus()
     {
@@ -1206,6 +1302,13 @@ public class RequestSender : MonoBehaviour
 
     void OnDisable()
     {
+        if (eyeDataPostCoroutine != null)
+        {
+            StopCoroutine(eyeDataPostCoroutine);
+            eyeDataPostCoroutine = null;
+            isEyeDataPostRunning = false;
+        }
+
         if (baseUrlInputField != null)
         {
             baseUrlInputField.onEndEdit.RemoveListener(SetBaseUrl);

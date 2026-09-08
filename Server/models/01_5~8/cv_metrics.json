@@ -1,0 +1,109 @@
+{
+  "enabled": true,
+  "method": "group_k_fold",
+  "estimator": {
+    "name": "ridge",
+    "alpha": 1.0
+  },
+  "block_count": 4,
+  "n_splits": 4,
+  "folds": [
+    {
+      "fold": 1,
+      "train_blocks": [
+        "5",
+        "6",
+        "7"
+      ],
+      "validation_blocks": [
+        "8"
+      ],
+      "train_samples": 87,
+      "validation_samples": 29,
+      "training_tlx_mean": 5.666666666666667,
+      "training_tlx_std": 4.8362060428489695,
+      "mae": 0.4491605197487628,
+      "rmse": 0.4542189719561389,
+      "r2": -4.184562791628556e+30,
+      "pearson_correlation": null,
+      "clipping_rate": 0.0,
+      "below_zero_rate": 0.0,
+      "above_one_rate": 0.0
+    },
+    {
+      "fold": 2,
+      "train_blocks": [
+        "5",
+        "6",
+        "8"
+      ],
+      "validation_blocks": [
+        "7"
+      ],
+      "train_samples": 87,
+      "validation_samples": 29,
+      "training_tlx_mean": 16.055555555555554,
+      "training_tlx_std": 13.170065196647684,
+      "mae": 0.16111760249925708,
+      "rmse": 0.16497063268898046,
+      "r2": -2.2079682312300334e+30,
+      "pearson_correlation": null,
+      "clipping_rate": 0.0,
+      "below_zero_rate": 0.0,
+      "above_one_rate": 0.0
+    },
+    {
+      "fold": 3,
+      "train_blocks": [
+        "5",
+        "7",
+        "8"
+      ],
+      "validation_blocks": [
+        "6"
+      ],
+      "train_samples": 87,
+      "validation_samples": 29,
+      "training_tlx_mean": 16.22222222222222,
+      "training_tlx_std": 12.993113085566561,
+      "mae": 0.32974305710542673,
+      "rmse": 0.333093800244741,
+      "r2": -1.440232549538352e+32,
+      "pearson_correlation": null,
+      "clipping_rate": 0.0,
+      "below_zero_rate": 0.0,
+      "above_one_rate": 0.0
+    },
+    {
+      "fold": 4,
+      "train_blocks": [
+        "6",
+        "7",
+        "8"
+      ],
+      "validation_blocks": [
+        "5"
+      ],
+      "train_samples": 87,
+      "validation_samples": 29,
+      "training_tlx_mean": 12.722222222222221,
+      "training_tlx_std": 14.811365339153461,
+      "mae": 0.1304922244485024,
+      "rmse": 0.13706506227632148,
+      "r2": -1.5241688300665645e+30,
+      "pearson_correlation": null,
+      "clipping_rate": 0.0,
+      "below_zero_rate": 0.0,
+      "above_one_rate": 0.0
+    }
+  ],
+  "overall": {
+    "mae": 0.2676283509504872,
+    "rmse": 0.30135879578709396,
+    "r2": -0.314152490684787,
+    "pearson_correlation": -0.30365100402924283,
+    "clipping_rate": 0.0,
+    "below_zero_rate": 0.0,
+    "above_one_rate": 0.0
+  }
+}
