@@ -5499,7 +5499,7 @@ IL2CPP_EXTERN_C void MonoScriptData_tF9EE5700FE294192BCCF3A806545924097754811_ma
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* IncrementUIText_get_text_m801A2AA26093BD5463E3D54EAE0FDD5031E17D3A (IncrementUIText_tF29B22345E086474C294CAFCFCEF0F336CA34359* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:20>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:20>
 		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_0 = __this->___m_Text;
 		return L_0;
 	}
@@ -5508,7 +5508,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEA
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IncrementUIText_set_text_mB96496747C8C88000CE74D113D58E00E199D7C81 (IncrementUIText_tF29B22345E086474C294CAFCFCEF0F336CA34359* __this, TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:21>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:21>
 		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_0 = ___0_value;
 		__this->___m_Text = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Text), (void*)L_0);
@@ -5527,7 +5527,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IncrementUIText_Awake_mC97B06670534A04F0
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:31>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:31>
 		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_0 = __this->___m_Text;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -5538,14 +5538,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IncrementUIText_Awake_mC97B06670534A04F0
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:32>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:32>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(_stringLiteral6FFCC6F752BA6424891B27483ED25E91F802EAC5, __this, NULL);
 	}
 
 IL_0019:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:33>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:33>
 		return;
 	}
 }
@@ -5559,10 +5559,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IncrementUIText_IncrementText_m8E724ACEA
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:40>
 		int32_t L_0 = __this->___m_Count;
 		__this->___m_Count = ((int32_t)il2cpp_codegen_add(L_0, 1));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:41>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:41>
 		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_1 = __this->___m_Text;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -5573,7 +5573,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IncrementUIText_IncrementText_m8E724ACEA
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:42>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:42>
 		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_3 = __this->___m_Text;
 		int32_t* L_4 = (int32_t*)(&__this->___m_Count);
 		String_t* L_5;
@@ -5584,7 +5584,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IncrementUIText_IncrementText_m8E724ACEA
 
 IL_0032:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:43>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/IncrementUIText.cs:43>
 		return;
 	}
 }
@@ -5608,7 +5608,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IncrementUIText__ctor_m4699F30CF0F521FCC
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* MultiAnchorTeleportReticle_get_timerProgressFilledImage_mD063D79A5AE6A4DF69A5124830AC65763421105F (MultiAnchorTeleportReticle_t4D51659966078FEA51FBCD719B78BE3479F7A357* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:24>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:24>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_0 = __this->___m_TimerProgressFilledImage;
 		return L_0;
 	}
@@ -5617,7 +5617,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Image_tBC1D03F63BF71132E9A5E472B8742F172A011E
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_set_timerProgressFilledImage_mCD63152891F26C34BD99CF47040FA718C6047929 (MultiAnchorTeleportReticle_t4D51659966078FEA51FBCD719B78BE3479F7A357* __this, Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:25>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:25>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_0 = ___0_value;
 		__this->___m_TimerProgressFilledImage = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_TimerProgressFilledImage), (void*)L_0);
@@ -5628,7 +5628,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_set_timerProg
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* MultiAnchorTeleportReticle_get_destinationIndicator_mD0B1C671B8D888D7FF748CCD05679AAED43FF6B3 (MultiAnchorTeleportReticle_t4D51659966078FEA51FBCD719B78BE3479F7A357* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:37>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:37>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___m_DestinationIndicator;
 		return L_0;
 	}
@@ -5637,7 +5637,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_set_destinationIndicator_mBC1CB49CF3D0023C6D8A416D8A2B73A670D074E8 (MultiAnchorTeleportReticle_t4D51659966078FEA51FBCD719B78BE3479F7A357* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:38>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:38>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ___0_value;
 		__this->___m_DestinationIndicator = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_DestinationIndicator), (void*)L_0);
@@ -5648,7 +5648,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_set_destinati
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* MultiAnchorTeleportReticle_get_potentialDestinationIndicator_m78CDBECFD55188EB14C08879A8760D65AAF64418 (MultiAnchorTeleportReticle_t4D51659966078FEA51FBCD719B78BE3479F7A357* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:50>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:50>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___m_PotentialDestinationIndicator;
 		return L_0;
 	}
@@ -5657,7 +5657,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_set_potentialDestinationIndicator_m1079C828E069DE1448BA741C0892B45840C30775 (MultiAnchorTeleportReticle_t4D51659966078FEA51FBCD719B78BE3479F7A357* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:51>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:51>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ___0_value;
 		__this->___m_PotentialDestinationIndicator = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_PotentialDestinationIndicator), (void*)L_0);
@@ -5668,7 +5668,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_set_potential
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float MultiAnchorTeleportReticle_get_potentialIndicatorUpdateFrequency_m1B6912BBE7610E4E3D1ACE1B23856D17B327729E (MultiAnchorTeleportReticle_t4D51659966078FEA51FBCD719B78BE3479F7A357* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:63>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:63>
 		float L_0 = __this->___m_PotentialIndicatorUpdateFrequency;
 		return L_0;
 	}
@@ -5677,7 +5677,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float MultiAnchorTeleportReticle_get_potentia
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_set_potentialIndicatorUpdateFrequency_mF5A07CFC52577193DF9BCE39444CDF2861CD79C5 (MultiAnchorTeleportReticle_t4D51659966078FEA51FBCD719B78BE3479F7A357* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:64>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:64>
 		float L_0 = ___0_value;
 		__this->___m_PotentialIndicatorUpdateFrequency = L_0;
 		return;
@@ -5696,27 +5696,27 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_OnReticleAtta
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:73>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:73>
 		XRBaseInteractable_t76185BD6DF3BC86B3CDD82E6368C3C7157E39AE4* L_0 = ___0_interactable;
 		__this->___m_AnchorVolume = ((TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0*)IsInstClass((RuntimeObject*)L_0, TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0_il2cpp_TypeInfo_var));
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_AnchorVolume), (void*)((TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0*)IsInstClass((RuntimeObject*)L_0, TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0_il2cpp_TypeInfo_var)));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:74>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = __this->___m_PotentialDestinationIndicator;
 		NullCheck(L_1);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_1, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:75>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:75>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = __this->___m_DestinationIndicator;
 		NullCheck(L_2);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_2, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:76>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:76>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_3 = __this->___m_TimerProgressFilledImage;
 		NullCheck(L_3);
 		Image_set_type_mECB8D34772AA393FFBC867B03D18EA0F1A8546BF(L_3, 3, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:77>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:77>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_4 = __this->___m_TimerProgressFilledImage;
 		NullCheck(L_4);
 		Image_set_fillAmount_m8A9B55F47F966A3214EAC4ACBFE198776A98FAA7(L_4, (0.0f), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:78>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_5 = __this->___m_AnchorVolume;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_6;
@@ -5727,19 +5727,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_OnReticleAtta
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:79>
 		return;
 	}
 
 IL_004f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:81>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:81>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_7 = __this->___m_AnchorVolume;
 		Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31* L_8 = (Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31*)il2cpp_codegen_object_new(Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31_il2cpp_TypeInfo_var);
 		Action_1__ctor_m119FC84288B3E5166500AB8D976F6135420BCAEC(L_8, __this, (intptr_t)((void*)MultiAnchorTeleportReticle_OnDestinationAnchorChanged_mB76D507A3C08350961E25C93D15EAC90A3492A20_RuntimeMethod_var), NULL);
 		NullCheck(L_7);
 		TeleportationMultiAnchorVolume_add_destinationAnchorChanged_mFB365E430B9DF8C9F48465905563E149030C8C80(L_7, L_8, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:82>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:82>
 		return;
 	}
 }
@@ -5755,7 +5755,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_OnReticleDeta
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:87>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:87>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_0 = __this->___m_AnchorVolume;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -5766,22 +5766,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_OnReticleDeta
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:88>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:88>
 		return;
 	}
 
 IL_000f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:90>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:90>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_2 = __this->___m_AnchorVolume;
 		Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31* L_3 = (Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31*)il2cpp_codegen_object_new(Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31_il2cpp_TypeInfo_var);
 		Action_1__ctor_m119FC84288B3E5166500AB8D976F6135420BCAEC(L_3, __this, (intptr_t)((void*)MultiAnchorTeleportReticle_OnDestinationAnchorChanged_mB76D507A3C08350961E25C93D15EAC90A3492A20_RuntimeMethod_var), NULL);
 		NullCheck(L_2);
 		TeleportationMultiAnchorVolume_remove_destinationAnchorChanged_mD878285F1E46919DDE67A207280D713F637E52E9(L_2, L_3, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:91>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:91>
 		__this->___m_AnchorVolume = (TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_AnchorVolume), (void*)(TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0*)NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:92>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:92>
 		return;
 	}
 }
@@ -5796,7 +5796,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_Update_mAE393
 	}
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* V_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:99>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:99>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_0 = __this->___m_AnchorVolume;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -5807,19 +5807,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_Update_mAE393
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:100>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:100>
 		return;
 	}
 
 IL_000f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:102>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:102>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_2 = __this->___m_AnchorVolume;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = TeleportationMultiAnchorVolume_get_destinationAnchor_m8867AD0C9F209FBEAC8E14A53887547329C4D1E8_inline(L_2, NULL);
 		V_0 = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:103>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -5830,7 +5830,7 @@ IL_000f:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:105>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:105>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___m_DestinationIndicator;
 		NullCheck(L_6);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7;
@@ -5840,13 +5840,13 @@ IL_000f:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_8, NULL);
 		MultiAnchorTeleportReticle_PointAtTarget_m68DA8B5FE3864AEF55E72A3FCCC53E2805A16F9B(L_7, L_9, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:106>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:106>
 		return;
 	}
 
 IL_003b:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:109>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:109>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_10 = __this->___m_TimerProgressFilledImage;
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_11 = __this->___m_AnchorVolume;
 		NullCheck(L_11);
@@ -5854,7 +5854,7 @@ IL_003b:
 		L_12 = TeleportationMultiAnchorVolume_get_destinationEvaluationProgress_mA00FA8BCF4AC4B9A68AEA8A12B38C90AC35B4021_inline(L_11, NULL);
 		NullCheck(L_10);
 		Image_set_fillAmount_m8A9B55F47F966A3214EAC4ACBFE198776A98FAA7(L_10, L_12, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:110>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:110>
 		float L_13;
 		L_13 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		float L_14 = __this->___m_LastPotentialIndicatorUpdateTime;
@@ -5865,13 +5865,13 @@ IL_003b:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:111>
 		MultiAnchorTeleportReticle_UpdatePotentialDestinationIndicator_m514BE4CB5D1FCB70B038C8DAB9FFA001EA568506(__this, NULL);
 	}
 
 IL_006b:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:112>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:112>
 		return;
 	}
 }
@@ -5892,11 +5892,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_UpdatePotenti
 	List_1_t991BBC5A1D51F59A450367DF944DAA207F22D06D* V_1 = NULL;
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* V_2 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:116>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:116>
 		float L_0;
 		L_0 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		__this->___m_LastPotentialIndicatorUpdateTime = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:117>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:117>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_1 = __this->___m_AnchorVolume;
 		NullCheck(L_1);
 		TeleportVolumeDestinationSettingsDatumProperty_tDD5453B35B45AEB0427BCD5BE987332B3CD14347* L_2;
@@ -5913,17 +5913,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_UpdatePotenti
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:119>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:119>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = __this->___m_PotentialDestinationIndicator;
 		NullCheck(L_5);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_5, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:120>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:120>
 		return;
 	}
 
 IL_002f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:123>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:123>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_6 = __this->___m_AnchorVolume;
 		NullCheck(L_6);
 		RuntimeObject* L_7;
@@ -5933,13 +5933,13 @@ IL_002f:
 		int32_t L_9;
 		L_9 = InterfaceFuncInvoker1< int32_t, TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* >::Invoke(0, ITeleportationVolumeAnchorFilter_tEB8EF834201983BE3F798013E13B3C1E59CF8D06_il2cpp_TypeInfo_var, L_7, L_8);
 		V_0 = L_9;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:124>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:124>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_10 = __this->___m_AnchorVolume;
 		NullCheck(L_10);
 		List_1_t991BBC5A1D51F59A450367DF944DAA207F22D06D* L_11;
 		L_11 = TeleportationMultiAnchorVolume_get_anchorTransforms_m0D5B37776E774893D31FB4BCE7A5159814E352F9_inline(L_10, NULL);
 		V_1 = L_11;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:125>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:125>
 		int32_t L_12 = V_0;
 		if ((((int32_t)L_12) < ((int32_t)0)))
 		{
@@ -5960,24 +5960,24 @@ IL_002f:
 
 IL_005f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:127>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:127>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = __this->___m_PotentialDestinationIndicator;
 		NullCheck(L_16);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_16, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:128>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:128>
 		return;
 	}
 
 IL_006c:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:131>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:131>
 		List_1_t991BBC5A1D51F59A450367DF944DAA207F22D06D* L_17 = V_1;
 		int32_t L_18 = V_0;
 		NullCheck(L_17);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_19;
 		L_19 = List_1_get_Item_m8EAA91B4CE37CBB6C720FD238E4505097B29FFDA(L_17, L_18, List_1_get_Item_m8EAA91B4CE37CBB6C720FD238E4505097B29FFDA_RuntimeMethod_var);
 		V_2 = L_19;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:132>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:132>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_20 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_21;
@@ -5988,21 +5988,21 @@ IL_006c:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:134>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:134>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22 = __this->___m_PotentialDestinationIndicator;
 		NullCheck(L_22);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_22, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:135>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:135>
 		return;
 	}
 
 IL_008a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:138>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:138>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_23 = __this->___m_PotentialDestinationIndicator;
 		NullCheck(L_23);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_23, (bool)1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:139>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:139>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_24 = __this->___m_PotentialDestinationIndicator;
 		NullCheck(L_24);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_25;
@@ -6012,7 +6012,7 @@ IL_008a:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_27;
 		L_27 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_26, NULL);
 		MultiAnchorTeleportReticle_PointAtTarget_m68DA8B5FE3864AEF55E72A3FCCC53E2805A16F9B(L_25, L_27, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:140>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:140>
 		return;
 	}
 }
@@ -6027,13 +6027,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_OnDestination
 	}
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* V_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:144>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:144>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_0 = ___0_anchorVolume;
 		NullCheck(L_0);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1;
 		L_1 = TeleportationMultiAnchorVolume_get_destinationAnchor_m8867AD0C9F209FBEAC8E14A53887547329C4D1E8_inline(L_0, NULL);
 		V_0 = L_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:145>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:145>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_3;
@@ -6044,19 +6044,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_OnDestination
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:147>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:147>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_4 = __this->___m_TimerProgressFilledImage;
 		NullCheck(L_4);
 		Image_set_fillAmount_m8A9B55F47F966A3214EAC4ACBFE198776A98FAA7(L_4, (1.0f), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:148>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:148>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = __this->___m_PotentialDestinationIndicator;
 		NullCheck(L_5);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_5, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:149>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:149>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___m_DestinationIndicator;
 		NullCheck(L_6);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_6, (bool)1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:150>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:150>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = __this->___m_DestinationIndicator;
 		NullCheck(L_7);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8;
@@ -6071,15 +6071,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_OnDestination
 
 IL_004f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:154>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:154>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_11 = __this->___m_TimerProgressFilledImage;
 		NullCheck(L_11);
 		Image_set_fillAmount_m8A9B55F47F966A3214EAC4ACBFE198776A98FAA7(L_11, (0.0f), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:155>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:155>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = __this->___m_DestinationIndicator;
 		NullCheck(L_12);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_12, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:157>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:157>
 		return;
 	}
 }
@@ -6087,7 +6087,7 @@ IL_004f:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_PointAtTarget_m68DA8B5FE3864AEF55E72A3FCCC53E2805A16F9B (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_indicatorTransform, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_targetPosition, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:161>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:161>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_indicatorTransform;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1 = ___0_indicatorTransform;
 		NullCheck(L_1);
@@ -6104,7 +6104,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_PointAtTarget
 		L_7 = Quaternion_LookRotation_mFB02EDC8F733774DFAC3BEA4B4BB265A228F8307_inline(L_2, L_6, NULL);
 		NullCheck(L_0);
 		Transform_set_rotation_m61340DE74726CF0F9946743A727C4D444397331D(L_0, L_7, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:162>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:162>
 		return;
 	}
 }
@@ -6112,7 +6112,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle_PointAtTarget
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle__ctor_mDFD090626804291A85F87F65C0364E644E8C679C (MultiAnchorTeleportReticle_t4D51659966078FEA51FBCD719B78BE3479F7A357* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:56>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/DemoAssets/Scripts/MultiAnchorTeleportReticle.cs:56>
 		__this->___m_PotentialIndicatorUpdateFrequency = (0.100000001f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -6130,7 +6130,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MultiAnchorTeleportReticle__ctor_mDFD090
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083* ClimbTeleportDestinationIndicator_get_climbTeleportInteractor_m7D72326121F7F8D85696530CB3DBD74CC3B7EE91 (ClimbTeleportDestinationIndicator_t95EC8E13B0E057810A00B57C40978485340B4458* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:22>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:22>
 		ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083* L_0 = __this->___m_ClimbTeleportInteractor;
 		return L_0;
 	}
@@ -6139,7 +6139,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ClimbTeleportInteractor_t9AD38301B02FCB18FB1F
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_set_climbTeleportInteractor_m73F00DFB7D342DD36A1AEFDD12EEF578A3338A43 (ClimbTeleportDestinationIndicator_t95EC8E13B0E057810A00B57C40978485340B4458* __this, ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:23>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:23>
 		ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083* L_0 = ___0_value;
 		__this->___m_ClimbTeleportInteractor = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ClimbTeleportInteractor), (void*)L_0);
@@ -6150,7 +6150,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_set_cl
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ClimbTeleportDestinationIndicator_get_pointerPrefab_m756EC38FEF6CD700628DE348CC9B9314DFFAE601 (ClimbTeleportDestinationIndicator_t95EC8E13B0E057810A00B57C40978485340B4458* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:37>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:37>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___m_PointerPrefab;
 		return L_0;
 	}
@@ -6159,7 +6159,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_set_pointerPrefab_mFF535081916EDD6A212C9426408A50622AE17119 (ClimbTeleportDestinationIndicator_t95EC8E13B0E057810A00B57C40978485340B4458* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:38>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:38>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ___0_value;
 		__this->___m_PointerPrefab = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_PointerPrefab), (void*)L_0);
@@ -6170,7 +6170,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_set_po
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float ClimbTeleportDestinationIndicator_get_pointerDistance_m5570B990CFFDB453865B4300AA7DBD1004B091DD (ClimbTeleportDestinationIndicator_t95EC8E13B0E057810A00B57C40978485340B4458* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:50>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:50>
 		float L_0 = __this->___m_PointerDistance;
 		return L_0;
 	}
@@ -6179,7 +6179,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float ClimbTeleportDestinationIndicator_get_p
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_set_pointerDistance_m4CC6EFB4A610F81F52733DE67108A00864667D8E (ClimbTeleportDestinationIndicator_t95EC8E13B0E057810A00B57C40978485340B4458* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:51>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:51>
 		float L_0 = ___0_value;
 		__this->___m_PointerDistance = L_0;
 		return;
@@ -6205,7 +6205,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnEnab
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:62>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:62>
 		ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083* L_0 = __this->___m_ClimbTeleportInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -6216,7 +6216,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnEnab
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:64>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:64>
 		ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083** L_2 = (ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083**)(&__this->___m_ClimbTeleportInteractor);
 		il2cpp_codegen_runtime_class_init_inline(ComponentLocatorUtility_1_tAC18A5A61768B450C48B27C88825DF21A564EFE7_il2cpp_TypeInfo_var);
 		bool L_3;
@@ -6227,18 +6227,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnEnab
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:66>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteralD37B382C1D3DE2BC274D3AF06C5B5C0484887B86, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:67>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:67>
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(__this, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:68>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:68>
 		return;
 	}
 
 IL_002d:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:72>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:72>
 		ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083* L_4 = __this->___m_ClimbTeleportInteractor;
 		NullCheck(L_4);
 		HoverEnterEvent_t2BDBCA14FF94DA18C9AC12B43297F6C1641788AB* L_5;
@@ -6247,7 +6247,7 @@ IL_002d:
 		UnityAction_1__ctor_m3C8E30AEA90302CA8E564E339058E839E40196F4(L_6, __this, (intptr_t)((void*)ClimbTeleportDestinationIndicator_OnInteractorHoverEntered_mE5C10F13BAE27A02F1D23AAB83CB7BEEE503A566_RuntimeMethod_var), NULL);
 		NullCheck(L_5);
 		UnityEvent_1_AddListener_mAC66156659CCBF4F403AA58A3029F740AB221D8F(L_5, L_6, UnityEvent_1_AddListener_mAC66156659CCBF4F403AA58A3029F740AB221D8F_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:73>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:73>
 		ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083* L_7 = __this->___m_ClimbTeleportInteractor;
 		NullCheck(L_7);
 		HoverExitEvent_t256704BC79FE0AA61EB2DE3FDDF43A1FC97F5832* L_8;
@@ -6256,7 +6256,7 @@ IL_002d:
 		UnityAction_1__ctor_m917A650EF730B0F8CDB9227A03A45B24FB54BCF8(L_9, __this, (intptr_t)((void*)ClimbTeleportDestinationIndicator_OnInteractorHoverExited_m0FD7540E9118A636666D699F21D07E3FD115BB27_RuntimeMethod_var), NULL);
 		NullCheck(L_8);
 		UnityEvent_1_AddListener_m05144EB9F3BFA975DF4C33D66491674CFDF53722(L_8, L_9, UnityEvent_1_AddListener_m05144EB9F3BFA975DF4C33D66491674CFDF53722_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:74>
 		return;
 	}
 }
@@ -6278,9 +6278,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnDisa
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:81>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:81>
 		ClimbTeleportDestinationIndicator_HideIndicator_m75D683EB16C609A5B4A884E29AA507EDA2B070AC(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:83>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:83>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_0 = __this->___m_ActiveTeleportVolume;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -6291,20 +6291,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnDisa
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:85>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_2 = __this->___m_ActiveTeleportVolume;
 		Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31* L_3 = (Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31*)il2cpp_codegen_object_new(Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31_il2cpp_TypeInfo_var);
 		Action_1__ctor_m119FC84288B3E5166500AB8D976F6135420BCAEC(L_3, __this, (intptr_t)((void*)ClimbTeleportDestinationIndicator_OnClimbTeleportDestinationAnchorChanged_m959E66F69F6F86274CD38FF03814864A1D0A4C48_RuntimeMethod_var), NULL);
 		NullCheck(L_2);
 		TeleportationMultiAnchorVolume_remove_destinationAnchorChanged_mD878285F1E46919DDE67A207280D713F637E52E9(L_2, L_3, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:86>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:86>
 		__this->___m_ActiveTeleportVolume = (TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ActiveTeleportVolume), (void*)(TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0*)NULL);
 	}
 
 IL_0032:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:89>
 		ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083* L_4 = __this->___m_ClimbTeleportInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -6315,7 +6315,7 @@ IL_0032:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:91>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:91>
 		ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083* L_6 = __this->___m_ClimbTeleportInteractor;
 		NullCheck(L_6);
 		HoverEnterEvent_t2BDBCA14FF94DA18C9AC12B43297F6C1641788AB* L_7;
@@ -6324,7 +6324,7 @@ IL_0032:
 		UnityAction_1__ctor_m3C8E30AEA90302CA8E564E339058E839E40196F4(L_8, __this, (intptr_t)((void*)ClimbTeleportDestinationIndicator_OnInteractorHoverEntered_mE5C10F13BAE27A02F1D23AAB83CB7BEEE503A566_RuntimeMethod_var), NULL);
 		NullCheck(L_7);
 		UnityEvent_1_RemoveListener_m171EFC9F72CB58EDA4139097DDCA155A3D9C7D33(L_7, L_8, UnityEvent_1_RemoveListener_m171EFC9F72CB58EDA4139097DDCA155A3D9C7D33_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:92>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:92>
 		ClimbTeleportInteractor_t9AD38301B02FCB18FB1FB1B84192C05C731D1083* L_9 = __this->___m_ClimbTeleportInteractor;
 		NullCheck(L_9);
 		HoverExitEvent_t256704BC79FE0AA61EB2DE3FDDF43A1FC97F5832* L_10;
@@ -6337,7 +6337,7 @@ IL_0032:
 
 IL_0078:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:94>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:94>
 		return;
 	}
 }
@@ -6355,7 +6355,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnInte
 	}
 	TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* V_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:98>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:98>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_0 = __this->___m_ActiveTeleportVolume;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -6380,17 +6380,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnInte
 
 IL_001d:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:99>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:99>
 		return;
 	}
 
 IL_001e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:101>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:101>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_5 = V_0;
 		__this->___m_ActiveTeleportVolume = L_5;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ActiveTeleportVolume), (void*)L_5);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:102>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:102>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_6 = __this->___m_ActiveTeleportVolume;
 		NullCheck(L_6);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7;
@@ -6404,20 +6404,20 @@ IL_001e:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:103>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_9 = __this->___m_ActiveTeleportVolume;
 		ClimbTeleportDestinationIndicator_OnClimbTeleportDestinationAnchorChanged_m959E66F69F6F86274CD38FF03814864A1D0A4C48(__this, L_9, NULL);
 	}
 
 IL_0044:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:105>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:105>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_10 = __this->___m_ActiveTeleportVolume;
 		Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31* L_11 = (Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31*)il2cpp_codegen_object_new(Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31_il2cpp_TypeInfo_var);
 		Action_1__ctor_m119FC84288B3E5166500AB8D976F6135420BCAEC(L_11, __this, (intptr_t)((void*)ClimbTeleportDestinationIndicator_OnClimbTeleportDestinationAnchorChanged_m959E66F69F6F86274CD38FF03814864A1D0A4C48_RuntimeMethod_var), NULL);
 		NullCheck(L_10);
 		TeleportationMultiAnchorVolume_add_destinationAnchorChanged_mFB365E430B9DF8C9F48465905563E149030C8C80(L_10, L_11, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:106>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:106>
 		return;
 	}
 }
@@ -6435,7 +6435,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnInte
 	}
 	TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* V_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:110>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:110>
 		HoverExitEventArgs_tFFBECDDAF90BF90AA3B7282FAEF1D8E5D19A5AD6* L_0 = ___0_args;
 		NullCheck(L_0);
 		RuntimeObject* L_1;
@@ -6461,24 +6461,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnInte
 
 IL_001d:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:111>
 		return;
 	}
 
 IL_001e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:113>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:113>
 		ClimbTeleportDestinationIndicator_HideIndicator_m75D683EB16C609A5B4A884E29AA507EDA2B070AC(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:114>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:114>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_6 = __this->___m_ActiveTeleportVolume;
 		Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31* L_7 = (Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31*)il2cpp_codegen_object_new(Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31_il2cpp_TypeInfo_var);
 		Action_1__ctor_m119FC84288B3E5166500AB8D976F6135420BCAEC(L_7, __this, (intptr_t)((void*)ClimbTeleportDestinationIndicator_OnClimbTeleportDestinationAnchorChanged_m959E66F69F6F86274CD38FF03814864A1D0A4C48_RuntimeMethod_var), NULL);
 		NullCheck(L_6);
 		TeleportationMultiAnchorVolume_remove_destinationAnchorChanged_mD878285F1E46919DDE67A207280D713F637E52E9(L_6, L_7, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:115>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:115>
 		__this->___m_ActiveTeleportVolume = (TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ActiveTeleportVolume), (void*)(TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0*)NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:116>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:116>
 		return;
 	}
 }
@@ -6505,15 +6505,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnClim
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_6;
 	memset((&V_6), 0, sizeof(V_6));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:120>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:120>
 		ClimbTeleportDestinationIndicator_HideIndicator_m75D683EB16C609A5B4A884E29AA507EDA2B070AC(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:122>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:122>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_0 = ___0_teleportVolume;
 		NullCheck(L_0);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1;
 		L_1 = TeleportationMultiAnchorVolume_get_destinationAnchor_m8867AD0C9F209FBEAC8E14A53887547329C4D1E8_inline(L_0, NULL);
 		V_0 = L_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:123>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:123>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_3;
@@ -6524,13 +6524,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_OnClim
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:124>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:124>
 		return;
 	}
 
 IL_0017:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:126>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:126>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___m_PointerPrefab;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5;
@@ -6540,7 +6540,7 @@ IL_0017:
 		L_6 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_5, NULL);
 		__this->___m_PointerInstance = L_6;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_PointerInstance), (void*)L_6);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:127>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:127>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_7 = ___0_teleportVolume;
 		NullCheck(L_7);
 		TeleportationProvider_t3FAF889EFC7631ED0DA49A1E0C4CAD650002A9E5* L_8;
@@ -6558,19 +6558,19 @@ IL_0017:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_12;
 		L_12 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_11, NULL);
 		V_1 = L_12;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:128>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:128>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13 = V_1;
 		NullCheck(L_13);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14;
 		L_14 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_13, NULL);
 		V_2 = L_14;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:129>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:129>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15 = V_0;
 		NullCheck(L_15);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
 		L_16 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_15, NULL);
 		V_3 = L_16;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:130>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:130>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17 = V_1;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18 = V_3;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_19 = V_2;
@@ -6580,9 +6580,9 @@ IL_0017:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_21;
 		L_21 = Transform_InverseTransformDirection_m69C077B881A98B08C7F231EFC49429C906FBC575(L_17, L_20, NULL);
 		V_4 = L_21;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:131>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:131>
 		(&V_4)->___z = (0.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:132>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:132>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_22 = V_1;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23 = V_4;
 		NullCheck(L_22);
@@ -6592,7 +6592,7 @@ IL_0017:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_25;
 		L_25 = Vector3_get_normalized_m736BBF65D5CDA7A18414370D15B4DFCC1E466F07_inline((&V_6), NULL);
 		V_5 = L_25;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:133>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:133>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_26 = __this->___m_PointerInstance;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_27 = V_3;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28 = V_5;
@@ -6603,7 +6603,7 @@ IL_0017:
 		L_31 = Vector3_op_Subtraction_mE42023FF80067CB44A1D4A27EB7CF2B24CABB828_inline(L_27, L_30, NULL);
 		NullCheck(L_26);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_26, L_31, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:134>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:134>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_32 = __this->___m_PointerInstance;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_33 = V_5;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_34 = V_1;
@@ -6616,7 +6616,7 @@ IL_0017:
 		L_37 = Quaternion_LookRotation_mFB02EDC8F733774DFAC3BEA4B4BB265A228F8307_inline(L_33, L_36, NULL);
 		NullCheck(L_32);
 		Transform_set_rotation_m61340DE74726CF0F9946743A727C4D444397331D(L_32, L_37, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:135>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:135>
 		return;
 	}
 }
@@ -6630,7 +6630,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_HideIn
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:139>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:139>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_PointerInstance;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -6641,7 +6641,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_HideIn
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:140>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:140>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = __this->___m_PointerInstance;
 		NullCheck(L_2);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3;
@@ -6652,7 +6652,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator_HideIn
 
 IL_001e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:141>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:141>
 		return;
 	}
 }
@@ -6660,7 +6660,7 @@ IL_001e:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClimbTeleportDestinationIndicator__ctor_m58657562C63389620E972C16E3379BE5CF898D42 (ClimbTeleportDestinationIndicator_t95EC8E13B0E057810A00B57C40978485340B4458* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:43>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs:43>
 		__this->___m_PointerDistance = (0.300000012f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -6692,7 +6692,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerAnimator_OnEnable_m49452C70573
 	XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* G_B12_0 = NULL;
 	XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* G_B11_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:43>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:43>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_ThumbstickTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -6725,9 +6725,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerAnimator_OnEnable_m49452C70573
 
 IL_002a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:45>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:45>
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(__this, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:46>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:46>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6;
 		L_6 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_6);
@@ -6737,13 +6737,13 @@ IL_002a:
 		L_8 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral362752735A1275A35E486D0F84ACEF478DC7C88E, L_7, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(L_8, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:47>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:47>
 		return;
 	}
 
 IL_004d:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:50>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:50>
 		XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0* L_9 = __this->___m_StickInput;
 		XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0* L_10 = L_9;
 		if (L_10)
@@ -6765,7 +6765,7 @@ IL_0059:
 
 IL_005e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:51>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:51>
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_11 = __this->___m_TriggerInput;
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_12 = L_11;
 		if (L_12)
@@ -6787,7 +6787,7 @@ IL_006a:
 
 IL_006f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:52>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:52>
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_13 = __this->___m_GripInput;
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_14 = L_13;
 		if (L_14)
@@ -6805,7 +6805,7 @@ IL_007a:
 	{
 		NullCheck(G_B12_0);
 		XRInputValueReader_EnableDirectActionIfModeUsed_m6194760B90FB92168D6DDCC80C20DD180169ACB2(G_B12_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:53>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:53>
 		return;
 	}
 }
@@ -6819,7 +6819,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerAnimator_OnDisable_m7C7FF729D5
 	XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* G_B8_0 = NULL;
 	XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* G_B7_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:57>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:57>
 		XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0* L_0 = __this->___m_StickInput;
 		XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0* L_1 = L_0;
 		if (L_1)
@@ -6841,7 +6841,7 @@ IL_000c:
 
 IL_0011:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:58>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:58>
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_2 = __this->___m_TriggerInput;
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_3 = L_2;
 		if (L_3)
@@ -6863,7 +6863,7 @@ IL_001d:
 
 IL_0022:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:59>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:59>
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_4 = __this->___m_GripInput;
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_5 = L_4;
 		if (L_5)
@@ -6881,7 +6881,7 @@ IL_002d:
 	{
 		NullCheck(G_B8_0);
 		XRInputValueReader_DisableDirectActionIfModeUsed_m533212E2020FD7FA589B8B9F536BD7DC6E8048BC(G_B8_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:60>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:60>
 		return;
 	}
 }
@@ -6902,7 +6902,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerAnimator_Update_m2FF0B6DD834D1
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_3;
 	memset((&V_3), 0, sizeof(V_3));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:64>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:64>
 		XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0* L_0 = __this->___m_StickInput;
 		if (!L_0)
 		{
@@ -6910,13 +6910,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerAnimator_Update_m2FF0B6DD834D1
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:66>
 		XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0* L_1 = __this->___m_StickInput;
 		NullCheck(L_1);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_2;
 		L_2 = XRInputValueReader_1_ReadValue_m5F62621C89CC35067EDFEAE1EBBE315554767369(L_1, XRInputValueReader_1_ReadValue_m5F62621C89CC35067EDFEAE1EBBE315554767369_RuntimeMethod_var);
 		V_0 = L_2;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:67>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:67>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = __this->___m_ThumbstickTransform;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_4 = V_0;
 		float L_5 = L_4.___y;
@@ -6934,7 +6934,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerAnimator_Update_m2FF0B6DD834D1
 
 IL_004f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:70>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:70>
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_13 = __this->___m_TriggerInput;
 		if (!L_13)
 		{
@@ -6942,13 +6942,13 @@ IL_004f:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:72>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:72>
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_14 = __this->___m_TriggerInput;
 		NullCheck(L_14);
 		float L_15;
 		L_15 = XRInputValueReader_1_ReadValue_mAFA366F0FF0345B1A9F16C19F1815D10E427860D(L_14, XRInputValueReader_1_ReadValue_mAFA366F0FF0345B1A9F16C19F1815D10E427860D_RuntimeMethod_var);
 		V_1 = L_15;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:73>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:73>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16 = __this->___m_TriggerTransform;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_17 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&__this->___m_TriggerXAxisRotationRange);
 		float L_18 = L_17->___x;
@@ -6965,7 +6965,7 @@ IL_004f:
 
 IL_0099:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:76>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:76>
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_24 = __this->___m_GripInput;
 		if (!L_24)
 		{
@@ -6973,19 +6973,19 @@ IL_0099:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:78>
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_25 = __this->___m_GripInput;
 		NullCheck(L_25);
 		float L_26;
 		L_26 = XRInputValueReader_1_ReadValue_mAFA366F0FF0345B1A9F16C19F1815D10E427860D(L_25, XRInputValueReader_1_ReadValue_mAFA366F0FF0345B1A9F16C19F1815D10E427860D_RuntimeMethod_var);
 		V_2 = L_26;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:79>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_27 = __this->___m_GripTransform;
 		NullCheck(L_27);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28;
 		L_28 = Transform_get_localPosition_mA9C86B990DF0685EA1061A120218993FDCC60A95(L_27, NULL);
 		V_3 = L_28;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:80>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:80>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_29 = __this->___m_GripTransform;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_30 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&__this->___m_GripRightRange);
 		float L_31 = L_30->___x;
@@ -7007,7 +7007,7 @@ IL_0099:
 
 IL_00f1:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:82>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:82>
 		return;
 	}
 }
@@ -7027,32 +7027,32 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerAnimator__ctor_mF97513FB229FDB
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:16>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:16>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_0;
 		memset((&L_0), 0, sizeof(L_0));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_0), (30.0f), (30.0f), NULL);
 		__this->___m_StickRotationRange = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:19>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:19>
 		XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0* L_1 = (XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0*)il2cpp_codegen_object_new(XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0_il2cpp_TypeInfo_var);
 		XRInputValueReader_1__ctor_mCCE3009EBDA5485C04EB7D2EDC884E3C4F0F185B(L_1, _stringLiteralC125AF6E50565398C00BBB6DCAB135E16BC99BC1, 2, XRInputValueReader_1__ctor_mCCE3009EBDA5485C04EB7D2EDC884E3C4F0F185B_RuntimeMethod_var);
 		__this->___m_StickInput = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_StickInput), (void*)L_1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:26>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:26>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_2;
 		memset((&L_2), 0, sizeof(L_2));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_2), (0.0f), (-15.0f), NULL);
 		__this->___m_TriggerXAxisRotationRange = L_2;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:29>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:29>
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_3 = (XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5*)il2cpp_codegen_object_new(XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5_il2cpp_TypeInfo_var);
 		XRInputValueReader_1__ctor_m2D198A41FE129CDD40C6FDBF537BC35E3C4B6CFB(L_3, _stringLiteralB85E78C75EF1A6F636689BD88A9D6C2A3B2B0A1B, 2, XRInputValueReader_1__ctor_m2D198A41FE129CDD40C6FDBF537BC35E3C4B6CFB_RuntimeMethod_var);
 		__this->___m_TriggerInput = L_3;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_TriggerInput), (void*)L_3);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:36>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:36>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_4;
 		memset((&L_4), 0, sizeof(L_4));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_4), (-0.0125000002f), (-0.0109999999f), NULL);
 		__this->___m_GripRightRange = L_4;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:39>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerAnimator.cs:39>
 		XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5* L_5 = (XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5*)il2cpp_codegen_object_new(XRInputValueReader_1_t7482F990F323B5D373DF221174629A7C3EB97BC5_il2cpp_TypeInfo_var);
 		XRInputValueReader_1__ctor_m2D198A41FE129CDD40C6FDBF537BC35E3C4B6CFB(L_5, _stringLiteralB4FE860573CD6E03F0D1A4378C1F330A3820D8C9, 2, XRInputValueReader_1__ctor_m2D198A41FE129CDD40C6FDBF537BC35E3C4B6CFB_RuntimeMethod_var);
 		__this->___m_GripInput = L_5;
@@ -7073,7 +7073,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerAnimator__ctor_mF97513FB229FDB
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ControllerInputActionManager_get_smoothMotionEnabled_mC5C5B0DDFFB3B0C7CF992B514957970320126873 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:105>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:105>
 		bool L_0 = __this->___m_SmoothMotionEnabled;
 		return L_0;
 	}
@@ -7082,12 +7082,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ControllerInputActionManager_get_smoothM
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_set_smoothMotionEnabled_m914EA661A51A5360145D8F43F7672EC9296F1558 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:108>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:108>
 		bool L_0 = ___0_value;
 		__this->___m_SmoothMotionEnabled = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:109>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:109>
 		ControllerInputActionManager_UpdateLocomotionActions_m30001260A476F7ADC0E807ED5F906387BE78D517(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:110>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:110>
 		return;
 	}
 }
@@ -7095,7 +7095,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_set_smoothM
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ControllerInputActionManager_get_smoothTurnEnabled_m8BA6BF2C1FAD34B8421ADC63FDAC051C753EB641 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:115>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:115>
 		bool L_0 = __this->___m_SmoothTurnEnabled;
 		return L_0;
 	}
@@ -7104,12 +7104,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ControllerInputActionManager_get_smoothT
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_set_smoothTurnEnabled_m2B6FAA6FD9D16B5831A70012A6EAB7B3ED3A8CD0 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:118>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:118>
 		bool L_0 = ___0_value;
 		__this->___m_SmoothTurnEnabled = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:119>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:119>
 		ControllerInputActionManager_UpdateLocomotionActions_m30001260A476F7ADC0E807ED5F906387BE78D517(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:120>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:120>
 		return;
 	}
 }
@@ -7117,7 +7117,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_set_smoothT
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ControllerInputActionManager_get_uiScrollingEnabled_mBA69FF5A5CA03AC72AB6E055F0CF7744F7491225 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:125>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:125>
 		bool L_0 = __this->___m_UIScrollingEnabled;
 		return L_0;
 	}
@@ -7126,12 +7126,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ControllerInputActionManager_get_uiScrol
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_set_uiScrollingEnabled_m8E2885761274BE5200ECBB0D7C1C65A83CA313D0 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:128>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:128>
 		bool L_0 = ___0_value;
 		__this->___m_UIScrollingEnabled = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:129>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:129>
 		ControllerInputActionManager_UpdateUIActions_mEF86876690920BF2368EAD9D90BAB1D08E6F9791(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:130>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:130>
 		return;
 	}
 }
@@ -7168,7 +7168,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_SetupIntera
 	InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* V_3 = NULL;
 	InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* V_4 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:143>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:143>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_0 = __this->___m_NearFarInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7179,7 +7179,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_SetupIntera
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:145>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:145>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_2 = __this->___m_NearFarInteractor;
 		NullCheck(L_2);
 		UIHoverEnterEvent_t4C957A3405A5D9CB867C5EC446620BB4BA7E7298* L_3;
@@ -7188,7 +7188,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_SetupIntera
 		UnityAction_1__ctor_mD4F2DD3BDD2495C5DBD9B73FDA365B7A05DBF472(L_4, __this, (intptr_t)((void*)ControllerInputActionManager_OnUIHoverEntered_m7747AA4001671507477941139B2049FF990A20D9_RuntimeMethod_var), NULL);
 		NullCheck(L_3);
 		UnityEvent_1_AddListener_mFFC598528B87DB66F65FC395BA09A0319CD2BE0E(L_3, L_4, UnityEvent_1_AddListener_mFFC598528B87DB66F65FC395BA09A0319CD2BE0E_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:146>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:146>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_5 = __this->___m_NearFarInteractor;
 		NullCheck(L_5);
 		UIHoverExitEvent_t63E5E9C921AFB8E2CB9CA4D32882DD4F62CD509B* L_6;
@@ -7197,7 +7197,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_SetupIntera
 		UnityAction_1__ctor_mD4F2DD3BDD2495C5DBD9B73FDA365B7A05DBF472(L_7, __this, (intptr_t)((void*)ControllerInputActionManager_OnUIHoverExited_m20EE4DA45F2465E8A6425E87F69020C5882533C4_RuntimeMethod_var), NULL);
 		NullCheck(L_6);
 		UnityEvent_1_AddListener_mFFC598528B87DB66F65FC395BA09A0319CD2BE0E(L_6, L_7, UnityEvent_1_AddListener_mFFC598528B87DB66F65FC395BA09A0319CD2BE0E_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:147>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:147>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_8 = __this->___m_BindingsGroup;
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_9 = __this->___m_NearFarInteractor;
 		NullCheck(L_9);
@@ -7214,7 +7214,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_SetupIntera
 
 IL_006d:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:150>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:150>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_13 = __this->___m_RayInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_14;
@@ -7225,7 +7225,7 @@ IL_006d:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:152>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:152>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_15 = __this->___m_RayInteractor;
 		NullCheck(L_15);
 		SelectEnterEvent_tBA2614C8C25D8794D5804C4F66195D74E64FC5D0* L_16;
@@ -7234,7 +7234,7 @@ IL_006d:
 		UnityAction_1__ctor_mEE39E1A87376378311B4931978E8E07E589E9A24(L_17, __this, (intptr_t)((void*)ControllerInputActionManager_OnRaySelectEntered_m05A00F5AC9CC73F9641F03CE853F21F20338B7B2_RuntimeMethod_var), NULL);
 		NullCheck(L_16);
 		UnityEvent_1_AddListener_mAE71681FB0832FD7DBA813E5ADDBA574EA32EED2(L_16, L_17, UnityEvent_1_AddListener_mAE71681FB0832FD7DBA813E5ADDBA574EA32EED2_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:153>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:153>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_18 = __this->___m_RayInteractor;
 		NullCheck(L_18);
 		SelectExitEvent_t15DC0A39F9657BA9E6BAE6250D8D64C9671201F6* L_19;
@@ -7243,7 +7243,7 @@ IL_006d:
 		UnityAction_1__ctor_mD74501F5FCCC37863163D5E7155B6C8B9B366C40(L_20, __this, (intptr_t)((void*)ControllerInputActionManager_OnRaySelectExited_m2043AA63005912E1603B0017B70B7A089888E0B9_RuntimeMethod_var), NULL);
 		NullCheck(L_19);
 		UnityEvent_1_AddListener_mB662756036996A6B6F83F6492CE9E26797AF9602(L_19, L_20, UnityEvent_1_AddListener_mB662756036996A6B6F83F6492CE9E26797AF9602_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:154>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:154>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_21 = __this->___m_RayInteractor;
 		NullCheck(L_21);
 		UIHoverEnterEvent_t4C957A3405A5D9CB867C5EC446620BB4BA7E7298* L_22;
@@ -7252,7 +7252,7 @@ IL_006d:
 		UnityAction_1__ctor_mD4F2DD3BDD2495C5DBD9B73FDA365B7A05DBF472(L_23, __this, (intptr_t)((void*)ControllerInputActionManager_OnUIHoverEntered_m7747AA4001671507477941139B2049FF990A20D9_RuntimeMethod_var), NULL);
 		NullCheck(L_22);
 		UnityEvent_1_AddListener_mFFC598528B87DB66F65FC395BA09A0319CD2BE0E(L_22, L_23, UnityEvent_1_AddListener_mFFC598528B87DB66F65FC395BA09A0319CD2BE0E_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:155>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:155>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_24 = __this->___m_RayInteractor;
 		NullCheck(L_24);
 		UIHoverExitEvent_t63E5E9C921AFB8E2CB9CA4D32882DD4F62CD509B* L_25;
@@ -7265,12 +7265,12 @@ IL_006d:
 
 IL_00eb:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:158>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:158>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_27 = __this->___m_TeleportMode;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_28;
 		L_28 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_27, NULL);
 		V_0 = L_28;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:159>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:159>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_29 = V_0;
 		if (!L_29)
 		{
@@ -7278,25 +7278,25 @@ IL_00eb:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:161>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:161>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_30 = V_0;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_31 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_31, __this, (intptr_t)((void*)ControllerInputActionManager_OnStartTeleport_mE7F99274DE90EC5AD8234BB0D6010C5FC96AC9FE_RuntimeMethod_var), NULL);
 		NullCheck(L_30);
 		InputAction_add_performed_m0337FFA16EBEF7AE365C3B558CFDFF7BB9747B54(L_30, L_31, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:162>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:162>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_32 = V_0;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_33 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_33, __this, (intptr_t)((void*)ControllerInputActionManager_OnStartLocomotion_m2753A0F4D2ECB0DC422EEE2D1B6BEC4C149EE11C_RuntimeMethod_var), NULL);
 		NullCheck(L_32);
 		InputAction_add_performed_m0337FFA16EBEF7AE365C3B558CFDFF7BB9747B54(L_32, L_33, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:163>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:163>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_34 = V_0;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_35 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_35, __this, (intptr_t)((void*)ControllerInputActionManager_OnCancelTeleport_m4BDF184D63E154479DDB39CEF5798CD7F69563DF_RuntimeMethod_var), NULL);
 		NullCheck(L_34);
 		InputAction_add_canceled_m69EC253E21CC314BFB350A86E294D0651F5ECA77(L_34, L_35, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:164>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:164>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_36 = V_0;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_37 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_37, __this, (intptr_t)((void*)ControllerInputActionManager_OnStopLocomotion_m19B6191B67AFEE79180D158CB052307E0ACF4B42_RuntimeMethod_var), NULL);
@@ -7306,12 +7306,12 @@ IL_00eb:
 
 IL_0142:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:167>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:167>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_38 = __this->___m_TeleportModeCancel;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_39;
 		L_39 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_38, NULL);
 		V_1 = L_39;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:168>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:168>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_40 = V_1;
 		if (!L_40)
 		{
@@ -7319,7 +7319,7 @@ IL_0142:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:170>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:170>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_41 = V_1;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_42 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_42, __this, (intptr_t)((void*)ControllerInputActionManager_OnCancelTeleport_m4BDF184D63E154479DDB39CEF5798CD7F69563DF_RuntimeMethod_var), NULL);
@@ -7329,12 +7329,12 @@ IL_0142:
 
 IL_0163:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:173>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:173>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_43 = __this->___m_Move;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_44;
 		L_44 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_43, NULL);
 		V_2 = L_44;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:174>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:174>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_45 = V_2;
 		if (!L_45)
 		{
@@ -7342,13 +7342,13 @@ IL_0163:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:176>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:176>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_46 = V_2;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_47 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_47, __this, (intptr_t)((void*)ControllerInputActionManager_OnStartLocomotion_m2753A0F4D2ECB0DC422EEE2D1B6BEC4C149EE11C_RuntimeMethod_var), NULL);
 		NullCheck(L_46);
 		InputAction_add_started_m850C46EBBEEFB3F9760AA83BFD6ECA00850657E5(L_46, L_47, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:177>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:177>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_48 = V_2;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_49 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_49, __this, (intptr_t)((void*)ControllerInputActionManager_OnStopLocomotion_m19B6191B67AFEE79180D158CB052307E0ACF4B42_RuntimeMethod_var), NULL);
@@ -7358,12 +7358,12 @@ IL_0163:
 
 IL_0196:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:180>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:180>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_50 = __this->___m_Turn;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_51;
 		L_51 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_50, NULL);
 		V_3 = L_51;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:181>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:181>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_52 = V_3;
 		if (!L_52)
 		{
@@ -7371,13 +7371,13 @@ IL_0196:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:183>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:183>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_53 = V_3;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_54 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_54, __this, (intptr_t)((void*)ControllerInputActionManager_OnStartLocomotion_m2753A0F4D2ECB0DC422EEE2D1B6BEC4C149EE11C_RuntimeMethod_var), NULL);
 		NullCheck(L_53);
 		InputAction_add_started_m850C46EBBEEFB3F9760AA83BFD6ECA00850657E5(L_53, L_54, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:184>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:184>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_55 = V_3;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_56 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_56, __this, (intptr_t)((void*)ControllerInputActionManager_OnStopLocomotion_m19B6191B67AFEE79180D158CB052307E0ACF4B42_RuntimeMethod_var), NULL);
@@ -7387,12 +7387,12 @@ IL_0196:
 
 IL_01c9:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:187>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:187>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_57 = __this->___m_SnapTurn;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_58;
 		L_58 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_57, NULL);
 		V_4 = L_58;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:188>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:188>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_59 = V_4;
 		if (!L_59)
 		{
@@ -7400,13 +7400,13 @@ IL_01c9:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:190>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:190>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_60 = V_4;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_61 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_61, __this, (intptr_t)((void*)ControllerInputActionManager_OnStartLocomotion_m2753A0F4D2ECB0DC422EEE2D1B6BEC4C149EE11C_RuntimeMethod_var), NULL);
 		NullCheck(L_60);
 		InputAction_add_started_m850C46EBBEEFB3F9760AA83BFD6ECA00850657E5(L_60, L_61, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:191>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:191>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_62 = V_4;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_63 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_63, __this, (intptr_t)((void*)ControllerInputActionManager_OnStopLocomotion_m19B6191B67AFEE79180D158CB052307E0ACF4B42_RuntimeMethod_var), NULL);
@@ -7416,7 +7416,7 @@ IL_01c9:
 
 IL_0200:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:193>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:193>
 		return;
 	}
 }
@@ -7450,11 +7450,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_TeardownInt
 	InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* V_3 = NULL;
 	InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* V_4 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:197>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:197>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_0 = __this->___m_BindingsGroup;
 		NullCheck(L_0);
 		BindingsGroup_Clear_m092668459F10E46245228224D1334DAB089B72E3(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:199>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:199>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_1 = __this->___m_NearFarInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -7465,7 +7465,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_TeardownInt
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:201>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:201>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_3 = __this->___m_NearFarInteractor;
 		NullCheck(L_3);
 		UIHoverEnterEvent_t4C957A3405A5D9CB867C5EC446620BB4BA7E7298* L_4;
@@ -7474,7 +7474,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_TeardownInt
 		UnityAction_1__ctor_mD4F2DD3BDD2495C5DBD9B73FDA365B7A05DBF472(L_5, __this, (intptr_t)((void*)ControllerInputActionManager_OnUIHoverEntered_m7747AA4001671507477941139B2049FF990A20D9_RuntimeMethod_var), NULL);
 		NullCheck(L_4);
 		UnityEvent_1_RemoveListener_m01B6B9BBA6AC264F094CE87EA45D542DCAD7B59E(L_4, L_5, UnityEvent_1_RemoveListener_m01B6B9BBA6AC264F094CE87EA45D542DCAD7B59E_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:202>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:202>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_6 = __this->___m_NearFarInteractor;
 		NullCheck(L_6);
 		UIHoverExitEvent_t63E5E9C921AFB8E2CB9CA4D32882DD4F62CD509B* L_7;
@@ -7487,7 +7487,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_TeardownInt
 
 IL_0051:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:205>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:205>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_9 = __this->___m_RayInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_10;
@@ -7498,7 +7498,7 @@ IL_0051:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:207>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:207>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_11 = __this->___m_RayInteractor;
 		NullCheck(L_11);
 		SelectEnterEvent_tBA2614C8C25D8794D5804C4F66195D74E64FC5D0* L_12;
@@ -7507,7 +7507,7 @@ IL_0051:
 		UnityAction_1__ctor_mEE39E1A87376378311B4931978E8E07E589E9A24(L_13, __this, (intptr_t)((void*)ControllerInputActionManager_OnRaySelectEntered_m05A00F5AC9CC73F9641F03CE853F21F20338B7B2_RuntimeMethod_var), NULL);
 		NullCheck(L_12);
 		UnityEvent_1_RemoveListener_m1008B118B379B498B23E13BB88779719C22EB9EB(L_12, L_13, UnityEvent_1_RemoveListener_m1008B118B379B498B23E13BB88779719C22EB9EB_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:208>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:208>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_14 = __this->___m_RayInteractor;
 		NullCheck(L_14);
 		SelectExitEvent_t15DC0A39F9657BA9E6BAE6250D8D64C9671201F6* L_15;
@@ -7516,7 +7516,7 @@ IL_0051:
 		UnityAction_1__ctor_mD74501F5FCCC37863163D5E7155B6C8B9B366C40(L_16, __this, (intptr_t)((void*)ControllerInputActionManager_OnRaySelectExited_m2043AA63005912E1603B0017B70B7A089888E0B9_RuntimeMethod_var), NULL);
 		NullCheck(L_15);
 		UnityEvent_1_RemoveListener_m4353C3D43531002B6FBE7556246DB0A261672F9B(L_15, L_16, UnityEvent_1_RemoveListener_m4353C3D43531002B6FBE7556246DB0A261672F9B_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:209>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:209>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_17 = __this->___m_RayInteractor;
 		NullCheck(L_17);
 		UIHoverEnterEvent_t4C957A3405A5D9CB867C5EC446620BB4BA7E7298* L_18;
@@ -7525,7 +7525,7 @@ IL_0051:
 		UnityAction_1__ctor_mD4F2DD3BDD2495C5DBD9B73FDA365B7A05DBF472(L_19, __this, (intptr_t)((void*)ControllerInputActionManager_OnUIHoverEntered_m7747AA4001671507477941139B2049FF990A20D9_RuntimeMethod_var), NULL);
 		NullCheck(L_18);
 		UnityEvent_1_RemoveListener_m01B6B9BBA6AC264F094CE87EA45D542DCAD7B59E(L_18, L_19, UnityEvent_1_RemoveListener_m01B6B9BBA6AC264F094CE87EA45D542DCAD7B59E_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:210>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:210>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_20 = __this->___m_RayInteractor;
 		NullCheck(L_20);
 		UIHoverExitEvent_t63E5E9C921AFB8E2CB9CA4D32882DD4F62CD509B* L_21;
@@ -7538,12 +7538,12 @@ IL_0051:
 
 IL_00cf:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:213>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:213>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_23 = __this->___m_TeleportMode;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_24;
 		L_24 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_23, NULL);
 		V_0 = L_24;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:214>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:214>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_25 = V_0;
 		if (!L_25)
 		{
@@ -7551,25 +7551,25 @@ IL_00cf:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:216>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:216>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_26 = V_0;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_27 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_27, __this, (intptr_t)((void*)ControllerInputActionManager_OnStartTeleport_mE7F99274DE90EC5AD8234BB0D6010C5FC96AC9FE_RuntimeMethod_var), NULL);
 		NullCheck(L_26);
 		InputAction_remove_performed_m1BE84CED38F11F17C825FA782B35C92D708E6E44(L_26, L_27, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:217>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:217>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_28 = V_0;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_29 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_29, __this, (intptr_t)((void*)ControllerInputActionManager_OnStartLocomotion_m2753A0F4D2ECB0DC422EEE2D1B6BEC4C149EE11C_RuntimeMethod_var), NULL);
 		NullCheck(L_28);
 		InputAction_remove_performed_m1BE84CED38F11F17C825FA782B35C92D708E6E44(L_28, L_29, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:218>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:218>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_30 = V_0;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_31 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_31, __this, (intptr_t)((void*)ControllerInputActionManager_OnCancelTeleport_m4BDF184D63E154479DDB39CEF5798CD7F69563DF_RuntimeMethod_var), NULL);
 		NullCheck(L_30);
 		InputAction_remove_canceled_m7CF8D377C61DB1290E153C56312A7C075544AF7F(L_30, L_31, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:219>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:219>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_32 = V_0;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_33 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_33, __this, (intptr_t)((void*)ControllerInputActionManager_OnStopLocomotion_m19B6191B67AFEE79180D158CB052307E0ACF4B42_RuntimeMethod_var), NULL);
@@ -7579,12 +7579,12 @@ IL_00cf:
 
 IL_0126:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:222>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:222>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_34 = __this->___m_TeleportModeCancel;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_35;
 		L_35 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_34, NULL);
 		V_1 = L_35;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:223>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:223>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_36 = V_1;
 		if (!L_36)
 		{
@@ -7592,7 +7592,7 @@ IL_0126:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:225>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:225>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_37 = V_1;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_38 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_38, __this, (intptr_t)((void*)ControllerInputActionManager_OnCancelTeleport_m4BDF184D63E154479DDB39CEF5798CD7F69563DF_RuntimeMethod_var), NULL);
@@ -7602,12 +7602,12 @@ IL_0126:
 
 IL_0147:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:228>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:228>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_39 = __this->___m_Move;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_40;
 		L_40 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_39, NULL);
 		V_2 = L_40;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:229>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:229>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_41 = V_2;
 		if (!L_41)
 		{
@@ -7615,13 +7615,13 @@ IL_0147:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:231>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:231>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_42 = V_2;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_43 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_43, __this, (intptr_t)((void*)ControllerInputActionManager_OnStartLocomotion_m2753A0F4D2ECB0DC422EEE2D1B6BEC4C149EE11C_RuntimeMethod_var), NULL);
 		NullCheck(L_42);
 		InputAction_remove_started_m0B782C3E7D5EA619502E7079E1271108A3183D68(L_42, L_43, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:232>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:232>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_44 = V_2;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_45 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_45, __this, (intptr_t)((void*)ControllerInputActionManager_OnStopLocomotion_m19B6191B67AFEE79180D158CB052307E0ACF4B42_RuntimeMethod_var), NULL);
@@ -7631,12 +7631,12 @@ IL_0147:
 
 IL_017a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:235>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:235>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_46 = __this->___m_Turn;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_47;
 		L_47 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_46, NULL);
 		V_3 = L_47;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:236>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:236>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_48 = V_3;
 		if (!L_48)
 		{
@@ -7644,13 +7644,13 @@ IL_017a:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:238>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:238>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_49 = V_3;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_50 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_50, __this, (intptr_t)((void*)ControllerInputActionManager_OnStartLocomotion_m2753A0F4D2ECB0DC422EEE2D1B6BEC4C149EE11C_RuntimeMethod_var), NULL);
 		NullCheck(L_49);
 		InputAction_remove_started_m0B782C3E7D5EA619502E7079E1271108A3183D68(L_49, L_50, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:239>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:239>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_51 = V_3;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_52 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_52, __this, (intptr_t)((void*)ControllerInputActionManager_OnStopLocomotion_m19B6191B67AFEE79180D158CB052307E0ACF4B42_RuntimeMethod_var), NULL);
@@ -7660,12 +7660,12 @@ IL_017a:
 
 IL_01ad:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:242>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:242>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_53 = __this->___m_SnapTurn;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_54;
 		L_54 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_53, NULL);
 		V_4 = L_54;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:243>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:243>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_55 = V_4;
 		if (!L_55)
 		{
@@ -7673,13 +7673,13 @@ IL_01ad:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:245>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:245>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_56 = V_4;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_57 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_57, __this, (intptr_t)((void*)ControllerInputActionManager_OnStartLocomotion_m2753A0F4D2ECB0DC422EEE2D1B6BEC4C149EE11C_RuntimeMethod_var), NULL);
 		NullCheck(L_56);
 		InputAction_remove_started_m0B782C3E7D5EA619502E7079E1271108A3183D68(L_56, L_57, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:246>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:246>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_58 = V_4;
 		Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E* L_59 = (Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E*)il2cpp_codegen_object_new(Action_1_tEB0353AA1A112B6F2D921B58DCC9D9D4C0498E6E_il2cpp_TypeInfo_var);
 		Action_1__ctor_mA763900B34C3394F230AE63708F530CA9A192B57(L_59, __this, (intptr_t)((void*)ControllerInputActionManager_OnStopLocomotion_m19B6191B67AFEE79180D158CB052307E0ACF4B42_RuntimeMethod_var), NULL);
@@ -7689,7 +7689,7 @@ IL_01ad:
 
 IL_01e4:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:248>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:248>
 		return;
 	}
 }
@@ -7707,9 +7707,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnStartTele
 	UnityEvent_1_tA1590A7C4E6E0836296B3C1CD3F16A1819EB7117* G_B9_0 = NULL;
 	UnityEvent_1_tA1590A7C4E6E0836296B3C1CD3F16A1819EB7117* G_B8_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:252>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:252>
 		__this->___m_PostponedDeactivateTeleport = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:254>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:254>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_0 = __this->___m_TeleportInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7720,7 +7720,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnStartTele
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:255>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:255>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_2 = __this->___m_TeleportInteractor;
 		NullCheck(L_2);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3;
@@ -7731,7 +7731,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnStartTele
 
 IL_0026:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:257>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:257>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_4 = __this->___m_RayInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -7742,7 +7742,7 @@ IL_0026:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:258>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:258>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_6 = __this->___m_RayInteractor;
 		NullCheck(L_6);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7;
@@ -7753,7 +7753,7 @@ IL_0026:
 
 IL_0045:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:260>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:260>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_8 = __this->___m_NearFarInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_9;
@@ -7777,7 +7777,7 @@ IL_0045:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:261>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:261>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_13 = __this->___m_NearFarInteractor;
 		NullCheck(L_13);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14;
@@ -7788,7 +7788,7 @@ IL_0045:
 
 IL_0077:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:263>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:263>
 		UnityEvent_1_tA1590A7C4E6E0836296B3C1CD3F16A1819EB7117* L_15 = __this->___m_RayInteractorChanged;
 		UnityEvent_1_tA1590A7C4E6E0836296B3C1CD3F16A1819EB7117* L_16 = L_15;
 		if (L_16)
@@ -7807,7 +7807,7 @@ IL_0082:
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_17 = __this->___m_TeleportInteractor;
 		NullCheck(G_B9_0);
 		UnityEvent_1_Invoke_m2DA1D95CA656B45F334764F0D14DC4FC105D3206(G_B9_0, L_17, UnityEvent_1_Invoke_m2DA1D95CA656B45F334764F0D14DC4FC105D3206_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:264>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:264>
 		return;
 	}
 }
@@ -7824,9 +7824,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnCancelTel
 	UnityEvent_1_tA1590A7C4E6E0836296B3C1CD3F16A1819EB7117* G_B6_0 = NULL;
 	UnityEvent_1_tA1590A7C4E6E0836296B3C1CD3F16A1819EB7117* G_B5_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:272>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:272>
 		__this->___m_PostponedDeactivateTeleport = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:274>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:274>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_0 = __this->___m_RayInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7837,7 +7837,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnCancelTel
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:275>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:275>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_2 = __this->___m_RayInteractor;
 		NullCheck(L_2);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3;
@@ -7848,7 +7848,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnCancelTel
 
 IL_0026:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:277>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:277>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_4 = __this->___m_NearFarInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -7859,7 +7859,7 @@ IL_0026:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:278>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:278>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_6 = __this->___m_NearFarInteractor;
 		NullCheck(L_6);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7;
@@ -7870,7 +7870,7 @@ IL_0026:
 
 IL_0045:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:280>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:280>
 		UnityEvent_1_tA1590A7C4E6E0836296B3C1CD3F16A1819EB7117* L_8 = __this->___m_RayInteractorChanged;
 		UnityEvent_1_tA1590A7C4E6E0836296B3C1CD3F16A1819EB7117* L_9 = L_8;
 		if (L_9)
@@ -7889,7 +7889,7 @@ IL_0050:
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_10 = __this->___m_RayInteractor;
 		NullCheck(G_B6_0);
 		UnityEvent_1_Invoke_m2DA1D95CA656B45F334764F0D14DC4FC105D3206(G_B6_0, L_10, UnityEvent_1_Invoke_m2DA1D95CA656B45F334764F0D14DC4FC105D3206_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:281>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:281>
 		return;
 	}
 }
@@ -7903,14 +7903,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnStartLoco
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:285>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:285>
 		HashSet_1_tAB819E09BD04F94C3EA7D69BA059B0DD13F941A3* L_0 = __this->___m_LocomotionUsers;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_1;
 		L_1 = CallbackContext_get_action_mE1ABC0E3E19C045663AB8EDAB9A9205B8C181CE4((&___0_context), NULL);
 		NullCheck(L_0);
 		bool L_2;
 		L_2 = HashSet_1_Add_mFA65768161AFFCF3635EDD51B9D5A27E1ECC3E53(L_0, L_1, HashSet_1_Add_mFA65768161AFFCF3635EDD51B9D5A27E1ECC3E53_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:286>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:286>
 		return;
 	}
 }
@@ -7925,14 +7925,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnStopLocom
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:290>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:290>
 		HashSet_1_tAB819E09BD04F94C3EA7D69BA059B0DD13F941A3* L_0 = __this->___m_LocomotionUsers;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_1;
 		L_1 = CallbackContext_get_action_mE1ABC0E3E19C045663AB8EDAB9A9205B8C181CE4((&___0_context), NULL);
 		NullCheck(L_0);
 		bool L_2;
 		L_2 = HashSet_1_Remove_mCD1D1786A37A068E7B80418B00BD4F2CBF2BEF0F(L_0, L_1, HashSet_1_Remove_mCD1D1786A37A068E7B80418B00BD4F2CBF2BEF0F_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:292>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:292>
 		HashSet_1_tAB819E09BD04F94C3EA7D69BA059B0DD13F941A3* L_3 = __this->___m_LocomotionUsers;
 		NullCheck(L_3);
 		int32_t L_4;
@@ -7950,15 +7950,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnStopLocom
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:294>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:294>
 		ControllerInputActionManager_DisableAllLocomotionActions_m47F4F0FB199536B8B58DCB7E4248986C2A61C4EC(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:295>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:295>
 		ControllerInputActionManager_UpdateUIActions_mEF86876690920BF2368EAD9D90BAB1D08E6F9791(__this, NULL);
 	}
 
 IL_0034:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:297>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:297>
 		return;
 	}
 }
@@ -7977,9 +7977,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnNearFarSe
 	int32_t G_B10_0 = 0;
 	int32_t G_B19_0 = 0;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:301>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:301>
 		__this->___m_PostponedNearRegionLocomotion = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:303>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:303>
 		int32_t L_0 = ___0_selectionRegion;
 		if (L_0)
 		{
@@ -7987,23 +7987,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnNearFarSe
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:305>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:305>
 		ControllerInputActionManager_UpdateLocomotionActions_m30001260A476F7ADC0E807ED5F906387BE78D517(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:306>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:306>
 		return;
 	}
 
 IL_0011:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:309>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:309>
 		V_0 = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:310>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:310>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_1 = __this->___m_NearFarInteractor;
 		NullCheck(L_1);
 		RuntimeObject* L_2;
 		L_2 = NearFarInteractor_get_interactionAttachController_m8D7DE36158D85323283CEFB8030AB545A7B095CF(L_1, NULL);
 		V_1 = ((InteractionAttachController_t72A735C43786F8A10DA7BC2A04D65F14FB31F994*)IsInstClass((RuntimeObject*)L_2, InteractionAttachController_t72A735C43786F8A10DA7BC2A04D65F14FB31F994_il2cpp_TypeInfo_var));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:311>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:311>
 		InteractionAttachController_t72A735C43786F8A10DA7BC2A04D65F14FB31F994* L_3 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_4;
@@ -8014,9 +8014,9 @@ IL_0011:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:313>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:314>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:315>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:313>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:314>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:315>
 		InteractionAttachController_t72A735C43786F8A10DA7BC2A04D65F14FB31F994* L_5 = V_1;
 		NullCheck(L_5);
 		bool L_6;
@@ -8100,7 +8100,7 @@ IL_0078:
 
 IL_0079:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:318>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:318>
 		int32_t L_20 = ___0_selectionRegion;
 		if ((!(((uint32_t)L_20) == ((uint32_t)2))))
 		{
@@ -8108,7 +8108,7 @@ IL_0079:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:320>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:320>
 		bool L_21 = V_0;
 		if (!L_21)
 		{
@@ -8116,21 +8116,21 @@ IL_0079:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:321>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:321>
 		ControllerInputActionManager_DisableAllLocomotionActions_m47F4F0FB199536B8B58DCB7E4248986C2A61C4EC(__this, NULL);
 		return;
 	}
 
 IL_0087:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:323>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:323>
 		ControllerInputActionManager_DisableTeleportActions_mAD8CBE42896874525C3181CF34C226C6584C06C8(__this, NULL);
 		return;
 	}
 
 IL_008e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:325>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:325>
 		int32_t L_22 = ___0_selectionRegion;
 		if ((!(((uint32_t)L_22) == ((uint32_t)1))))
 		{
@@ -8138,7 +8138,7 @@ IL_008e:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:330>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:330>
 		bool L_23 = V_0;
 		if (!L_23)
 		{
@@ -8160,25 +8160,25 @@ IL_009d:
 
 IL_009e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:331>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:331>
 		if (!G_B19_0)
 		{
 			goto IL_00ae;
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:333>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:333>
 		__this->___m_PostponedNearRegionLocomotion = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:334>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:334>
 		ControllerInputActionManager_DisableAllLocomotionActions_m47F4F0FB199536B8B58DCB7E4248986C2A61C4EC(__this, NULL);
 		return;
 	}
 
 IL_00ae:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:338>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:338>
 		ControllerInputActionManager_UpdateLocomotionActions_m30001260A476F7ADC0E807ED5F906387BE78D517(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:339>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:339>
 		bool L_26 = __this->___m_NearFarEnableTeleportDuringNearInteraction;
 		if (L_26)
 		{
@@ -8186,13 +8186,13 @@ IL_00ae:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:340>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:340>
 		ControllerInputActionManager_DisableTeleportActions_mAD8CBE42896874525C3181CF34C226C6584C06C8(__this, NULL);
 	}
 
 IL_00c2:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:343>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:343>
 		return;
 	}
 }
@@ -8200,7 +8200,7 @@ IL_00c2:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnRaySelectEntered_m05A00F5AC9CC73F9641F03CE853F21F20338B7B2 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, SelectEnterEventArgs_t9220B1E6A9BB5A847C0476949ACE0182430BB938* ___0_args, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:347>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:347>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_0 = __this->___m_RayInteractor;
 		NullCheck(L_0);
 		bool L_1;
@@ -8211,13 +8211,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnRaySelect
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:350>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:350>
 		ControllerInputActionManager_DisableAllLocomotionActions_m47F4F0FB199536B8B58DCB7E4248986C2A61C4EC(__this, NULL);
 	}
 
 IL_0013:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:352>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:352>
 		return;
 	}
 }
@@ -8225,7 +8225,7 @@ IL_0013:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnRaySelectExited_m2043AA63005912E1603B0017B70B7A089888E0B9 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, SelectExitEventArgs_t56125CE0360D37AC0B50EB6066B5AB5957EF559A* ___0_args, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:356>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:356>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_0 = __this->___m_RayInteractor;
 		NullCheck(L_0);
 		bool L_1;
@@ -8236,13 +8236,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnRaySelect
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:359>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:359>
 		ControllerInputActionManager_UpdateLocomotionActions_m30001260A476F7ADC0E807ED5F906387BE78D517(__this, NULL);
 	}
 
 IL_0013:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:361>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:361>
 		return;
 	}
 }
@@ -8263,7 +8263,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnUIHoverEn
 	int32_t G_B3_0 = 0;
 	ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* G_B3_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:365>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:365>
 		bool L_0 = __this->___m_UIScrollingEnabled;
 		if (!L_0)
 		{
@@ -8296,9 +8296,9 @@ IL_001a:
 	{
 		NullCheck(G_B3_1);
 		G_B3_1->___m_HoveringScrollableUI = (bool)G_B3_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:366>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:366>
 		ControllerInputActionManager_UpdateUIActions_mEF86876690920BF2368EAD9D90BAB1D08E6F9791(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:369>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:369>
 		bool L_4 = __this->___m_HoveringScrollableUI;
 		if (!L_4)
 		{
@@ -8316,13 +8316,13 @@ IL_001a:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:372>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:372>
 		ControllerInputActionManager_DisableAllLocomotionActions_m47F4F0FB199536B8B58DCB7E4248986C2A61C4EC(__this, NULL);
 	}
 
 IL_0040:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:374>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:374>
 		return;
 	}
 }
@@ -8330,13 +8330,13 @@ IL_0040:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnUIHoverExited_m20EE4DA45F2465E8A6425E87F69020C5882533C4 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, UIHoverEventArgs_tC712F3F829391F25C89B9951234415D4C354DC39* ___0_args, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:378>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:378>
 		__this->___m_HoveringScrollableUI = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:379>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:379>
 		ControllerInputActionManager_UpdateUIActions_mEF86876690920BF2368EAD9D90BAB1D08E6F9791(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:382>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:382>
 		ControllerInputActionManager_UpdateLocomotionActions_m30001260A476F7ADC0E807ED5F906387BE78D517(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:383>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:383>
 		return;
 	}
 }
@@ -8352,7 +8352,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnEnable_m5
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:387>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:387>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_0 = __this->___m_RayInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8373,17 +8373,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnEnable_m5
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:389>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:389>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(_stringLiteral9BCF8359B4696020E13074D2CCAD8107559B7426, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:390>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:390>
 		__this->___m_RayInteractor = (XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_RayInteractor), (void*)(XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649*)NULL);
 	}
 
 IL_002e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:393>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:393>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_4 = __this->___m_TeleportInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -8394,7 +8394,7 @@ IL_002e:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:394>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:394>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_6 = __this->___m_TeleportInteractor;
 		NullCheck(L_6);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7;
@@ -8405,7 +8405,7 @@ IL_002e:
 
 IL_004d:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:398>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:398>
 		bool L_8 = __this->___m_StartCalled;
 		if (!L_8)
 		{
@@ -8413,17 +8413,17 @@ IL_004d:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:400>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:400>
 		ControllerInputActionManager_UpdateLocomotionActions_m30001260A476F7ADC0E807ED5F906387BE78D517(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:401>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:401>
 		ControllerInputActionManager_UpdateUIActions_mEF86876690920BF2368EAD9D90BAB1D08E6F9791(__this, NULL);
 	}
 
 IL_0061:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:404>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:404>
 		ControllerInputActionManager_SetupInteractorEvents_m7F89872A6155BDE25310FD98301E0E80D41C277C(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:405>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:405>
 		return;
 	}
 }
@@ -8431,9 +8431,9 @@ IL_0061:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnDisable_m55B68241562565CB1A82781F6AB3248B782CBB81 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:409>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:409>
 		ControllerInputActionManager_TeardownInteractorEvents_m79A27CF5E55A5C7B53253C22644424811781A312(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:410>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:410>
 		return;
 	}
 }
@@ -8441,13 +8441,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_OnDisable_m
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_Start_mC31B95952910A659CD656DB3218E0DE4A0C62433 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:414>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:414>
 		__this->___m_StartCalled = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:418>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:418>
 		ControllerInputActionManager_UpdateLocomotionActions_m30001260A476F7ADC0E807ED5F906387BE78D517(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:419>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:419>
 		ControllerInputActionManager_UpdateUIActions_mEF86876690920BF2368EAD9D90BAB1D08E6F9791(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:420>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:420>
 		return;
 	}
 }
@@ -8464,7 +8464,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_Update_m236
 	bool V_0 = false;
 	InteractionAttachController_t72A735C43786F8A10DA7BC2A04D65F14FB31F994* V_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:427>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:427>
 		bool L_0 = __this->___m_PostponedDeactivateTeleport;
 		if (!L_0)
 		{
@@ -8472,7 +8472,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_Update_m236
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:429>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:429>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_1 = __this->___m_TeleportInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -8483,7 +8483,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_Update_m236
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:430>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:430>
 		XRRayInteractor_tDB7FC857A50F0B25DE4CEC0EE930242BB7380649* L_3 = __this->___m_TeleportInteractor;
 		NullCheck(L_3);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
@@ -8494,13 +8494,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_Update_m236
 
 IL_0027:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:432>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:432>
 		__this->___m_PostponedDeactivateTeleport = (bool)0;
 	}
 
 IL_002e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:437>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:437>
 		bool L_5 = __this->___m_PostponedNearRegionLocomotion;
 		if (!L_5)
 		{
@@ -8508,11 +8508,11 @@ IL_002e:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:439>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:439>
 		V_0 = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:440>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:441>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:442>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:440>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:441>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:442>
 		NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* L_6 = __this->___m_NearFarInteractor;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_7;
@@ -8545,7 +8545,7 @@ IL_002e:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:444>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:444>
 		InteractionAttachController_t72A735C43786F8A10DA7BC2A04D65F14FB31F994* L_13 = V_1;
 		bool L_14;
 		L_14 = ControllerInputActionManager_HasStickInput_m0215F1674DAEDA7D7DAEBE44EE970B78E3B167EF(L_13, NULL);
@@ -8554,7 +8554,7 @@ IL_002e:
 
 IL_006a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:447>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:447>
 		bool L_15 = V_0;
 		if (L_15)
 		{
@@ -8562,11 +8562,11 @@ IL_006a:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:449>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:449>
 		__this->___m_PostponedNearRegionLocomotion = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:451>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:451>
 		ControllerInputActionManager_UpdateLocomotionActions_m30001260A476F7ADC0E807ED5F906387BE78D517(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:452>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:452>
 		bool L_16 = __this->___m_NearFarEnableTeleportDuringNearInteraction;
 		if (L_16)
 		{
@@ -8574,13 +8574,13 @@ IL_006a:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:453>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:453>
 		ControllerInputActionManager_DisableTeleportActions_mAD8CBE42896874525C3181CF34C226C6584C06C8(__this, NULL);
 	}
 
 IL_0088:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:456>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:456>
 		return;
 	}
 }
@@ -8596,19 +8596,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_UpdateLocom
 	int32_t G_B6_0 = 0;
 	InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* G_B6_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:461>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:461>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = __this->___m_Move;
 		bool L_1 = __this->___m_SmoothMotionEnabled;
 		ControllerInputActionManager_SetEnabled_m98E438A0CC133DBEBB41234928BFBD67B61BA81E(L_0, L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:462>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:462>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_2 = __this->___m_TeleportMode;
 		bool L_3 = __this->___m_SmoothMotionEnabled;
 		ControllerInputActionManager_SetEnabled_m98E438A0CC133DBEBB41234928BFBD67B61BA81E(L_2, (bool)((((int32_t)L_3) == ((int32_t)0))? 1 : 0), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:463>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:463>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_4 = __this->___m_TeleportModeCancel;
 		bool L_5 = __this->___m_SmoothMotionEnabled;
 		ControllerInputActionManager_SetEnabled_m98E438A0CC133DBEBB41234928BFBD67B61BA81E(L_4, (bool)((((int32_t)L_5) == ((int32_t)0))? 1 : 0), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:466>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:466>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_6 = __this->___m_Turn;
 		bool L_7 = __this->___m_SmoothMotionEnabled;
 		if (L_7)
@@ -8634,7 +8634,7 @@ IL_004f:
 IL_0050:
 	{
 		ControllerInputActionManager_SetEnabled_m98E438A0CC133DBEBB41234928BFBD67B61BA81E(G_B3_1, (bool)G_B3_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:467>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:467>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_9 = __this->___m_SnapTurn;
 		bool L_10 = __this->___m_SmoothMotionEnabled;
 		if (L_10)
@@ -8660,7 +8660,7 @@ IL_006e:
 IL_006f:
 	{
 		ControllerInputActionManager_SetEnabled_m98E438A0CC133DBEBB41234928BFBD67B61BA81E(G_B6_1, (bool)G_B6_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:468>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:468>
 		return;
 	}
 }
@@ -8668,13 +8668,13 @@ IL_006f:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_DisableTeleportActions_mAD8CBE42896874525C3181CF34C226C6584C06C8 (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:472>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:472>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = __this->___m_TeleportMode;
 		ControllerInputActionManager_DisableAction_m3E33B9491354D8732C00E02CDA82B85426FB5091(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:473>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:473>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_1 = __this->___m_TeleportModeCancel;
 		ControllerInputActionManager_DisableAction_m3E33B9491354D8732C00E02CDA82B85426FB5091(L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:474>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:474>
 		return;
 	}
 }
@@ -8682,16 +8682,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_DisableTele
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_DisableMoveAndTurnActions_m231A4976FB2502A412F4C4A746A4AF42D1A28A0C (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:478>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:478>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = __this->___m_Move;
 		ControllerInputActionManager_DisableAction_m3E33B9491354D8732C00E02CDA82B85426FB5091(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:479>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:479>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_1 = __this->___m_Turn;
 		ControllerInputActionManager_DisableAction_m3E33B9491354D8732C00E02CDA82B85426FB5091(L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:480>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:480>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_2 = __this->___m_SnapTurn;
 		ControllerInputActionManager_DisableAction_m3E33B9491354D8732C00E02CDA82B85426FB5091(L_2, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:481>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:481>
 		return;
 	}
 }
@@ -8699,11 +8699,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_DisableMove
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_DisableAllLocomotionActions_m47F4F0FB199536B8B58DCB7E4248986C2A61C4EC (ControllerInputActionManager_t869A70AE3B62565ADCF8E113AFEF37D3B0DBE90B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:485>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:485>
 		ControllerInputActionManager_DisableTeleportActions_mAD8CBE42896874525C3181CF34C226C6584C06C8(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:486>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:486>
 		ControllerInputActionManager_DisableMoveAndTurnActions_m231A4976FB2502A412F4C4A746A4AF42D1A28A0C(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:487>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:487>
 		return;
 	}
 }
@@ -8722,7 +8722,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_UpdateUIAct
 	int32_t G_B4_0 = 0;
 	InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* G_B4_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:491>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:491>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = __this->___m_UIScroll;
 		bool L_1 = __this->___m_UIScrollingEnabled;
 		if (!L_1)
@@ -8760,7 +8760,7 @@ IL_0026:
 IL_0027:
 	{
 		ControllerInputActionManager_SetEnabled_m98E438A0CC133DBEBB41234928BFBD67B61BA81E(G_B4_1, (bool)G_B4_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:492>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:492>
 		return;
 	}
 }
@@ -8776,8 +8776,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ControllerInputActionManager_HasStickInp
 	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:499>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:500>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:499>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:500>
 		InteractionAttachController_t72A735C43786F8A10DA7BC2A04D65F14FB31F994* L_0 = ___0_attachController;
 		NullCheck(L_0);
 		XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0* L_1;
@@ -8805,7 +8805,7 @@ IL_001e:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_SetEnabled_m98E438A0CC133DBEBB41234928BFBD67B61BA81E (InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* ___0_actionReference, bool ___1_enabled, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:505>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:505>
 		bool L_0 = ___1_enabled;
 		if (!L_0)
 		{
@@ -8813,7 +8813,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_SetEnabled_
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:506>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:506>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_1 = ___0_actionReference;
 		ControllerInputActionManager_EnableAction_m17C9BE847C2BFD6A62C7B95D6CFD1994ADE16D84(L_1, NULL);
 		return;
@@ -8821,10 +8821,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_SetEnabled_
 
 IL_000a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:508>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:508>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_2 = ___0_actionReference;
 		ControllerInputActionManager_DisableAction_m3E33B9491354D8732C00E02CDA82B85426FB5091(L_2, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:509>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:509>
 		return;
 	}
 }
@@ -8834,11 +8834,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_EnableActio
 	InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* G_B2_0 = NULL;
 	InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* G_B1_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:513>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:513>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = ___0_actionReference;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_1;
 		L_1 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:514>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:514>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_2 = L_1;
 		if (L_2)
 		{
@@ -8855,7 +8855,7 @@ IL_000b:
 	{
 		NullCheck(G_B2_0);
 		InputAction_Enable_mB3897C0741409C033656E4566EC49135C3C8BC68(G_B2_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:515>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:515>
 		return;
 	}
 }
@@ -8865,11 +8865,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager_DisableActi
 	InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* G_B2_0 = NULL;
 	InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* G_B1_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:519>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:519>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = ___0_actionReference;
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_1;
 		L_1 = ControllerInputActionManager_GetInputAction_m2F95F2340B1602E3787F34FDA150C47AB95068AE(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:520>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:520>
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_2 = L_1;
 		if (L_2)
 		{
@@ -8886,7 +8886,7 @@ IL_000b:
 	{
 		NullCheck(G_B2_0);
 		InputAction_Disable_m72D1982F82457C6E003440BADD06989D399BDE50(G_B2_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:521>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:521>
 		return;
 	}
 }
@@ -8900,7 +8900,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR InputAction_t1B550AD2B55AF322AFB53CD28DA64081
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:526>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:526>
 		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = ___0_actionReference;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8935,16 +8935,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager__ctor_m8102
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:87>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:87>
 		__this->___m_NearFarEnableTeleportDuringNearInteraction = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:94>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:94>
 		__this->___m_UIScrollingEnabled = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:138>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:138>
 		HashSet_1_tAB819E09BD04F94C3EA7D69BA059B0DD13F941A3* L_0 = (HashSet_1_tAB819E09BD04F94C3EA7D69BA059B0DD13F941A3*)il2cpp_codegen_object_new(HashSet_1_tAB819E09BD04F94C3EA7D69BA059B0DD13F941A3_il2cpp_TypeInfo_var);
 		HashSet_1__ctor_mD28F97EDC08E91C2F50CDF8E86AF228489358EA7(L_0, HashSet_1__ctor_mD28F97EDC08E91C2F50CDF8E86AF228489358EA7_RuntimeMethod_var);
 		__this->___m_LocomotionUsers = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_LocomotionUsers), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:139>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ControllerInputActionManager.cs:139>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_1 = (BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A*)il2cpp_codegen_object_new(BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A_il2cpp_TypeInfo_var);
 		BindingsGroup__ctor_m1EFD3F405050571D3A66F9B95E8FBC296866A716(L_1, NULL);
 		__this->___m_BindingsGroup = L_1;
@@ -8965,7 +8965,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ControllerInputActionManager__ctor_m8102
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float DestroySelf_get_lifetime_m3AB080F878918FDBF5C39438374FBDDCD9E22458 (DestroySelf_tDC5BD53F0F2DA7DB2A559BAC50EA806440226B1F* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DestroySelf.cs:17>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DestroySelf.cs:17>
 		float L_0 = __this->___m_Lifetime;
 		return L_0;
 	}
@@ -8974,7 +8974,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float DestroySelf_get_lifetime_m3AB080F878918
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DestroySelf_set_lifetime_mCB3CE0FF94854B5CB42D3C4E93C7783410123F3C (DestroySelf_tDC5BD53F0F2DA7DB2A559BAC50EA806440226B1F* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DestroySelf.cs:18>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DestroySelf.cs:18>
 		float L_0 = ___0_value;
 		__this->___m_Lifetime = L_0;
 		return;
@@ -8990,13 +8990,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DestroySelf_Start_mDA06F1CBD548235D9376E
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DestroySelf.cs:26>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DestroySelf.cs:26>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
 		L_0 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		float L_1 = __this->___m_Lifetime;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_0, L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DestroySelf.cs:27>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DestroySelf.cs:27>
 		return;
 	}
 }
@@ -9004,7 +9004,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DestroySelf_Start_mDA06F1CBD548235D9376E
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DestroySelf__ctor_mE6AE809A5A18196F03764F925582D12C3AD8523F (DestroySelf_tDC5BD53F0F2DA7DB2A559BAC50EA806440226B1F* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DestroySelf.cs:10>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DestroySelf.cs:10>
 		__this->___m_Lifetime = (0.25f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -9022,7 +9022,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DestroySelf__ctor_mE6AE809A5A18196F03764
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* DynamicMoveProvider_get_headTransform_m303EF17C689C6B515494F07F2259A0BA6B8D0605 (DynamicMoveProvider_t1743D232A797F4B68334ADA837902C8680933F5A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:42>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:42>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_HeadTransform;
 		return L_0;
 	}
@@ -9031,7 +9031,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_set_headTransform_mCB442704F390FE95E70DE479145A5F2E2E138885 (DynamicMoveProvider_t1743D232A797F4B68334ADA837902C8680933F5A* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:43>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:43>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_value;
 		__this->___m_HeadTransform = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_HeadTransform), (void*)L_0);
@@ -9042,7 +9042,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_set_headTransform_mC
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* DynamicMoveProvider_get_leftControllerTransform_mAA1DA9B68DEEA326FC1560FDADDF454DEC69C8A8 (DynamicMoveProvider_t1743D232A797F4B68334ADA837902C8680933F5A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:55>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:55>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_LeftControllerTransform;
 		return L_0;
 	}
@@ -9051,7 +9051,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_set_leftControllerTransform_mF1E47F46BFE01F5355FC71BD67DD1A9CFD2C3DB1 (DynamicMoveProvider_t1743D232A797F4B68334ADA837902C8680933F5A* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:56>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:56>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_value;
 		__this->___m_LeftControllerTransform = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_LeftControllerTransform), (void*)L_0);
@@ -9062,7 +9062,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_set_leftControllerTr
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* DynamicMoveProvider_get_rightControllerTransform_m6FAEE855A31155E21184B32D086F15CE9DA7C92E (DynamicMoveProvider_t1743D232A797F4B68334ADA837902C8680933F5A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:65>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:65>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_RightControllerTransform;
 		return L_0;
 	}
@@ -9071,7 +9071,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_set_rightControllerTransform_mD138BE95DF4A34447A88F1817806C4BAE2239CFA (DynamicMoveProvider_t1743D232A797F4B68334ADA837902C8680933F5A* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:66>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_value;
 		__this->___m_RightControllerTransform = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_RightControllerTransform), (void*)L_0);
@@ -9082,7 +9082,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_set_rightControllerT
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t DynamicMoveProvider_get_leftHandMovementDirection_m5D0D0D4A984DC0B0CAED6DE32722BE640296ABBF (DynamicMoveProvider_t1743D232A797F4B68334ADA837902C8680933F5A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:79>
 		int32_t L_0 = __this->___m_LeftHandMovementDirection;
 		return L_0;
 	}
@@ -9091,7 +9091,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t DynamicMoveProvider_get_leftHandMovem
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_set_leftHandMovementDirection_mB73B1139104B7F11E0360C8E900789C0E05881F2 (DynamicMoveProvider_t1743D232A797F4B68334ADA837902C8680933F5A* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:80>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:80>
 		int32_t L_0 = ___0_value;
 		__this->___m_LeftHandMovementDirection = L_0;
 		return;
@@ -9101,7 +9101,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_set_leftHandMovement
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t DynamicMoveProvider_get_rightHandMovementDirection_m88088CD035CDA2ED6597F19DC5C93D8730089C7C (DynamicMoveProvider_t1743D232A797F4B68334ADA837902C8680933F5A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:93>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:93>
 		int32_t L_0 = __this->___m_RightHandMovementDirection;
 		return L_0;
 	}
@@ -9110,7 +9110,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t DynamicMoveProvider_get_rightHandMove
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_set_rightHandMovementDirection_m985C438DA67D7479D5D0AA020A8EB411856E51E5 (DynamicMoveProvider_t1743D232A797F4B68334ADA837902C8680933F5A* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:94>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:94>
 		int32_t L_0 = ___0_value;
 		__this->___m_RightHandMovementDirection = L_0;
 		return;
@@ -9127,9 +9127,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_Awake_m3BAB88EE73C71
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:104>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:104>
 		ContinuousMoveProvider_Awake_m856C8362C5E9F1A986227D82AA1302A6E2996CE1(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:106>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:106>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral011D3DCC095E581ECDB235DA85D0318CB7DAE281, NULL);
 		NullCheck(L_0);
@@ -9137,28 +9137,28 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider_Awake_m3BAB88EE73C71
 		L_1 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_0, NULL);
 		__this->___m_CombinedTransform = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_CombinedTransform), (void*)L_1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:107>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:107>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = __this->___m_CombinedTransform;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_2, L_3, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:108>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:108>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = __this->___m_CombinedTransform;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_5;
 		L_5 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_4);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_4, L_5, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:109>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:109>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6 = __this->___m_CombinedTransform;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_7;
 		L_7 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
 		NullCheck(L_6);
 		Transform_set_localRotation_mAB4A011D134BA58AB780BECC0025CA65F16185FA(L_6, L_7, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:111>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = __this->___m_CombinedTransform;
 		ContinuousMoveProvider_set_forwardSource_m16B2571E7A28F8A79802D12165950AD59C9A5490_inline(__this, L_8, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:112>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:112>
 		return;
 	}
 }
@@ -9187,7 +9187,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 	Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* V_7 = NULL;
 	int32_t V_8 = 0;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:119>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:119>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_0 = ___0_input;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_1;
 		L_1 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
@@ -9199,7 +9199,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:120>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:120>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_3 = ___0_input;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
 		L_4 = ContinuousMoveProvider_ComputeDesiredMove_mE4E902533BB6627AE8922B9EA5C8A55672B98C00(__this, L_3, NULL);
@@ -9208,7 +9208,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 
 IL_0015:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:123>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:123>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = __this->___m_HeadTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_6;
@@ -9219,14 +9219,14 @@ IL_0015:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:125>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:125>
 		LocomotionMediator_tFF0E600A153C909C211466942B7D4C3DA6105AD6* L_7;
 		L_7 = LocomotionProvider_get_mediator_m7ED478A25CC3F307D84C6A1F81ACC26231E94B5D_inline(__this, NULL);
 		NullCheck(L_7);
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_8;
 		L_8 = LocomotionMediator_get_xrOrigin_mF16601BBA48F6C7D13E600FC6CD426D067582170(L_7, NULL);
 		V_6 = L_8;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:126>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:126>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_9 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_10;
@@ -9237,13 +9237,13 @@ IL_0015:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:128>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:128>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_11 = V_6;
 		NullCheck(L_11);
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_12;
 		L_12 = XROrigin_get_Camera_m8959027D616F5BD9AEAE3E41ADEE23BBC2CE3629_inline(L_11, NULL);
 		V_7 = L_12;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:129>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:129>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_13 = V_7;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_14;
@@ -9254,7 +9254,7 @@ IL_0015:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:130>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:130>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_15 = V_7;
 		NullCheck(L_15);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16;
@@ -9265,7 +9265,7 @@ IL_0015:
 
 IL_005a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:135>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:135>
 		int32_t L_17 = __this->___m_LeftHandMovementDirection;
 		V_8 = L_17;
 		int32_t L_18 = V_8;
@@ -9287,7 +9287,7 @@ IL_005a:
 
 IL_006d:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:138>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:138>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_20 = __this->___m_HeadTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_21;
@@ -9298,18 +9298,18 @@ IL_006d:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:139>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:139>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_22 = __this->___m_HeadTransform;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_23;
 		L_23 = TransformExtensions_GetWorldPose_m08E343202174666DFF9A07560AB1A72ACD0DDCF1(L_22, NULL);
 		__this->___m_LeftMovementPose = L_23;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:141>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:141>
 		goto IL_00ad;
 	}
 
 IL_008e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:144>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:144>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_24 = __this->___m_LeftControllerTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_25;
@@ -9320,7 +9320,7 @@ IL_008e:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:145>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:145>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_26 = __this->___m_LeftControllerTransform;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_27;
 		L_27 = TransformExtensions_GetWorldPose_m08E343202174666DFF9A07560AB1A72ACD0DDCF1(L_26, NULL);
@@ -9329,7 +9329,7 @@ IL_008e:
 
 IL_00ad:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:155>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:155>
 		int32_t L_28 = __this->___m_RightHandMovementDirection;
 		V_8 = L_28;
 		int32_t L_29 = V_8;
@@ -9351,7 +9351,7 @@ IL_00ad:
 
 IL_00c0:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:158>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:158>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31 = __this->___m_HeadTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_32;
@@ -9362,18 +9362,18 @@ IL_00c0:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:159>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:159>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_33 = __this->___m_HeadTransform;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_34;
 		L_34 = TransformExtensions_GetWorldPose_m08E343202174666DFF9A07560AB1A72ACD0DDCF1(L_33, NULL);
 		__this->___m_RightMovementPose = L_34;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:161>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:161>
 		goto IL_0100;
 	}
 
 IL_00e1:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:164>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:164>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_35 = __this->___m_RightControllerTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_36;
@@ -9384,7 +9384,7 @@ IL_00e1:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:165>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:165>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_37 = __this->___m_RightControllerTransform;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_38;
 		L_38 = TransformExtensions_GetWorldPose_m08E343202174666DFF9A07560AB1A72ACD0DDCF1(L_37, NULL);
@@ -9393,29 +9393,29 @@ IL_00e1:
 
 IL_0100:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:175>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:175>
 		XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0* L_39;
 		L_39 = ContinuousMoveProvider_get_leftHandMoveInput_m2B7F6358E442942C20D0667A234A29BE0CBAEB8E_inline(__this, NULL);
 		NullCheck(L_39);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_40;
 		L_40 = XRInputValueReader_1_ReadValue_m5F62621C89CC35067EDFEAE1EBBE315554767369(L_39, XRInputValueReader_1_ReadValue_m5F62621C89CC35067EDFEAE1EBBE315554767369_RuntimeMethod_var);
 		V_0 = L_40;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:176>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:176>
 		XRInputValueReader_1_t6B311BAB920F92BC851C1CD180A8555021DE8FC0* L_41;
 		L_41 = ContinuousMoveProvider_get_rightHandMoveInput_mAA26C39B1CC43915801850C74CF96888DA4CBB7B_inline(__this, NULL);
 		NullCheck(L_41);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_42;
 		L_42 = XRInputValueReader_1_ReadValue_m5F62621C89CC35067EDFEAE1EBBE315554767369(L_41, XRInputValueReader_1_ReadValue_m5F62621C89CC35067EDFEAE1EBBE315554767369_RuntimeMethod_var);
 		V_1 = L_42;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:178>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:178>
 		float L_43;
 		L_43 = Vector2_get_sqrMagnitude_mA16336720C14EEF8BA9B55AE33B98C9EE2082BDC_inline((&V_0), NULL);
 		float L_44;
 		L_44 = Vector2_get_sqrMagnitude_mA16336720C14EEF8BA9B55AE33B98C9EE2082BDC_inline((&V_1), NULL);
 		V_2 = ((float)il2cpp_codegen_add(L_43, L_44));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:179>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:179>
 		V_3 = (0.5f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:180>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:180>
 		float L_45 = V_2;
 		float L_46 = ((Mathf_tE284D016E3B297B72311AAD9EB8F0E643F6A4682_StaticFields*)il2cpp_codegen_static_fields_for(Mathf_tE284D016E3B297B72311AAD9EB8F0E643F6A4682_il2cpp_TypeInfo_var))->___Epsilon;
 		if ((!(((float)L_45) > ((float)L_46))))
@@ -9424,7 +9424,7 @@ IL_0100:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:181>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:181>
 		float L_47;
 		L_47 = Vector2_get_sqrMagnitude_mA16336720C14EEF8BA9B55AE33B98C9EE2082BDC_inline((&V_0), NULL);
 		float L_48 = V_2;
@@ -9433,7 +9433,7 @@ IL_0100:
 
 IL_0140:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:183>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:183>
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971* L_49 = (Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971*)(&__this->___m_RightMovementPose);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_50 = L_49->___position;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971* L_51 = (Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971*)(&__this->___m_LeftMovementPose);
@@ -9442,7 +9442,7 @@ IL_0140:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_54;
 		L_54 = Vector3_Lerp_m3A906D0530A94FAABB94F0F905E84D99BE85C3F8_inline(L_50, L_52, L_53, NULL);
 		V_4 = L_54;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:184>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:184>
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971* L_55 = (Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971*)(&__this->___m_RightMovementPose);
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_56 = L_55->___rotation;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971* L_57 = (Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971*)(&__this->___m_LeftMovementPose);
@@ -9451,13 +9451,13 @@ IL_0140:
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_60;
 		L_60 = Quaternion_Slerp_m0A9969F500E7716EA4F6BC4E7D5464372D8E9E15_inline(L_56, L_58, L_59, NULL);
 		V_5 = L_60;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:185>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:185>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_61 = __this->___m_CombinedTransform;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_62 = V_4;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_63 = V_5;
 		NullCheck(L_61);
 		Transform_SetPositionAndRotation_m418859BF59086EEAA084FFD6F258A43FAB408F5A(L_61, L_62, L_63, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:187>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:187>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_64 = ___0_input;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_65;
 		L_65 = ContinuousMoveProvider_ComputeDesiredMove_mE4E902533BB6627AE8922B9EA5C8A55672B98C00(__this, L_64, NULL);
@@ -9474,12 +9474,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider__ctor_mABE04D06EBE85
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:98>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:98>
 		il2cpp_codegen_runtime_class_init_inline(Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971_il2cpp_TypeInfo_var);
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_0;
 		L_0 = Pose_get_identity_m145C7BA9D895CD7F8CCE2483B69764F7A9FEC66E(NULL);
 		__this->___m_LeftMovementPose = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:99>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/DynamicMoveProvider.cs:99>
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_1;
 		L_1 = Pose_get_identity_m145C7BA9D895CD7F8CCE2483B69764F7A9FEC66E(NULL);
 		__this->___m_RightMovementPose = L_1;
@@ -9507,7 +9507,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DynamicMoveProvider__ctor_mABE04D06EBE85
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GazeInputManager_get_fallbackIfEyeTrackingUnavailable_m4FB13F913AD2277E5F65AB7D7EF0729644F2D657 (GazeInputManager_t76600ACADAE6718BABD1166EBED065FFD8C90C83* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:23>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:23>
 		bool L_0 = __this->___m_FallbackIfEyeTrackingUnavailable;
 		return L_0;
 	}
@@ -9516,7 +9516,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GazeInputManager_get_fallbackIfEyeTracki
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GazeInputManager_set_fallbackIfEyeTrackingUnavailable_mE6650150E8EC6483E35CF60782A877B7434DE288 (GazeInputManager_t76600ACADAE6718BABD1166EBED065FFD8C90C83* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:24>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:24>
 		bool L_0 = ___0_value;
 		__this->___m_FallbackIfEyeTrackingUnavailable = L_0;
 		return;
@@ -9553,14 +9553,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GazeInputManager_Awake_m913673B2763F78D3
 	ReadOnlyArray_1_t21E90B3F1DF1E9A2088EA0523F03C47910735BCA V_2;
 	memset((&V_2), 0, sizeof(V_2));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:36>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:36>
 		List_1_tB66D13E0427CA48C600AEA4DBA5B173C3734C6CE* L_0 = (List_1_tB66D13E0427CA48C600AEA4DBA5B173C3734C6CE*)il2cpp_codegen_object_new(List_1_tB66D13E0427CA48C600AEA4DBA5B173C3734C6CE_il2cpp_TypeInfo_var);
 		List_1__ctor_mF7ACC153F11A3260DAACDCA56B0A70A4BFA61EA4(L_0, List_1__ctor_mF7ACC153F11A3260DAACDCA56B0A70A4BFA61EA4_RuntimeMethod_var);
 		V_0 = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:37>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:37>
 		List_1_tB66D13E0427CA48C600AEA4DBA5B173C3734C6CE* L_1 = V_0;
 		InputDevices_GetDevicesWithCharacteristics_m82F54DE2802FCE4EB730FCFBF8731CA91A27DEB0(((int32_t)16), L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:38>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:38>
 		List_1_tB66D13E0427CA48C600AEA4DBA5B173C3734C6CE* L_2 = V_0;
 		NullCheck(L_2);
 		int32_t L_3;
@@ -9571,18 +9571,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GazeInputManager_Awake_m913673B2763F78D3
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:40>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m06155ED25645EBBC06B4C8F05235EF41B1489C7E(_stringLiteralCAC9FA4EA913C7FEEEFEEA8D8C3FEF0ADF872886, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:41>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:41>
 		__this->___m_EyeTrackingDeviceFound = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:42>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:42>
 		return;
 	}
 
 IL_002a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:45>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:45>
 		il2cpp_codegen_runtime_class_init_inline(InputSystem_t4120CA4FE7DCFD56AF9391933FC3F1F485350164_il2cpp_TypeInfo_var);
 		ReadOnlyArray_1_t21E90B3F1DF1E9A2088EA0523F03C47910735BCA L_4;
 		L_4 = InputSystem_get_devices_mBE599285E43211ACE15248654A3E3D7DB42C85CA(NULL);
@@ -9609,10 +9609,10 @@ FINALLY_0071:
 
 IL_003a_1:
 			{
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:45>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:45>
 				InputDevice_t8BCF67533E872A75779C24C93D1D7085B72D364B* L_6;
 				L_6 = Enumerator_get_Current_mFB31F2643918A411B2F1539CA180A763D0200945((&V_1), Enumerator_get_Current_mFB31F2643918A411B2F1539CA180A763D0200945_RuntimeMethod_var);
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:47>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:47>
 				NullCheck(L_6);
 				String_t* L_7;
 				L_7 = InputControl_get_layout_mE6054F87BB94A1F1D06355E137A1840B2EFF7971(L_6, NULL);
@@ -9624,18 +9624,18 @@ IL_003a_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:49>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:49>
 				il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 				Debug_Log_m06155ED25645EBBC06B4C8F05235EF41B1489C7E(_stringLiteral91BEF5D9E8C19A7BAA9335746C74FFE9F0A218C1, __this, NULL);
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:50>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:50>
 				__this->___m_EyeTrackingDeviceFound = (bool)1;
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:51>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:51>
 				goto IL_00c3;
 			}
 
 IL_0066_1:
 			{
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:45>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:45>
 				bool L_9;
 				L_9 = Enumerator_MoveNext_mFAC408E08BBD06FE731A9E84F5E79461F23EACBC((&V_1), Enumerator_MoveNext_mFAC408E08BBD06FE731A9E84F5E79461F23EACBC_RuntimeMethod_var);
 				if (L_9)
@@ -9655,21 +9655,21 @@ IL_0066_1:
 
 IL_007f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:55>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:55>
 		String_t* L_10;
 		L_10 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteral08922C02E680D90FAAB0862833A88225C5A1F397, __this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(L_10, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:57>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:57>
 		Action_1_tFAB0B519749BBE2B7AAD946105FAE8116636A8BC* L_11 = (Action_1_tFAB0B519749BBE2B7AAD946105FAE8116636A8BC*)il2cpp_codegen_object_new(Action_1_tFAB0B519749BBE2B7AAD946105FAE8116636A8BC_il2cpp_TypeInfo_var);
 		Action_1__ctor_m9EFC6656FE579E4D72FFCA991DE5860FA28DD71E(L_11, __this, (intptr_t)((void*)GazeInputManager_OnDeviceConnected_mFD98427178DBDAF1C7B406FEA28161D3186F2E68_RuntimeMethod_var), NULL);
 		InputDevices_add_deviceConnected_m0329DBAE47CA4A20778F7DCBA470FCF9A672E9C9(L_11, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:58>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:58>
 		Action_2_tB79528C85CFEF7DFF52C575DDAA398D2FE6BC333* L_12 = (Action_2_tB79528C85CFEF7DFF52C575DDAA398D2FE6BC333*)il2cpp_codegen_object_new(Action_2_tB79528C85CFEF7DFF52C575DDAA398D2FE6BC333_il2cpp_TypeInfo_var);
 		Action_2__ctor_m23A4911D82F290811EDC6BFC315C339857526804(L_12, __this, (intptr_t)((void*)GazeInputManager_OnDeviceChange_m5A5EA7E87A46CAEC0CA21EA476B0DAEBB8F2885E_RuntimeMethod_var), NULL);
 		il2cpp_codegen_runtime_class_init_inline(InputSystem_t4120CA4FE7DCFD56AF9391933FC3F1F485350164_il2cpp_TypeInfo_var);
 		InputSystem_add_onDeviceChange_mC1BAF8DE08B2B3F6D0A98D80AE1E4FF5531C60FA(L_12, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:60>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:60>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_13;
 		L_13 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		bool L_14 = __this->___m_FallbackIfEyeTrackingUnavailable;
@@ -9679,7 +9679,7 @@ IL_007f:
 
 IL_00c3:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:61>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:61>
 		return;
 	}
 }
@@ -9697,16 +9697,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GazeInputManager_OnDestroy_m3D9C35EE01B4
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:68>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:68>
 		Action_1_tFAB0B519749BBE2B7AAD946105FAE8116636A8BC* L_0 = (Action_1_tFAB0B519749BBE2B7AAD946105FAE8116636A8BC*)il2cpp_codegen_object_new(Action_1_tFAB0B519749BBE2B7AAD946105FAE8116636A8BC_il2cpp_TypeInfo_var);
 		Action_1__ctor_m9EFC6656FE579E4D72FFCA991DE5860FA28DD71E(L_0, __this, (intptr_t)((void*)GazeInputManager_OnDeviceConnected_mFD98427178DBDAF1C7B406FEA28161D3186F2E68_RuntimeMethod_var), NULL);
 		InputDevices_remove_deviceConnected_m52D0C5E73A9BBEEF775E21DF93DDF0DD4F7D1BB5(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:69>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:69>
 		Action_2_tB79528C85CFEF7DFF52C575DDAA398D2FE6BC333* L_1 = (Action_2_tB79528C85CFEF7DFF52C575DDAA398D2FE6BC333*)il2cpp_codegen_object_new(Action_2_tB79528C85CFEF7DFF52C575DDAA398D2FE6BC333_il2cpp_TypeInfo_var);
 		Action_2__ctor_m23A4911D82F290811EDC6BFC315C339857526804(L_1, __this, (intptr_t)((void*)GazeInputManager_OnDeviceChange_m5A5EA7E87A46CAEC0CA21EA476B0DAEBB8F2885E_RuntimeMethod_var), NULL);
 		il2cpp_codegen_runtime_class_init_inline(InputSystem_t4120CA4FE7DCFD56AF9391933FC3F1F485350164_il2cpp_TypeInfo_var);
 		InputSystem_remove_onDeviceChange_mD08F75C263C2D687B2E6E68E86105829075BF717(L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:70>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:70>
 		return;
 	}
 }
@@ -9721,7 +9721,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GazeInputManager_OnDeviceConnected_mFD98
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:74>
 		bool L_0 = __this->___m_EyeTrackingDeviceFound;
 		if (L_0)
 		{
@@ -9742,23 +9742,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GazeInputManager_OnDeviceConnected_mFD98
 
 IL_0022:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:75>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:75>
 		return;
 	}
 
 IL_0023:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:77>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:77>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m06155ED25645EBBC06B4C8F05235EF41B1489C7E(_stringLiteralCAC9FA4EA913C7FEEEFEEA8D8C3FEF0ADF872886, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:78>
 		__this->___m_EyeTrackingDeviceFound = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:79>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5;
 		L_5 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_5);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_5, (bool)1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:80>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:80>
 		return;
 	}
 }
@@ -9774,7 +9774,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GazeInputManager_OnDeviceChange_m5A5EA7E
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:84>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:84>
 		bool L_0 = __this->___m_EyeTrackingDeviceFound;
 		if (L_0)
 		{
@@ -9791,13 +9791,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GazeInputManager_OnDeviceChange_m5A5EA7E
 
 IL_000b:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:85>
 		return;
 	}
 
 IL_000c:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:87>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:87>
 		InputDevice_t8BCF67533E872A75779C24C93D1D7085B72D364B* L_2 = ___0_device;
 		NullCheck(L_2);
 		String_t* L_3;
@@ -9810,12 +9810,12 @@ IL_000c:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:89>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m06155ED25645EBBC06B4C8F05235EF41B1489C7E(_stringLiteral91BEF5D9E8C19A7BAA9335746C74FFE9F0A218C1, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:90>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:90>
 		__this->___m_EyeTrackingDeviceFound = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:91>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:91>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5;
 		L_5 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_5);
@@ -9824,7 +9824,7 @@ IL_000c:
 
 IL_003c:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:93>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:93>
 		return;
 	}
 }
@@ -9832,7 +9832,7 @@ IL_003c:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GazeInputManager__ctor_m745DE4041AB26B99172061A4E8050A0FD507BEB8 (GazeInputManager_t76600ACADAE6718BABD1166EBED065FFD8C90C83* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:16>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/GazeInputManager.cs:16>
 		__this->___m_FallbackIfEyeTrackingUnavailable = (bool)1;
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -9857,14 +9857,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ShaderContainer__ctor_mF29C007F2040D9962
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:60>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:60>
 		__this->___useSRPShaderName = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:61>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:61>
 		__this->___scriptableRenderPipelineShaderName = _stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___scriptableRenderPipelineShaderName), (void*)_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:63>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:63>
 		__this->___useBuiltinShaderName = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:64>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:64>
 		__this->___builtInPipelineShaderName = _stringLiteral2620038B8A71EF21A205CC921576171A3CA9B0F4;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___builtInPipelineShaderName), (void*)_stringLiteral2620038B8A71EF21A205CC921576171A3CA9B0F4);
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
@@ -9883,7 +9883,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ShaderContainer__ctor_mF29C007F2040D9962
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MaterialPipelineHandler_AutoRefreshPipelineShaders_mBC841CD4975F098DAD78A5DE47C05DE3FCEF9DAD (MaterialPipelineHandler_t0FF80ADB33BB30721BC1DF67A7F59847C0582985* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:97>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:97>
 		bool L_0 = __this->___m_AutoRefreshShaders;
 		if (!L_0)
 		{
@@ -9891,13 +9891,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MaterialPipelineHandler_AutoRefreshPipel
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:98>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:98>
 		MaterialPipelineHandler_SetPipelineShaders_mEF3C7714BCC13EEB99DD4D0AFF65BBB1C91AEF3E(__this, NULL);
 	}
 
 IL_000e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:99>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:99>
 		return;
 	}
 }
@@ -9927,7 +9927,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MaterialPipelineHandler_SetPipelineShade
 	Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* G_B10_0 = NULL;
 	Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* G_B13_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:107>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:107>
 		bool L_0 = __this->___m_SaveAssetsPending;
 		if (!L_0)
 		{
@@ -9935,13 +9935,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MaterialPipelineHandler_SetPipelineShade
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:108>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:108>
 		return;
 	}
 
 IL_0009:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:110>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:110>
 		List_1_tAD47FE510B94D41F2CC47130BE91C52577397DD8* L_1 = __this->___m_ShaderContainers;
 		if (L_1)
 		{
@@ -9949,13 +9949,13 @@ IL_0009:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:111>
 		return;
 	}
 
 IL_0012:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:113>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:113>
 		il2cpp_codegen_runtime_class_init_inline(GraphicsSettings_t01785CE5CB5C5105CB527619AF4D74BEF417EF1A_il2cpp_TypeInfo_var);
 		RenderPipelineAsset_t5F9BF815BF931E1314B184E7F9070FB649C7054E* L_2;
 		L_2 = GraphicsSettings_get_currentRenderPipeline_mEC94DC23DE4F901D6A629E2DE882982686AF75F1(NULL);
@@ -9963,11 +9963,11 @@ IL_0012:
 		bool L_3;
 		L_3 = Object_op_Equality_mB6120F782D83091EF56A198FCEBCF066DB4A9605(L_2, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
 		V_0 = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:114>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:114>
 		V_1 = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:115>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:115>
 		V_2 = 0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:117>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:117>
 		List_1_tAD47FE510B94D41F2CC47130BE91C52577397DD8* L_4 = __this->___m_ShaderContainers;
 		NullCheck(L_4);
 		Enumerator_t1B566B4B8021293BDA76FB2466677DF975ACB8DF L_5;
@@ -9992,11 +9992,11 @@ FINALLY_011c:
 
 IL_0033_1:
 			{
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:117>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:117>
 				ShaderContainer_t5449FFD0589156259FBD0A40C97956BAB7A967C1* L_6;
 				L_6 = Enumerator_get_Current_m108DACDDBBFB5E6EED33A49351BE602DEEC6C44E_inline((&V_3), Enumerator_get_Current_m108DACDDBBFB5E6EED33A49351BE602DEEC6C44E_RuntimeMethod_var);
 				V_4 = L_6;
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:119>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:119>
 				ShaderContainer_t5449FFD0589156259FBD0A40C97956BAB7A967C1* L_7 = V_4;
 				NullCheck(L_7);
 				Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_8 = L_7->___material;
@@ -10009,7 +10009,7 @@ IL_0033_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:123>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:123>
 				ShaderContainer_t5449FFD0589156259FBD0A40C97956BAB7A967C1* L_10 = V_4;
 				NullCheck(L_10);
 				bool L_11 = L_10->___useBuiltinShaderName;
@@ -10039,7 +10039,7 @@ IL_0060_1:
 IL_006c_1:
 			{
 				V_5 = G_B10_0;
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:124>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:124>
 				ShaderContainer_t5449FFD0589156259FBD0A40C97956BAB7A967C1* L_17 = V_4;
 				NullCheck(L_17);
 				bool L_18 = L_17->___useSRPShaderName;
@@ -10069,7 +10069,7 @@ IL_0080_1:
 IL_008c_1:
 			{
 				V_6 = G_B13_0;
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:127>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:127>
 				ShaderContainer_t5449FFD0589156259FBD0A40C97956BAB7A967C1* L_24 = V_4;
 				NullCheck(L_24);
 				Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_25 = L_24->___material;
@@ -10077,7 +10077,7 @@ IL_008c_1:
 				Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_26;
 				L_26 = Material_get_shader_m8B0C11AE6F2AD7DE30AF52D3195EB716F7A71983(L_25, NULL);
 				V_7 = L_26;
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:130>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:130>
 				bool L_27 = V_0;
 				if (!L_27)
 				{
@@ -10106,21 +10106,21 @@ IL_008c_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:132>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:132>
 				ShaderContainer_t5449FFD0589156259FBD0A40C97956BAB7A967C1* L_33 = V_4;
 				NullCheck(L_33);
 				Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_34 = L_33->___material;
 				Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_35 = V_5;
 				NullCheck(L_34);
 				Material_set_shader_mBD3A0D9AB14DE2F7CD5F2775E9AD58E15424C171(L_34, L_35, NULL);
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:133>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:133>
 				ShaderContainer_t5449FFD0589156259FBD0A40C97956BAB7A967C1* L_36 = V_4;
 				NullCheck(L_36);
 				Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_37 = L_36->___material;
 				MaterialPipelineHandler_MarkMaterialModified_mF5668D7CEF7CAA2E7DCBC7F31934D8D31000E6B9(L_37, NULL);
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:134>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:134>
 				V_1 = (bool)1;
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:135>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:135>
 				int32_t L_38 = V_2;
 				V_2 = ((int32_t)il2cpp_codegen_add(L_38, 1));
 				goto IL_010e_1;
@@ -10128,7 +10128,7 @@ IL_008c_1:
 
 IL_00d6_1:
 			{
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:137>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:137>
 				bool L_39 = V_0;
 				if (L_39)
 				{
@@ -10157,28 +10157,28 @@ IL_00d6_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:139>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:139>
 				ShaderContainer_t5449FFD0589156259FBD0A40C97956BAB7A967C1* L_45 = V_4;
 				NullCheck(L_45);
 				Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_46 = L_45->___material;
 				Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_47 = V_6;
 				NullCheck(L_46);
 				Material_set_shader_mBD3A0D9AB14DE2F7CD5F2775E9AD58E15424C171(L_46, L_47, NULL);
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:140>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:140>
 				ShaderContainer_t5449FFD0589156259FBD0A40C97956BAB7A967C1* L_48 = V_4;
 				NullCheck(L_48);
 				Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_49 = L_48->___material;
 				MaterialPipelineHandler_MarkMaterialModified_mF5668D7CEF7CAA2E7DCBC7F31934D8D31000E6B9(L_49, NULL);
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:141>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:141>
 				V_1 = (bool)1;
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:142>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:142>
 				int32_t L_50 = V_2;
 				V_2 = ((int32_t)il2cpp_codegen_add(L_50, 1));
 			}
 
 IL_010e_1:
 			{
-				//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:117>
+				//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:117>
 				bool L_51;
 				L_51 = Enumerator_MoveNext_m6A20E0100D9D352AF8D1D6B6ACB174E846DCF156((&V_3), Enumerator_MoveNext_m6A20E0100D9D352AF8D1D6B6ACB174E846DCF156_RuntimeMethod_var);
 				if (L_51)
@@ -10198,9 +10198,9 @@ IL_010e_1:
 
 IL_012a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:146>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:146>
 		bool L_52 = V_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:160>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:160>
 		return;
 	}
 }
@@ -10208,7 +10208,7 @@ IL_012a:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MaterialPipelineHandler_MarkMaterialModified_mF5668D7CEF7CAA2E7DCBC7F31934D8D31000E6B9 (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___0_material, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:175>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:175>
 		return;
 	}
 }
@@ -10216,7 +10216,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MaterialPipelineHandler_MarkMaterialModi
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MaterialPipelineHandler__ctor_mD952562BA8163091463DB0F248CED8BA1527F265 (MaterialPipelineHandler_t0FF80ADB33BB30721BC1DF67A7F59847C0582985* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:82>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/MaterialPipelineHandler.cs:82>
 		__this->___m_AutoRefreshShaders = (bool)1;
 		ScriptableObject__ctor_mD037FDB0B487295EA47F79A4DB1BF1846C9087FF(__this, NULL);
 		return;
@@ -10234,9 +10234,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MaterialPipelineHandler__ctor_mD952562BA
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* ObjectSpawner_get_cameraToFace_m99ED804DC1AEAFF1FA3BE5D9CB96E15C17A907B8 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:23>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:23>
 		ObjectSpawner_EnsureFacingCamera_mDE91C9175F12CB11CDED0B3C82D5D68ED9CAB7B5(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:24>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:24>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_0 = __this->___m_CameraToFace;
 		return L_0;
 	}
@@ -10245,7 +10245,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_cameraToFace_m13429AE345196ACC129BFC53BA7DEEC6627F445C (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:26>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:26>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_0 = ___0_value;
 		__this->___m_CameraToFace = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_CameraToFace), (void*)L_0);
@@ -10256,7 +10256,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_cameraToFace_m13429AE3
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* ObjectSpawner_get_objectPrefabs_mC013B08B69C29F13A750E8715FAB01E8681320CF (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:38>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:38>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_0 = __this->___m_ObjectPrefabs;
 		return L_0;
 	}
@@ -10265,7 +10265,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tB951CE80B58D1BF9650862451D8DAD8C231F2
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_objectPrefabs_m7C706F87CB6076934AA85A8DC02C11C94DBC2DE3 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:39>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:39>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_0 = ___0_value;
 		__this->___m_ObjectPrefabs = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ObjectPrefabs), (void*)L_0);
@@ -10276,7 +10276,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_objectPrefabs_m7C706F8
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ObjectSpawner_get_spawnVisualizationPrefab_m005CB7E8829438D62559966C3175138AF6B8E7E2 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:53>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:53>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___m_SpawnVisualizationPrefab;
 		return L_0;
 	}
@@ -10285,7 +10285,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_spawnVisualizationPrefab_mD4A5C8D799FCC9B21228E6055795C373AC896842 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:54>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:54>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ___0_value;
 		__this->___m_SpawnVisualizationPrefab = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_SpawnVisualizationPrefab), (void*)L_0);
@@ -10296,7 +10296,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_spawnVisualizationPref
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ObjectSpawner_get_spawnOptionIndex_m8B127FEF82FD7AAB77E7D4F6EE3E869E25EFB254 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:69>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:69>
 		int32_t L_0 = __this->___m_SpawnOptionIndex;
 		return L_0;
 	}
@@ -10305,7 +10305,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ObjectSpawner_get_spawnOptionIndex_m8
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_spawnOptionIndex_m5984E7B1712BB73A2E982FE4487FCA033A922711 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:70>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:70>
 		int32_t L_0 = ___0_value;
 		__this->___m_SpawnOptionIndex = L_0;
 		return;
@@ -10321,7 +10321,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_get_isSpawnOptionRandomize
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:78>
 		int32_t L_0 = __this->___m_SpawnOptionIndex;
 		if ((((int32_t)L_0) < ((int32_t)0)))
 		{
@@ -10346,7 +10346,7 @@ IL_0020:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_get_onlySpawnInView_m4AE6CAF69146EE5F55128F520ED6C77FBF33B376 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:89>
 		bool L_0 = __this->___m_OnlySpawnInView;
 		return L_0;
 	}
@@ -10355,7 +10355,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_get_onlySpawnInView_m4AE6C
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_onlySpawnInView_m39467C97467506B3012A050F3849BC896ECFE07A (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:90>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:90>
 		bool L_0 = ___0_value;
 		__this->___m_OnlySpawnInView = L_0;
 		return;
@@ -10365,7 +10365,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_onlySpawnInView_m39467
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float ObjectSpawner_get_viewportPeriphery_m9D81A0039316F881F4F12D8F42E67ED86907DF8E (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:102>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:102>
 		float L_0 = __this->___m_ViewportPeriphery;
 		return L_0;
 	}
@@ -10374,7 +10374,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float ObjectSpawner_get_viewportPeriphery_m9D
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_viewportPeriphery_mF79358BA74C413586E09E1DD628FC9A36EA948BA (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:103>
 		float L_0 = ___0_value;
 		__this->___m_ViewportPeriphery = L_0;
 		return;
@@ -10384,7 +10384,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_viewportPeriphery_mF79
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_get_applyRandomAngleAtSpawn_mEEF19E6B8A0232670426D51CE44AFD5C7D721289 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:117>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:117>
 		bool L_0 = __this->___m_ApplyRandomAngleAtSpawn;
 		return L_0;
 	}
@@ -10393,7 +10393,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_get_applyRandomAngleAtSpaw
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_applyRandomAngleAtSpawn_m249E985B18D47F1280DA892475C0F8A743A172C8 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:118>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:118>
 		bool L_0 = ___0_value;
 		__this->___m_ApplyRandomAngleAtSpawn = L_0;
 		return;
@@ -10403,7 +10403,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_applyRandomAngleAtSpaw
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float ObjectSpawner_get_spawnAngleRange_mA5AB99C204A4669D2805081FF2B27F2C6CFB97B6 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:132>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:132>
 		float L_0 = __this->___m_SpawnAngleRange;
 		return L_0;
 	}
@@ -10412,7 +10412,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float ObjectSpawner_get_spawnAngleRange_mA5AB
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_spawnAngleRange_m5CA22E8E5559EAE3CAFED5E7E5D114DFD5E22EFE (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:133>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:133>
 		float L_0 = ___0_value;
 		__this->___m_SpawnAngleRange = L_0;
 		return;
@@ -10422,7 +10422,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_spawnAngleRange_m5CA22
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_get_spawnAsChildren_m4498447AB9BD7DA4F8B6B31E2C8FF0F3A25D6483 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:145>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:145>
 		bool L_0 = __this->___m_SpawnAsChildren;
 		return L_0;
 	}
@@ -10431,7 +10431,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_get_spawnAsChildren_m44984
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_set_spawnAsChildren_mF600D54942D35CF9B9BF4A6F8D53843AC65EDD32 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:146>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:146>
 		bool L_0 = ___0_value;
 		__this->___m_SpawnAsChildren = L_0;
 		return;
@@ -10527,9 +10527,9 @@ IL_0007:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_Awake_mCFDE2E8399B486248DD536633294AC9627F1B9A8 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:160>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:160>
 		ObjectSpawner_EnsureFacingCamera_mDE91C9175F12CB11CDED0B3C82D5D68ED9CAB7B5(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:161>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:161>
 		return;
 	}
 }
@@ -10543,7 +10543,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_EnsureFacingCamera_mDE91C9
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:165>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:165>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_0 = __this->___m_CameraToFace;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -10554,7 +10554,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_EnsureFacingCamera_mDE91C9
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:166>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:166>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_2;
 		L_2 = Camera_get_main_m52C992F18E05355ABB9EEB64A4BF2215E12762DF(NULL);
 		__this->___m_CameraToFace = L_2;
@@ -10563,7 +10563,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_EnsureFacingCamera_mDE91C9
 
 IL_0019:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:167>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:167>
 		return;
 	}
 }
@@ -10571,9 +10571,9 @@ IL_0019:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_RandomizeSpawnOption_mAAB168851C517000BFFEE2EB598D0DE478BB0FC7 (ObjectSpawner_t5ACB5F84845F9E874424BADB585AB17DD4644111* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:176>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:176>
 		__this->___m_SpawnOptionIndex = (-1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:177>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:177>
 		return;
 	}
 }
@@ -10589,7 +10589,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_SetSpawnObjectIndex_m8A44A
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:188>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:188>
 		int32_t L_0 = ___0_index;
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_1 = __this->___m_ObjectPrefabs;
 		NullCheck(L_1);
@@ -10601,7 +10601,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_SetSpawnObjectIndex_m8A44A
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:189>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:189>
 		int32_t L_3 = ___0_index;
 		__this->___m_SpawnOptionIndex = L_3;
 		return;
@@ -10609,10 +10609,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_SetSpawnObjectIndex_m8A44A
 
 IL_0016:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:191>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:191>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(_stringLiteral7882A5FEB191646AEC57512AA6C5A9365A5C4705, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:192>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:192>
 		return;
 	}
 }
@@ -10645,7 +10645,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_TrySpawnObject_mBE0345EF7F
 	Action_1_tFF0F3D982F6CEB68CBA322555CBBEE6AE1D2519C* G_B18_0 = NULL;
 	Action_1_tFF0F3D982F6CEB68CBA322555CBBEE6AE1D2519C* G_B17_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:210>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:210>
 		bool L_0 = __this->___m_OnlySpawnInView;
 		if (!L_0)
 		{
@@ -10653,13 +10653,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_TrySpawnObject_mBE0345EF7F
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:212>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:212>
 		float L_1 = __this->___m_ViewportPeriphery;
 		V_4 = L_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:213>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:213>
 		float L_2 = __this->___m_ViewportPeriphery;
 		V_5 = ((float)il2cpp_codegen_subtract((1.0f), L_2));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:214>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:214>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_3;
 		L_3 = ObjectSpawner_get_cameraToFace_m99ED804DC1AEAFF1FA3BE5D9CB96E15C17A907B8(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4 = ___0_spawnPoint;
@@ -10667,8 +10667,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_TrySpawnObject_mBE0345EF7F
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_5;
 		L_5 = Camera_WorldToViewportPoint_m285523443225EDA79BBEF9C9EDD76B99CFED054B(L_3, L_4, NULL);
 		V_6 = L_5;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:215>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:216>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:215>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:216>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6 = V_6;
 		float L_7 = L_6.___z;
 		if ((((float)L_7) < ((float)(0.0f))))
@@ -10715,16 +10715,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectSpawner_TrySpawnObject_mBE0345EF7F
 
 IL_0066:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:218>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:218>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(_stringLiteral88C62A1EF95D85108E6075F63962FAB00670D43B, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:219>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:219>
 		return (bool)0;
 	}
 
 IL_0073:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:223>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:223>
 		bool L_20;
 		L_20 = ObjectSpawner_get_isSpawnOptionRandomized_m332805694C4805511AD6D8124E6038E3A5D59C2B(__this, NULL);
 		if (L_20)
@@ -10752,7 +10752,7 @@ IL_0083:
 IL_0094:
 	{
 		V_0 = G_B10_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:224>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:224>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_25 = __this->___m_ObjectPrefabs;
 		int32_t L_26 = V_0;
 		NullCheck(L_25);
@@ -10762,7 +10762,7 @@ IL_0094:
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_28;
 		L_28 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m10D87C6E0708CA912BBB02555BF7D0FBC5D7A2B3(L_27, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m10D87C6E0708CA912BBB02555BF7D0FBC5D7A2B3_RuntimeMethod_var);
 		V_1 = L_28;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:225>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:225>
 		bool L_29 = __this->___m_SpawnAsChildren;
 		if (!L_29)
 		{
@@ -10770,7 +10770,7 @@ IL_0094:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:226>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:226>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_30 = V_1;
 		NullCheck(L_30);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31;
@@ -10783,7 +10783,7 @@ IL_0094:
 
 IL_00c0:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:228>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:228>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_33 = V_1;
 		NullCheck(L_33);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_34;
@@ -10791,9 +10791,9 @@ IL_00c0:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_35 = ___0_spawnPoint;
 		NullCheck(L_34);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_34, L_35, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:229>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:229>
 		ObjectSpawner_EnsureFacingCamera_mDE91C9175F12CB11CDED0B3C82D5D68ED9CAB7B5(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:231>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:231>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_36 = __this->___m_CameraToFace;
 		NullCheck(L_36);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_37;
@@ -10801,14 +10801,14 @@ IL_00c0:
 		NullCheck(L_37);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_38;
 		L_38 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_37, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:232>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:232>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_39 = ___0_spawnPoint;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_40;
 		L_40 = Vector3_op_Subtraction_mE42023FF80067CB44A1D4A27EB7CF2B24CABB828_inline(L_38, L_39, NULL);
 		V_2 = L_40;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:233>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:233>
 		BurstMathUtility_ProjectOnPlane_m2C217BB9D02F0F29DF756819A072E4370A7245D8((&V_2), (&___1_spawnNormal), (&V_3), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:234>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:234>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_41 = V_1;
 		NullCheck(L_41);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_42;
@@ -10819,7 +10819,7 @@ IL_00c0:
 		L_45 = Quaternion_LookRotation_mFB02EDC8F733774DFAC3BEA4B4BB265A228F8307_inline(L_43, L_44, NULL);
 		NullCheck(L_42);
 		Transform_set_rotation_m61340DE74726CF0F9946743A727C4D444397331D(L_42, L_45, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:236>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:236>
 		bool L_46 = __this->___m_ApplyRandomAngleAtSpawn;
 		if (!L_46)
 		{
@@ -10827,13 +10827,13 @@ IL_00c0:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:238>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:238>
 		float L_47 = __this->___m_SpawnAngleRange;
 		float L_48 = __this->___m_SpawnAngleRange;
 		float L_49;
 		L_49 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(((-L_47)), L_48, NULL);
 		V_7 = L_49;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:239>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:239>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_50 = V_1;
 		NullCheck(L_50);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_51;
@@ -10847,7 +10847,7 @@ IL_00c0:
 
 IL_0134:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:242>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:242>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_54 = __this->___m_SpawnVisualizationPrefab;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_55;
@@ -10858,7 +10858,7 @@ IL_0134:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:244>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:244>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_56 = __this->___m_SpawnVisualizationPrefab;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_57;
@@ -10866,12 +10866,12 @@ IL_0134:
 		NullCheck(L_57);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_58;
 		L_58 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_57, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:245>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:245>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_59 = L_58;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_60 = ___0_spawnPoint;
 		NullCheck(L_59);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_59, L_60, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:246>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:246>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_61 = V_1;
 		NullCheck(L_61);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_62;
@@ -10885,7 +10885,7 @@ IL_0134:
 
 IL_0169:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:249>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:249>
 		Action_1_tFF0F3D982F6CEB68CBA322555CBBEE6AE1D2519C* L_64 = __this->___objectSpawned;
 		Action_1_tFF0F3D982F6CEB68CBA322555CBBEE6AE1D2519C* L_65 = L_64;
 		if (L_65)
@@ -10908,7 +10908,7 @@ IL_0175:
 
 IL_017b:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:250>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:250>
 		return (bool)1;
 	}
 }
@@ -10923,7 +10923,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_SpawnObject_m613034EBFD485
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:267>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:267>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = ___0_spawnPoint;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = ___1_spawnNormal;
 		bool L_2;
@@ -10934,14 +10934,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner_SpawnObject_m613034EBFD485
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:268>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:268>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(_stringLiteral8DF6B2ACF7A23D17B3E3ECE151308B57FA112CD5, __this, NULL);
 	}
 
 IL_0015:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:269>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:269>
 		return;
 	}
 }
@@ -10956,20 +10956,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner__ctor_m1A51792399FE9484F9E
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:31>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:31>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_0 = (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B*)il2cpp_codegen_object_new(List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B_il2cpp_TypeInfo_var);
 		List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC(L_0, List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC_RuntimeMethod_var);
 		__this->___m_ObjectPrefabs = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ObjectPrefabs), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:60>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:60>
 		__this->___m_SpawnOptionIndex = (-1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:82>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:82>
 		__this->___m_OnlySpawnInView = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:95>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:95>
 		__this->___m_ViewportPeriphery = (0.150000006f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:109>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:109>
 		__this->___m_ApplyRandomAngleAtSpawn = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:124>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ObjectSpawner.cs:124>
 		__this->___m_SpawnAngleRange = (45.0f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -10987,7 +10987,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectSpawner__ctor_m1A51792399FE9484F9E
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_Awake_mB9ED650EAD79561E6D51A289F31D4E4D1839928E (PermissionsManager_tA775AB0B85BF28A1804E5DB39BA35739106A151C* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:72>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:72>
 		bool L_0 = __this->___m_ProcessPermissionsOnAwake;
 		if (!L_0)
 		{
@@ -10995,13 +10995,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_Awake_mB9ED650EAD7956
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:73>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:73>
 		PermissionsManager_ProcessPermissions_mB2ABACF63093D1C75F0AA2D665125137AAE6A683(__this, NULL);
 	}
 
 IL_000e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:74>
 		return;
 	}
 }
@@ -11040,14 +11040,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_ProcessPermissions_mB
 		U3CU3Ec__DisplayClass7_0_t643B054CCD37CC2C78C47CAE4487CC337E952435* L_0 = (U3CU3Ec__DisplayClass7_0_t643B054CCD37CC2C78C47CAE4487CC337E952435*)il2cpp_codegen_object_new(U3CU3Ec__DisplayClass7_0_t643B054CCD37CC2C78C47CAE4487CC337E952435_il2cpp_TypeInfo_var);
 		U3CU3Ec__DisplayClass7_0__ctor_mF5B3CF3837C1CD139A4D89679BB1C9F2F18D8817(L_0, NULL);
 		V_0 = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:83>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:83>
 		U3CU3Ec__DisplayClass7_0_t643B054CCD37CC2C78C47CAE4487CC337E952435* L_1 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 		int32_t L_2;
 		L_2 = XRPlatformUnderstanding_get_CurrentPlatform_m22F6BA4ADE6BEB25AC2E82CF3787D1E980C3E97A(NULL);
 		NullCheck(L_1);
 		L_1->___currentPlatform = L_2;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:84>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:84>
 		List_1_t0CE881A0D7899C6B0A75D108E3C7AA135DB11CBE* L_3 = __this->___m_PermissionGroups;
 		U3CU3Ec__DisplayClass7_0_t643B054CCD37CC2C78C47CAE4487CC337E952435* L_4 = V_0;
 		Predicate_1_tA7F3DC0C5E0388989809AF2666DBDC2C893395AA* L_5 = (Predicate_1_tA7F3DC0C5E0388989809AF2666DBDC2C893395AA*)il2cpp_codegen_object_new(Predicate_1_tA7F3DC0C5E0388989809AF2666DBDC2C893395AA_il2cpp_TypeInfo_var);
@@ -11057,7 +11057,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_ProcessPermissions_mB
 		L_6 = List_1_Find_mF53B962F29A3921AAF47DC0C06BD8D6622A155DC(L_3, L_5, List_1_Find_mF53B962F29A3921AAF47DC0C06BD8D6622A155DC_RuntimeMethod_var);
 		__this->___m_CurrentPlatformPermissionGroup = L_6;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_CurrentPlatformPermissionGroup), (void*)L_6);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:85>
 		PermissionRequestGroup_t646393166A187662C80A26CCE0F96A87C449EC8E* L_7 = __this->___m_CurrentPlatformPermissionGroup;
 		if (L_7)
 		{
@@ -11065,24 +11065,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_ProcessPermissions_mB
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:89>
 		return;
 	}
 
 IL_0037:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:92>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:92>
 		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_8 = (List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD*)il2cpp_codegen_object_new(List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD_il2cpp_TypeInfo_var);
 		List_1__ctor_mCA8DD57EAC70C2B5923DBB9D5A77CEAC22E7068E(L_8, List_1__ctor_mCA8DD57EAC70C2B5923DBB9D5A77CEAC22E7068E_RuntimeMethod_var);
 		V_1 = L_8;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:96>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:96>
 		V_2 = 0;
 		goto IL_009f;
 	}
 
 IL_0041:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:98>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:98>
 		PermissionRequestGroup_t646393166A187662C80A26CCE0F96A87C449EC8E* L_9 = __this->___m_CurrentPlatformPermissionGroup;
 		NullCheck(L_9);
 		List_1_tB15AC449E2A89BA3A8EFC74A4BF4DB8F0E1B0A30* L_10 = L_9->___permissions;
@@ -11091,7 +11091,7 @@ IL_0041:
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_12;
 		L_12 = List_1_get_Item_m4A780635AA3A4A391D4F7EC8F5819F4B1BAB6AEC(L_10, L_11, List_1_get_Item_m4A780635AA3A4A391D4F7EC8F5819F4B1BAB6AEC_RuntimeMethod_var);
 		V_3 = L_12;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:99>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:99>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_13 = V_3;
 		NullCheck(L_13);
 		bool L_14 = L_13->___enabled;
@@ -11101,7 +11101,7 @@ IL_0041:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:103>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_15 = V_3;
 		NullCheck(L_15);
 		String_t* L_16 = L_15->___permissionId;
@@ -11122,14 +11122,14 @@ IL_0041:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:105>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:105>
 		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_20 = V_1;
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_21 = V_3;
 		NullCheck(L_21);
 		String_t* L_22 = L_21->___permissionId;
 		NullCheck(L_20);
 		List_1_Add_mF10DB1D3CBB0B14215F0E4F8AB4934A1955E5351_inline(L_20, L_22, List_1_Add_mF10DB1D3CBB0B14215F0E4F8AB4934A1955E5351_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:106>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:106>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_23 = V_3;
 		NullCheck(L_23);
 		L_23->___requested = (bool)1;
@@ -11138,7 +11138,7 @@ IL_0041:
 
 IL_0085:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:110>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:110>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_24 = V_3;
 		NullCheck(L_24);
 		String_t* L_25 = L_24->___permissionId;
@@ -11150,14 +11150,14 @@ IL_0085:
 
 IL_009b:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:96>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:96>
 		int32_t L_27 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_27, 1));
 	}
 
 IL_009f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:96>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:96>
 		int32_t L_28 = V_2;
 		PermissionRequestGroup_t646393166A187662C80A26CCE0F96A87C449EC8E* L_29 = __this->___m_CurrentPlatformPermissionGroup;
 		NullCheck(L_29);
@@ -11171,7 +11171,7 @@ IL_009f:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:115>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:115>
 		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_32 = V_1;
 		NullCheck(L_32);
 		int32_t L_33;
@@ -11182,23 +11182,23 @@ IL_009f:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:117>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:117>
 		PermissionCallbacks_t6C5002298E6649261FCB52C244695459E5C9890F* L_34 = (PermissionCallbacks_t6C5002298E6649261FCB52C244695459E5C9890F*)il2cpp_codegen_object_new(PermissionCallbacks_t6C5002298E6649261FCB52C244695459E5C9890F_il2cpp_TypeInfo_var);
 		PermissionCallbacks__ctor_m91B14BBBC8913C131E400BA0D13576822AAE7A75(L_34, NULL);
 		V_4 = L_34;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:118>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:118>
 		PermissionCallbacks_t6C5002298E6649261FCB52C244695459E5C9890F* L_35 = V_4;
 		Action_1_t3CB5D1A819C3ED3F99E9E39F890F18633253949A* L_36 = (Action_1_t3CB5D1A819C3ED3F99E9E39F890F18633253949A*)il2cpp_codegen_object_new(Action_1_t3CB5D1A819C3ED3F99E9E39F890F18633253949A_il2cpp_TypeInfo_var);
 		Action_1__ctor_m9DC2953C55C4D7D4B7BEFE03D84DA1F9362D652C(L_36, __this, (intptr_t)((void*)PermissionsManager_OnPermissionDenied_m00CC36AD134767C78745654BC7B174A57434BFBC_RuntimeMethod_var), NULL);
 		NullCheck(L_35);
 		PermissionCallbacks_add_PermissionDenied_mE0B2826463785B050C999C70F443FCC3822563D0(L_35, L_36, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:119>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:119>
 		PermissionCallbacks_t6C5002298E6649261FCB52C244695459E5C9890F* L_37 = V_4;
 		Action_1_t3CB5D1A819C3ED3F99E9E39F890F18633253949A* L_38 = (Action_1_t3CB5D1A819C3ED3F99E9E39F890F18633253949A*)il2cpp_codegen_object_new(Action_1_t3CB5D1A819C3ED3F99E9E39F890F18633253949A_il2cpp_TypeInfo_var);
 		Action_1__ctor_m9DC2953C55C4D7D4B7BEFE03D84DA1F9362D652C(L_38, __this, (intptr_t)((void*)PermissionsManager_OnPermissionGranted_mAAB98A8F7A2D9835163D4A2BAACAEECA4F3DE149_RuntimeMethod_var), NULL);
 		NullCheck(L_37);
 		PermissionCallbacks_add_PermissionGranted_m74335D4200D9B1A7C80AB9C133F95C61FCDCDF89(L_37, L_38, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:121>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:121>
 		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_39 = V_1;
 		NullCheck(L_39);
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_40;
@@ -11209,7 +11209,7 @@ IL_009f:
 
 IL_00f5:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:124>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:124>
 		return;
 	}
 }
@@ -11240,7 +11240,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_OnPermissionGranted_m
 		NullCheck(L_1);
 		L_1->___permissionStr = L_2;
 		Il2CppCodeGenWriteBarrier((void**)(&L_1->___permissionStr), (void*)L_2);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:129>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:129>
 		PermissionRequestGroup_t646393166A187662C80A26CCE0F96A87C449EC8E* L_3 = __this->___m_CurrentPlatformPermissionGroup;
 		NullCheck(L_3);
 		List_1_tB15AC449E2A89BA3A8EFC74A4BF4DB8F0E1B0A30* L_4 = L_3->___permissions;
@@ -11251,7 +11251,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_OnPermissionGranted_m
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_7;
 		L_7 = List_1_Find_mAFF40F32A3B61AE6B6C207E45E2977EE575107F0(L_4, L_6, List_1_Find_mAFF40F32A3B61AE6B6C207E45E2977EE575107F0_RuntimeMethod_var);
 		V_1 = L_7;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:130>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:130>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_8 = V_1;
 		if (L_8)
 		{
@@ -11259,7 +11259,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_OnPermissionGranted_m
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:132>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:132>
 		U3CU3Ec__DisplayClass8_0_t62192C7C37250A274F8DD9C57BD6BA67369E477F* L_9 = V_0;
 		NullCheck(L_9);
 		String_t* L_10 = L_9->___permissionStr;
@@ -11267,21 +11267,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_OnPermissionGranted_m
 		L_11 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteralDF603F67558A1179B2C28C9A1043178A91F18A45, L_10, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(L_11, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:133>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:133>
 		return;
 	}
 
 IL_0044:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:137>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:137>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_12 = V_1;
 		NullCheck(L_12);
 		L_12->___granted = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:138>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:138>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_13 = V_1;
 		NullCheck(L_13);
 		L_13->___responseReceived = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:140>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:140>
 		U3CU3Ec__DisplayClass8_0_t62192C7C37250A274F8DD9C57BD6BA67369E477F* L_14 = V_0;
 		NullCheck(L_14);
 		String_t* L_15 = L_14->___permissionStr;
@@ -11289,7 +11289,7 @@ IL_0044:
 		L_16 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral01A3C76F5687C41BFD36F87D4E421CD828AE7076, L_15, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m06155ED25645EBBC06B4C8F05235EF41B1489C7E(L_16, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:141>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:141>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_17 = V_1;
 		NullCheck(L_17);
 		UnityEvent_1_tC9859540CF1468306CAB6D758C0A0D95DBCEC257* L_18 = L_17->___onPermissionGranted;
@@ -11298,7 +11298,7 @@ IL_0044:
 		String_t* L_20 = L_19->___permissionStr;
 		NullCheck(L_18);
 		UnityEvent_1_Invoke_mA633B48B5D287DA856FB954AC3E4012487E63C15(L_18, L_20, UnityEvent_1_Invoke_mA633B48B5D287DA856FB954AC3E4012487E63C15_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:142>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:142>
 		return;
 	}
 }
@@ -11329,7 +11329,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_OnPermissionDenied_m0
 		NullCheck(L_1);
 		L_1->___permissionStr = L_2;
 		Il2CppCodeGenWriteBarrier((void**)(&L_1->___permissionStr), (void*)L_2);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:147>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:147>
 		PermissionRequestGroup_t646393166A187662C80A26CCE0F96A87C449EC8E* L_3 = __this->___m_CurrentPlatformPermissionGroup;
 		NullCheck(L_3);
 		List_1_tB15AC449E2A89BA3A8EFC74A4BF4DB8F0E1B0A30* L_4 = L_3->___permissions;
@@ -11340,7 +11340,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_OnPermissionDenied_m0
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_7;
 		L_7 = List_1_Find_mAFF40F32A3B61AE6B6C207E45E2977EE575107F0(L_4, L_6, List_1_Find_mAFF40F32A3B61AE6B6C207E45E2977EE575107F0_RuntimeMethod_var);
 		V_1 = L_7;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:148>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:148>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_8 = V_1;
 		if (L_8)
 		{
@@ -11348,7 +11348,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_OnPermissionDenied_m0
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:150>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:150>
 		U3CU3Ec__DisplayClass9_0_t3CD4D68CF6A78824835489FE79642FAA3EC2044D* L_9 = V_0;
 		NullCheck(L_9);
 		String_t* L_10 = L_9->___permissionStr;
@@ -11356,21 +11356,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager_OnPermissionDenied_m0
 		L_11 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral23DBFFD2EE8339917033AE4CBF227543D825AFD5, L_10, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(L_11, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:151>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:151>
 		return;
 	}
 
 IL_0044:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:155>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:155>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_12 = V_1;
 		NullCheck(L_12);
 		L_12->___granted = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:156>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:156>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_13 = V_1;
 		NullCheck(L_13);
 		L_13->___responseReceived = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:158>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:158>
 		U3CU3Ec__DisplayClass9_0_t3CD4D68CF6A78824835489FE79642FAA3EC2044D* L_14 = V_0;
 		NullCheck(L_14);
 		String_t* L_15 = L_14->___permissionStr;
@@ -11378,7 +11378,7 @@ IL_0044:
 		L_16 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral39D0FB441D54707570D85B60B49472018C03F6D5, L_15, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(L_16, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:159>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:159>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_17 = V_1;
 		NullCheck(L_17);
 		UnityEvent_1_tC9859540CF1468306CAB6D758C0A0D95DBCEC257* L_18 = L_17->___onPermissionDenied;
@@ -11387,7 +11387,7 @@ IL_0044:
 		String_t* L_20 = L_19->___permissionStr;
 		NullCheck(L_18);
 		UnityEvent_1_Invoke_mA633B48B5D287DA856FB954AC3E4012487E63C15(L_18, L_20, UnityEvent_1_Invoke_mA633B48B5D287DA856FB954AC3E4012487E63C15_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:160>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:160>
 		return;
 	}
 }
@@ -11403,14 +11403,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionsManager__ctor_mF3F75F71FA754F
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:23>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:23>
 		__this->___m_ProcessPermissionsOnAwake = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:26>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:26>
 		List_1_t0CE881A0D7899C6B0A75D108E3C7AA135DB11CBE* L_0 = (List_1_t0CE881A0D7899C6B0A75D108E3C7AA135DB11CBE*)il2cpp_codegen_object_new(List_1_t0CE881A0D7899C6B0A75D108E3C7AA135DB11CBE_il2cpp_TypeInfo_var);
 		List_1__ctor_mAC0A41983F043CBE5D01A722AE2665EBB4AC4BF8(L_0, List_1__ctor_mAC0A41983F043CBE5D01A722AE2665EBB4AC4BF8_RuntimeMethod_var);
 		__this->___m_PermissionGroups = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_PermissionGroups), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:31>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:31>
 		PermissionRequestGroup_t646393166A187662C80A26CCE0F96A87C449EC8E* L_1 = (PermissionRequestGroup_t646393166A187662C80A26CCE0F96A87C449EC8E*)il2cpp_codegen_object_new(PermissionRequestGroup_t646393166A187662C80A26CCE0F96A87C449EC8E_il2cpp_TypeInfo_var);
 		PermissionRequestGroup__ctor_m0C02B20B13ECC8AB2FF431A4B05193E0BF815229(L_1, NULL);
 		__this->___m_CurrentPlatformPermissionGroup = L_1;
@@ -11453,10 +11453,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PermissionRequest__ctor_m2C00DB4485D0443
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:51>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:51>
 		__this->___permissionId = _stringLiteral9FC59D8986B846D2BF95AF308D4A1BDF1803347C;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___permissionId), (void*)_stringLiteral9FC59D8986B846D2BF95AF308D4A1BDF1803347C);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:54>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:54>
 		__this->___enabled = (bool)1;
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
 		return;
@@ -11482,7 +11482,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass7_0__ctor_mF5B3CF38
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CU3Ec__DisplayClass7_0_U3CProcessPermissionsU3Eb__0_m66AB51AD89B08FE06755D72B9BE2775EC738F3B6 (U3CU3Ec__DisplayClass7_0_t643B054CCD37CC2C78C47CAE4487CC337E952435* __this, PermissionRequestGroup_t646393166A187662C80A26CCE0F96A87C449EC8E* ___0_g, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:84>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:84>
 		PermissionRequestGroup_t646393166A187662C80A26CCE0F96A87C449EC8E* L_0 = ___0_g;
 		NullCheck(L_0);
 		int32_t L_1 = L_0->___platformType;
@@ -11510,7 +11510,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass8_0__ctor_mF64A3BC2
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CU3Ec__DisplayClass8_0_U3COnPermissionGrantedU3Eb__0_m774EA8A0585BD047CF55F11CBF656D5DFA4BCE3E (U3CU3Ec__DisplayClass8_0_t62192C7C37250A274F8DD9C57BD6BA67369E477F* __this, PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* ___0_p, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:129>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:129>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_0 = ___0_p;
 		NullCheck(L_0);
 		String_t* L_1 = L_0->___permissionId;
@@ -11540,7 +11540,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass9_0__ctor_m80143E2E
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CU3Ec__DisplayClass9_0_U3COnPermissionDeniedU3Eb__0_m86A57A94799A369A3C71B8D265D9744552190FAC (U3CU3Ec__DisplayClass9_0_t3CD4D68CF6A78824835489FE79642FAA3EC2044D* __this, PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* ___0_p, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:147>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PermissionsManager.cs:147>
 		PermissionRequest_t28302A753467DBBF4257BD21D69004AAA459FBCE* L_0 = ___0_p;
 		NullCheck(L_0);
 		String_t* L_1 = L_0->___permissionId;
@@ -11576,7 +11576,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRPlatformUnderstanding_get_CurrentPl
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:54>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:54>
 		il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 		bool L_0 = ((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_Initialized;
 		if (L_0)
@@ -11585,18 +11585,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRPlatformUnderstanding_get_CurrentPl
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:56>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:56>
 		il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 		int32_t L_1;
 		L_1 = XRPlatformUnderstanding_GetCurrentXRPlatform_m05A9600C3256A4E10E6F9032878FE464612B32E7(NULL);
 		((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_CurrentPlatform = L_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:57>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:57>
 		((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_Initialized = (bool)1;
 	}
 
 IL_0017:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:59>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:59>
 		il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 		int32_t L_2 = ((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_CurrentPlatform;
 		return L_2;
@@ -11622,7 +11622,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRPlatformUnderstanding_GetCurrentXRP
 	Exception_t* V_1 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:74>
 		il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 		bool L_0 = ((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_Initialized;
 		if (!L_0)
@@ -11631,7 +11631,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRPlatformUnderstanding_GetCurrentXRP
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:75>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:75>
 		il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 		int32_t L_1 = ((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_CurrentPlatform;
 		return L_1;
@@ -11643,11 +11643,11 @@ IL_000d:
 	try
 	{
 		{
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:80>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:80>
 			String_t* L_2;
 			L_2 = OpenXRRuntime_get_name_mB3B4B1E4ECE3B15BFE5F95AB267D90E0E1829456(NULL);
 			V_0 = L_2;
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:81>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:81>
 			String_t* L_3 = V_0;
 			bool L_4;
 			L_4 = String_IsNullOrEmpty_mEA9E3FB005AC28FE02E69FCF95A7B8456192B478(L_3, NULL);
@@ -11657,7 +11657,7 @@ IL_000d:
 			}
 		}
 		{
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:83>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:83>
 			il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 			((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_CurrentPlatform = 3;
 			goto IL_007f_1;
@@ -11688,44 +11688,44 @@ IL_0024_1:
 
 IL_0040_1:
 		{
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:90>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:90>
 			il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 			Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralC38EBAE1D797F89228BD4D2638801B796F3E0D11, NULL);
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:91>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:91>
 			il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 			((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_CurrentPlatform = 0;
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:92>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:92>
 			goto IL_007f_1;
 		}
 
 IL_0052_1:
 		{
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:94>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:94>
 			il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 			Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralCC1949C1D0086ABC05350D1316E5E3882205544C, NULL);
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:95>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:95>
 			il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 			((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_CurrentPlatform = 1;
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:96>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:96>
 			goto IL_007f_1;
 		}
 
 IL_0064_1:
 		{
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:98>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:98>
 			String_t* L_9 = V_0;
 			String_t* L_10;
 			L_10 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteralA57AEAE61C9F78184B0CE4087DA4123B3923189D, L_9, _stringLiteralC62C64F00567C5368CAE37F4E64E1E82FF785677, NULL);
 			il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 			Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_10, NULL);
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:99>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:99>
 			il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 			((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_CurrentPlatform = 2;
 		}
 
 IL_007f_1:
 		{
-			//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:103>
+			//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:103>
 			goto IL_009f;
 		}
 	}
@@ -11742,9 +11742,9 @@ IL_007f_1:
 CATCH_0081:
 	{
 		Exception_t* L_11 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:104>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:104>
 		V_1 = L_11;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:106>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:106>
 		Exception_t* L_12 = V_1;
 		NullCheck(L_12);
 		String_t* L_13;
@@ -11753,20 +11753,20 @@ CATCH_0081:
 		L_14 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral2E5EDFAB2BBD5D8C97B1FE6D6A7BA5679432804E)), L_13, NULL);
 		il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
 		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(L_14, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:107>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:107>
 		il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var)));
 		((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))))->___s_CurrentPlatform = 3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:108>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:108>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_009f;
 	}
 
 IL_009f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:113>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:113>
 		il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 		((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_Initialized = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:114>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:114>
 		int32_t L_15 = ((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_CurrentPlatform;
 		return L_15;
 	}
@@ -11781,12 +11781,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPlatformUnderstanding_ResetStaticsOnLo
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:120>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:120>
 		il2cpp_codegen_runtime_class_init_inline(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var);
 		((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_CurrentPlatform = 3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:121>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:121>
 		((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_Initialized = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:122>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:122>
 		return;
 	}
 }
@@ -11800,7 +11800,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPlatformUnderstanding__cctor_m7237BA65
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:63>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/PlatformUnderstanding.cs:63>
 		((XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_StaticFields*)il2cpp_codegen_static_fields_for(XRPlatformUnderstanding_t89289F760FF87CBD2446DCEC10ECFAC752F9B445_il2cpp_TypeInfo_var))->___s_CurrentPlatform = 3;
 		return;
 	}
@@ -11817,7 +11817,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPlatformUnderstanding__cctor_m7237BA65
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t RotationAxisLockGrabTransformer_get_registrationMode_m4EA3B5C5617C6806B213DBEED7CC012BDD916948 (RotationAxisLockGrabTransformer_t607B7577937EE7AD454A59499B6266FBA4832DD7* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:17>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:17>
 		return (int32_t)(3);
 	}
 }
@@ -11827,10 +11827,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RotationAxisLockGrabTransformer_OnLink_m
 	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:24>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:24>
 		XRGrabInteractable_tAE7E2F24377399C9B5159179E4B43EA6AA55531B* L_0 = ___0_grabInteractable;
 		XRBaseGrabTransformer_OnLink_m1247B6C6DDCE2D06C9EC7030419772001072AFB6(__this, L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:25>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:25>
 		XRGrabInteractable_tAE7E2F24377399C9B5159179E4B43EA6AA55531B* L_1 = ___0_grabInteractable;
 		NullCheck(L_1);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
@@ -11842,7 +11842,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RotationAxisLockGrabTransformer_OnLink_m
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
 		L_4 = Quaternion_get_eulerAngles_m2DB5158B5C3A71FD60FC8A6EE43D3AAA1CFED122_inline((&V_0), NULL);
 		__this->___m_InitialEulerRotation = L_4;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:26>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:26>
 		return;
 	}
 }
@@ -11852,13 +11852,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RotationAxisLockGrabTransformer_Process_
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:31>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:31>
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971* L_0 = ___2_targetPose;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* L_1 = (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974*)(&L_0->___rotation);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2;
 		L_2 = Quaternion_get_eulerAngles_m2DB5158B5C3A71FD60FC8A6EE43D3AAA1CFED122_inline(L_1, NULL);
 		V_0 = L_2;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:33>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:33>
 		int32_t L_3 = __this->___m_PermittedRotationAxis;
 		if (((int32_t)((int32_t)L_3&1)))
 		{
@@ -11866,7 +11866,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RotationAxisLockGrabTransformer_Process_
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:34>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:34>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_4 = (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)(&__this->___m_InitialEulerRotation);
 		float L_5 = L_4->___x;
 		(&V_0)->___x = L_5;
@@ -11874,7 +11874,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RotationAxisLockGrabTransformer_Process_
 
 IL_0028:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:36>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:36>
 		int32_t L_6 = __this->___m_PermittedRotationAxis;
 		if (((int32_t)((int32_t)L_6&2)))
 		{
@@ -11882,7 +11882,7 @@ IL_0028:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:37>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:37>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_7 = (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)(&__this->___m_InitialEulerRotation);
 		float L_8 = L_7->___y;
 		(&V_0)->___y = L_8;
@@ -11890,7 +11890,7 @@ IL_0028:
 
 IL_0044:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:39>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:39>
 		int32_t L_9 = __this->___m_PermittedRotationAxis;
 		if (((int32_t)((int32_t)L_9&4)))
 		{
@@ -11898,7 +11898,7 @@ IL_0044:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:40>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_10 = (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)(&__this->___m_InitialEulerRotation);
 		float L_11 = L_10->___z;
 		(&V_0)->___z = L_11;
@@ -11906,13 +11906,13 @@ IL_0044:
 
 IL_0060:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:42>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:42>
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971* L_12 = ___2_targetPose;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13 = V_0;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_14;
 		L_14 = Quaternion_Euler_m5BCCC19216CFAD2426F15BC51A30421880D27B73_inline(L_13, NULL);
 		L_12->___rotation = L_14;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:43>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:43>
 		return;
 	}
 }
@@ -11920,7 +11920,7 @@ IL_0060:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RotationAxisLockGrabTransformer__ctor_mBDFC675D3576106237A9260DB4140B42869A6612 (RotationAxisLockGrabTransformer_t607B7577937EE7AD454A59499B6266FBA4832DD7* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:14>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs:14>
 		__this->___m_PermittedRotationAxis = 7;
 		XRBaseGrabTransformer__ctor_m30FA70FC5B6D1735315AA87624C8BFC6C80A517E(__this, NULL);
 		return;
@@ -11938,7 +11938,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RotationAxisLockGrabTransformer__ctor_mB
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* TeleportVolumeAnchorAffordanceStateLink_get_containingTeleportVolume_m50181BF3B3149557E0CF16F51990B1976E2C8201 (TeleportVolumeAnchorAffordanceStateLink_t7DA616C919D93B9F3BAE4A646B8A1C035DE7C4AD* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:27>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:27>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_0 = __this->___m_ContainingTeleportVolume;
 		return L_0;
 	}
@@ -11947,7 +11947,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TeleportationMultiAnchorVolume_t98D1407484A7F
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TeleportVolumeAnchorAffordanceStateLink_set_containingTeleportVolume_mF08BFFB658A0712D01C9EB600025553B72692499 (TeleportVolumeAnchorAffordanceStateLink_t7DA616C919D93B9F3BAE4A646B8A1C035DE7C4AD* __this, TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:28>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:28>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_0 = ___0_value;
 		__this->___m_ContainingTeleportVolume = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ContainingTeleportVolume), (void*)L_0);
@@ -11981,12 +11981,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TeleportVolumeAnchorAffordanceStateLink_
 	RuntimeObject* G_B8_0 = NULL;
 	TeleportVolumeAnchorAffordanceStateLink_t7DA616C919D93B9F3BAE4A646B8A1C035DE7C4AD* G_B8_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:39>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:39>
 		XRInteractableAffordanceStateProvider_tBF33F0A41B1960C8FE2CCAFC6228E07D8A459C98* L_0;
 		L_0 = Component_GetComponent_TisXRInteractableAffordanceStateProvider_tBF33F0A41B1960C8FE2CCAFC6228E07D8A459C98_m894CCED6E7CD12BF58675A601F33C47F63578BD8(__this, Component_GetComponent_TisXRInteractableAffordanceStateProvider_tBF33F0A41B1960C8FE2CCAFC6228E07D8A459C98_m894CCED6E7CD12BF58675A601F33C47F63578BD8_RuntimeMethod_var);
 		__this->___m_AffordanceStateProvider = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_AffordanceStateProvider), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:40>
 		XRInteractableAffordanceStateProvider_tBF33F0A41B1960C8FE2CCAFC6228E07D8A459C98* L_1 = __this->___m_AffordanceStateProvider;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -11997,7 +11997,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TeleportVolumeAnchorAffordanceStateLink_
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:42>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:42>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3;
 		L_3 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_3);
@@ -12007,15 +12007,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TeleportVolumeAnchorAffordanceStateLink_
 		L_5 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteralF94527EDAE64E94D774AA53AC792C267D77F2755, L_4, _stringLiteralF3E84B722399601AD7E281754E917478AA9AD48D, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_m94F967AB31244EACE68C3BE1DD85B69ED3334C0E(L_5, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:43>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:43>
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(__this, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:44>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:44>
 		return;
 	}
 
 IL_0042:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:47>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:47>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_6 = __this->___m_ContainingTeleportVolume;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_7;
@@ -12026,7 +12026,7 @@ IL_0042:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:49>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:49>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8;
 		L_8 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_8);
@@ -12036,23 +12036,23 @@ IL_0042:
 		L_10 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteral8283638E5854A54022BF2CFA5BA3EBEC021A10DF, L_9, _stringLiteralF3E84B722399601AD7E281754E917478AA9AD48D, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_m94F967AB31244EACE68C3BE1DD85B69ED3334C0E(L_10, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:50>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:50>
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(__this, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:51>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:51>
 		return;
 	}
 
 IL_0078:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:54>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:54>
 		XRInteractableAffordanceStateProvider_tBF33F0A41B1960C8FE2CCAFC6228E07D8A459C98* L_11 = __this->___m_AffordanceStateProvider;
 		NullCheck(L_11);
 		Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* L_12;
 		L_12 = XRInteractableAffordanceStateProvider_get_interactableSource_m43E4BAA09BD771994E184DD45418EA28916B7FAE_inline(L_11, NULL);
 		V_0 = L_12;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:55>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:56>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:57>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:55>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:56>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:57>
 		Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* L_13 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_14;
@@ -12099,7 +12099,7 @@ IL_00a6:
 		NullCheck(G_B8_1);
 		G_B8_1->___m_Interactable = G_B8_0;
 		Il2CppCodeGenWriteBarrier((void**)(&G_B8_1->___m_Interactable), (void*)G_B8_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:59>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:59>
 		RuntimeObject* L_20 = __this->___m_Interactable;
 		if (L_20)
 		{
@@ -12107,24 +12107,24 @@ IL_00a6:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:61>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:61>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_m94F967AB31244EACE68C3BE1DD85B69ED3334C0E(_stringLiteral9A6A18E5289758325C81123AD9F04DC1AF11E63A, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:62>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:62>
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(__this, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:63>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:63>
 		return;
 	}
 
 IL_00c6:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:66>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_21 = __this->___m_ContainingTeleportVolume;
 		Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31* L_22 = (Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31*)il2cpp_codegen_object_new(Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31_il2cpp_TypeInfo_var);
 		Action_1__ctor_m119FC84288B3E5166500AB8D976F6135420BCAEC(L_22, __this, (intptr_t)((void*)TeleportVolumeAnchorAffordanceStateLink_OnDestinationAnchorChanged_m4185B70F82A1436A3AFCEC0262D6D99F647FA737_RuntimeMethod_var), NULL);
 		NullCheck(L_21);
 		TeleportationMultiAnchorVolume_add_destinationAnchorChanged_mFB365E430B9DF8C9F48465905563E149030C8C80(L_21, L_22, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:67>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:67>
 		return;
 	}
 }
@@ -12140,7 +12140,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TeleportVolumeAnchorAffordanceStateLink_
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:74>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_0 = __this->___m_ContainingTeleportVolume;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -12151,7 +12151,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TeleportVolumeAnchorAffordanceStateLink_
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:75>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:75>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_2 = __this->___m_ContainingTeleportVolume;
 		Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31* L_3 = (Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31*)il2cpp_codegen_object_new(Action_1_t3F0A0FBA4DF1005A2F3BF6F5A9AD5645222F8D31_il2cpp_TypeInfo_var);
 		Action_1__ctor_m119FC84288B3E5166500AB8D976F6135420BCAEC(L_3, __this, (intptr_t)((void*)TeleportVolumeAnchorAffordanceStateLink_OnDestinationAnchorChanged_m4185B70F82A1436A3AFCEC0262D6D99F647FA737_RuntimeMethod_var), NULL);
@@ -12161,7 +12161,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TeleportVolumeAnchorAffordanceStateLink_
 
 IL_0025:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:77>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:77>
 		XRInteractableAffordanceStateProvider_tBF33F0A41B1960C8FE2CCAFC6228E07D8A459C98* L_4 = __this->___m_AffordanceStateProvider;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -12172,7 +12172,7 @@ IL_0025:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:78>
 		XRInteractableAffordanceStateProvider_tBF33F0A41B1960C8FE2CCAFC6228E07D8A459C98* L_6 = __this->___m_AffordanceStateProvider;
 		RuntimeObject* L_7 = __this->___m_Interactable;
 		NullCheck(L_6);
@@ -12182,7 +12182,7 @@ IL_0025:
 
 IL_0045:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:79>
 		return;
 	}
 }
@@ -12203,13 +12203,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TeleportVolumeAnchorAffordanceStateLink_
 	RuntimeObject* G_B5_0 = NULL;
 	XRInteractableAffordanceStateProvider_tBF33F0A41B1960C8FE2CCAFC6228E07D8A459C98* G_B5_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:83>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:83>
 		TeleportationMultiAnchorVolume_t98D1407484A7F4510AA049568E4E07D3B93B70D0* L_0 = ___0_anchorVolume;
 		NullCheck(L_0);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1;
 		L_1 = TeleportationMultiAnchorVolume_get_destinationAnchor_m8867AD0C9F209FBEAC8E14A53887547329C4D1E8_inline(L_0, NULL);
 		V_0 = L_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:84>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:84>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_3;
@@ -12220,22 +12220,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TeleportVolumeAnchorAffordanceStateLink_
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:86>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:86>
 		XRInteractableAffordanceStateProvider_tBF33F0A41B1960C8FE2CCAFC6228E07D8A459C98* L_4 = __this->___m_AffordanceStateProvider;
 		RuntimeObject* L_5 = __this->___m_Interactable;
 		NullCheck(L_4);
 		bool L_6;
 		L_6 = XRInteractableAffordanceStateProvider_SetBoundInteractionReceiver_m8BB7E035F18464884B8849E420F483F3FFCF537F(L_4, L_5, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:87>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:87>
 		return;
 	}
 
 IL_0023:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:91>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:92>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:93>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:94>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:91>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:92>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:93>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:94>
 		XRInteractableAffordanceStateProvider_tBF33F0A41B1960C8FE2CCAFC6228E07D8A459C98* L_7 = __this->___m_AffordanceStateProvider;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = V_0;
 		RuntimeObject* L_9 = __this->___m_Interactable;
@@ -12273,7 +12273,7 @@ IL_004c:
 		NullCheck(G_B5_1);
 		bool L_15;
 		L_15 = XRInteractableAffordanceStateProvider_SetBoundInteractionReceiver_m8BB7E035F18464884B8849E420F483F3FFCF537F(G_B5_1, G_B5_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:95>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs:95>
 		return;
 	}
 }
@@ -12297,7 +12297,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TeleportVolumeAnchorAffordanceStateLink_
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ToggleColorToggler_get_onColor_m1B9F86E2415ADC1ACBA3563F7E3F355FC0D63FE0 (ToggleColorToggler_t0CC60D1811588FFAB083A86EB0690742673F64C0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:20>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:20>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0 = __this->___m_OnColor;
 		return L_0;
 	}
@@ -12306,7 +12306,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler_set_onColor_mBB35C1DA5B1516CE188C99E0170E34DA02F476F7 (ToggleColorToggler_t0CC60D1811588FFAB083A86EB0690742673F64C0* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:21>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:21>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0 = ___0_value;
 		__this->___m_OnColor = L_0;
 		return;
@@ -12316,7 +12316,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler_set_onColor_mBB35C1DA
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ToggleColorToggler_get_offColor_m42EA24E204FF491A885C9E45131CCC5264DD76F6 (ToggleColorToggler_t0CC60D1811588FFAB083A86EB0690742673F64C0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:33>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:33>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0 = __this->___m_OffColor;
 		return L_0;
 	}
@@ -12325,7 +12325,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler_set_offColor_m6174D3F68E2DD0CF39811CA4D06548BF84FE062F (ToggleColorToggler_t0CC60D1811588FFAB083A86EB0690742673F64C0* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:34>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:34>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0 = ___0_value;
 		__this->___m_OffColor = L_0;
 		return;
@@ -12341,12 +12341,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler_Awake_mAE29C1DFE73253
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:44>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:44>
 		Toggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F* L_0;
 		L_0 = Component_GetComponent_TisToggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F_mCFD123E76114133A77ECEF96A5474F07B97F5CEE(__this, Component_GetComponent_TisToggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F_mCFD123E76114133A77ECEF96A5474F07B97F5CEE_RuntimeMethod_var);
 		__this->___m_TargetToggle = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_TargetToggle), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:45>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:45>
 		return;
 	}
 }
@@ -12362,7 +12362,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler_OnEnable_mFCE0951337F
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:52>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:52>
 		Toggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F* L_0 = __this->___m_TargetToggle;
 		NullCheck(L_0);
 		ToggleEvent_t88B31268F9D6D1882E4F921B14704FB9F7047F02* L_1 = L_0->___onValueChanged;
@@ -12370,13 +12370,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler_OnEnable_mFCE0951337F
 		UnityAction_1__ctor_m11A393DB3C00474B4520978077E444DB6E4418DD(L_2, __this, (intptr_t)((void*)ToggleColorToggler_OnToggleValueChanged_m5FEC8CF2DCEA60962CAB76C8A903695321D22451_RuntimeMethod_var), NULL);
 		NullCheck(L_1);
 		UnityEvent_1_AddListener_mE9367D4B3AA4C323EE7C35FA18CF2D8A142F43FD(L_1, L_2, UnityEvent_1_AddListener_mE9367D4B3AA4C323EE7C35FA18CF2D8A142F43FD_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:53>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:53>
 		Toggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F* L_3 = __this->___m_TargetToggle;
 		NullCheck(L_3);
 		bool L_4;
 		L_4 = Toggle_get_isOn_m89A609E936CD67F460E336CA8E03C4047BFB6619_inline(L_3, NULL);
 		ToggleColorToggler_OnToggleValueChanged_m5FEC8CF2DCEA60962CAB76C8A903695321D22451(__this, L_4, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:54>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:54>
 		return;
 	}
 }
@@ -12392,7 +12392,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler_OnDisable_m23DEEB2C38
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:61>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:61>
 		Toggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F* L_0 = __this->___m_TargetToggle;
 		NullCheck(L_0);
 		ToggleEvent_t88B31268F9D6D1882E4F921B14704FB9F7047F02* L_1 = L_0->___onValueChanged;
@@ -12400,7 +12400,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler_OnDisable_m23DEEB2C38
 		UnityAction_1__ctor_m11A393DB3C00474B4520978077E444DB6E4418DD(L_2, __this, (intptr_t)((void*)ToggleColorToggler_OnToggleValueChanged_m5FEC8CF2DCEA60962CAB76C8A903695321D22451_RuntimeMethod_var), NULL);
 		NullCheck(L_1);
 		UnityEvent_1_RemoveListener_m5F1198F13FB2222BE8AABD6454B4D21086D0A130(L_1, L_2, UnityEvent_1_RemoveListener_m5F1198F13FB2222BE8AABD6454B4D21086D0A130_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:62>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:62>
 		return;
 	}
 }
@@ -12421,13 +12421,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler_OnToggleValueChanged_
 	memset((&G_B3_0), 0, sizeof(G_B3_0));
 	ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* G_B3_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:66>
 		Toggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F* L_0 = __this->___m_TargetToggle;
 		NullCheck(L_0);
 		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 L_1;
 		L_1 = Selectable_get_colors_mB53E365D02351D4B64084295C4B2A7AF2DEC4750_inline(L_0, NULL);
 		V_0 = L_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:67>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:67>
 		bool L_2 = ___0_isOn;
 		if (L_2)
 		{
@@ -12454,12 +12454,12 @@ IL_001f:
 	{
 		il2cpp_codegen_runtime_class_init_inline(ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
 		ColorBlock_set_normalColor_m3EBF594F6FA2C6494ACA9FCB9B458807D85B96F8_inline(G_B3_1, G_B3_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:68>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:68>
 		Toggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F* L_5 = __this->___m_TargetToggle;
 		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 L_6 = V_0;
 		NullCheck(L_5);
 		Selectable_set_colors_m0A49ED3ACD6647B7E5A2DA10B3D417E8FE1BE55A(L_5, L_6, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:69>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:69>
 		return;
 	}
 }
@@ -12467,12 +12467,12 @@ IL_001f:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler__ctor_mEA78FCBF790CA78D9FEDF4F26C96E31BA5DA050E (ToggleColorToggler_t0CC60D1811588FFAB083A86EB0690742673F64C0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:13>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:13>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0;
 		memset((&L_0), 0, sizeof(L_0));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_0), (0.125490203f), (0.588235319f), (0.952941179f), NULL);
 		__this->___m_OnColor = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:26>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleColorToggler.cs:26>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_1;
 		memset((&L_1), 0, sizeof(L_1));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_1), (0.180392161f), (0.180392161f), (0.180392161f), NULL);
@@ -12493,7 +12493,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleColorToggler__ctor_mEA78FCBF790CA7
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* ToggleComponentZone_get_activationObject_m76F1BDFDBB3D64B208E0D0752A5046DDAC7969C9 (ToggleComponentZone_tD66A6B6079B24A6EBDA39D436622050EA2795692* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:22>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:22>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_0 = __this->___m_ActivationObject;
 		return L_0;
 	}
@@ -12502,7 +12502,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_set_activationObject_mBC44E0190208955033BE071B7571D8D089707A65 (ToggleComponentZone_tD66A6B6079B24A6EBDA39D436622050EA2795692* __this, Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:23>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:23>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_0 = ___0_value;
 		__this->___m_ActivationObject = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ActivationObject), (void*)L_0);
@@ -12513,7 +12513,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_set_activationObject
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ToggleComponentZone_get_enableOnEntry_mD01248A3F7DB220A3C30C2669B708D5D4FD3B4B0 (ToggleComponentZone_tD66A6B6079B24A6EBDA39D436622050EA2795692* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:35>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:35>
 		bool L_0 = __this->___m_EnableOnEntry;
 		return L_0;
 	}
@@ -12522,7 +12522,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ToggleComponentZone_get_enableOnEntry_mD
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_set_enableOnEntry_m98187050ED7E9010732905B662B3C533C18DEE23 (ToggleComponentZone_tD66A6B6079B24A6EBDA39D436622050EA2795692* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:36>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:36>
 		bool L_0 = ___0_value;
 		__this->___m_EnableOnEntry = L_0;
 		return;
@@ -12532,7 +12532,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_set_enableOnEntry_m9
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* ToggleComponentZone_get_componentsToToggle_m21EB433273075EE85C7BE1F93DA5CD4561D3EF6B (ToggleComponentZone_tD66A6B6079B24A6EBDA39D436622050EA2795692* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:49>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:49>
 		List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* L_0 = __this->___m_ComponentsToToggle;
 		return L_0;
 	}
@@ -12541,7 +12541,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB7
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_set_componentsToToggle_m889BB6586DED7199FCB07FEDE78FE4F6A4B37007 (ToggleComponentZone_tD66A6B6079B24A6EBDA39D436622050EA2795692* __this, List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:50>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:50>
 		List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* L_0 = ___0_value;
 		__this->___m_ComponentsToToggle = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ComponentsToToggle), (void*)L_0);
@@ -12552,7 +12552,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_set_componentsToTogg
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* ToggleComponentZone_get_gameObjectsToToggle_m31A457D169C9D79461034F538AA6B72B7C0C0509 (ToggleComponentZone_tD66A6B6079B24A6EBDA39D436622050EA2795692* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:63>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:63>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_0 = __this->___m_GameObjectsToToggle;
 		return L_0;
 	}
@@ -12561,7 +12561,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tB951CE80B58D1BF9650862451D8DAD8C231F2
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_set_gameObjectsToToggle_mF2A62E8B9576E9822724960CBDD5C7E0F661ACE1 (ToggleComponentZone_tD66A6B6079B24A6EBDA39D436622050EA2795692* __this, List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:64>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:64>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_0 = ___0_value;
 		__this->___m_GameObjectsToToggle = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_GameObjectsToToggle), (void*)L_0);
@@ -12581,7 +12581,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_Start_m333139511CA72
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:76>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:76>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_0 = __this->___m_TriggerVolume;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -12601,15 +12601,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_Start_m333139511CA72
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:78>
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(__this, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:79>
 		return;
 	}
 
 IL_0024:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:82>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:82>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_4 = __this->___m_TriggerVolume;
 		NullCheck(L_4);
 		bool L_5;
@@ -12620,11 +12620,11 @@ IL_0024:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:84>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:84>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_6 = __this->___m_TriggerVolume;
 		NullCheck(L_6);
 		Collider_set_isTrigger_mFCD22F3EB5E28C97863956AB725D53F7F4B7CA78(L_6, (bool)1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:85>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_7 = __this->___m_TriggerVolume;
 		String_t* L_8;
 		L_8 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteralA3624275BFF419FF29E495F0F28EDB32254E2531, L_7, NULL);
@@ -12634,7 +12634,7 @@ IL_0024:
 
 IL_0053:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:87>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:87>
 		return;
 	}
 }
@@ -12664,7 +12664,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_OnTriggerEnter_mAD7D
 	int32_t V_2 = 0;
 	Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA* V_3 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:94>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:94>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_0 = ___0_other;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -12688,13 +12688,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_OnTriggerEnter_mAD7D
 
 IL_0017:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:95>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:95>
 		return;
 	}
 
 IL_0018:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:98>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:98>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_5 = __this->___m_GameObjectsToToggle;
 		if (!L_5)
 		{
@@ -12712,7 +12712,7 @@ IL_0018:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:100>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:100>
 		Dictionary_2_tC83A373447C326621C487EB30561D5F40D5D7C78* L_8 = __this->___m_InitialGameObjectStateOnEntry;
 		if (L_8)
 		{
@@ -12732,25 +12732,25 @@ IL_0018:
 
 IL_004c:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:101>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:101>
 		Dictionary_2_tC83A373447C326621C487EB30561D5F40D5D7C78* L_12 = __this->___m_InitialGameObjectStateOnEntry;
 		NullCheck(L_12);
 		Dictionary_2_Clear_mA1FB9CFD0FAC67D0C40BD2B5AB5EBC6AC05828A9(L_12, Dictionary_2_Clear_mA1FB9CFD0FAC67D0C40BD2B5AB5EBC6AC05828A9_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:103>
 		V_0 = 0;
 		goto IL_008a;
 	}
 
 IL_005b:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:105>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:105>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_13 = __this->___m_GameObjectsToToggle;
 		int32_t L_14 = V_0;
 		NullCheck(L_13);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_15;
 		L_15 = List_1_get_Item_mE8DBE527F24D9CFED839C34216C475B716169979(L_13, L_14, List_1_get_Item_mE8DBE527F24D9CFED839C34216C475B716169979_RuntimeMethod_var);
 		V_1 = L_15;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:106>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:106>
 		Dictionary_2_tC83A373447C326621C487EB30561D5F40D5D7C78* L_16 = __this->___m_InitialGameObjectStateOnEntry;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = V_1;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_18 = V_1;
@@ -12759,19 +12759,19 @@ IL_005b:
 		L_19 = GameObject_get_activeSelf_m4F3E5240E138B66AAA080EA30759A3D0517DA368(L_18, NULL);
 		NullCheck(L_16);
 		Dictionary_2_Add_mA0E2B1A8F4F5331AC2D67B3B7232F1562630AD41(L_16, L_17, L_19, Dictionary_2_Add_mA0E2B1A8F4F5331AC2D67B3B7232F1562630AD41_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:107>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:107>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_20 = V_1;
 		bool L_21 = __this->___m_EnableOnEntry;
 		NullCheck(L_20);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_20, L_21, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:103>
 		int32_t L_22 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_22, 1));
 	}
 
 IL_008a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:103>
 		int32_t L_23 = V_0;
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_24 = __this->___m_GameObjectsToToggle;
 		NullCheck(L_24);
@@ -12785,7 +12785,7 @@ IL_008a:
 
 IL_0098:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:112>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:112>
 		List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* L_26 = __this->___m_ComponentsToToggle;
 		if (!L_26)
 		{
@@ -12803,7 +12803,7 @@ IL_0098:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:114>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:114>
 		Dictionary_2_tA18F5771BE9AC1FFF4758245F7C397653C908F90* L_29 = __this->___m_InitialComponentStateOnEntry;
 		if (L_29)
 		{
@@ -12823,25 +12823,25 @@ IL_0098:
 
 IL_00cc:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:115>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:115>
 		Dictionary_2_tA18F5771BE9AC1FFF4758245F7C397653C908F90* L_33 = __this->___m_InitialComponentStateOnEntry;
 		NullCheck(L_33);
 		Dictionary_2_Clear_mB5C7CF865297E4D946F222943B11D434A91E7F3B(L_33, Dictionary_2_Clear_mB5C7CF865297E4D946F222943B11D434A91E7F3B_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:117>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:117>
 		V_2 = 0;
 		goto IL_010a;
 	}
 
 IL_00db:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:119>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:119>
 		List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* L_34 = __this->___m_ComponentsToToggle;
 		int32_t L_35 = V_2;
 		NullCheck(L_34);
 		Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA* L_36;
 		L_36 = List_1_get_Item_m8DD5BD4DF02EA38CD1A2E02CCC33BAD235C146F3(L_34, L_35, List_1_get_Item_m8DD5BD4DF02EA38CD1A2E02CCC33BAD235C146F3_RuntimeMethod_var);
 		V_3 = L_36;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:120>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:120>
 		Dictionary_2_tA18F5771BE9AC1FFF4758245F7C397653C908F90* L_37 = __this->___m_InitialComponentStateOnEntry;
 		Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA* L_38 = V_3;
 		Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA* L_39 = V_3;
@@ -12850,19 +12850,19 @@ IL_00db:
 		L_40 = Behaviour_get_enabled_mAAC9F15E9EBF552217A5AE2681589CC0BFA300C1(L_39, NULL);
 		NullCheck(L_37);
 		Dictionary_2_Add_m8B1375942EF5F89B3F1F3EB1C55989E9C1D8D101(L_37, L_38, L_40, Dictionary_2_Add_m8B1375942EF5F89B3F1F3EB1C55989E9C1D8D101_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:121>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:121>
 		Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA* L_41 = V_3;
 		bool L_42 = __this->___m_EnableOnEntry;
 		NullCheck(L_41);
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(L_41, L_42, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:117>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:117>
 		int32_t L_43 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_43, 1));
 	}
 
 IL_010a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:117>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:117>
 		int32_t L_44 = V_2;
 		List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* L_45 = __this->___m_ComponentsToToggle;
 		NullCheck(L_45);
@@ -12876,7 +12876,7 @@ IL_010a:
 
 IL_0118:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:124>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:124>
 		return;
 	}
 }
@@ -12907,7 +12907,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_OnTriggerExit_m247AC
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* V_4 = NULL;
 	bool V_5 = false;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:131>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:131>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_0 = ___0_other;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -12931,13 +12931,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone_OnTriggerExit_m247AC
 
 IL_0017:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:132>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:132>
 		return;
 	}
 
 IL_0018:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:135>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:135>
 		List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* L_5 = __this->___m_ComponentsToToggle;
 		if (!L_5)
 		{
@@ -12962,7 +12962,7 @@ IL_0018:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:137>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:137>
 		Dictionary_2_tA18F5771BE9AC1FFF4758245F7C397653C908F90* L_9 = __this->___m_InitialComponentStateOnEntry;
 		NullCheck(L_9);
 		int32_t L_10;
@@ -12977,21 +12977,21 @@ IL_0018:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:139>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:139>
 		V_0 = 0;
 		goto IL_007a;
 	}
 
 IL_0052:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:141>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:141>
 		List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* L_13 = __this->___m_ComponentsToToggle;
 		int32_t L_14 = V_0;
 		NullCheck(L_13);
 		Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA* L_15;
 		L_15 = List_1_get_Item_m8DD5BD4DF02EA38CD1A2E02CCC33BAD235C146F3(L_13, L_14, List_1_get_Item_m8DD5BD4DF02EA38CD1A2E02CCC33BAD235C146F3_RuntimeMethod_var);
 		V_1 = L_15;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:142>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:142>
 		Dictionary_2_tA18F5771BE9AC1FFF4758245F7C397653C908F90* L_16 = __this->___m_InitialComponentStateOnEntry;
 		Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA* L_17 = V_1;
 		NullCheck(L_16);
@@ -13003,7 +13003,7 @@ IL_0052:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:143>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:143>
 		Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA* L_19 = V_1;
 		bool L_20 = V_2;
 		NullCheck(L_19);
@@ -13012,14 +13012,14 @@ IL_0052:
 
 IL_0076:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:139>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:139>
 		int32_t L_21 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_21, 1));
 	}
 
 IL_007a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:139>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:139>
 		int32_t L_22 = V_0;
 		List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* L_23 = __this->___m_ComponentsToToggle;
 		NullCheck(L_23);
@@ -13036,15 +13036,15 @@ IL_007a:
 
 IL_008a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:148>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:149>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:148>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:149>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(_stringLiteralB1E5D86FBF884D9489FB1CABBFD4FF679FE9C405, __this, NULL);
 	}
 
 IL_0095:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:154>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:154>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_25 = __this->___m_GameObjectsToToggle;
 		if (!L_25)
 		{
@@ -13069,7 +13069,7 @@ IL_0095:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:156>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:156>
 		Dictionary_2_tC83A373447C326621C487EB30561D5F40D5D7C78* L_29 = __this->___m_InitialGameObjectStateOnEntry;
 		NullCheck(L_29);
 		int32_t L_30;
@@ -13084,21 +13084,21 @@ IL_0095:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:158>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:158>
 		V_3 = 0;
 		goto IL_00fb;
 	}
 
 IL_00cf:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:160>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:160>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_33 = __this->___m_GameObjectsToToggle;
 		int32_t L_34 = V_3;
 		NullCheck(L_33);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_35;
 		L_35 = List_1_get_Item_mE8DBE527F24D9CFED839C34216C475B716169979(L_33, L_34, List_1_get_Item_mE8DBE527F24D9CFED839C34216C475B716169979_RuntimeMethod_var);
 		V_4 = L_35;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:161>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:161>
 		Dictionary_2_tC83A373447C326621C487EB30561D5F40D5D7C78* L_36 = __this->___m_InitialGameObjectStateOnEntry;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_37 = V_4;
 		NullCheck(L_36);
@@ -13110,7 +13110,7 @@ IL_00cf:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:162>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:162>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_39 = V_4;
 		bool L_40 = V_5;
 		NullCheck(L_39);
@@ -13119,14 +13119,14 @@ IL_00cf:
 
 IL_00f7:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:158>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:158>
 		int32_t L_41 = V_3;
 		V_3 = ((int32_t)il2cpp_codegen_add(L_41, 1));
 	}
 
 IL_00fb:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:158>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:158>
 		int32_t L_42 = V_3;
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_43 = __this->___m_GameObjectsToToggle;
 		NullCheck(L_43);
@@ -13143,15 +13143,15 @@ IL_00fb:
 
 IL_010a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:167>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:168>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:167>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:168>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(_stringLiteralBFE48EEA4ECEA3E173504AEA4A9E69FE23841178, __this, NULL);
 	}
 
 IL_0115:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:171>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:171>
 		return;
 	}
 }
@@ -13168,14 +13168,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone__ctor_m778A0F622FB73
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:28>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:28>
 		__this->___m_EnableOnEntry = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:41>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:41>
 		List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC* L_0 = (List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC*)il2cpp_codegen_object_new(List_1_t2CAA5B8EFBDE90737F79F589D3AF14F6ADAB78DC_il2cpp_TypeInfo_var);
 		List_1__ctor_m44DBEB4BD9D6CE8BAA0382CC7776CA638B2DCD66(L_0, List_1__ctor_m44DBEB4BD9D6CE8BAA0382CC7776CA638B2DCD66_RuntimeMethod_var);
 		__this->___m_ComponentsToToggle = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ComponentsToToggle), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:55>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/ToggleComponentZone.cs:55>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_1 = (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B*)il2cpp_codegen_object_new(List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B_il2cpp_TypeInfo_var);
 		List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC(L_1, List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC_RuntimeMethod_var);
 		__this->___m_GameObjectsToToggle = L_1;
@@ -13196,7 +13196,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToggleComponentZone__ctor_m778A0F622FB73
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* XRPokeFollowAffordance_get_pokeFollowTransform_m73344435C2867D159F2F7E02F49376F558087F1E (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:33>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:33>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_PokeFollowTransform;
 		return L_0;
 	}
@@ -13205,7 +13205,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_pokeFollowTransform_m349E957CDD31FC13ABF0136717A3CACDD1451546 (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:34>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:34>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_value;
 		__this->___m_PokeFollowTransform = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_PokeFollowTransform), (void*)L_0);
@@ -13216,7 +13216,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_pokeFollowTra
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRPokeFollowAffordance_get_smoothingSpeed_m6DA02413915676F5754E172BAF1C07C0C517BB75 (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:47>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:47>
 		float L_0 = __this->___m_SmoothingSpeed;
 		return L_0;
 	}
@@ -13225,7 +13225,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRPokeFollowAffordance_get_smoothingSpe
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_smoothingSpeed_m6F6EDC78B71DE4F9223FB1DC41EA3EB1FBEC210D (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:48>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:48>
 		float L_0 = ___0_value;
 		__this->___m_SmoothingSpeed = L_0;
 		return;
@@ -13235,7 +13235,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_smoothingSpee
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordance_get_returnToInitialPosition_m8D6FC7BDF8A2419ACEAF06B9E46321416A22412A (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:60>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:60>
 		bool L_0 = __this->___m_ReturnToInitialPosition;
 		return L_0;
 	}
@@ -13244,7 +13244,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordance_get_returnToIniti
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_returnToInitialPosition_m77573EFC79B33125B097570F60A87EBA1BA1BA91 (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:61>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:61>
 		bool L_0 = ___0_value;
 		__this->___m_ReturnToInitialPosition = L_0;
 		return;
@@ -13254,7 +13254,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_returnToIniti
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordance_get_applyIfChildIsTarget_m1023FE2DD7E8622125AB3E6261B00B38DC1CA302 (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:75>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:75>
 		bool L_0 = __this->___m_ApplyIfChildIsTarget;
 		return L_0;
 	}
@@ -13263,7 +13263,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordance_get_applyIfChildI
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_applyIfChildIsTarget_mBBE196D3022D66890463276AAFDFB54444A0BFE2 (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:76>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:76>
 		bool L_0 = ___0_value;
 		__this->___m_ApplyIfChildIsTarget = L_0;
 		return;
@@ -13273,7 +13273,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_applyIfChildI
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordance_get_clampToMaxDistance_m6F811E71D7755E06CC1F40B6566FACE71EADC78C (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:88>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:88>
 		bool L_0 = __this->___m_ClampToMaxDistance;
 		return L_0;
 	}
@@ -13282,7 +13282,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordance_get_clampToMaxDis
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_clampToMaxDistance_mD0D40453025EF106A1D04AD65A8FC4315B83AA2E (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:89>
 		bool L_0 = ___0_value;
 		__this->___m_ClampToMaxDistance = L_0;
 		return;
@@ -13292,7 +13292,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_clampToMaxDis
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRPokeFollowAffordance_get_maxDistance_m72B9FC2D76C8CE120CAFA3C35A30CB7E61711F5D (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:102>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:102>
 		float L_0 = __this->___m_MaxDistance;
 		return L_0;
 	}
@@ -13301,7 +13301,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRPokeFollowAffordance_get_maxDistance_
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_maxDistance_m10822A5C3A8814B606594E089B6E8CBB4268AC49 (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:103>
 		float L_0 = ___0_value;
 		__this->___m_MaxDistance = L_0;
 		return;
@@ -13311,7 +13311,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_maxDistance_m
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 XRPokeFollowAffordance_get_initialPosition_m2076FCE50726A24B4A56CEA94A5AE7CC2BFE7401 (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:111>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = __this->___m_InitialPosition;
 		return L_0;
 	}
@@ -13320,7 +13320,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_set_initialPosition_mDEC89AA206367BCE6753B8BB9DAC0D3272B3947A (XRPokeFollowAffordance_t008BF5185DB23D6AA9F9E39C265BE9B8AEF64DAC* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:112>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:112>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = ___0_value;
 		__this->___m_InitialPosition = L_0;
 		return;
@@ -13337,12 +13337,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_Awake_m610BBBA2BD
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:134>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:134>
 		RuntimeObject* L_0;
 		L_0 = Component_GetComponentInParent_TisIMultiPokeStateDataProvider_tD966DFBE873FAF8D39E820B94A6795B4A2EFA73F_m547FA5110DC4523EAC78FD8D62A6E0EA8378AB58(__this, Component_GetComponentInParent_TisIMultiPokeStateDataProvider_tD966DFBE873FAF8D39E820B94A6795B4A2EFA73F_m547FA5110DC4523EAC78FD8D62A6E0EA8378AB58_RuntimeMethod_var);
 		__this->___m_MultiPokeStateDataProvider = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_MultiPokeStateDataProvider), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:135>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:135>
 		RuntimeObject* L_1 = __this->___m_MultiPokeStateDataProvider;
 		if (L_1)
 		{
@@ -13350,7 +13350,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_Awake_m610BBBA2BD
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:136>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:136>
 		RuntimeObject* L_2;
 		L_2 = Component_GetComponentInParent_TisIPokeStateDataProvider_t14F2B731F2979D1138EB70A11E36F274A23DC91C_m56533D22EBBEEE60BD440ECE3B5EF450D8F5DE62(__this, Component_GetComponentInParent_TisIPokeStateDataProvider_t14F2B731F2979D1138EB70A11E36F274A23DC91C_m56533D22EBBEEE60BD440ECE3B5EF450D8F5DE62_RuntimeMethod_var);
 		__this->___m_PokeDataProvider = L_2;
@@ -13359,7 +13359,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_Awake_m610BBBA2BD
 
 IL_0020:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:137>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:137>
 		return;
 	}
 }
@@ -13382,7 +13382,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_Start_m4499F1A6DA
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:144>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:144>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_PokeFollowTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -13393,13 +13393,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_Start_m4499F1A6DA
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:146>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:146>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = __this->___m_PokeFollowTransform;
 		NullCheck(L_2);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
 		L_3 = Transform_get_localPosition_mA9C86B990DF0685EA1061A120218993FDCC60A95(L_2, NULL);
 		__this->___m_InitialPosition = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:147>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:147>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_4 = __this->___m_BindingsGroup;
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_5 = __this->___m_TransformTweenableVariable;
 		Action_1_t81CC87F0365077EC678FAF69B68180DC9750249B* L_6 = (Action_1_t81CC87F0365077EC678FAF69B68180DC9750249B*)il2cpp_codegen_object_new(Action_1_t81CC87F0365077EC678FAF69B68180DC9750249B_il2cpp_TypeInfo_var);
@@ -13409,7 +13409,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_Start_m4499F1A6DA
 		L_7 = BindableVariableBase_1_Subscribe_mC4E18EDA53B1AF95B57D4D6976353EC198EA6608(L_5, L_6, BindableVariableBase_1_Subscribe_mC4E18EDA53B1AF95B57D4D6976353EC198EA6608_RuntimeMethod_var);
 		NullCheck(L_4);
 		BindingsGroup_AddBinding_m18697E73861A1C67DE0674F162B43CCE9E67C89B(L_4, L_7, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:149>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:149>
 		RuntimeObject* L_8 = __this->___m_MultiPokeStateDataProvider;
 		if (!L_8)
 		{
@@ -13417,7 +13417,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_Start_m4499F1A6DA
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:150>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:150>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_9 = __this->___m_BindingsGroup;
 		RuntimeObject* L_10 = __this->___m_MultiPokeStateDataProvider;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11;
@@ -13437,7 +13437,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_Start_m4499F1A6DA
 
 IL_007b:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:151>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:151>
 		RuntimeObject* L_15 = __this->___m_PokeDataProvider;
 		if (!L_15)
 		{
@@ -13445,7 +13445,7 @@ IL_007b:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:152>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:152>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_16 = __this->___m_BindingsGroup;
 		RuntimeObject* L_17 = __this->___m_PokeDataProvider;
 		NullCheck(L_17);
@@ -13463,9 +13463,9 @@ IL_007b:
 
 IL_00ab:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:156>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:156>
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(__this, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:157>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:157>
 		String_t* L_21;
 		L_21 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteral675D495E61C139628601D1F560A558803C58CB67, __this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
@@ -13474,7 +13474,7 @@ IL_00ab:
 
 IL_00c3:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:159>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:159>
 		return;
 	}
 }
@@ -13490,11 +13490,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_OnDestroy_mE34531
 	Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* G_B2_0 = NULL;
 	Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* G_B1_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:166>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:166>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_0 = __this->___m_BindingsGroup;
 		NullCheck(L_0);
 		BindingsGroup_Clear_m092668459F10E46245228224D1334DAB089B72E3(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:167>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:167>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_1 = __this->___m_TransformTweenableVariable;
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_2 = L_1;
 		if (L_2)
@@ -13512,7 +13512,7 @@ IL_0016:
 	{
 		NullCheck(G_B2_0);
 		TweenableVariableAsyncBase_1_Dispose_m7D9825BEBF868FFDC835F08406D9E9AD17F53E32(G_B2_0, TweenableVariableAsyncBase_1_Dispose_m7D9825BEBF868FFDC835F08406D9E9AD17F53E32_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:168>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:168>
 		return;
 	}
 }
@@ -13530,7 +13530,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_LateUpdate_m4C59B
 	float G_B5_0 = 0.0f;
 	Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* G_B5_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:175>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:175>
 		bool L_0 = __this->___m_IsFirstFrame;
 		if (!L_0)
 		{
@@ -13538,19 +13538,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_LateUpdate_m4C59B
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:177>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:177>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_1 = __this->___m_TransformTweenableVariable;
 		NullCheck(L_1);
 		TweenableVariableBase_1_HandleTween_m61752C0D7316DD05AB1C8E10319F47902D4CDCD9(L_1, (1.0f), TweenableVariableBase_1_HandleTween_m61752C0D7316DD05AB1C8E10319F47902D4CDCD9_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:178>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:178>
 		__this->___m_IsFirstFrame = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:179>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:179>
 		return;
 	}
 
 IL_0020:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:182>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:182>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_2 = __this->___m_TransformTweenableVariable;
 		float L_3 = __this->___m_SmoothingSpeed;
 		if ((((float)L_3) > ((float)(0.0f))))
@@ -13579,7 +13579,7 @@ IL_0046:
 	{
 		NullCheck(G_B5_1);
 		TweenableVariableBase_1_HandleTween_m61752C0D7316DD05AB1C8E10319F47902D4CDCD9(G_B5_1, G_B5_0, TweenableVariableBase_1_HandleTween_m61752C0D7316DD05AB1C8E10319F47902D4CDCD9_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:183>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:183>
 		return;
 	}
 }
@@ -13595,7 +13595,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_OnTransformTweena
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:188>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:188>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_PokeFollowTransform;
 		if (!((RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5*)IsInstSealed((RuntimeObject*)L_0, RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_il2cpp_TypeInfo_var)))
 		{
@@ -13603,17 +13603,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_OnTransformTweena
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:190>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:190>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1 = __this->___m_PokeFollowTransform;
 		NullCheck(L_1);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2;
 		L_2 = Transform_get_localPosition_mA9C86B990DF0685EA1061A120218993FDCC60A95(L_1, NULL);
 		V_0 = L_2;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:191>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:191>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_3 = ___0_position;
 		float L_4 = L_3.___z;
 		(&V_0)->___z = L_4;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:192>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:192>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = __this->___m_PokeFollowTransform;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6 = V_0;
 		NullCheck(L_5);
@@ -13623,14 +13623,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_OnTransformTweena
 
 IL_0033:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:196>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:196>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = __this->___m_PokeFollowTransform;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_8 = ___0_position;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = float3_op_Implicit_m9CC301DFD67EEFAA15CA05E91913E862B22326F6(L_8, NULL);
 		NullCheck(L_7);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_7, L_9, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:198>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:198>
 		return;
 	}
 }
@@ -13649,13 +13649,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_OnPokeStateDataUp
 	memset((&V_1), 0, sizeof(V_1));
 	int32_t G_B5_0 = 0;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:202>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:202>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0;
 		L_0 = PokeStateData_get_target_m464672F352B73F0010B9829CA5C692505783091C_inline((&___0_data), NULL);
 		V_0 = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:203>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:204>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:205>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:203>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:204>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:205>
 		bool L_1 = __this->___m_ApplyIfChildIsTarget;
 		if (L_1)
 		{
@@ -13702,14 +13702,14 @@ IL_0035:
 
 IL_0036:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:207>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:207>
 		if (!G_B5_0)
 		{
 			goto IL_0083;
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:209>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:209>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
 		L_11 = PokeStateData_get_axisAlignedPokeInteractionPoint_mC3B4E6D1232B8A2E2A98374B3AA9976E29E67D43_inline((&___0_data), NULL);
@@ -13717,7 +13717,7 @@ IL_0036:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
 		L_12 = Transform_InverseTransformPoint_m18CD395144D9C78F30E15A5B82B6670E792DBA5D(L_10, L_11, NULL);
 		V_1 = L_12;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:210>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:210>
 		bool L_13 = __this->___m_ClampToMaxDistance;
 		if (!L_13)
 		{
@@ -13735,7 +13735,7 @@ IL_0036:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:211>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:211>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17 = V_1;
 		float L_18 = __this->___m_MaxDistance;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_19;
@@ -13745,7 +13745,7 @@ IL_0036:
 
 IL_0071:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:213>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:213>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_20 = __this->___m_TransformTweenableVariable;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_21 = V_1;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_22;
@@ -13757,7 +13757,7 @@ IL_0071:
 
 IL_0083:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:215>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:215>
 		bool L_23 = __this->___m_ReturnToInitialPosition;
 		if (!L_23)
 		{
@@ -13765,7 +13765,7 @@ IL_0083:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:217>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:217>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_24 = __this->___m_TransformTweenableVariable;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_25 = __this->___m_InitialPosition;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_26;
@@ -13776,7 +13776,7 @@ IL_0083:
 
 IL_00a1:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:219>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:219>
 		return;
 	}
 }
@@ -13790,7 +13790,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_ResetFollowTransf
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:223>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:223>
 		bool L_0 = __this->___m_ClampToMaxDistance;
 		if (!L_0)
 		{
@@ -13810,18 +13810,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_ResetFollowTransf
 
 IL_0016:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:224>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:224>
 		return;
 	}
 
 IL_0017:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:226>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:226>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = __this->___m_PokeFollowTransform;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4 = __this->___m_InitialPosition;
 		NullCheck(L_3);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_3, L_4, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:227>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:227>
 		return;
 	}
 }
@@ -13831,7 +13831,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_OnDrawGizmos_m3C6
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:231>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:231>
 		bool L_0;
 		L_0 = XRPokeFollowAffordance_TryGetTargetEndPoint_m3F602D85D1586537B5D2343E12B9E848F3EBFB6E(__this, (&V_0), NULL);
 		if (L_0)
@@ -13840,17 +13840,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_OnDrawGizmos_m3C6
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:232>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:232>
 		return;
 	}
 
 IL_000b:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:234>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:234>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_1;
 		L_1 = Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline(NULL);
 		Gizmos_set_color_m53927A2741937484180B20B55F7F20F8F60C5797(L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:235>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:235>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
@@ -13858,7 +13858,7 @@ IL_000b:
 		L_3 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_2, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4 = V_0;
 		Gizmos_DrawLine_mB139054F55D615637A39A3127AADB16043387F8A(L_3, L_4, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:236>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:236>
 		return;
 	}
 }
@@ -13877,7 +13877,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordance_TryGetTargetEndPo
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:240>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:240>
 		bool L_0 = __this->___m_ClampToMaxDistance;
 		if (!L_0)
 		{
@@ -13897,25 +13897,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordance_TryGetTargetEndPo
 
 IL_0016:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:242>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:242>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_3 = ___0_endPoint;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
 		L_4 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3 = L_4;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:243>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:243>
 		return (bool)0;
 	}
 
 IL_0023:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:246>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:246>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5;
 		L_5 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_5);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6;
 		L_6 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_5, NULL);
 		V_0 = L_6;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:247>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:247>
 		XRPokeFilter_tC756187569A8DFE55C540B756688000609B89AC8* L_7 = __this->___m_PokeFilter;
 		NullCheck(L_7);
 		PokeThresholdDatumProperty_t367C8AA0927AD55629D9EF7297FCCEB814F6BB30* L_8;
@@ -13925,7 +13925,7 @@ IL_0023:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10;
 		L_10 = XRPokeFollowAffordance_ComputeRotatedDepthEvaluationAxis_m623F0711B299F819F9F6AA789CE33D9F766F565B(__this, L_9, NULL);
 		V_1 = L_10;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:248>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:248>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_11 = ___0_endPoint;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13;
@@ -13936,7 +13936,7 @@ IL_0023:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
 		L_16 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_12, L_15, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_11 = L_16;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:249>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:249>
 		return (bool)1;
 	}
 }
@@ -13947,7 +13947,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 	memset((&V_0), 0, sizeof(V_0));
 	int32_t V_1 = 0;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:254>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:254>
 		PokeThresholdData_tC809C4316CFB80EE765C84948E489D6AD09F7546* L_0 = ___0_pokeThresholdData;
 		if (L_0)
 		{
@@ -13955,7 +13955,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:255>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:255>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
 		L_1 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		return L_1;
@@ -13963,11 +13963,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 
 IL_0009:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:257>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:257>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2;
 		L_2 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_0 = L_2;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:258>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:258>
 		PokeThresholdData_tC809C4316CFB80EE765C84948E489D6AD09F7546* L_3 = ___0_pokeThresholdData;
 		NullCheck(L_3);
 		int32_t L_4;
@@ -14008,33 +14008,33 @@ IL_0009:
 
 IL_0038:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:262>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:262>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6;
 		L_6 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_6);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7;
 		L_7 = Transform_get_right_mC6DC057C23313802E2186A9E0DB760D795A758A4(L_6, NULL);
 		V_0 = L_7;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:263>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:263>
 		goto IL_0060;
 	}
 
 IL_0046:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:266>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:266>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8;
 		L_8 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_8);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Transform_get_up_mE47A9D9D96422224DD0539AA5524DA5440145BB2(L_8, NULL);
 		V_0 = L_9;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:267>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:267>
 		goto IL_0060;
 	}
 
 IL_0054:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:270>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:270>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10;
 		L_10 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_10);
@@ -14045,7 +14045,7 @@ IL_0054:
 
 IL_0060:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:274>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:274>
 		PokeThresholdData_tC809C4316CFB80EE765C84948E489D6AD09F7546* L_12 = ___0_pokeThresholdData;
 		NullCheck(L_12);
 		int32_t L_13;
@@ -14058,7 +14058,7 @@ IL_0060:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:279>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:279>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
 		L_16 = Vector3_op_UnaryNegation_m5450829F333BD2A88AF9A592C4EE331661225915_inline(L_15, NULL);
@@ -14067,7 +14067,7 @@ IL_0060:
 
 IL_0074:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:283>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:283>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17 = V_0;
 		return L_17;
 	}
@@ -14085,7 +14085,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_OnValidate_mC79F5
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:288>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:288>
 		XRPokeFilter_tC756187569A8DFE55C540B756688000609B89AC8* L_0 = __this->___m_PokeFilter;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -14096,7 +14096,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_OnValidate_mC79F5
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:290>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:290>
 		XRPokeFilter_tC756187569A8DFE55C540B756688000609B89AC8* L_2;
 		L_2 = Component_GetComponentInParent_TisXRPokeFilter_tC756187569A8DFE55C540B756688000609B89AC8_mF1987B4F495C2DE57F525F460FAE0DCB62662416(__this, Component_GetComponentInParent_TisXRPokeFilter_tC756187569A8DFE55C540B756688000609B89AC8_mF1987B4F495C2DE57F525F460FAE0DCB62662416_RuntimeMethod_var);
 		__this->___m_PokeFilter = L_2;
@@ -14105,7 +14105,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance_OnValidate_mC79F5
 
 IL_001a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:294>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:294>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = __this->___m_PokeFollowTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_4;
@@ -14124,7 +14124,7 @@ IL_001a:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:295>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:295>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6 = __this->___m_PokeFollowTransform;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7 = V_0;
 		NullCheck(L_6);
@@ -14133,7 +14133,7 @@ IL_001a:
 
 IL_003e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:296>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:296>
 		return;
 	}
 }
@@ -14148,18 +14148,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordance__ctor_mCBB6E96BA2
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:40>
 		__this->___m_SmoothingSpeed = (16.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:53>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:53>
 		__this->___m_ReturnToInitialPosition = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:67>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:67>
 		__this->___m_ApplyIfChildIsTarget = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:119>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:119>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_0 = (Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5*)il2cpp_codegen_object_new(Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5_il2cpp_TypeInfo_var);
 		Vector3TweenableVariable__ctor_m22723734B74E394A833F2EEA06F910E45A91F042(L_0, NULL);
 		__this->___m_TransformTweenableVariable = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_TransformTweenableVariable), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:121>
+		//<source_info:C:/product2026/FireDrill/Assets/Samples/XR Interaction Toolkit/3.5.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs:121>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_1 = (BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A*)il2cpp_codegen_object_new(BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A_il2cpp_TypeInfo_var);
 		BindingsGroup__ctor_m1EFD3F405050571D3A66F9B95E8FBC296866A716(L_1, NULL);
 		__this->___m_BindingsGroup = L_1;

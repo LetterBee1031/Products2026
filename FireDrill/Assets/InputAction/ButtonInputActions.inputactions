@@ -1,0 +1,215 @@
+{
+    "version": 1,
+    "name": "ButtonInputActions",
+    "maps": [
+        {
+            "name": "XRControllerInput",
+            "id": "6c6bb44f-7517-4a7f-823e-d737f885fcf8",
+            "actions": [
+                {
+                    "name": "Button_A",
+                    "type": "Button",
+                    "id": "75c0a682-1c4a-4143-b120-4efa6d31fc00",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_B",
+                    "type": "Button",
+                    "id": "96535f22-5760-48f1-ba48-fc476b4afb4d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_X",
+                    "type": "Button",
+                    "id": "a3ea2dd4-c39e-496c-9099-8efa664a1e5e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Y",
+                    "type": "Button",
+                    "id": "c3311d98-d11c-4310-82db-03ca33a79c1f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Stick_Right",
+                    "type": "Value",
+                    "id": "392181c2-d0a4-4568-b5a3-93591d44a1b8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Stick_Left",
+                    "type": "Value",
+                    "id": "4cbc2422-f105-4ec8-a0f0-05d01d0d41c2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Button_Trigger_Right",
+                    "type": "Button",
+                    "id": "76af204a-3a46-4bd1-b47d-44d2b5cb401e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Trigger_Left",
+                    "type": "Button",
+                    "id": "1d5f7ae7-ea4d-4924-bec1-fccfacf8e51c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Grip_Right",
+                    "type": "Button",
+                    "id": "fc4a7141-8e68-422b-acf2-448e7dae3b0a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Grip_Left",
+                    "type": "Button",
+                    "id": "861f2b5e-70fd-44fa-9f4a-b3151f8cbe10",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ef3d0fbc-0bb6-4b21-a821-c77d768ec5c3",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_A",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42557bc1-facf-4ae2-90f4-96ce83518390",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e58e3357-c837-432e-9a29-7b02d4907b9d",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "574717de-8fd9-4f95-9368-7a05a0159394",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60ee5459-d0f7-4b03-8ee6-f9b776bb8753",
+                    "path": "<XRController>{RightHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stick_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b3e13a1-e099-4670-b3e2-0db5ac4e720d",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stick_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "048a61a1-b05c-4d04-b1de-d01f6a7eb2ab",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Trigger_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e7fd1a3-737d-4107-8422-27f62ba88d36",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Trigger_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8642939-dce2-4eb7-86b9-c877241837be",
+                    "path": "<XRController>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Grip_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c48bfc42-e16f-40a8-b7a5-13ce02472a11",
+                    "path": "<XRController>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Grip_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

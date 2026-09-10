@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e567abbf4d944210acb6315178bb015, type: 3}
   m_Name: ARCameraFeature Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: 'Meta Quest: Camera (Passthrough)'
   version: 0.1.0
   featureIdInternal: com.unity.openxr.feature.arfoundation-meta-camera
@@ -2162,7 +2162,7 @@ MonoBehaviour:
   - {fileID: -671281728444007487}
   - {fileID: 2051105749830685677}
   - {fileID: 8370083138736938970}
-  - {fileID: 9123800173079955845}
+  - {fileID: -4917312607068912500}
   - {fileID: 8980318060753866109}
   - {fileID: -6559185765804338520}
   - {fileID: -4756202077021157709}
@@ -2173,7 +2173,7 @@ MonoBehaviour:
   - {fileID: 348827886137839178}
   - {fileID: -7499073031166464939}
   - {fileID: 7666556398442971420}
-  - {fileID: 7657031683131780322}
+  - {fileID: -2626179946060250012}
   - {fileID: -6978811377440417770}
   - {fileID: -6974919542627570209}
   - {fileID: 2269934188850680656}
@@ -2805,7 +2805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076937beb8763d94790d2e9cc1248ac8, type: 3}
   m_Name: ARSessionFeature Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: 'Meta Quest: Session'
   version: 0.1.0
   featureIdInternal: com.unity.openxr.feature.arfoundation-meta-session

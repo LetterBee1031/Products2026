@@ -3779,12 +3779,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CeilingFireController_Awake_mA91BE47729A
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:31>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:31>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_0;
 		L_0 = Component_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_mF2B700ECAEEEDBCC076CC66C9592C6DDFA0D36F9(__this, Component_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_mF2B700ECAEEEDBCC076CC66C9592C6DDFA0D36F9_RuntimeMethod_var);
 		__this->___sourceParticleSystem = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___sourceParticleSystem), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:34>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:34>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1 = __this->___fireOrigin;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -3795,7 +3795,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CeilingFireController_Awake_mA91BE47729A
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:36>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:36>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		__this->___fireOrigin = L_3;
@@ -3804,7 +3804,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CeilingFireController_Awake_mA91BE47729A
 
 IL_0026:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:38>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:38>
 		return;
 	}
 }
@@ -3832,36 +3832,36 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CeilingFireController_OnParticleCollisio
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_8;
 	memset((&V_8), 0, sizeof(V_8));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:44>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:44>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_0 = __this->___sourceParticleSystem;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = ___0_other;
 		List_1_tC738A5621689A7678648746667E7F66D96D6B8FD* L_2 = __this->___collisionEvents;
 		int32_t L_3;
 		L_3 = ParticlePhysicsExtensions_GetCollisionEvents_mD44421A4CC66ECB3D6FD5D9012FE6131D3DB74B7(L_0, L_1, L_2, NULL);
 		V_0 = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:46>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:46>
 		V_1 = 0;
 		goto IL_0091;
 	}
 
 IL_0017:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:48>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:48>
 		List_1_tC738A5621689A7678648746667E7F66D96D6B8FD* L_4 = __this->___collisionEvents;
 		int32_t L_5 = V_1;
 		NullCheck(L_4);
 		ParticleCollisionEvent_t9152F03D9336BAAFEAF1CCA498C0F156ABD19858 L_6;
 		L_6 = List_1_get_Item_m57DD5E00D937D5B424DD10BAA4A33C38783CAA1D(L_4, L_5, List_1_get_Item_m57DD5E00D937D5B424DD10BAA4A33C38783CAA1D_RuntimeMethod_var);
 		V_2 = L_6;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:51>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:51>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7;
 		L_7 = ParticleCollisionEvent_get_intersection_m5CD7C517228E7D6148DEA4ED0500533C146DEC97((&V_2), NULL);
 		V_3 = L_7;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:52>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:52>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
 		L_8 = ParticleCollisionEvent_get_normal_m7FC8D0427210D507D8003DB9CCD791AB88DC63FC((&V_2), NULL);
 		V_4 = L_8;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:55>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:55>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9 = V_3;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10 = __this->___fireOrigin;
 		NullCheck(L_10);
@@ -3869,13 +3869,13 @@ IL_0017:
 		L_11 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_10, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
 		L_12 = Vector3_op_Subtraction_mE42023FF80067CB44A1D4A27EB7CF2B24CABB828_inline(L_9, L_11, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:58>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:59>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:58>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:59>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13 = V_4;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14;
 		L_14 = Vector3_ProjectOnPlane_m68FB895F6E9FCC45676BB8B95857D091C0D78794_inline(L_12, L_13, NULL);
 		V_5 = L_14;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:62>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:62>
 		float L_15;
 		L_15 = Vector3_get_sqrMagnitude_m43C27DEC47C4811FB30AB474FF2131A963B66FC8_inline((&V_5), NULL);
 		if ((((float)L_15) < ((float)(9.99999975E-05f))))
@@ -3884,26 +3884,26 @@ IL_0017:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:67>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:67>
 		Vector3_Normalize_mC749B887A4C74BA0A2E13E6377F17CCAEB0AADA8_inline((&V_5), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:70>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:70>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
 		L_16 = ParticleCollisionEvent_get_velocity_m7C078F9C3A4FF1909956CB88FE9F6BBFF2B2C44B((&V_2), NULL);
 		V_8 = L_16;
 		float L_17;
 		L_17 = Vector3_get_magnitude_mF0D6017E90B345F1F52D1CC564C640F1A847AF2D_inline((&V_8), NULL);
 		V_6 = L_17;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:73>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:73>
 		float L_18 = V_6;
 		float L_19;
 		L_19 = CeilingFireController_CalculateCeilingSize_m5D791AC8080237AE2BB40B88FD20612B17696543(__this, L_18, NULL);
 		V_7 = L_19;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:76>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:77>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:78>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:79>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:80>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:81>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:76>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:77>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:80>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:81>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20 = V_3;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_21 = V_4;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_22 = V_5;
@@ -3913,14 +3913,14 @@ IL_0017:
 
 IL_008d:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:46>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:46>
 		int32_t L_24 = V_1;
 		V_1 = ((int32_t)il2cpp_codegen_add(L_24, 1));
 	}
 
 IL_0091:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:46>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:46>
 		int32_t L_25 = V_1;
 		int32_t L_26 = V_0;
 		if ((((int32_t)L_25) < ((int32_t)L_26)))
@@ -3929,7 +3929,7 @@ IL_0091:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:83>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:83>
 		return;
 	}
 }
@@ -3938,22 +3938,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float CeilingFireController_CalculateCeilingS
 {
 	float V_0 = 0.0f;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:89>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:90>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:91>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:92>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:93>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:90>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:91>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:92>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:93>
 		float L_0 = __this->___minCollisionSpeed;
 		float L_1 = __this->___maxCollisionSpeed;
 		float L_2 = ___0_collisionSpeed;
 		float L_3;
 		L_3 = Mathf_InverseLerp_mBD7EC6A7173CE082226077E1557D5BC2D2AE0D9D_inline(L_0, L_1, L_2, NULL);
 		V_0 = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:96>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:97>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:98>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:99>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:100>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:96>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:97>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:98>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:99>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:100>
 		float L_4 = __this->___minCeilingSize;
 		float L_5 = __this->___maxCeilingSize;
 		float L_6 = V_0;
@@ -3969,18 +3969,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CeilingFireController_EmitCeilingParticl
 	EmitParams_tE76279CE754C7B0A4ECDA7E294587AACB039FBA0 V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:111>
 		V_0 = 0;
 		goto IL_0052;
 	}
 
 IL_0004:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:113>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:114>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:113>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:114>
 		il2cpp_codegen_initobj((&V_1), sizeof(EmitParams_tE76279CE754C7B0A4ECDA7E294587AACB039FBA0));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:117>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:118>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:117>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:118>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = ___0_hitPoint;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = ___1_normal;
 		float L_2 = __this->___surfaceOffset;
@@ -3989,33 +3989,33 @@ IL_0004:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
 		L_4 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_0, L_3, NULL);
 		EmitParams_set_position_mF08E5334FDB60090C038498B6749CE742D9FE0E3((&V_1), L_4, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:121>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:122>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:121>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:122>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_5 = ___2_direction;
 		float L_6 = __this->___spreadSpeed;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7;
 		L_7 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_5, L_6, NULL);
 		EmitParams_set_velocity_m967097D8DE302F1E0F3D6A4821DC072A2887F4F4((&V_1), L_7, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:125>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:126>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:125>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:126>
 		float L_8 = ___3_ceilingSize;
 		EmitParams_set_startSize_m1830A2D364D8C2FAC2BBED20CE06460D18AD78EA((&V_1), L_8, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:128>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:129>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:130>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:131>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:128>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:129>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:130>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:131>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_9 = __this->___ceilingSpreadFire;
 		EmitParams_tE76279CE754C7B0A4ECDA7E294587AACB039FBA0 L_10 = V_1;
 		NullCheck(L_9);
 		ParticleSystem_Emit_m5AD1A3F02A19B61E3B0CC738FD498B52D19B65AA(L_9, L_10, 1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:111>
 		int32_t L_11 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_11, 1));
 	}
 
 IL_0052:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:111>
 		int32_t L_12 = V_0;
 		int32_t L_13 = __this->___particlesPerCollision;
 		if ((((int32_t)L_12) < ((int32_t)L_13)))
@@ -4024,7 +4024,7 @@ IL_0052:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:133>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:133>
 		return;
 	}
 }
@@ -4039,22 +4039,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CeilingFireController__ctor_m469671D7F1C
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:11>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:11>
 		__this->___spreadSpeed = (2.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:12>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:12>
 		__this->___surfaceOffset = (0.0199999996f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:13>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:13>
 		__this->___particlesPerCollision = 1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:17>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:17>
 		__this->___minCollisionSpeed = (1.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:19>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:19>
 		__this->___maxCollisionSpeed = (5.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:21>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:21>
 		__this->___minCeilingSize = (0.300000012f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:23>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:23>
 		__this->___maxCeilingSize = (1.20000005f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:26>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/CeilingFireController.cs:27>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:26>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/CeilingFireController.cs:27>
 		List_1_tC738A5621689A7678648746667E7F66D96D6B8FD* L_0 = (List_1_tC738A5621689A7678648746667E7F66D96D6B8FD*)il2cpp_codegen_object_new(List_1_tC738A5621689A7678648746667E7F66D96D6B8FD_il2cpp_TypeInfo_var);
 		List_1__ctor_m34B08AC7950C8A949F18794F515EEADB355A79B1(L_0, List_1__ctor_m34B08AC7950C8A949F18794F515EEADB355A79B1_RuntimeMethod_var);
 		__this->___collisionEvents = L_0;
@@ -4081,12 +4081,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ExtinguishingAgent_Awake_m486453A211D463
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:15>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:15>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_0;
 		L_0 = Component_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_mF2B700ECAEEEDBCC076CC66C9592C6DDFA0D36F9(__this, Component_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_mF2B700ECAEEEDBCC076CC66C9592C6DDFA0D36F9_RuntimeMethod_var);
 		__this->___particleSystem = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___particleSystem), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:16>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:16>
 		return;
 	}
 }
@@ -4109,42 +4109,42 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ExtinguishingAgent_OnParticleTrigger_m78
 	Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* V_5 = NULL;
 	FireHitBox_tAA259849202840CF229DAB6457EFBE444FE3230C* V_6 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:21>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:22>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:23>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:24>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:25>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:21>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:22>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:23>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:24>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:25>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_0 = __this->___particleSystem;
 		List_1_t2788A4C609C25337C5D02FEFC3504950913E9C8F* L_1 = __this->___enterParticles;
 		int32_t L_2;
 		L_2 = ParticlePhysicsExtensions_GetTriggerParticles_m630120CC6118A93BFE2EE0F1ADA1E17A6108EF4C(L_0, 2, L_1, (&V_1), NULL);
 		V_0 = L_2;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:27>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:27>
 		V_2 = 0;
 		goto IL_0067;
 	}
 
 IL_0019:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:30>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:30>
 		int32_t L_3 = V_2;
 		int32_t L_4;
 		L_4 = ColliderData_GetColliderCount_m835D9900E7D7173E94E365B1D45EE908750628EA((&V_1), L_3, NULL);
 		V_3 = L_4;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:32>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:32>
 		V_4 = 0;
 		goto IL_005e;
 	}
 
 IL_0027:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:35>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:35>
 		int32_t L_5 = V_2;
 		int32_t L_6 = V_4;
 		Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* L_7;
 		L_7 = ColliderData_GetCollider_mA5CF6CD0030CB2C2B22508247D428E89661E707B((&V_1), L_5, L_6, NULL);
 		V_5 = L_7;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:37>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:37>
 		Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* L_8 = V_5;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_9;
@@ -4155,14 +4155,14 @@ IL_0027:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:43>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:44>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:43>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:44>
 		Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* L_10 = V_5;
 		NullCheck(L_10);
 		FireHitBox_tAA259849202840CF229DAB6457EFBE444FE3230C* L_11;
 		L_11 = Component_GetComponentInParent_TisFireHitBox_tAA259849202840CF229DAB6457EFBE444FE3230C_m42D23C634CF5ECF69EBEDA91A8C4B3BD7ADC93F6(L_10, Component_GetComponentInParent_TisFireHitBox_tAA259849202840CF229DAB6457EFBE444FE3230C_m42D23C634CF5ECF69EBEDA91A8C4B3BD7ADC93F6_RuntimeMethod_var);
 		V_6 = L_11;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:46>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:46>
 		FireHitBox_tAA259849202840CF229DAB6457EFBE444FE3230C* L_12 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_13;
@@ -4173,7 +4173,7 @@ IL_0027:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:52>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:52>
 		FireHitBox_tAA259849202840CF229DAB6457EFBE444FE3230C* L_14 = V_6;
 		NullCheck(L_14);
 		FireHitBox_HitExtinguishingAgent_m9849D5DCC81FDA6B8DF20181AA636C4001F2E6F3(L_14, 1, NULL);
@@ -4181,14 +4181,14 @@ IL_0027:
 
 IL_0058:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:32>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:32>
 		int32_t L_15 = V_4;
 		V_4 = ((int32_t)il2cpp_codegen_add(L_15, 1));
 	}
 
 IL_005e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:32>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:32>
 		int32_t L_16 = V_4;
 		int32_t L_17 = V_3;
 		if ((((int32_t)L_16) < ((int32_t)L_17)))
@@ -4197,14 +4197,14 @@ IL_005e:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:27>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:27>
 		int32_t L_18 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_18, 1));
 	}
 
 IL_0067:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:27>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:27>
 		int32_t L_19 = V_2;
 		int32_t L_20 = V_0;
 		if ((((int32_t)L_19) < ((int32_t)L_20)))
@@ -4213,7 +4213,7 @@ IL_0067:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:55>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:55>
 		return;
 	}
 }
@@ -4228,8 +4228,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ExtinguishingAgent__ctor_mF0031FB1056E7A
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:10>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:11>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:10>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/ExtinguishingAgent.cs:11>
 		List_1_t2788A4C609C25337C5D02FEFC3504950913E9C8F* L_0 = (List_1_t2788A4C609C25337C5D02FEFC3504950913E9C8F*)il2cpp_codegen_object_new(List_1_t2788A4C609C25337C5D02FEFC3504950913E9C8F_il2cpp_TypeInfo_var);
 		List_1__ctor_m6CE67AEA7CDDACE875294E08FF46D9E31B93BA8C(L_0, List_1__ctor_m6CE67AEA7CDDACE875294E08FF46D9E31B93BA8C_RuntimeMethod_var);
 		__this->___enterParticles = L_0;
@@ -4257,14 +4257,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_Start_mBF9F1CDBD14C9F2F488100
 	}
 	int32_t V_0 = 0;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:85>
 		V_0 = 0;
 		goto IL_0026;
 	}
 
 IL_0004:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:87>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:87>
 		MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F* L_0 = __this->___fireParticlesMain;
 		int32_t L_1 = V_0;
 		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_2 = __this->___fireParticlesObjects;
@@ -4280,14 +4280,14 @@ IL_0004:
 		L_7 = ParticleSystem_get_main_mD86DFCD96150E2CE760CD2F37052BB3BCA33C189(L_6, NULL);
 		NullCheck(L_0);
 		(L_0)->SetAt(static_cast<il2cpp_array_size_t>(L_1), (MainModule_tC7ECD8330C14B0808478A748048988A6085CE2A9)L_7);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:85>
 		int32_t L_8 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_8, 1));
 	}
 
 IL_0026:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:85>
 		int32_t L_9 = V_0;
 		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_10 = __this->___fireParticlesObjects;
 		NullCheck(L_10);
@@ -4297,7 +4297,7 @@ IL_0026:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:89>
 		return;
 	}
 }
@@ -4314,19 +4314,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_HitExtinguishingAgent_m9849D5
 	}
 	int32_t V_0 = 0;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:93>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:93>
 		float L_0 = __this->___fireHealth;
 		int32_t L_1 = ___0_hitCount;
 		float L_2 = __this->___extinguishPower;
 		__this->___fireHealth = ((float)il2cpp_codegen_subtract(L_0, ((float)il2cpp_codegen_multiply(((float)L_1), L_2))));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:94>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:94>
 		V_0 = 0;
 		goto IL_0063;
 	}
 
 IL_001a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:96>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:96>
 		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_3 = __this->___fireParticlesObjects;
 		int32_t L_4 = V_0;
 		NullCheck(L_3);
@@ -4342,7 +4342,7 @@ IL_001a:
 		L_10 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_8, L_9, NULL);
 		NullCheck(L_7);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_7, L_10, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:97>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:97>
 		MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F* L_11 = __this->___fireParticlesMain;
 		int32_t L_12 = V_0;
 		NullCheck(L_11);
@@ -4351,14 +4351,14 @@ IL_001a:
 		MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 L_15;
 		L_15 = MinMaxCurve_op_Implicit_m133028E91CF2F823F5E20F6B19A3332A02404086(((float)il2cpp_codegen_multiply(L_13, L_14)), NULL);
 		MainModule_set_gravityModifier_m398D2C7F10E389C0EA365640A54D2C0C151A42A7(((L_11)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_12))), L_15, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:94>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:94>
 		int32_t L_16 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_16, 1));
 	}
 
 IL_0063:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:94>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:94>
 		int32_t L_17 = V_0;
 		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_18 = __this->___fireParticlesObjects;
 		NullCheck(L_18);
@@ -4368,7 +4368,7 @@ IL_0063:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:100>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:100>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19;
 		L_19 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_19);
@@ -4380,14 +4380,14 @@ IL_0063:
 		L_22 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(L_20, _stringLiteral8AFE01314BDF9FA36A19DC6B180AF8A7A990FB77, L_21, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_22, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:101>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:101>
 		float* L_23 = (float*)(&__this->___fireHealth);
 		String_t* L_24;
 		L_24 = Single_ToString_mE282EDA9CA4F7DF88432D807732837A629D04972(L_23, NULL);
 		String_t* L_25;
 		L_25 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral628B7C4896C5B7D3AA388568BB65C384B7984C41, L_24, NULL);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_25, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:103>
 		float L_26 = __this->___fireHealth;
 		if ((!(((float)L_26) <= ((float)(0.0f)))))
 		{
@@ -4395,13 +4395,13 @@ IL_0063:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:105>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:105>
 		FireHitBox_Extinguish_m60E8A627AF4BEBB3EFC0B1A640AC2A795F4BF787(__this, NULL);
 	}
 
 IL_00bc:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:108>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:108>
 		return;
 	}
 }
@@ -4416,7 +4416,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_Extinguish_m60E8A627AF4BEBB3E
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:112>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:112>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
 		L_0 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_0);
@@ -4426,7 +4426,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_Extinguish_m60E8A627AF4BEBB3E
 		L_2 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(L_1, _stringLiteral2A8A53258721F4C80AD21FC14ECEBAE5198979A1, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_2, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:115>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:115>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_3);
@@ -4437,7 +4437,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_Extinguish_m60E8A627AF4BEBB3E
 		L_5 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_4, NULL);
 		NullCheck(L_5);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_5, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:116>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:116>
 		return;
 	}
 }
@@ -4452,17 +4452,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox__ctor_mE43C87B8A3B03F666FD7C1
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:77>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:77>
 		__this->___fireHealth = (1.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:78>
 		__this->___extinguishPower = (0.00499999989f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:79>
 		__this->___gravityCoeff = (-0.200000003f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:80>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:80>
 		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_0 = (GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF*)(GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF*)SZArrayNew(GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF_il2cpp_TypeInfo_var, (uint32_t)4);
 		__this->___fireParticlesObjects = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___fireParticlesObjects), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/Scripts/FireHitBox.cs:81>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/FireHitBox.cs:81>
 		MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F* L_1 = (MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F*)(MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F*)SZArrayNew(MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F_il2cpp_TypeInfo_var, (uint32_t)4);
 		__this->___fireParticlesMain = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___fireParticlesMain), (void*)L_1);
@@ -4611,7 +4611,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_Start_m84A5BBC02FFBE8BF40D
 	}
 	String_t* V_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:36>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:36>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_0 = __this->___m_FadeAnimation;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -4622,9 +4622,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_Start_m84A5BBC02FFBE8BF40D
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:38>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:38>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_2 = __this->___m_FadeAnimation;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:39>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:39>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_3 = __this->___m_FadeAnimation;
 		NullCheck(L_3);
 		AnimationClip_t00BD2F131D308A4AD2C6B0BF66644FC25FECE712* L_4;
@@ -4633,7 +4633,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_Start_m84A5BBC02FFBE8BF40D
 		String_t* L_5;
 		L_5 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_4, NULL);
 		V_0 = L_5;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:40>
 		String_t* L_6 = V_0;
 		NullCheck(L_2);
 		AnimationState_tC704F25A20169025B6CFDC2F00DC84152B5B73CE* L_7;
@@ -4644,23 +4644,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_Start_m84A5BBC02FFBE8BF40D
 
 IL_0035:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:44>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:44>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_8 = (Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5*)il2cpp_codegen_object_new(Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5_il2cpp_TypeInfo_var);
 		Vector3TweenableVariable__ctor_m22723734B74E394A833F2EEA06F910E45A91F042(L_8, NULL);
 		__this->___m_ArrowHeight = L_8;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ArrowHeight), (void*)L_8);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:46>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:46>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_9 = __this->___m_ArrowHeight;
 		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_10 = __this->___m_AnimationCurve;
 		NullCheck(L_9);
 		TweenableVariableBase_1_set_animationCurve_m0E008F68494A793C1A326D8E31D7AC63C268D3D0(L_9, L_10, TweenableVariableBase_1_set_animationCurve_m0E008F68494A793C1A326D8E31D7AC63C268D3D0_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:47>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:47>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11 = __this->___m_Arrow;
 		NullCheck(L_11);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
 		L_12 = Transform_get_localScale_m804A002A53A645CDFCD15BB0F37209162720363F(L_11, NULL);
 		__this->___m_InitialArrowScale = L_12;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:48>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:48>
 		return;
 	}
 }
@@ -4674,7 +4674,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_Update_mD2CF52D5A41427FB49
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:52>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:52>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_Arrow;
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_1 = __this->___m_ArrowHeight;
 		NullCheck(L_1);
@@ -4684,7 +4684,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_Update_mD2CF52D5A41427FB49
 		L_3 = float3_op_Implicit_m9CC301DFD67EEFAA15CA05E91913E862B22326F6(L_2, NULL);
 		NullCheck(L_0);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_0, L_3, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:53>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:53>
 		return;
 	}
 }
@@ -4702,12 +4702,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorEnter_mE9B77E39B80
 	memset((&V_0), 0, sizeof(V_0));
 	String_t* V_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:60>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:60>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_Arrow;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = __this->___m_InitialArrowScale;
 		NullCheck(L_0);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_0, L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:62>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:62>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_2 = __this->___m_FadeAnimation;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_3;
@@ -4718,9 +4718,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorEnter_mE9B77E39B80
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:64>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:64>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_4 = __this->___m_FadeAnimation;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:65>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:65>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_5 = __this->___m_FadeAnimation;
 		NullCheck(L_5);
 		AnimationClip_t00BD2F131D308A4AD2C6B0BF66644FC25FECE712* L_6;
@@ -4729,7 +4729,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorEnter_mE9B77E39B80
 		String_t* L_7;
 		L_7 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_6, NULL);
 		V_1 = L_7;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:66>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_8 = L_4;
 		String_t* L_9 = V_1;
 		NullCheck(L_8);
@@ -4737,7 +4737,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorEnter_mE9B77E39B80
 		L_10 = Animation_get_Item_m60997A8CDE7F415FC55FBB0D6D3F28339C4B32E8(L_8, L_9, NULL);
 		NullCheck(L_10);
 		AnimationState_set_normalizedTime_m80C40785819379D8B3DD64D22E88338921ED5085(L_10, (0.0f), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:67>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:67>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_11 = L_8;
 		String_t* L_12 = V_1;
 		NullCheck(L_11);
@@ -4745,7 +4745,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorEnter_mE9B77E39B80
 		L_13 = Animation_get_Item_m60997A8CDE7F415FC55FBB0D6D3F28339C4B32E8(L_11, L_12, NULL);
 		NullCheck(L_13);
 		AnimationState_set_speed_m9FADB34E8FA313E07ABF8F90B6F4179D2DAF9E7D(L_13, (1.0f), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:68>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:68>
 		NullCheck(L_11);
 		bool L_14;
 		L_14 = Animation_Play_m717560D2F561D9E12583AB3B435E6BC996448C3E(L_11, NULL);
@@ -4753,7 +4753,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorEnter_mE9B77E39B80
 
 IL_005e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:71>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:71>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_15 = __this->___m_ArrowCoroutine;
 		if (!L_15)
 		{
@@ -4761,20 +4761,20 @@ IL_005e:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:72>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:72>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_16 = __this->___m_ArrowCoroutine;
 		MonoBehaviour_StopCoroutine_mB0FC91BE84203BD8E360B3FBAE5B958B4C5ED22A(__this, L_16, NULL);
 	}
 
 IL_0072:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:74>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17 = __this->___m_Arrow;
 		NullCheck(L_17);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18;
 		L_18 = Transform_get_localPosition_mA9C86B990DF0685EA1061A120218993FDCC60A95(L_17, NULL);
 		V_0 = L_18;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:75>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:75>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_19 = __this->___m_ArrowHeight;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20 = V_0;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_21;
@@ -4795,7 +4795,7 @@ IL_0072:
 		L_30 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_29, NULL);
 		__this->___m_ArrowCoroutine = L_30;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ArrowCoroutine), (void*)L_30);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:76>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:76>
 		return;
 	}
 }
@@ -4813,7 +4813,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorExit_m46DB1144C80E
 	memset((&V_0), 0, sizeof(V_0));
 	String_t* V_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:83>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:83>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_0 = __this->___m_FadeAnimation;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -4824,9 +4824,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorExit_m46DB1144C80E
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:86>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:86>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_2 = __this->___m_FadeAnimation;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:87>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:87>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_3 = __this->___m_FadeAnimation;
 		NullCheck(L_3);
 		AnimationClip_t00BD2F131D308A4AD2C6B0BF66644FC25FECE712* L_4;
@@ -4835,7 +4835,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorExit_m46DB1144C80E
 		String_t* L_5;
 		L_5 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_4, NULL);
 		V_1 = L_5;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:88>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:88>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_6 = L_2;
 		String_t* L_7 = V_1;
 		NullCheck(L_6);
@@ -4843,7 +4843,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorExit_m46DB1144C80E
 		L_8 = Animation_get_Item_m60997A8CDE7F415FC55FBB0D6D3F28339C4B32E8(L_6, L_7, NULL);
 		NullCheck(L_8);
 		AnimationState_set_normalizedTime_m80C40785819379D8B3DD64D22E88338921ED5085(L_8, (1.0f), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:89>
 		Animation_t6593B06C39E3B139808B19F2C719C860F3F61040* L_9 = L_6;
 		String_t* L_10 = V_1;
 		NullCheck(L_9);
@@ -4851,7 +4851,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorExit_m46DB1144C80E
 		L_11 = Animation_get_Item_m60997A8CDE7F415FC55FBB0D6D3F28339C4B32E8(L_9, L_10, NULL);
 		NullCheck(L_11);
 		AnimationState_set_speed_m9FADB34E8FA313E07ABF8F90B6F4179D2DAF9E7D(L_11, (-1.5f), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:90>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:90>
 		NullCheck(L_9);
 		bool L_12;
 		L_12 = Animation_Play_m717560D2F561D9E12583AB3B435E6BC996448C3E(L_9, NULL);
@@ -4859,7 +4859,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_OnAnchorExit_m46DB1144C80E
 
 IL_004d:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:93>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:93>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_13 = __this->___m_ArrowCoroutine;
 		if (!L_13)
 		{
@@ -4867,20 +4867,20 @@ IL_004d:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:94>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:94>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_14 = __this->___m_ArrowCoroutine;
 		MonoBehaviour_StopCoroutine_mB0FC91BE84203BD8E360B3FBAE5B958B4C5ED22A(__this, L_14, NULL);
 	}
 
 IL_0061:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:96>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:96>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15 = __this->___m_Arrow;
 		NullCheck(L_15);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
 		L_16 = Transform_get_localPosition_mA9C86B990DF0685EA1061A120218993FDCC60A95(L_15, NULL);
 		V_0 = L_16;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:97>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:97>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_17 = __this->___m_ArrowHeight;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18 = V_0;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_19;
@@ -4900,7 +4900,7 @@ IL_0061:
 		L_27 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_26, NULL);
 		__this->___m_ArrowCoroutine = L_27;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ArrowCoroutine), (void*)L_27);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:98>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:98>
 		return;
 	}
 }
@@ -4908,13 +4908,13 @@ IL_0061:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_HideArrowOnTeleport_mAF2775EAD028A9913AECE46CA85A21020EDB1A9D (AnchorVisuals_t506C676A735B94AD2F7832EDF49F77B8564E573A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:105>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:105>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_Arrow;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
 		L_1 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_0);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_0, L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:106>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:106>
 		return;
 	}
 }
@@ -4922,9 +4922,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals_HideArrowOnTeleport_mAF277
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorVisuals__ctor_m33BE9FB784CF00841C8359369FF41EC9DD425E67 (AnchorVisuals_t506C676A735B94AD2F7832EDF49F77B8564E573A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:20>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:20>
 		__this->___m_TargetArrowHeight = (1.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:23>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs:23>
 		__this->___m_ArrowAnimationDuration = (0.200000003f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -4949,7 +4949,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_Awake_mB49A15D7FA935094EF77C
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:82>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:82>
 		LineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D* L_0 = __this->___m_LineRenderer;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -4960,7 +4960,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_Awake_mB49A15D7FA935094EF77C
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:83>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:83>
 		LineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D* L_2;
 		L_2 = Component_GetComponent_TisLineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D_m4F17B3CA1E7FFB03C7682312A59B9185E0F67C49(__this, Component_GetComponent_TisLineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D_m4F17B3CA1E7FFB03C7682312A59B9185E0F67C49_RuntimeMethod_var);
 		__this->___m_LineRenderer = L_2;
@@ -4969,13 +4969,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_Awake_mB49A15D7FA935094EF77C
 
 IL_001a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:85>
 		LineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D* L_3 = __this->___m_LineRenderer;
 		NullCheck(L_3);
 		float L_4;
 		L_4 = LineRenderer_get_startWidth_mBCCB6AAF695BDAC66A971805A8E141E2757133FA(L_3, NULL);
 		__this->___m_LineWidth = L_4;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:86>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:86>
 		return;
 	}
 }
@@ -4991,14 +4991,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_OnEnable_m1D63BC7A9B05274B8F
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:90>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:90>
 		BezierCurve_DrawCurve_mCFB656A65F8002B3B9B9A03791E10C61736E6BEA(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:91>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:91>
 		UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* L_0 = (UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7*)il2cpp_codegen_object_new(UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7_il2cpp_TypeInfo_var);
 		UnityAction__ctor_mC53E20D6B66E0D5688CD81B88DBB34F5A58B7131(L_0, __this, (intptr_t)((void*)BezierCurve_OnBeforeRender_mAC5F36C0A5EA622C0E30384A7ADE90D72BB535F3_RuntimeMethod_var), NULL);
 		il2cpp_codegen_runtime_class_init_inline(Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var);
 		Application_add_onBeforeRender_mEE8925294C807AD08FA0FF35D4C663E098510394(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:92>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:92>
 		return;
 	}
 }
@@ -5014,12 +5014,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_OnDisable_m83B0645C14AEF9A8A
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:96>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:96>
 		UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* L_0 = (UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7*)il2cpp_codegen_object_new(UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7_il2cpp_TypeInfo_var);
 		UnityAction__ctor_mC53E20D6B66E0D5688CD81B88DBB34F5A58B7131(L_0, __this, (intptr_t)((void*)BezierCurve_OnBeforeRender_mAC5F36C0A5EA622C0E30384A7ADE90D72BB535F3_RuntimeMethod_var), NULL);
 		il2cpp_codegen_runtime_class_init_inline(Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var);
 		Application_remove_onBeforeRender_m9F54448ED4059A26C9972E5C9ED2F6DCD58B4E24(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:98>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:98>
 		return;
 	}
 }
@@ -5027,7 +5027,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_OnDisable_m83B0645C14AEF9A8A
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_OnBeforeRender_mAC5F36C0A5EA622C0E30384A7ADE90D72BB535F3 (BezierCurve_t43BBB6AA7BF6D3B9638D5CBB500FC809A7AF2AC2* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:102>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:102>
 		int32_t L_0 = __this->___m_UpdateTrackingType;
 		if ((((int32_t)L_0) == ((int32_t)2)))
 		{
@@ -5044,13 +5044,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_OnBeforeRender_mAC5F36C0A5EA
 
 IL_0011:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:103>
 		BezierCurve_DrawCurve_mCFB656A65F8002B3B9B9A03791E10C61736E6BEA(__this, NULL);
 	}
 
 IL_0017:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:104>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:104>
 		return;
 	}
 }
@@ -5058,7 +5058,7 @@ IL_0017:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_Update_m0D27C858A0CAC12AA9194F35C6524D2CB3EA089C (BezierCurve_t43BBB6AA7BF6D3B9638D5CBB500FC809A7AF2AC2* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:108>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:108>
 		int32_t L_0 = __this->___m_UpdateTrackingType;
 		if ((((int32_t)L_0) == ((int32_t)1)))
 		{
@@ -5075,13 +5075,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_Update_m0D27C858A0CAC12AA919
 
 IL_0011:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:109>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:109>
 		BezierCurve_DrawCurve_mCFB656A65F8002B3B9B9A03791E10C61736E6BEA(__this, NULL);
 	}
 
 IL_0017:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:111>
 		bool L_2 = __this->___m_Animate;
 		if (!L_2)
 		{
@@ -5089,13 +5089,13 @@ IL_0017:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:113>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:113>
 		BezierCurve_AnimateCurve_m7D19797535EDBC8A51C526C4FFBEB257536309F9(__this, NULL);
 	}
 
 IL_0025:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:115>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:115>
 		return;
 	}
 }
@@ -5112,20 +5112,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_DrawCurve_mCFB656A65F8002B3B
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_5;
 	memset((&V_5), 0, sizeof(V_5));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:123>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:123>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_StartPoint;
 		NullCheck(L_0);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
 		L_1 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_0, NULL);
 		V_0 = L_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:124>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:124>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = __this->___m_EndPoint;
 		NullCheck(L_2);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
 		L_3 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_2, NULL);
 		V_1 = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:126>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:127>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:126>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:127>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_5 = __this->___m_LastStartPosition;
 		bool L_6;
@@ -5146,24 +5146,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_DrawCurve_mCFB656A65F8002B3B
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:128>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:128>
 		return;
 	}
 
 IL_0035:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:130>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:130>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11 = V_1;
 		float L_12;
 		L_12 = Vector3_Distance_m2314DB9B8BD01157E013DF87BEA557375C7F9FF9_inline(L_10, L_11, NULL);
 		V_2 = L_12;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:132>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:132>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_13 = __this->___m_ControlPoints;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14 = V_0;
 		NullCheck(L_13);
 		(L_13)->SetAt(static_cast<il2cpp_array_size_t>(0), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_14);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:133>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:133>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_15 = __this->___m_ControlPoints;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16 = V_0;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17 = __this->___m_StartPoint;
@@ -5178,7 +5178,7 @@ IL_0035:
 		L_22 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_16, L_21, NULL);
 		NullCheck(L_15);
 		(L_15)->SetAt(static_cast<il2cpp_array_size_t>(1), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_22);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:134>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:134>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_23 = __this->___m_ControlPoints;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_24 = V_1;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_25 = __this->___m_EndPoint;
@@ -5193,12 +5193,12 @@ IL_0035:
 		L_30 = Vector3_op_Subtraction_mE42023FF80067CB44A1D4A27EB7CF2B24CABB828_inline(L_24, L_29, NULL);
 		NullCheck(L_23);
 		(L_23)->SetAt(static_cast<il2cpp_array_size_t>(2), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_30);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:135>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:135>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_31 = __this->___m_ControlPoints;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_32 = V_1;
 		NullCheck(L_31);
 		(L_31)->SetAt(static_cast<il2cpp_array_size_t>(3), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_32);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:139>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:139>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_33 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_34 = V_1;
 		float L_35;
@@ -5210,26 +5210,26 @@ IL_0035:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:141>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:141>
 		V_3 = 2;
 		goto IL_00cb;
 	}
 
 IL_00c4:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:145>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:145>
 		int32_t L_37 = __this->___m_SegmentCount;
 		V_3 = L_37;
 	}
 
 IL_00cb:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:148>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:148>
 		LineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D* L_38 = __this->___m_LineRenderer;
 		int32_t L_39 = V_3;
 		NullCheck(L_38);
 		LineRenderer_set_positionCount_m2001FB4044053895ECBE897AB833284F3300B205(L_38, ((int32_t)il2cpp_codegen_add(L_39, 1)), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:149>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:149>
 		LineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D* L_40 = __this->___m_LineRenderer;
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_41 = __this->___m_ControlPoints;
 		NullCheck(L_41);
@@ -5237,17 +5237,17 @@ IL_00cb:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_43 = (L_41)->GetAt(static_cast<il2cpp_array_size_t>(L_42));
 		NullCheck(L_40);
 		LineRenderer_SetPosition_m84C4AD9ADC6AC62B33DB4D7E4C9F066DFF8440C1(L_40, 0, L_43, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:150>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:150>
 		V_4 = 1;
 		goto IL_0148;
 	}
 
 IL_00f6:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:152>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:152>
 		int32_t L_44 = V_4;
 		int32_t L_45 = V_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:153>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:153>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_46 = __this->___m_ControlPoints;
 		NullCheck(L_46);
 		int32_t L_47 = 0;
@@ -5267,20 +5267,20 @@ IL_00f6:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_58;
 		L_58 = BezierCurve_CalculateCubicBezierPoint_m9EB641B7C3156DFA8118FB4CF153E9CA01D8FA71(((float)(((float)L_44)/((float)L_45))), L_48, L_51, L_54, L_57, NULL);
 		V_5 = L_58;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:154>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:154>
 		LineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D* L_59 = __this->___m_LineRenderer;
 		int32_t L_60 = V_4;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_61 = V_5;
 		NullCheck(L_59);
 		LineRenderer_SetPosition_m84C4AD9ADC6AC62B33DB4D7E4C9F066DFF8440C1(L_59, L_60, L_61, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:150>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:150>
 		int32_t L_62 = V_4;
 		V_4 = ((int32_t)il2cpp_codegen_add(L_62, 1));
 	}
 
 IL_0148:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:150>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:150>
 		int32_t L_63 = V_4;
 		int32_t L_64 = V_3;
 		if ((((int32_t)L_63) <= ((int32_t)L_64)))
@@ -5289,13 +5289,13 @@ IL_0148:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:157>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:157>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_65 = V_0;
 		__this->___m_LastStartPosition = L_65;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:158>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:158>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_66 = V_1;
 		__this->___m_LastEndPosition = L_66;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:159>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:159>
 		return;
 	}
 }
@@ -5307,29 +5307,29 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 	float V_2 = 0.0f;
 	float V_3 = 0.0f;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:163>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:163>
 		float L_0 = ___0_t;
 		V_0 = ((float)il2cpp_codegen_subtract((1.0f), L_0));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:164>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:164>
 		float L_1 = ___0_t;
 		float L_2 = ___0_t;
 		V_1 = ((float)il2cpp_codegen_multiply(L_1, L_2));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:165>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:165>
 		float L_3 = V_0;
 		float L_4 = V_0;
 		V_2 = ((float)il2cpp_codegen_multiply(L_3, L_4));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:166>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:166>
 		float L_5 = V_2;
 		float L_6 = V_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:167>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:167>
 		float L_7 = V_1;
 		float L_8 = ___0_t;
 		V_3 = ((float)il2cpp_codegen_multiply(L_7, L_8));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:169>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:169>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9 = ___1_p0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10;
 		L_10 = Vector3_op_Multiply_m7F3B0FA9256CE368D7636558EFEFC4AB0E1A0F41_inline(((float)il2cpp_codegen_multiply(L_5, L_6)), L_9, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:170>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:170>
 		float L_11 = V_2;
 		float L_12 = ___0_t;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13 = ___2_p1;
@@ -5337,7 +5337,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		L_14 = Vector3_op_Multiply_m7F3B0FA9256CE368D7636558EFEFC4AB0E1A0F41_inline(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply((3.0f), L_11)), L_12)), L_13, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15;
 		L_15 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_10, L_14, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:171>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:171>
 		float L_16 = V_0;
 		float L_17 = V_1;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18 = ___3_p2;
@@ -5345,14 +5345,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		L_19 = Vector3_op_Multiply_m7F3B0FA9256CE368D7636558EFEFC4AB0E1A0F41_inline(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply((3.0f), L_16)), L_17)), L_18, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20;
 		L_20 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_15, L_19, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:172>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:172>
 		float L_21 = V_3;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_22 = ___4_p3;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23;
 		L_23 = Vector3_op_Multiply_m7F3B0FA9256CE368D7636558EFEFC4AB0E1A0F41_inline(L_21, L_22, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_24;
 		L_24 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_20, L_23, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:174>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:174>
 		return L_24;
 	}
 }
@@ -5377,61 +5377,61 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_AnimateCurve_m7D19797535EDBC
 	GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0 V_5;
 	memset((&V_5), 0, sizeof(V_5));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:179>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:179>
 		Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* L_0 = (Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E*)il2cpp_codegen_object_new(Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E_il2cpp_TypeInfo_var);
 		Gradient__ctor_m5EC470BB063D4831774C7CDA5D471EBEB5CE7B54(L_0, NULL);
 		V_0 = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:181>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:181>
 		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_1 = (GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18*)(GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18*)SZArrayNew(GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18_il2cpp_TypeInfo_var, (uint32_t)1);
 		V_1 = L_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:182>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:182>
 		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_2 = (GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E*)(GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E*)SZArrayNew(GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E_il2cpp_TypeInfo_var, (uint32_t)2);
 		V_2 = L_2;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:184>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:184>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_3 = __this->___m_GradientKeyColor;
 		GradientColorKey__ctor_mE26D7B8DA1283FDC3ADF628A3AC3E1B7246CD8A1((&V_3), L_3, (0.0f), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:185>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:185>
 		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_4 = V_1;
 		GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A L_5 = V_3;
 		NullCheck(L_4);
 		(L_4)->SetAt(static_cast<il2cpp_array_size_t>(0), (GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A)L_5);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:187>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:187>
 		float L_6 = __this->___m_Time;
 		GradientAlphaKey__ctor_m62D622565E6C8BF94E6E90A4CA6C866A5BC3B41B((&V_4), (0.25f), L_6, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:188>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:188>
 		GradientAlphaKey__ctor_m62D622565E6C8BF94E6E90A4CA6C866A5BC3B41B((&V_5), (1.0f), (1.0f), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:189>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:189>
 		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_7 = V_2;
 		GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0 L_8 = V_4;
 		NullCheck(L_7);
 		(L_7)->SetAt(static_cast<il2cpp_array_size_t>(0), (GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0)L_8);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:190>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:190>
 		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_9 = V_2;
 		GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0 L_10 = V_5;
 		NullCheck(L_9);
 		(L_9)->SetAt(static_cast<il2cpp_array_size_t>(1), (GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0)L_10);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:192>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:192>
 		Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* L_11 = V_0;
 		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_12 = V_1;
 		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_13 = V_2;
 		NullCheck(L_11);
 		Gradient_SetKeys_mE03CE269C19C4F08F1ED57F7151082304DDBB5D8(L_11, L_12, L_13, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:193>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:193>
 		Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* L_14 = V_0;
 		NullCheck(L_14);
 		Gradient_set_mode_m4C84E6ABEFA6C11EE08E07A3969F9DC0AC579210(L_14, 0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:195>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:195>
 		LineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D* L_15 = __this->___m_LineRenderer;
 		Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* L_16 = V_0;
 		NullCheck(L_15);
 		LineRenderer_set_colorGradient_mD2CB3340AC9467782331011754187A2862216183(L_15, L_16, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:196>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:196>
 		float L_17 = __this->___m_Time;
 		float L_18;
 		L_18 = Time_get_unscaledDeltaTime_mF057EECA857E5C0F90A3F910D26D3EE59F27C4B5(NULL);
 		float L_19 = __this->___m_AnimSpeed;
 		__this->___m_Time = ((float)il2cpp_codegen_add(L_17, ((float)il2cpp_codegen_multiply(L_18, L_19))));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:198>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:198>
 		float L_20 = __this->___m_Time;
 		if ((!(((float)L_20) >= ((float)(1.0f)))))
 		{
@@ -5439,13 +5439,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve_AnimateCurve_m7D19797535EDBC
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:199>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:199>
 		__this->___m_Time = (0.0f);
 	}
 
 IL_00af:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:200>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:200>
 		return;
 	}
 }
@@ -5459,22 +5459,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BezierCurve__ctor_m00317F17289DF5D603287
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:41>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:41>
 		__this->___m_UpdateTrackingType = 1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:50>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:50>
 		__this->___m_CurveFactorStart = (1.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:53>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:53>
 		__this->___m_CurveFactorEnd = (1.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:56>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:56>
 		__this->___m_SegmentCount = ((int32_t)50);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:62>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:62>
 		__this->___m_AnimSpeed = (0.25f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:65>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:65>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0;
 		memset((&L_0), 0, sizeof(L_0));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_0), (0.125490203f), (0.588235319f), (0.952941179f), NULL);
 		__this->___m_GradientKeyColor = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:71>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BezierCurve.cs:71>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_1 = (Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)SZArrayNew(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var, (uint32_t)4);
 		__this->___m_ControlPoints = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ControlPoints), (void*)L_1);
@@ -5512,7 +5512,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_Awake_m4F
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:30>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:30>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
 		L_0 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_0);
@@ -5520,7 +5520,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_Awake_m4F
 		L_1 = GameObject_GetComponent_TisToggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F_m4EE154BD6B3D051BADD8CC7F7C28CF20349ABD17(L_0, GameObject_GetComponent_TisToggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F_m4EE154BD6B3D051BADD8CC7F7C28CF20349ABD17_RuntimeMethod_var);
 		__this->___m_Toggle = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Toggle), (void*)L_1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:33>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:33>
 		Toggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F* L_2 = __this->___m_Toggle;
 		NullCheck(L_2);
 		ToggleEvent_t88B31268F9D6D1882E4F921B14704FB9F7047F02* L_3 = L_2->___onValueChanged;
@@ -5528,7 +5528,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_Awake_m4F
 		UnityAction_1__ctor_m11A393DB3C00474B4520978077E444DB6E4418DD(L_4, __this, (intptr_t)((void*)BooleanToggleVisualsController_ToggleValueChanged_m02974DD38BDC57F1A93AEBD0BEA546C906782E83_RuntimeMethod_var), NULL);
 		NullCheck(L_3);
 		UnityEvent_1_AddListener_mE9367D4B3AA4C323EE7C35FA18CF2D8A142F43FD(L_3, L_4, UnityEvent_1_AddListener_mE9367D4B3AA4C323EE7C35FA18CF2D8A142F43FD_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:35>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:35>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_5 = __this->___m_Knob;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_6;
@@ -5539,7 +5539,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_Awake_m4F
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:37>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:37>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_7 = __this->___m_Knob;
 		NullCheck(L_7);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
@@ -5550,7 +5550,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_Awake_m4F
 
 IL_0051:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:39>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:39>
 		return;
 	}
 }
@@ -5558,13 +5558,13 @@ IL_0051:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_OnEnable_mDE6834ED01E1E74C81DAE601F7BD86E59B219F53 (BooleanToggleVisualsController_t8DA583A8B9BE4C4A10D8386FC016EBC57FCE884A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:43>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:43>
 		Toggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F* L_0 = __this->___m_Toggle;
 		NullCheck(L_0);
 		bool L_1;
 		L_1 = Toggle_get_isOn_m89A609E936CD67F460E336CA8E03C4047BFB6619_inline(L_0, NULL);
 		BooleanToggleVisualsController_ToggleValueChanged_m02974DD38BDC57F1A93AEBD0BEA546C906782E83(__this, L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:44>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:44>
 		return;
 	}
 }
@@ -5572,9 +5572,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_OnEnable_
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_UnityEngine_EventSystems_IPointerEnterHandler_OnPointerEnter_mD62237E80D277FAD98893128EB80C55A68A02BA5 (BooleanToggleVisualsController_t8DA583A8B9BE4C4A10D8386FC016EBC57FCE884A* __this, PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* ___0_eventData, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:49>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:49>
 		BooleanToggleVisualsController_PerformEntranceActions_mA002E990ECDF993D9A7C67088996CD17E699AC5C(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:50>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:50>
 		return;
 	}
 }
@@ -5582,9 +5582,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_UnityEngi
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_UnityEngine_EventSystems_IPointerExitHandler_OnPointerExit_m2C501951F7A24E9D2C73CD1ED940E3816BFD943A (BooleanToggleVisualsController_t8DA583A8B9BE4C4A10D8386FC016EBC57FCE884A* __this, PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* ___0_eventData, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:55>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:55>
 		BooleanToggleVisualsController_PerformExitActions_m4CB4430EE5B438051BAA5E696DE3798944711E64(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:56>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:56>
 		return;
 	}
 }
@@ -5592,7 +5592,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_UnityEngi
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_ToggleValueChanged_m02974DD38BDC57F1A93AEBD0BEA546C906782E83 (BooleanToggleVisualsController_t8DA583A8B9BE4C4A10D8386FC016EBC57FCE884A* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:60>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:60>
 		bool L_0 = ___0_value;
 		if (!L_0)
 		{
@@ -5600,7 +5600,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_ToggleVal
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:62>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:62>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_1 = __this->___m_Knob;
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_2 = __this->___m_Knob;
 		NullCheck(L_2);
@@ -5622,7 +5622,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_ToggleVal
 
 IL_0039:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:66>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_9 = __this->___m_Knob;
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_10 = __this->___m_Knob;
 		NullCheck(L_10);
@@ -5639,7 +5639,7 @@ IL_0039:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_16), (-17.0f), L_12, L_15, NULL);
 		NullCheck(L_9);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_9, L_16, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:68>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:68>
 		return;
 	}
 }
@@ -5655,7 +5655,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_PerformEn
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:72>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:72>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0 = __this->___m_Knob;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -5666,17 +5666,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_PerformEn
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:74>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_2 = __this->___m_Knob;
 		NullCheck(L_2);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
 		L_3 = Transform_get_localPosition_mA9C86B990DF0685EA1061A120218993FDCC60A95(L_2, NULL);
 		V_0 = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:75>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:75>
 		float L_4 = __this->___m_InitialBackground;
 		float L_5 = __this->___m_ZTranslation;
 		(&V_0)->___z = ((float)il2cpp_codegen_subtract(L_4, L_5));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:76>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:76>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_6 = __this->___m_Knob;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7 = V_0;
 		NullCheck(L_6);
@@ -5685,7 +5685,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_PerformEn
 
 IL_003a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:78>
 		return;
 	}
 }
@@ -5701,7 +5701,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_PerformEx
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:82>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:82>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0 = __this->___m_Knob;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -5712,21 +5712,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_PerformEx
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:84>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:84>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_2 = __this->___m_Knob;
 		NullCheck(L_2);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
 		L_3 = Transform_get_localPosition_mA9C86B990DF0685EA1061A120218993FDCC60A95(L_2, NULL);
 		V_0 = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:85>
 		float L_4 = __this->___m_InitialBackground;
 		(&V_0)->___z = L_4;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:86>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:86>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_5 = __this->___m_Knob;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6 = V_0;
 		NullCheck(L_5);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_5, L_6, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:87>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:87>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_7 = __this->___m_Knob;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
 		L_8 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -5736,7 +5736,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController_PerformEx
 
 IL_0043:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:89>
 		return;
 	}
 }
@@ -5744,7 +5744,7 @@ IL_0043:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BooleanToggleVisualsController__ctor_mCBD96DB89405625789DA81BE26FF3B477D84F48D (BooleanToggleVisualsController_t8DA583A8B9BE4C4A10D8386FC016EBC57FCE884A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:20>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs:20>
 		__this->___m_ZTranslation = (5.0f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -5768,7 +5768,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_Start_mEACC5C959F88571725CE1C349
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:38>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:38>
 		bool L_0 = __this->___m_Unparent;
 		if (!L_0)
 		{
@@ -5776,7 +5776,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_Start_mEACC5C959F88571725CE1C349
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:40>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1 = __this->___m_LazyTooltip;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -5787,7 +5787,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_Start_mEACC5C959F88571725CE1C349
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:41>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:41>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = __this->___m_LazyTooltip;
 		NullCheck(L_3);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_3, (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL, NULL);
@@ -5795,7 +5795,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_Start_mEACC5C959F88571725CE1C349
 
 IL_0022:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:44>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:44>
 		bool L_4 = __this->___m_TurnOffAtStart;
 		if (!L_4)
 		{
@@ -5803,7 +5803,7 @@ IL_0022:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:46>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:46>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = __this->___m_LazyTooltip;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_6;
@@ -5814,7 +5814,7 @@ IL_0022:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:47>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:47>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = __this->___m_LazyTooltip;
 		NullCheck(L_7);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8;
@@ -5825,7 +5825,7 @@ IL_0022:
 
 IL_0049:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:48>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:48>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = __this->___m_Curve;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_10;
@@ -5836,7 +5836,7 @@ IL_0049:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:49>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:49>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = __this->___m_Curve;
 		NullCheck(L_11);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_11, (bool)0, NULL);
@@ -5844,7 +5844,7 @@ IL_0049:
 
 IL_0063:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:51>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:51>
 		return;
 	}
 }
@@ -5852,9 +5852,9 @@ IL_0063:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_GazeHoverStart_m806285B32FFCF1D60C8DA940734172E5DFA8A52E (Callout_t77190B04DFF0BAEAB37B7015FEA730514DE0E372* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:55>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:55>
 		__this->___m_Gazing = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:56>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:56>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_0 = __this->___m_StartCo;
 		if (!L_0)
 		{
@@ -5862,14 +5862,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_GazeHoverStart_m806285B32FFCF1D6
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:57>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:57>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_1 = __this->___m_StartCo;
 		MonoBehaviour_StopCoroutine_mB0FC91BE84203BD8E360B3FBAE5B958B4C5ED22A(__this, L_1, NULL);
 	}
 
 IL_001b:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:58>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:58>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_2 = __this->___m_EndCo;
 		if (!L_2)
 		{
@@ -5877,21 +5877,21 @@ IL_001b:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:59>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:59>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_3 = __this->___m_EndCo;
 		MonoBehaviour_StopCoroutine_mB0FC91BE84203BD8E360B3FBAE5B958B4C5ED22A(__this, L_3, NULL);
 	}
 
 IL_002f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:60>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:60>
 		RuntimeObject* L_4;
 		L_4 = Callout_StartDelay_m56926DFE72E7D2EBC7966BDD8D3A67D7A7F65C99(__this, NULL);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_5;
 		L_5 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_4, NULL);
 		__this->___m_StartCo = L_5;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_StartCo), (void*)L_5);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:61>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:61>
 		return;
 	}
 }
@@ -5899,16 +5899,16 @@ IL_002f:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_GazeHoverEnd_m1B4595520FD77491994CA43F90CA8CCC68B70C22 (Callout_t77190B04DFF0BAEAB37B7015FEA730514DE0E372* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:65>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:65>
 		__this->___m_Gazing = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:66>
 		RuntimeObject* L_0;
 		L_0 = Callout_EndDelay_mABA3318D1B103503DCA7BFD5F597921752D73043(__this, NULL);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_1;
 		L_1 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_0, NULL);
 		__this->___m_EndCo = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_EndCo), (void*)L_1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:67>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:67>
 		return;
 	}
 }
@@ -5960,7 +5960,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_TurnOnStuff_mCC2C90C0A53E412D584
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:85>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_LazyTooltip;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -5971,7 +5971,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_TurnOnStuff_mCC2C90C0A53E412D584
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:86>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:86>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = __this->___m_LazyTooltip;
 		NullCheck(L_2);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3;
@@ -5982,7 +5982,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_TurnOnStuff_mCC2C90C0A53E412D584
 
 IL_001f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:87>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:87>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___m_Curve;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -5993,7 +5993,7 @@ IL_001f:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:88>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:88>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___m_Curve;
 		NullCheck(L_6);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_6, (bool)1, NULL);
@@ -6001,7 +6001,7 @@ IL_001f:
 
 IL_0039:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:89>
 		return;
 	}
 }
@@ -6015,7 +6015,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_TurnOffStuff_mD650E996EB60008ADE
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:93>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:93>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_LazyTooltip;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -6026,7 +6026,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_TurnOffStuff_mD650E996EB60008ADE
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:94>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:94>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = __this->___m_LazyTooltip;
 		NullCheck(L_2);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3;
@@ -6037,7 +6037,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout_TurnOffStuff_mD650E996EB60008ADE
 
 IL_001f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:95>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:95>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___m_Curve;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -6048,7 +6048,7 @@ IL_001f:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:96>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:96>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___m_Curve;
 		NullCheck(L_6);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_6, (bool)0, NULL);
@@ -6056,7 +6056,7 @@ IL_001f:
 
 IL_0039:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:97>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:97>
 		return;
 	}
 }
@@ -6064,11 +6064,11 @@ IL_0039:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Callout__ctor_mD90AABA0CFEE2717468AB731068AACD0893CB23A (Callout_t77190B04DFF0BAEAB37B7015FEA730514DE0E372* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:21>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:21>
 		__this->___m_DwellTime = (1.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:25>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:25>
 		__this->___m_Unparent = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:29>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:29>
 		__this->___m_TurnOffAtStart = (bool)1;
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -6129,7 +6129,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CEndDelayU3Ed__12_MoveNext_mFF9C489050
 IL_0017:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:78>
 		Callout_t77190B04DFF0BAEAB37B7015FEA730514DE0E372* L_4 = V_1;
 		NullCheck(L_4);
 		bool L_5 = L_4->___m_Gazing;
@@ -6139,7 +6139,7 @@ IL_0017:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:79>
 		Callout_t77190B04DFF0BAEAB37B7015FEA730514DE0E372* L_6 = V_1;
 		NullCheck(L_6);
 		Callout_TurnOffStuff_mD650E996EB60008ADE3DF7E3269EC13E7C141B87(L_6, NULL);
@@ -6147,7 +6147,7 @@ IL_0017:
 
 IL_002c:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:80>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:80>
 		__this->___U3CU3E2__current = NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current), (void*)NULL);
 		__this->___U3CU3E1__state = 1;
@@ -6157,7 +6157,7 @@ IL_002c:
 IL_003c:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:81>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:81>
 		return (bool)0;
 	}
 }
@@ -6247,7 +6247,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CStartDelayU3Ed__11_MoveNext_m99FA1F36
 IL_0017:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:71>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:71>
 		Callout_t77190B04DFF0BAEAB37B7015FEA730514DE0E372* L_4 = V_1;
 		NullCheck(L_4);
 		float L_5 = L_4->___m_DwellTime;
@@ -6262,7 +6262,7 @@ IL_0017:
 IL_0038:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:72>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:72>
 		Callout_t77190B04DFF0BAEAB37B7015FEA730514DE0E372* L_7 = V_1;
 		NullCheck(L_7);
 		bool L_8 = L_7->___m_Gazing;
@@ -6272,7 +6272,7 @@ IL_0038:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:73>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:73>
 		Callout_t77190B04DFF0BAEAB37B7015FEA730514DE0E372* L_9 = V_1;
 		NullCheck(L_9);
 		Callout_TurnOnStuff_mCC2C90C0A53E412D584C4CD314B0B2D0D6783E8E(L_9, NULL);
@@ -6280,7 +6280,7 @@ IL_0038:
 
 IL_004d:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Callout.cs:74>
 		return (bool)0;
 	}
 }
@@ -6330,7 +6330,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CalloutGazeController_Update_mB11AABDF11
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:39>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:39>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_GazeTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -6341,15 +6341,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CalloutGazeController_Update_mB11AABDF11
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:40>
 		return;
 	}
 
 IL_000e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:42>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:42>
 		CalloutGazeController_CheckLargeMovement_mE465FEC854E914F2D5EF069CA237451B98830A88(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:44>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:44>
 		float L_2 = __this->___m_LargeMovementCoolDown;
 		float L_3 = __this->___m_LargeMovementCoolDownTime;
 		if ((!(((float)L_2) < ((float)L_3))))
@@ -6358,13 +6358,13 @@ IL_000e:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:45>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:45>
 		return;
 	}
 
 IL_0023:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:47>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:47>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = __this->___m_GazeTransform;
 		NullCheck(L_4);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_5;
@@ -6386,7 +6386,7 @@ IL_0023:
 		float L_12;
 		L_12 = Vector3_Dot_mBB86BB940AA0A32FA7D3C02AC42E5BC7095A5D52_inline(L_5, L_11, NULL);
 		V_0 = L_12;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:48>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:48>
 		float L_13 = V_0;
 		float L_14 = __this->___m_FacingThreshold;
 		if ((!(((float)L_13) > ((float)L_14))))
@@ -6402,14 +6402,14 @@ IL_0023:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:49>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:49>
 		CalloutGazeController_FacingEntered_mCC9A11BC641C62813B0582E1F58ACDED4B10BDCA(__this, NULL);
 		return;
 	}
 
 IL_006f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:50>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:50>
 		float L_16 = V_0;
 		float L_17 = __this->___m_FacingThreshold;
 		if ((!(((float)L_16) < ((float)L_17))))
@@ -6425,13 +6425,13 @@ IL_006f:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:51>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:51>
 		CalloutGazeController_FacingExited_m82323C19A9ED171306AB17D55428C566A2ED163F(__this, NULL);
 	}
 
 IL_0086:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:52>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:52>
 		return;
 	}
 }
@@ -6441,21 +6441,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CalloutGazeController_CheckLargeMovement
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:57>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:57>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0;
 		L_0 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_0);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
 		L_1 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_0, NULL);
 		V_0 = L_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:58>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:58>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2 = __this->___m_LastPosition;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = V_0;
 		float L_4;
 		L_4 = Vector3_Distance_m2314DB9B8BD01157E013DF87BEA557375C7F9FF9_inline(L_2, L_3, NULL);
 		float L_5;
 		L_5 = fabsf(L_4);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:59>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:59>
 		float L_6 = __this->___m_LargeMovementDistanceThreshold;
 		if ((!(((float)L_5) > ((float)L_6))))
 		{
@@ -6463,23 +6463,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CalloutGazeController_CheckLargeMovement
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:61>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:61>
 		__this->___m_LargeMovementCoolDown = (0.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:62>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:62>
 		CalloutGazeController_FacingExited_m82323C19A9ED171306AB17D55428C566A2ED163F(__this, NULL);
 	}
 
 IL_0036:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:64>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:64>
 		float L_7 = __this->___m_LargeMovementCoolDown;
 		float L_8;
 		L_8 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___m_LargeMovementCoolDown = ((float)il2cpp_codegen_add(L_7, L_8));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:65>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:65>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9 = V_0;
 		__this->___m_LastPosition = L_9;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:66>
 		return;
 	}
 }
@@ -6487,13 +6487,13 @@ IL_0036:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CalloutGazeController_FacingEntered_mCC9A11BC641C62813B0582E1F58ACDED4B10BDCA (CalloutGazeController_t968951EF07E856BE01FEC52D878133D40F195204* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:70>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:70>
 		__this->___m_IsFacing = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:71>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:71>
 		UnityEvent_tDC2C3548799DBC91D1E3F3DE60083A66F4751977* L_0 = __this->___m_FacingEntered;
 		NullCheck(L_0);
 		UnityEvent_Invoke_mFBF80D59B03C30C5FE6A06F897D954ACADE061D2(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:72>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:72>
 		return;
 	}
 }
@@ -6501,13 +6501,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CalloutGazeController_FacingEntered_mCC9
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CalloutGazeController_FacingExited_m82323C19A9ED171306AB17D55428C566A2ED163F (CalloutGazeController_t968951EF07E856BE01FEC52D878133D40F195204* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:76>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:76>
 		__this->___m_IsFacing = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:77>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:77>
 		UnityEvent_tDC2C3548799DBC91D1E3F3DE60083A66F4751977* L_0 = __this->___m_FacingExited;
 		NullCheck(L_0);
 		UnityEvent_Invoke_mFBF80D59B03C30C5FE6A06F897D954ACADE061D2(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:78>
 		return;
 	}
 }
@@ -6515,11 +6515,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CalloutGazeController_FacingExited_m8232
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CalloutGazeController__ctor_mDE9F4B268037A129AD50A54EF3ED8B54B7BAD987 (CalloutGazeController_t968951EF07E856BE01FEC52D878133D40F195204* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:19>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:19>
 		__this->___m_FacingThreshold = (0.850000024f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:28>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:28>
 		__this->___m_LargeMovementDistanceThreshold = (0.0500000007f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:31>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs:31>
 		__this->___m_LargeMovementCoolDownTime = (0.25f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -6543,13 +6543,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DestroyObject_Start_m319E20DD8EF231C1C90
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/DestroyObject.cs:16>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/DestroyObject.cs:16>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
 		L_0 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		float L_1 = __this->___m_Lifetime;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_0, L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/DestroyObject.cs:17>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/DestroyObject.cs:17>
 		return;
 	}
 }
@@ -6557,7 +6557,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DestroyObject_Start_m319E20DD8EF231C1C90
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DestroyObject__ctor_m43F2B77F939725CE59E06A3A4F46C846B75F1B34 (DestroyObject_t90C0CFF019F8BFBA5C4641516631F66056F44012* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/DestroyObject.cs:12>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/DestroyObject.cs:12>
 		__this->___m_Lifetime = (5.0f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -6584,7 +6584,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LaunchProjectile_Fire_m292E31523C801DE81
 	}
 	Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* V_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:24>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:24>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___m_ProjectilePrefab;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1 = __this->___m_StartPoint;
 		NullCheck(L_1);
@@ -6597,7 +6597,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LaunchProjectile_Fire_m292E31523C801DE81
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5;
 		L_5 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_mD136E37F696C00A3A1D4F65724ACAE903E385181(L_0, L_2, L_4, (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_mD136E37F696C00A3A1D4F65724ACAE903E385181_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:26>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:26>
 		NullCheck(L_5);
 		bool L_6;
 		L_6 = GameObject_TryGetComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_mCA867A56E93C824FB9C272E0DBB67655CB275941(L_5, (&V_0), GameObject_TryGetComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_mCA867A56E93C824FB9C272E0DBB67655CB275941_RuntimeMethod_var);
@@ -6607,14 +6607,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LaunchProjectile_Fire_m292E31523C801DE81
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:27>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:27>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_7 = V_0;
 		LaunchProjectile_ApplyForce_m1C2732C0FD57EFF9F164EB50E9D7FAFD0A84CCDE(__this, L_7, NULL);
 	}
 
 IL_0032:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:28>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:28>
 		return;
 	}
 }
@@ -6624,7 +6624,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LaunchProjectile_ApplyForce_m1C2732C0FD5
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:32>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:32>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_StartPoint;
 		NullCheck(L_0);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
@@ -6633,12 +6633,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LaunchProjectile_ApplyForce_m1C2732C0FD5
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
 		L_3 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_1, L_2, NULL);
 		V_0 = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:33>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:33>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_4 = ___0_rigidBody;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_5 = V_0;
 		NullCheck(L_4);
 		Rigidbody_AddForce_m7A3EEEED21F986917107CBA6CC0106DCBC212198(L_4, L_5, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:34>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:34>
 		return;
 	}
 }
@@ -6646,7 +6646,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LaunchProjectile_ApplyForce_m1C2732C0FD5
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LaunchProjectile__ctor_m2F4D6406FD19F17F33912BD35649D8FDA533A140 (LaunchProjectile_t61F2C2CE3B019230747AB6448CD41927505B8901* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:20>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs:20>
 		__this->___m_LaunchSpeed = (1.0f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -6677,12 +6677,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RayAttachModifier_OnEnable_mD63B36A98A58
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:19>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:19>
 		RuntimeObject* L_0;
 		L_0 = Component_GetComponent_TisIXRSelectInteractable_t647A7E3382497396EA1A9546574AEC0FBC9BC4AF_mFC3F13E793001E7A507EA16C6EF20FBABAF56E46(__this, Component_GetComponent_TisIXRSelectInteractable_t647A7E3382497396EA1A9546574AEC0FBC9BC4AF_mFC3F13E793001E7A507EA16C6EF20FBABAF56E46_RuntimeMethod_var);
 		__this->___m_SelectInteractable = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_SelectInteractable), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:20>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:20>
 		RuntimeObject* L_1 = __this->___m_SelectInteractable;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -6693,20 +6693,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RayAttachModifier_OnEnable_mD63B36A98A58
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:22>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:22>
 		String_t* L_3;
 		L_3 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(__this, NULL);
 		String_t* L_4;
 		L_4 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral4269EF0D25F409E82DB7814704F598C7FE9DEE90, L_3, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_m94F967AB31244EACE68C3BE1DD85B69ED3334C0E(L_4, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:23>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:23>
 		return;
 	}
 
 IL_0036:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:26>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:26>
 		RuntimeObject* L_5 = __this->___m_SelectInteractable;
 		NullCheck(L_5);
 		SelectEnterEvent_tBA2614C8C25D8794D5804C4F66195D74E64FC5D0* L_6;
@@ -6715,7 +6715,7 @@ IL_0036:
 		UnityAction_1__ctor_mEE39E1A87376378311B4931978E8E07E589E9A24(L_7, __this, (intptr_t)((void*)RayAttachModifier_OnSelectEntered_m7B0E3E9CD23AE82AB5769EF0CA6092575BE0C1C8_RuntimeMethod_var), NULL);
 		NullCheck(L_6);
 		UnityEvent_1_AddListener_mAE71681FB0832FD7DBA813E5ADDBA574EA32EED2(L_6, L_7, UnityEvent_1_AddListener_mAE71681FB0832FD7DBA813E5ADDBA574EA32EED2_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:27>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:27>
 		return;
 	}
 }
@@ -6733,7 +6733,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RayAttachModifier_OnDisable_mAE7D174DB48
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:31>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:31>
 		RuntimeObject* L_0 = __this->___m_SelectInteractable;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -6744,7 +6744,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RayAttachModifier_OnDisable_mAE7D174DB48
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:32>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:32>
 		RuntimeObject* L_2 = __this->___m_SelectInteractable;
 		NullCheck(L_2);
 		SelectEnterEvent_tBA2614C8C25D8794D5804C4F66195D74E64FC5D0* L_3;
@@ -6757,7 +6757,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RayAttachModifier_OnDisable_mAE7D174DB48
 
 IL_002f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:33>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:33>
 		return;
 	}
 }
@@ -6775,7 +6775,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RayAttachModifier_OnSelectEntered_m7B0E3
 	Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:37>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:37>
 		SelectEnterEventArgs_t9220B1E6A9BB5A847C0476949ACE0182430BB938* L_0 = ___0_args;
 		NullCheck(L_0);
 		RuntimeObject* L_1;
@@ -6786,13 +6786,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RayAttachModifier_OnSelectEntered_m7B0E3
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:38>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:38>
 		return;
 	}
 
 IL_000e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:40>
 		SelectEnterEventArgs_t9220B1E6A9BB5A847C0476949ACE0182430BB938* L_2 = ___0_args;
 		NullCheck(L_2);
 		RuntimeObject* L_3;
@@ -6801,7 +6801,7 @@ IL_000e:
 		NullCheck(L_3);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5;
 		L_5 = InterfaceFuncInvoker1< Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*, RuntimeObject* >::Invoke(7, IXRInteractor_tD834ADD95D200FFEC6473A23E515DCD02B33CF97_il2cpp_TypeInfo_var, L_3, L_4);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:41>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:41>
 		SelectEnterEventArgs_t9220B1E6A9BB5A847C0476949ACE0182430BB938* L_6 = ___0_args;
 		NullCheck(L_6);
 		RuntimeObject* L_7;
@@ -6811,10 +6811,10 @@ IL_000e:
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_9;
 		L_9 = InterfaceFuncInvoker1< Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971, RuntimeObject* >::Invoke(10, IXRSelectInteractor_tF89F25345282BDE348CC5A11BBACE44810BD29CC_il2cpp_TypeInfo_var, L_7, L_8);
 		V_0 = L_9;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:42>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:42>
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_10 = V_0;
 		TransformExtensions_SetLocalPose_m15B9FAC87B7B05C750A6D8FD77A0768818CFB7D4(L_5, L_10, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:43>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs:43>
 		return;
 	}
 }
@@ -6838,7 +6838,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RayAttachModifier__ctor_m23AE7B33182CCD3
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rotator_Update_mF48BD3CCD47A54DFD9CF9C5F1C7B26D771DACBE7 (Rotator_t318F5CF1D4A0B8C00B5DD6C8891F1E0A99B03F12* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Rotator.cs:15>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Rotator.cs:15>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0;
 		L_0 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = __this->___m_Velocity;
@@ -6848,7 +6848,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rotator_Update_mF48BD3CCD47A54DFD9CF9C5F
 		L_3 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_1, L_2, NULL);
 		NullCheck(L_0);
 		Transform_Rotate_m2A308205498AFEEA3DF784B1C86E4F7C126CA2EE(L_0, L_3, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/Rotator.cs:16>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/Rotator.cs:16>
 		return;
 	}
 }
@@ -6879,7 +6879,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StepManager_Next_m80CD5377159A0740D6C7D9
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:33>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:33>
 		List_1_tB19FD8CEC30120912170CCE24F470CF5A1F13A3C* L_0 = __this->___m_StepList;
 		int32_t L_1 = __this->___m_CurrentStepIndex;
 		NullCheck(L_0);
@@ -6889,14 +6889,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StepManager_Next_m80CD5377159A0740D6C7D9
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = L_2->___stepObject;
 		NullCheck(L_3);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_3, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:34>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:34>
 		int32_t L_4 = __this->___m_CurrentStepIndex;
 		List_1_tB19FD8CEC30120912170CCE24F470CF5A1F13A3C* L_5 = __this->___m_StepList;
 		NullCheck(L_5);
 		int32_t L_6;
 		L_6 = List_1_get_Count_m5BA65AE2C5E1F16B9A8DC4578667030631AE0CD8_inline(L_5, List_1_get_Count_m5BA65AE2C5E1F16B9A8DC4578667030631AE0CD8_RuntimeMethod_var);
 		__this->___m_CurrentStepIndex = ((int32_t)(((int32_t)il2cpp_codegen_add(L_4, 1))%L_6));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:35>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:35>
 		List_1_tB19FD8CEC30120912170CCE24F470CF5A1F13A3C* L_7 = __this->___m_StepList;
 		int32_t L_8 = __this->___m_CurrentStepIndex;
 		NullCheck(L_7);
@@ -6906,7 +6906,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StepManager_Next_m80CD5377159A0740D6C7D9
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = L_9->___stepObject;
 		NullCheck(L_10);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_10, (bool)1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:36>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:36>
 		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_11 = __this->___m_StepButtonTextField;
 		List_1_tB19FD8CEC30120912170CCE24F470CF5A1F13A3C* L_12 = __this->___m_StepList;
 		int32_t L_13 = __this->___m_CurrentStepIndex;
@@ -6917,7 +6917,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StepManager_Next_m80CD5377159A0740D6C7D9
 		String_t* L_15 = L_14->___buttonText;
 		NullCheck(L_11);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_11, L_15);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:37>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:37>
 		return;
 	}
 }
@@ -6932,7 +6932,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StepManager__ctor_mB905C6F3AE65BF3B257BC
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:27>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/StepManager.cs:27>
 		List_1_tB19FD8CEC30120912170CCE24F470CF5A1F13A3C* L_0 = (List_1_tB19FD8CEC30120912170CCE24F470CF5A1F13A3C*)il2cpp_codegen_object_new(List_1_tB19FD8CEC30120912170CCE24F470CF5A1F13A3C_il2cpp_TypeInfo_var);
 		List_1__ctor_m11C97357E3BD2661ACBC179FB248DCF0837DC6CF(L_0, List_1__ctor_m11C97357E3BD2661ACBC179FB248DCF0837DC6CF_RuntimeMethod_var);
 		__this->___m_StepList = L_0;
@@ -6980,41 +6980,41 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoPlayerRenderTexture_Start_mA18A5419
 	RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* V_0 = NULL;
 	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:32>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:32>
 		int32_t L_0 = __this->___m_RenderTextureWidth;
 		int32_t L_1 = __this->___m_RenderTextureHeight;
 		int32_t L_2 = __this->___m_RenderTextureDepth;
 		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_3 = (RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)il2cpp_codegen_object_new(RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27_il2cpp_TypeInfo_var);
 		RenderTexture__ctor_m45EACC89DDF408948889586516B3CA7AA8B73BFA(L_3, L_0, L_1, L_2, NULL);
 		V_0 = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:33>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:33>
 		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_4 = V_0;
 		NullCheck(L_4);
 		bool L_5;
 		L_5 = RenderTexture_Create_mA6E4D3CCC84AC3F68E85AA0D6609E1692C672AD2(L_4, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:34>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:34>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_6;
 		L_6 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral684F9F5743C3D1DE5AF358333F20040FBA298574, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_7 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_7, L_6, NULL);
 		V_1 = L_7;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:35>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:35>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_8 = V_1;
 		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_9 = V_0;
 		NullCheck(L_8);
 		Material_set_mainTexture_m389E048BA9C81B603EBF36BD792212B296317AC0(L_8, L_9, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:36>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:36>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_10;
 		L_10 = Component_GetComponent_TisVideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3_m19D8A3EC4A0BF3BDAFCF718B25FC119EFE6F6BBA(__this, Component_GetComponent_TisVideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3_m19D8A3EC4A0BF3BDAFCF718B25FC119EFE6F6BBA_RuntimeMethod_var);
 		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_11 = V_0;
 		NullCheck(L_10);
 		VideoPlayer_set_targetTexture_mCFEE8D0342A11CD20CF51A3C467BA745BEB49E02(L_10, L_11, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:37>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:37>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_12 = __this->___m_Renderer;
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_13 = V_1;
 		NullCheck(L_12);
 		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_12, L_13, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:38>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:38>
 		return;
 	}
 }
@@ -7022,9 +7022,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoPlayerRenderTexture_Start_mA18A5419
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoPlayerRenderTexture__ctor_mE10538BEF009F9ADC7524E4FA398221774EAEDE8 (VideoPlayerRenderTexture_t2654D5CEBB487845DE50F264CE18F1660702A011* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:20>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:20>
 		__this->___m_RenderTextureWidth = ((int32_t)1920);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:24>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs:24>
 		__this->___m_RenderTextureHeight = ((int32_t)1080);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -7049,12 +7049,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_Start_m26AAAEE24E5
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:52>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:52>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_0;
 		L_0 = Component_GetComponent_TisVideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3_m19D8A3EC4A0BF3BDAFCF718B25FC119EFE6F6BBA(__this, Component_GetComponent_TisVideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3_m19D8A3EC4A0BF3BDAFCF718B25FC119EFE6F6BBA_RuntimeMethod_var);
 		__this->___m_VideoPlayer = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_VideoPlayer), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:53>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:53>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_1 = __this->___m_VideoPlayer;
 		NullCheck(L_1);
 		bool L_2;
@@ -7065,28 +7065,28 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_Start_m26AAAEE24E5
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:55>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:55>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_3 = __this->___m_VideoPlayer;
 		NullCheck(L_3);
 		VideoPlayer_set_playOnAwake_m658E574E0109125AD1754D61FE81DD7BB02411A0(L_3, (bool)1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:56>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:56>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_4 = __this->___m_VideoPlayer;
 		NullCheck(L_4);
 		VideoPlayer_Play_m8E99607F39F1D214BDD704F3E130DD2418787ACE(L_4, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:57>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:57>
 		VideoTimeScrubControl_VideoStop_m56221AB51C970FB3C67B496ACFB37A4D3F44653F(__this, NULL);
 		goto IL_003e;
 	}
 
 IL_0038:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:61>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:61>
 		VideoTimeScrubControl_VideoPlay_m60AC85DF6683EEEAE428A63BF32916F18724E4FE(__this, NULL);
 	}
 
 IL_003e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:64>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:64>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = __this->___m_ButtonPlayOrPause;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_6;
@@ -7097,7 +7097,7 @@ IL_003e:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:65>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:65>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = __this->___m_ButtonPlayOrPause;
 		NullCheck(L_7);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_7, (bool)0, NULL);
@@ -7105,7 +7105,7 @@ IL_003e:
 
 IL_0058:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:66>
 		return;
 	}
 }
@@ -7122,7 +7122,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_OnEnable_m0B7FDEF8
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:70>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:70>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_0 = __this->___m_VideoPlayer;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7133,21 +7133,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_OnEnable_m0B7FDEF8
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:72>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:72>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_2 = __this->___m_VideoPlayer;
 		NullCheck(L_2);
 		VideoPlayer_set_frame_mDD1CBF9BD07C3720DC8B1798CE434BAD5B75803B(L_2, ((int64_t)0), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:73>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:73>
 		VideoTimeScrubControl_VideoPlay_m60AC85DF6683EEEAE428A63BF32916F18724E4FE(__this, NULL);
 	}
 
 IL_0021:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:76>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:76>
 		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_3 = __this->___m_Slider;
 		NullCheck(L_3);
 		VirtualActionInvoker1< float >::Invoke(47, L_3, (0.0f));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:77>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:77>
 		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_4 = __this->___m_Slider;
 		NullCheck(L_4);
 		SliderEvent_t92A82EF6C62E15AF92B640FE2D960E877E8C6555* L_5;
@@ -7156,14 +7156,14 @@ IL_0021:
 		UnityAction_1__ctor_mF770070D0A4FE93F6E04DA37D2EC60429EA545E5(L_6, __this, (intptr_t)((void*)VideoTimeScrubControl_OnSliderValueChange_m796F5BF876926B9569F0BFE285A15CB981EA8933_RuntimeMethod_var), NULL);
 		NullCheck(L_5);
 		UnityEvent_1_AddListener_m44E396BC4484BD75427FDD8CBE0B533CCAD8C1EC(L_5, L_6, UnityEvent_1_AddListener_m44E396BC4484BD75427FDD8CBE0B533CCAD8C1EC_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:78>
 		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_7 = __this->___m_Slider;
 		NullCheck(L_7);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8;
 		L_8 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_7, NULL);
 		NullCheck(L_8);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_8, (bool)1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:79>
 		bool L_9 = __this->___m_HideSliderAfterFewSeconds;
 		if (!L_9)
 		{
@@ -7171,7 +7171,7 @@ IL_0021:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:80>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:80>
 		RuntimeObject* L_10;
 		L_10 = VideoTimeScrubControl_HideSliderAfterSeconds_mDD8E7A826BA48D3CB7014C57AE5C797231DA3505(__this, (1.0f), NULL);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_11;
@@ -7180,7 +7180,7 @@ IL_0021:
 
 IL_0078:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:81>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:81>
 		return;
 	}
 }
@@ -7189,7 +7189,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_Update_mA35590D7B4
 {
 	float V_0 = 0.0f;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:85>
 		bool L_0 = __this->___m_VideoJumpPending;
 		if (!L_0)
 		{
@@ -7197,7 +7197,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_Update_mA35590D7B4
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:88>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:88>
 		int64_t L_1 = __this->___m_LastFrameBeforeScrub;
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_2 = __this->___m_VideoPlayer;
 		NullCheck(L_2);
@@ -7209,21 +7209,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_Update_mA35590D7B4
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:89>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:89>
 		return;
 	}
 
 IL_001c:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:92>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:92>
 		__this->___m_LastFrameBeforeScrub = ((int64_t)(std::numeric_limits<int64_t>::min)());
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:93>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:93>
 		__this->___m_VideoJumpPending = (bool)0;
 	}
 
 IL_0032:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:96>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:96>
 		bool L_4 = __this->___m_IsDragging;
 		if (L_4)
 		{
@@ -7238,7 +7238,7 @@ IL_0032:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:98>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:98>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_6 = __this->___m_VideoPlayer;
 		NullCheck(L_6);
 		uint64_t L_7;
@@ -7249,7 +7249,7 @@ IL_0032:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:100>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:100>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_8 = __this->___m_VideoPlayer;
 		NullCheck(L_8);
 		int64_t L_9;
@@ -7259,7 +7259,7 @@ IL_0032:
 		uint64_t L_11;
 		L_11 = VideoPlayer_get_frameCount_m23BB0591824D2B1F554775F63D950429C27142F7(L_10, NULL);
 		V_0 = ((float)(((float)L_9)/((float)((double)(uint64_t)L_11))));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:101>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:101>
 		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_12 = __this->___m_Slider;
 		float L_13 = V_0;
 		NullCheck(L_12);
@@ -7268,7 +7268,7 @@ IL_0032:
 
 IL_0078:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:104>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:104>
 		return;
 	}
 }
@@ -7276,13 +7276,13 @@ IL_0078:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_OnPointerDown_m07B4125E9C01E293BC30A9051EDE5A36014DBE40 (VideoTimeScrubControl_t6F17697491BA740A1DFB7EB5A7D879C56AB6D014* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:108>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:108>
 		__this->___m_VideoJumpPending = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:109>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:109>
 		VideoTimeScrubControl_VideoStop_m56221AB51C970FB3C67B496ACFB37A4D3F44653F(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:110>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:110>
 		VideoTimeScrubControl_VideoJump_mA86B391EB54BABEFC2A54422A98F522E548C8E2E(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:111>
 		return;
 	}
 }
@@ -7290,13 +7290,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_OnPointerDown_m07B
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_OnRelease_m7720346236454DC89AE2EEEC8D0EE4F66B16BBEC (VideoTimeScrubControl_t6F17697491BA740A1DFB7EB5A7D879C56AB6D014* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:115>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:115>
 		__this->___m_IsDragging = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:116>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:116>
 		VideoTimeScrubControl_VideoPlay_m60AC85DF6683EEEAE428A63BF32916F18724E4FE(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:117>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:117>
 		VideoTimeScrubControl_VideoJump_mA86B391EB54BABEFC2A54422A98F522E548C8E2E(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:118>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:118>
 		return;
 	}
 }
@@ -7304,9 +7304,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_OnRelease_m7720346
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_OnSliderValueChange_m796F5BF876926B9569F0BFE285A15CB981EA8933 (VideoTimeScrubControl_t6F17697491BA740A1DFB7EB5A7D879C56AB6D014* __this, float ___0_sliderValue, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:122>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:122>
 		VideoTimeScrubControl_UpdateVideoTimeText_m7237C62CBC55275085C1E32554328E678ACB9783(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:123>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:123>
 		return;
 	}
 }
@@ -7337,11 +7337,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* VideoTimeScrubControl_HideSlid
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_OnDrag_m07B7D451CA131C021F6E8734BCEB39A632DF24A9 (VideoTimeScrubControl_t6F17697491BA740A1DFB7EB5A7D879C56AB6D014* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:133>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:133>
 		__this->___m_IsDragging = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:134>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:134>
 		__this->___m_VideoJumpPending = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:135>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:135>
 		return;
 	}
 }
@@ -7350,9 +7350,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_VideoJump_mA86B391
 {
 	float V_0 = 0.0f;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:139>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:139>
 		__this->___m_VideoJumpPending = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:140>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:140>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_0 = __this->___m_VideoPlayer;
 		NullCheck(L_0);
 		uint64_t L_1;
@@ -7362,18 +7362,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_VideoJump_mA86B391
 		float L_3;
 		L_3 = VirtualFuncInvoker0< float >::Invoke(46, L_2);
 		V_0 = ((float)il2cpp_codegen_multiply(((float)((double)(uint64_t)L_1)), L_3));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:141>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:141>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_4 = __this->___m_VideoPlayer;
 		NullCheck(L_4);
 		int64_t L_5;
 		L_5 = VideoPlayer_get_frame_m57EC801B265F40B3D4AB73BE1F1C42EB6B77988A(L_4, NULL);
 		__this->___m_LastFrameBeforeScrub = L_5;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:142>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:142>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_6 = __this->___m_VideoPlayer;
 		float L_7 = V_0;
 		NullCheck(L_6);
 		VideoPlayer_set_frame_mDD1CBF9BD07C3720DC8B1798CE434BAD5B75803B(L_6, il2cpp_codegen_cast_double_to_int<int64_t>(L_7), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:143>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:143>
 		return;
 	}
 }
@@ -7381,7 +7381,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_VideoJump_mA86B391
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_PlayOrPauseVideo_mA8EAB86A611B552126CF24FC1F94E5A490AB240E (VideoTimeScrubControl_t6F17697491BA740A1DFB7EB5A7D879C56AB6D014* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:147>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:147>
 		bool L_0 = __this->___m_VideoIsPlaying;
 		if (!L_0)
 		{
@@ -7389,16 +7389,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_PlayOrPauseVideo_m
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:149>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:149>
 		VideoTimeScrubControl_VideoStop_m56221AB51C970FB3C67B496ACFB37A4D3F44653F(__this, NULL);
 		return;
 	}
 
 IL_000f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:153>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:153>
 		VideoTimeScrubControl_VideoPlay_m60AC85DF6683EEEAE428A63BF32916F18724E4FE(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:155>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:155>
 		return;
 	}
 }
@@ -7421,7 +7421,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_UpdateVideoTimeTex
 	String_t* V_2 = NULL;
 	String_t* V_3 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:159>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:159>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_0 = __this->___m_VideoPlayer;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7442,7 +7442,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_UpdateVideoTimeTex
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:161>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:161>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_4 = __this->___m_VideoPlayer;
 		NullCheck(L_4);
 		double L_5;
@@ -7451,7 +7451,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_UpdateVideoTimeTex
 		TimeSpan_t8195C5B013A2C532FEBDF0B64B6911982E750F5A L_6;
 		L_6 = TimeSpan_FromSeconds_m4401B50C0CA831134068595C6AF2F1CA92AAF80F(L_5, NULL);
 		V_0 = L_6;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:162>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:162>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_7 = __this->___m_VideoPlayer;
 		NullCheck(L_7);
 		double L_8;
@@ -7459,10 +7459,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_UpdateVideoTimeTex
 		TimeSpan_t8195C5B013A2C532FEBDF0B64B6911982E750F5A L_9;
 		L_9 = TimeSpan_FromSeconds_m4401B50C0CA831134068595C6AF2F1CA92AAF80F(L_8, NULL);
 		V_1 = L_9;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:163>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:164>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:165>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:166>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:163>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:164>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:165>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:166>
 		int32_t L_10;
 		L_10 = TimeSpan_get_Minutes_m93E37D01CD6DA2DE5B35609D740D322E270B678F((&V_0), NULL);
 		int32_t L_11 = L_10;
@@ -7474,10 +7474,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_UpdateVideoTimeTex
 		String_t* L_16;
 		L_16 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteral525F5C8DBE02A4413AF96F338A4166104DA95AE4, L_12, L_15, NULL);
 		V_2 = L_16;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:168>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:169>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:170>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:171>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:168>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:169>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:170>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:171>
 		int32_t L_17;
 		L_17 = TimeSpan_get_Minutes_m93E37D01CD6DA2DE5B35609D740D322E270B678F((&V_1), NULL);
 		int32_t L_18 = L_17;
@@ -7489,7 +7489,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_UpdateVideoTimeTex
 		String_t* L_23;
 		L_23 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteral525F5C8DBE02A4413AF96F338A4166104DA95AE4, L_19, L_22, NULL);
 		V_3 = L_23;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:172>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:172>
 		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_24 = __this->___m_VideoTimeText;
 		String_t* L_25 = V_2;
 		String_t* L_26 = V_3;
@@ -7501,7 +7501,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_UpdateVideoTimeTex
 
 IL_009e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:174>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:174>
 		return;
 	}
 }
@@ -7509,22 +7509,22 @@ IL_009e:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_VideoStop_m56221AB51C970FB3C67B496ACFB37A4D3F44653F (VideoTimeScrubControl_t6F17697491BA740A1DFB7EB5A7D879C56AB6D014* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:178>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:178>
 		__this->___m_VideoIsPlaying = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:179>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:179>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_0 = __this->___m_VideoPlayer;
 		NullCheck(L_0);
 		VideoPlayer_Pause_m1975BF6BEE27064602EEB8191C963888CF5B226E(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:180>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:180>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_1 = __this->___m_ButtonPlayOrPauseIcon;
 		Sprite_tAFF74BC83CD68037494CB0B4F28CBDF8971CAB99* L_2 = __this->___m_IconPlay;
 		NullCheck(L_1);
 		Image_set_sprite_mC0C248340BA27AAEE56855A3FAFA0D8CA12956DE(L_1, L_2, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:181>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:181>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = __this->___m_ButtonPlayOrPause;
 		NullCheck(L_3);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_3, (bool)1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:182>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:182>
 		return;
 	}
 }
@@ -7532,22 +7532,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_VideoStop_m56221AB
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void VideoTimeScrubControl_VideoPlay_m60AC85DF6683EEEAE428A63BF32916F18724E4FE (VideoTimeScrubControl_t6F17697491BA740A1DFB7EB5A7D879C56AB6D014* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:186>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:186>
 		__this->___m_VideoIsPlaying = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:187>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:187>
 		VideoPlayer_t48EA4A8117B822BC59590150DED9AD46C62F65D3* L_0 = __this->___m_VideoPlayer;
 		NullCheck(L_0);
 		VideoPlayer_Play_m8E99607F39F1D214BDD704F3E130DD2418787ACE(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:188>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:188>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_1 = __this->___m_ButtonPlayOrPauseIcon;
 		Sprite_tAFF74BC83CD68037494CB0B4F28CBDF8971CAB99* L_2 = __this->___m_IconPause;
 		NullCheck(L_1);
 		Image_set_sprite_mC0C248340BA27AAEE56855A3FAFA0D8CA12956DE(L_1, L_2, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:189>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:189>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = __this->___m_ButtonPlayOrPause;
 		NullCheck(L_3);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_3, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:190>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:190>
 		return;
 	}
 }
@@ -7620,7 +7620,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CHideSliderAfterSecondsU3Ed__18_MoveNe
 IL_0017:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:127>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:127>
 		float L_4 = __this->___duration;
 		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_5 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
 		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_5, L_4, NULL);
@@ -7633,7 +7633,7 @@ IL_0017:
 IL_0038:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:128>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:128>
 		VideoTimeScrubControl_t6F17697491BA740A1DFB7EB5A7D879C56AB6D014* L_6 = V_1;
 		NullCheck(L_6);
 		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_7 = L_6->___m_Slider;
@@ -7642,7 +7642,7 @@ IL_0038:
 		L_8 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_7, NULL);
 		NullCheck(L_8);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_8, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:129>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs:129>
 		return (bool)0;
 	}
 }
@@ -7683,7 +7683,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CHideSliderAfterSecondsU3Ed_
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* XRKnob_get_handle_m4DB0EC421586FDB8B43F4FA3EEA314C053CD277F (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:145>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:145>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_Handle;
 		return L_0;
 	}
@@ -7692,7 +7692,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_handle_mDA0942E23FF15E9516C73248B2C22C4241A5F7E7 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:146>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:146>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_value;
 		__this->___m_Handle = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Handle), (void*)L_0);
@@ -7703,7 +7703,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_handle_mDA0942E23FF15E9516C73
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_get_value_m871691F09960422664943508075B68C7D2E077A3 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:154>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:154>
 		float L_0 = __this->___m_Value;
 		return L_0;
 	}
@@ -7712,14 +7712,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_get_value_m871691F09960422664943
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_value_m610CAAE2DE540421089B22854755DE775044175C (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:157>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:157>
 		float L_0 = ___0_value;
 		XRKnob_SetValue_m53E00D21FDA4D8474898BF7896E63552EE3EEDEF(__this, L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:158>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:158>
 		float L_1;
 		L_1 = XRKnob_ValueToRotation_m6065E89A6B78C19020D82B3DEBC0A7A1326AABEB(__this, NULL);
 		XRKnob_SetKnobRotation_mE5C60A01E5C905B92F65C40359DC9ADF9631323D(__this, L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:159>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:159>
 		return;
 	}
 }
@@ -7727,7 +7727,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_value_m610CAAE2DE540421089B22
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRKnob_get_clampedMotion_m5DB2746BEC0C0700653EC5DFAF2B6AC00DDF3A26 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:167>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:167>
 		bool L_0 = __this->___m_ClampedMotion;
 		return L_0;
 	}
@@ -7736,7 +7736,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRKnob_get_clampedMotion_m5DB2746BEC0C07
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_clampedMotion_mBD89B3E17F20DE8E423C50CBA3E18A665C95B610 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:168>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:168>
 		bool L_0 = ___0_value;
 		__this->___m_ClampedMotion = L_0;
 		return;
@@ -7746,7 +7746,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_clampedMotion_mBD89B3E17F20DE
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_get_maxAngle_mFAA33C0D80821A3AEB5EB18E711ED869ADF5DF30 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:176>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:176>
 		float L_0 = __this->___m_MaxAngle;
 		return L_0;
 	}
@@ -7755,7 +7755,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_get_maxAngle_mFAA33C0D80821A3AEB
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_maxAngle_m037A70365FABB33CB8EB8BF93DE5CC1D073277C6 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:177>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:177>
 		float L_0 = ___0_value;
 		__this->___m_MaxAngle = L_0;
 		return;
@@ -7765,7 +7765,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_maxAngle_m037A70365FABB33CB8E
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_get_minAngle_m4F3F92B9D8AE466F8EBFD0BEB5C4ABF4669CA740 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:185>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:185>
 		float L_0 = __this->___m_MinAngle;
 		return L_0;
 	}
@@ -7774,7 +7774,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_get_minAngle_m4F3F92B9D8AE466F8E
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_minAngle_m5CFB32E5E454C4CE475006E2F8A359C7C3B3BB41 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:186>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:186>
 		float L_0 = ___0_value;
 		__this->___m_MinAngle = L_0;
 		return;
@@ -7784,7 +7784,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_minAngle_m5CFB32E5E454C4CE475
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_get_positionTrackedRadius_m26AADB4C4BD1A6BB89F977F8D21F2539EE68300F (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:194>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:194>
 		float L_0 = __this->___m_PositionTrackedRadius;
 		return L_0;
 	}
@@ -7793,7 +7793,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_get_positionTrackedRadius_m26AAD
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_positionTrackedRadius_mF2763612C44379CE5E4026063FE0E91F468FFCA4 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:195>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:195>
 		float L_0 = ___0_value;
 		__this->___m_PositionTrackedRadius = L_0;
 		return;
@@ -7803,7 +7803,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_set_positionTrackedRadius_mF27636
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ValueChangeEvent_tDC3EC514DD9CBF92A2A1BCB2F7323B43F276C790* XRKnob_get_onValueChange_m9F7D297F4577EC0119DB51EDB26ADC0F0818F097 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:201>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:201>
 		ValueChangeEvent_tDC3EC514DD9CBF92A2A1BCB2F7323B43F276C790* L_0 = __this->___m_OnValueChange;
 		return L_0;
 	}
@@ -7812,14 +7812,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ValueChangeEvent_tDC3EC514DD9CBF92A2A1BCB2F73
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_Start_m4A0C36DA7DAC0EB2B73FE2CFC6F61E67A144378C (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:205>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:205>
 		float L_0 = __this->___m_Value;
 		XRKnob_SetValue_m53E00D21FDA4D8474898BF7896E63552EE3EEDEF(__this, L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:206>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:206>
 		float L_1;
 		L_1 = XRKnob_ValueToRotation_m6065E89A6B78C19020D82B3DEBC0A7A1326AABEB(__this, NULL);
 		XRKnob_SetKnobRotation_mE5C60A01E5C905B92F65C40359DC9ADF9631323D(__this, L_1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:207>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:207>
 		return;
 	}
 }
@@ -7838,23 +7838,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_OnEnable_m4B97A09EBF9EF3113C59765
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:211>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:211>
 		XRBaseInteractable_OnEnable_mCF208B5D87E5C2192D9967D39B534B4D556726B1(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:212>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:212>
 		SelectEnterEvent_tBA2614C8C25D8794D5804C4F66195D74E64FC5D0* L_0;
 		L_0 = XRBaseInteractable_get_selectEntered_m07EED7E3339456AF56A5C5BF7F5F96A3FDB107C0_inline(__this, NULL);
 		UnityAction_1_t6D7C8D94300AACA6B0CFB2228AA5572CFBF0531B* L_1 = (UnityAction_1_t6D7C8D94300AACA6B0CFB2228AA5572CFBF0531B*)il2cpp_codegen_object_new(UnityAction_1_t6D7C8D94300AACA6B0CFB2228AA5572CFBF0531B_il2cpp_TypeInfo_var);
 		UnityAction_1__ctor_mEE39E1A87376378311B4931978E8E07E589E9A24(L_1, __this, (intptr_t)((void*)XRKnob_StartGrab_m244CA4EE7849A5A9CA06CB9F1B9D8371430322C5_RuntimeMethod_var), NULL);
 		NullCheck(L_0);
 		UnityEvent_1_AddListener_mAE71681FB0832FD7DBA813E5ADDBA574EA32EED2(L_0, L_1, UnityEvent_1_AddListener_mAE71681FB0832FD7DBA813E5ADDBA574EA32EED2_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:213>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:213>
 		SelectExitEvent_t15DC0A39F9657BA9E6BAE6250D8D64C9671201F6* L_2;
 		L_2 = XRBaseInteractable_get_selectExited_m0296CEBB4427F63D460984FC32FA0C9C7ACED5A7_inline(__this, NULL);
 		UnityAction_1_tD4A8B5CFDB30ABDE869D801066212B20B4D61D6E* L_3 = (UnityAction_1_tD4A8B5CFDB30ABDE869D801066212B20B4D61D6E*)il2cpp_codegen_object_new(UnityAction_1_tD4A8B5CFDB30ABDE869D801066212B20B4D61D6E_il2cpp_TypeInfo_var);
 		UnityAction_1__ctor_mD74501F5FCCC37863163D5E7155B6C8B9B366C40(L_3, __this, (intptr_t)((void*)XRKnob_EndGrab_m14B48AEB8BE11EBF9104AB7F45701FD365ADA9CB_RuntimeMethod_var), NULL);
 		NullCheck(L_2);
 		UnityEvent_1_AddListener_mB662756036996A6B6F83F6492CE9E26797AF9602(L_2, L_3, UnityEvent_1_AddListener_mB662756036996A6B6F83F6492CE9E26797AF9602_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:214>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:214>
 		return;
 	}
 }
@@ -7873,23 +7873,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_OnDisable_m56FA39BFC512D958C3BCE4
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:218>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:218>
 		SelectEnterEvent_tBA2614C8C25D8794D5804C4F66195D74E64FC5D0* L_0;
 		L_0 = XRBaseInteractable_get_selectEntered_m07EED7E3339456AF56A5C5BF7F5F96A3FDB107C0_inline(__this, NULL);
 		UnityAction_1_t6D7C8D94300AACA6B0CFB2228AA5572CFBF0531B* L_1 = (UnityAction_1_t6D7C8D94300AACA6B0CFB2228AA5572CFBF0531B*)il2cpp_codegen_object_new(UnityAction_1_t6D7C8D94300AACA6B0CFB2228AA5572CFBF0531B_il2cpp_TypeInfo_var);
 		UnityAction_1__ctor_mEE39E1A87376378311B4931978E8E07E589E9A24(L_1, __this, (intptr_t)((void*)XRKnob_StartGrab_m244CA4EE7849A5A9CA06CB9F1B9D8371430322C5_RuntimeMethod_var), NULL);
 		NullCheck(L_0);
 		UnityEvent_1_RemoveListener_m1008B118B379B498B23E13BB88779719C22EB9EB(L_0, L_1, UnityEvent_1_RemoveListener_m1008B118B379B498B23E13BB88779719C22EB9EB_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:219>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:219>
 		SelectExitEvent_t15DC0A39F9657BA9E6BAE6250D8D64C9671201F6* L_2;
 		L_2 = XRBaseInteractable_get_selectExited_m0296CEBB4427F63D460984FC32FA0C9C7ACED5A7_inline(__this, NULL);
 		UnityAction_1_tD4A8B5CFDB30ABDE869D801066212B20B4D61D6E* L_3 = (UnityAction_1_tD4A8B5CFDB30ABDE869D801066212B20B4D61D6E*)il2cpp_codegen_object_new(UnityAction_1_tD4A8B5CFDB30ABDE869D801066212B20B4D61D6E_il2cpp_TypeInfo_var);
 		UnityAction_1__ctor_mD74501F5FCCC37863163D5E7155B6C8B9B366C40(L_3, __this, (intptr_t)((void*)XRKnob_EndGrab_m14B48AEB8BE11EBF9104AB7F45701FD365ADA9CB_RuntimeMethod_var), NULL);
 		NullCheck(L_2);
 		UnityEvent_1_RemoveListener_m4353C3D43531002B6FBE7556246DB0A261672F9B(L_2, L_3, UnityEvent_1_RemoveListener_m4353C3D43531002B6FBE7556246DB0A261672F9B_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:220>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:220>
 		XRBaseInteractable_OnDisable_m4379F5DC4C8CCA4C151FB564530ABC5831F1F3BC(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:221>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:221>
 		return;
 	}
 }
@@ -7897,27 +7897,27 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_OnDisable_m56FA39BFC512D958C3BCE4
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_StartGrab_m244CA4EE7849A5A9CA06CB9F1B9D8371430322C5 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, SelectEnterEventArgs_t9220B1E6A9BB5A847C0476949ACE0182430BB938* ___0_args, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:225>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:225>
 		SelectEnterEventArgs_t9220B1E6A9BB5A847C0476949ACE0182430BB938* L_0 = ___0_args;
 		NullCheck(L_0);
 		RuntimeObject* L_1;
 		L_1 = SelectEnterEventArgs_get_interactorObject_mDBBDCE0D498FC768E0EC28C2E862C8FE5B32DE59(L_0, NULL);
 		__this->___m_Interactor = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Interactor), (void*)L_1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:227>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:227>
 		TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* L_2 = (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6*)(&__this->___m_PositionAngles);
 		TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425(L_2, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:228>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:228>
 		TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* L_3 = (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6*)(&__this->___m_UpVectorAngles);
 		TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425(L_3, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:229>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:229>
 		TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* L_4 = (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6*)(&__this->___m_ForwardVectorAngles);
 		TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425(L_4, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:231>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:231>
 		XRKnob_UpdateBaseKnobRotation_m208E73D86BC72E32BB48010B0C4D2F0E60AFBC5D(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:232>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:232>
 		XRKnob_UpdateRotation_m8275F0B105A0212A38A82EB5DEB82CC84B1DF988(__this, (bool)1, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:233>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:233>
 		return;
 	}
 }
@@ -7925,10 +7925,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_StartGrab_m244CA4EE7849A5A9CA06CB
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_EndGrab_m14B48AEB8BE11EBF9104AB7F45701FD365ADA9CB (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, SelectExitEventArgs_t56125CE0360D37AC0B50EB6066B5AB5957EF559A* ___0_args, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:237>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:237>
 		__this->___m_Interactor = (RuntimeObject*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Interactor), (void*)(RuntimeObject*)NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:238>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:238>
 		return;
 	}
 }
@@ -7936,10 +7936,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_EndGrab_m14B48AEB8BE11EBF9104AB7F
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_ProcessInteractable_mC26ED35447DA6BE9C1DB98B6525C573927F76BE4 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, int32_t ___0_updatePhase, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:243>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:243>
 		int32_t L_0 = ___0_updatePhase;
 		XRBaseInteractable_ProcessInteractable_m3E6ED80E00620690E9FF53A8D6F76D329944C255(__this, L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:245>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:245>
 		int32_t L_1 = ___0_updatePhase;
 		if ((!(((uint32_t)L_1) == ((uint32_t)1))))
 		{
@@ -7947,7 +7947,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_ProcessInteractable_mC26ED35447DA
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:247>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:247>
 		bool L_2;
 		L_2 = XRBaseInteractable_get_isSelected_mCD9FBF9693629EBAE7BB0556377A45420C4E4DC1_inline(__this, NULL);
 		if (!L_2)
@@ -7956,13 +7956,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_ProcessInteractable_mC26ED35447DA
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:249>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:249>
 		XRKnob_UpdateRotation_m8275F0B105A0212A38A82EB5DEB82CC84B1DF988(__this, (bool)0, NULL);
 	}
 
 IL_001a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:252>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:252>
 		return;
 	}
 }
@@ -7970,7 +7970,7 @@ IL_001a:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* XRKnob_GetAttachTransform_m8739B8D7ABFCD8DA105C8ACABFB1992F289FED37 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, RuntimeObject* ___0_interactor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:257>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:257>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_Handle;
 		return L_0;
 	}
@@ -7999,13 +7999,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_UpdateRotation_m8275F0B105A0212A3
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_8;
 	memset((&V_8), 0, sizeof(V_8));
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:263>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:263>
 		RuntimeObject* L_0 = __this->___m_Interactor;
 		NullCheck(L_0);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1;
 		L_1 = InterfaceFuncInvoker1< Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*, RuntimeObject* >::Invoke(7, IXRInteractor_tD834ADD95D200FFEC6473A23E515DCD02B33CF97_il2cpp_TypeInfo_var, L_0, __this);
 		V_0 = L_1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:267>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:267>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = V_0;
@@ -8022,9 +8022,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_UpdateRotation_m8275F0B105A0212A3
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
 		L_8 = Transform_InverseTransformVector_mBBA687CE32C0394FC9AB4F273D4E4A11F53FB044(L_2, L_7, NULL);
 		V_1 = L_8;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:268>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:268>
 		(&V_1)->___y = (0.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:269>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:269>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9;
 		L_9 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10 = V_1;
@@ -8035,9 +8035,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_UpdateRotation_m8275F0B105A0212A3
 		float L_12;
 		L_12 = Vector3_get_magnitude_mF0D6017E90B345F1F52D1CC564C640F1A847AF2D_inline((&V_8), NULL);
 		V_2 = L_12;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:270>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:270>
 		Vector3_Normalize_mC749B887A4C74BA0A2E13E6377F17CCAEB0AADA8_inline((&V_1), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:272>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:272>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
 		L_13 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14 = V_0;
@@ -8048,18 +8048,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_UpdateRotation_m8275F0B105A0212A3
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
 		L_16 = Transform_InverseTransformDirection_m69C077B881A98B08C7F231EFC49429C906FBC575(L_13, L_15, NULL);
 		V_3 = L_16;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:273>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:273>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17 = V_3;
 		float L_18 = L_17.___y;
 		il2cpp_codegen_runtime_class_init_inline(Math_tEB65DE7CA8B083C412C969C92981C030865486CE_il2cpp_TypeInfo_var);
 		float L_19;
 		L_19 = fabsf(L_18);
 		V_4 = L_19;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:274>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:274>
 		(&V_3)->___y = (0.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:275>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:275>
 		Vector3_Normalize_mC749B887A4C74BA0A2E13E6377F17CCAEB0AADA8_inline((&V_3), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:277>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:277>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_20;
 		L_20 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21 = V_0;
@@ -8070,11 +8070,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_UpdateRotation_m8275F0B105A0212A3
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23;
 		L_23 = Transform_InverseTransformDirection_m69C077B881A98B08C7F231EFC49429C906FBC575(L_20, L_22, NULL);
 		V_5 = L_23;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:278>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:278>
 		(&V_5)->___y = (0.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:279>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:279>
 		Vector3_Normalize_mC749B887A4C74BA0A2E13E6377F17CCAEB0AADA8_inline((&V_5), NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:281>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:281>
 		bool L_24 = __this->___m_PositionDriven;
 		if (!L_24)
 		{
@@ -8089,14 +8089,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_UpdateRotation_m8275F0B105A0212A3
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:282>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:282>
 		float L_26 = V_2;
 		V_2 = ((float)il2cpp_codegen_multiply(L_26, (1.10000002f)));
 	}
 
 IL_00c3:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:286>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:286>
 		float L_27 = V_2;
 		float L_28 = __this->___m_PositionTrackedRadius;
 		if ((!(((float)L_27) >= ((float)L_28))))
@@ -8105,7 +8105,7 @@ IL_00c3:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:288>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:288>
 		bool L_29 = __this->___m_PositionDriven;
 		bool L_30 = ___0_freshCheck;
 		if (!((int32_t)(((((int32_t)L_29) == ((int32_t)0))? 1 : 0)|(int32_t)L_30)))
@@ -8114,24 +8114,24 @@ IL_00c3:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:290>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:290>
 		TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* L_31 = (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6*)(&__this->___m_PositionAngles);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_32 = V_1;
 		TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E(L_31, L_32, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:291>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:291>
 		__this->___m_PositionDriven = (bool)1;
 		goto IL_00f5;
 	}
 
 IL_00ee:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:295>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:295>
 		__this->___m_PositionDriven = (bool)0;
 	}
 
 IL_00f5:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:298>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:298>
 		bool L_33 = ___0_freshCheck;
 		if (L_33)
 		{
@@ -8139,7 +8139,7 @@ IL_00f5:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:300>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:300>
 		bool L_34 = __this->___m_UpVectorDriven;
 		if (L_34)
 		{
@@ -8147,7 +8147,7 @@ IL_00f5:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:301>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:301>
 		float L_35 = V_4;
 		V_4 = ((float)il2cpp_codegen_multiply(L_35, (0.949999988f)));
 		goto IL_0116;
@@ -8155,14 +8155,14 @@ IL_00f5:
 
 IL_010c:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:303>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:303>
 		float L_36 = V_4;
 		V_4 = ((float)il2cpp_codegen_multiply(L_36, (1.04999995f)));
 	}
 
 IL_0116:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:306>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:306>
 		float L_37 = V_4;
 		if ((!(((float)L_37) > ((float)(0.707000017f)))))
 		{
@@ -8170,7 +8170,7 @@ IL_0116:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:308>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:308>
 		bool L_38 = __this->___m_UpVectorDriven;
 		bool L_39 = ___0_freshCheck;
 		if (!((int32_t)(((((int32_t)L_38) == ((int32_t)0))? 1 : 0)|(int32_t)L_39)))
@@ -8179,18 +8179,18 @@ IL_0116:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:310>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:310>
 		TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* L_40 = (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6*)(&__this->___m_UpVectorAngles);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_41 = V_5;
 		TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E(L_40, L_41, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:311>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:311>
 		__this->___m_UpVectorDriven = (bool)1;
 		goto IL_015f;
 	}
 
 IL_0142:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:316>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:316>
 		bool L_42 = __this->___m_UpVectorDriven;
 		bool L_43 = ___0_freshCheck;
 		if (!((int32_t)((int32_t)L_42|(int32_t)L_43)))
@@ -8199,17 +8199,17 @@ IL_0142:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:318>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:318>
 		TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* L_44 = (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6*)(&__this->___m_ForwardVectorAngles);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_45 = V_3;
 		TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E(L_44, L_45, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:319>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:319>
 		__this->___m_UpVectorDriven = (bool)0;
 	}
 
 IL_015f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:324>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:324>
 		bool L_46 = __this->___m_PositionDriven;
 		if (!L_46)
 		{
@@ -8217,7 +8217,7 @@ IL_015f:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:325>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:325>
 		TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* L_47 = (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6*)(&__this->___m_PositionAngles);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_48 = V_1;
 		TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7(L_47, L_48, NULL);
@@ -8225,7 +8225,7 @@ IL_015f:
 
 IL_0173:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:327>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:327>
 		bool L_49 = __this->___m_UpVectorDriven;
 		if (!L_49)
 		{
@@ -8233,7 +8233,7 @@ IL_0173:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:328>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:328>
 		TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* L_50 = (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6*)(&__this->___m_UpVectorAngles);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_51 = V_5;
 		TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7(L_50, L_51, NULL);
@@ -8242,7 +8242,7 @@ IL_0173:
 
 IL_018a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:330>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:330>
 		TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* L_52 = (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6*)(&__this->___m_ForwardVectorAngles);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_53 = V_3;
 		TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7(L_52, L_53, NULL);
@@ -8250,7 +8250,7 @@ IL_018a:
 
 IL_0196:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:333>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:333>
 		float L_54 = __this->___m_BaseKnobRotation;
 		TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* L_55 = (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6*)(&__this->___m_UpVectorAngles);
 		float L_56;
@@ -8263,7 +8263,7 @@ IL_0196:
 		float L_61;
 		L_61 = TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030BDAEF40D569F06C8(L_60, NULL);
 		V_6 = ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_subtract(L_54, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(L_56, L_58)), L_59)))), L_61));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:336>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:336>
 		bool L_62 = __this->___m_ClampedMotion;
 		if (!L_62)
 		{
@@ -8271,7 +8271,7 @@ IL_0196:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:337>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:337>
 		float L_63 = V_6;
 		float L_64 = __this->___m_MinAngle;
 		float L_65 = __this->___m_MaxAngle;
@@ -8282,19 +8282,19 @@ IL_0196:
 
 IL_01e6:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:339>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:339>
 		float L_67 = V_6;
 		XRKnob_SetKnobRotation_mE5C60A01E5C905B92F65C40359DC9ADF9631323D(__this, L_67, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:342>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:342>
 		float L_68 = V_6;
 		float L_69 = __this->___m_MinAngle;
 		float L_70 = __this->___m_MaxAngle;
 		float L_71 = __this->___m_MinAngle;
 		V_7 = ((float)(((float)il2cpp_codegen_subtract(L_68, L_69))/((float)il2cpp_codegen_subtract(L_70, L_71))));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:343>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:343>
 		float L_72 = V_7;
 		XRKnob_SetValue_m53E00D21FDA4D8474898BF7896E63552EE3EEDEF(__this, L_72, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:344>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:344>
 		return;
 	}
 }
@@ -8308,7 +8308,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_SetKnobRotation_mE5C60A01E5C905B9
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:348>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:348>
 		float L_0 = __this->___m_AngleIncrement;
 		if ((!(((float)L_0) > ((float)(0.0f)))))
 		{
@@ -8316,10 +8316,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_SetKnobRotation_mE5C60A01E5C905B9
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:350>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:350>
 		float L_1 = ___0_angle;
 		float L_2 = __this->___m_MinAngle;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:351>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:351>
 		float L_3 = __this->___m_AngleIncrement;
 		float L_4;
 		L_4 = bankers_roundf(((float)(((float)il2cpp_codegen_subtract(L_1, L_2))/L_3)));
@@ -8330,7 +8330,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_SetKnobRotation_mE5C60A01E5C905B9
 
 IL_0031:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:354>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:354>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = __this->___m_Handle;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_8;
@@ -8341,7 +8341,7 @@ IL_0031:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:355>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:355>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9 = __this->___m_Handle;
 		float L_10 = ___0_angle;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
@@ -8353,7 +8353,7 @@ IL_0031:
 
 IL_005a:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:356>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:356>
 		return;
 	}
 }
@@ -8369,7 +8369,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_SetValue_m53E00D21FDA4D8474898BF7
 	float V_0 = 0.0f;
 	float V_1 = 0.0f;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:360>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:360>
 		bool L_0 = __this->___m_ClampedMotion;
 		if (!L_0)
 		{
@@ -8377,7 +8377,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_SetValue_m53E00D21FDA4D8474898BF7
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:361>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:361>
 		float L_1 = ___0_newValue;
 		float L_2;
 		L_2 = Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline(L_1, NULL);
@@ -8386,7 +8386,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_SetValue_m53E00D21FDA4D8474898BF7
 
 IL_0010:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:363>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:363>
 		float L_3 = __this->___m_AngleIncrement;
 		if ((!(((float)L_3) > ((float)(0.0f)))))
 		{
@@ -8394,24 +8394,24 @@ IL_0010:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:365>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:365>
 		float L_4 = __this->___m_MaxAngle;
 		float L_5 = __this->___m_MinAngle;
 		V_0 = ((float)il2cpp_codegen_subtract(L_4, L_5));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:366>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:366>
 		float L_6 = V_0;
 		float L_7 = ___0_newValue;
 		float L_8;
 		L_8 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline((0.0f), L_6, L_7, NULL);
 		V_1 = L_8;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:367>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:367>
 		float L_9 = V_1;
 		float L_10 = __this->___m_AngleIncrement;
 		float L_11;
 		L_11 = bankers_roundf(((float)(L_9/L_10)));
 		float L_12 = __this->___m_AngleIncrement;
 		V_1 = ((float)il2cpp_codegen_multiply(L_11, L_12));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:368>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:368>
 		float L_13 = V_0;
 		float L_14 = V_1;
 		float L_15;
@@ -8421,15 +8421,15 @@ IL_0010:
 
 IL_005b:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:371>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:371>
 		float L_16 = ___0_newValue;
 		__this->___m_Value = L_16;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:372>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:372>
 		ValueChangeEvent_tDC3EC514DD9CBF92A2A1BCB2F7323B43F276C790* L_17 = __this->___m_OnValueChange;
 		float L_18 = __this->___m_Value;
 		NullCheck(L_17);
 		UnityEvent_1_Invoke_mABC41DCEDDFA68F8F39C0DFC1CF55B7C1B70A805(L_17, L_18, UnityEvent_1_Invoke_mABC41DCEDDFA68F8F39C0DFC1CF55B7C1B70A805_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:373>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:373>
 		return;
 	}
 }
@@ -8437,7 +8437,7 @@ IL_005b:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_ValueToRotation_m6065E89A6B78C19020D82B3DEBC0A7A1326AABEB (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:377>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:377>
 		bool L_0 = __this->___m_ClampedMotion;
 		if (L_0)
 		{
@@ -8467,14 +8467,14 @@ IL_0020:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_UpdateBaseKnobRotation_m208E73D86BC72E32BB48010B0C4D2F0E60AFBC5D (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:382>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:382>
 		float L_0 = __this->___m_MinAngle;
 		float L_1 = __this->___m_MaxAngle;
 		float L_2 = __this->___m_Value;
 		float L_3;
 		L_3 = Mathf_LerpUnclamped_mF35042F9D25A221BDD4B3FD6251224610AFC1F35_inline(L_0, L_1, L_2, NULL);
 		__this->___m_BaseKnobRotation = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:383>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:383>
 		return;
 	}
 }
@@ -8490,23 +8490,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_ShortestAngleDistance_m6AB1DF4D3
 	float V_0 = 0.0f;
 	float V_1 = 0.0f;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:387>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:387>
 		float L_0 = ___1_end;
 		float L_1 = ___0_start;
 		V_0 = ((float)il2cpp_codegen_subtract(L_0, L_1));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:388>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:388>
 		float L_2 = V_0;
 		float L_3;
 		L_3 = Mathf_Sign_m42EE1F0BC041AF14F89DED7F762BE996E2C50D8A_inline(L_2, NULL);
 		V_1 = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:390>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:390>
 		float L_4 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Math_tEB65DE7CA8B083C412C969C92981C030865486CE_il2cpp_TypeInfo_var);
 		float L_5;
 		L_5 = fabsf(L_4);
 		float L_6 = ___2_max;
 		V_0 = (fmodf(L_5, L_6));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:391>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:391>
 		float L_7 = V_0;
 		float L_8 = ___2_max;
 		if ((!(((float)L_7) > ((float)((float)il2cpp_codegen_multiply(L_8, (0.5f)))))))
@@ -8515,7 +8515,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_ShortestAngleDistance_m6AB1DF4D3
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:392>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:392>
 		float L_9 = ___2_max;
 		float L_10 = V_0;
 		V_0 = ((-((float)il2cpp_codegen_subtract(L_9, L_10))));
@@ -8523,7 +8523,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRKnob_ShortestAngleDistance_m6AB1DF4D3
 
 IL_0023:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:394>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:394>
 		float L_11 = V_0;
 		float L_12 = V_1;
 		return ((float)il2cpp_codegen_multiply(L_11, L_12));
@@ -8551,7 +8551,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_OnDrawGizmosSelected_mEAB89BA48F7
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* G_B4_0 = NULL;
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* G_B3_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:403>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:403>
 		float L_0 = __this->___m_PositionTrackedRadius;
 		float L_1 = ((Mathf_tE284D016E3B297B72311AAD9EB8F0E643F6A4682_StaticFields*)il2cpp_codegen_static_fields_for(Mathf_tE284D016E3B297B72311AAD9EB8F0E643F6A4682_il2cpp_TypeInfo_var))->___Epsilon;
 		if ((!(((float)L_0) <= ((float)L_1))))
@@ -8560,22 +8560,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_OnDrawGizmosSelected_mEAB89BA48F7
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:404>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:404>
 		return;
 	}
 
 IL_000e:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:406>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:406>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:409>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:409>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = L_2;
 		NullCheck(L_3);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
 		L_4 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_3, NULL);
 		V_0 = L_4;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:411>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:411>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = __this->___m_Handle;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_6;
@@ -8588,7 +8588,7 @@ IL_000e:
 		G_B3_0 = L_3;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:412>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:412>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = __this->___m_Handle;
 		NullCheck(L_7);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
@@ -8599,39 +8599,39 @@ IL_000e:
 
 IL_0035:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:414>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:414>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9 = G_B4_0;
 		NullCheck(L_9);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10;
 		L_10 = Transform_get_right_mC6DC057C23313802E2186A9E0DB760D795A758A4(L_9, NULL);
 		V_1 = L_10;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:415>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:415>
 		NullCheck(L_9);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
 		L_11 = Transform_get_forward_mFCFACF7165FDAB21E80E384C494DF278386CEE2F(L_9, NULL);
 		V_2 = L_11;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:417>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:417>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_12;
 		L_12 = Color_get_green_mEB001F2CD8C68C6BBAEF9101990B779D3AA2A6EF_inline(NULL);
 		Gizmos_set_color_m53927A2741937484180B20B55F7F20F8F60C5797(L_12, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:418>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:418>
 		V_3 = 0;
 		goto IL_00e8;
 	}
 
 IL_0053:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:421>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:421>
 		int32_t L_13 = V_3;
 		V_4 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)L_13), (0.0625f))), (2.0f))), (3.14159274f)));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:422>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:422>
 		int32_t L_14 = V_3;
 		V_3 = ((int32_t)il2cpp_codegen_add(L_14, 1));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:423>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:423>
 		int32_t L_15 = V_3;
 		V_5 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)L_15), (0.0625f))), (2.0f))), (3.14159274f)));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:425>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:426>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:425>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:426>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16 = V_0;
 		float L_17 = V_4;
 		float L_18;
@@ -8677,7 +8677,7 @@ IL_0053:
 
 IL_00e8:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:419>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:419>
 		int32_t L_42 = V_3;
 		if ((((int32_t)L_42) < ((int32_t)((int32_t)16))))
 		{
@@ -8685,7 +8685,7 @@ IL_00e8:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:428>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:428>
 		return;
 	}
 }
@@ -8693,7 +8693,7 @@ IL_00e8:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_OnValidate_m9C606602BA8E46564CBDBF6FC7BBD8365915CC73 (XRKnob_t9F8C8CDD1A1F06D3AC23491C8C18C3C5E417F084* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:432>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:432>
 		bool L_0 = __this->___m_ClampedMotion;
 		if (!L_0)
 		{
@@ -8701,7 +8701,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_OnValidate_m9C606602BA8E46564CBDB
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:433>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:433>
 		float L_1 = __this->___m_Value;
 		float L_2;
 		L_2 = Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline(L_1, NULL);
@@ -8710,7 +8710,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob_OnValidate_m9C606602BA8E46564CBDB
 
 IL_0019:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:435>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:435>
 		float L_3 = __this->___m_MinAngle;
 		float L_4 = __this->___m_MaxAngle;
 		if ((!(((float)L_3) > ((float)L_4))))
@@ -8719,18 +8719,18 @@ IL_0019:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:436>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:436>
 		float L_5 = __this->___m_MaxAngle;
 		__this->___m_MinAngle = L_5;
 	}
 
 IL_0033:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:438>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:438>
 		float L_6;
 		L_6 = XRKnob_ValueToRotation_m6065E89A6B78C19020D82B3DEBC0A7A1326AABEB(__this, NULL);
 		XRKnob_SetKnobRotation_mE5C60A01E5C905B92F65C40359DC9ADF9631323D(__this, L_6, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:439>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:439>
 		return;
 	}
 }
@@ -8745,19 +8745,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob__ctor_m3D14A80FBFE19153DE3149ADC3
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:99>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:99>
 		__this->___m_Value = (0.5f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:103>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:103>
 		__this->___m_ClampedMotion = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:107>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:107>
 		__this->___m_MaxAngle = (90.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:111>
 		__this->___m_MinAngle = (-90.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:119>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:119>
 		__this->___m_PositionTrackedRadius = (0.100000001f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:123>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:123>
 		__this->___m_TwistSensitivity = (1.5f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:127>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:127>
 		ValueChangeEvent_tDC3EC514DD9CBF92A2A1BCB2F7323B43F276C790* L_0 = (ValueChangeEvent_tDC3EC514DD9CBF92A2A1BCB2F7323B43F276C790*)il2cpp_codegen_object_new(ValueChangeEvent_tDC3EC514DD9CBF92A2A1BCB2F7323B43F276C790_il2cpp_TypeInfo_var);
 		ValueChangeEvent__ctor_mCCCA33ED18E2321FE5A48CD3F9C26F8F495EBFF9(L_0, NULL);
 		__this->___m_OnValueChange = L_0;
@@ -8779,7 +8779,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRKnob__ctor_m3D14A80FBFE19153DE3149ADC3
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030BDAEF40D569F06C8 (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:40>
 		float L_0 = __this->___m_AccumulatedAngle;
 		float L_1 = __this->___m_CurrentOffset;
 		return ((float)il2cpp_codegen_add(L_0, L_1));
@@ -8798,13 +8798,13 @@ IL2CPP_EXTERN_C  float TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425 (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:47>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:47>
 		__this->___m_BaseAngle = (0.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:48>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:48>
 		__this->___m_CurrentOffset = (0.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:49>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:49>
 		__this->___m_AccumulatedAngle = (0.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:50>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:50>
 		return;
 	}
 }
@@ -8819,11 +8819,11 @@ IL2CPP_EXTERN_C  void TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E (TrackedRotation_tD8471EB48358A40B287C82447C84D3145E2646D6* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_direction, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:59>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:59>
 		float L_0 = __this->___m_AccumulatedAngle;
 		float L_1 = __this->___m_CurrentOffset;
 		__this->___m_AccumulatedAngle = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:62>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:62>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2 = ___0_direction;
 		float L_3 = L_2.___z;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4 = ___0_direction;
@@ -8831,9 +8831,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackedRotation_SetBaseFromVector_m0CAD6
 		float L_6;
 		L_6 = atan2f(L_3, L_5);
 		__this->___m_BaseAngle = ((float)il2cpp_codegen_multiply(L_6, (57.2957802f)));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:63>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:63>
 		__this->___m_CurrentOffset = (0.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:64>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:64>
 		return;
 	}
 }
@@ -8849,7 +8849,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackedRotation_SetTargetFromVector_m42F
 {
 	float V_0 = 0.0f;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:73>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:73>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = ___0_direction;
 		float L_1 = L_0.___z;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2 = ___0_direction;
@@ -8857,13 +8857,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackedRotation_SetTargetFromVector_m42F
 		float L_4;
 		L_4 = atan2f(L_1, L_3);
 		V_0 = ((float)il2cpp_codegen_multiply(L_4, (57.2957802f)));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:76>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:76>
 		float L_5 = __this->___m_BaseAngle;
 		float L_6 = V_0;
 		float L_7;
 		L_7 = XRKnob_ShortestAngleDistance_m6AB1DF4D33A4508734C12C44510F31CB7B8D3D6A(L_5, L_6, (360.0f), NULL);
 		__this->___m_CurrentOffset = L_7;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:79>
 		float L_8 = __this->___m_CurrentOffset;
 		float L_9;
 		L_9 = fabsf(L_8);
@@ -8873,20 +8873,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackedRotation_SetTargetFromVector_m42F
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:81>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:81>
 		float L_10 = V_0;
 		__this->___m_BaseAngle = L_10;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:82>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:82>
 		float L_11 = __this->___m_AccumulatedAngle;
 		float L_12 = __this->___m_CurrentOffset;
 		__this->___m_AccumulatedAngle = ((float)il2cpp_codegen_add(L_11, L_12));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:83>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:83>
 		__this->___m_CurrentOffset = (0.0f);
 	}
 
 IL_0066:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRKnob.cs:85>
 		return;
 	}
 }
@@ -8931,7 +8931,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ValueChangeEvent__ctor_mCCCA33ED18E2321F
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* XRPokeFollowAffordanceFill_get_pokeFollowTransform_mA18683B54491DD130C9E93333A30C7F43C2BA0AA (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:40>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:40>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_PokeFollowTransform;
 		return L_0;
 	}
@@ -8940,7 +8940,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_pokeFollowTransform_m33F04BF935477A78330C4F6121ABAAF3A206B858 (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:41>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:41>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_value;
 		__this->___m_PokeFollowTransform = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_PokeFollowTransform), (void*)L_0);
@@ -8951,7 +8951,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_pokeFollo
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRPokeFollowAffordanceFill_get_smoothingSpeed_m98E23346A7AAFA6C5D68D8E725027C87FAFA52A2 (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:54>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:54>
 		float L_0 = __this->___m_SmoothingSpeed;
 		return L_0;
 	}
@@ -8960,7 +8960,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRPokeFollowAffordanceFill_get_smoothin
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_smoothingSpeed_m312BD715366B958A111321464AFCADB6B373EDD9 (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:55>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:55>
 		float L_0 = ___0_value;
 		__this->___m_SmoothingSpeed = L_0;
 		return;
@@ -8970,7 +8970,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_smoothing
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordanceFill_get_returnToInitialPosition_m87F7F5F90CA304C638B88C06B65D86CA35F65241 (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:67>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:67>
 		bool L_0 = __this->___m_ReturnToInitialPosition;
 		return L_0;
 	}
@@ -8979,7 +8979,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordanceFill_get_returnToI
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_returnToInitialPosition_m868A0561ED6C3FAD501AE2AA7C3997320856CEEE (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:68>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:68>
 		bool L_0 = ___0_value;
 		__this->___m_ReturnToInitialPosition = L_0;
 		return;
@@ -8989,7 +8989,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_returnToI
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordanceFill_get_applyIfChildIsTarget_m4A0A527EECAD7D6E2A65996DD999E3CE959D71A3 (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:82>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:82>
 		bool L_0 = __this->___m_ApplyIfChildIsTarget;
 		return L_0;
 	}
@@ -8998,7 +8998,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordanceFill_get_applyIfCh
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_applyIfChildIsTarget_mC8B47504169FB4FACD6531E0036E22FD94364409 (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:83>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:83>
 		bool L_0 = ___0_value;
 		__this->___m_ApplyIfChildIsTarget = L_0;
 		return;
@@ -9008,7 +9008,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_applyIfCh
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordanceFill_get_clampToMinDistance_m6B7AFB7126681D68F43CFC2FCF4FEB2419EAA6CA (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:96>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:96>
 		bool L_0 = __this->___m_ClampToMinDistance;
 		return L_0;
 	}
@@ -9017,7 +9017,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordanceFill_get_clampToMi
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_clampToMinDistance_mFA7AFAF7CCE6EEE21F7D9539C9C2E27B37695BA1 (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:97>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:97>
 		bool L_0 = ___0_value;
 		__this->___m_ClampToMinDistance = L_0;
 		return;
@@ -9027,7 +9027,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_clampToMi
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRPokeFollowAffordanceFill_get_minDistance_m0CAD10513BA6CB74DE17DDEF0BD66D9BA58060F9 (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:110>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:110>
 		float L_0 = __this->___m_MinDistance;
 		return L_0;
 	}
@@ -9036,7 +9036,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRPokeFollowAffordanceFill_get_minDista
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_minDistance_m881360B97C6C6F32E06AA1F204B89D466C956EB4 (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:111>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:111>
 		float L_0 = ___0_value;
 		__this->___m_MinDistance = L_0;
 		return;
@@ -9046,7 +9046,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_minDistan
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordanceFill_get_clampToMaxDistance_mD4E7631383744FA3DFD2321BDE4C59550B41095E (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:123>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:123>
 		bool L_0 = __this->___m_ClampToMaxDistance;
 		return L_0;
 	}
@@ -9055,7 +9055,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRPokeFollowAffordanceFill_get_clampToMa
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_clampToMaxDistance_m442E7DEE73F4418015D25EDEFB42257C6796C93E (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:124>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:124>
 		bool L_0 = ___0_value;
 		__this->___m_ClampToMaxDistance = L_0;
 		return;
@@ -9065,7 +9065,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_clampToMa
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRPokeFollowAffordanceFill_get_maxDistance_m17ECF6517008678651ADD0BC321AF0E3884C343C (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:137>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:137>
 		float L_0 = __this->___m_MaxDistance;
 		return L_0;
 	}
@@ -9074,7 +9074,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRPokeFollowAffordanceFill_get_maxDista
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_set_maxDistance_m25BFEEAAA9E1A0AD1B5CB4184E3F1BE821E6AB8E (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:138>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:138>
 		float L_0 = ___0_value;
 		__this->___m_MaxDistance = L_0;
 		return;
@@ -9090,12 +9090,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_Awake_m294E6A
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:156>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:156>
 		RuntimeObject* L_0;
 		L_0 = Component_GetComponentInParent_TisIPokeStateDataProvider_t14F2B731F2979D1138EB70A11E36F274A23DC91C_m56533D22EBBEEE60BD440ECE3B5EF450D8F5DE62(__this, Component_GetComponentInParent_TisIPokeStateDataProvider_t14F2B731F2979D1138EB70A11E36F274A23DC91C_m56533D22EBBEEE60BD440ECE3B5EF450D8F5DE62_RuntimeMethod_var);
 		__this->___m_PokeDataProvider = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_PokeDataProvider), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:157>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:157>
 		return;
 	}
 }
@@ -9125,7 +9125,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_Start_m13AE56
 	float G_B4_0 = 0.0f;
 	XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* G_B4_1 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:164>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:164>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_PokeFollowTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -9136,13 +9136,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_Start_m13AE56
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:166>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:166>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = __this->___m_PokeFollowTransform;
 		NullCheck(L_2);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
 		L_3 = Transform_get_localPosition_mA9C86B990DF0685EA1061A120218993FDCC60A95(L_2, NULL);
 		__this->___m_InitialPosition = L_3;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:167>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:167>
 		float L_4 = __this->___m_MaxDistance;
 		if ((((float)L_4) > ((float)(0.0f))))
 		{
@@ -9176,7 +9176,7 @@ IL_0053:
 	{
 		NullCheck(G_B4_1);
 		G_B4_1->___m_MaxDistance = G_B4_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:168>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:168>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_11 = __this->___m_BindingsGroup;
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_12 = __this->___m_TransformTweenableVariable;
 		Action_1_t81CC87F0365077EC678FAF69B68180DC9750249B* L_13 = (Action_1_t81CC87F0365077EC678FAF69B68180DC9750249B*)il2cpp_codegen_object_new(Action_1_t81CC87F0365077EC678FAF69B68180DC9750249B_il2cpp_TypeInfo_var);
@@ -9186,7 +9186,7 @@ IL_0053:
 		L_14 = BindableVariableBase_1_Subscribe_mC4E18EDA53B1AF95B57D4D6976353EC198EA6608(L_12, L_13, BindableVariableBase_1_Subscribe_mC4E18EDA53B1AF95B57D4D6976353EC198EA6608_RuntimeMethod_var);
 		NullCheck(L_11);
 		BindingsGroup_AddBinding_m18697E73861A1C67DE0674F162B43CCE9E67C89B(L_11, L_14, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:169>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:169>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_15 = __this->___m_BindingsGroup;
 		FloatTweenableVariable_t19D1F16FBA79A41A8234F4F6C1D7DB51EAC07D48* L_16 = __this->___m_PokeStrengthTweenableVariable;
 		Action_1_t310F18CB4338A2740CA701F160C62E2C3198E66A* L_17 = (Action_1_t310F18CB4338A2740CA701F160C62E2C3198E66A*)il2cpp_codegen_object_new(Action_1_t310F18CB4338A2740CA701F160C62E2C3198E66A_il2cpp_TypeInfo_var);
@@ -9196,7 +9196,7 @@ IL_0053:
 		L_18 = BindableVariableBase_1_Subscribe_m51C1D8B9E6F2F7B55B07D4E5DF6C43DCAF237CFD(L_16, L_17, BindableVariableBase_1_Subscribe_m51C1D8B9E6F2F7B55B07D4E5DF6C43DCAF237CFD_RuntimeMethod_var);
 		NullCheck(L_15);
 		BindingsGroup_AddBinding_m18697E73861A1C67DE0674F162B43CCE9E67C89B(L_15, L_18, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:170>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:170>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_19 = __this->___m_BindingsGroup;
 		RuntimeObject* L_20 = __this->___m_PokeDataProvider;
 		NullCheck(L_20);
@@ -9214,14 +9214,14 @@ IL_0053:
 
 IL_00c4:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:174>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:174>
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(__this, (bool)0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:175>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:175>
 		String_t* L_24;
 		L_24 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteral675D495E61C139628601D1F560A558803C58CB67, __this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m23033D7E2F0F298BE465B7F3A63CDF40A4EB70EB(L_24, __this, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:177>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:177>
 		return;
 	}
 }
@@ -9237,11 +9237,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_OnDestroy_m3B
 	Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* G_B2_0 = NULL;
 	Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* G_B1_0 = NULL;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:184>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:184>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_0 = __this->___m_BindingsGroup;
 		NullCheck(L_0);
 		BindingsGroup_Clear_m092668459F10E46245228224D1334DAB089B72E3(L_0, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:185>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:185>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_1 = __this->___m_TransformTweenableVariable;
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_2 = L_1;
 		if (L_2)
@@ -9259,7 +9259,7 @@ IL_0016:
 	{
 		NullCheck(G_B2_0);
 		TweenableVariableAsyncBase_1_Dispose_m7D9825BEBF868FFDC835F08406D9E9AD17F53E32(G_B2_0, TweenableVariableAsyncBase_1_Dispose_m7D9825BEBF868FFDC835F08406D9E9AD17F53E32_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:186>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:186>
 		return;
 	}
 }
@@ -9277,7 +9277,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_LateUpdate_mF
 	float V_0 = 0.0f;
 	float G_B5_0 = 0.0f;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:193>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:193>
 		bool L_0 = __this->___m_IsFirstFrame;
 		if (!L_0)
 		{
@@ -9285,27 +9285,27 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_LateUpdate_mF
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:195>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:195>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_1 = __this->___m_TransformTweenableVariable;
 		NullCheck(L_1);
 		TweenableVariableBase_1_HandleTween_m61752C0D7316DD05AB1C8E10319F47902D4CDCD9(L_1, (1.0f), TweenableVariableBase_1_HandleTween_m61752C0D7316DD05AB1C8E10319F47902D4CDCD9_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:196>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:196>
 		FloatTweenableVariable_t19D1F16FBA79A41A8234F4F6C1D7DB51EAC07D48* L_2 = __this->___m_PokeStrengthTweenableVariable;
 		NullCheck(L_2);
 		TweenableVariableBase_1_set_target_m353B619618455D8C59D23B5D02D69EFB492AAA59(L_2, (0.0f), TweenableVariableBase_1_set_target_m353B619618455D8C59D23B5D02D69EFB492AAA59_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:197>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:197>
 		FloatTweenableVariable_t19D1F16FBA79A41A8234F4F6C1D7DB51EAC07D48* L_3 = __this->___m_PokeStrengthTweenableVariable;
 		NullCheck(L_3);
 		TweenableVariableBase_1_HandleTween_m46B71286EECBE0E3F279B742875CE8EF4D068791(L_3, (1.0f), TweenableVariableBase_1_HandleTween_m46B71286EECBE0E3F279B742875CE8EF4D068791_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:198>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:198>
 		__this->___m_IsFirstFrame = (bool)0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:199>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:199>
 		return;
 	}
 
 IL_0040:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:202>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:202>
 		float L_4 = __this->___m_SmoothingSpeed;
 		if ((((float)L_4) > ((float)(0.0f))))
 		{
@@ -9328,17 +9328,17 @@ IL_0054:
 IL_0060:
 	{
 		V_0 = G_B5_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:203>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:203>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_7 = __this->___m_TransformTweenableVariable;
 		float L_8 = V_0;
 		NullCheck(L_7);
 		TweenableVariableBase_1_HandleTween_m61752C0D7316DD05AB1C8E10319F47902D4CDCD9(L_7, L_8, TweenableVariableBase_1_HandleTween_m61752C0D7316DD05AB1C8E10319F47902D4CDCD9_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:204>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:204>
 		FloatTweenableVariable_t19D1F16FBA79A41A8234F4F6C1D7DB51EAC07D48* L_9 = __this->___m_PokeStrengthTweenableVariable;
 		float L_10 = V_0;
 		NullCheck(L_9);
 		TweenableVariableBase_1_HandleTween_m46B71286EECBE0E3F279B742875CE8EF4D068791(L_9, L_10, TweenableVariableBase_1_HandleTween_m46B71286EECBE0E3F279B742875CE8EF4D068791_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:205>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:205>
 		return;
 	}
 }
@@ -9346,14 +9346,14 @@ IL_0060:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_OnTransformTweenableVariableUpdated_m8B3C3889CA30F6DE7412981B594DE13AE26B1CAF (XRPokeFollowAffordanceFill_tFE5D1D7BCFD7B83B71C669393AA47EE9804D9599* __this, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___0_position, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:209>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:209>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_PokeFollowTransform;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_1 = ___0_position;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2;
 		L_2 = float3_op_Implicit_m9CC301DFD67EEFAA15CA05E91913E862B22326F6(L_1, NULL);
 		NullCheck(L_0);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_0, L_2, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:210>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:210>
 		return;
 	}
 }
@@ -9363,15 +9363,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_OnPokeStrengt
 	float V_0 = 0.0f;
 	float V_1 = 0.0f;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:214>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:214>
 		float L_0 = __this->___m_PokeFillMaxSizeX;
 		float L_1 = ___0_newStrength;
 		V_0 = ((float)il2cpp_codegen_multiply(L_0, L_1));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:215>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:215>
 		float L_2 = __this->___m_PokeFillMaxSizeY;
 		float L_3 = ___0_newStrength;
 		V_1 = ((float)il2cpp_codegen_multiply(L_2, L_3));
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:216>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:216>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_4 = __this->___m_PokeFill;
 		float L_5 = V_0;
 		float L_6 = V_1;
@@ -9380,7 +9380,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_OnPokeStrengt
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_7), L_5, L_6, NULL);
 		NullCheck(L_4);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_4, L_7, NULL);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:217>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:217>
 		return;
 	}
 }
@@ -9400,13 +9400,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill_OnPokeStateDa
 	memset((&V_1), 0, sizeof(V_1));
 	int32_t G_B5_0 = 0;
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:221>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:221>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0;
 		L_0 = PokeStateData_get_target_m464672F352B73F0010B9829CA5C692505783091C_inline((&___0_data), NULL);
 		V_0 = L_0;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:222>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:223>
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:224>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:222>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:223>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:224>
 		bool L_1 = __this->___m_ApplyIfChildIsTarget;
 		if (L_1)
 		{
@@ -9453,14 +9453,14 @@ IL_0035:
 
 IL_0036:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:226>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:226>
 		if (!G_B5_0)
 		{
 			goto IL_00c8;
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:228>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:228>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
 		L_11 = PokeStateData_get_axisAlignedPokeInteractionPoint_mC3B4E6D1232B8A2E2A98374B3AA9976E29E67D43_inline((&___0_data), NULL);
@@ -9468,7 +9468,7 @@ IL_0036:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
 		L_12 = Transform_InverseTransformPoint_m18CD395144D9C78F30E15A5B82B6670E792DBA5D(L_10, L_11, NULL);
 		V_1 = L_12;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:230>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:230>
 		bool L_13 = __this->___m_ClampToMinDistance;
 		if (!L_13)
 		{
@@ -9486,7 +9486,7 @@ IL_0036:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:231>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:231>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17 = V_1;
 		float L_18 = __this->___m_MinDistance;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_19;
@@ -9496,7 +9496,7 @@ IL_0036:
 
 IL_0074:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:233>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:233>
 		bool L_20 = __this->___m_ClampToMaxDistance;
 		if (!L_20)
 		{
@@ -9514,7 +9514,7 @@ IL_0074:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:234>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:234>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_24 = V_1;
 		float L_25 = __this->___m_MaxDistance;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_26;
@@ -9524,14 +9524,14 @@ IL_0074:
 
 IL_009f:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:236>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:236>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_27 = __this->___m_TransformTweenableVariable;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28 = V_1;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_29;
 		L_29 = float3_op_Implicit_mE1831A3AC179B7EB3236F8202EC8DD5CE05376AB(L_28, NULL);
 		NullCheck(L_27);
 		TweenableVariableBase_1_set_target_m3127A21F0C2EF40FA4604D603803BA53DE604337(L_27, L_29, TweenableVariableBase_1_set_target_m3127A21F0C2EF40FA4604D603803BA53DE604337_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:237>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:237>
 		FloatTweenableVariable_t19D1F16FBA79A41A8234F4F6C1D7DB51EAC07D48* L_30 = __this->___m_PokeStrengthTweenableVariable;
 		float L_31;
 		L_31 = PokeStateData_get_interactionStrength_mCDA09DA4CD62F5A7C4CC68D9B89040643595F852_inline((&___0_data), NULL);
@@ -9544,7 +9544,7 @@ IL_009f:
 
 IL_00c8:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:239>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:239>
 		bool L_33 = __this->___m_ReturnToInitialPosition;
 		if (!L_33)
 		{
@@ -9552,14 +9552,14 @@ IL_00c8:
 		}
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:241>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:241>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_34 = __this->___m_TransformTweenableVariable;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_35 = __this->___m_InitialPosition;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_36;
 		L_36 = float3_op_Implicit_mE1831A3AC179B7EB3236F8202EC8DD5CE05376AB(L_35, NULL);
 		NullCheck(L_34);
 		TweenableVariableBase_1_set_target_m3127A21F0C2EF40FA4604D603803BA53DE604337(L_34, L_36, TweenableVariableBase_1_set_target_m3127A21F0C2EF40FA4604D603803BA53DE604337_RuntimeMethod_var);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:242>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:242>
 		FloatTweenableVariable_t19D1F16FBA79A41A8234F4F6C1D7DB51EAC07D48* L_37 = __this->___m_PokeStrengthTweenableVariable;
 		NullCheck(L_37);
 		TweenableVariableBase_1_set_target_m353B619618455D8C59D23B5D02D69EFB492AAA59(L_37, (0.0f), TweenableVariableBase_1_set_target_m353B619618455D8C59D23B5D02D69EFB492AAA59_RuntimeMethod_var);
@@ -9567,7 +9567,7 @@ IL_00c8:
 
 IL_00f6:
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:244>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:244>
 		return;
 	}
 }
@@ -9583,23 +9583,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRPokeFollowAffordanceFill__ctor_mAED174
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:47>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:47>
 		__this->___m_SmoothingSpeed = (8.0f);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:60>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:60>
 		__this->___m_ReturnToInitialPosition = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:74>
 		__this->___m_ApplyIfChildIsTarget = (bool)1;
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:144>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:144>
 		Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5* L_0 = (Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5*)il2cpp_codegen_object_new(Vector3TweenableVariable_t0DF651B487F89825D0D459293C4A862C62C0EBD5_il2cpp_TypeInfo_var);
 		Vector3TweenableVariable__ctor_m22723734B74E394A833F2EEA06F910E45A91F042(L_0, NULL);
 		__this->___m_TransformTweenableVariable = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_TransformTweenableVariable), (void*)L_0);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:145>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:145>
 		FloatTweenableVariable_t19D1F16FBA79A41A8234F4F6C1D7DB51EAC07D48* L_1 = (FloatTweenableVariable_t19D1F16FBA79A41A8234F4F6C1D7DB51EAC07D48*)il2cpp_codegen_object_new(FloatTweenableVariable_t19D1F16FBA79A41A8234F4F6C1D7DB51EAC07D48_il2cpp_TypeInfo_var);
 		FloatTweenableVariable__ctor_mE8A1546D61397EB6D999B82E247996198FB2E776(L_1, NULL);
 		__this->___m_PokeStrengthTweenableVariable = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_PokeStrengthTweenableVariable), (void*)L_1);
-		//<source_info:C:/Users/saijo/Products2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:147>
+		//<source_info:C:/product2026/FireDrill/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs:147>
 		BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A* L_2 = (BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A*)il2cpp_codegen_object_new(BindingsGroup_tD5EC90BB10F9D310FE467A7E3A4CAE2E32D0397A_il2cpp_TypeInfo_var);
 		BindingsGroup__ctor_m1EFD3F405050571D3A66F9B95E8FBC296866A716(L_2, NULL);
 		__this->___m_BindingsGroup = L_2;

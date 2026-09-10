@@ -1,19 +1,56 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ParticleSystem))]
 public class ExtinguishingAgent : MonoBehaviour
 {
     private ParticleSystem particleSystem;
+    public XRInputReader xrInputReader;
+    private bool initialized = false;
 
     // Triggerに入ったParticleを保存
     private readonly List<ParticleSystem.Particle> enterParticles
         = new List<ParticleSystem.Particle>();
 
-    private void Awake()
+    private void Start()
     {
+        //xrInputReader = new XRInputReader();
         particleSystem = GetComponent<ParticleSystem>();
+
+        // 最初はParticleを停止
+        particleSystem.Stop(
+            true,
+            ParticleSystemStopBehavior.StopEmittingAndClear
+        );
+
+
+        // XRInputReaderがAwakeで取得した右トリガーActionにイベントを登録
+        RegisterInputEvents();
+
+        initialized = true;
     }
+
+    private void OnEnable()
+    {
+        // 初回のOnEnableはStartより先に呼ばれるため何もしない
+        // 一度Startした後に再度有効化された場合だけイベントを再登録
+        if (initialized)
+        {
+            RegisterInputEvents();
+        }
+    }
+
+    private void OnDisable()
+    {
+        // Start前に無効化された場合を考慮
+        if (initialized)
+        {
+            UnregisterInputEvents();
+        }
+    }
+
+    
 
     private void OnParticleTrigger()
     {
@@ -52,5 +89,31 @@ public class ExtinguishingAgent : MonoBehaviour
                 fireHitBox.HitExtinguishingAgent(1);
             }
         }
+    }
+    private void RegisterInputEvents()
+    {
+        xrInputReader.buttonTriggerRight.performed += OnTriggerPressed;
+        xrInputReader.buttonTriggerRight.canceled += OnTriggerReleased;
+    }
+
+    // 右トリガーのイベント登録を解除
+    private void UnregisterInputEvents()
+    {
+        xrInputReader.buttonTriggerRight.performed -= OnTriggerPressed;
+        xrInputReader.buttonTriggerRight.canceled -= OnTriggerReleased;
+    }
+    private void OnTriggerPressed(InputAction.CallbackContext context)
+    {
+        particleSystem.Play();
+    }
+
+    // トリガーを離したら噴射停止
+    private void OnTriggerReleased(InputAction.CallbackContext context)
+    {
+        // すでに出ているParticleは残して、新規放出だけ止める
+        particleSystem.Stop(
+            true,
+            ParticleSystemStopBehavior.StopEmitting
+        );
     }
 }
