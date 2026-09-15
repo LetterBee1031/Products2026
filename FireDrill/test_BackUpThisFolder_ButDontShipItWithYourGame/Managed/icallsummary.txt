@@ -1145,10 +1145,16 @@ UnityEngine.ObjectGUIState::Internal_Destroy
 UnityEngine.ParticleSystem::EmitOld_Internal_Injected
 UnityEngine.ParticleSystem::Emit_Injected
 UnityEngine.ParticleSystem::Emit_Internal_Injected
+UnityEngine.ParticleSystem::Play_Injected
 UnityEngine.ParticleSystem::SetParticles_Injected
+UnityEngine.ParticleSystem::Stop_Injected
 UnityEngine.ParticleSystem/MainModule::get_startColorBlittable_Injected
 UnityEngine.ParticleSystem/MainModule::get_startSizeBlittable_Injected
 UnityEngine.ParticleSystem/MainModule::set_gravityModifierBlittable_Injected
+UnityEngine.ParticleSystem/ShapeModule::set_position_Injected
+UnityEngine.ParticleSystem/ShapeModule::set_scale_Injected
+UnityEngine.ParticleSystem/TriggerModule::set_colliderQueryMode
+UnityEngine.ParticleSystem/TriggerModule::set_inside
 UnityEngine.ParticleSystemExtensionsImpl::GetCollisionEvents_Injected
 UnityEngine.ParticleSystemExtensionsImpl::GetTriggerParticlesWithData_Injected
 UnityEngine.ParticleSystemRenderer::GetMeshes_Injected

@@ -20380,11 +20380,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: 3dee6e2e81902e0438c907479a73cd67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.89
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: 3dee6e2e81902e0438c907479a73cd67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.78
+      value: -26.743
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: 3dee6e2e81902e0438c907479a73cd67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24239,7 +24239,7 @@ MonoBehaviour:
   n_back_num: 0
   stimulusDisplayDuration: 0.5
   timeWaitOneTask: 2
-  timeLimit: 90
+  timeLimit: 120
   practiceTimeLimit: 45
   sessionFixationDuration: 90
 --- !u!114 &686141612
@@ -24376,7 +24376,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686141610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 446590df1e7e1e347b949bfcdd51def9, type: 3}
   m_Name: 
@@ -24576,12 +24576,12 @@ MonoBehaviour:
   stimulusPool: BCDFGHJKLMNPQRSTVWYZ
   zeroBackTarget: X
   patternsPerCondition: 10
-  totalTrials: 36
+  totalTrials: 48
   initializationTrials: 3
   maxNonTargetRun: 6
   maxFrequencyDifference: 2
   baseSeed: 20260814
-  outputFolder: Resources/GeneratedNBackPatterns
+  outputFolder: Resources/GeneratedNBackPatterns/120sec
 --- !u!114 &686141628
 MonoBehaviour:
   m_ObjectHideFlags: 0

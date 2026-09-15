@@ -1016,6 +1016,14 @@
             "icon": null
           },
           {
+            "name": "ParticleSystemForceField",
+            "scenes": [
+              "Assets/Scenes/fire_scene.unity"
+            ],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
             "name": "ParticleSystemRenderer",
             "scenes": [
               "Assets/Scenes/fire_scene.unity"

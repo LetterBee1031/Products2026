@@ -1,0 +1,59 @@
+{
+    "seed": 20260817,
+    "sessionsPerParticipant": 3,
+    "includedNBacks": [
+        0,
+        1,
+        2,
+        3
+    ],
+    "participant": {
+        "userId": "100",
+        "sessions": [
+            {
+                "sessionId": 1,
+                "orderId": "order_1_2_3_0",
+                "order": [
+                    1,
+                    2,
+                    3,
+                    0
+                ],
+                "blocks": [
+                    {
+                        "userId": "01",
+                        "sessionId": 1,
+                        "blockId": 1,
+                        "positionInSession": 1,
+                        "nBack": 1,
+                        "orderId": "order_1_2_3_0"
+                    },
+                    {
+                        "userId": "01",
+                        "sessionId": 1,
+                        "blockId": 2,
+                        "positionInSession": 2,
+                        "nBack": 2,
+                        "orderId": "order_1_2_3_0"
+                    },
+                    {
+                        "userId": "01",
+                        "sessionId": 1,
+                        "blockId": 3,
+                        "positionInSession": 3,
+                        "nBack": 3,
+                        "orderId": "order_1_2_3_0"
+                    },
+                    {
+                        "userId": "01",
+                        "sessionId": 1,
+                        "blockId": 4,
+                        "positionInSession": 4,
+                        "nBack": 0,
+                        "orderId": "order_1_2_3_0"
+                    }
+                ]
+            }
+        ]
+    }
+}

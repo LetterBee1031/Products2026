@@ -12,13 +12,31 @@ extern void CeilingFireController_OnParticleCollision_m9FD29BB0B114D7D30003D8190
 extern void CeilingFireController_CalculateCeilingSize_m5D791AC8080237AE2BB40B88FD20612B17696543 (void);
 extern void CeilingFireController_EmitCeilingParticle_mE221B33765FBF690A3AA50C2E055BD411683FCE6 (void);
 extern void CeilingFireController__ctor_m469671D7F1C36CDFACC685E254E6E3A96249175B (void);
-extern void ExtinguishingAgent_Awake_m486453A211D46306BEC767F97051989348241FBC (void);
+extern void ExtinguishingAgent_Start_m4D06837E921BF1FAEEDCFF75462C01FA616BD17C (void);
+extern void ExtinguishingAgent_OnEnable_mF9AC7B0F2CE5355076F073006187FB52E386C31F (void);
+extern void ExtinguishingAgent_OnDisable_m94CB56293F6C6C8B075CAECF79475A76A2400510 (void);
 extern void ExtinguishingAgent_OnParticleTrigger_m786989529A8658FB1E228EE65288F7540FAF7423 (void);
+extern void ExtinguishingAgent_RegisterInputEvents_mBB1032F9CBF5A3C46FE34B0A1F63C4369EDA8471 (void);
+extern void ExtinguishingAgent_UnregisterInputEvents_mEC715FD629FDE375BEDA91BF85DBCECE156F3D94 (void);
+extern void ExtinguishingAgent_OnTriggerPressed_m803B3606AEB0F913547ACF5C35EAEBA5E945C219 (void);
+extern void ExtinguishingAgent_OnTriggerReleased_mF3CDADEB29D886D57D473BA8B28387BBDE1E6655 (void);
 extern void ExtinguishingAgent__ctor_mF0031FB1056E7ADCA7BAF97D96F86BA7BAD8D4C9 (void);
 extern void FireHitBox_Start_mBF9F1CDBD14C9F2F4881005FB817C798DAF771BD (void);
+extern void FireHitBox_LateUpdate_m8661481C34EFE5DE149BC37F24C2EAFB32AF282A (void);
+extern void FireHitBox_NotifyExtinguishingAgentContact_m9E2E6690E64FBA06A4FEB94B5D96B0EBE5D4BAAD (void);
 extern void FireHitBox_HitExtinguishingAgent_m9849D5DCC81FDA6B8DF20181AA636C4001F2E6F3 (void);
+extern void FireHitBox_UpdateFireAppearance_mBF3D57383F3677A565CFF84991644071513C4C4E (void);
 extern void FireHitBox_Extinguish_m60E8A627AF4BEBB3EFC0B1A640AC2A795F4BF787 (void);
 extern void FireHitBox__ctor_mE43C87B8A3B03F666FD7C14BAC4330B98DB9747E (void);
+extern void FogDescendController_Start_mA0E04687309ED129E63EF1AECC56BE799890C474 (void);
+extern void FogDescendController_Update_m0989398229194CC43926E135E3BDEBA21661AB41 (void);
+extern void FogDescendController_UpdateFogArea_mE690E2C034F432A67C869F41D2031AD34B98D011 (void);
+extern void FogDescendController__ctor_m1C8689DD858479B7AAC6D72A80BF6DA53AEACC72 (void);
+extern void XRInputReader_Awake_mDE1CBC1643BB43792DDBD1AD35C41890CE436762 (void);
+extern void XRInputReader_OnEnable_m21FB42CDFCAF6C46F5DB24BC80B877EAAB9FD11F (void);
+extern void XRInputReader_OnDisable_m34A676A6BC5D0FC4EC398A482B0492E0BF9551CF (void);
+extern void XRInputReader_Update_m633D77EAFA0FE136DE04C68E755F59B2825BCF34 (void);
+extern void XRInputReader__ctor_mF0B74BC12E59D65F9752D18DEE5FB4267F0F26D0 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
 extern void AnchorVisuals_Start_m84A5BBC02FFBE8BF40D0A3E2D7B36D1FD701DED6 (void);
@@ -163,20 +181,38 @@ extern void XRPokeFollowAffordanceFill_OnTransformTweenableVariableUpdated_m8B3C
 extern void XRPokeFollowAffordanceFill_OnPokeStrengthChanged_m480B681A9BE7B6C71724392FC3368A029EA4CED6 (void);
 extern void XRPokeFollowAffordanceFill_OnPokeStateDataUpdated_m6233708D9CEEA9A7920B821FDBD306F4D7CBFAE6 (void);
 extern void XRPokeFollowAffordanceFill__ctor_mAED1746F6E90C5676967671BFBB11E3B7C6B1E98 (void);
-static Il2CppMethodPointer s_methodPointers[156] = 
+static Il2CppMethodPointer s_methodPointers[174] = 
 {
 	CeilingFireController_Awake_mA91BE47729ADDDD4FD21E65B4EF4CA03B25221EF,
 	CeilingFireController_OnParticleCollision_m9FD29BB0B114D7D30003D8190F8C8B6FEF036727,
 	CeilingFireController_CalculateCeilingSize_m5D791AC8080237AE2BB40B88FD20612B17696543,
 	CeilingFireController_EmitCeilingParticle_mE221B33765FBF690A3AA50C2E055BD411683FCE6,
 	CeilingFireController__ctor_m469671D7F1C36CDFACC685E254E6E3A96249175B,
-	ExtinguishingAgent_Awake_m486453A211D46306BEC767F97051989348241FBC,
+	ExtinguishingAgent_Start_m4D06837E921BF1FAEEDCFF75462C01FA616BD17C,
+	ExtinguishingAgent_OnEnable_mF9AC7B0F2CE5355076F073006187FB52E386C31F,
+	ExtinguishingAgent_OnDisable_m94CB56293F6C6C8B075CAECF79475A76A2400510,
 	ExtinguishingAgent_OnParticleTrigger_m786989529A8658FB1E228EE65288F7540FAF7423,
+	ExtinguishingAgent_RegisterInputEvents_mBB1032F9CBF5A3C46FE34B0A1F63C4369EDA8471,
+	ExtinguishingAgent_UnregisterInputEvents_mEC715FD629FDE375BEDA91BF85DBCECE156F3D94,
+	ExtinguishingAgent_OnTriggerPressed_m803B3606AEB0F913547ACF5C35EAEBA5E945C219,
+	ExtinguishingAgent_OnTriggerReleased_mF3CDADEB29D886D57D473BA8B28387BBDE1E6655,
 	ExtinguishingAgent__ctor_mF0031FB1056E7ADCA7BAF97D96F86BA7BAD8D4C9,
 	FireHitBox_Start_mBF9F1CDBD14C9F2F4881005FB817C798DAF771BD,
+	FireHitBox_LateUpdate_m8661481C34EFE5DE149BC37F24C2EAFB32AF282A,
+	FireHitBox_NotifyExtinguishingAgentContact_m9E2E6690E64FBA06A4FEB94B5D96B0EBE5D4BAAD,
 	FireHitBox_HitExtinguishingAgent_m9849D5DCC81FDA6B8DF20181AA636C4001F2E6F3,
+	FireHitBox_UpdateFireAppearance_mBF3D57383F3677A565CFF84991644071513C4C4E,
 	FireHitBox_Extinguish_m60E8A627AF4BEBB3EFC0B1A640AC2A795F4BF787,
 	FireHitBox__ctor_mE43C87B8A3B03F666FD7C14BAC4330B98DB9747E,
+	FogDescendController_Start_mA0E04687309ED129E63EF1AECC56BE799890C474,
+	FogDescendController_Update_m0989398229194CC43926E135E3BDEBA21661AB41,
+	FogDescendController_UpdateFogArea_mE690E2C034F432A67C869F41D2031AD34B98D011,
+	FogDescendController__ctor_m1C8689DD858479B7AAC6D72A80BF6DA53AEACC72,
+	XRInputReader_Awake_mDE1CBC1643BB43792DDBD1AD35C41890CE436762,
+	XRInputReader_OnEnable_m21FB42CDFCAF6C46F5DB24BC80B877EAAB9FD11F,
+	XRInputReader_OnDisable_m34A676A6BC5D0FC4EC398A482B0492E0BF9551CF,
+	XRInputReader_Update_m633D77EAFA0FE136DE04C68E755F59B2825BCF34,
+	XRInputReader__ctor_mF0B74BC12E59D65F9752D18DEE5FB4267F0F26D0,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 	AnchorVisuals_Start_m84A5BBC02FFBE8BF40D0A3E2D7B36D1FD701DED6,
@@ -328,12 +364,12 @@ extern void TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F03
 extern void TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[4] = 
 {
-	{ 0x06000080, TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030BDAEF40D569F06C8_AdjustorThunk },
-	{ 0x06000081, TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425_AdjustorThunk },
-	{ 0x06000082, TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E_AdjustorThunk },
-	{ 0x06000083, TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk },
+	{ 0x06000092, TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030BDAEF40D569F06C8_AdjustorThunk },
+	{ 0x06000093, TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425_AdjustorThunk },
+	{ 0x06000094, TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E_AdjustorThunk },
+	{ 0x06000095, TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[156] = 
+static const int32_t s_InvokerIndices[174] = 
 {
 	18448,
 	13986,
@@ -344,10 +380,28 @@ static const int32_t s_InvokerIndices[156] =
 	18448,
 	18448,
 	18448,
+	18448,
+	18448,
+	14429,
+	14429,
+	18448,
+	18448,
+	18448,
+	18448,
 	13912,
 	18448,
 	18448,
-	31631,
+	18448,
+	18448,
+	18448,
+	14084,
+	18448,
+	18448,
+	18448,
+	18448,
+	18448,
+	18448,
+	31634,
 	18448,
 	18448,
 	18448,
@@ -361,7 +415,7 @@ static const int32_t s_InvokerIndices[156] =
 	18448,
 	18448,
 	18448,
-	20167,
+	20169,
 	18448,
 	18448,
 	18448,
@@ -458,7 +512,7 @@ static const int32_t s_InvokerIndices[156] =
 	14084,
 	18341,
 	18448,
-	22934,
+	22936,
 	18448,
 	18448,
 	18448,
@@ -496,7 +550,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	156,
+	174,
 	s_methodPointers,
 	4,
 	s_adjustorThunks,

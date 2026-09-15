@@ -68,18 +68,18 @@ REGRESSION_FEATURE_SOURCE_COLUMNS: Dict[str, str] = {
 #     3: 1.00,
 # }
 
-# OBJECTIVE_LOAD_MAPPING: Dict[int, float] = {
-#     0: 0.2,
-#     1: 0.4,
-#     2: 0.6,
-#     3: 0.8,
-# }
-
 OBJECTIVE_LOAD_MAPPING: Dict[int, float] = {
-    1: 0.25,
-    2: 0.50,
-    3: 0.75,
+    0: 0.2,
+    1: 0.4,
+    2: 0.6,
+    3: 0.8,
 }
+
+# OBJECTIVE_LOAD_MAPPING: Dict[int, float] = {
+#     1: 0.25,
+#     2: 0.50,
+#     3: 0.75,
+# }
 
 USER_ID_COLUMN_ALIASES: List[str] = [
     "user_id",

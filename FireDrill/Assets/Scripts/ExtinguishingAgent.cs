@@ -13,10 +13,19 @@ public class ExtinguishingAgent : MonoBehaviour
     private readonly List<ParticleSystem.Particle> enterParticles
         = new List<ParticleSystem.Particle>();
 
+    // ヒットボックス内に残っている粒子を取得するための再利用リスト。
+    private readonly List<ParticleSystem.Particle> insideParticles = new List<ParticleSystem.Particle>();
+
     private void Start()
     {
         //xrInputReader = new XRInputReader();
         particleSystem = GetComponent<ParticleSystem>();
+
+        // 進入時の消火に加え、内部に残る粒子でも炎の成長を止める。
+        var trigger = particleSystem.trigger;
+        trigger.inside = ParticleSystemOverlapAction.Callback;
+        // 複数のヒットボックスに重なった場合も、接触先をすべて取得できるようにする。
+        trigger.colliderQueryMode = ParticleSystemColliderQueryMode.All;
 
         // 最初はParticleを停止
         particleSystem.Stop(
@@ -54,6 +63,33 @@ public class ExtinguishingAgent : MonoBehaviour
 
     private void OnParticleTrigger()
     {
+        // 進入後も内部に残っている粒子と、その接触先を取得する。
+        int insideCount = particleSystem.GetTriggerParticles(
+            ParticleSystemTriggerEventType.Inside,
+            insideParticles,
+            out ParticleSystem.ColliderData insideColliderData
+        );
+
+        // 各粒子が触れているすべての炎に、現在も消火剤が接触中であることを通知する。
+        for (int i = 0; i < insideCount; i++)
+        {
+            for (int j = 0; j < insideColliderData.GetColliderCount(i); j++)
+            {
+                Component hitCollider = insideColliderData.GetCollider(i, j);
+                if (hitCollider == null)
+                {
+                    continue;
+                }
+
+                FireHitBox fireHitBox = hitCollider.GetComponentInParent<FireHitBox>();
+                if (fireHitBox != null)
+                {
+                    // 滞在中は成長停止だけを通知し、進入時の消火量を重複して加算しない。
+                    fireHitBox.NotifyExtinguishingAgentContact();
+                }
+            }
+        }
+
         // Triggerに入ったParticleと、そのParticleが触れたCollider情報を取得
         int count = particleSystem.GetTriggerParticles(
             ParticleSystemTriggerEventType.Enter,
@@ -77,8 +113,7 @@ public class ExtinguishingAgent : MonoBehaviour
                 }
 
                 // Colliderが属している炎のHitBoxを取得
-                FireHitBox fireHitBox =
-                    hitCollider.GetComponentInParent<FireHitBox>();
+                FireHitBox fireHitBox = hitCollider.GetComponentInParent<FireHitBox>();
 
                 if (fireHitBox == null)
                 {
