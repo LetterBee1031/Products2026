@@ -10,8 +10,7 @@ public class ExtinguishingAgent : MonoBehaviour
     private bool initialized = false;
 
     // Triggerに入ったParticleを保存
-    private readonly List<ParticleSystem.Particle> enterParticles
-        = new List<ParticleSystem.Particle>();
+    private readonly List<ParticleSystem.Particle> enterParticles = new List<ParticleSystem.Particle>();
 
     // ヒットボックス内に残っている粒子を取得するための再利用リスト。
     private readonly List<ParticleSystem.Particle> insideParticles = new List<ParticleSystem.Particle>();

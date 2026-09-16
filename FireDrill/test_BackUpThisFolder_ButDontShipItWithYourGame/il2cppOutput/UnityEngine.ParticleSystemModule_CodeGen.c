@@ -29,6 +29,7 @@ extern void ParticleSystem_Emit_Internal_Injected_m2FDA9094E323EDFE3C1F5F2CE8DA7
 extern void ParticleSystem_Emit_Injected_mB36BB9ACCA725323DBD7E6842FE7FAAD9349A25D (void);
 extern void ParticleSystem_EmitOld_Internal_Injected_mE87BF46924566F4BF195BA837924091508C16743 (void);
 extern void MainModule__ctor_m5F7D2DD815C741DE3FA18A0C1BB2F2776612EF7A (void);
+extern void MainModule_set_duration_m3B328F1E542EEE7BAE101B309512E0E3B4638B77 (void);
 extern void MainModule_get_startSize_m7D92E17A7D36FB18A9D3ADA54D2D1DEDE89601FC (void);
 extern void MainModule_get_startSizeBlittable_mEAEBBFC16D8D584DE96FD50041642DA3C39AF55D (void);
 extern void MainModule_get_startColor_m24E66E583EB51341A885ABAE84114CBB37018781 (void);
@@ -82,7 +83,7 @@ extern void ParticleSystemExtensionsImpl_GetCollisionEvents_mEEDB71C2FE858356601
 extern void ParticleSystemExtensionsImpl_GetTriggerParticlesWithData_m2029962253F2C9FB97A0E0E6DF3210176AE6EE7A (void);
 extern void ParticleSystemExtensionsImpl_GetCollisionEvents_Injected_mEAB1B972B32433F68B4359193D66ACA2289746E6 (void);
 extern void ParticleSystemExtensionsImpl_GetTriggerParticlesWithData_Injected_mA4AB778BBABAC5D82E41283C5271833257C37B8F (void);
-static Il2CppMethodPointer s_methodPointers[75] = 
+static Il2CppMethodPointer s_methodPointers[76] = 
 {
 	ParticleSystem_Emit_m27ED2FE38DEE11C9C98F7D30392BB5B39B6A16ED,
 	ParticleSystem_Emit_m329091E7F55C972CE85A100CA624192AD8442688,
@@ -106,6 +107,7 @@ static Il2CppMethodPointer s_methodPointers[75] =
 	ParticleSystem_Emit_Injected_mB36BB9ACCA725323DBD7E6842FE7FAAD9349A25D,
 	ParticleSystem_EmitOld_Internal_Injected_mE87BF46924566F4BF195BA837924091508C16743,
 	MainModule__ctor_m5F7D2DD815C741DE3FA18A0C1BB2F2776612EF7A,
+	MainModule_set_duration_m3B328F1E542EEE7BAE101B309512E0E3B4638B77,
 	MainModule_get_startSize_m7D92E17A7D36FB18A9D3ADA54D2D1DEDE89601FC,
 	MainModule_get_startSizeBlittable_mEAEBBFC16D8D584DE96FD50041642DA3C39AF55D,
 	MainModule_get_startColor_m24E66E583EB51341A885ABAE84114CBB37018781,
@@ -161,6 +163,7 @@ static Il2CppMethodPointer s_methodPointers[75] =
 	ParticleSystemExtensionsImpl_GetTriggerParticlesWithData_Injected_mA4AB778BBABAC5D82E41283C5271833257C37B8F,
 };
 extern void MainModule__ctor_m5F7D2DD815C741DE3FA18A0C1BB2F2776612EF7A_AdjustorThunk (void);
+extern void MainModule_set_duration_m3B328F1E542EEE7BAE101B309512E0E3B4638B77_AdjustorThunk (void);
 extern void MainModule_get_startSize_m7D92E17A7D36FB18A9D3ADA54D2D1DEDE89601FC_AdjustorThunk (void);
 extern void MainModule_get_startSizeBlittable_mEAEBBFC16D8D584DE96FD50041642DA3C39AF55D_AdjustorThunk (void);
 extern void MainModule_get_startColor_m24E66E583EB51341A885ABAE84114CBB37018781_AdjustorThunk (void);
@@ -194,44 +197,45 @@ extern void ColliderData_GetCollider_mA5CF6CD0030CB2C2B22508247D428E89661E707B_A
 extern void ParticleCollisionEvent_get_intersection_m5CD7C517228E7D6148DEA4ED0500533C146DEC97_AdjustorThunk (void);
 extern void ParticleCollisionEvent_get_normal_m7FC8D0427210D507D8003DB9CCD791AB88DC63FC_AdjustorThunk (void);
 extern void ParticleCollisionEvent_get_velocity_m7C078F9C3A4FF1909956CB88FE9F6BBFF2B2C44B_AdjustorThunk (void);
-static Il2CppTokenAdjustorThunkPair s_adjustorThunks[34] = 
+static Il2CppTokenAdjustorThunkPair s_adjustorThunks[35] = 
 {
 	{ 0x06000016, MainModule__ctor_m5F7D2DD815C741DE3FA18A0C1BB2F2776612EF7A_AdjustorThunk },
-	{ 0x06000017, MainModule_get_startSize_m7D92E17A7D36FB18A9D3ADA54D2D1DEDE89601FC_AdjustorThunk },
-	{ 0x06000018, MainModule_get_startSizeBlittable_mEAEBBFC16D8D584DE96FD50041642DA3C39AF55D_AdjustorThunk },
-	{ 0x06000019, MainModule_get_startColor_m24E66E583EB51341A885ABAE84114CBB37018781_AdjustorThunk },
-	{ 0x0600001A, MainModule_get_startColorBlittable_mD7A3C7C2FAA3A6A584D1B6E6F74AAD03B329138A_AdjustorThunk },
-	{ 0x0600001B, MainModule_set_gravityModifier_m398D2C7F10E389C0EA365640A54D2C0C151A42A7_AdjustorThunk },
-	{ 0x0600001C, MainModule_set_gravityModifierBlittable_mE28D3D73C81DD163F2D7F10A843470049AA27523_AdjustorThunk },
-	{ 0x06000020, ShapeModule__ctor_m951B06AF6BDA194E8111B2B72C104562F41CB0AD_AdjustorThunk },
-	{ 0x06000021, ShapeModule_set_position_mA9693D2FF3D1E8266D2B7932E6AF22F5E121D3CE_AdjustorThunk },
-	{ 0x06000022, ShapeModule_set_scale_mDA84B80016FDA6B6EE181B108C3E59A2FFF9143D_AdjustorThunk },
-	{ 0x06000025, TriggerModule__ctor_mAEC6CFC2EA5E625D7BDD416967F3AB481A8EE97E_AdjustorThunk },
-	{ 0x06000026, TriggerModule_set_inside_mC39E129035124F71899ED76D8C98D84C6E6FDAB8_AdjustorThunk },
-	{ 0x06000027, TriggerModule_set_colliderQueryMode_m665AB86DDD15F1AA953096220469F97421E7F881_AdjustorThunk },
-	{ 0x06000028, Particle_set_lifetime_m29360AF093721364BF46996EE1D400256DB95911_AdjustorThunk },
-	{ 0x06000029, Particle_set_position_mE9103000DB4EA6CE09D25650F5A2915731F7A63E_AdjustorThunk },
-	{ 0x0600002A, Particle_set_velocity_mF4C1DE326CCABE480F44D3DF3873241E85A6303B_AdjustorThunk },
-	{ 0x0600002B, Particle_set_remainingLifetime_m3E58D8B3599B0BA6790D43022C3DF16E6896D018_AdjustorThunk },
-	{ 0x0600002C, Particle_set_startLifetime_mCD0B16F2B1F2E2AEED84C4FCD85D5AD96F853A77_AdjustorThunk },
-	{ 0x0600002D, Particle_set_startColor_mC3031F4238B0C003DFA5BF9AB4B3141B7CF71538_AdjustorThunk },
-	{ 0x0600002E, Particle_set_randomSeed_mCC3C02CCBF9C0EA80E2CE01EC47AD30F31D5F6C2_AdjustorThunk },
-	{ 0x0600002F, Particle_set_startSize_mBBEBF7365A4E68FF2044E2ECEACC562376EA4A1F_AdjustorThunk },
-	{ 0x06000030, Particle_set_rotation3D_mC0B19BFEBA780F95C763DE14C80B29764E519D62_AdjustorThunk },
-	{ 0x06000031, Particle_set_angularVelocity3D_m56AE22FE7AFB178DD206EA2A7E0DA64B360D7EA8_AdjustorThunk },
-	{ 0x06000032, MinMaxCurve__ctor_m1D3846251475D7BBC7B128CCD7DFF40B16AAEF9E_AdjustorThunk },
-	{ 0x06000033, MinMaxCurve_get_constant_m4F2B7693C00CC9FAEDE1DAD32FEEE893414FBE91_AdjustorThunk },
-	{ 0x06000039, MinMaxGradient_get_color_m534E35D538D549F006E9F90E453D41B92FBAC3BF_AdjustorThunk },
-	{ 0x0600003C, EmitParams_set_position_mF08E5334FDB60090C038498B6749CE742D9FE0E3_AdjustorThunk },
-	{ 0x0600003D, EmitParams_set_velocity_m967097D8DE302F1E0F3D6A4821DC072A2887F4F4_AdjustorThunk },
-	{ 0x0600003E, EmitParams_set_startSize_m1830A2D364D8C2FAC2BBED20CE06460D18AD78EA_AdjustorThunk },
-	{ 0x0600003F, ColliderData_GetColliderCount_m835D9900E7D7173E94E365B1D45EE908750628EA_AdjustorThunk },
-	{ 0x06000040, ColliderData_GetCollider_mA5CF6CD0030CB2C2B22508247D428E89661E707B_AdjustorThunk },
-	{ 0x06000045, ParticleCollisionEvent_get_intersection_m5CD7C517228E7D6148DEA4ED0500533C146DEC97_AdjustorThunk },
-	{ 0x06000046, ParticleCollisionEvent_get_normal_m7FC8D0427210D507D8003DB9CCD791AB88DC63FC_AdjustorThunk },
-	{ 0x06000047, ParticleCollisionEvent_get_velocity_m7C078F9C3A4FF1909956CB88FE9F6BBFF2B2C44B_AdjustorThunk },
+	{ 0x06000017, MainModule_set_duration_m3B328F1E542EEE7BAE101B309512E0E3B4638B77_AdjustorThunk },
+	{ 0x06000018, MainModule_get_startSize_m7D92E17A7D36FB18A9D3ADA54D2D1DEDE89601FC_AdjustorThunk },
+	{ 0x06000019, MainModule_get_startSizeBlittable_mEAEBBFC16D8D584DE96FD50041642DA3C39AF55D_AdjustorThunk },
+	{ 0x0600001A, MainModule_get_startColor_m24E66E583EB51341A885ABAE84114CBB37018781_AdjustorThunk },
+	{ 0x0600001B, MainModule_get_startColorBlittable_mD7A3C7C2FAA3A6A584D1B6E6F74AAD03B329138A_AdjustorThunk },
+	{ 0x0600001C, MainModule_set_gravityModifier_m398D2C7F10E389C0EA365640A54D2C0C151A42A7_AdjustorThunk },
+	{ 0x0600001D, MainModule_set_gravityModifierBlittable_mE28D3D73C81DD163F2D7F10A843470049AA27523_AdjustorThunk },
+	{ 0x06000021, ShapeModule__ctor_m951B06AF6BDA194E8111B2B72C104562F41CB0AD_AdjustorThunk },
+	{ 0x06000022, ShapeModule_set_position_mA9693D2FF3D1E8266D2B7932E6AF22F5E121D3CE_AdjustorThunk },
+	{ 0x06000023, ShapeModule_set_scale_mDA84B80016FDA6B6EE181B108C3E59A2FFF9143D_AdjustorThunk },
+	{ 0x06000026, TriggerModule__ctor_mAEC6CFC2EA5E625D7BDD416967F3AB481A8EE97E_AdjustorThunk },
+	{ 0x06000027, TriggerModule_set_inside_mC39E129035124F71899ED76D8C98D84C6E6FDAB8_AdjustorThunk },
+	{ 0x06000028, TriggerModule_set_colliderQueryMode_m665AB86DDD15F1AA953096220469F97421E7F881_AdjustorThunk },
+	{ 0x06000029, Particle_set_lifetime_m29360AF093721364BF46996EE1D400256DB95911_AdjustorThunk },
+	{ 0x0600002A, Particle_set_position_mE9103000DB4EA6CE09D25650F5A2915731F7A63E_AdjustorThunk },
+	{ 0x0600002B, Particle_set_velocity_mF4C1DE326CCABE480F44D3DF3873241E85A6303B_AdjustorThunk },
+	{ 0x0600002C, Particle_set_remainingLifetime_m3E58D8B3599B0BA6790D43022C3DF16E6896D018_AdjustorThunk },
+	{ 0x0600002D, Particle_set_startLifetime_mCD0B16F2B1F2E2AEED84C4FCD85D5AD96F853A77_AdjustorThunk },
+	{ 0x0600002E, Particle_set_startColor_mC3031F4238B0C003DFA5BF9AB4B3141B7CF71538_AdjustorThunk },
+	{ 0x0600002F, Particle_set_randomSeed_mCC3C02CCBF9C0EA80E2CE01EC47AD30F31D5F6C2_AdjustorThunk },
+	{ 0x06000030, Particle_set_startSize_mBBEBF7365A4E68FF2044E2ECEACC562376EA4A1F_AdjustorThunk },
+	{ 0x06000031, Particle_set_rotation3D_mC0B19BFEBA780F95C763DE14C80B29764E519D62_AdjustorThunk },
+	{ 0x06000032, Particle_set_angularVelocity3D_m56AE22FE7AFB178DD206EA2A7E0DA64B360D7EA8_AdjustorThunk },
+	{ 0x06000033, MinMaxCurve__ctor_m1D3846251475D7BBC7B128CCD7DFF40B16AAEF9E_AdjustorThunk },
+	{ 0x06000034, MinMaxCurve_get_constant_m4F2B7693C00CC9FAEDE1DAD32FEEE893414FBE91_AdjustorThunk },
+	{ 0x0600003A, MinMaxGradient_get_color_m534E35D538D549F006E9F90E453D41B92FBAC3BF_AdjustorThunk },
+	{ 0x0600003D, EmitParams_set_position_mF08E5334FDB60090C038498B6749CE742D9FE0E3_AdjustorThunk },
+	{ 0x0600003E, EmitParams_set_velocity_m967097D8DE302F1E0F3D6A4821DC072A2887F4F4_AdjustorThunk },
+	{ 0x0600003F, EmitParams_set_startSize_m1830A2D364D8C2FAC2BBED20CE06460D18AD78EA_AdjustorThunk },
+	{ 0x06000040, ColliderData_GetColliderCount_m835D9900E7D7173E94E365B1D45EE908750628EA_AdjustorThunk },
+	{ 0x06000041, ColliderData_GetCollider_mA5CF6CD0030CB2C2B22508247D428E89661E707B_AdjustorThunk },
+	{ 0x06000046, ParticleCollisionEvent_get_intersection_m5CD7C517228E7D6148DEA4ED0500533C146DEC97_AdjustorThunk },
+	{ 0x06000047, ParticleCollisionEvent_get_normal_m7FC8D0427210D507D8003DB9CCD791AB88DC63FC_AdjustorThunk },
+	{ 0x06000048, ParticleCollisionEvent_get_velocity_m7C078F9C3A4FF1909956CB88FE9F6BBFF2B2C44B_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[75] = 
+static const int32_t s_InvokerIndices[76] = 
 {
 	1150,
 	14490,
@@ -255,6 +259,7 @@ static const int32_t s_InvokerIndices[75] =
 	23674,
 	26609,
 	13986,
+	14084,
 	18725,
 	18726,
 	18727,
@@ -313,9 +318,9 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_ParticleSystemModule_Cod
 const Il2CppCodeGenModule g_UnityEngine_ParticleSystemModule_CodeGenModule = 
 {
 	"UnityEngine.ParticleSystemModule.dll",
-	75,
+	76,
 	s_methodPointers,
-	34,
+	35,
 	s_adjustorThunks,
 	s_InvokerIndices,
 	0,
