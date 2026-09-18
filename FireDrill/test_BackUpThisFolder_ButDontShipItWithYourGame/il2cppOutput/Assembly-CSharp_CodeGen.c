@@ -13,6 +13,7 @@ extern void CeilingFireController_CalculateCeilingSize_m5D791AC8080237AE2BB40B88
 extern void CeilingFireController_EmitCeilingParticle_mE221B33765FBF690A3AA50C2E055BD411683FCE6 (void);
 extern void CeilingFireController__ctor_m469671D7F1C36CDFACC685E254E6E3A96249175B (void);
 extern void ExtinguishingAgent_Start_m4D06837E921BF1FAEEDCFF75462C01FA616BD17C (void);
+extern void ExtinguishingAgent_Update_m9004914DCB9463F29FDBBF0630423E3102286D47 (void);
 extern void ExtinguishingAgent_OnEnable_mF9AC7B0F2CE5355076F073006187FB52E386C31F (void);
 extern void ExtinguishingAgent_OnDisable_m94CB56293F6C6C8B075CAECF79475A76A2400510 (void);
 extern void ExtinguishingAgent_OnParticleTrigger_m786989529A8658FB1E228EE65288F7540FAF7423 (void);
@@ -184,7 +185,7 @@ extern void XRPokeFollowAffordanceFill_OnTransformTweenableVariableUpdated_m8B3C
 extern void XRPokeFollowAffordanceFill_OnPokeStrengthChanged_m480B681A9BE7B6C71724392FC3368A029EA4CED6 (void);
 extern void XRPokeFollowAffordanceFill_OnPokeStateDataUpdated_m6233708D9CEEA9A7920B821FDBD306F4D7CBFAE6 (void);
 extern void XRPokeFollowAffordanceFill__ctor_mAED1746F6E90C5676967671BFBB11E3B7C6B1E98 (void);
-static Il2CppMethodPointer s_methodPointers[177] = 
+static Il2CppMethodPointer s_methodPointers[178] = 
 {
 	CeilingFireController_Awake_mA91BE47729ADDDD4FD21E65B4EF4CA03B25221EF,
 	CeilingFireController_OnParticleCollision_m9FD29BB0B114D7D30003D8190F8C8B6FEF036727,
@@ -192,6 +193,7 @@ static Il2CppMethodPointer s_methodPointers[177] =
 	CeilingFireController_EmitCeilingParticle_mE221B33765FBF690A3AA50C2E055BD411683FCE6,
 	CeilingFireController__ctor_m469671D7F1C36CDFACC685E254E6E3A96249175B,
 	ExtinguishingAgent_Start_m4D06837E921BF1FAEEDCFF75462C01FA616BD17C,
+	ExtinguishingAgent_Update_m9004914DCB9463F29FDBBF0630423E3102286D47,
 	ExtinguishingAgent_OnEnable_mF9AC7B0F2CE5355076F073006187FB52E386C31F,
 	ExtinguishingAgent_OnDisable_m94CB56293F6C6C8B075CAECF79475A76A2400510,
 	ExtinguishingAgent_OnParticleTrigger_m786989529A8658FB1E228EE65288F7540FAF7423,
@@ -370,17 +372,18 @@ extern void TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F03
 extern void TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[4] = 
 {
-	{ 0x06000095, TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030BDAEF40D569F06C8_AdjustorThunk },
-	{ 0x06000096, TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425_AdjustorThunk },
-	{ 0x06000097, TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E_AdjustorThunk },
-	{ 0x06000098, TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk },
+	{ 0x06000096, TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030BDAEF40D569F06C8_AdjustorThunk },
+	{ 0x06000097, TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425_AdjustorThunk },
+	{ 0x06000098, TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E_AdjustorThunk },
+	{ 0x06000099, TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[177] = 
+static const int32_t s_InvokerIndices[178] = 
 {
 	18448,
 	13986,
 	12263,
 	2293,
+	18448,
 	18448,
 	18448,
 	18448,
@@ -559,7 +562,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	177,
+	178,
 	s_methodPointers,
 	4,
 	s_adjustorThunks,

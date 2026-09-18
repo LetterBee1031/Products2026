@@ -6757,9 +6757,16 @@ struct DestroyObject_t90C0CFF019F8BFBA5C4641516631F66056F44012  : public MonoBeh
 };
 struct ExtinguishingAgent_t125D08AF754D68694CD029F444C044FCF403A69B  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
-	ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* ___particleSystem;
+	ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* ___particleSystemExtinguisher;
+	ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* ___particleSystemPowder;
 	XRInputReader_t4D130641DDF89831C5349920ACD6417CE1E80CAF* ___xrInputReader;
-	bool ___initialized;
+	float ___maxDischargingTime;
+	float ___powderAppearTime;
+	float ___countDischargingTime;
+	bool ___isInitialized;
+	bool ___isPowderAppeared;
+	bool ___isDischarging;
+	bool ___isDischargeEnd;
 	List_1_t2788A4C609C25337C5D02FEFC3504950913E9C8F* ___enterParticles;
 	List_1_t2788A4C609C25337C5D02FEFC3504950913E9C8F* ___insideParticles;
 };
