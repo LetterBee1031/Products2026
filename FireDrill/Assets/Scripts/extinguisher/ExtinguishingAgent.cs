@@ -3,10 +3,10 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(ParticleSystem))]
+//[RequireComponent(typeof(ParticleSystem))]
 public class ExtinguishingAgent : MonoBehaviour
 {
-    private ParticleSystem particleSystemExtinguisher;
+    public ParticleSystem particleSystemExtinguisher;
     public ParticleSystem particleSystemPowder;
     public XRInputReader xrInputReader;
     public float maxDischargingTime = 15.0f;
@@ -28,7 +28,7 @@ public class ExtinguishingAgent : MonoBehaviour
     private void Start()
     {
         //xrInputReader = new XRInputReader();
-        particleSystemExtinguisher = GetComponent<ParticleSystem>();
+        //particleSystemExtinguisher = GetComponent<ParticleSystem>();
 
         // 進入時の消火に加え、内部に残る粒子でも炎の成長を止める。
         var trigger = particleSystemExtinguisher.trigger;
