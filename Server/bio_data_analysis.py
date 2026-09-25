@@ -277,7 +277,8 @@ def load_ml_training_dataframe(
     if not file_path.exists():
         raise FileNotFoundError(f"生体データファイルが見つかりません: {file_path}")
 
-    df = pd.read_json(file_path, lines=True)
+    # 欠損値の有無によってblock_idが数値型へ変換されないようにする。
+    df = pd.read_json(file_path, lines=True, dtype={"block_id": "string"})
     eye_feature_columns = [
         column for column in selected_columns
         if column in {"tepr", "pupilDiaMeanSmoothed"}
@@ -324,7 +325,7 @@ def load_latest_prediction_dataframe(
     if not file_path.exists():
         raise FileNotFoundError(f"生体データファイルが見つかりません: {file_path}")
 
-    df = pd.read_json(file_path, lines=True)
+    df = pd.read_json(file_path, lines=True, dtype={"block_id": "string"})
     eye_feature_columns = [
         column for column in selected_columns
         if column in {"tepr", "pupilDiaMeanSmoothed"}
@@ -393,7 +394,7 @@ def load_nasa_tlx_dataframe(
     if not file_path.exists():
         raise FileNotFoundError(f"NASA-TLXデータファイルが見つかりません: {file_path}")
 
-    nasa_df = pd.read_json(file_path, lines=True)
+    nasa_df = pd.read_json(file_path, lines=True, dtype={"block_id": "string"})
     # 負荷値として読み出すのは保存済みRawTLXとmental_demandのみ。
     # user_idとblock_idは参加者・生体データとの対応付けに使用する。
     required_columns = {"block_id", "RawTLX", "mental_demand"}

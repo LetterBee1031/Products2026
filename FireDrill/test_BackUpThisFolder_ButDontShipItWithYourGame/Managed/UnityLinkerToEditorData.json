@@ -1065,6 +1065,20 @@
             "icon": null
           },
           {
+            "name": "ConfigurableJoint",
+            "scenes": [
+              "Assets/Scenes/fire_scene.unity"
+            ],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "Joint",
+            "scenes": [],
+            "dependencyType": 1,
+            "icon": null
+          },
+          {
             "name": "MeshCollider",
             "scenes": [
               "Assets/Scenes/fire_scene.unity"
@@ -1080,7 +1094,9 @@
           },
           {
             "name": "Rigidbody",
-            "scenes": [],
+            "scenes": [
+              "Assets/Scenes/fire_scene.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },

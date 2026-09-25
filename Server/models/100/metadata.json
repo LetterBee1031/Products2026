@@ -2,7 +2,7 @@
   "user_id": "100",
   "subjective_measure": "raw_tlx",
   "training_data_granularity": "sample",
-  "block_warmup_seconds": 0.0,
+  "block_warmup_seconds": 30.0,
   "estimator": {
     "name": "ridge",
     "alpha": 1.0
@@ -28,12 +28,12 @@
   "standardization": {
     "method": "standard_scaler_zscore",
     "mean": {
-      "heart_rate": 69.18580375782881,
-      "tepr": -0.01670657554457203
+      "heart_rate": 69.05042016806723,
+      "tepr": -0.07993848552619047
     },
     "scale": {
-      "heart_rate": 3.982860845251468,
-      "tepr": 0.47592701103081647
+      "heart_rate": 3.9807282377035484,
+      "tepr": 0.4882837489594992
     }
   },
   "blocks": [
@@ -42,12 +42,12 @@
     "3",
     "4"
   ],
-  "training_samples": 479,
+  "training_samples": 357,
   "coefficients": {
-    "heart_rate": 0.016382450039928654,
-    "tepr": 0.09486351397239481
+    "heart_rate": 0.009952787463847177,
+    "tepr": 0.11742441903104768
   },
-  "intercept": 0.49991755921364445,
+  "intercept": 0.49966366268280793,
   "training_plot": "regression_training_fit.png",
-  "created_at": "2026-09-15T09:17:50.698968+00:00"
+  "created_at": "2026-09-25T07:25:38.795789+00:00"
 }

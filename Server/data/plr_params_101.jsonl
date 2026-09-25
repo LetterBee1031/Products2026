@@ -1,0 +1,3 @@
+{"user_id": "101", "received_at": "2026-09-25T15:05:47.224941+09:00", "a": 1.4000000000000004, "b": 4.0, "c": 3.7, "mse": 0.3826474665778285, "sampleCount": 459, "luminanceCorrelation": 0.8616524602675032, "luminanceCorrelationSampleCount": 459}
+{"user_id": "101", "received_at": "2026-09-25T16:02:21.436339+09:00", "a": 1.3000000000000003, "b": 4.0, "c": 3.3000000000000003, "mse": 0.12364520476455074, "sampleCount": 446, "luminanceCorrelation": 0.8428653496908499, "luminanceCorrelationSampleCount": 446}
+{"user_id": "101", "received_at": "2026-09-25T16:03:02.569943+09:00", "a": 2.200000000000001, "b": 4.0, "c": 3.0, "mse": 0.12261929178312188, "sampleCount": 470, "luminanceCorrelation": 0.8323068452593235, "luminanceCorrelationSampleCount": 470}

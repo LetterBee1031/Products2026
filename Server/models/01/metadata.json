@@ -7,14 +7,15 @@
     "name": "ridge",
     "alpha": 1.0
   },
-  "nasa_tlx_mean": 19.092592592592595,
-  "nasa_tlx_std": 13.77242528448549,
+  "nasa_tlx_mean": 15.25,
+  "nasa_tlx_std": 14.009999735638564,
   "w_obj": 0.5,
   "w_sub": 0.5,
   "objective_load_mapping": {
-    "1": 0.25,
-    "2": 0.5,
-    "3": 0.75
+    "0": 0.2,
+    "1": 0.4,
+    "2": 0.6,
+    "3": 0.8
   },
   "features": [
     "heart_rate",
@@ -27,31 +28,34 @@
   "standardization": {
     "method": "standard_scaler_zscore",
     "mean": {
-      "heart_rate": 83.91666666666667,
-      "tepr": 0.021064664312954548
+      "heart_rate": 83.50568181818181,
+      "tepr": 0.02168196494207386
     },
     "scale": {
-      "heart_rate": 3.0859939380787167,
-      "tepr": 0.3417744331394594
+      "heart_rate": 3.1406375277288068,
+      "tepr": 0.3469344457205663
     }
   },
   "blocks": [
     "1",
     "10",
+    "11",
     "12",
     "2",
     "3",
+    "4",
     "5",
+    "6",
     "7",
     "8",
     "9"
   ],
-  "training_samples": 264,
+  "training_samples": 352,
   "coefficients": {
-    "heart_rate": 0.026935831574616514,
-    "tepr": 0.048109527051676516
+    "heart_rate": 0.04336521828133498,
+    "tepr": 0.028808004639499136
   },
-  "intercept": 0.502180800686562,
+  "intercept": 0.501417311514303,
   "training_plot": "regression_training_fit.png",
-  "created_at": "2026-09-05T12:24:13.509615+00:00"
+  "created_at": "2026-09-25T07:29:28.117548+00:00"
 }

@@ -232,6 +232,11 @@ user_status: Dict[str, userData] = {
     "05": userData(),
     "06": userData(),
     "100": userData(),
+    "101": userData(),
+    "102": userData(),
+    "103": userData(),
+    "104": userData(),
+    "105": userData(),
 }
 
 def load_user_profiles(csv_path: str | Path, *, create_missing_users: bool = True) -> None:
