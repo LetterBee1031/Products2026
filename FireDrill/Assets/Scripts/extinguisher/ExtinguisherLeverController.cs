@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class ExtinguisherLeverController : MonoBehaviour
@@ -7,6 +8,7 @@ public class ExtinguisherLeverController : MonoBehaviour
 
     // 消火器のleverボーン
     [SerializeField] private Transform lever;
+    [SerializeField] private PinManager pinManager;
 
     [Header("Lever Settings")]
     // レバーを握ったときの回転角度
@@ -21,6 +23,9 @@ public class ExtinguisherLeverController : MonoBehaviour
 
     // レバーの初期角度
     private Quaternion initialRotation;
+    private bool isPinRemoved = false;
+
+
 
     private void Start()
     {
@@ -30,26 +35,31 @@ public class ExtinguisherLeverController : MonoBehaviour
 
     private void Update()
     {
-        // Questコントローラーのトリガー値を0～1で取得
-        float triggerValue =
-            inputReader.buttonTriggerRight.ReadValue<float>();
+        isPinRemoved = pinManager.IsPinRemoved();
+        if (isPinRemoved)
+        {
+            // Questコントローラーのトリガー値を0～1で取得
+            float triggerValue =
+                inputReader.buttonTriggerRight.ReadValue<float>();
 
-        // トリガー値に応じた回転量を計算
-        Quaternion pressedRotation =
-            Quaternion.AngleAxis(
-                pressedAngle * triggerValue,
-                rotationAxis
-            );
+            // トリガー値に応じた回転量を計算
+            Quaternion pressedRotation =
+                Quaternion.AngleAxis(
+                    pressedAngle * triggerValue,
+                    rotationAxis
+                );
 
-        // 元の角度にレバーの回転を追加
-        Quaternion targetRotation = initialRotation * pressedRotation;
+            // 元の角度にレバーの回転を追加
+            Quaternion targetRotation = initialRotation * pressedRotation;
 
-        // 急に角度が変わらないよう滑らかに動かす
-        lever.localRotation =
-            Quaternion.Slerp(
-                lever.localRotation,
-                targetRotation,
-                leverSpeed * Time.deltaTime
-            );
+            // 急に角度が変わらないよう滑らかに動かす
+            lever.localRotation =
+                Quaternion.Slerp(
+                    lever.localRotation,
+                    targetRotation,
+                    leverSpeed * Time.deltaTime
+                );
+        }
+
     }
 }

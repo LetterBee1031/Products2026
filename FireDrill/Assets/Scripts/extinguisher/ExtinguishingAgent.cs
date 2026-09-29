@@ -9,6 +9,7 @@ public class ExtinguishingAgent : MonoBehaviour
     public ParticleSystem particleSystemExtinguisher;
     public ParticleSystem particleSystemPowder;
     public XRInputReader xrInputReader;
+    public PinManager pinManager;
     public float maxDischargingTime = 15.0f;
     public float powderAppearTime = 7.5f;
     private float countDischargingTime = 0.0f;
@@ -17,6 +18,7 @@ public class ExtinguishingAgent : MonoBehaviour
     private bool isPowderAppeared = false;
     private bool isDischarging = false;
     private bool isDischargeEnd = false;
+    private bool isPinRemoved = false;
 
 
     // Triggerに入ったParticleを保存
@@ -173,7 +175,9 @@ public class ExtinguishingAgent : MonoBehaviour
     }
     private void OnTriggerPressed(InputAction.CallbackContext context)
     {
-        if (!isDischargeEnd)
+        isPinRemoved = pinManager.IsPinRemoved();
+
+        if ((!isDischargeEnd) && isPinRemoved)
         {
             particleSystemExtinguisher.Play();
             isDischarging = true;

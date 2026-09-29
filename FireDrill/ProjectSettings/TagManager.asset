@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Anchor
   - ExtinguishingAgent
+  - building
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - FireHitBox
   - ExtinguishingAgent
   - fireForceField
-  - 
-  - 
+  - building
+  - ExtinguishingObject
   - 
   - 
   - 
