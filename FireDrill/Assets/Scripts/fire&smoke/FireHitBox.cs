@@ -6,8 +6,12 @@ public class FireHitBox : MonoBehaviour
     [SerializeField] private float extinguishPower = 0.010f;   // 消化力: 消火剤パーティクルが1個炎にあたるたびに，どの程度，炎体力を削るかのパラメータ
     [SerializeField] private float fireGrowPower = 0.005f;     // 炎成長力: 単位時間当たりに炎が成長する速度を決定するパラメータ
     [SerializeField] private float gravityCoeff = -0.2f;       // 重力係数: 炎のパーティクルにかかる重力の係数．炎の上昇速度を決定している
-    public GameObject[] fireParticlesObjects = new GameObject[4];
-    public ParticleSystem.MainModule[] fireParticlesMain = new ParticleSystem.MainModule[4]; // 
+    [SerializeField] private GameObject[] fireParticlesObjects = new GameObject[4];
+    [SerializeField] private Transform fireHitBoxTrans = null;
+
+    [SerializeField] private ParticleSystem.MainModule[] fireParticlesMain = new ParticleSystem.MainModule[4]; // 
+
+    private Vector3 initialHitBoxSize;
 
     // 一度消火したら保持し、再有効化されても自然成長を再開させない。
     private bool extinguished;
@@ -16,6 +20,12 @@ public class FireHitBox : MonoBehaviour
 
     private void Start()
     {
+        if (fireHitBoxTrans == null)
+        {
+            fireHitBoxTrans = GetComponent<Transform>();
+        }
+
+        initialHitBoxSize = fireHitBoxTrans.localScale;
         // Inspectorに登録された炎の数に合わせて、操作用の配列を確保する。
         fireParticlesMain = new ParticleSystem.MainModule[fireParticlesObjects.Length];
         for (int i = 0; i < fireParticlesObjects.Length; i++)
@@ -30,6 +40,8 @@ public class FireHitBox : MonoBehaviour
         {
             Extinguish();
         }
+
+
     }
 
     private void LateUpdate()
@@ -84,6 +96,7 @@ public class FireHitBox : MonoBehaviour
             fireParticlesObjects[i].transform.localScale = Vector3.one * fireHealth;
             fireParticlesMain[i].gravityModifier = gravityCoeff * fireHealth;
         }
+        fireHitBoxTrans.localScale = initialHitBoxSize * fireHealth;
     }
 
     private void Extinguish()

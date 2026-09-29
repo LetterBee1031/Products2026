@@ -5653,7 +5653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
       propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 576
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
       propertyPath: TriggerModule.primitives.Array.size
@@ -5667,6 +5667,10 @@ PrefabInstance:
       propertyPath: 'TriggerModule.primitives.Array.data[1]'
       value: 
       objectReference: {fileID: 2115725994}
+    - target: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
+      propertyPath: CollisionModule.multiplyColliderForceByParticleSize
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
       propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
       value: 0
@@ -5984,6 +5988,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34cc14262bd88c7498cc40bc7b8d2ede, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1582810066}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34cc14262bd88c7498cc40bc7b8d2ede, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1582810067}
   m_SourcePrefab: {fileID: 100100000, guid: 34cc14262bd88c7498cc40bc7b8d2ede, type: 3}
 --- !u!1 &645934864
 GameObject:
@@ -6691,7 +6698,6 @@ GameObject:
   - component: {fileID: 831006763}
   - component: {fileID: 831006762}
   - component: {fileID: 831006767}
-  - component: {fileID: 831006768}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -6714,10 +6720,10 @@ MonoBehaviour:
   fogParticle: {fileID: 913407913}
   areaSizeX: 8
   areaSizeZ: 8
-  ceilingHeight: 3
+  ceilingHeight: 8
   startThickness: 0.3
   endBottomHeight: 2
-  descendTime: 60
+  descendTime: 10
 --- !u!114 &831006763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6896,27 +6902,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HoseTargetController
   nozzleTarget: {fileID: 1430727312}
   hoseTargetRigidbody: {fileID: 0}
---- !u!114 &831006768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831006761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a65cf95b1c9ab6448ae7d861d5a53f13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PinManager
-  pinBone: {fileID: 331425630}
-  pinVisualTarget: {fileID: 1280241614}
-  pinSocket: {fileID: 2085065692}
-  stopperBone: {fileID: 165173709}
-  sealed_1: {fileID: 1400615896}
-  sealed_2: {fileID: 1419141906}
-  stopperRotationAxis: {x: 1, y: 0, z: 0}
-  stopperFallAngle: -60
-  stopperFallSpeed: 180
 --- !u!4 &877924861 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -9031058534570205675, guid: 34cc14262bd88c7498cc40bc7b8d2ede, type: 3}
@@ -6936,7 +6921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9025435444988080512, guid: c4cc3cc9ac499864f882426702a19b05, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9025435444988080515, guid: c4cc3cc9ac499864f882426702a19b05, type: 3}
       propertyPath: m_LocalScale.x
@@ -9241,7 +9226,8 @@ MonoBehaviour:
   particleSystemExtinguisher: {fileID: 312328546}
   particleSystemPowder: {fileID: 1287526248}
   xrInputReader: {fileID: 831006763}
-  pinManager: {fileID: 831006768}
+  pinManager: {fileID: 1582810067}
+  extinguisherGrab: {fileID: 1942539728}
   maxDischargingTime: 15
   powderAppearTime: 7.5
 --- !u!114 &1582810066
@@ -9257,11 +9243,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExtinguisherLeverController
   inputReader: {fileID: 831006763}
+  extinguisherGrab: {fileID: 1942539728}
   lever: {fileID: 1850401060}
-  pinManager: {fileID: 831006768}
+  pinManager: {fileID: 1582810067}
   pressedAngle: -30
   rotationAxis: {x: 1, y: 0, z: 0}
   leverSpeed: 10
+--- !u!114 &1582810067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582810061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65cf95b1c9ab6448ae7d861d5a53f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PinManager
+  pinBone: {fileID: 331425630}
+  pinVisualTarget: {fileID: 1280241614}
+  pinSocket: {fileID: 2085065692}
+  stopperBone: {fileID: 165173709}
+  sealed_1: {fileID: 1400615896}
+  sealed_2: {fileID: 1419141906}
+  stopperRotationAxis: {x: 1, y: 0, z: 0}
+  stopperFallAngle: -60
+  stopperFallSpeed: 180
 --- !u!1 &1693844564 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1956197547661106, guid: f293a2dcc753a4a489fefe7f8f312d69, type: 3}
@@ -9832,13 +9840,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireHitBox
   fireHealth: 0.5
-  extinguishPower: 0.01
+  extinguishPower: 0.02
   fireGrowPower: 0.01
   gravityCoeff: 0
   fireParticlesObjects:
   - {fileID: 1693844564}
   - {fileID: 584960307}
   - {fileID: 1071010850}
+  fireHitBoxTrans: {fileID: 1956322170}
 --- !u!65 &1956322172
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10238,6 +10247,10 @@ PrefabInstance:
       propertyPath: InitialModule.maxNumParticles
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 2899502165993400446, guid: 3ca5c30e452714a4eac65138a6fec49f, type: 3}
+      propertyPath: fireHitBoxTrans
+      value: 
+      objectReference: {fileID: 2115725994}
     - target: {fileID: 3637604798108464395, guid: 3ca5c30e452714a4eac65138a6fec49f, type: 3}
       propertyPath: m_Name
       value: fireRising

@@ -2,14 +2,16 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 //[RequireComponent(typeof(ParticleSystem))]
 public class ExtinguishingAgent : MonoBehaviour
 {
-    public ParticleSystem particleSystemExtinguisher;
-    public ParticleSystem particleSystemPowder;
-    public XRInputReader xrInputReader;
-    public PinManager pinManager;
+    [SerializeField] private ParticleSystem particleSystemExtinguisher;
+    [SerializeField] private ParticleSystem particleSystemPowder;
+    [SerializeField] private XRInputReader xrInputReader;
+    [SerializeField] private PinManager pinManager;
+    [SerializeField] private XRGrabInteractable extinguisherGrab;
     public float maxDischargingTime = 15.0f;
     public float powderAppearTime = 7.5f;
     private float countDischargingTime = 0.0f;
@@ -19,6 +21,7 @@ public class ExtinguishingAgent : MonoBehaviour
     private bool isDischarging = false;
     private bool isDischargeEnd = false;
     private bool isPinRemoved = false;
+    private bool isLeverHeld = false;
 
 
     // Triggerに入ったParticleを保存
@@ -176,8 +179,9 @@ public class ExtinguishingAgent : MonoBehaviour
     private void OnTriggerPressed(InputAction.CallbackContext context)
     {
         isPinRemoved = pinManager.IsPinRemoved();
+        isLeverHeld = extinguisherGrab.isSelected;
 
-        if ((!isDischargeEnd) && isPinRemoved)
+        if ((!isDischargeEnd) && isPinRemoved && isLeverHeld)
         {
             particleSystemExtinguisher.Play();
             isDischarging = true;
