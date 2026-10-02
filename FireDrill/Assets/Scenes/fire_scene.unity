@@ -5519,12 +5519,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExtinguishingAgent
   particleSystemExtinguisher: {fileID: 312328546}
-  particleSystemPowder: {fileID: 1287526248}
+  particleSystemFogPowder: {fileID: 1287526248}
   xrInputReader: {fileID: 831006763}
   pinManager: {fileID: 1582810067}
   extinguisherGrab: {fileID: 1942539728}
+  increaseRate: 0.08
+  decreaseRate: 0.005
+  minEmissionRate: 0
+  maxEmissionRate: 100
   maxDischargingTime: 15
-  powderAppearTime: 7.5
 --- !u!1 &314395757
 GameObject:
   m_ObjectHideFlags: 0
@@ -6968,7 +6971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9025435444988080515, guid: c4cc3cc9ac499864f882426702a19b05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.16
       objectReference: {fileID: 0}
     - target: {fileID: 9025435444988080515, guid: c4cc3cc9ac499864f882426702a19b05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7040,7 +7043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9025435444988080573, guid: c4cc3cc9ac499864f882426702a19b05, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9025435444988080573, guid: c4cc3cc9ac499864f882426702a19b05, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -9251,12 +9254,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExtinguishingAgent
   particleSystemExtinguisher: {fileID: 312328546}
-  particleSystemPowder: {fileID: 1287526248}
+  particleSystemFogPowder: {fileID: 1287526248}
   xrInputReader: {fileID: 831006763}
   pinManager: {fileID: 1582810067}
   extinguisherGrab: {fileID: 1942539728}
+  increaseRate: 0.08
+  decreaseRate: 0.005
+  minEmissionRate: 0
+  maxEmissionRate: 100
   maxDischargingTime: 15
-  powderAppearTime: 7.5
 --- !u!114 &1582810066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10266,13 +10272,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 80330294965243090, guid: 3ca5c30e452714a4eac65138a6fec49f, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 567
+      objectReference: {fileID: 0}
     - target: {fileID: 547593612364986362, guid: 3ca5c30e452714a4eac65138a6fec49f, type: 3}
       propertyPath: InitialModule.maxNumParticles
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 547593612364986362, guid: 3ca5c30e452714a4eac65138a6fec49f, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 567
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606140545283247638, guid: 3ca5c30e452714a4eac65138a6fec49f, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 567
+      objectReference: {fileID: 0}
     - target: {fileID: 2751505291796083765, guid: 3ca5c30e452714a4eac65138a6fec49f, type: 3}
       propertyPath: InitialModule.maxNumParticles
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751505291796083765, guid: 3ca5c30e452714a4eac65138a6fec49f, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 567
       objectReference: {fileID: 0}
     - target: {fileID: 2899502165993400446, guid: 3ca5c30e452714a4eac65138a6fec49f, type: 3}
       propertyPath: fireHitBoxTrans

@@ -1199,6 +1199,7 @@ UnityEngine.ParticleSystem::Emit_Internal_Injected
 UnityEngine.ParticleSystem::Play_Injected
 UnityEngine.ParticleSystem::SetParticles_Injected
 UnityEngine.ParticleSystem::Stop_Injected
+UnityEngine.ParticleSystem/EmissionModule::set_rateOverTimeBlittable_Injected
 UnityEngine.ParticleSystem/MainModule::get_startColorBlittable_Injected
 UnityEngine.ParticleSystem/MainModule::get_startSizeBlittable_Injected
 UnityEngine.ParticleSystem/MainModule::set_duration

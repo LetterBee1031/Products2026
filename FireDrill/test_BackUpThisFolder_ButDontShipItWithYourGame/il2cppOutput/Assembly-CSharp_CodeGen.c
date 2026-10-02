@@ -7,13 +7,11 @@
 
 
 
-extern void ExtinguisherLeverController_Start_m595F407E1AF69B6D000AF6233F3B7E71519063F3 (void);
-extern void ExtinguisherLeverController_Update_m91478CDBF290B4830DD86B0C660C5C874B714DC3 (void);
-extern void ExtinguisherLeverController__ctor_mDAFC8F08273E330C7C897A069B611BE5014D5BF6 (void);
 extern void ExtinguishingAgent_Start_m4D06837E921BF1FAEEDCFF75462C01FA616BD17C (void);
 extern void ExtinguishingAgent_Update_m9004914DCB9463F29FDBBF0630423E3102286D47 (void);
 extern void ExtinguishingAgent_OnEnable_mF9AC7B0F2CE5355076F073006187FB52E386C31F (void);
 extern void ExtinguishingAgent_OnDisable_m94CB56293F6C6C8B075CAECF79475A76A2400510 (void);
+extern void ExtinguishingAgent_UpdateFog_m483078D96C62AB3AEEF4AAE340388C5F31E958F9 (void);
 extern void ExtinguishingAgent_OnParticleTrigger_m786989529A8658FB1E228EE65288F7540FAF7423 (void);
 extern void ExtinguishingAgent_RegisterInputEvents_mBB1032F9CBF5A3C46FE34B0A1F63C4369EDA8471 (void);
 extern void ExtinguishingAgent_UnregisterInputEvents_mEC715FD629FDE375BEDA91BF85DBCECE156F3D94 (void);
@@ -22,6 +20,16 @@ extern void ExtinguishingAgent_OnTriggerReleased_mF3CDADEB29D886D57D473BA8B28387
 extern void ExtinguishingAgent__ctor_mF0031FB1056E7ADCA7BAF97D96F86BA7BAD8D4C9 (void);
 extern void HoseTargetController_FixedUpdate_mF8263DA5560E5D3848830FD4BC26FC1061126ABB (void);
 extern void HoseTargetController__ctor_mD073939AD41F6E42D032042A1A8BBA0223D5CCC9 (void);
+extern void LeverController_Start_m5F44D8F2280DE85F5A3C22F6C7E2CD9C2802CB71 (void);
+extern void LeverController_Update_m4D8300362B35D8E35DC4CAE2AD3BB876344ED1CD (void);
+extern void LeverController__ctor_mA3748D593AF0A2E439A5EC2CCE96B89480A7CDE9 (void);
+extern void PinManager_Awake_mE55753B8BD17BEC2CA9CE62745CCF9910697E2D4 (void);
+extern void PinManager_LateUpdate_mC0131F8A318D03D57B37F2B4F57623E34A8BA6E6 (void);
+extern void PinManager_OnEnable_m69D4C3F298398D281F02746ACED5621E9D70DDD8 (void);
+extern void PinManager_OnDisable_mF17F5520E9EADE0199936678F91BA8834612A152 (void);
+extern void PinManager_OnPinRemoved_mB1D1816B4CAF8C660CC0C1DB593444AB44A31E91 (void);
+extern void PinManager_IsPinRemoved_m89979EEE595644D962990BEADF793ADD1FBC4DB8 (void);
+extern void PinManager__ctor_mC735AF0E2FF2DCBB85424CC43C8A2CBEE51FF275 (void);
 extern void CeilingFireController_Awake_mA91BE47729ADDDD4FD21E65B4EF4CA03B25221EF (void);
 extern void CeilingFireController_OnParticleCollision_m9FD29BB0B114D7D30003D8190F8C8B6FEF036727 (void);
 extern void CeilingFireController_CalculateCeilingSize_m5D791AC8080237AE2BB40B88FD20612B17696543 (void);
@@ -190,15 +198,13 @@ extern void XRPokeFollowAffordanceFill_OnTransformTweenableVariableUpdated_m8B3C
 extern void XRPokeFollowAffordanceFill_OnPokeStrengthChanged_m480B681A9BE7B6C71724392FC3368A029EA4CED6 (void);
 extern void XRPokeFollowAffordanceFill_OnPokeStateDataUpdated_m6233708D9CEEA9A7920B821FDBD306F4D7CBFAE6 (void);
 extern void XRPokeFollowAffordanceFill__ctor_mAED1746F6E90C5676967671BFBB11E3B7C6B1E98 (void);
-static Il2CppMethodPointer s_methodPointers[183] = 
+static Il2CppMethodPointer s_methodPointers[191] = 
 {
-	ExtinguisherLeverController_Start_m595F407E1AF69B6D000AF6233F3B7E71519063F3,
-	ExtinguisherLeverController_Update_m91478CDBF290B4830DD86B0C660C5C874B714DC3,
-	ExtinguisherLeverController__ctor_mDAFC8F08273E330C7C897A069B611BE5014D5BF6,
 	ExtinguishingAgent_Start_m4D06837E921BF1FAEEDCFF75462C01FA616BD17C,
 	ExtinguishingAgent_Update_m9004914DCB9463F29FDBBF0630423E3102286D47,
 	ExtinguishingAgent_OnEnable_mF9AC7B0F2CE5355076F073006187FB52E386C31F,
 	ExtinguishingAgent_OnDisable_m94CB56293F6C6C8B075CAECF79475A76A2400510,
+	ExtinguishingAgent_UpdateFog_m483078D96C62AB3AEEF4AAE340388C5F31E958F9,
 	ExtinguishingAgent_OnParticleTrigger_m786989529A8658FB1E228EE65288F7540FAF7423,
 	ExtinguishingAgent_RegisterInputEvents_mBB1032F9CBF5A3C46FE34B0A1F63C4369EDA8471,
 	ExtinguishingAgent_UnregisterInputEvents_mEC715FD629FDE375BEDA91BF85DBCECE156F3D94,
@@ -207,6 +213,16 @@ static Il2CppMethodPointer s_methodPointers[183] =
 	ExtinguishingAgent__ctor_mF0031FB1056E7ADCA7BAF97D96F86BA7BAD8D4C9,
 	HoseTargetController_FixedUpdate_mF8263DA5560E5D3848830FD4BC26FC1061126ABB,
 	HoseTargetController__ctor_mD073939AD41F6E42D032042A1A8BBA0223D5CCC9,
+	LeverController_Start_m5F44D8F2280DE85F5A3C22F6C7E2CD9C2802CB71,
+	LeverController_Update_m4D8300362B35D8E35DC4CAE2AD3BB876344ED1CD,
+	LeverController__ctor_mA3748D593AF0A2E439A5EC2CCE96B89480A7CDE9,
+	PinManager_Awake_mE55753B8BD17BEC2CA9CE62745CCF9910697E2D4,
+	PinManager_LateUpdate_mC0131F8A318D03D57B37F2B4F57623E34A8BA6E6,
+	PinManager_OnEnable_m69D4C3F298398D281F02746ACED5621E9D70DDD8,
+	PinManager_OnDisable_mF17F5520E9EADE0199936678F91BA8834612A152,
+	PinManager_OnPinRemoved_mB1D1816B4CAF8C660CC0C1DB593444AB44A31E91,
+	PinManager_IsPinRemoved_m89979EEE595644D962990BEADF793ADD1FBC4DB8,
+	PinManager__ctor_mC735AF0E2FF2DCBB85424CC43C8A2CBEE51FF275,
 	CeilingFireController_Awake_mA91BE47729ADDDD4FD21E65B4EF4CA03B25221EF,
 	CeilingFireController_OnParticleCollision_m9FD29BB0B114D7D30003D8190F8C8B6FEF036727,
 	CeilingFireController_CalculateCeilingSize_m5D791AC8080237AE2BB40B88FD20612B17696543,
@@ -382,12 +398,12 @@ extern void TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F03
 extern void TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[4] = 
 {
-	{ 0x0600009B, TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030BDAEF40D569F06C8_AdjustorThunk },
-	{ 0x0600009C, TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425_AdjustorThunk },
-	{ 0x0600009D, TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E_AdjustorThunk },
-	{ 0x0600009E, TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk },
+	{ 0x060000A3, TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030BDAEF40D569F06C8_AdjustorThunk },
+	{ 0x060000A4, TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425_AdjustorThunk },
+	{ 0x060000A5, TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E_AdjustorThunk },
+	{ 0x060000A6, TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[183] = 
+static const int32_t s_InvokerIndices[191] = 
 {
 	18792,
 	18792,
@@ -397,12 +413,20 @@ static const int32_t s_InvokerIndices[183] =
 	18792,
 	18792,
 	18792,
-	18792,
-	18792,
 	14709,
 	14709,
 	18792,
 	18792,
+	18792,
+	18792,
+	18792,
+	18792,
+	18792,
+	18792,
+	18792,
+	18792,
+	14249,
+	18342,
 	18792,
 	18792,
 	14249,
@@ -428,7 +452,7 @@ static const int32_t s_InvokerIndices[183] =
 	18792,
 	18792,
 	18792,
-	32240,
+	32241,
 	18792,
 	18792,
 	18792,
@@ -442,7 +466,7 @@ static const int32_t s_InvokerIndices[183] =
 	18792,
 	18792,
 	18792,
-	20532,
+	20533,
 	18792,
 	18792,
 	18792,
@@ -539,7 +563,7 @@ static const int32_t s_InvokerIndices[183] =
 	14356,
 	18682,
 	18792,
-	23372,
+	23373,
 	18792,
 	18792,
 	18792,
@@ -577,7 +601,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	183,
+	191,
 	s_methodPointers,
 	4,
 	s_adjustorThunks,

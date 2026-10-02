@@ -7,17 +7,29 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 //[RequireComponent(typeof(ParticleSystem))]
 public class ExtinguishingAgent : MonoBehaviour
 {
+    [Header("Objects")]
     [SerializeField] private ParticleSystem particleSystemExtinguisher;
-    [SerializeField] private ParticleSystem particleSystemPowder;
+    [SerializeField] private ParticleSystem particleSystemFogPowder;
     [SerializeField] private XRInputReader xrInputReader;
     [SerializeField] private PinManager pinManager;
     [SerializeField] private XRGrabInteractable extinguisherGrab;
+
+    [Header("Fog Powder")]
+    [SerializeField] private float increaseRate = 0.08f;        // 粉塵の増加割合
+    [SerializeField] private float decreaseRate = 0.005f;       // 粉塵の減少割合
+    [SerializeField] private float minEmissionRate = 0.0f;      // 粉塵パーティクルの最低エミッションレ－ト
+    [SerializeField] private float maxEmissionRate = 100.0f;    // 粉塵パーティクルの最高エミッションレ－ト
+
+    private float contamination = 0.0f;  // 消火剤の粉塵がどの程度舞っているか
+    private ParticleSystem.EmissionModule emission;
+
     public float maxDischargingTime = 15.0f;
-    public float powderAppearTime = 7.5f;
+    //public float powderAppearTime = 7.5f;
     private float countDischargingTime = 0.0f;
 
+
     private bool isInitialized = false;
-    private bool isPowderAppeared = false;
+    // private bool isPowderAppeared = false;
     private bool isDischarging = false;
     private bool isDischargeEnd = false;
     private bool isPinRemoved = false;
@@ -43,19 +55,19 @@ public class ExtinguishingAgent : MonoBehaviour
 
         // 最初はParticleを停止
         particleSystemExtinguisher.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        particleSystemPowder.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-
+        // particleSystemFogPowder.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
         // XRInputReaderがAwakeで取得した右トリガーActionにイベントを登録
         RegisterInputEvents();
 
         isInitialized = true;
 
-        isPowderAppeared = false;
+        // isPowderAppeared = false;
         isDischarging = false;
         isDischargeEnd = false;
         
         countDischargingTime = 0.0f;
+        emission = particleSystemFogPowder.emission;
     }
 
     private void Update()
@@ -69,14 +81,22 @@ public class ExtinguishingAgent : MonoBehaviour
         else if (isDischarging)
         {
             countDischargingTime += Time.deltaTime;
+            contamination += increaseRate * Time.deltaTime;
 
-            if((countDischargingTime > powderAppearTime) && !isPowderAppeared)
-            {
-                particleSystemPowder.Play();
-                isPowderAppeared = true;
+            // if((countDischargingTime > powderAppearTime) && !isPowderAppeared)
+            // {
+            //     particleSystemFogPowder.Play();
+            //     isPowderAppeared = true;
 
-            }
+            // }
+        }else
+        {
+            contamination -= decreaseRate * Time.deltaTime;
         }
+
+        contamination = Mathf.Clamp01(contamination);
+
+        UpdateFog();
     }
 
     private void OnEnable()
@@ -98,6 +118,16 @@ public class ExtinguishingAgent : MonoBehaviour
         }
     }
 
+    private void UpdateFog()
+    {
+        float emissionRate = Mathf.Lerp(
+            minEmissionRate,
+            maxEmissionRate,
+            contamination
+        );
+
+        emission.rateOverTime = emissionRate;
+    }
 
 
     private void OnParticleTrigger()
