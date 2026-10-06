@@ -5,11 +5,11 @@ import json
 from pathlib import Path
 import re
 import sys
-from typing import List, Optional
+from typing import List, Literal, Optional
 from zoneinfo import ZoneInfo
 
 from fastapi import FastAPI, HTTPException, Request
-from pydantic import AliasChoices, BaseModel, Field
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, model_validator
 
 # 2段階上のフォルダ（Products2026）のパスをとってる
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -179,6 +179,29 @@ class MentalArithmeticLogPost(BaseModel):
     deviceIp: Optional[str] = None
 
 
+# 視覚探索の完了試行。受信日時の持ち込みを含む余分なキーは拒否する。
+class VisualSearchLogPost(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    user_id: str = Field(min_length=1)  # 既存RequestSenderの参加者ID。
+    block_id: int = Field(ge=0, strict=True)  # 難易度とは独立したID。
+    difficulty: Literal["Practice", "Low", "Medium", "High"]
+    trial_index: int = Field(ge=1, strict=True)  # ブロック内で1始まり。
+    is_practice: bool = Field(strict=True)
+    target_present: bool = Field(strict=True)
+    is_correct: bool = Field(strict=True)
+    reaction_time_ms: float = Field(ge=0, allow_inf_nan=False)
+    randomSeed: int = Field(ge=-(2**31), le=2**31 - 1, strict=True)
+    sent_at: str = Field(min_length=1)  # 送信日時。既存のUnity時刻形式を維持。
+
+    @model_validator(mode="after")
+    def validate_trial(self):
+        if not self.user_id.strip() or not self.sent_at.strip():
+            raise ValueError("user_id and sent_at must not be blank")
+        if self.is_practice != (self.difficulty == "Practice"):
+            raise ValueError("is_practice must match difficulty")
+        return self
+
+
 # NASA-TLX の受信データモデル
 class NASATLXPost(BaseModel):
     user_id: str = Field(
@@ -269,6 +292,13 @@ def append_mental_arithmetic_record_by_user(record: dict) -> None:
     user_id = user_id_from_record(record)
     with mental_arithmetic_jsonl_path_for_user(user_id).open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+def append_visual_search_record_by_user(record: dict) -> None:
+    user_id = user_id_from_record(record)
+    path = DATA_DIR / f"visual_search_log_{user_id}.jsonl"
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + "\n")
+
 
 def append_nasa_tlx_record_by_user(record: dict) -> None:
     user_id = user_id_from_record(record)
@@ -410,6 +440,22 @@ async def receive_mental_arithmetic_log(
         "block_id": payload.block_id,
         "trial_index": payload.trial_index,
     }
+
+@app.post("/api/visual_search_log")
+async def receive_visual_search_log(payload: VisualSearchLogPost, request: Request):
+    # クライアントからはreceived_atを受け取らず、サーバの受信日時を記録する。
+    received_at = datetime.now(ZoneInfo("Asia/Tokyo")).isoformat()
+    user_id = normalize_user_id(payload.user_id)
+    record = {
+        **payload.model_dump(),
+        "user_id": user_id,
+        "received_at": received_at,
+        "client_host": request.client.host if request.client else "unknown",
+    }
+    append_visual_search_record_by_user(record)
+    return {"ok": True, "user_id": user_id,
+            "block_id": payload.block_id, "trial_index": payload.trial_index}
+
 
 # NASA-TLX解答を受け取り保存
 @app.post("/api/nasa_tlx")

@@ -107,6 +107,21 @@ public class RequestSender : MonoBehaviour
     }
 
 
+    [Serializable]
+    public class VisualSearchLogPost
+    {
+        public string user_id; // RequestSenderが保持する参加者ID。
+        public int block_id; // 難易度と独立したブロックID。
+        public string difficulty; // Practice / Low / Medium / High。
+        public int trial_index; // ブロック内の試行番号（1始まり）。
+        public bool is_practice; // 練習試行かどうか。
+        public bool target_present; // 赤いSphereの有無。
+        public bool is_correct; // Present / Absent回答の正誤。
+        public float reaction_time_ms; // 提示開始から回答までの時間（ms）。
+        public int randomSeed; // 実際に使用した乱数Seed。
+        public string sent_at; // HTTP送信直前の日時。received_atはサーバのみで生成する。
+    }
+
     // ---- NASA-TLX 送信用 ----
     // Server側の `NASATLXPost` Pydantic モデルに対応するシリアライズ可能なクラス。
     // フィールド名はサーバの期待するJSONキーと一致させています。
@@ -626,7 +641,8 @@ public class RequestSender : MonoBehaviour
     }
 
     // testIdが指定された場合は、体験状態と併せてテストの通し番号を送信する
-    public IEnumerator PostStatusFlag(string statusFlag, string testId)
+    public IEnumerator PostStatusFlag(string statusFlag, string testId, Action<bool> onComplete = null,
+        int timeoutSeconds = 0)
     {
         string safeBase = GetSafeBaseUrl();
         string url = safeBase + "/api/status_post";
@@ -650,7 +666,7 @@ public class RequestSender : MonoBehaviour
             req.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
 
             Debug.Log($"STATUS_POST url=[{url}] payload={json}");
-
+            req.timeout = timeoutSeconds; // 指定時だけ制限する。既存呼び出しは従来どおり無制限。
             yield return req.SendWebRequest();
 
 #if UNITY_2020_2_OR_NEWER
@@ -663,6 +679,7 @@ public class RequestSender : MonoBehaviour
                 Debug.LogWarning($"STATUS_POST failed: code={req.responseCode}, err={req.error}, body={req.downloadHandler.text}");
             else
                 Debug.Log($"STATUS_POST ok: {req.downloadHandler.text}");
+            onComplete?.Invoke(ok);
         }
     }
 
@@ -828,6 +845,41 @@ public class RequestSender : MonoBehaviour
             {
                 Debug.Log($"STROOP_LOG_POST ok: {req.downloadHandler.text}");
             }
+        }
+    }
+
+    // 視覚探索の完了試行を送信する。ManagerはこのIEnumeratorの完了を待つ。
+    public IEnumerator SendVisualSearchResult(int blockId, string difficulty, int trialIndex,
+        bool isPractice, bool targetPresent, bool isCorrect, float reactionTimeMs,
+        int randomSeed, Action<bool> onComplete = null)
+    {
+        string url = GetSafeBaseUrl() + "/api/visual_search_log";
+        var payload = new VisualSearchLogPost
+        {
+            user_id = userId,
+            block_id = blockId,
+            difficulty = difficulty,
+            trial_index = trialIndex,
+            is_practice = isPractice,
+            target_present = targetPresent,
+            is_correct = isCorrect,
+            reaction_time_ms = reactionTimeMs,
+            randomSeed = randomSeed,
+            sent_at = DateTime.Now.ToString()
+        };
+        string json = JsonConvert.SerializeObject(payload);
+        using (var req = new UnityWebRequest(url, "POST"))
+        {
+            req.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
+            req.downloadHandler = new DownloadHandlerBuffer();
+            req.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
+            req.timeout = 15;
+            Debug.Log($"VISUAL_SEARCH_LOG_POST url=[{url}] payload={json}");
+            yield return req.SendWebRequest();
+            bool ok = req.result == UnityWebRequest.Result.Success;
+            if (ok) Debug.Log($"VISUAL_SEARCH_LOG_POST ok: {req.downloadHandler.text}");
+            else Debug.LogWarning($"VISUAL_SEARCH_LOG_POST failed: code={req.responseCode}, err={req.error}, body={req.downloadHandler.text}");
+            onComplete?.Invoke(ok);
         }
     }
 

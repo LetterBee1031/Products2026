@@ -661,6 +661,7 @@ MonoBehaviour:
   - {fileID: 7413535801926472543}
   - {fileID: 6958079250994456763}
   - {fileID: 5979076230737299766}
+  fireHitBoxTrans: {fileID: 3652263832648801650}
 --- !u!1 &2295619109844490828
 GameObject:
   m_ObjectHideFlags: 0
@@ -6119,7 +6120,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 500
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -9307,7 +9308,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 55
+      m_Bits: 567
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -14182,7 +14183,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 55
+      m_Bits: 567
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -23872,7 +23873,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 55
+      m_Bits: 567
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -25520,7 +25521,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 500
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -28708,7 +28709,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 55
+      m_Bits: 567
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

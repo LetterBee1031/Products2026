@@ -44,3 +44,38 @@
   - $L_{cur} = 回帰モデルの出力結果/4 + 0.5$
 
 - その後$L_{cur}$を0~1の範囲にクリッピング
+
+
+# 視覚探索課題について
+- 論文概要等の実装に関係のない情報は削除してよし
+- 試行回数ではなく，時間制限にて終了する方式に変更
+- 試行は同じ難易度条件ごとにまとめて実施するよう変更
+- 計測データは以下のみにとする．各データの注釈も付与するよう変更
+  - user_id
+  - block_id
+  - difficulty
+  - trial_index
+  - is_practice  
+  - target_present
+  - is_correct
+  - reaction_time_ms
+  - randomSeed
+  - timestamp
+- 保存形式について 
+  - 計測データをRequestSender.csにてサーバに送信
+  - サーバ側はServer2.pyにて送信データを受け取り，保存
+- user_idはRequestSenderで設定されている値を参照
+
+- .unityファイルに許可なく変更は加えない
+- requestSender.cs側で送信時刻をデータに付与
+- server2.py側で受信時刻をデータに付与
+- イベントについて
+  - イベントはrequestSender.csのPostStatusFlag関数を利用し，サーバに送信
+  - イベントは以下のように定義．
+    - Practice
+    - Low
+    - Medium
+    - High
+    - block_end
+  - 各ブロック開始時にPractice，Low，Medium，Highの中から開始されたブロックに対応するイベントを送信
+  - 各ブロック終了時にblock_endを送信

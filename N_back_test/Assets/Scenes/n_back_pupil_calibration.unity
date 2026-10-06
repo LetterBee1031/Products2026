@@ -24195,6 +24195,8 @@ GameObject:
   - component: {fileID: 686141627}
   - component: {fileID: 686141628}
   - component: {fileID: 686141629}
+  - component: {fileID: 686141631}
+  - component: {fileID: 686141630}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -24617,6 +24619,59 @@ MonoBehaviour:
   panelN_back: {fileID: 212718682}
   panelStroop: {fileID: 440158633}
   panelMentalArith: {fileID: 282575105}
+--- !u!114 &686141630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686141610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a2c0b761b844be84e5b04feff475b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VisualSearchStimulusSpawner
+  spawnArea: {fileID: 0}
+  searchOrigin: {fileID: 0}
+  minObjectDistance: 0.3
+  maxPlacementAttempts: 1000
+  stimulusHeight: 0
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  redSpherePrefab: {fileID: 0}
+  redCubePrefab: {fileID: 0}
+  blueSpherePrefab: {fileID: 0}
+--- !u!114 &686141631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686141610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbec6edd6d604d3e9ff050cb5b16a9ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VisualSearchExperimentManager
+  requestSender: {fileID: 686141612}
+  stimulusSpawner: {fileID: 686141630}
+  uiController: {fileID: 0}
+  blockOrder: 00000000010000000200000003000000
+  firstBlockId: 0
+  blockDurationSeconds: 120
+  startOnStart: 0
+  practiceSetSize: 5
+  lowSetSize: 5
+  mediumSetSize: 15
+  highSetSize: 25
+  trialStartDelay: 1
+  blockMessageSeconds: 1
+  practiceFeedbackSeconds: 0.75
+  useRandomSeed: 1
+  randomSeed: 12345
+  answerPresentAction: {fileID: 0}
+  answerAbsentAction: {fileID: 0}
 --- !u!1 &689447433
 GameObject:
   m_ObjectHideFlags: 0
