@@ -59,6 +59,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Button_Trigger_Right",
+                    "type": "Button",
+                    "id": "af520e84-8aee-49f0-80ba-7f5cca268b24",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Trigger_Left",
+                    "type": "Button",
+                    "id": "b97bd3ef-9270-44c9-b451-ac748b457f4d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Grip_Right",
+                    "type": "Button",
+                    "id": "fb6611cb-2143-4a83-97ca-b8aa5406354a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Grip_Left",
+                    "type": "Button",
+                    "id": "4ca38ef5-f423-4492-9e6e-41fa68d53c25",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -125,6 +161,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Stick_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0ea3b90-9113-47d5-bd8e-7194f6813c02",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Trigger_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1e2bd63-d653-440a-a884-62f013030e78",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Trigger_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1904325c-752d-465e-8d34-0aa7b87a5898",
+                    "path": "<XRController>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Grip_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97a6beb0-b15e-4198-b7f4-201f605c8a30",
+                    "path": "<XRController>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Grip_Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

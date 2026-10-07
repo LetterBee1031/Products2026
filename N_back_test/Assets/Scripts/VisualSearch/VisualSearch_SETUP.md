@@ -37,18 +37,35 @@ Input Actionsに`AnswerPresent`（赤い球あり）と`AnswerAbsent`（なし�
 Interactionsは未設定（標準の押下時判定）にしてください。Hold / Release Onlyにすると反応時間の意味が変わります。
 コードに機種固有ボタンはありません。Editor検証用のキーボードBindingもAction側で追加できます。
 
-`Start On Start`をONにするか、UI ButtonのOn Clickから`StartExperiment()`を呼びます。
-Play中のComponentコンテキストメニュー`Start Visual Search`でも開始できます。
+Practice、Low、Medium、High用のUI Buttonを4個用意し、各ButtonのOn Clickへ同じ`VisualSearchExperimentManager`を登録します。
+
+- Practiceボタン：`StartPractice()`
+- Lowボタン：`StartLow()`
+- Mediumボタン：`StartMedium()`
+- Highボタン：`StartHigh()`
+
+ボタンを押すと、選択したブロックだけを実施します。実行中に別の開始ボタンを押しても新しいブロックは始まりません。
 中断は`StopExperiment()`または`Stop Visual Search`です。未回答試行は送信しません。
 回答は刺激提示中の最初の1回だけ採用し、押しっぱなしの入力は両ボタンを離してから受け付けます。
 
 ## 4. ブロック・乱数・時間
 
-既定順はPractice → Low → Medium → High、IDは0 → 1 → 2 → 3です。
-`Block Order`と`First Block Id`で変更可能です。IDは実施順で採番され、難易度とは独立です。
-Set Sizeの既定値はPractice=5、Low=5、Medium=15、High=25。3以上で変更できます。
+ブロックの固定実施順はありません。UI Buttonを押した順に、Practice / Low / Medium / Highを個別に実施します。
+Practiceの`block_id`は0です。Low・Medium・Highは難易度に固定せず、UIボタンから開始した順に1、2、3が割り当てられます。
+例えばHigh → Low → Mediumの順に開始した場合、High=1、Low=2、Medium=3になります。
+同じ条件を再度開始した場合は、その条件へ最初に割り当てた`block_id`を再利用します。
+本番のSet SizeはLow=5、Medium=15、High=25です。3以上で変更できます。
 1ブロック120秒、試行前待機1秒が既定です。ブロック内では刺激数・難易度・制限時間を固定します。
 実験中の設定変更、RequestSenderのUser Id変更、SearchArea移動は避けてください。
+
+練習では次の6条件を、`Practice Repetitions Per Condition`に指定した回数ずつ実施します。
+
+- Set Size 5：Target Present / Target Absent
+- Set Size 15：Target Present / Target Absent
+- Set Size 25：Target Present / Target Absent
+
+既定値1の場合、練習は合計6試行です。値が2なら各条件2回、合計12試行です。
+条件の実施回数を保ったまま、練習内の提示順をランダム化します。練習の終了は時間制限ではなく、全条件の完了で決まります。
 
 制限時間には試行前待機、回答待ち、通信待ち、練習フィードバックを含みます。
 ブロック前後の説明表示は含みません。時間はTime.timeScaleに依存しません。
@@ -60,7 +77,7 @@ Present/Absentは2試行ごとに1回ずつ、順序をランダム化します�
 Presentは赤い球が1個、Absentは0個。残りをRedCube/BlueSphereにできるだけ等分します。
 Distractor数が奇数の場合はどちらを1個多くするかをランダムに決めます。
 `Use Random Seed=true`で指定Seed、falseで実行時Seedを生成します（設計書の意味に合わせています）。
-実際のSeedは全試行に保存します。同一Seed、設定、ブロック順、各ブロックの実施試行数、環境Colliderで条件・配置を再現できます。
+実際のSeedは全試行に保存します。同一Seed、設定、選択したブロック、実施試行数、環境Colliderで条件・配置を再現できます。
 時刻計測はUnityで全刺激を有効化した時点から入力コールバックまでです。HMDの実表示時刻をハードウェア測定するものではありません。
 
 ## 5. 通信・保存
