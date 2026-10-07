@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,12 +28,20 @@ public class VisualSearchExperimentManager : MonoBehaviour
     [SerializeField] private RequestSender requestSender; // 状態通知と試行結果の送信に使用する。
     [SerializeField] private VisualSearchStimulusSpawner stimulusSpawner; // 刺激の生成・表示・削除を行う。
     [SerializeField] private VisualSearchUIController uiController; // 説明・正誤・終了表示。未設定でも課題は動作する。
+    [SerializeField] private NasaTlxManager nasaTlxManager; // 本番ブロック終了後のNASA-TLXを開始する。
+    [SerializeField] private GameObject buttonMoveForQuestion; // NASA-TLX回答画面へ進むUIボタン。
+    [SerializeField] private GameObject panels; // 全てのUIパネルの親．視覚探索課題中に非表示にしておくため
 
     [Header("本番ブロック")]
     [SerializeField, Min(0.01f)] private float blockDurationSeconds = 120f; // 各本番ブロックの制限時間。
     [SerializeField, Min(3)] private int lowSetSize = 5; // Lowの1試行に提示する総刺激数。
     [SerializeField, Min(3)] private int mediumSetSize = 15; // Mediumの1試行に提示する総刺激数。
     [SerializeField, Min(3)] private int highSetSize = 25; // Highの1試行に提示する総刺激数。
+
+    [Header("ブロック時間入力UI")]
+    [SerializeField] private TMP_InputField blockDurationInputField; // Unity空間上で制限時間を入力する欄。
+    [SerializeField] private XRNumericKeyboardInputBinder numericKeyboardInputBinder; // XRNumericKeyboardとの接続を管理する。
+    [SerializeField, Min(0.01f)] private float minBlockDurationSeconds = 1f; // 入力できる最小時間。
 
     [Header("練習ブロック")]
     // 6条件（3つのSet Size × Target有無）を、それぞれ何回実施するか。
@@ -70,6 +80,8 @@ public class VisualSearchExperimentManager : MonoBehaviour
     private int assignedLowBlockId;
     private int assignedMediumBlockId;
     private int assignedHighBlockId;
+    // 完了した本番ブロックのNASA-TLXへ渡すblock_id。Practiceでは設定しない。
+    private string pendingNasaTlxBlockId;
 
     // 各メソッドを対応するUI ButtonのOn Clickへ登録する。
     public void StartPractice() => StartBlock(Difficulty.Practice);
@@ -77,10 +89,36 @@ public class VisualSearchExperimentManager : MonoBehaviour
     public void StartMedium() => StartBlock(Difficulty.Medium);
     public void StartHigh() => StartBlock(Difficulty.High);
 
+    private void Awake()
+    {
+        // StroopManager、MentalArithmeticManagerと同じく、未設定ならシーン内から取得する。
+        if (nasaTlxManager == null)
+        {
+            GameObject eventSystem = GameObject.Find("EventSystem");
+            if (eventSystem != null)
+                nasaTlxManager = eventSystem.GetComponent<NasaTlxManager>();
+        }
+
+        if (nasaTlxManager == null)
+            nasaTlxManager = FindFirstObjectByType<NasaTlxManager>();
+
+        buttonMoveForQuestion?.SetActive(false);
+        SetupDurationInputField();
+    }
+
     private void StartBlock(Difficulty difficulty)
     {
         // 実行中に別のボタンが押されても、新しいブロックは開始しない。
         if (!Application.isPlaying || IsRunning || !isActiveAndEnabled) return;
+
+        // 新しいブロックを開始した場合、前ブロックの未回答NASA-TLXへの遷移情報は破棄する。
+        pendingNasaTlxBlockId = null;
+        buttonMoveForQuestion?.SetActive(false);
+
+        // InputFieldの現在値を確定してからブロックを開始する。
+        SetBlockDuration(blockDurationInputField != null
+            ? blockDurationInputField.text
+            : blockDurationSeconds.ToString(CultureInfo.InvariantCulture));
 
         // Input Actionのperformedイベントで回答時刻を取得する。
         presentInput = answerPresentAction.action;
@@ -93,6 +131,8 @@ public class VisualSearchExperimentManager : MonoBehaviour
         enabledAbsent = !absentInput.enabled;
         if (enabledPresent) presentInput.Enable();
         if (enabledAbsent) absentInput.Enable();
+
+        panels.SetActive(false); // パネル非表示
 
         stopRequested = false;
         IsRunning = true;
@@ -108,6 +148,8 @@ public class VisualSearchExperimentManager : MonoBehaviour
         var generator = new VisualSearchTrialGenerator(useRandomSeed, randomSeed);
         ActualRandomSeed = generator.Seed;
         bool practice = difficulty == Difficulty.Practice;
+        string levelName = difficulty.ToString().ToLowerInvariant();
+        string visualBlockId = "visual_" + blockId.ToString(CultureInfo.InvariantCulture);
 
         // 開始案内の表示後、選択した難易度をStatus Flagとして送信する。
         if (uiController != null) uiController.ShowBlockStart(difficulty.ToString(), blockId);
@@ -115,32 +157,48 @@ public class VisualSearchExperimentManager : MonoBehaviour
 
         if (!stopRequested)
         {
-            yield return requestSender.PostStatusFlag(difficulty.ToString(), blockId.ToString());
+            // 例: visual_low_start / block_id: visual_1
+            yield return requestSender.PostStatusFlag(
+                "visual_" + levelName + "_start",
+                visualBlockId);
 
             // Practiceだけは指定試行数、本番3レベルは制限時間で終了する。
             if (practice)
-                yield return RunPracticeTrials(generator, blockId);
+                yield return RunPracticeTrials(generator, visualBlockId);
             else
-                yield return RunTimedTrials(generator, difficulty, blockId);
+                yield return RunTimedTrials(generator, difficulty, visualBlockId);
 
             // 最後の試行結果を送信してからブロック終了を通知する。
-            yield return requestSender.PostStatusFlag("block_end", blockId.ToString());
+            // 例: visual_low_end / block_id: visual_1
+            yield return requestSender.PostStatusFlag(
+                "visual_" + levelName + "_end",
+                visualBlockId);
         }
 
         // 次のUIボタンから別ブロックを開始できる状態へ戻す。
         stimulusSpawner.ClearStimuli();
         ReleaseInput();
-        IsRunning = false;
 
         if (!stopRequested && uiController != null)
         {
+            panels.SetActive(true); // パネル表示
             uiController.ShowBlockEnd();
             yield return Delay(blockMessageSeconds);
         }
+
+        // 本番ブロックを正常完了した場合だけ、NASA-TLXへ進める状態にする。
+        if (!practice && !stopRequested)
+        {
+            pendingNasaTlxBlockId = visualBlockId;
+            buttonMoveForQuestion?.SetActive(true);
+        }
+
+        // 終了表示とNASA-TLX遷移準備が終わってから、次の開始ボタンを受け付ける。
+        IsRunning = false;
     }
 
     // Set Size 5・15・25 × Target Present・Absentを、それぞれ指定回数実施する。
-    private IEnumerator RunPracticeTrials(VisualSearchTrialGenerator generator, int blockId)
+    private IEnumerator RunPracticeTrials(VisualSearchTrialGenerator generator, string blockId)
     {
         List<PracticeCondition> conditions = CreatePracticeConditions(generator.Random);
 
@@ -157,7 +215,7 @@ public class VisualSearchExperimentManager : MonoBehaviour
     private IEnumerator RunTimedTrials(
         VisualSearchTrialGenerator generator,
         Difficulty difficulty,
-        int blockId)
+        string blockId)
     {
         int trialIndex = 0;
         int setSize = GetSetSize(difficulty);
@@ -178,7 +236,7 @@ public class VisualSearchExperimentManager : MonoBehaviour
 
     private IEnumerator RunTrial(
         VisualSearchTrialGenerator generator,
-        int blockId,
+        string blockId,
         Difficulty difficulty,
         int trialIndex,
         int setSize,
@@ -297,6 +355,80 @@ public class VisualSearchExperimentManager : MonoBehaviour
         return assignedHighBlockId;
     }
 
+    // XRNumericKeyboardのOKまたはInputFieldの編集終了時に、入力した秒数を反映する。
+    public void SetBlockDuration(string inputText)
+    {
+        if (!TryParseFloat(inputText, out float seconds))
+        {
+            // 数値に変換できない場合は現在の設定値をInputFieldへ戻す。
+            SyncDurationInputField();
+            return;
+        }
+
+        blockDurationSeconds = Mathf.Max(minBlockDurationSeconds, seconds);
+        SyncDurationInputField();
+    }
+
+    // StroopManagerと同じ形式で、TMP_InputFieldをXR数値キーボードへ接続する。
+    private void SetupDurationInputField()
+    {
+        blockDurationSeconds = Mathf.Max(minBlockDurationSeconds, blockDurationSeconds);
+        SyncDurationInputField();
+
+        if (blockDurationInputField != null)
+        {
+            blockDurationInputField.contentType = TMP_InputField.ContentType.DecimalNumber;
+            blockDurationInputField.onEndEdit.AddListener(SetBlockDuration);
+        }
+
+        if (numericKeyboardInputBinder == null)
+            numericKeyboardInputBinder = GetComponent<XRNumericKeyboardInputBinder>();
+
+        if (numericKeyboardInputBinder == null)
+            numericKeyboardInputBinder = gameObject.AddComponent<XRNumericKeyboardInputBinder>();
+
+        // blockDurationSecondsはfloatなので、小数点を使用できるキーボードとして登録する。
+        numericKeyboardInputBinder.BindDecimal(blockDurationInputField, SetBlockDuration);
+    }
+
+    private void SyncDurationInputField()
+    {
+        blockDurationInputField?.SetTextWithoutNotify(
+            blockDurationSeconds.ToString("0.###", CultureInfo.InvariantCulture));
+    }
+
+    // 端末の言語設定とピリオド小数の両方を受け付ける。
+    private static bool TryParseFloat(string inputText, out float value)
+    {
+        if (float.TryParse(inputText, NumberStyles.Float, CultureInfo.CurrentCulture, out value))
+            return true;
+
+        return float.TryParse(inputText, NumberStyles.Float, CultureInfo.InvariantCulture, out value);
+    }
+
+    // 本番ブロック終了画面の遷移ボタンから呼び出し、対応するNASA-TLXを開始する。
+    public void MoveToNasaTlxQuestionnaire()
+    {
+        if (string.IsNullOrWhiteSpace(pendingNasaTlxBlockId))
+        {
+            Debug.LogWarning(
+                "VisualSearchExperimentManager: completed block for NASA-TLX is not available.");
+            return;
+        }
+
+        if (nasaTlxManager == null)
+        {
+            Debug.LogError("VisualSearchExperimentManager: NasaTlxManager is not assigned.");
+            return;
+        }
+
+        string blockId = pendingNasaTlxBlockId;
+        pendingNasaTlxBlockId = null;
+        buttonMoveForQuestion?.SetActive(false);
+        if (uiController != null) uiController.Clear();
+        nasaTlxManager.StartQuestionnaire(blockId);
+    }
+
     // Time.timeScaleに依存しない時計で待機する。中断時は待機を打ち切る。
     private IEnumerator Delay(float seconds)
     {
@@ -360,5 +492,14 @@ public class VisualSearchExperimentManager : MonoBehaviour
     {
         StopExperiment();
         ReleaseInput();
+    }
+
+    private void OnDestroy()
+    {
+        // シーン破棄時にイベントを解除し、再生成時の重複登録を防ぐ。
+        blockDurationInputField?.onEndEdit.RemoveListener(SetBlockDuration);
+
+        if (numericKeyboardInputBinder != null)
+            numericKeyboardInputBinder.Unbind(blockDurationInputField);
     }
 }

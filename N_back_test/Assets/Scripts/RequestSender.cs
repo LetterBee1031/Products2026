@@ -13,7 +13,7 @@ using TMPro;
 public class RequestSender : MonoBehaviour
 {
     [Header("FastAPI server base URL")]
-    public string baseUrl = "http://127.0.0.1:8080"; // 送信先URL publicになっててunity側で固定され沼った．注意
+    public string baseUrl = "http://192.168.150.127:8080"; // 送信先URL publicになっててunity側で固定され沼った．注意
 
     [Header("Server URL input UI")]
     public TMP_InputField baseUrlInputField;
@@ -111,7 +111,7 @@ public class RequestSender : MonoBehaviour
     public class VisualSearchLogPost
     {
         public string user_id; // RequestSenderが保持する参加者ID。
-        public int block_id; // 難易度と独立したブロックID。
+        public string block_id; // visual_1のような視覚探索ブロック識別子。
         public string difficulty; // Practice / Low / Medium / High。
         public int trial_index; // ブロック内の試行番号（1始まり）。
         public bool is_practice; // 練習試行かどうか。
@@ -849,7 +849,7 @@ public class RequestSender : MonoBehaviour
     }
 
     // 視覚探索の完了試行を送信する。ManagerはこのIEnumeratorの完了を待つ。
-    public IEnumerator SendVisualSearchResult(int blockId, string difficulty, int trialIndex,
+    public IEnumerator SendVisualSearchResult(string blockId, string difficulty, int trialIndex,
         bool isPractice, bool targetPresent, bool isCorrect, float reactionTimeMs,
         int randomSeed, Action<bool> onComplete = null)
     {

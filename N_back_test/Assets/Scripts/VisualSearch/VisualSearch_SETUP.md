@@ -12,6 +12,8 @@
 | VisualSearch | VisualSearchStimulusSpawner | Spawn Area = 下記BoxCollider、Search Origin = XR Origin配下のMain Camera、3つのPrefab参照 |
 | SearchArea（新規） | BoxCollider | Is Trigger = ON、TransformのScale = (1,1,1)。室内に収まる探索範囲をSizeで設定 |
 | World Space Canvas配下の説明テキスト | TextMeshProUGUI、VisualSearchUIController | Message Text = 同じTextMeshProUGUI。日本語を表示できるFont Assetを使用 |
+| World Space Canvas配下の時間入力欄 | TMP_InputField | VisualSearchExperimentManagerのBlock Duration Input Fieldへ設定 |
+| 本番終了後の遷移ボタン | Button | VisualSearchExperimentManagerのButton Move For Questionへ設定し、On ClickにMoveToNasaTlxQuestionnaireを登録 |
 
 `VisualSearchTrialGenerator`は通常のC#クラスのためComponentとして追加しません。
 RequestSenderは実験終了通知まで有効に保ってください。Managerと別の常時有効なGameObjectへの配置を推奨します。
@@ -28,7 +30,7 @@ RequestSenderは実験終了通知まで有効に保ってください。Manager
 - 刺激の外接球全体が領域内に入るよう境界を縮め、刺激同士の距離も外接球の直径以上に保ちます。Cubeを含む共通の安全距離なので保守的な配置です。
 - Obstacle Layersには壁・床・家具のColliderのLayerを指定し、XRリグ・コントローラ・UIを除外してください。Trigger Colliderは障害物として扱いません。
 - SearchArea全体を室内に置いてください。障害物との接触と、Search Originから刺激までの遮蔽を検査します。壁にColliderがなければ検出できません。
-- Max Placement Attemptsは1刺激につき1000回が既定です。配置できない場合は刺激を部分表示せず、Consoleに警告を出して`block_end`を送信し停止します。刺激数を自動で減らす処理はありません。
+- Max Placement Attemptsは1刺激につき1000回が既定です。配置できない場合は刺激を部分表示せず、Consoleに警告を出して対応する`visual_{試行レベル}_end`を送信し停止します。刺激数を自動で減らす処理はありません。
 
 ## 3. 入力・開始・停止
 
@@ -48,11 +50,25 @@ Practice、Low、Medium、High用のUI Buttonを4個用意し、各ButtonのOn C
 中断は`StopExperiment()`または`Stop Visual Search`です。未回答試行は送信しません。
 回答は刺激提示中の最初の1回だけ採用し、押しっぱなしの入力は両ボタンを離してから受け付けます。
 
-## 4. ブロック・乱数・時間
+時間入力欄を選択すると、`XRNumericKeyboardInputBinder`を介して`XRNumericKeyboard`が表示されます。
+キーボードのOK、またはInputFieldの編集終了時に`blockDurationSeconds`へ反映されます。小数入力も可能です。
+既存の`XRNumericKeyboardInputBinder`をVisualSearchExperimentManagerの`Numeric Keyboard Input Binder`へ設定してください。
+未設定の場合は同じGameObjectから取得し、存在しなければ実行時に追加します。
+
+## 4. NASA-TLXへの遷移
+
+VisualSearchExperimentManagerの`Nasa Tlx Manager`へ、シーン内の既存`NasaTlxManager`を設定します。
+未設定の場合は、StroopManagerやMentalArithmeticManagerと同様にEventSystem上のComponentを探し、その後シーン全体から検索します。
+
+Low・Medium・Highを正常終了すると`Button Move For Question`が表示されます。
+そのボタンのOn Clickから`MoveToNasaTlxQuestionnaire()`を呼ぶと、完了した本番ブロックの`block_id`を渡してNASA-TLXを開始します。
+Practice終了時と中断時にはNASA-TLX遷移ボタンを表示しません。
+
+## 5. ブロック・乱数・時間
 
 ブロックの固定実施順はありません。UI Buttonを押した順に、Practice / Low / Medium / Highを個別に実施します。
-Practiceの`block_id`は0です。Low・Medium・Highは難易度に固定せず、UIボタンから開始した順に1、2、3が割り当てられます。
-例えばHigh → Low → Mediumの順に開始した場合、High=1、Low=2、Medium=3になります。
+Practiceの`block_id`は`visual_0`です。Low・Medium・Highは難易度に固定せず、UIボタンから開始した順に`visual_1`、`visual_2`、`visual_3`が割り当てられます。
+例えばHigh → Low → Mediumの順に開始した場合、High=`visual_1`、Low=`visual_2`、Medium=`visual_3`になります。
 同じ条件を再度開始した場合は、その条件へ最初に割り当てた`block_id`を再利用します。
 本番のSet SizeはLow=5、Medium=15、High=25です。3以上で変更できます。
 1ブロック120秒、試行前待機1秒が既定です。ブロック内では刺激数・難易度・制限時間を固定します。
@@ -80,14 +96,14 @@ Distractor数が奇数の場合はどちらを1個多くするかをランダム
 実際のSeedは全試行に保存します。同一Seed、設定、選択したブロック、実施試行数、環境Colliderで条件・配置を再現できます。
 時刻計測はUnityで全刺激を有効化した時点から入力コールバックまでです。HMDの実表示時刻をハードウェア測定するものではありません。
 
-## 5. 通信・保存
+## 6. 通信・保存
 
 RequestSenderの既存Base URLとUser Idを使います。別の参加者ID設定やローカル結果ファイルは作りません。
 視覚探索の5種類の状態通知だけを使う場合、既存RequestSenderの`Send Start Flag On Start`をOFFにしてください。
 
-1. 開始：既存`PostStatusFlag`でPractice / Low / Medium / HighとブロックIDを送信。
+1. 開始：既存`PostStatusFlag`で`visual_practice_start` / `visual_low_start` / `visual_medium_start` / `visual_high_start`と`visual_{id}`形式のブロックIDを送信。
 2. 回答：`SendVisualSearchResult`で`POST /api/visual_search_log`へ送信。
-3. 終了：最後の結果送信が完了してから`PostStatusFlag("block_end", blockId)`を送信。
+3. 終了：最後の結果送信が完了してから`visual_practice_end` / `visual_low_end` / `visual_medium_end` / `visual_high_end`と同じブロックIDを送信。
 
 Managerでの通信成否判定とエラー表示は省いています。送信処理の完了後は、成功・失敗にかかわらず課題を進めます。
 通信エラーは既存RequestSenderのConsoleログで確認してください。結果送信はRequestSenderの15秒タイムアウト、状態通知は既定のタイムアウトなしを使います。
@@ -100,9 +116,9 @@ Managerを無効化した場合も、RequestSenderが有効なら進行中の結
 `sent_at`は既存RequestSenderと同じ`DateTime.Now.ToString()`、`received_at`はサーバ生成の日本時間ISO 8601です。
 クライアントが`received_at`を送ると422で拒否します。状態イベントは既存`status_events.jsonl`へ別に保存されます。
 
-## 6. 確認
+## 7. 確認
 
 - サーバ自動テスト：リポジトリ直下から`venv\Scripts\python.exe -m unittest Server.test_visual_search -v`。
 - Unityでは3つのPrefab、探索領域、Action参照を設定してPlayし、各刺激数と赤い球の有無、正誤・反応時間、練習表示を確認してください。
-- 短いブロック時間を設定しても提示中の刺激が消えず、回答後に結果→block_endの順で保存されることを確認してください。
+- 短いブロック時間を設定しても提示中の刺激が消えず、回答後に結果→`visual_{試行レベル}_end`の順で保存されることを確認してください。
 - 高密度の領域や壁付近で配置エラーになること、押しっぱなし・連打・中断で余計な試行結果が保存されないことを確認してください。

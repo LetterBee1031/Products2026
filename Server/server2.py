@@ -183,7 +183,7 @@ class MentalArithmeticLogPost(BaseModel):
 class VisualSearchLogPost(BaseModel):
     model_config = ConfigDict(extra="forbid")
     user_id: str = Field(min_length=1)  # 既存RequestSenderの参加者ID。
-    block_id: int = Field(ge=0, strict=True)  # 難易度とは独立したID。
+    block_id: str = Field(pattern=r"^visual_[0-9]+$")  # visual_1等の視覚探索ブロックID。
     difficulty: Literal["Practice", "Low", "Medium", "High"]
     trial_index: int = Field(ge=1, strict=True)  # ブロック内で1始まり。
     is_practice: bool = Field(strict=True)

@@ -42,14 +42,16 @@ class VisualSearchApiTests(unittest.TestCase):
         self.patch.start()
         self.addCleanup(self.patch.stop)
         self.payload = {
-            "user_id": "test_01", "block_id": 7, "difficulty": "High",
+            "user_id": "test_01", "block_id": "visual_1", "difficulty": "High",
             "trial_index": 1, "is_practice": False, "target_present": True,
             "is_correct": False, "reaction_time_ms": 321.25,
             "randomSeed": -12345, "sent_at": "2026/10/06 17:42:31",
         }
 
     def test_complete_trials_are_appended_with_server_time(self):
-        for difficulty, block_id, present in [("High", 7, True), ("Practice", 9, False)]:
+        for difficulty, block_id, present in [
+            ("High", "visual_1", True), ("Practice", "visual_0", False)
+        ]:
             payload = dict(self.payload, difficulty=difficulty, block_id=block_id,
                            is_practice=difficulty == "Practice", target_present=present)
             status, result = asyncio.run(post_json(payload))
@@ -58,6 +60,8 @@ class VisualSearchApiTests(unittest.TestCase):
         records = [json.loads(line) for line in
                    (self.data_dir / "visual_search_log_test_01.jsonl").read_text().splitlines()]
         self.assertEqual(2, len(records))
+        self.assertEqual("visual_1", records[0]["block_id"])
+        self.assertEqual("visual_0", records[1]["block_id"])
         self.assertEqual(321.25, records[0]["reaction_time_ms"])
         self.assertEqual(-12345, records[0]["randomSeed"])
         self.assertEqual(self.payload["sent_at"], records[0]["sent_at"])
@@ -70,7 +74,8 @@ class VisualSearchApiTests(unittest.TestCase):
         invalid = [
             {"received_at": "client-supplied"}, {"difficulty": "Unknown"},
             {"is_practice": True}, {"trial_index": 0}, {"trial_index": 1.5},
-            {"block_id": -1}, {"reaction_time_ms": -0.1},
+            {"block_id": "1"}, {"block_id": "visual_low"},
+            {"block_id": "visual_-1"}, {"reaction_time_ms": -0.1},
             {"reaction_time_ms": "NaN"}, {"reaction_time_ms": "Infinity"},
             {"randomSeed": 2**31}, {"user_id": " "}, {"sent_at": " "},
             {"is_correct": "true"},
