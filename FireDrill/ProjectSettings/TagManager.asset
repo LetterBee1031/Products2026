@@ -53,6 +53,9 @@ TagManager:
   - name: extinguisher
     uniqueID: 3168970477
     locked: 0
+  - name: FrontUI
+    uniqueID: 1774159691
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1

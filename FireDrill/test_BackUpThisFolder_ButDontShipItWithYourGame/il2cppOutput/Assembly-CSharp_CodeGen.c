@@ -7,6 +7,9 @@
 
 
 
+extern void ExtinguisherLiftDetector_Update_mDEF6B5CC118915145F2FF7EAE5D93DF170C5515D (void);
+extern void ExtinguisherLiftDetector_IsLifted_m5F9A252943DEC4A4B83407708923286390FCDAE2 (void);
+extern void ExtinguisherLiftDetector__ctor_mBCB51055F2F286C18C1CB9ECB89F73738FE4EE57 (void);
 extern void ExtinguishingAgent_Start_m4D06837E921BF1FAEEDCFF75462C01FA616BD17C (void);
 extern void ExtinguishingAgent_Update_m9004914DCB9463F29FDBBF0630423E3102286D47 (void);
 extern void ExtinguishingAgent_OnEnable_mF9AC7B0F2CE5355076F073006187FB52E386C31F (void);
@@ -42,10 +45,22 @@ extern void FireHitBox_HitExtinguishingAgent_m9849D5DCC81FDA6B8DF20181AA636C4001
 extern void FireHitBox_UpdateFireAppearance_mBF3D57383F3677A565CFF84991644071513C4C4E (void);
 extern void FireHitBox_Extinguish_m60E8A627AF4BEBB3EFC0B1A640AC2A795F4BF787 (void);
 extern void FireHitBox__ctor_mE43C87B8A3B03F666FD7C14BAC4330B98DB9747E (void);
+extern void FirePlacementController_Start_m43E10576D82A459AC79F94B2FDBCCEFCAE754ED2 (void);
+extern void FirePlacementController_Update_mCDFD9663552A8024A7D628D082375C5BD162D04A (void);
+extern void FirePlacementController_OnDestroy_mA124DEE2A2C7ED0B9560EF5A70AC03593BD879FE (void);
+extern void FirePlacementController_UpdatePointer_mB2B1D423FC63127FF4F9F194B249700198DEF87F (void);
+extern void FirePlacementController_OnPlaceFire_mDE6BAF2F46307DA0D7630CB6733752C10B0793DE (void);
+extern void FirePlacementController_SpawnFire_m4DF425677AE17B108542C23D4D68E403A36A0DCA (void);
+extern void FirePlacementController__ctor_m68832F671ECE25020CF6DEA81E9C8B61D52919E0 (void);
 extern void FogDescendController_Start_mA0E04687309ED129E63EF1AECC56BE799890C474 (void);
 extern void FogDescendController_Update_m0989398229194CC43926E135E3BDEBA21661AB41 (void);
 extern void FogDescendController_UpdateFogArea_mE690E2C034F432A67C869F41D2031AD34B98D011 (void);
 extern void FogDescendController__ctor_m1C8689DD858479B7AAC6D72A80BF6DA53AEACC72 (void);
+extern void FrontUiManager_Start_m37A2D6440D056396A324BF8DB5F733DCB2C208C2 (void);
+extern void FrontUiManager_Update_mB18AFAD74698BC96B23A805E1BAFA7A6DD44EE37 (void);
+extern void FrontUiManager_changeFrontUiTitle_mE63DE528A64C533C538B8AD26F3ADCDC9C631D41 (void);
+extern void FrontUiManager_changeFrontUiMainText_m806B1E93F1265C3DF77909E22193149560CF87E2 (void);
+extern void FrontUiManager__ctor_m0EAE1C59C76DBB89A23994D674FFDC390F3A8CF8 (void);
 extern void XRInputReader_Awake_mDE1CBC1643BB43792DDBD1AD35C41890CE436762 (void);
 extern void XRInputReader_OnEnable_m21FB42CDFCAF6C46F5DB24BC80B877EAAB9FD11F (void);
 extern void XRInputReader_OnDisable_m34A676A6BC5D0FC4EC398A482B0492E0BF9551CF (void);
@@ -198,8 +213,11 @@ extern void XRPokeFollowAffordanceFill_OnTransformTweenableVariableUpdated_m8B3C
 extern void XRPokeFollowAffordanceFill_OnPokeStrengthChanged_m480B681A9BE7B6C71724392FC3368A029EA4CED6 (void);
 extern void XRPokeFollowAffordanceFill_OnPokeStateDataUpdated_m6233708D9CEEA9A7920B821FDBD306F4D7CBFAE6 (void);
 extern void XRPokeFollowAffordanceFill__ctor_mAED1746F6E90C5676967671BFBB11E3B7C6B1E98 (void);
-static Il2CppMethodPointer s_methodPointers[191] = 
+static Il2CppMethodPointer s_methodPointers[206] = 
 {
+	ExtinguisherLiftDetector_Update_mDEF6B5CC118915145F2FF7EAE5D93DF170C5515D,
+	ExtinguisherLiftDetector_IsLifted_m5F9A252943DEC4A4B83407708923286390FCDAE2,
+	ExtinguisherLiftDetector__ctor_mBCB51055F2F286C18C1CB9ECB89F73738FE4EE57,
 	ExtinguishingAgent_Start_m4D06837E921BF1FAEEDCFF75462C01FA616BD17C,
 	ExtinguishingAgent_Update_m9004914DCB9463F29FDBBF0630423E3102286D47,
 	ExtinguishingAgent_OnEnable_mF9AC7B0F2CE5355076F073006187FB52E386C31F,
@@ -235,10 +253,22 @@ static Il2CppMethodPointer s_methodPointers[191] =
 	FireHitBox_UpdateFireAppearance_mBF3D57383F3677A565CFF84991644071513C4C4E,
 	FireHitBox_Extinguish_m60E8A627AF4BEBB3EFC0B1A640AC2A795F4BF787,
 	FireHitBox__ctor_mE43C87B8A3B03F666FD7C14BAC4330B98DB9747E,
+	FirePlacementController_Start_m43E10576D82A459AC79F94B2FDBCCEFCAE754ED2,
+	FirePlacementController_Update_mCDFD9663552A8024A7D628D082375C5BD162D04A,
+	FirePlacementController_OnDestroy_mA124DEE2A2C7ED0B9560EF5A70AC03593BD879FE,
+	FirePlacementController_UpdatePointer_mB2B1D423FC63127FF4F9F194B249700198DEF87F,
+	FirePlacementController_OnPlaceFire_mDE6BAF2F46307DA0D7630CB6733752C10B0793DE,
+	FirePlacementController_SpawnFire_m4DF425677AE17B108542C23D4D68E403A36A0DCA,
+	FirePlacementController__ctor_m68832F671ECE25020CF6DEA81E9C8B61D52919E0,
 	FogDescendController_Start_mA0E04687309ED129E63EF1AECC56BE799890C474,
 	FogDescendController_Update_m0989398229194CC43926E135E3BDEBA21661AB41,
 	FogDescendController_UpdateFogArea_mE690E2C034F432A67C869F41D2031AD34B98D011,
 	FogDescendController__ctor_m1C8689DD858479B7AAC6D72A80BF6DA53AEACC72,
+	FrontUiManager_Start_m37A2D6440D056396A324BF8DB5F733DCB2C208C2,
+	FrontUiManager_Update_mB18AFAD74698BC96B23A805E1BAFA7A6DD44EE37,
+	FrontUiManager_changeFrontUiTitle_mE63DE528A64C533C538B8AD26F3ADCDC9C631D41,
+	FrontUiManager_changeFrontUiMainText_m806B1E93F1265C3DF77909E22193149560CF87E2,
+	FrontUiManager__ctor_m0EAE1C59C76DBB89A23994D674FFDC390F3A8CF8,
 	XRInputReader_Awake_mDE1CBC1643BB43792DDBD1AD35C41890CE436762,
 	XRInputReader_OnEnable_m21FB42CDFCAF6C46F5DB24BC80B877EAAB9FD11F,
 	XRInputReader_OnDisable_m34A676A6BC5D0FC4EC398A482B0492E0BF9551CF,
@@ -398,13 +428,16 @@ extern void TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F03
 extern void TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[4] = 
 {
-	{ 0x060000A3, TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030BDAEF40D569F06C8_AdjustorThunk },
-	{ 0x060000A4, TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425_AdjustorThunk },
-	{ 0x060000A5, TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E_AdjustorThunk },
-	{ 0x060000A6, TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk },
+	{ 0x060000B2, TrackedRotation_get_totalOffset_mC129829FFE6CDD96C8885030BDAEF40D569F06C8_AdjustorThunk },
+	{ 0x060000B3, TrackedRotation_Reset_m54545DE2D01827833956AEC4324C136A0CB72425_AdjustorThunk },
+	{ 0x060000B4, TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E_AdjustorThunk },
+	{ 0x060000B5, TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[191] = 
+static const int32_t s_InvokerIndices[206] = 
 {
+	18792,
+	18342,
+	18792,
 	18792,
 	18792,
 	18792,
@@ -442,7 +475,19 @@ static const int32_t s_InvokerIndices[191] =
 	18792,
 	18792,
 	18792,
+	18792,
+	18792,
+	14709,
+	18792,
+	18792,
+	18792,
+	18792,
 	14356,
+	18792,
+	18792,
+	18792,
+	14249,
+	14249,
 	18792,
 	18792,
 	18792,
@@ -601,7 +646,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	191,
+	206,
 	s_methodPointers,
 	4,
 	s_adjustorThunks,

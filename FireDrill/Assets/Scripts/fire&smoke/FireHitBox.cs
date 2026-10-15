@@ -8,6 +8,7 @@ public class FireHitBox : MonoBehaviour
     [SerializeField] private float gravityCoeff = -0.2f;       // 重力係数: 炎のパーティクルにかかる重力の係数．炎の上昇速度を決定している
     [SerializeField] private GameObject[] fireParticlesObjects = new GameObject[4];
     [SerializeField] private Transform fireHitBoxTrans = null;
+    [SerializeField] private FrontUiManager frontUiManager;
 
     [SerializeField] private ParticleSystem.MainModule[] fireParticlesMain = new ParticleSystem.MainModule[4]; // 
 
@@ -104,6 +105,8 @@ public class FireHitBox : MonoBehaviour
         // オブジェクトを無効化する前に、以後の成長・消火処理を禁止する。
         extinguished = true;
         Debug.Log(gameObject.name + " 消火完了");
+        frontUiManager.changeFrontUiTitle("消火完了！");
+        frontUiManager.changeFrontUiMainText("消火ができました\n低い姿勢で避難してください");
 
         // 仮処理として炎全体を非表示
         transform.parent.gameObject.SetActive(false);
