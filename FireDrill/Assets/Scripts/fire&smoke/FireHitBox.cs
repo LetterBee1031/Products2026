@@ -26,6 +26,11 @@ public class FireHitBox : MonoBehaviour
             fireHitBoxTrans = GetComponent<Transform>();
         }
 
+        if (frontUiManager == null)
+        {
+            frontUiManager = GameObject.Find("/EventSystem").GetComponent<FrontUiManager>();
+        }
+
         initialHitBoxSize = fireHitBoxTrans.localScale;
         // Inspectorに登録された炎の数に合わせて、操作用の配列を確保する。
         fireParticlesMain = new ParticleSystem.MainModule[fireParticlesObjects.Length];

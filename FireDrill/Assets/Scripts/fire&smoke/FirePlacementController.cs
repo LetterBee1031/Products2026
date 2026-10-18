@@ -38,7 +38,7 @@ public class FirePlacementController : MonoBehaviour
         if (placementMarker != null)
             placementMarker.SetActive(false);
 
-        // Aボタンが押されたときにOnPlaceFireを呼び出す
+        // Xボタンが押されたときにOnPlaceFireを呼び出す
         inputReader.buttonX.performed += OnPlaceFire;
 
         initialized = true;
