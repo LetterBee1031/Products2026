@@ -60,35 +60,34 @@ USER_PROFILE_PATH = DATA_DIR / "user_profile.csv"
 # サーバ起動時に初期化し、どのAPIから交渉を始めてもCSVの設定を利用できるようにする。
 load_user_profiles(USER_PROFILE_PATH)
 
-# Galaxy Watchから送られるHR/IBI/EDAをまとめて受け取るためのデータ形式
+# Galaxy Watchから送られる心拍データの受信形式
 class BiodataPost(BaseModel):
     user_id: str = Field(
         default="01",
         validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
     )
     hr: int = Field(ge=0)
-    ibi: List[int] = Field(default_factory=list)
-    eda: Optional[float] = None
+    # ibi: List[int] = Field(default_factory=list)
+    # eda: Optional[float] = None
     sentAt: str
-    timestamp: Optional[int] = None
-    deviceIp: Optional[str] = None
+    # timestamp: Optional[int] = None
+    # deviceIp: Optional[str] = None
 
 # Unit環境から視線データを送るためのやつ
 class EyedataPost(BaseModel):
     user_id: str = Field(
         default="01",
         validation_alias=AliasChoices("user_id", "userId", "userID", "id", "participant_id"),
-    )
-    pupilDiaMeanRaw: float
-    pupilDiaMeanSmoothed: float
-
-    predictedPupilMm: float
-    tepr: float
-    luminanceY: float
-
+    )    
+    pupilDiaMeanSmoothed: float    
+    tepr: float 
     sentAt: str
-    timestamp: int
-    deviceIp: str
+    # deviceIp: str
+
+    # pupilDiaMeanRaw: float
+    # predictedPupilMm: float
+    # luminanceY: float
+    # timestamp: int
 
 
 # PLRキャリブレーションデータ1サンプル
@@ -106,7 +105,7 @@ class PLRFitRequest(BaseModel):
     )
     sentAt: Optional[str] = None
     timestamp: Optional[int] = None
-    deviceIp: Optional[str] = None
+    # deviceIp: Optional[str] = None
     samples: List[PLRCalibrationSample]
 
 # Unityへ返すPLRモデル推定結果
@@ -153,7 +152,7 @@ class StroopLogPost(BaseModel):
     result: str
     sent_at: Optional[str] = None
     timestamp: Optional[int] = None
-    deviceIp: Optional[str] = None
+    # deviceIp: Optional[str] = None
 
 # UnityのMentalArithmeticManagerから送られる1試行分のログ。
 class MentalArithmeticLogPost(BaseModel):
@@ -176,7 +175,7 @@ class MentalArithmeticLogPost(BaseModel):
     trial_timestamp: str
     sent_at: Optional[str] = None
     timestamp: Optional[int] = None
-    deviceIp: Optional[str] = None
+    # deviceIp: Optional[str] = None
 
 
 # 視覚探索の完了試行。受信日時の持ち込みを含む余分なキーは拒否する。
@@ -219,7 +218,7 @@ class NASATLXPost(BaseModel):
     frustration: float
     sent_at: Optional[str] = None
     timestamp: Optional[int] = None
-    deviceIp: Optional[str] = None
+    # deviceIp: Optional[str] = None
 
 def normalize_user_id(user_id: str) -> str:
     safe_id = re.sub(r"[^0-9A-Za-z_-]", "_", user_id.strip())
@@ -308,7 +307,7 @@ def append_nasa_tlx_record_by_user(record: dict) -> None:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
-# /api/hr の保存形式を拡張し、EDA・端末時刻・端末IPも同じjsonlに記録する
+# 心拍データをJSONLに記録する（IBI・EDA・端末Unix時刻・端末IPは無効化）。
 @app.post("/api/Biodata")
 async def receive_biodata(payload: List[BiodataPost], request: Request):
     client_host = request.client.host if request.client else "unknown"
@@ -317,7 +316,7 @@ async def receive_biodata(payload: List[BiodataPost], request: Request):
     records = []
     for item in payload:
         user_id = normalize_user_id(item.user_id)
-        # client_hostはHTTP接続元、device_ipは時計側が自己申告したIPとして両方残す
+        # Store the HTTP client_host; device_ip reception and storage are disabled.
         records.append({
             "user_id": user_id,
             "ex_status": user_status.get(user_id, user_status["01"]).ex_status,
@@ -325,12 +324,12 @@ async def receive_biodata(payload: List[BiodataPost], request: Request):
             "sent_at": item.sentAt,
             "received_at": received_at,
             "client_host": client_host,
-            "device_ip": item.deviceIp,
-            "timestamp": item.timestamp,
+            # "device_ip": item.deviceIp,
+            # "timestamp": item.timestamp,
             "hr": item.hr,
             # IBIは仕様上0〜4個なので、過剰な値が来ても保存時に丸める
-            "ibi": item.ibi[:MAX_IBI_PER_RECORD],
-            "eda": item.eda,
+            # "ibi": item.ibi[:MAX_IBI_PER_RECORD],
+            # "eda": item.eda,
         })
     append_records_by_user(records)
 
@@ -352,15 +351,16 @@ async def receive_eyedata(payload: List[EyedataPost], request: Request):
             "sent_at": item.sentAt,
             "received_at": received_at,
             "client_host": client_host,
-            "device_ip": item.deviceIp,
-            "timestamp": item.timestamp,
+            # "device_ip": item.deviceIp,
+            "pupilDiaMeanSmoothed": item.pupilDiaMeanSmoothed,
+            "tepr": item.tepr,
+            
+            # "timestamp": item.timestamp,
             # "pupilDiaLeft": item.pupilDiaLeft,
             # "pupilDiaRight": item.pupilDiaRight,
-            "pupilDiaMeanRaw": item.pupilDiaMeanRaw,
-            "pupilDiaMeanSmoothed": item.pupilDiaMeanSmoothed,
-            "predictedPupilMm": item.predictedPupilMm,
-            "tepr": item.tepr,
-            "luminanceY_cam": item.luminanceY
+            # "pupilDiaMeanRaw": item.pupilDiaMeanRaw,            
+            #"predictedPupilMm": item.predictedPupilMm,            
+            #"luminanceY_cam": item.luminanceY
         })
     append_eye_records_by_user(records)
 
@@ -391,7 +391,7 @@ async def receive_stroop_log(payload: StroopLogPost, request: Request):
         "received_at": received_at,
         "timestamp": payload.timestamp,
         "client_host": client_host,
-        "device_ip": payload.deviceIp,
+        # "device_ip": payload.deviceIp,
     }
     append_stroop_record_by_user(record)
 
@@ -430,7 +430,7 @@ async def receive_mental_arithmetic_log(
         "received_at": received_at,
         "timestamp": payload.timestamp,
         "client_host": client_host,
-        "device_ip": payload.deviceIp,
+        # "device_ip": payload.deviceIp,
     }
     append_mental_arithmetic_record_by_user(record)
 
@@ -503,7 +503,7 @@ async def receive_nasa_tlx(payload: NASATLXPost, request: Request, mode: str = "
         "received_at": received_at,
         "timestamp": payload.timestamp,
         "client_host": client_host,
-        "device_ip": payload.deviceIp,
+        # "device_ip": payload.deviceIp,
     }
 
     append_nasa_tlx_record_by_user(record)
@@ -533,7 +533,7 @@ async def fit_plr(payload: PLRFitRequest, request: Request):
         "sent_at": payload.sentAt,
         "received_at": received_at,
         "client_host": client_host,
-        "device_ip": payload.deviceIp,
+        # "device_ip": payload.deviceIp,
         "timestamp": payload.timestamp,
         "samples": samples,
     }
@@ -706,7 +706,11 @@ async def read_ex_status(user_id: Optional[str] = None, id: Optional[str] = None
 
 # 体験者の認知負荷推定値の取得と交渉のパス
 @app.get("/api/cl_condition_get")
-async def read_cl_condition(user_id: Optional[str] = None, id: Optional[str] = None):
+async def read_cl_condition(
+    user_id: Optional[str] = None,
+    id: Optional[str] = None,
+    enable_negotiation: bool = True,
+):
     resolved_user_id = resolve_query_user_id(user_id, id)
     if resolved_user_id not in user_status:
         raise HTTPException(status_code=404, detail="unknown id")
@@ -726,7 +730,8 @@ async def read_cl_condition(user_id: Optional[str] = None, id: Optional[str] = N
     user_status[resolved_user_id].cl_condition = str(current_load)
 
     negotiation_result = None
-    negotiation_triggered = (
+    # false指定時は、推定値に関わらず交渉を実行しない。
+    negotiation_triggered = enable_negotiation and (
         current_load < NEGOTIATION_LOAD_LOW
         or current_load > NEGOTIATION_LOAD_HIGH
     )
@@ -740,6 +745,7 @@ async def read_cl_condition(user_id: Optional[str] = None, id: Optional[str] = N
         **result,
         "L_cur": current_load,
         "L_cur_raw": float(result["L_cur_raw"]),
+        "negotiation_enabled": enable_negotiation,
         "negotiation_triggered": negotiation_triggered,
     }
     append_cognitive_load_record_by_user(prediction_record)
@@ -760,6 +766,7 @@ async def read_cl_condition(user_id: Optional[str] = None, id: Optional[str] = N
         "L_cur_raw": float(result["L_cur_raw"]),
         "ml_result": result,
         "issue_settings": user_status[resolved_user_id].issue_settings,
+        "negotiation_enabled": enable_negotiation,
         "negotiation_triggered": negotiation_triggered,
         "negotiation": (
             negotiation_result.to_dict() if negotiation_result is not None else None

@@ -26,6 +26,14 @@ public class RequestSender : MonoBehaviour
     public TMP_InputField userIdInputField;
     public XRNumericKeyboardInputBinder numericKeyboardInputBinder;
 
+    [Header("Cognitive load negotiation")]
+    [Tooltip("認知負荷取得時に交渉を許可する。変更は次のリクエストから反映されます。")]
+    public bool enableNegotiation = true;
+
+    [Header("Cognitive load training UI")]
+    [Tooltip("学習中・成功・失敗を表示するTextMeshProテキストを割り当てます。")]
+    public TMP_Text trainingStatusText;
+
     private const string BaseUrlPrefsKey = "RequestSender.BaseUrl";
 
     // Eye data is sampled more frequently than it is posted. Keep unsent
@@ -52,17 +60,15 @@ public class RequestSender : MonoBehaviour
     public class EyeDataPost
     {
         public string user_id;
-
-        public float pupilDiaMeanRaw;
         public float pupilDiaMeanSmoothed;
-
-        public float predictedPupilMm;
         public float tepr;
-        public float luminanceY;
-
         public string sentAt;
-        public long timestamp;
-        public string deviceIp;
+
+        // public float pupilDiaMeanRaw;
+        // public float predictedPupilMm;
+        // public float luminanceY;
+        // public long timestamp;
+        // public string deviceIp;
     }
 
     [Serializable]
@@ -80,7 +86,7 @@ public class RequestSender : MonoBehaviour
         public string result;
         public string sent_at;
         public long timestamp;
-        public string deviceIp;
+        // public string deviceIp;
     }
 
     [Serializable]
@@ -103,7 +109,7 @@ public class RequestSender : MonoBehaviour
         public string trial_timestamp;
         public string sent_at;
         public long timestamp;
-        public string deviceIp;
+        // public string deviceIp;
     }
 
 
@@ -143,7 +149,7 @@ public class RequestSender : MonoBehaviour
         // 送信時刻・デバイス情報（サーバ側でも保存されます）
         public string sent_at;
         public long timestamp;
-        public string deviceIp;
+        // public string deviceIp;
     }
 
 
@@ -166,7 +172,7 @@ public class RequestSender : MonoBehaviour
         public string user_id;
         public string sentAt;
         public long timestamp;
-        public string deviceIp;
+        // public string deviceIp;
         public List<PLRCalibrationSample> samples = new List<PLRCalibrationSample>();
     }
 
@@ -553,7 +559,20 @@ public class RequestSender : MonoBehaviour
         ));
     }
 
-    public void StartAlnalyzeCLCondition(bool flag)
+    // UI ButtonのOnClickでbool値を指定するか、ToggleのOnValueChangedから呼び出す。
+    public void SetNegotiationEnabled(bool enabled)
+    {
+        enableNegotiation = enabled;
+        Debug.Log($"Cognitive load negotiation: {(enabled ? "enabled" : "disabled")} (from next request)");
+    }
+
+    // 1つのUI Buttonで有効・無効を交互に切り替える場合に使用する。
+    public void ToggleNegotiationEnabled()
+    {
+        SetNegotiationEnabled(!enableNegotiation);
+    }
+
+    public void StartAnalyzeCLCondition(bool flag)
     {
         // if (flag)
         // {
@@ -718,14 +737,10 @@ public class RequestSender : MonoBehaviour
         return new EyeDataPost
         {
             user_id = userId,
-            pupilDiaMeanRaw = pupilDiaMeanRaw,
             pupilDiaMeanSmoothed = pupilDiaMeanSmoothed,
-            predictedPupilMm = predictedPupilMm,
             tepr = tepr,
-            luminanceY = luminanceY,
             sentAt = DateTime.Now.ToString(),
-            timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
-            deviceIp = GetCachedDeviceIpAddress()
+            // deviceIp = GetCachedDeviceIpAddress()
         };
     }
 
@@ -815,7 +830,7 @@ public class RequestSender : MonoBehaviour
             result = result,
             sent_at = DateTime.Now.ToString(),
             timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
-            deviceIp = GetDeviceIpAddress()
+            // deviceIp = GetDeviceIpAddress()
         };
 
         string json = JsonConvert.SerializeObject(payload);
@@ -923,7 +938,7 @@ public class RequestSender : MonoBehaviour
             trial_timestamp = trialTimestamp,
             sent_at = DateTime.Now.ToString(),
             timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
-            deviceIp = GetDeviceIpAddress()
+            // deviceIp = GetDeviceIpAddress()
         };
 
         string json = JsonConvert.SerializeObject(payload);
@@ -1030,7 +1045,7 @@ public class RequestSender : MonoBehaviour
             // sent_at は人間可読の時刻、timestamp はミリ秒Unix時刻を入れる
             sent_at = DateTime.Now.ToString(),
             timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
-            deviceIp = GetDeviceIpAddress()
+            // deviceIp = GetDeviceIpAddress()
         };
 
         // JSON にシリアライズして送信する
@@ -1098,7 +1113,7 @@ public class RequestSender : MonoBehaviour
             user_id = userId,
             sentAt = DateTime.Now.ToString(),
             timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
-            deviceIp = GetDeviceIpAddress(),
+            // deviceIp = GetDeviceIpAddress(),
             samples = calibrationSamples
         };
 
@@ -1204,6 +1219,20 @@ public class RequestSender : MonoBehaviour
         }
     }
 
+    // UI ButtonのOnClickから学習を開始する。
+    public void StartCognitiveLoadTraining()
+    {
+        StartCoroutine(GetAnalyzeHrSave());
+    }
+
+    private void SetTrainingStatus(string message)
+    {
+        if (trainingStatusText != null)
+        {
+            trainingStatusText.text = message;
+        }
+    }
+
     // user_idを指定して、サーバー側で心拍解析モデルの学習・保存を実行する
     public IEnumerator GetAnalyzeHrSave()
     {
@@ -1211,6 +1240,7 @@ public class RequestSender : MonoBehaviour
         if (string.IsNullOrEmpty(safeUserId))
         {
             Debug.LogWarning("ANALYZE_HR_SET_THRESHOLD was not sent because userId is empty.");
+            SetTrainingStatus("学習失敗：被験者ID未入力");
             yield break;
         }
 
@@ -1222,6 +1252,7 @@ public class RequestSender : MonoBehaviour
         using (var req = UnityWebRequest.Get(url))
         {
             Debug.Log($"ANALYZE_HR_SET_THRESHOLD url=[{url}]");
+            SetTrainingStatus($"学習中…（被験者ID：{safeUserId}）");
 
             yield return req.SendWebRequest();
 
@@ -1236,6 +1267,7 @@ public class RequestSender : MonoBehaviour
                 Debug.LogWarning(
                     $"ANALYZE_HR_SET_THRESHOLD failed: code={req.responseCode}, " +
                     $"err={req.error}, body={req.downloadHandler.text}");
+                SetTrainingStatus("学習失敗：通信に失敗");
                 yield break;
             }
 
@@ -1250,6 +1282,7 @@ public class RequestSender : MonoBehaviour
                 Debug.LogWarning(
                     $"ANALYZE_HR_SET_THRESHOLD response parse failed: " +
                     $"error={exception.Message}, body={req.downloadHandler.text}");
+                SetTrainingStatus("学習失敗：応答読み取り失敗");
                 yield break;
             }
 
@@ -1257,6 +1290,7 @@ public class RequestSender : MonoBehaviour
             {
                 Debug.LogWarning(
                     $"ANALYZE_HR_SET_THRESHOLD response was empty: body={req.downloadHandler.text}");
+                SetTrainingStatus("学習失敗：結果返答なし");
                 yield break;
             }
 
@@ -1266,12 +1300,15 @@ public class RequestSender : MonoBehaviour
                 Debug.LogWarning(
                     $"ANALYZE_HR_SET_THRESHOLD server returned ok=false: " +
                     $"user_id={resp.user_id}, error={resp.error}, body={req.downloadHandler.text}");
+                SetTrainingStatus("学習失敗：学習失敗");
                 yield break;
             }
 
             Debug.Log(
                 $"ANALYZE_HR_SET_THRESHOLD ok: user_id={resp.user_id}, " +
                 $"rows={resp.rows}, message={resp.message}");
+            // SetTrainingStatus($"学習成功（被験者ID：{resp.user_id}、学習データ数：{resp.rows}）");
+            SetTrainingStatus($"学習成功（被験者ID：{resp.user_id}）");
         }
     }
 
@@ -1298,7 +1335,8 @@ public class RequestSender : MonoBehaviour
     {
         isCLRequestRunning = true;
         string safeBase = GetSafeBaseUrl();
-        string url = safeBase + "/api/cl_condition_get?user_id=" + UnityWebRequest.EscapeURL(userId);
+        string url = safeBase + "/api/cl_condition_get?user_id=" + UnityWebRequest.EscapeURL(userId)
+            + "&enable_negotiation=" + (enableNegotiation ? "true" : "false");
 
         using (var req = UnityWebRequest.Get(url))
         {

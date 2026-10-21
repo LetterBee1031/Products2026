@@ -25,6 +25,7 @@ public class PLRCorrectionSample : MonoBehaviour
     public Renderer[] quads_eye_calibration = new Renderer[7];
     public GameObject canvas_N_back;
     public GameObject directionalLight;
+    public GameObject visualSearchParent;
     
     // 状態表示用UI
     public TextMeshProUGUI statusText;
@@ -296,6 +297,7 @@ public class PLRCorrectionSample : MonoBehaviour
     {
         canvas_N_back.SetActive(false);
         directionalLight.SetActive(false);
+        visualSearchParent.SetActive(false);
         quads_eye_calibration[0].gameObject.SetActive(true);
         StartCoroutine(CalibrationRoutine());
     }
@@ -371,6 +373,7 @@ public class PLRCorrectionSample : MonoBehaviour
 
         canvas_N_back.SetActive(true);
         directionalLight.SetActive(true);
+        visualSearchParent.SetActive(true);
 
         // RequestSender未設定なら終了
         if (requestSender == null)

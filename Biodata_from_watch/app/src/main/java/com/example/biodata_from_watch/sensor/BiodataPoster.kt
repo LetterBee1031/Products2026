@@ -6,7 +6,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
-import java.util.Locale
+// import java.util.Locale
 
 class BiodataPoster(private val endpointUrl: String) {
     fun post(samples: List<BiodataSample>): Result<Unit> = runCatching {
@@ -42,19 +42,20 @@ class BiodataPoster(private val endpointUrl: String) {
     private fun List<BiodataSample>.toJson(): String {
         // Android標準だけで動くよう、外部JSONライブラリを使わず必要な形だけ生成する。
         return joinToString(prefix = "[", postfix = "]") { sample ->
-            val edaJson = sample.eda
-                ?.takeIf { java.lang.Double.isFinite(it) }
-                ?.let { String.format(Locale.US, "%.6f", it) }
-                ?: "null"
+            // val edaJson = sample.eda
+            //     ?.takeIf { java.lang.Double.isFinite(it) }
+            //     ?.let { String.format(Locale.US, "%.6f", it) }
+            //     ?: "null"
+            // 無効化したJSON項目は、送信文字列の外にコメントとして残す。
+            // "ibi": ${sample.ibi.joinToString(prefix = "[", postfix = "]")},
+            // "eda": $edaJson,
+            // "timestamp": ${sample.timestamp},
+            // "deviceIp": "${sample.deviceIp.escapeJson()}"
             """
             {
               "user_id": "${sample.userId.escapeJson()}",
               "hr": ${sample.hr},
-              "ibi": ${sample.ibi.joinToString(prefix = "[", postfix = "]")},
-              "eda": $edaJson,
-              "sentAt": "${sample.sentAt.escapeJson()}",
-              "timestamp": ${sample.timestamp},
-              "deviceIp": "${sample.deviceIp.escapeJson()}"
+              "sentAt": "${sample.sentAt.escapeJson()}"
             }
             """.trimIndent()
         }

@@ -395,6 +395,7 @@ IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5
 IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____15EAEE9AD3D7A431931C42C23646AA5231A71D96DC2CDE18D5B38968DFBB7EAA_FieldInfo_var;
 IL2CPP_EXTERN_C String_t* _stringLiteral00990F591F7CD3BD07B06350C6D3CC296C70C357;
 IL2CPP_EXTERN_C String_t* _stringLiteral238D2996647A6A35980F9C15BFA3AAD2FECCAD0C;
+IL2CPP_EXTERN_C String_t* _stringLiteral24A7D4718E0FD37D34173628306C78443ED96650;
 IL2CPP_EXTERN_C String_t* _stringLiteral28F9B88475AFE90B08B8B2CF70737F1A97399D46;
 IL2CPP_EXTERN_C String_t* _stringLiteral293BA8E218837B4769F61A02E49D9AE53968B2BA;
 IL2CPP_EXTERN_C String_t* _stringLiteral2A8A53258721F4C80AD21FC14ECEBAE5198979A1;
@@ -442,6 +443,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* ExtinguishingAgent_OnTriggerPressed_m803B36
 IL2CPP_EXTERN_C const RuntimeMethod* ExtinguishingAgent_OnTriggerReleased_mF3CDADEB29D886D57D473BA8B28387BBDE1E6655_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* FirePlacementController_OnPlaceFire_mDE6BAF2F46307DA0D7630CB6733752C10B0793DE_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponentInChildren_TisCollider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76_mCEB1DBA2CA3D840367BAC4D8B11329FAFDABD971_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisFrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6_m08421831A4BF7C077DD0751DF190380CEC386BF0_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_m5C3C1AA51E25BAFDD8D40BA1EDC7DA8871AF29AA_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisToggle_tBF13F3EBA485E06826FD8A38F4B4C1380DF21A1F_m4EE154BD6B3D051BADD8CC7F7C28CF20349ABD17_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_TryGetComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_mCA867A56E93C824FB9C272E0DBB67655CB275941_RuntimeMethod_var;
@@ -4119,6 +4121,11 @@ inline Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* Component_GetCompone
 {
 	return ((  Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* (*) (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3*, const RuntimeMethod*))Component_GetComponent_TisRuntimeObject_m7181F81CAEC2CF53F5D2BC79B7425C16E1F80D33_gshared)(__this, method);
 }
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* GameObject_Find_m7A669B4EEC2617AB82F6E3FF007CDCD9F21DB300 (String_t* ___0_name, const RuntimeMethod* method) ;
+inline FrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6* GameObject_GetComponent_TisFrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6_m08421831A4BF7C077DD0751DF190380CEC386BF0 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
+{
+	return ((  FrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared)(__this, method);
+}
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Transform_get_localScale_m804A002A53A645CDFCD15BB0F37209162720363F (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, const RuntimeMethod* method) ;
 inline ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* GameObject_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_m5C3C1AA51E25BAFDD8D40BA1EDC7DA8871AF29AA (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
 {
@@ -6000,9 +6007,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_Start_mBF9F1CDBD14C9F2F488100
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Component_GetComponent_TisTransform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1_m60E86366B3E431D4C4A549CF4FE5951087686F7F_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisFrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6_m08421831A4BF7C077DD0751DF190380CEC386BF0_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_m5C3C1AA51E25BAFDD8D40BA1EDC7DA8871AF29AA_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral24A7D4718E0FD37D34173628306C78443ED96650);
 		s_Il2CppMethodInitialized = true;
 	}
 	int32_t V_0 = 0;
@@ -6028,79 +6037,102 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_Start_mBF9F1CDBD14C9F2F488100
 IL_001a:
 	{
 		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:29>
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = __this->___fireHitBoxTrans;
-		NullCheck(L_3);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
-		L_4 = Transform_get_localScale_m804A002A53A645CDFCD15BB0F37209162720363F(L_3, NULL);
-		__this->___initialHitBoxSize = L_4;
+		FrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6* L_3 = __this->___frontUiManager;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_4;
+		L_4 = Object_op_Equality_mB6120F782D83091EF56A198FCEBCF066DB4A9605(L_3, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_4)
+		{
+			goto IL_003d;
+		}
+	}
+	{
 		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:31>
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_5 = __this->___fireParticlesObjects;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5;
+		L_5 = GameObject_Find_m7A669B4EEC2617AB82F6E3FF007CDCD9F21DB300(_stringLiteral24A7D4718E0FD37D34173628306C78443ED96650, NULL);
 		NullCheck(L_5);
-		MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F* L_6 = (MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F*)(MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F*)SZArrayNew(MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F_il2cpp_TypeInfo_var, (uint32_t)((int32_t)(((RuntimeArray*)L_5)->max_length)));
-		__this->___fireParticlesMain = L_6;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___fireParticlesMain), (void*)L_6);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:32>
-		V_0 = 0;
-		goto IL_0064;
+		FrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6* L_6;
+		L_6 = GameObject_GetComponent_TisFrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6_m08421831A4BF7C077DD0751DF190380CEC386BF0(L_5, GameObject_GetComponent_TisFrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6_m08421831A4BF7C077DD0751DF190380CEC386BF0_RuntimeMethod_var);
+		__this->___frontUiManager = L_6;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___frontUiManager), (void*)L_6);
 	}
 
-IL_0042:
+IL_003d:
 	{
 		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:34>
-		MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F* L_7 = __this->___fireParticlesMain;
-		int32_t L_8 = V_0;
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_9 = __this->___fireParticlesObjects;
-		int32_t L_10 = V_0;
-		NullCheck(L_9);
-		int32_t L_11 = L_10;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = (L_9)->GetAt(static_cast<il2cpp_array_size_t>(L_11));
-		NullCheck(L_12);
-		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_13;
-		L_13 = GameObject_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_m5C3C1AA51E25BAFDD8D40BA1EDC7DA8871AF29AA(L_12, GameObject_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_m5C3C1AA51E25BAFDD8D40BA1EDC7DA8871AF29AA_RuntimeMethod_var);
-		NullCheck(L_13);
-		MainModule_tC7ECD8330C14B0808478A748048988A6085CE2A9 L_14;
-		L_14 = ParticleSystem_get_main_mD86DFCD96150E2CE760CD2F37052BB3BCA33C189(L_13, NULL);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = __this->___fireHitBoxTrans;
 		NullCheck(L_7);
-		(L_7)->SetAt(static_cast<il2cpp_array_size_t>(L_8), (MainModule_tC7ECD8330C14B0808478A748048988A6085CE2A9)L_14);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:32>
-		int32_t L_15 = V_0;
-		V_0 = ((int32_t)il2cpp_codegen_add(L_15, 1));
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
+		L_8 = Transform_get_localScale_m804A002A53A645CDFCD15BB0F37209162720363F(L_7, NULL);
+		__this->___initialHitBoxSize = L_8;
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:36>
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_9 = __this->___fireParticlesObjects;
+		NullCheck(L_9);
+		MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F* L_10 = (MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F*)(MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F*)SZArrayNew(MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F_il2cpp_TypeInfo_var, (uint32_t)((int32_t)(((RuntimeArray*)L_9)->max_length)));
+		__this->___fireParticlesMain = L_10;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___fireParticlesMain), (void*)L_10);
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:37>
+		V_0 = 0;
+		goto IL_0087;
 	}
 
-IL_0064:
+IL_0065:
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:32>
-		int32_t L_16 = V_0;
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_17 = __this->___fireParticlesObjects;
-		NullCheck(L_17);
-		if ((((int32_t)L_16) < ((int32_t)((int32_t)(((RuntimeArray*)L_17)->max_length)))))
-		{
-			goto IL_0042;
-		}
-	}
-	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:38>
-		float L_18 = __this->___fireHealth;
-		float L_19;
-		L_19 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline((0.0f), L_18, NULL);
-		__this->___fireHealth = L_19;
 		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:39>
-		FireHitBox_UpdateFireAppearance_mBF3D57383F3677A565CFF84991644071513C4C4E(__this, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:40>
-		float L_20 = __this->___fireHealth;
-		if ((!(((float)L_20) <= ((float)(0.0f)))))
+		MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F* L_11 = __this->___fireParticlesMain;
+		int32_t L_12 = V_0;
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_13 = __this->___fireParticlesObjects;
+		int32_t L_14 = V_0;
+		NullCheck(L_13);
+		int32_t L_15 = L_14;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = (L_13)->GetAt(static_cast<il2cpp_array_size_t>(L_15));
+		NullCheck(L_16);
+		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_17;
+		L_17 = GameObject_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_m5C3C1AA51E25BAFDD8D40BA1EDC7DA8871AF29AA(L_16, GameObject_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_m5C3C1AA51E25BAFDD8D40BA1EDC7DA8871AF29AA_RuntimeMethod_var);
+		NullCheck(L_17);
+		MainModule_tC7ECD8330C14B0808478A748048988A6085CE2A9 L_18;
+		L_18 = ParticleSystem_get_main_mD86DFCD96150E2CE760CD2F37052BB3BCA33C189(L_17, NULL);
+		NullCheck(L_11);
+		(L_11)->SetAt(static_cast<il2cpp_array_size_t>(L_12), (MainModule_tC7ECD8330C14B0808478A748048988A6085CE2A9)L_18);
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:37>
+		int32_t L_19 = V_0;
+		V_0 = ((int32_t)il2cpp_codegen_add(L_19, 1));
+	}
+
+IL_0087:
+	{
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:37>
+		int32_t L_20 = V_0;
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_21 = __this->___fireParticlesObjects;
+		NullCheck(L_21);
+		if ((((int32_t)L_20) < ((int32_t)((int32_t)(((RuntimeArray*)L_21)->max_length)))))
 		{
-			goto IL_009e;
+			goto IL_0065;
 		}
 	}
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:42>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:43>
+		float L_22 = __this->___fireHealth;
+		float L_23;
+		L_23 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline((0.0f), L_22, NULL);
+		__this->___fireHealth = L_23;
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:44>
+		FireHitBox_UpdateFireAppearance_mBF3D57383F3677A565CFF84991644071513C4C4E(__this, NULL);
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:45>
+		float L_24 = __this->___fireHealth;
+		if ((!(((float)L_24) <= ((float)(0.0f)))))
+		{
+			goto IL_00c1;
+		}
+	}
+	{
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:47>
 		FireHitBox_Extinguish_m60E8A627AF4BEBB3EFC0B1A640AC2A795F4BF787(__this, NULL);
 	}
 
-IL_009e:
+IL_00c1:
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:46>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:51>
 		return;
 	}
 }
@@ -6108,7 +6140,7 @@ IL_009e:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_LateUpdate_m8661481C34EFE5DE149BC37F24C2EAFB32AF282A (FireHitBox_tAA259849202840CF229DAB6457EFBE444FE3230C* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:51>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:56>
 		bool L_0 = __this->___extinguished;
 		if (L_0)
 		{
@@ -6127,13 +6159,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_LateUpdate_m8661481C34EFE5DE1
 
 IL_0015:
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:53>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:58>
 		return;
 	}
 
 IL_0016:
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:58>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:63>
 		float L_3 = __this->___fireHealth;
 		float L_4 = __this->___fireGrowPower;
 		float L_5;
@@ -6141,9 +6173,9 @@ IL_0016:
 		float L_6;
 		L_6 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___fireHealth = ((float)il2cpp_codegen_add(L_3, ((float)il2cpp_codegen_multiply(L_5, L_6))));
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:59>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:64>
 		FireHitBox_UpdateFireAppearance_mBF3D57383F3677A565CFF84991644071513C4C4E(__this, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:60>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:65>
 		return;
 	}
 }
@@ -6151,11 +6183,11 @@ IL_0016:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_NotifyExtinguishingAgentContact_m9E2E6690E64FBA06A4FEB94B5D96B0EBE5D4BAAD (FireHitBox_tAA259849202840CF229DAB6457EFBE444FE3230C* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:66>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:71>
 		int32_t L_0;
 		L_0 = Time_get_frameCount_m4A42E558A71301A216BDC49EC402D62F19C79667(NULL);
 		__this->___lastContactFrame = L_0;
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:67>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:72>
 		return;
 	}
 }
@@ -6171,7 +6203,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_HitExtinguishingAgent_m9849D5
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:72>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:77>
 		bool L_0 = __this->___extinguished;
 		if (L_0)
 		{
@@ -6188,24 +6220,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_HitExtinguishingAgent_m9849D5
 
 IL_000c:
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:74>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:79>
 		return;
 	}
 
 IL_000d:
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:78>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:83>
 		FireHitBox_NotifyExtinguishingAgentContact_m9E2E6690E64FBA06A4FEB94B5D96B0EBE5D4BAAD(__this, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:79>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:84>
 		float L_2 = __this->___fireHealth;
 		int32_t L_3 = ___0_hitCount;
 		float L_4 = __this->___extinguishPower;
 		float L_5;
 		L_5 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline((0.0f), ((float)il2cpp_codegen_subtract(L_2, ((float)il2cpp_codegen_multiply(((float)L_3), L_4)))), NULL);
 		__this->___fireHealth = L_5;
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:80>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:85>
 		FireHitBox_UpdateFireAppearance_mBF3D57383F3677A565CFF84991644071513C4C4E(__this, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:82>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:87>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6;
 		L_6 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_6);
@@ -6217,14 +6249,14 @@ IL_000d:
 		L_9 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(L_7, _stringLiteral8AFE01314BDF9FA36A19DC6B180AF8A7A990FB77, L_8, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_9, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:83>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:88>
 		float* L_10 = (float*)(&__this->___fireHealth);
 		String_t* L_11;
 		L_11 = Single_ToString_mE282EDA9CA4F7DF88432D807732837A629D04972(L_10, NULL);
 		String_t* L_12;
 		L_12 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral628B7C4896C5B7D3AA388568BB65C384B7984C41, L_11, NULL);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_12, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:85>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:90>
 		float L_13 = __this->___fireHealth;
 		if ((!(((float)L_13) <= ((float)(0.0f)))))
 		{
@@ -6232,13 +6264,13 @@ IL_000d:
 		}
 	}
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:87>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:92>
 		FireHitBox_Extinguish_m60E8A627AF4BEBB3EFC0B1A640AC2A795F4BF787(__this, NULL);
 	}
 
 IL_0087:
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:90>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:95>
 		return;
 	}
 }
@@ -6247,14 +6279,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_UpdateFireAppearance_mBF3D573
 {
 	int32_t V_0 = 0;
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:95>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:100>
 		V_0 = 0;
 		goto IL_004d;
 	}
 
 IL_0004:
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:97>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:102>
 		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_0 = __this->___fireParticlesObjects;
 		int32_t L_1 = V_0;
 		NullCheck(L_0);
@@ -6270,7 +6302,7 @@ IL_0004:
 		L_7 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_5, L_6, NULL);
 		NullCheck(L_4);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_4, L_7, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:98>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:103>
 		MainModuleU5BU5D_tEEFB5F0E13630CB75255D344E67FEEDD38C47F0F* L_8 = __this->___fireParticlesMain;
 		int32_t L_9 = V_0;
 		NullCheck(L_8);
@@ -6279,14 +6311,14 @@ IL_0004:
 		MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 L_12;
 		L_12 = MinMaxCurve_op_Implicit_m133028E91CF2F823F5E20F6B19A3332A02404086(((float)il2cpp_codegen_multiply(L_10, L_11)), NULL);
 		MainModule_set_gravityModifier_m398D2C7F10E389C0EA365640A54D2C0C151A42A7(((L_8)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_9))), L_12, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:95>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:100>
 		int32_t L_13 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_13, 1));
 	}
 
 IL_004d:
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:95>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:100>
 		int32_t L_14 = V_0;
 		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_15 = __this->___fireParticlesObjects;
 		NullCheck(L_15);
@@ -6296,7 +6328,7 @@ IL_004d:
 		}
 	}
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:100>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:105>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16 = __this->___fireHitBoxTrans;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17 = __this->___initialHitBoxSize;
 		float L_18 = __this->___fireHealth;
@@ -6304,7 +6336,7 @@ IL_004d:
 		L_19 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_17, L_18, NULL);
 		NullCheck(L_16);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_16, L_19, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:101>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:106>
 		return;
 	}
 }
@@ -6321,9 +6353,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_Extinguish_m60E8A627AF4BEBB3E
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:106>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:111>
 		__this->___extinguished = (bool)1;
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:107>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:112>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
 		L_0 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_0);
@@ -6333,15 +6365,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_Extinguish_m60E8A627AF4BEBB3E
 		L_2 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(L_1, _stringLiteral2A8A53258721F4C80AD21FC14ECEBAE5198979A1, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_2, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:108>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:113>
 		FrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6* L_3 = __this->___frontUiManager;
 		NullCheck(L_3);
 		FrontUiManager_changeFrontUiTitle_mE63DE528A64C533C538B8AD26F3ADCDC9C631D41(L_3, _stringLiteral41ACB69164B177F186CEFD6CE0161D178FC70CBE, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:109>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:114>
 		FrontUiManager_t9DBC619CB9561103785A2CE8D755B63AD61013E6* L_4 = __this->___frontUiManager;
 		NullCheck(L_4);
 		FrontUiManager_changeFrontUiMainText_m806B1E93F1265C3DF77909E22193149560CF87E2(L_4, _stringLiteral954B0C3596D5D41BDA3EFACE1E09691518913295, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:112>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:117>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5;
 		L_5 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_5);
@@ -6352,7 +6384,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireHitBox_Extinguish_m60E8A627AF4BEBB3E
 		L_7 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_6, NULL);
 		NullCheck(L_7);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_7, (bool)0, NULL);
-		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:113>
+		//<source_info:C:/product2026/FireDrill/Assets/Scripts/fire&smoke/FireHitBox.cs:118>
 		return;
 	}
 }

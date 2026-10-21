@@ -155,17 +155,17 @@ class BiodataUploadService : Service(), SensorEventListener {
                 }
 
                 runCatching {
-                    // HRは直近2秒窓の平均、IBIは前回送信後の値を最大4個まで送信する。
+                    // HRは直近2秒窓の平均を送信する。
                     val current = consumeSnapshot()
                     val sample = BiodataSample(
                         userId = userId,
                         hr = current.hr,
-                        ibi = current.ibi.take(MAX_IBI_PER_SAMPLE),
-                        eda = current.eda,
+                        // ibi = current.ibi.take(MAX_IBI_PER_SAMPLE),
+                        // eda = current.eda,
                         sentAt = ZonedDateTime.now(JST_ZONE)
                             .format(DateTimeFormatter.ISO_OFFSET_DATE_TIME),
-                        timestamp = System.currentTimeMillis(),
-                        deviceIp = DeviceNetwork.localIpAddress(),
+                        // timestamp = System.currentTimeMillis(),
+                        // deviceIp = DeviceNetwork.localIpAddress(),
                     )
                     val result = poster.post(listOf(sample))
                     // 送信結果を通知に出して、時計単体でも状態を確認できるようにする。
