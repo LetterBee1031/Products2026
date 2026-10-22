@@ -60,6 +60,16 @@ a <= b
 
 ---
 
+### 練習試行
+
+* `Practice` ボタン（`MentalArithmeticManager.StartPractice`）で開始する。
+* 本番と同じ問題候補から、Low → Medium → High の順に各3問、計9問を出題する。
+* 時間制限はなく、残り時間の代わりに難易度と進捗（1 / 3など）を表示する。
+* 正誤にかかわらず回答を1問として数え、正誤フィードバック後に次問へ進む。練習中のスキップは無効。
+* 終了後は正答数を表示し、本番または再練習の開始を待つ。NASA-TLXには進まない。
+* ログは `block_id=0`、`block_duration_sec=0` とし、難易度と難易度内の試行番号を記録する。
+* CSVの接頭辞は `mental_arithmetic_practice_`。開始・終了フラグは `mental_arithmetic_practice_start/end`、ブロック識別子は `mental_arithmetic_practice`。
+
 ## 3. 難易度定義
 
 積の値によって難易度を分類する。

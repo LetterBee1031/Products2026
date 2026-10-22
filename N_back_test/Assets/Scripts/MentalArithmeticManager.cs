@@ -79,10 +79,14 @@ public class MentalArithmeticManager : MonoBehaviour
     [SerializeField] private RequestSender requestSender;
     [SerializeField] private NasaTlxManager nasaTlxManager;
 
+    [Header("Practice audio feedback")]
+    [SerializeField] private AudioController audioController;
+
     private const int DefaultDurationSeconds = 120; 
     private const int MinDurationSeconds = 30;
     private const int MaxDurationSeconds = 600;
     private const int MaxAnswerDigits = 3;
+    private const int PracticeTrialsPerDifficulty = 3;
 
     // 難易度ごとに、条件を満たすすべての問題を保持する。
     private readonly Dictionary<Difficulty, List<Problem>> problemPools =
@@ -106,6 +110,7 @@ public class MentalArithmeticManager : MonoBehaviour
     // 古いフィードバック用コルーチンが次のブロックへ干渉するのを防ぐ識別子。
     private int blockRunToken;
     private bool blockActive;
+    private bool isPractice;
     private string activeMentalArithmeticStatusName;
     private string activeMentalArithmeticBlockId;
     private bool isMentalArithmeticStatusActive;
@@ -129,6 +134,11 @@ public class MentalArithmeticManager : MonoBehaviour
         if (nasaTlxManager == null)
         {
             nasaTlxManager = FindFirstObjectByType<NasaTlxManager>();
+        }
+
+        if (audioController == null)
+        {
+            audioController = FindFirstObjectByType<AudioController>();
         }
 
         // RequestSenderに設定された被験者IDを暗算ログでも共通利用する。
@@ -156,7 +166,7 @@ public class MentalArithmeticManager : MonoBehaviour
     {
         // フィードバック中もブロック時間は進むため、stateではなく
         // blockActiveを基準に残り時間を更新する。
-        if (!blockActive)
+        if (!blockActive || isPractice)
         {
             return;
         }
@@ -166,6 +176,19 @@ public class MentalArithmeticManager : MonoBehaviour
             0.0f,
             blockDurationSeconds - (Time.realtimeSinceStartup - blockStartRealtime));
         timerText.text = $"Remaining: {Mathf.CeilToInt(remaining)} sec";
+    }
+
+    // 練習開始ボタンのOnClickへ割り当てる。
+    public void StartPractice()
+    {
+        if (!CanStart())
+        {
+            return;
+        }
+
+        isPractice = true;
+        pendingNasaTlxBlockId = null;
+        StartTaskCoroutine(RunPractice());
     }
 
     // Lowブロック開始ボタンのOnClickへ割り当てる。
@@ -204,6 +227,11 @@ public class MentalArithmeticManager : MonoBehaviour
         // 正解値は画面に表示せず、正誤記号だけを500ms表示する。
         bool isCorrect = answer == currentProblem.Answer;
         RecordTrial(answer.ToString(CultureInfo.InvariantCulture), isCorrect, false);
+        // 練習だけ、N-backと共通の正解音・不正解音を再生する。
+        if (isPractice && audioController != null)
+        {
+            audioController.PlayN_backSound(isCorrect ? 0 : 1);
+        }
         StartCoroutine(ShowFeedbackAndContinue(
             isCorrect ? "\u25CB" : "\u00D7",
             blockRunToken));
@@ -241,7 +269,7 @@ public class MentalArithmeticManager : MonoBehaviour
     public void SkipProblem()
     {
         // スキップは不正解として記録し、user_answerは空欄にする。
-        if (state != TaskState.Running)
+        if (state != TaskState.Running || isPractice)
         {
             return;
         }
@@ -276,6 +304,7 @@ public class MentalArithmeticManager : MonoBehaviour
             return;
         }
 
+        isPractice = false;
         pendingNasaTlxBlockId = null;
         StartTaskCoroutine(RunSelectedBlock(difficulty, blockId));
     }
@@ -283,13 +312,31 @@ public class MentalArithmeticManager : MonoBehaviour
     private void StartTaskCoroutine(IEnumerator routine)
     {
         // 開始時点の入力値を確定し、今回の実験専用CSVファイル名を作る。
-        SetBlockDuration(durationInputField != null
-            ? durationInputField.text
-            : blockDurationSeconds.ToString(CultureInfo.InvariantCulture));
+        if (!isPractice)
+        {
+            SetBlockDuration(durationInputField != null
+                ? durationInputField.text
+                : blockDurationSeconds.ToString(CultureInfo.InvariantCulture));
+        }
 
+        buttonMoveForQuestion.SetActive(false);
         trialLogs.Clear();
         csvFilePath = CreateCsvFilePath();
         taskCoroutine = StartCoroutine(routine);
+    }
+
+    private IEnumerator RunPractice()
+    {
+        SendMentalArithmeticStartStatus("practice", "mental_arithmetic_practice");
+        foreach (Difficulty difficulty in new[] { Difficulty.Low, Difficulty.Medium, Difficulty.High })
+        {
+            // block_id=0、制限時間=0で本番ログと区別する。
+            yield return RunBlock(difficulty, 0);
+        }
+
+        int correct = trialLogs.FindAll(log => log.isCorrect).Count;
+        problemText.text = $"{correct} / {trialLogs.Count}";
+        CompleteTask();
     }
 
     // 選択された1ブロックだけを実行し、終了後は次のボタン入力を待つ。
@@ -310,9 +357,12 @@ public class MentalArithmeticManager : MonoBehaviour
         blockCorrectCount = 0;
         blockRunToken++;
         blockActive = true;
-        SendMentalArithmeticStartStatus(
-            difficulty.ToString(),
-            "mental_arithmetic_" + blockId.ToString(CultureInfo.InvariantCulture));
+        if (!isPractice)
+        {
+            SendMentalArithmeticStartStatus(
+                difficulty.ToString(),
+                "mental_arithmetic_" + blockId.ToString(CultureInfo.InvariantCulture));
+        }
 
         // 同じ難易度でも毎回異なる順番になるよう、開始時にシャッフルする。
         Shuffle(problemPools[difficulty]);
@@ -320,12 +370,15 @@ public class MentalArithmeticManager : MonoBehaviour
         blockStartRealtime = Time.realtimeSinceStartup;
         difficultyText.text = difficulty.ToString();
         feedbackText.text = string.Empty;
+        timerText.text = string.Empty;
         SetControlsInteractable(true);
 
         ShowNextProblem();
 
-        // 1問ごとの制限時間は設けず、ブロック全体の経過時間だけを監視する。
-        while (Time.realtimeSinceStartup - blockStartRealtime < blockDurationSeconds)
+        // 練習は3問目のフィードバック終了まで、本番は制限時間まで待機する。
+        while (isPractice
+            ? blockActive
+            : Time.realtimeSinceStartup - blockStartRealtime < blockDurationSeconds)
         {
             yield return null;
         }
@@ -340,7 +393,7 @@ public class MentalArithmeticManager : MonoBehaviour
         //     $"Block {blockId} complete\n" +
         //     $"Correct: {blockCorrectCount} / {blockCompletedTrialCount}";
         problemText.text =$"{blockCorrectCount} / {blockCompletedTrialCount}";
-        timerText.text = "Remaining: 0 sec";
+        timerText.text = isPractice ? string.Empty : "Remaining: 0 sec";
         feedbackText.text = string.Empty;
     }
 
@@ -354,7 +407,7 @@ public class MentalArithmeticManager : MonoBehaviour
         // Time.timeScaleの影響を受けないリアルタイムで500ms待機する。
         float feedbackEnd = Time.realtimeSinceStartup + feedbackDurationSeconds;
         while (Time.realtimeSinceStartup < feedbackEnd &&
-               Time.realtimeSinceStartup - blockStartRealtime < blockDurationSeconds)
+               (isPractice || Time.realtimeSinceStartup - blockStartRealtime < blockDurationSeconds))
         {
             yield return null;
         }
@@ -363,9 +416,14 @@ public class MentalArithmeticManager : MonoBehaviour
         // tokenにより、前ブロックで開始したコルーチンからの遷移も防止する。
         if (feedbackBlockToken == blockRunToken &&
             blockActive &&
-            Time.realtimeSinceStartup - blockStartRealtime < blockDurationSeconds)
+            (isPractice || Time.realtimeSinceStartup - blockStartRealtime < blockDurationSeconds))
         {
             feedbackText.text = string.Empty;
+            if (isPractice && blockCompletedTrialCount >= PracticeTrialsPerDifficulty)
+            {
+                blockActive = false;
+                yield break;
+            }
             ShowNextProblem();
         }
     }
@@ -394,6 +452,10 @@ public class MentalArithmeticManager : MonoBehaviour
 
         currentProblem = pool[currentProblemIndex++];
         currentTrialIndex++;
+        if (isPractice)
+        {
+            difficultyText.text = $"Practice / {currentDifficulty}\nTrial {currentTrialIndex} / {PracticeTrialsPerDifficulty}";
+        }
 
         // 反応時間は問題を表示した瞬間から回答またはスキップまでを計測する。
         problemStartRealtime = Time.realtimeSinceStartup;
@@ -424,7 +486,7 @@ public class MentalArithmeticManager : MonoBehaviour
             participantId = participantId,
             blockId = currentBlockId,
             difficulty = currentDifficulty.ToString(),
-            blockDurationSec = blockDurationSeconds,
+            blockDurationSec = isPractice ? 0 : blockDurationSeconds,
             trialIndex = currentTrialIndex,
             a = currentProblem.a,
             b = currentProblem.b,
@@ -472,7 +534,7 @@ public class MentalArithmeticManager : MonoBehaviour
     {
         // 最終ブロック終了時にも保存し、最後の状態を確実にファイルへ反映する。
         SaveLogsToCsv();
-        pendingNasaTlxBlockId = activeMentalArithmeticBlockId;
+        pendingNasaTlxBlockId = isPractice ? null : activeMentalArithmeticBlockId;
         SendMentalArithmeticEndStatus();
         state = TaskState.Complete;
         taskCoroutine = null;
@@ -482,7 +544,7 @@ public class MentalArithmeticManager : MonoBehaviour
         difficultyText.text = string.Empty;
         feedbackText.text = string.Empty;
         Debug.Log($"Mental arithmetic log saved: {csvFilePath}");
-        buttonMoveForQuestion.SetActive(true);
+        buttonMoveForQuestion.SetActive(!isPractice);
     }
 
     // 結果画面の遷移ボタンから呼び出し、完了した暗算ブロックのNASA-TLXを開始する
@@ -667,7 +729,7 @@ public class MentalArithmeticManager : MonoBehaviour
 
         string fileName = string.Format(
             CultureInfo.InvariantCulture,
-            "mental_arithmetic_{0}_{1}.csv",
+            isPractice ? "mental_arithmetic_practice_{0}_{1}.csv" : "mental_arithmetic_{0}_{1}.csv",
             safeParticipantId,
             DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture));
         return Path.Combine(Application.persistentDataPath, fileName);
@@ -694,7 +756,7 @@ public class MentalArithmeticManager : MonoBehaviour
 
         if (skipButton != null)
         {
-            skipButton.interactable = interactable;
+            skipButton.interactable = interactable && !isPractice;
         }
     }
 

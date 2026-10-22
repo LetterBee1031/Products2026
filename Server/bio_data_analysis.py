@@ -27,7 +27,8 @@ from sklearn.metrics import (
 )
 from sklearn.metrics import confusion_matrix
 
-HR_FILE = "data/hr_ibi.jsonl"
+DATA_DIR = Path(__file__).resolve().parent / "data"
+HR_FILE = DATA_DIR / "experience" / "hr_ibi" / "hr_ibi.jsonl"
 STATUS_FILE = "data/status_events.jsonl"
 RESULT_FILE = Path("data/analysis_result.csv")
 MODEL_DIR = Path("models")
@@ -137,19 +138,19 @@ def _configured_regression_features(features: List[str] | None = None) -> List[s
     return features
 
 
-def hr_ibi_path_for_user(user_id: str, data_dir: str | Path = "data") -> Path:
+def hr_ibi_path_for_user(user_id: str, data_dir: str | Path = DATA_DIR) -> Path:
     # ユーザごとの生体データ保存先を組み立てる。
-    return Path(data_dir) / f"hr_ibi_{normalize_user_id(user_id)}.jsonl"
+    return Path(data_dir) / "experience" / "hr_ibi" / f"hr_ibi_{normalize_user_id(user_id)}.jsonl"
 
 
-def eye_data_path_for_user(user_id: str, data_dir: str | Path = "data") -> Path:
+def eye_data_path_for_user(user_id: str, data_dir: str | Path = DATA_DIR) -> Path:
     # 視線データは eye_data{user_id}.jsonl という名前で保存されている。
-    return Path(data_dir) / f"eye_data{normalize_user_id(user_id)}.jsonl"
+    return Path(data_dir) / "experience" / "eye_data" / f"eye_data{normalize_user_id(user_id)}.jsonl"
 
 
-def nasa_tlx_path_for_user(user_id: str, data_dir: str | Path = "data") -> Path:
-    # NASA-TLX は Server/data/NASA-TLX_data_{user_id}.jsonl から読み込む。
-    return Path(data_dir) / f"NASA-TLX_data_{normalize_user_id(user_id)}.jsonl"
+def nasa_tlx_path_for_user(user_id: str, data_dir: str | Path = DATA_DIR) -> Path:
+    # NASA-TLX は Server/data/experience/NASA-TLX から読み込む。
+    return Path(data_dir) / "experience" / "NASA-TLX" / f"NASA-TLX_data_{normalize_user_id(user_id)}.jsonl"
 
 
 def normalize_sent_at_to_jst(value) -> pd.Timestamp:
@@ -168,7 +169,7 @@ def normalize_sent_at_to_jst(value) -> pd.Timestamp:
 def merge_eye_data_by_sent_at(
     hr_df: pd.DataFrame,
     user_id: str,
-    data_dir: str | Path = "data",
+    data_dir: str | Path = DATA_DIR,
     eye_feature_columns: List[str] | None = None,
 ) -> pd.DataFrame:
     # HR/EDAの各行に、許容時間内で最も近いsent_atを持つTEPRを結合する。
@@ -268,7 +269,7 @@ def load_cached_or_saved_random_forest_model(
 
 def load_ml_training_dataframe(
     user_id: str,
-    data_dir: str | Path = "data",
+    data_dir: str | Path = DATA_DIR,
     feature_columns: List[str] | None = None,
 ) -> pd.DataFrame:
     # ユーザIDに対応するjsonlから、学習に使える行だけをDataFrameとして読み込む。
@@ -316,7 +317,7 @@ def load_ml_training_dataframe(
 
 def load_latest_prediction_dataframe(
     user_id: str,
-    data_dir: str | Path = "data",
+    data_dir: str | Path = DATA_DIR,
     feature_columns: List[str] | None = None,
 ) -> pd.DataFrame:
     # 現在のhr_ibi_{user_id}.jsonl全体から、推論に使える最新のHR/EDA行だけを取り出す。
@@ -378,7 +379,7 @@ def _extract_n_back(value) -> float:
 # NASA-TLX データの読み出し
 def load_nasa_tlx_dataframe(
     user_id: str,
-    data_dir: str | Path = "data",
+    data_dir: str | Path = DATA_DIR,
     subjective_measure: str = "raw_tlx",
 ) -> pd.DataFrame:
     """参加者の NASA-TLX を読み込み、ブロックごとの得点に整形する。"""
@@ -438,7 +439,7 @@ def load_nasa_tlx_dataframe(
 # 学習用データの読み込み
 def load_regression_training_dataframe(
     user_id: str,
-    data_dir: str | Path = "data",
+    data_dir: str | Path = DATA_DIR,
     subjective_measure: str = "raw_tlx",
     aggregate_by_block: bool = False,
     regression_features: List[str] | None = None,
@@ -806,7 +807,7 @@ def save_cognitive_load_regression_plot(
 # モデルの学習・保存の関数
 def train_cognitive_load_regression(
     user_id: str,
-    data_dir: str | Path = "data",
+    data_dir: str | Path = DATA_DIR,
     model_dir: str | Path = MODEL_DIR,
     subjective_measure: str = "raw_tlx",
     w_obj: float = 0.5,
@@ -1002,7 +1003,7 @@ def predict_cognitive_load(
 
 def predict_latest_cognitive_load(
     user_id: str,
-    data_dir: str | Path = "data",
+    data_dir: str | Path = DATA_DIR,
     model_dir: str | Path = MODEL_DIR,
     auto_train: bool = True,
     subjective_measure: str = "raw_tlx",
@@ -1086,7 +1087,7 @@ def make_label_feature_stats_text(df: pd.DataFrame) -> str:
     return "\n".join(text)
 
 
-def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data"):
+def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = DATA_DIR):
     # ユーザごとのデータでランダムフォレストを学習する。
     df = load_ml_training_dataframe(user_id, data_dir)
     if df.empty:
@@ -1261,7 +1262,7 @@ def train_random_forest_cl_classifier(user_id: str, data_dir: str | Path = "data
 
 def classify_latest_cl_condition_with_random_forest(
     user_id: str,
-    data_dir: str | Path = "data",
+    data_dir: str | Path = DATA_DIR,
 ) -> dict:
     # 最新の有効データを、同じユーザの過去データで学習したモデルに入力して分類する。
     model, training_rows = load_cached_or_saved_random_forest_model(user_id)

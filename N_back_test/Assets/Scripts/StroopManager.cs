@@ -60,6 +60,9 @@ public class StroopManager : MonoBehaviour
     [SerializeField] private RequestSender requestSender;
     [SerializeField] private NasaTlxManager nasaTlxManager;
 
+    [Header("Practice audio feedback")]
+    [SerializeField] private AudioController audioController;
+
     // ここシーン上からいじれるように 
     [Header("Timing (seconds)")]
     [SerializeField] public float fixationDuration = 1.0f;
@@ -100,6 +103,8 @@ public class StroopManager : MonoBehaviour
     private StroopColor? pendingResponse;
     private int correctCount;
     private string currentBlockName;
+    private float blockStartTime;
+    private string timedTrialStatus;
     private string activeStroopStatusName;
     private string activeStroopBlockId;
     private bool isStroopStatusActive;
@@ -107,10 +112,16 @@ public class StroopManager : MonoBehaviour
 
     [SerializeField] private InputActionAsset inputActions;
 
-    private InputAction buttonA;
-    private InputAction buttonB;
-    private InputAction buttonX;
-    private InputAction buttonY;
+    // private InputAction buttonA;
+    // private InputAction buttonB;
+    // private InputAction buttonX;
+    // private InputAction buttonY;
+
+    private InputAction TriggerRight;
+    private InputAction GripRight;
+    private InputAction TriggerLeft;
+    private InputAction GripLeft;
+
 
     private void Awake()
     {
@@ -132,6 +143,11 @@ public class StroopManager : MonoBehaviour
             nasaTlxManager = FindFirstObjectByType<NasaTlxManager>();
         }
 
+        if (audioController == null)
+        {
+            audioController = FindFirstObjectByType<AudioController>();
+        }
+
         // RequestSenderと同じ被験者IDをログに使用する。
         if (requestSender != null && !string.IsNullOrWhiteSpace(requestSender.userId))
         {
@@ -144,36 +160,57 @@ public class StroopManager : MonoBehaviour
         resultText.richText = false;
 
         // 回答キーの対応は全条件で共通。
-        instructionText.text = "A: あか / B: あお / X: みどり / Y: きいろ";
+        instructionText.text = "あか: 右人差し指 \nあお: 右中指 \nみどり: 左人差し指 \nきいろ: 左中指";
         ShowIdle();
         SetupSettingInputFields();
 
         var map = inputActions.FindActionMap("XRControllerInput");
 
-        buttonA = map.FindAction("Button_A");
-        buttonB = map.FindAction("Button_B");
-        buttonX = map.FindAction("Button_X");
-        buttonY = map.FindAction("Button_Y");
+        // buttonA = map.FindAction("Button_A");
+        // buttonB = map.FindAction("Button_B");
+        // buttonX = map.FindAction("Button_X");
+        // buttonY = map.FindAction("Button_Y");
+
+        TriggerRight = map.FindAction("Button_Trigger_Right");
+        GripRight    = map.FindAction("Button_Grip_Right");
+        TriggerLeft  = map.FindAction("Button_Trigger_Left");
+        GripLeft     = map.FindAction("Button_Grip_Left");
     }
 
     private void OnEnable()
     {
-        buttonA?.Enable();
-        buttonB?.Enable();
-        buttonX?.Enable();
-        buttonY?.Enable();
+        // buttonA?.Enable();
+        // buttonB?.Enable();
+        // buttonX?.Enable();
+        // buttonY?.Enable();
+
+        TriggerRight?.Enable();
+        GripRight?.Enable();
+        TriggerLeft?.Enable();
+        GripLeft?.Enable();
     }
 
     private void OnDisable()
     {
-        buttonA?.Disable();
-        buttonB?.Disable();
-        buttonX?.Disable();
-        buttonY?.Disable();
+        // buttonA?.Disable();
+        // buttonB?.Disable();
+        // buttonX?.Disable();
+        // buttonY?.Disable();
+
+        TriggerRight?.Disable();
+        GripRight?.Disable();
+        TriggerLeft?.Disable();
+        GripLeft?.Disable();
     }
 
     private void Update()
     {
+        if (timedTrialStatus != null &&
+            (state == TrialState.Fixation || state == TrialState.Stimulus || state == TrialState.Response))
+        {
+            UpdateRemainingTime();
+        }
+
         // 回答受付中はブロック開始入力を受け付けない。
         if (state == TrialState.Response)
         {
@@ -201,6 +238,7 @@ public class StroopManager : MonoBehaviour
 
         // Practiceは各条件10試行を条件ごとのまとまりとして実施する。
         pendingNasaTlxBlockId = null;
+        ButtonMoveForQuestion.SetActive(false);
         trials.Clear();
         AddTrials(StroopCondition.Congruent, 10, true);
         AddTrials(StroopCondition.Neutral, 10, true);
@@ -252,6 +290,7 @@ public class StroopManager : MonoBehaviour
 
         // 本試行は同一条件を、設定した制限時間が経過するまで繰り返す。
         pendingNasaTlxBlockId = null;
+        ButtonMoveForQuestion.SetActive(false);
         trials.Clear();
 
         currentBlockName = "Block " + blockNumber;
@@ -309,6 +348,7 @@ public class StroopManager : MonoBehaviour
     // ブロック内の全試行の実行と結果表示
     private IEnumerator RunTrials()
     {
+        timedTrialStatus = null;
         correctCount = 0;
         resultText.text = " ";
 
@@ -323,7 +363,9 @@ public class StroopManager : MonoBehaviour
         stimulusText.text = " ";
         statusText.text = currentBlockName + " 完了";
         resultText.text = string.Format("出題数: {0}\n正答数: {1}", trials.Count, correctCount);
-        ButtonMoveForQuestion.SetActive(true);
+        // 練習終了後はNASA-TLXを実施せず、次のブロック開始を待つ。
+        pendingNasaTlxBlockId = null;
+        ButtonMoveForQuestion.SetActive(false);
         SendStroopEndStatus();
     }
 
@@ -334,7 +376,7 @@ public class StroopManager : MonoBehaviour
         correctCount = 0;
         resultText.text = " ";
 
-        float blockStartTime = Time.realtimeSinceStartup;
+        blockStartTime = Time.realtimeSinceStartup;
         int completedTrialCount = 0;
 
         while (Time.realtimeSinceStartup - blockStartTime < blockDurationSeconds)
@@ -390,19 +432,24 @@ public class StroopManager : MonoBehaviour
         // 試行開始時に条件に合う刺激を1つ生成する。
         Stimulus stimulus = CreateStimulus(trial.condition);
 
-        statusText.text = showTotalTrialCount
-            ? string.Format(
+        if (showTotalTrialCount)
+        {
+            statusText.text = string.Format(
                 "{0} / {1}\nTrial {2} / {3}",
                 currentBlockName,
                 trial.condition,
                 blockTrialIndex,
-                trials.Count)
-            : string.Format(
-                "{0} / {1}\nTrial {2}\nTime limit: {3:0.###} sec",
+                trials.Count);
+        }
+        else
+        {
+            timedTrialStatus = string.Format(
+                "{0} / {1}\nTrial {2}",
                 currentBlockName,
                 trial.condition,
-                blockTrialIndex,
-                blockDurationSeconds);
+                blockTrialIndex);
+            UpdateRemainingTime();
+        }
 
         // 1. 注視点を1000 ms表示。
         state = TrialState.Fixation;
@@ -478,6 +525,12 @@ public class StroopManager : MonoBehaviour
             correctCount++;
         }
 
+        // 練習だけ正誤音を再生する。無回答（Timeout）も不正解音にする。
+        if (trial.isPractice && audioController != null)
+        {
+            audioController.PlayN_backSound(isCorrect ? 0 : 1);
+        }
+
         // ログ送信は保留中。上で算出した値をRequestSender連携時に使用する。
         Debug.Log(string.Format(
             "user_id={0}, condition={1}, trial_index={2}, is_practice={3}, is_correct={4}, reaction_time_ms={5}, stimulus_onset_time={6}, response_time={7}, result={8}",
@@ -509,6 +562,14 @@ public class StroopManager : MonoBehaviour
         {
             Debug.LogWarning("Stroop log was not sent because RequestSender was not found.");
         }
+    }
+
+    private void UpdateRemainingTime()
+    {
+        float remaining = Mathf.Max(
+            0.0f,
+            blockDurationSeconds - (Time.realtimeSinceStartup - blockStartTime));
+        statusText.text = $"{timedTrialStatus}\nRemaining: {Mathf.CeilToInt(remaining)} sec";
     }
 
     // 刺激
@@ -561,30 +622,30 @@ public class StroopManager : MonoBehaviour
     {
         Keyboard keyboard = Keyboard.current;
 
-        // キーボードのZ/X/C/VとXRコントローラのA/B/X/Yを同じ色へ割り当てる。
+        // キーボードのZ/X/C/VとXRコントローラの右トリガー/右グリップ/左トリガー/左グリップを同じ色へ割り当てる。
         if ((keyboard != null && keyboard.zKey.wasPressedThisFrame) ||
-            (buttonA != null && buttonA.WasPressedThisFrame()))
+            (TriggerRight != null && TriggerRight.WasPressedThisFrame()))
         {
             response = StroopColor.Red;
             return true;
         }
 
         if ((keyboard != null && keyboard.xKey.wasPressedThisFrame) ||
-            (buttonB != null && buttonB.WasPressedThisFrame()))
+            (GripRight != null && GripRight.WasPressedThisFrame()))
         {
             response = StroopColor.Blue;
             return true;
         }
 
         if ((keyboard != null && keyboard.cKey.wasPressedThisFrame) ||
-            (buttonX != null && buttonX.WasPressedThisFrame()))
+            (TriggerLeft != null && TriggerLeft.WasPressedThisFrame()))
         {
             response = StroopColor.Green;
             return true;
         }
 
         if ((keyboard != null && keyboard.vKey.wasPressedThisFrame) ||
-            (buttonY != null && buttonY.WasPressedThisFrame()))
+            (GripLeft != null && GripLeft.WasPressedThisFrame()))
         {
             response = StroopColor.Yellow;
             return true;
@@ -727,10 +788,10 @@ public class StroopManager : MonoBehaviour
         stimulusText.text = " ";
         resultText.text = " ";
 
-        statusText.text =
-            "P / LB: Practice\n" +
-            "1 / RB: Block 1 (Congruent)\n" +
-            "2 / Back: Block 2 (Neutral)\n" +
-            "3 / Start: Block 3 (Incongruent)";
+        // statusText.text =
+        //     "P / LB: Practice\n" +
+        //     "1 / RB: Block 1 (Congruent)\n" +
+        //     "2 / Back: Block 2 (Neutral)\n" +
+        //     "3 / Start: Block 3 (Incongruent)";
     }
 }

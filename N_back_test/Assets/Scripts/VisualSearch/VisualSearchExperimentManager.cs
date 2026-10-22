@@ -29,6 +29,7 @@ public class VisualSearchExperimentManager : MonoBehaviour
     [SerializeField] private VisualSearchStimulusSpawner stimulusSpawner; // 刺激の生成・表示・削除を行う。
     [SerializeField] private VisualSearchUIController uiController; // 説明・正誤・終了表示。未設定でも課題は動作する。
     [SerializeField] private NasaTlxManager nasaTlxManager; // 本番ブロック終了後のNASA-TLXを開始する。
+    [SerializeField] private AudioController audioController; // 正解・不正解の音声再生用　練習試行時のみ使用
     [SerializeField] private GameObject buttonMoveForQuestion; // NASA-TLX回答画面へ進むUIボタン。
     [SerializeField] private GameObject panels; // 全てのUIパネルの親．視覚探索課題中に非表示にしておくため
 
@@ -74,6 +75,8 @@ public class VisualSearchExperimentManager : MonoBehaviour
     private bool answerPresent; // 参加者の回答。trueがTargetあり、falseがTargetなし。
     private double stimulusOnsetTime; // 全刺激を表示した時刻。
     private double responseTime; // 回答入力を受け付けた時刻。
+    private int practiceAnsweredCount;
+    private int practiceCorrectCount;
     // Practiceを除く本番ブロックへ、開始された順に1から割り当てるID。
     private int nextMainBlockId = 1;
     // 同じ条件を再度開始した場合は、最初に割り当てたIDを再利用する。
@@ -182,7 +185,10 @@ public class VisualSearchExperimentManager : MonoBehaviour
         if (!stopRequested && uiController != null)
         {
             panels.SetActive(true); // パネル表示
-            uiController.ShowBlockEnd();
+            if (practice)
+                uiController.ShowPracticeResult(practiceCorrectCount, practiceAnsweredCount);
+            else
+                uiController.ShowBlockEnd();
             yield return Delay(blockMessageSeconds);
         }
 
@@ -200,6 +206,8 @@ public class VisualSearchExperimentManager : MonoBehaviour
     // Set Size 5・15・25 × Target Present・Absentを、それぞれ指定回数実施する。
     private IEnumerator RunPracticeTrials(VisualSearchTrialGenerator generator, string blockId)
     {
+        practiceAnsweredCount = 0;
+        practiceCorrectCount = 0;
         List<PracticeCondition> conditions = CreatePracticeConditions(generator.Random);
 
         for (int i = 0; i < conditions.Count && !stopRequested; i++)
@@ -273,6 +281,11 @@ public class VisualSearchExperimentManager : MonoBehaviour
 
         // 実際のTarget条件と参加者のPresent/Absent回答を比較する。
         bool correct = answerPresent == targetPresent;
+        if (practice)
+        {
+            practiceAnsweredCount++;
+            if (correct) practiceCorrectCount++;
+        }
         float reactionTimeMs = (float)((responseTime - stimulusOnsetTime) * 1000.0);
 
         // 1試行分の結果を送信し、送信処理の完了後に次の試行へ進む。
@@ -290,6 +303,11 @@ public class VisualSearchExperimentManager : MonoBehaviour
         if (practice && !stopRequested)
         {
             if (uiController != null) uiController.ShowPracticeFeedback(correct);
+            if (correct) {
+                audioController.PlayN_backSound(0);
+            } else {
+                audioController.PlayN_backSound(1);
+            }
             yield return Delay(practiceFeedbackSeconds);
         }
     }

@@ -58,7 +58,7 @@ class VisualSearchApiTests(unittest.TestCase):
             self.assertEqual(200, status)
             self.assertTrue(result["ok"])
         records = [json.loads(line) for line in
-                   (self.data_dir / "visual_search_log_test_01.jsonl").read_text().splitlines()]
+                   (self.data_dir / "experience" / "visual_search" / "visual_search_log_test_01.jsonl").read_text().splitlines()]
         self.assertEqual(2, len(records))
         self.assertEqual("visual_1", records[0]["block_id"])
         self.assertEqual("visual_0", records[1]["block_id"])
@@ -94,7 +94,7 @@ class VisualSearchApiTests(unittest.TestCase):
         self.assertEqual(200, status)
         self.assertEqual("___other", result["user_id"])
         self.assertEqual(["visual_search_log____other.jsonl"],
-                         [p.name for p in self.data_dir.iterdir()])
+                         [p.name for p in (self.data_dir / "experience" / "visual_search").iterdir()])
 
 
 if __name__ == "__main__":

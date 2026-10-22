@@ -46,6 +46,6 @@
     "tepr": 0.09625565751737891
   },
   "intercept": 0.507075481185554,
-  "training_plot": "regression_training_fit.png",
-  "created_at": "2026-10-21T09:11:49.830507+00:00"
+  "training_plot": null,
+  "created_at": "2026-10-22T02:17:54.090198+00:00"
 }

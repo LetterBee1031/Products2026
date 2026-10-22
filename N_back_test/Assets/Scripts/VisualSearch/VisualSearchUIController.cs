@@ -8,6 +8,8 @@ public class VisualSearchUIController : MonoBehaviour
     public void ShowBlockStart(string difficulty, int blockId) =>
         Show($"{difficulty}（Block {blockId}）\n赤い球体があるか回答してください。");
     public void ShowPracticeFeedback(bool correct) => Show(correct ? "正解です" : "不正解です");
+    public void ShowPracticeResult(int correctCount, int answeredCount) =>
+        Show($"練習終了\n正答数: {correctCount} / {answeredCount}");
     public void ShowBlockEnd() => Show("ブロック終了");
     public void ShowExperimentEnd() => Show("視覚探索課題が終了しました");
     public void ShowError(string message) => Show("課題を停止しました\n" + message);

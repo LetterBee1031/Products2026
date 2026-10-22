@@ -13,7 +13,7 @@ using TMPro;
 public class RequestSender : MonoBehaviour
 {
     [Header("FastAPI server base URL")]
-    public string baseUrl = "http://192.168.150.127:8080"; // 送信先URL publicになっててunity側で固定され沼った．注意
+    public string baseUrl = "http://127.0.0.1:8080"; // 送信先URL publicになっててunity側で固定され沼った．注意
 
     [Header("Server URL input UI")]
     public TMP_InputField baseUrlInputField;

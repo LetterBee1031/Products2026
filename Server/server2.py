@@ -52,7 +52,7 @@ NEGOTIATION_LOAD_HIGH = 0.7
 
 
 # 記録用ファイルパス
-HR_JSONL_PATH = DATA_DIR / "hr_ibi.jsonl"
+HR_JSONL_PATH = DATA_DIR / "experience" / "hr_ibi" / "hr_ibi.jsonl"
 STATUS_JSONL_PATH = DATA_DIR / "status_events.jsonl"
 USER_PROFILE_PATH = DATA_DIR / "user_profile.csv"
 
@@ -238,20 +238,26 @@ def resolve_query_user_id(user_id: Optional[str], legacy_id: Optional[str]) -> s
     """新しいuser_idと移行期間用の旧idクエリをどちらも受け付ける。"""
     return normalize_user_id(user_id if user_id is not None else legacy_id or "01")
 
+def experience_data_dir(category: str) -> Path:
+    path = DATA_DIR / "experience" / category
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
 def hr_jsonl_path_for_user(user_id: str) -> Path:
-    return DATA_DIR / f"hr_ibi_{normalize_user_id(user_id)}.jsonl"
+    return experience_data_dir("hr_ibi") / f"hr_ibi_{normalize_user_id(user_id)}.jsonl"
 
 def eye_jsonl_path_for_user(user_id: str) -> Path:
-    return DATA_DIR / f"eye_data{normalize_user_id(user_id)}.jsonl"
+    return experience_data_dir("eye_data") / f"eye_data{normalize_user_id(user_id)}.jsonl"
 
 def stroop_jsonl_path_for_user(user_id: str) -> Path:
-    return DATA_DIR / f"stroop_log_{normalize_user_id(user_id)}.jsonl"
+    return experience_data_dir("stroop") / f"stroop_log_{normalize_user_id(user_id)}.jsonl"
 
 def mental_arithmetic_jsonl_path_for_user(user_id: str) -> Path:
-    return DATA_DIR / f"mental_arithmetic_log_{normalize_user_id(user_id)}.jsonl"
+    return experience_data_dir("mental_arithmetic") / f"mental_arithmetic_log_{normalize_user_id(user_id)}.jsonl"
 
 def cognitive_load_jsonl_path_for_user(user_id: str) -> Path:
-    return DATA_DIR / f"cognitive_load_prediction_{normalize_user_id(user_id)}.jsonl"
+    return experience_data_dir("cognitive_load_prediction") / f"cognitive_load_prediction_{normalize_user_id(user_id)}.jsonl"
 
 def append_cognitive_load_record_by_user(record: dict) -> None:
     user_id = user_id_from_record(record)
@@ -294,14 +300,14 @@ def append_mental_arithmetic_record_by_user(record: dict) -> None:
 
 def append_visual_search_record_by_user(record: dict) -> None:
     user_id = user_id_from_record(record)
-    path = DATA_DIR / f"visual_search_log_{user_id}.jsonl"
+    path = experience_data_dir("visual_search") / f"visual_search_log_{user_id}.jsonl"
     with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + "\n")
 
 
 def append_nasa_tlx_record_by_user(record: dict) -> None:
     user_id = user_id_from_record(record)
-    path = DATA_DIR / f"NASA-TLX_data_{user_id}.jsonl"
+    path = experience_data_dir("NASA-TLX") / f"NASA-TLX_data_{user_id}.jsonl"
     # ファイルが無ければ open('a') で自動的に作成される
     with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
@@ -537,7 +543,7 @@ async def fit_plr(payload: PLRFitRequest, request: Request):
         "timestamp": payload.timestamp,
         "samples": samples,
     }
-    with (DATA_DIR / f"plr_calibration_{user_id}.jsonl").open("a", encoding="utf-8") as f:
+    with (experience_data_dir("plr") / f"plr_calibration_{user_id}.jsonl").open("a", encoding="utf-8") as f:
         f.write(json.dumps(raw_record, ensure_ascii=False) + "\n")
 
     try:
@@ -556,7 +562,7 @@ async def fit_plr(payload: PLRFitRequest, request: Request):
         "luminanceCorrelation": luminance_correlation["correlation"],
         "luminanceCorrelationSampleCount": luminance_correlation["sampleCount"],
     }
-    with (DATA_DIR / f"plr_params_{user_id}.jsonl").open("a", encoding="utf-8") as f:
+    with (experience_data_dir("plr") / f"plr_params_{user_id}.jsonl").open("a", encoding="utf-8") as f:
         f.write(json.dumps(result_record, ensure_ascii=False) + "\n")
 
     return {
@@ -636,7 +642,7 @@ async def analyze_hr_save_csv(
     folds: int = 5,
     save_training_plot: bool = False,
     aggregate_by_block: bool = False,
-    block_warmup_seconds: float = 0.0,
+    block_warmup_seconds: float = 15.0,
 ):
     resolved_user_id = resolve_query_user_id(user_id, id)
     if resolved_user_id not in user_status:

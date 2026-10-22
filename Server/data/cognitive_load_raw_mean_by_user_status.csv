@@ -1,0 +1,3 @@
+﻿user_id,stroop_congruent_start,stroop_neutral_start,stroop_incongruent_start,mental_arithmetic_low_start,mental_arithmetic_medium_start,mental_arithmetic_high_start,visual_low_start,visual_medium_start,visual_high_start
+01,0.3667691024089244,0.2575906055492791,0.33660699373433395,,,,,,
+100,0.750402987186828,0.7753033337334192,0.7035041586159623,0.8656814562333865,0.9347500534291614,0.8349925137903221,0.8884196077255788,0.7702562920792352,0.7921288669674164
