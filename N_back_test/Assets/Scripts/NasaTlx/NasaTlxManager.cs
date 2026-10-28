@@ -21,6 +21,9 @@ public class NasaTlxManager : MonoBehaviour
 
     [Header("Question Data")]
     [SerializeField] private NasaTlxQuestion[] questions = new NasaTlxQuestion[6]; // 6つのNASA-TLX質問
+    [SerializeField] private bool mentalDemandOnly; // 有効ならmental_demandの1項目だけ回答する。
+    private NasaTlxQuestion[] activeQuestions;
+    private bool activeMentalDemandOnly;
 
     [Header("Answer Range")]
     [SerializeField] private int minValue = 0; // スライダー最小値
@@ -184,6 +187,11 @@ public class NasaTlxManager : MonoBehaviour
         currentNBackCorrectCount = Mathf.Max(0, nBackCorrectCount);
         trainAfterSuccessfulSave = shouldTrainAfterSave;
         currentQuestionIndex = 0;
+        // 開始時にモードを固定し、回答中のInspector変更の影響を受けないようにする。
+        activeMentalDemandOnly = mentalDemandOnly;
+        activeQuestions = activeMentalDemandOnly
+            ? new[] { Array.Find(questions, q => q != null && q.id == "mental_demand") ?? CreateDefaultQuestion(0) }
+            : questions;
         hasAnswered = false;
         answers.Clear();
         ShowPanel();
@@ -206,7 +214,7 @@ public class NasaTlxManager : MonoBehaviour
     // 質問の表示・変更の関数．index番目を出力
     private void ShowQuestion(int index)
     {
-        if (index < 0 || index >= questions.Length)
+        if (index < 0 || index >= activeQuestions.Length)
         {
             Debug.LogError($"NasaTlxManager: invalid question index {index}.");
             return;
@@ -215,11 +223,11 @@ public class NasaTlxManager : MonoBehaviour
         // 進捗表示を更新
         if (progressText != null)
         {
-            progressText.text = $"{index + 1} / {questions.Length}";
+            progressText.text = $"{index + 1} / {activeQuestions.Length}";
         }
 
         // index番号に対応したタイトル・質問文・ラベルを表示
-        var question = questions[index];
+        var question = activeQuestions[index];
         if (questionTitle != null) questionTitle.text = question.title;
         if (questionDescription != null) questionDescription.text = question.description;
         if (lowLabel != null) lowLabel.text = question.lowLabel;
@@ -291,14 +299,21 @@ public class NasaTlxManager : MonoBehaviour
             return;
         }
 
+        // 送信失敗後の再試行では、収集済み回答をそのまま再送する。
+        if (activeQuestions != null && currentQuestionIndex >= activeQuestions.Length)
+        {
+            CompleteQuestionnaire();
+            return;
+        }
+
         // 現在のスライダー値を整数として回答に保存
         int answer = Mathf.Clamp(Mathf.RoundToInt(answerSlider.value), minValue, maxValue);
-        var question = questions[currentQuestionIndex];
+        var question = activeQuestions[currentQuestionIndex];
         answers[question.id] = answer;
 
-        // 6問目まで繰り返し，6問目まで終わったら完了
+        // 選択したモードの全質問に回答したら完了する。
         currentQuestionIndex++;
-        if (currentQuestionIndex < questions.Length)
+        if (currentQuestionIndex < activeQuestions.Length)
         {
             ShowQuestion(currentQuestionIndex);
         }
@@ -308,11 +323,11 @@ public class NasaTlxManager : MonoBehaviour
         }
     }
 
-    // 6問とも解答完了時の関数
+    // 選択したモードの全質問に回答完了した時の関数
     private void CompleteQuestionnaire()
     {
-        // 6項目すべての回答を収集したことを確認
-        if (answers.Count != questions.Length)
+        // 選択した質問すべての回答を収集したことを確認
+        if (answers.Count != activeQuestions.Length)
         {
             Debug.LogError("NasaTlxManager: questionnaire completed before all answers were collected.");
             return;
@@ -337,12 +352,12 @@ public class NasaTlxManager : MonoBehaviour
             blockId,
             currentNBackCorrectCount,
             answers["mental_demand"],
-            answers["physical_demand"],
-            answers["temporal_demand"],
-            answers["performance"],
-            answers["effort"],
-            answers["frustration"],
-            "raw_tlx",
+            activeMentalDemandOnly ? (float?)null : answers["physical_demand"],
+            activeMentalDemandOnly ? (float?)null : answers["temporal_demand"],
+            activeMentalDemandOnly ? (float?)null : answers["performance"],
+            activeMentalDemandOnly ? (float?)null : answers["effort"],
+            activeMentalDemandOnly ? (float?)null : answers["frustration"],
+            activeMentalDemandOnly ? "mental_only" : "raw_tlx",
             OnNASATLXSendComplete
         );
     }
@@ -361,6 +376,7 @@ public class NasaTlxManager : MonoBehaviour
         }
 
         // 送信成功時点で、server2.pyによるNASA-TLXのファイル保存も完了している
+        hasAnswered = false;
         HidePanel();
         if (requestSender != null)
         {

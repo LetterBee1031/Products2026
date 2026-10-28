@@ -11,6 +11,8 @@ public class VisualSearchUIController : MonoBehaviour
     public void ShowPracticeResult(int correctCount, int answeredCount) =>
         Show($"練習終了\n正答数: {correctCount} / {answeredCount}");
     public void ShowBlockEnd() => Show("ブロック終了");
+    public void ShowBlockResult(int correctCount, int answeredCount) =>
+        Show($"ブロック終了\n正答数: {correctCount} / {answeredCount}");
     public void ShowExperimentEnd() => Show("視覚探索課題が終了しました");
     public void ShowError(string message) => Show("課題を停止しました\n" + message);
     public void Clear() => Show("");

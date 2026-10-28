@@ -74,16 +74,15 @@ Practiceの`block_id`は`visual_0`です。Low・Medium・Highは難易度に固
 1ブロック120秒、試行前待機1秒が既定です。ブロック内では刺激数・難易度・制限時間を固定します。
 実験中の設定変更、RequestSenderのUser Id変更、SearchArea移動は避けてください。
 
-練習では次の6条件を、`Practice Repetitions Per Condition`に指定した回数ずつ実施します。
+練習では `Practice Trials Per Level` に指定した回数ずつ、Low → Medium → Highの順に連続で実施します。既定値3なら各レベル3試行、合計9試行です。
 
-- Set Size 5：Target Present / Target Absent
-- Set Size 15：Target Present / Target Absent
-- Set Size 25：Target Present / Target Absent
+- 刺激数は本番のLow / Medium / Highの設定を使用します（既定値5 / 15 / 25）。
+- Target Present / Absentは各レベル内で2試行ごとに1回ずつ割り当てます。奇数回の場合の差は1回です。
+- 従来の `Practice Repetitions Per Condition`（Target有無ごとの反復数）は廃止し、各レベルの総試行数を設定する方式に変更しました。
 
-既定値1の場合、練習は合計6試行です。値が2なら各条件2回、合計12試行です。
-条件の実施回数を保ったまま、練習内の提示順をランダム化します。練習の終了は時間制限ではなく、全条件の完了で決まります。
+練習の終了は時間制限ではなく、全試行の完了で決まります。正誤フィードバック専用の待機時間はありません。正誤音は再生し、次の試行前待機とログ送信待ちは維持します。
 
-制限時間には試行前待機、回答待ち、通信待ち、練習フィードバックを含みます。
+本番の制限時間には試行前待機、回答待ち、通信待ちを含みます。
 ブロック前後の説明表示は含みません。時間はTime.timeScaleに依存しません。
 開始通知直前から計時し、時間判定は試行間だけです。開始済み試行は回答まで待つため、制限時間を超えることがあります。
 無回答で自動終了するタイムアウトはありません。必要なら実験者が中断してください。

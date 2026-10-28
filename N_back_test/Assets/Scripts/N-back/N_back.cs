@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 using System.Globalization;
 using System.Collections;
@@ -65,6 +66,11 @@ public class N_back : MonoBehaviour
     public GameObject buttonForQuestion;
     public GameObject buttonPracticeEnd;
     public GameObject parentNextNback;
+
+    [Header("回答入力（Button Action）")]
+    [SerializeField] private InputActionReference answerSameAction;
+    private InputAction sameInput;
+    private bool enabledSameInput;
 
     public TextMeshProUGUI textAlphabet;
     public TextMeshProUGUI textResult = new TextMeshProUGUI();
@@ -138,6 +144,28 @@ public class N_back : MonoBehaviour
 
         // 起動時のRequestSender.userIdに対応する実施順を準備する
         LoadAssignment();
+    }
+
+    private void OnEnable()
+    {
+        sameInput = answerSameAction != null ? answerSameAction.action : null;
+        if (sameInput == null) return;
+
+        sameInput.performed += OnControllerSame;
+        // 他のComponentが有効にしたActionは、無効化時にも維持する。
+        enabledSameInput = !sameInput.enabled;
+        if (enabledSameInput) sameInput.Enable();
+    }
+
+    private void OnControllerSame(InputAction.CallbackContext context)
+    {
+        // 注視ブロック・課題外・判定済み試行での入力は取り込まない。
+        if (!isWorking || isSessionFixationWorking || !isTextDisplayed ||
+            outTextCount < n_back_num || isJudgeAdded ||
+            timeOneTask >= stimulusDisplayDuration + timeWaitOneTask ||
+            !context.action.IsPressed()) return;
+
+        OnSameButton();
     }
 
     // Update is called once per frame
@@ -1049,6 +1077,14 @@ public class N_back : MonoBehaviour
 
     private void OnDisable()
     {
+        if (sameInput != null)
+        {
+            sameInput.performed -= OnControllerSame;
+            if (enabledSameInput) sameInput.Disable();
+            sameInput = null;
+        }
+        enabledSameInput = false;
+
         // シーン終了や無効化時に、登録したイベントを外して重複登録を防ぐ
         if (nBackNumInputField != null)
         {

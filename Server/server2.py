@@ -210,12 +210,13 @@ class NASATLXPost(BaseModel):
     block_id: str
     # N-back正答数はログとして保存する。現在の回帰学習の特徴量・目的変数には使用しない。
     n_back_correct_count: int
-    mental_demand: float
-    physical_demand: float
-    temporal_demand: float 
-    performance: float
-    effort: float
-    frustration: float
+    mental_demand: float = Field(allow_inf_nan=False)
+    # mental_onlyでは未回答の5項目を省略またはnullで受け付ける。
+    physical_demand: Optional[float] = Field(default=None, allow_inf_nan=False)
+    temporal_demand: Optional[float] = Field(default=None, allow_inf_nan=False)
+    performance: Optional[float] = Field(default=None, allow_inf_nan=False)
+    effort: Optional[float] = Field(default=None, allow_inf_nan=False)
+    frustration: Optional[float] = Field(default=None, allow_inf_nan=False)
     sent_at: Optional[str] = None
     timestamp: Optional[int] = None
     # deviceIp: Optional[str] = None
@@ -475,20 +476,14 @@ async def receive_nasa_tlx(payload: NASATLXPost, request: Request, mode: str = "
     if mode_lower not in {"raw_tlx", "mental_only"}:
         raise HTTPException(status_code=400, detail="invalid mode; use 'raw_tlx' or 'mental_only'")
 
-    try:
-        mental = float(payload.mental_demand)
-        physical = float(payload.physical_demand)
-        temporal = float(payload.temporal_demand)
-        performance = float(payload.performance)
-        effort = float(payload.effort)
-        frustration = float(payload.frustration)
-    except Exception:
-        raise HTTPException(status_code=400, detail="invalid TLX values")
-
     if mode_lower == "mental_only":
-        raw_tlx = mental
+        raw_tlx = payload.mental_demand
     else:
-        scales = [mental, physical, temporal, performance, effort, frustration]
+        scales = [payload.mental_demand, payload.physical_demand,
+                  payload.temporal_demand, payload.performance,
+                  payload.effort, payload.frustration]
+        if any(value is None for value in scales):
+            raise HTTPException(status_code=422, detail="raw_tlx requires all six scales")
         raw_tlx = sum(scales) / len(scales)
 
     record = {
@@ -642,7 +637,7 @@ async def analyze_hr_save_csv(
     folds: int = 5,
     save_training_plot: bool = False,
     aggregate_by_block: bool = False,
-    block_warmup_seconds: float = 15.0,
+    block_warmup_seconds: float = 32.0,
 ):
     resolved_user_id = resolve_query_user_id(user_id, id)
     if resolved_user_id not in user_status:

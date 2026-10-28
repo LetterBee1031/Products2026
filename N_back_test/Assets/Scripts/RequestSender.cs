@@ -140,11 +140,11 @@ public class RequestSender : MonoBehaviour
         
         // NASA-TLX の6尺度（0-20 を想定）
         public float mental_demand;
-        public float physical_demand;
-        public float temporal_demand;
-        public float performance;
-        public float effort;
-        public float frustration;
+        public float? physical_demand;
+        public float? temporal_demand;
+        public float? performance;
+        public float? effort;
+        public float? frustration;
 
         // 送信時刻・デバイス情報（サーバ側でも保存されます）
         public string sent_at;
@@ -983,11 +983,11 @@ public class RequestSender : MonoBehaviour
         string blockId,
         int nBackCorrectCount,
         float mentalDemand,
-        float physicalDemand,
-        float temporalDemand,
-        float performance,
-        float effort,
-        float frustration,
+        float? physicalDemand,
+        float? temporalDemand,
+        float? performance,
+        float? effort,
+        float? frustration,
         string mode = "raw_tlx",
         Action<bool> onComplete = null
     )
@@ -1017,11 +1017,11 @@ public class RequestSender : MonoBehaviour
         string blockId,
         int nBackCorrectCount,
         float mentalDemand,
-        float physicalDemand,
-        float temporalDemand,
-        float performance,
-        float effort,
-        float frustration,
+        float? physicalDemand,
+        float? temporalDemand,
+        float? performance,
+        float? effort,
+        float? frustration,
         string mode = "raw_tlx",
         Action<bool> onComplete = null
     )

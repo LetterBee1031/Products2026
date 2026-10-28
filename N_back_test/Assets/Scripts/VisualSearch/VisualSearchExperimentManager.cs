@@ -45,13 +45,12 @@ public class VisualSearchExperimentManager : MonoBehaviour
     [SerializeField, Min(0.01f)] private float minBlockDurationSeconds = 1f; // 入力できる最小時間。
 
     [Header("練習ブロック")]
-    // 6条件（3つのSet Size × Target有無）を、それぞれ何回実施するか。
-    [SerializeField, Min(1)] private int practiceRepetitionsPerCondition = 1;
+    // Low → Medium → Highの各レベルで実施する試行数。
+    [SerializeField, Min(1)] private int practiceTrialsPerLevel = 3;
 
     [Header("待機時間（秒）")]
     [SerializeField, Min(0)] private float trialStartDelay = 1f; // 前試行終了から次の刺激提示までの時間。
     [SerializeField, Min(0)] private float blockMessageSeconds = 1f; // ブロック開始・終了表示を見せる時間。
-    [SerializeField, Min(0)] private float practiceFeedbackSeconds = 0.75f; // 練習の正誤表示時間。
 
     [Header("乱数")]
     [SerializeField] private bool useRandomSeed = true; // trueなら下の固定Seedを使用する。
@@ -75,8 +74,8 @@ public class VisualSearchExperimentManager : MonoBehaviour
     private bool answerPresent; // 参加者の回答。trueがTargetあり、falseがTargetなし。
     private double stimulusOnsetTime; // 全刺激を表示した時刻。
     private double responseTime; // 回答入力を受け付けた時刻。
-    private int practiceAnsweredCount;
-    private int practiceCorrectCount;
+    private int blockAnsweredCount;
+    private int blockCorrectCount;
     // Practiceを除く本番ブロックへ、開始された順に1から割り当てるID。
     private int nextMainBlockId = 1;
     // 同じ条件を再度開始した場合は、最初に割り当てたIDを再利用する。
@@ -148,6 +147,8 @@ public class VisualSearchExperimentManager : MonoBehaviour
     // 選択された1ブロックの開始通知、試行、終了通知を順番に実行する。
     private IEnumerator RunBlock(Difficulty difficulty, int blockId)
     {
+        blockAnsweredCount = 0;
+        blockCorrectCount = 0;
         var generator = new VisualSearchTrialGenerator(useRandomSeed, randomSeed);
         ActualRandomSeed = generator.Seed;
         bool practice = difficulty == Difficulty.Practice;
@@ -186,9 +187,9 @@ public class VisualSearchExperimentManager : MonoBehaviour
         {
             panels.SetActive(true); // パネル表示
             if (practice)
-                uiController.ShowPracticeResult(practiceCorrectCount, practiceAnsweredCount);
+                uiController.ShowPracticeResult(blockCorrectCount, blockAnsweredCount);
             else
-                uiController.ShowBlockEnd();
+                uiController.ShowBlockResult(blockCorrectCount, blockAnsweredCount);
             yield return Delay(blockMessageSeconds);
         }
 
@@ -203,17 +204,15 @@ public class VisualSearchExperimentManager : MonoBehaviour
         IsRunning = false;
     }
 
-    // Set Size 5・15・25 × Target Present・Absentを、それぞれ指定回数実施する。
+    // Low → Medium → Highの順に、各レベルを設定回数ずつ連続で実施する。
     private IEnumerator RunPracticeTrials(VisualSearchTrialGenerator generator, string blockId)
     {
-        practiceAnsweredCount = 0;
-        practiceCorrectCount = 0;
         List<PracticeCondition> conditions = CreatePracticeConditions(generator.Random);
 
         for (int i = 0; i < conditions.Count && !stopRequested; i++)
         {
             PracticeCondition condition = conditions[i];
-            // 練習のtrial_indexも、ランダム化後の実施順で1から採番する。
+            // 練習全体の実施順で1から採番する。
             yield return RunTrial(generator, blockId, Difficulty.Practice, i + 1,
                 condition.setSize, condition.targetPresent, true);
         }
@@ -281,11 +280,8 @@ public class VisualSearchExperimentManager : MonoBehaviour
 
         // 実際のTarget条件と参加者のPresent/Absent回答を比較する。
         bool correct = answerPresent == targetPresent;
-        if (practice)
-        {
-            practiceAnsweredCount++;
-            if (correct) practiceCorrectCount++;
-        }
+        blockAnsweredCount++;
+        if (correct) blockCorrectCount++;
         float reactionTimeMs = (float)((responseTime - stimulusOnsetTime) * 1000.0);
 
         // 1試行分の結果を送信し、送信処理の完了後に次の試行へ進む。
@@ -303,39 +299,25 @@ public class VisualSearchExperimentManager : MonoBehaviour
         if (practice && !stopRequested)
         {
             if (uiController != null) uiController.ShowPracticeFeedback(correct);
-            if (correct) {
-                audioController.PlayN_backSound(0);
-            } else {
-                audioController.PlayN_backSound(1);
-            }
-            yield return Delay(practiceFeedbackSeconds);
+            if (audioController != null) audioController.PlayN_backSound(correct ? 0 : 1);
         }
     }
 
-    // 練習で必要な全条件を指定回数分生成し、実施回数を変えずに順序だけを混ぜる。
+    // レベル順を固定し、Target有無だけを各レベル内で偏りなく割り当てる。
     private List<PracticeCondition> CreatePracticeConditions(System.Random random)
     {
         var conditions = new List<PracticeCondition>();
-        // 練習条件は本番用Inspector値に依存せず、指定された3種類に固定する。
-        int[] setSizes = { 5, 15, 25 };
+        int[] setSizes = { lowSetSize, mediumSetSize, highSetSize };
 
-        // 各Set SizeについてTargetあり・なしを同じ回数追加する。
         foreach (int setSize in setSizes)
         {
-            for (int i = 0; i < practiceRepetitionsPerCondition; i++)
+            bool targetPresent = false;
+            for (int i = 0; i < Mathf.Max(1, practiceTrialsPerLevel); i++)
             {
-                conditions.Add(new PracticeCondition(setSize, true));
-                conditions.Add(new PracticeCondition(setSize, false));
+                // 2試行ごとにあり・なしを1回ずつ。奇数回の場合の差は1回。
+                targetPresent = i % 2 == 0 ? random.Next(2) == 0 : !targetPresent;
+                conditions.Add(new PracticeCondition(setSize, targetPresent));
             }
-        }
-
-        // 条件数は変えず、練習内の提示順だけをランダム化する。
-        for (int i = conditions.Count - 1; i > 0; i--)
-        {
-            int j = random.Next(i + 1);
-            PracticeCondition temp = conditions[i];
-            conditions[i] = conditions[j];
-            conditions[j] = temp;
         }
 
         return conditions;
