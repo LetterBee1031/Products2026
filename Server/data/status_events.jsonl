@@ -87,3 +87,4 @@
 {"received_at": "2026-10-28T21:39:58.430017+09:00", "client_host": "192.168.150.79", "user_id": "100", "status_flag": "visual_high_start", "block_id": "visual_3", "sent_at": "2026/10/28 21:39:58"}
 {"received_at": "2026-10-28T21:41:59.597626+09:00", "client_host": "192.168.150.79", "user_id": "100", "status_flag": "visual_high_end", "block_id": "visual_3", "sent_at": "2026/10/28 21:41:59"}
 {"received_at": "2026-10-28T21:42:26.541424+09:00", "client_host": "192.168.150.79", "user_id": "100", "status_flag": "nasa_tlx_complete", "block_id": null, "sent_at": "2026/10/28 21:42:26"}
+{"received_at": "2026-10-30T14:34:31.307408+09:00", "client_host": "192.168.150.79", "user_id": "100", "status_flag": "experience_start", "block_id": null, "sent_at": "2026/10/30 14:34:31"}

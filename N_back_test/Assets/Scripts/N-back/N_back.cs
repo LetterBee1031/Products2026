@@ -62,7 +62,7 @@ public class N_back : MonoBehaviour
     public NasaTlxManager nasaTlxManager;
     public AudioController audioController;
     public GameObject buttonStart;
-    public GameObject buttonSame;
+    // public GameObject buttonSame;
     public GameObject buttonForQuestion;
     public GameObject buttonPracticeEnd;
     public GameObject parentNextNback;
@@ -126,7 +126,7 @@ public class N_back : MonoBehaviour
         //requestSender = GetComponent<RequestSender>();
         Debug.Log("System Start");
         buttonStart.SetActive(true);
-        buttonSame.SetActive(false);
+        //buttonSame.SetActive(false);
         buttonForQuestion.SetActive(false);
         for (int i = 0; i < Define.LIST_MAX_LENGTH; i++)
         {
@@ -266,7 +266,7 @@ public class N_back : MonoBehaviour
         textResult.text = "";
         textQuestionNum.text = "";
         buttonStart.SetActive(false);
-        buttonSame.SetActive(true);
+        // buttonSame.SetActive(true);
         buttonForQuestion.SetActive(false);
         parentNextNback.SetActive(false);
 
@@ -278,7 +278,7 @@ public class N_back : MonoBehaviour
     public void RestoreAssignedNBackDisplay()
     {
         buttonStart.SetActive(true);
-        buttonSame.SetActive(false);
+        // buttonSame.SetActive(false);
         buttonForQuestion.SetActive(false);
         parentNextNback.SetActive(true);
         buttonPracticeEnd.SetActive(false);
@@ -315,7 +315,7 @@ public class N_back : MonoBehaviour
 
         isWorking = true;
         buttonStart.SetActive(false);
-        buttonSame.SetActive(true);
+        // buttonSame.SetActive(true);
         buttonForQuestion.SetActive(false);
         parentNextNback.SetActive(false);
 
@@ -346,7 +346,7 @@ public class N_back : MonoBehaviour
         textBlockTitle.text = $"Session {currentAssignmentBlock.sessionId} Fixation";
 
         buttonStart.SetActive(false);
-        buttonSame.SetActive(false);
+        //buttonSame.SetActive(false);
         buttonForQuestion.SetActive(false);
         parentNextNback.SetActive(false);
 
@@ -385,7 +385,7 @@ public class N_back : MonoBehaviour
 
         SetNbackNum(currentAssignmentBlock.nBack);
         buttonStart.SetActive(true);
-        buttonSame.SetActive(false);
+        //buttonSame.SetActive(false);
         buttonForQuestion.SetActive(false);
         parentNextNback.SetActive(true);
 
@@ -766,7 +766,7 @@ public class N_back : MonoBehaviour
         }
 
         buttonStart.SetActive(hasNextBlock);
-        buttonSame.SetActive(false);
+        //buttonSame.SetActive(false);
         buttonForQuestion.SetActive(false);
         textResult.text = "";
         textQuestionNum.text = "";
@@ -977,7 +977,7 @@ public class N_back : MonoBehaviour
                     }
 
                     buttonStart.SetActive(false);
-                    buttonSame.SetActive(false);
+                    //buttonSame.SetActive(false);
                     buttonForQuestion.SetActive(true);
                 }
                 Debug.Log("N_back End. Out Text Count:" + outTextCount);

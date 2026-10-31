@@ -25016,7 +25016,6 @@ MonoBehaviour:
   nasaTlxManager: {fileID: 686141625}
   audioController: {fileID: 1420520720}
   buttonStart: {fileID: 356561767}
-  buttonSame: {fileID: 768229394}
   buttonForQuestion: {fileID: 1321856625}
   buttonPracticeEnd: {fileID: 119565138}
   parentNextNback: {fileID: 982268747}
@@ -25177,7 +25176,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686141610}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 446590df1e7e1e347b949bfcdd51def9, type: 3}
   m_Name: 
